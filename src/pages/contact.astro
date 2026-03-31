@@ -42,14 +42,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <input type="email" id="email" name="email" class="form__input" required />
             </div>
 
-            <div class="form__group">
-              <label class="form__label" for="dates">Preferred Dates</label>
-              <input type="text" id="dates" name="dates" class="form__input" placeholder="e.g. 15–22 July 2026" />
+            <div class="grid grid--2" style="gap: 16px;">
+              <div class="form__group">
+                <label class="form__label" for="checkin">Check-in</label>
+                <input type="date" id="checkin" name="checkin" class="form__input" />
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="checkout">Check-out</label>
+                <input type="date" id="checkout" name="checkout" class="form__input" />
+              </div>
             </div>
 
             <div class="form__group">
-              <label class="form__label" for="guests">Number of Guests</label>
-              <input type="text" id="guests" name="guests" class="form__input" placeholder="e.g. 4 adults, 2 children" />
+              <label class="form__label">Your Group</label>
+              <div class="guest-counters">
+                <div class="guest-counter">
+                  <span class="guest-counter__label">Adults</span>
+                  <div class="guest-counter__controls">
+                    <button type="button" class="guest-counter__btn" data-target="adults" data-action="decrease" aria-label="Decrease adults">−</button>
+                    <input type="number" id="adults" name="adults" class="guest-counter__value" value="2" min="1" max="20" readonly />
+                    <button type="button" class="guest-counter__btn" data-target="adults" data-action="increase" aria-label="Increase adults">+</button>
+                  </div>
+                </div>
+                <div class="guest-counter">
+                  <span class="guest-counter__label">Children</span>
+                  <div class="guest-counter__controls">
+                    <button type="button" class="guest-counter__btn" data-target="children" data-action="decrease" aria-label="Decrease children">−</button>
+                    <input type="number" id="children" name="children" class="guest-counter__value" value="0" min="0" max="20" readonly />
+                    <button type="button" class="guest-counter__btn" data-target="children" data-action="increase" aria-label="Increase children">+</button>
+                  </div>
+                </div>
+                <div class="guest-counter">
+                  <span class="guest-counter__label">Dogs</span>
+                  <div class="guest-counter__controls">
+                    <button type="button" class="guest-counter__btn" data-target="dogs" data-action="decrease" aria-label="Decrease dogs">−</button>
+                    <input type="number" id="dogs" name="dogs" class="guest-counter__value" value="0" min="0" max="5" readonly />
+                    <button type="button" class="guest-counter__btn" data-target="dogs" data-action="increase" aria-label="Increase dogs">+</button>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="form__group">
@@ -117,19 +148,147 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <!-- Map Placeholder -->
+          <!-- Map -->
           <div class="fade-in" style="margin-top: 48px;">
-            <div style="background: var(--bg-stone); border-radius: 8px; height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 32px;">
-              <div>
-                <p style="color: var(--text-light); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em;">Map</p>
-                <p style="margin-top: 8px; color: var(--text-secondary);">Seine-et-Marne, Ile-de-France<br />One hour south of Paris</p>
-              </div>
+            <div style="border-radius: 8px; overflow: hidden; height: 350px;">
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=2.55%2C48.40%2C2.70%2C48.47&layer=mapnik&marker=48.4433%2C2.6033"
+                style="border: 0; width: 100%; height: 100%;"
+                loading="lazy"
+                title="Map showing Moulin à Rêves location near Barbizon, France"
+              ></iframe>
             </div>
+            <p style="margin-top: 8px; font-size: 0.8125rem; color: var(--text-light);">
+              Near Barbizon, Seine-et-Marne &middot; One hour south of Paris
+            </p>
           </div>
         </div>
 
       </div>
     </div>
   </section>
+
+<style>
+  .guest-counters {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .guest-counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex: 1;
+    min-width: 140px;
+    background: var(--bg-warm-white);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    padding: 10px 14px;
+  }
+
+  .guest-counter__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .guest-counter__controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .guest-counter__btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.5px solid var(--blue-primary);
+    background: transparent;
+    color: var(--blue-primary);
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    line-height: 1;
+  }
+
+  .guest-counter__btn:hover {
+    background: var(--blue-primary);
+    color: white;
+  }
+
+  .guest-counter__value {
+    width: 32px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    border: none;
+    background: transparent;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  .guest-counter__value::-webkit-outer-spin-button,
+  .guest-counter__value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="date"] {
+    color-scheme: light;
+  }
+
+  @media (max-width: 768px) {
+    .guest-counters {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.guest-counter__btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.target;
+      const action = btn.dataset.action;
+      const input = document.getElementById(target) as HTMLInputElement;
+      if (!input) return;
+
+      let value = parseInt(input.value) || 0;
+      const min = parseInt(input.min) || 0;
+      const max = parseInt(input.max) || 20;
+
+      if (action === 'increase' && value < max) {
+        input.value = String(value + 1);
+      } else if (action === 'decrease' && value > min) {
+        input.value = String(value - 1);
+      }
+    });
+  });
+
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  const checkin = document.getElementById('checkin') as HTMLInputElement;
+  const checkout = document.getElementById('checkout') as HTMLInputElement;
+  if (checkin) checkin.min = today;
+  if (checkout) checkout.min = today;
+
+  // Sync checkout min to checkin value
+  checkin?.addEventListener('change', () => {
+    if (checkout && checkin.value) {
+      checkout.min = checkin.value;
+      if (checkout.value && checkout.value < checkin.value) {
+        checkout.value = checkin.value;
+      }
+    }
+  });
+</script>
 
 </BaseLayout>
