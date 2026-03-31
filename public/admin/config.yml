@@ -1,0 +1,133 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+# Cloudinary media library (optional — uncomment when you have credentials)
+# media_library:
+#   name: cloudinary
+#   config:
+#     cloud_name: your-cloud-name
+#     api_key: your-api-key
+
+collections:
+  - name: "homes"
+    label: "Homes"
+    folder: "src/content/homes"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Hero Image", name: "heroImage", widget: "image" }
+      - { label: "Bedrooms", name: "bedrooms", widget: "number", default: 3 }
+      - { label: "Bathrooms", name: "bathrooms", widget: "number", default: 2 }
+      - { label: "Sleeps", name: "sleeps", widget: "number", default: 6 }
+      - { label: "Size (m²)", name: "size", widget: "number", default: 150 }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - label: "Gallery"
+        name: "gallery"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
+      - label: "Rooms"
+        name: "rooms"
+        widget: "list"
+        fields:
+          - { label: "Room Name", name: "name", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Image", name: "image", widget: "image", required: false }
+      - label: "Amenities"
+        name: "amenities"
+        widget: "list"
+        field: { label: "Amenity", name: "amenity", widget: "string" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "src/content/pages/homepage.md"
+        fields:
+          - { label: "Hero Tagline", name: "heroTagline", widget: "string" }
+          - { label: "Hero Image", name: "heroImage", widget: "image" }
+          - { label: "Introduction Heading", name: "introHeading", widget: "string" }
+          - { label: "Introduction Text", name: "introText", widget: "text" }
+          - { label: "Testimonial Quote", name: "testimonialQuote", widget: "text" }
+          - { label: "Testimonial Attribution", name: "testimonialAttribution", widget: "string" }
+
+      - label: "About"
+        name: "about"
+        file: "src/content/pages/about.md"
+        fields:
+          - { label: "History", name: "history", widget: "markdown" }
+          - { label: "Owner Name", name: "ownerName", widget: "string" }
+          - { label: "Owner Photo", name: "ownerPhoto", widget: "image", required: false }
+          - { label: "Owner Bio", name: "ownerBio", widget: "markdown" }
+          - { label: "Vision Statement", name: "vision", widget: "text" }
+
+      - label: "Compound"
+        name: "compound"
+        file: "src/content/pages/compound.md"
+        fields:
+          - { label: "Hero Image", name: "heroImage", widget: "image" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "activities"
+    label: "Things to Do"
+    folder: "src/content/activities"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Cultural", "Nature", "Food & Wine", "Family"] }
+      - { label: "Distance", name: "distance", widget: "string", hint: "e.g. '10 minutes by car'" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Quote", name: "quote", widget: "text" }
+      - { label: "Guest Name", name: "guestName", widget: "string" }
+      - { label: "Date", name: "date", widget: "string" }
+      - { label: "Source", name: "source", widget: "select", options: ["Direct", "Airbnb", "Booking.com", "TripAdvisor"], required: false }
+
+  - name: "services"
+    label: "Services"
+    files:
+      - label: "Catering"
+        name: "catering"
+        file: "src/content/services/catering.md"
+        fields:
+          - { label: "Hero Image", name: "heroImage", widget: "image" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "markdown" }
+              - { label: "Image", name: "image", widget: "image" }
+
+      - label: "Wellness"
+        name: "wellness"
+        file: "src/content/services/wellness.md"
+        fields:
+          - { label: "Hero Image", name: "heroImage", widget: "image" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "markdown" }
+              - { label: "Image", name: "image", widget: "image" }

@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="The Homes — Moulin à Rêves" description="Three charming stone houses with blue shutters, each with its own character. Part of the Moulin à Rêves compound near Barbizon, France.">
+
+  <section class="hero" style="height: 60vh;">
+    <div class="hero__image">
+      <img src="/images/homes/all-three.jpg" alt="The three houses of Moulin à Rêves" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">The Homes</h1>
+      <p class="hero__tagline">Three houses, each with a story. All with blue shutters.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--3">
+        <a href="/homes/le-moulin/" class="card fade-in">
+          <div class="card__image">
+            <img src="/images/homes/le-moulin-hero.jpg" alt="Le Moulin exterior" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Le Moulin</h3>
+            <p class="card__description">The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.</p>
+            <div class="card__meta">
+              <span>3 Bedrooms</span>
+              <span>2 Bathrooms</span>
+              <span>Sleeps 6</span>
+              <span>150 m&sup2;</span>
+            </div>
+            <span class="link-arrow" style="margin-top: 16px;">Discover Le Moulin</span>
+          </div>
+        </a>
+        <a href="/homes/la-grange/" class="card fade-in">
+          <div class="card__image">
+            <img src="/images/homes/la-grange-hero.webp" alt="La Grange exterior" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">La Grange</h3>
+            <p class="card__description">A converted stone barn with soaring ceilings, an open kitchen, and doors that open straight onto the garden.</p>
+            <div class="card__meta">
+              <span>3 Bedrooms</span>
+              <span>2 Bathrooms</span>
+              <span>Sleeps 6</span>
+              <span>140 m&sup2;</span>
+            </div>
+            <span class="link-arrow" style="margin-top: 16px;">Discover La Grange</span>
+          </div>
+        </a>
+        <a href="/homes/le-jardin/" class="card fade-in">
+          <div class="card__image">
+            <img src="/images/homes/le-jardin-hero.webp" alt="Le Jardin exterior" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Le Jardin</h3>
+            <p class="card__description">The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.</p>
+            <div class="card__meta">
+              <span>3 Bedrooms</span>
+              <span>2 Bathrooms</span>
+              <span>Sleeps 6</span>
+              <span>130 m&sup2;</span>
+            </div>
+            <span class="link-arrow" style="margin-top: 16px;">Discover Le Jardin</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--stone text-center">
+    <div class="container fade-in">
+      <h2>Rent All Three</h2>
+      <p style="margin-top: 16px; margin-bottom: 32px;">
+        Book the entire compound for up to 20 guests. Family reunions, retreats,
+        celebrations — the whole place, exclusively yours.
+      </p>
+      <a href="/the-compound/" class="btn btn--primary">Explore the Compound</a>
+    </div>
+  </section>
+
+</BaseLayout>

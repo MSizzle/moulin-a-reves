@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact — Moulin à Rêves" description="Get in touch with Moulin à Rêves. Inquire about availability, pricing, and services for your stay in the French countryside near Paris.">
+
+  <!-- Hero -->
+  <section class="hero" style="height: 50vh;">
+    <div class="hero__image">
+      <img src="/images/hero-compound.jpg" alt="Blue front door of one of the Moulin à Rêves houses" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Get in Touch</h1>
+      <p class="hero__tagline">Tell us your dates, your group, your dreams. We'll take it from there.</p>
+    </div>
+  </section>
+
+  <!-- Form + Contact Info -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--2" style="gap: 64px;">
+
+        <!-- Form -->
+        <div class="fade-in">
+          <h2>Start Your Conversation</h2>
+          <p style="margin-top: 12px; margin-bottom: 32px;">
+            Fill out the form below and we'll respond within 24 hours with availability and a personalised proposal.
+          </p>
+
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+            <div class="form__group">
+              <label class="form__label" for="name">Your Name</label>
+              <input type="text" id="name" name="name" class="form__input" required />
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="email">Email</label>
+              <input type="email" id="email" name="email" class="form__input" required />
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="dates">Preferred Dates</label>
+              <input type="text" id="dates" name="dates" class="form__input" placeholder="e.g. 15–22 July 2026" />
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="guests">Number of Guests</label>
+              <input type="text" id="guests" name="guests" class="form__input" placeholder="e.g. 4 adults, 2 children" />
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="houses">Which House(s)?</label>
+              <select id="houses" name="houses" class="form__select">
+                <option value="">Select a preference</option>
+                <option value="le-moulin">Le Moulin</option>
+                <option value="la-grange">La Grange</option>
+                <option value="le-jardin">Le Jardin</option>
+                <option value="two-houses">Two Houses</option>
+                <option value="all-three">All Three (The Compound)</option>
+                <option value="not-sure">Not Sure Yet</option>
+              </select>
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="message">Your Message</label>
+              <textarea id="message" name="message" class="form__textarea" placeholder="Tell us about your trip — occasion, interests, any services you'd like (catering, wellness, etc.)..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary">Send Your Inquiry</button>
+          </form>
+        </div>
+
+        <!-- Contact Info + Directions -->
+        <div>
+          <div class="fade-in">
+            <h2>Contact Details</h2>
+            <div style="margin-top: 24px;">
+              <h4>Email</h4>
+              <p><a href="mailto:hello@moulin-a-reves.com">hello@moulin-a-reves.com</a></p>
+            </div>
+            <div style="margin-top: 20px;">
+              <h4>Phone</h4>
+              <p><a href="tel:+19172085853">+1 (917) 208-5853</a></p>
+            </div>
+            <div style="margin-top: 20px;">
+              <h4>Address</h4>
+              <p>Moulin a Reves<br />Seine-et-Marne (77)<br />Ile-de-France, France</p>
+            </div>
+          </div>
+
+          <div class="fade-in" style="margin-top: 48px;">
+            <h2>Getting Here</h2>
+
+            <div style="margin-top: 24px;">
+              <h4>From Paris by Car</h4>
+              <p style="margin-top: 8px;">
+                Take the A6 south from Paris towards Lyon. Exit at Fontainebleau and follow signs towards Barbizon / Milly-la-Foret. The compound is approximately one hour from central Paris, depending on traffic. Detailed directions and GPS coordinates will be sent with your booking confirmation.
+              </p>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <h4>From Paris by Train</h4>
+              <p style="margin-top: 8px;">
+                Take the Transilien Line R from Gare de Lyon to Fontainebleau-Avon station (approximately 40 minutes). From the station, the compound is a 20-minute drive. We can arrange a taxi to meet you, or you can rent a car at the station.
+              </p>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <h4>From the Airports</h4>
+              <p style="margin-top: 8px;">
+                Charles de Gaulle (CDG): approximately 1 hour 30 minutes by car. Orly (ORY): approximately 1 hour. We can arrange private transfers from either airport on request.
+              </p>
+            </div>
+          </div>
+
+          <!-- Map Placeholder -->
+          <div class="fade-in" style="margin-top: 48px;">
+            <div style="background: var(--bg-stone); border-radius: 8px; height: 300px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 32px;">
+              <div>
+                <p style="color: var(--text-light); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em;">Map</p>
+                <p style="margin-top: 8px; color: var(--text-secondary);">Seine-et-Marne, Ile-de-France<br />One hour south of Paris</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

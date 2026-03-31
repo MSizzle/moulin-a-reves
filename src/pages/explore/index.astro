@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Things to Do — Moulin à Rêves" description="Explore Fontainebleau Forest, Barbizon village, châteaux, local markets, and Paris — all within easy reach of Moulin à Rêves.">
+
+  <!-- Hero -->
+  <section class="hero" style="height: 60vh;">
+    <div class="hero__image">
+      <img src="/images/forest-path.webp" alt="Forest path through Fontainebleau with dappled light" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Things to Do</h1>
+      <p class="hero__tagline">Forests, villages, châteaux, and Paris. All within reach.</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="container--narrow text-center fade-in">
+      <h2>You Won't Run Out of Days</h2>
+      <p style="margin-top: 24px;">
+        Moulin a Reves sits at the southern edge of the Ile-de-France, where Paris gives way to forest, fields, and villages that still move at their own pace. You can spend a week here and never repeat yourself — or you can do nothing at all, and that's just as good.
+      </p>
+    </div>
+  </section>
+
+  <!-- Cultural -->
+  <section class="section section--stone">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h2>Cultural</h2>
+        <p style="margin-top: 8px;">Art, history, and the kind of villages that make you slow down.</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/bridge-garden.webp" alt="Barbizon village street with galleries" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Barbizon Village</h3>
+            <p class="card__description">The painters' village where Millet, Rousseau, and Corot came to capture the light. Galleries, ateliers, and a single main street that still feels like the 19th century. Ten minutes by car.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/forest-path.webp" alt="Château de Fontainebleau grand courtyard" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Chateau de Fontainebleau</h3>
+            <p class="card__description">Eight centuries of French royalty, from the medieval keep to Napoleon's apartments. Quieter than Versailles, and arguably more beautiful. Twenty minutes.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/barn-events.webp" alt="Moret-sur-Loing medieval bridge" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Moret-sur-Loing</h3>
+            <p class="card__description">A medieval town on the river where Sisley painted some of his finest work. Stone bridges, timbered houses, and a bakery that makes sucre d'orge the old way. Twenty-five minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nature -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h2>Nature</h2>
+        <p style="margin-top: 8px;">Forests, rivers, and the kind of quiet that restores.</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/gazebo-dining.webp" alt="Fontainebleau Forest sandstone boulders" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Fontainebleau Forest</h3>
+            <p class="card__description">25,000 hectares of ancient oak, beech, and sandstone boulders shaped by wind and time. Walking, cycling, bouldering, or simply sitting in a clearing and listening. Fifteen minutes to the main trails.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/bridge-garden.webp" alt="Gorges de Franchard rock formations" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Gorges de Franchard</h3>
+            <p class="card__description">Dramatic sandstone gorges with marked hiking trails through pine and heather. The most popular walking destination in the forest, and worth every step. Twenty minutes.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/forest-path.webp" alt="Cycling through the countryside" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Cycling & Walking</h3>
+            <p class="card__description">Quiet lanes connect the villages, and the forest is laced with paths. We can arrange bike rentals delivered to the compound, with route suggestions for every level.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Food & Wine -->
+  <section class="section section--stone">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h2>Food & Wine</h2>
+        <p style="margin-top: 8px;">Markets, restaurants, and the taste of the region.</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/barn-events.webp" alt="Local French market with fresh produce" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Local Markets</h3>
+            <p class="card__description">The Saturday marche in Milly-la-Foret is the closest and the best — goat cheese, fresh bread, seasonal vegetables, and flowers. Fontainebleau has a market on Tuesday, Friday, and Sunday mornings. Ten to twenty minutes.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/gazebo-dining.webp" alt="French countryside restaurant terrace" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Restaurants</h3>
+            <p class="card__description">From the auberge in Barbizon to the brasseries of Fontainebleau, you'll eat well without trying hard. We keep a list of current favourites and can book for you.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/bridge-garden.webp" alt="Wine tasting at a local vineyard" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Wine & Tastings</h3>
+            <p class="card__description">The Seine-et-Marne is not Burgundy, but the local vignerons are producing honest, interesting wines. We can arrange a tasting at the compound or a visit to a nearby domaine.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h2>Family</h2>
+        <p style="margin-top: 8px;">Adventures for small people (and the adults who love them).</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/forest-path.webp" alt="Children bouldering on forest rocks" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Bouldering</h3>
+            <p class="card__description">Fontainebleau is one of the world's great bouldering destinations, with routes graded for every level — including beginners and children. Fifteen minutes to the circuits.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/barn-events.webp" alt="Horseback riding through the forest" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Horseback Riding</h3>
+            <p class="card__description">Several stables near the forest offer rides through the trails — from introductory lessons for children to longer hacks for experienced riders. We'll arrange it.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/gazebo-dining.webp" alt="View of Paris with the Eiffel Tower" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">A Day in Paris</h3>
+            <p class="card__description">An hour by car or train from Fontainebleau-Avon station. The Louvre, the Marais, a boat on the Seine — then back to the countryside in time for dinner in the garden.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--stone text-center">
+    <div class="container fade-in">
+      <h2>Need Suggestions?</h2>
+      <p style="margin-top: 16px; margin-bottom: 32px;">
+        We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.
+      </p>
+      <a href="/contact/" class="btn btn--primary">Start Your Conversation</a>
+    </div>
+  </section>
+
+</BaseLayout>

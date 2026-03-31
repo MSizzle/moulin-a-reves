@@ -1,0 +1,459 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Moulin à Rêves — A compound of three stone houses in the French countryside, one hour from Paris. Blue shutters, a millstream, and the quiet of the forest.",
+  ogImage = "/images/og-default.jpg"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+
+    <!-- Fonts preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <style>
+      @import '../styles/global.css';
+    </style>
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="/" class="nav__logo">
+          <span class="nav__logo-text">Moulin à Rêves</span>
+        </a>
+
+        <ul class="nav__links" id="nav-links">
+          <li><a href="/homes/">Homes</a></li>
+          <li><a href="/the-compound/">The Compound</a></li>
+          <li><a href="/explore/">Explore</a></li>
+          <li><a href="/catering/">Catering</a></li>
+          <li><a href="/wellness/">Wellness</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <a href="/contact/" class="btn btn--primary btn--sm">Inquire</a>
+          <button class="nav__hamburger" id="nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile overlay -->
+      <div class="nav__mobile" id="nav-mobile">
+        <button class="nav__close" id="nav-close" aria-label="Close menu">&times;</button>
+        <ul class="nav__mobile-links">
+          <li><a href="/homes/">Homes</a></li>
+          <li><a href="/the-compound/">The Compound</a></li>
+          <li><a href="/explore/">Explore</a></li>
+          <li><a href="/catering/">Catering</a></li>
+          <li><a href="/wellness/">Wellness</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+        <div class="nav__mobile-contact">
+          <a href="tel:+19172085853">+1 (917) 208-5853</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer section--dark">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <h3 class="footer__logo">Moulin à Rêves</h3>
+            <p class="footer__tagline">Mill of Dreams &middot; Seine-et-Marne, France</p>
+          </div>
+          <div class="footer__links">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="/homes/">The Homes</a></li>
+              <li><a href="/the-compound/">The Compound</a></li>
+              <li><a href="/explore/">Things to Do</a></li>
+              <li><a href="/catering/">Catering</a></li>
+              <li><a href="/wellness/">Wellness</a></li>
+            </ul>
+          </div>
+          <div class="footer__links">
+            <h4>Info</h4>
+            <ul>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/contact/">Contact</a></li>
+              <li><a href="/gallery/">Gallery</a></li>
+            </ul>
+          </div>
+          <div class="footer__contact">
+            <h4>Get in Touch</h4>
+            <p><a href="mailto:hello@moulin-a-reves.com">hello@moulin-a-reves.com</a></p>
+            <p><a href="tel:+19172085853">+1 (917) 208-5853</a></p>
+            <div class="footer__newsletter">
+              <p class="footer__newsletter-label">Seasonal updates, no spam — just France.</p>
+              <form class="footer__newsletter-form" name="newsletter" method="POST" data-netlify="true">
+                <input type="email" name="email" placeholder="Your email" class="form__input" required />
+                <button type="submit" class="btn btn--primary">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; {new Date().getFullYear()} Moulin à Rêves. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      /* ---- Navigation ---- */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        transition: background var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out);
+      }
+
+      .nav--scrolled {
+        background: rgba(254, 252, 248, 0.95);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav--scrolled .nav__logo-text,
+      .nav--scrolled .nav__links a {
+        color: var(--text-primary);
+      }
+
+      .nav__inner {
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 20px var(--side-padding);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav__logo-text {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: white;
+        text-decoration: none;
+        transition: color var(--duration) var(--ease-out);
+      }
+
+      .nav__links {
+        display: flex;
+        list-style: none;
+        gap: 32px;
+      }
+
+      .nav__links a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        transition: color var(--duration) var(--ease-out);
+      }
+
+      .nav__links a:hover {
+        color: var(--blue-primary);
+      }
+
+      .nav__actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .btn--sm {
+        padding: 8px 20px;
+        font-size: 0.75rem;
+      }
+
+      .nav__hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+
+      .nav__hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        transition: background var(--duration) var(--ease-out);
+      }
+
+      .nav--scrolled .nav__hamburger span {
+        background: var(--text-primary);
+      }
+
+      /* Mobile nav */
+      .nav__mobile {
+        position: fixed;
+        inset: 0;
+        background: var(--bg-dark);
+        z-index: 200;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+
+      .nav__mobile.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav__close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+
+      .nav__mobile-links {
+        list-style: none;
+        text-align: center;
+      }
+
+      .nav__mobile-links li {
+        margin-bottom: 24px;
+      }
+
+      .nav__mobile-links a {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        color: white;
+        text-decoration: none;
+      }
+
+      .nav__mobile-contact {
+        margin-top: 48px;
+      }
+
+      .nav__mobile-contact a {
+        color: var(--text-light);
+        font-size: 0.875rem;
+      }
+
+      /* ---- Footer ---- */
+      .footer {
+        padding-top: 80px;
+        padding-bottom: 40px;
+      }
+
+      .footer__grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 2fr;
+        gap: 48px;
+        margin-bottom: 64px;
+      }
+
+      .footer__logo {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 400;
+        color: var(--text-on-dark);
+        margin-bottom: 8px;
+      }
+
+      .footer__tagline {
+        font-size: 0.875rem;
+        color: var(--text-light);
+      }
+
+      .footer__links h4,
+      .footer__contact h4 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-light);
+        margin-bottom: 16px;
+      }
+
+      .footer__links ul {
+        list-style: none;
+      }
+
+      .footer__links li {
+        margin-bottom: 10px;
+      }
+
+      .footer__links a {
+        color: rgba(250, 247, 242, 0.7);
+        font-size: 0.9375rem;
+        text-decoration: none;
+      }
+
+      .footer__links a:hover {
+        color: white;
+      }
+
+      .footer__contact p {
+        margin-bottom: 8px;
+      }
+
+      .footer__contact a {
+        color: rgba(250, 247, 242, 0.7);
+        text-decoration: none;
+      }
+
+      .footer__contact a:hover {
+        color: white;
+      }
+
+      .footer__newsletter {
+        margin-top: 24px;
+      }
+
+      .footer__newsletter-label {
+        font-size: 0.8125rem;
+        color: var(--text-light);
+        margin-bottom: 12px;
+      }
+
+      .footer__newsletter-form {
+        display: flex;
+        gap: 8px;
+      }
+
+      .footer__newsletter-form .form__input {
+        flex: 1;
+        padding: 10px 14px;
+        font-size: 0.875rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.15);
+        color: white;
+      }
+
+      .footer__newsletter-form .btn {
+        padding: 10px 20px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+      }
+
+      .footer__bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 24px;
+        text-align: center;
+      }
+
+      .footer__bottom p {
+        font-size: 0.8125rem;
+        color: var(--text-light);
+        max-width: none;
+      }
+
+      @media (max-width: 1024px) {
+        .nav__inner {
+          padding-left: var(--side-padding-tablet);
+          padding-right: var(--side-padding-tablet);
+        }
+
+        .nav__links {
+          display: none;
+        }
+
+        .nav__hamburger {
+          display: flex;
+        }
+
+        .footer__grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav__inner {
+          padding: 16px var(--side-padding-mobile);
+        }
+
+        .footer__grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .footer__newsletter-form {
+          flex-direction: column;
+        }
+      }
+    </style>
+
+    <script>
+      // Nav scroll behavior
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          nav?.classList.add('nav--scrolled');
+        } else {
+          nav?.classList.remove('nav--scrolled');
+        }
+      });
+
+      // Mobile nav toggle
+      const toggle = document.getElementById('nav-toggle');
+      const mobile = document.getElementById('nav-mobile');
+      const close = document.getElementById('nav-close');
+
+      toggle?.addEventListener('click', () => mobile?.classList.add('active'));
+      close?.addEventListener('click', () => mobile?.classList.remove('active'));
+
+      // Scroll animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
