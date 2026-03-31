@@ -2,7 +2,7 @@
 title: "Le Moulin"
 slug: "le-moulin"
 tagline: "The heart of the compound"
-heroImage: "/images/homes/le-moulin-hero.jpg"
+heroImage: "/images/homes/le-moulin-hero.webp"
 bedrooms: 3
 bathrooms: 2
 sleeps: 6
