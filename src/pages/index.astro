@@ -11,10 +11,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Moulin à Rêves</h1>
-      <p class="hero__tagline">Three homes. One unforgettable stay. One hour from Paris.</p>
+      <h1 class="hero__title" data-i18n="home.title">Moulin à Rêves</h1>
+      <p class="hero__tagline" data-i18n="home.tagline">Three homes. One unforgettable stay. One hour from Paris.</p>
       <div class="hero__cta">
-        <a href="/homes/" class="btn btn--white">Explore the Homes</a>
+        <a href="/homes/" class="btn btn--white" data-i18n="home.cta">Explore the Homes</a>
       </div>
     </div>
   </section>
@@ -22,8 +22,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Introduction -->
   <section class="section text-center">
     <div class="container--narrow fade-in">
-      <h2>Where the millstream meets your morning coffee</h2>
-      <p style="margin-top: 24px;">
+      <h2 data-i18n="home.intro.heading">Where the millstream meets your morning coffee</h2>
+      <p data-i18n="home.intro.text" style="margin-top: 24px;">
         Moulin à Rêves is a compound of three stone houses gathered around a millstream
         in the French countryside, one hour south of Paris. Each home has its own character —
         blue shutters, garden views, and the quiet hum of water over stone — but together,
@@ -37,8 +37,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section section--stone">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 64px;">
-        <h2>The Homes</h2>
-        <p style="margin-top: 12px;">Three houses, each with a story of its own.</p>
+        <h2 data-i18n="home.homes.heading">The Homes</h2>
+        <p data-i18n="home.homes.subheading" style="margin-top: 12px;">Three houses, each with a story of its own.</p>
       </div>
       <div class="grid grid--3">
         <a href="/homes/le-moulin/" class="card fade-in" style="text-decoration:none;color:inherit;">
@@ -46,11 +46,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin — stone mill house with blue shutters" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Le Moulin</h3>
-            <p class="card__description">The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.</p>
+            <h3 class="card__title" data-i18n="home.moulin.title">Le Moulin</h3>
+            <p class="card__description" data-i18n="home.moulin.description">The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.</p>
             <div class="card__meta">
-              <span>3 Bedrooms</span>
-              <span>Sleeps 6</span>
+              <span data-i18n="home.moulin.beds">3 Bedrooms</span>
+              <span data-i18n="home.moulin.sleeps">Sleeps 6</span>
               <span>150 m&sup2;</span>
             </div>
           </div>
@@ -60,11 +60,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <img src="/images/homes/la-grange-hero.webp" alt="La Grange — converted stone barn with garden views" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">La Grange</h3>
-            <p class="card__description">A converted stone barn with soaring ceilings, an open kitchen, and doors that open straight onto the garden.</p>
+            <h3 class="card__title" data-i18n="home.grange.title">La Grange</h3>
+            <p class="card__description" data-i18n="home.grange.description">A converted stone barn with soaring ceilings, an open kitchen, and doors that open straight onto the garden.</p>
             <div class="card__meta">
-              <span>3 Bedrooms</span>
-              <span>Sleeps 6</span>
+              <span data-i18n="home.grange.beds">3 Bedrooms</span>
+              <span data-i18n="home.grange.sleeps">Sleeps 6</span>
               <span>140 m&sup2;</span>
             </div>
           </div>
@@ -74,18 +74,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <img src="/images/homes/le-jardin-hero.webp" alt="Le Jardin — garden cottage surrounded by flowers" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Le Jardin</h3>
-            <p class="card__description">The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.</p>
+            <h3 class="card__title" data-i18n="home.jardin.title">Le Jardin</h3>
+            <p class="card__description" data-i18n="home.jardin.description">The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.</p>
             <div class="card__meta">
-              <span>3 Bedrooms</span>
-              <span>Sleeps 6</span>
+              <span data-i18n="home.jardin.beds">3 Bedrooms</span>
+              <span data-i18n="home.jardin.sleeps">Sleeps 6</span>
               <span>130 m&sup2;</span>
             </div>
           </div>
         </a>
       </div>
       <div class="text-center" style="margin-top: 48px;">
-        <a href="/the-compound/" class="link-arrow">Rent the Entire Compound</a>
+        <a href="/the-compound/" class="link-arrow" data-i18n="home.rentall">Rent the Entire Compound</a>
       </div>
     </div>
   </section>
@@ -97,7 +97,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <p class="hero__tagline" style="font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-style: italic;">
+      <p class="hero__tagline" data-i18n="home.senseof.quote" style="font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-style: italic;">
         "At the edge of Fontainebleau Forest, in the land that inspired the Barbizon painters,<br />where the light still falls the way it did two centuries ago."
       </p>
     </div>
@@ -107,8 +107,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 64px;">
-        <h2>Your Stay, Your Way</h2>
-        <p style="margin-top: 12px;">More than a place to sleep — a place to live well.</p>
+        <h2 data-i18n="home.experiences.heading">Your Stay, Your Way</h2>
+        <p data-i18n="home.experiences.subheading" style="margin-top: 12px;">More than a place to sleep — a place to live well.</p>
       </div>
       <div class="grid grid--4">
         <a href="/catering/" class="card fade-in" style="text-decoration:none;color:inherit;">
@@ -116,8 +116,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <img src="/images/catering-table.webp" alt="Dinner table set under garden lights" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Catering</h3>
-            <p class="card__description">From breakfast at your door to a private chef for the weekend.</p>
+            <h3 class="card__title" data-i18n="home.exp.catering.title">Catering</h3>
+            <p class="card__description" data-i18n="home.exp.catering.desc">From breakfast at your door to a private chef for the weekend.</p>
           </div>
         </a>
         <a href="/wellness/" class="card fade-in" style="text-decoration:none;color:inherit;">
@@ -125,8 +125,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <img src="/images/yoga-lawn.webp" alt="Morning yoga on the lawn" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Wellness</h3>
-            <p class="card__description">Yoga, massage, and beauty — let someone else take care of you.</p>
+            <h3 class="card__title" data-i18n="home.exp.wellness.title">Wellness</h3>
+            <p class="card__description" data-i18n="home.exp.wellness.desc">Yoga, massage, and beauty — let someone else take care of you.</p>
           </div>
         </a>
         <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
@@ -134,8 +134,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <img src="/images/barbizon-village.webp" alt="Barbizon village street" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Explore</h3>
-            <p class="card__description">Forests, châteaux, painters' villages, and Paris — all within reach.</p>
+            <h3 class="card__title" data-i18n="home.exp.explore.title">Explore</h3>
+            <p class="card__description" data-i18n="home.exp.explore.desc">Forests, châteaux, painters' villages, and Paris — all within reach.</p>
           </div>
         </a>
         <a href="/the-compound/" class="card fade-in" style="text-decoration:none;color:inherit;">
@@ -143,8 +143,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <img src="/images/group-dinner.webp" alt="Group of friends dining outdoors" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Events</h3>
-            <p class="card__description">Reunions, retreats, celebrations — space for up to 20 guests.</p>
+            <h3 class="card__title" data-i18n="home.exp.events.title">Events</h3>
+            <p class="card__description" data-i18n="home.exp.events.desc">Reunions, retreats, celebrations — space for up to 20 guests.</p>
           </div>
         </a>
       </div>
@@ -154,12 +154,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Testimonial -->
   <section class="section section--stone">
     <div class="container text-center fade-in">
-      <blockquote class="testimonial">
+      <blockquote class="testimonial" data-i18n="home.testimonial">
         "We came for a family reunion and left as a closer family. The houses, the stream,
         the long dinners in the garden — it was everything we'd hoped for and more.
         The children still talk about the forest."
       </blockquote>
-      <p class="testimonial__attribution">— Sophie & Laurent, August 2025</p>
+      <p class="testimonial__attribution" data-i18n="home.testimonial.attribution">— Sophie & Laurent, August 2025</p>
     </div>
   </section>
 
@@ -170,9 +170,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);">Plan Your Stay</h2>
-      <p class="hero__tagline">Tell us your dates, your group, your dreams. We'll take it from there.</p>
-      <a href="/contact/" class="btn btn--white">Start Your Conversation</a>
+      <h2 class="hero__title" data-i18n="home.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Plan Your Stay</h2>
+      <p class="hero__tagline" data-i18n="home.cta.text">Tell us your dates, your group, your dreams. We'll take it from there.</p>
+      <a href="/contact/" class="btn btn--white" data-i18n="home.cta.button">Start Your Conversation</a>
     </div>
   </section>
 

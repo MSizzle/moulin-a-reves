@@ -11,16 +11,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Wellness</h1>
-      <p class="hero__tagline">Yoga, massage, and the kind of quiet that restores.</p>
+      <h1 class="hero__title" data-i18n="wellness.hero.title">Wellness</h1>
+      <p class="hero__tagline" data-i18n="wellness.hero.tagline">Yoga, massage, and the kind of quiet that restores.</p>
     </div>
   </section>
 
   <!-- Intro -->
   <section class="section">
     <div class="container--narrow text-center fade-in">
-      <h2>Let Someone Take Care of You</h2>
-      <p style="margin-top: 24px;">
+      <h2 data-i18n="wellness.intro.heading">Let Someone Take Care of You</h2>
+      <p data-i18n="wellness.intro.text" style="margin-top: 24px;">
         The countryside does most of the work. The air, the silence, the rhythm of days that have nowhere urgent to go. But sometimes your shoulders need more than fresh air, and your mind needs more than a good view. That's where our wellness partners come in — local practitioners who come to the compound so you don't have to go anywhere at all.
       </p>
     </div>
@@ -34,11 +34,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <img src="/images/wellness-pool.webp" alt="Yoga practice on the morning lawn with garden views" style="border-radius: 8px; width: 100%;" />
         </div>
         <div class="fade-in">
-          <h2>Yoga on the Lawn</h2>
-          <p style="margin-top: 24px;">
+          <h2 data-i18n="wellness.yoga.heading">Yoga on the Lawn</h2>
+          <p data-i18n="wellness.yoga.p1" style="margin-top: 24px;">
             The lawn between the houses catches the morning sun from the east, and by eight o'clock, it's warm enough for bare feet on grass. Your instructor arrives with mats and props, and for the next hour, the only sounds are breath, birdsong, and the millstream.
           </p>
-          <p style="margin-top: 16px;">
+          <p data-i18n="wellness.yoga.p2" style="margin-top: 16px;">
             Sessions are available for all levels — from gentle morning flows to more dynamic vinyasa. For groups, we can arrange a daily practice throughout your stay. For yoga retreat organisers, we can help structure a full programme with meals, accommodation, and additional wellness services.
           </p>
         </div>
@@ -51,11 +51,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="grid grid--2" style="align-items: center;">
         <div class="fade-in">
-          <h2>Massage</h2>
-          <p style="margin-top: 24px;">
+          <h2 data-i18n="wellness.massage.heading">Massage</h2>
+          <p data-i18n="wellness.massage.p1" style="margin-top: 24px;">
             Your massage therapist sets up in one of the houses or, on warm days, on the shaded terrace — wherever you're most comfortable. Treatments range from deep tissue to relaxation massage, using plant-based oils from a producer in Provence.
           </p>
-          <p style="margin-top: 16px;">
+          <p data-i18n="wellness.massage.p2" style="margin-top: 16px;">
             You'll book a time, and that's the last decision you have to make. Afterwards, you'll sit in the garden with a glass of water and wonder why you don't do this more often. Sessions are typically 60 or 90 minutes, and can be arranged for individuals or for the whole group over the course of a day.
           </p>
         </div>
@@ -74,11 +74,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <img src="/images/wellness-pool.webp" alt="Beauty treatment products arranged on linen" style="border-radius: 8px; width: 100%;" />
         </div>
         <div class="fade-in">
-          <h2>Beauty Treatments</h2>
-          <p style="margin-top: 24px;">
+          <h2 data-i18n="wellness.beauty.heading">Beauty Treatments</h2>
+          <p data-i18n="wellness.beauty.p1" style="margin-top: 24px;">
             Facials, manicures, pedicures — small indulgences that fit naturally into an afternoon when you have no plans and no intention of making any. Our beauty therapist comes to the compound with everything needed, using French skincare products that smell the way the countryside looks.
           </p>
-          <p style="margin-top: 16px;">
+          <p data-i18n="wellness.beauty.p2" style="margin-top: 16px;">
             Treatments can be booked individually or as part of a group spa afternoon. Particularly good for the day before a celebration, or the day after a long hike through Fontainebleau Forest.
           </p>
         </div>
@@ -89,8 +89,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Practitioner Note -->
   <section class="section">
     <div class="container--narrow text-center fade-in">
-      <h2>Our Practitioners</h2>
-      <p style="margin-top: 24px;">
+      <h2 data-i18n="wellness.practitioners.heading">Our Practitioners</h2>
+      <p data-i18n="wellness.practitioners.text" style="margin-top: 24px;">
         We work with a small group of independent practitioners based in the region — people we know personally, whose work we trust. They're not part of a spa chain or a corporate wellness programme. They're local professionals who are very good at what they do and who appreciate the setting as much as you will. All wellness services are arranged in advance and priced on inquiry.
       </p>
     </div>
@@ -99,12 +99,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- For Retreat Organisers -->
   <section class="section section--stone">
     <div class="container--narrow text-center fade-in">
-      <h2>For Retreat Organisers</h2>
-      <p style="margin-top: 24px;">
+      <h2 data-i18n="wellness.retreat.heading">For Retreat Organisers</h2>
+      <p data-i18n="wellness.retreat.text" style="margin-top: 24px;">
         If you're planning a yoga retreat, wellness weekend, or mindfulness gathering, we can help. The compound sleeps up to 20 across three houses, with shared gardens, a lawn for practice, and the kind of environment that supports the work you do. We'll handle accommodation, catering, and logistics — you focus on leading your programme.
       </p>
       <div style="margin-top: 32px;">
-        <a href="/the-compound/" class="link-arrow">Learn About the Compound</a>
+        <a href="/the-compound/" class="link-arrow" data-i18n="wellness.retreat.link">Learn About the Compound</a>
       </div>
     </div>
   </section>
@@ -112,11 +112,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CTA -->
   <section class="section text-center">
     <div class="container fade-in">
-      <h2>Ready to Unwind?</h2>
-      <p style="margin-top: 16px; margin-bottom: 32px;">
+      <h2 data-i18n="wellness.cta.heading">Ready to Unwind?</h2>
+      <p data-i18n="wellness.cta.text" style="margin-top: 16px; margin-bottom: 32px;">
         Tell us what you'd like and we'll arrange it. All wellness services are priced on inquiry.
       </p>
-      <a href="/contact/" class="btn btn--primary">Inquire About Wellness</a>
+      <a href="/contact/" class="btn btn--primary" data-i18n="wellness.cta.button">Inquire About Wellness</a>
     </div>
   </section>
 

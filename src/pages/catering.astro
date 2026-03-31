@@ -11,16 +11,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Catering</h1>
-      <p class="hero__tagline">From breakfast at your door to a private chef for the weekend.</p>
+      <h1 class="hero__title" data-i18n="catering.hero.title">Catering</h1>
+      <p class="hero__tagline" data-i18n="catering.hero.tagline">From breakfast at your door to a private chef for the weekend.</p>
     </div>
   </section>
 
   <!-- Intro -->
   <section class="section">
     <div class="container--narrow text-center fade-in">
-      <h2>Let Someone Else Cook</h2>
-      <p style="margin-top: 24px;">
+      <h2 data-i18n="catering.intro.heading">Let Someone Else Cook</h2>
+      <p data-i18n="catering.intro.text" style="margin-top: 24px;">
         You're on holiday. The kitchen is stocked, the markets are close, and cooking with fresh ingredients is part of the joy. But some mornings, you'd rather find a basket of warm croissants at the door. And some evenings, you'd rather sit down to a table already set, a meal already made, a bottle already opened. That's what this is for.
       </p>
     </div>
@@ -34,11 +34,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <img src="/images/outdoor-dining.webp" alt="Fresh breakfast basket with croissants, bread, and jam" style="border-radius: 8px; width: 100%;" />
         </div>
         <div class="fade-in">
-          <h2>Breakfast Delivery</h2>
-          <p style="margin-top: 24px;">
+          <h2 data-i18n="catering.breakfast.heading">Breakfast Delivery</h2>
+          <p data-i18n="catering.breakfast.p1" style="margin-top: 24px;">
             Each morning, a basket arrives at your door before you've finished your first coffee. Inside: croissants from the boulangerie in Barbizon, a fresh baguette, local butter and confiture, seasonal fruit, yoghurt, and juice. If you have dietary needs or preferences, let us know — everything is prepared to order.
           </p>
-          <p style="margin-top: 16px;">
+          <p data-i18n="catering.breakfast.p2" style="margin-top: 16px;">
             You'll take it to the terrace, or the kitchen table, or the garden — wherever your morning happens to lead. It's the simplest thing, and it changes the whole rhythm of the day.
           </p>
         </div>
@@ -51,11 +51,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="grid grid--2" style="align-items: center;">
         <div class="fade-in">
-          <h2>Dinner Service</h2>
-          <p style="margin-top: 24px;">
+          <h2 data-i18n="catering.dinner.heading">Dinner Service</h2>
+          <p data-i18n="catering.dinner.p1" style="margin-top: 24px;">
             On the evenings you'd rather not cook, our local chef prepares a three-course meal and delivers it to your kitchen — still warm, beautifully presented, ready to plate. The menus change with the season: a cold cucumber soup in July, a duck confit with roasted figs in October, a tarte tatin made with apples from the garden's own tree.
           </p>
-          <p style="margin-top: 16px;">
+          <p data-i18n="catering.dinner.p2" style="margin-top: 16px;">
             You set the table, open the wine, and take all the credit. The dishes are collected the next morning with the breakfast delivery.
           </p>
         </div>
@@ -74,11 +74,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <img src="/images/catering-table.webp" alt="Celebration dinner in the garden with candles and flowers" style="border-radius: 8px; width: 100%;" />
         </div>
         <div class="fade-in">
-          <h2>Special Occasions</h2>
-          <p style="margin-top: 24px;">
+          <h2 data-i18n="catering.special.heading">Special Occasions</h2>
+          <p data-i18n="catering.special.p1" style="margin-top: 24px;">
             A birthday. An anniversary. The last night of a reunion when everyone is finally, fully relaxed. For these evenings, we arrange something more: a multi-course menu designed around your preferences, table settings, flowers, candles in the garden. The chef cooks on-site while you enjoy apéritifs on the lawn, and the meal unfolds at whatever pace the evening demands.
           </p>
-          <p style="margin-top: 16px;">
+          <p data-i18n="catering.special.p2" style="margin-top: 16px;">
             Tell us the occasion, the number of guests, and any dietary requirements, and we'll put together a proposal.
           </p>
         </div>
@@ -91,11 +91,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="grid grid--2" style="align-items: center;">
         <div class="fade-in">
-          <h2>Private Chef Weekends</h2>
-          <p style="margin-top: 24px;">
+          <h2 data-i18n="catering.chef.heading">Private Chef Weekends</h2>
+          <p data-i18n="catering.chef.p1" style="margin-top: 24px;">
             For groups who want to hand over the kitchen entirely, we arrange a private chef for the duration of your stay. They'll shop at the morning markets, cook breakfast and dinner each day, and adapt the menus to your group — vegan guests, children's meals, a birthday cake at the end.
           </p>
-          <p style="margin-top: 16px;">
+          <p data-i18n="catering.chef.p2" style="margin-top: 16px;">
             Your chef knows the local producers, the seasonal ingredients, and the way a meal should feel when you're eating it outdoors in the French countryside: generous, unhurried, built around what's good right now.
           </p>
         </div>
@@ -109,21 +109,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Testimonial -->
   <section class="section section--stone">
     <div class="container text-center fade-in">
-      <blockquote class="testimonial">
+      <blockquote class="testimonial" data-i18n="catering.testimonial">
         "We had the private chef for four nights and it transformed the trip. Every meal was an event. The duck with cherry sauce on the last evening — I still think about it."
       </blockquote>
-      <p class="testimonial__attribution">— Anna, July 2025</p>
+      <p class="testimonial__attribution" data-i18n="catering.testimonial.attribution">— Anna, July 2025</p>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="section text-center">
     <div class="container fade-in">
-      <h2>Hungry?</h2>
-      <p style="margin-top: 16px; margin-bottom: 32px;">
+      <h2 data-i18n="catering.cta.heading">Hungry?</h2>
+      <p data-i18n="catering.cta.text" style="margin-top: 16px; margin-bottom: 32px;">
         Tell us what you'd like and we'll put together a catering proposal for your stay. All pricing is available on inquiry.
       </p>
-      <a href="/contact/" class="btn btn--primary">Inquire About Catering</a>
+      <a href="/contact/" class="btn btn--primary" data-i18n="catering.cta.button">Inquire About Catering</a>
     </div>
   </section>
 

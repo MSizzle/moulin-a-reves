@@ -99,43 +99,43 @@ const {
         <div class="footer__grid">
           <div class="footer__brand">
             <h3 class="footer__logo">Moulin à Rêves</h3>
-            <p class="footer__tagline">Mill of Dreams &middot; Seine-et-Marne, France</p>
+            <p class="footer__tagline" data-i18n="footer.tagline">Mill of Dreams &middot; Seine-et-Marne, France</p>
           </div>
           <div class="footer__links">
-            <h4>Explore</h4>
+            <h4 data-i18n="footer.explore">Explore</h4>
             <ul>
-              <li><a href="/homes/">The Homes</a></li>
-              <li><a href="/the-compound/">The Compound</a></li>
-              <li><a href="/explore/">Things to Do</a></li>
-              <li><a href="/catering/">Catering</a></li>
-              <li><a href="/wellness/">Wellness</a></li>
+              <li><a href="/homes/" data-i18n="footer.homes">The Homes</a></li>
+              <li><a href="/the-compound/" data-i18n="footer.compound">The Compound</a></li>
+              <li><a href="/explore/" data-i18n="footer.thingstodo">Things to Do</a></li>
+              <li><a href="/catering/" data-i18n="footer.catering">Catering</a></li>
+              <li><a href="/wellness/" data-i18n="footer.wellness">Wellness</a></li>
             </ul>
           </div>
           <div class="footer__links">
-            <h4>Info</h4>
+            <h4 data-i18n="footer.info">Info</h4>
             <ul>
-              <li><a href="/about/">About</a></li>
-              <li><a href="/contact/">Contact</a></li>
-              <li><a href="/gallery/">Gallery</a></li>
+              <li><a href="/about/" data-i18n="footer.about">About</a></li>
+              <li><a href="/contact/" data-i18n="footer.contact">Contact</a></li>
+              <li><a href="/gallery/" data-i18n="footer.gallery">Gallery</a></li>
             </ul>
           </div>
           <div class="footer__contact">
-            <h4>Get in Touch</h4>
+            <h4 data-i18n="footer.getintouch">Get in Touch</h4>
             <p><a href="mailto:hello@moulin-a-reves.com">hello@moulin-a-reves.com</a></p>
             <p><a href="tel:+19172085853">+1 (917) 208-5853</a></p>
             <div class="footer__newsletter">
-              <p class="footer__newsletter-label">Seasonal updates, no spam — just France.</p>
+              <p class="footer__newsletter-label" data-i18n="footer.newsletter">Seasonal updates, no spam — just France.</p>
               <form class="footer__newsletter-form" name="newsletter" method="POST" action="/success/" data-netlify="true" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="newsletter" />
                 <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
-                <input type="email" name="email" placeholder="Your email" class="form__input" required />
-                <button type="submit" class="btn btn--primary">Subscribe</button>
+                <input type="email" name="email" placeholder="Your email" class="form__input" data-i18n-placeholder="footer.emailplaceholder" required />
+                <button type="submit" class="btn btn--primary" data-i18n="footer.subscribe">Subscribe</button>
               </form>
             </div>
           </div>
         </div>
         <div class="footer__bottom">
-          <p>&copy; {new Date().getFullYear()} Moulin à Rêves. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Moulin à Rêves. <span data-i18n="footer.rights">All rights reserved.</span></p>
         </div>
       </div>
     </footer>
@@ -511,22 +511,35 @@ const {
       document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
       // ---- Language Toggle (EN/FR) ----
-      const translations: Record<string, Record<string, string>> = {
-        'nav.homes': { en: 'Homes', fr: 'Les Maisons' },
-        'nav.compound': { en: 'The Compound', fr: 'Le Domaine' },
-        'nav.explore': { en: 'Explore', fr: 'Explorer' },
-        'nav.catering': { en: 'Catering', fr: 'Restauration' },
-        'nav.wellness': { en: 'Wellness', fr: 'Bien-être' },
-        'nav.about': { en: 'About', fr: 'À Propos' },
-        'nav.contact': { en: 'Contact', fr: 'Contact' },
-        'nav.inquire': { en: 'Inquire', fr: 'Réserver' },
-        'footer.explore': { en: 'Explore', fr: 'Explorer' },
-        'footer.info': { en: 'Info', fr: 'Infos' },
-        'footer.getintouch': { en: 'Get in Touch', fr: 'Contactez-nous' },
-        'footer.newsletter': { en: 'Seasonal updates, no spam — just France.', fr: 'Actualités saisonnières, pas de spam — juste la France.' },
-        'footer.subscribe': { en: 'Subscribe', fr: "S'abonner" },
-        'footer.rights': { en: 'All rights reserved.', fr: 'Tous droits réservés.' },
-      };
+      // Translations loaded from /i18n/translations.json (generated at build time)
+      let translations: Record<string, Record<string, string>> = {};
+
+      // Fetch translations asynchronously
+      fetch('/i18n/translations.json')
+        .then(res => res.json())
+        .then(data => {
+          translations = data;
+          // Re-apply language after translations load
+          if (currentLang !== 'en') {
+            setLanguage(currentLang);
+          }
+        })
+        .catch(() => {
+          // Fallback: nav-only translations if fetch fails
+          translations = {
+            'nav.homes': { en: 'Homes', fr: 'Les Maisons' },
+            'nav.compound': { en: 'The Compound', fr: 'Le Domaine' },
+            'nav.explore': { en: 'Explore', fr: 'Explorer' },
+            'nav.catering': { en: 'Catering', fr: 'Restauration' },
+            'nav.wellness': { en: 'Wellness', fr: 'Bien-être' },
+            'nav.about': { en: 'About', fr: 'À Propos' },
+            'nav.contact': { en: 'Contact', fr: 'Contact' },
+            'nav.inquire': { en: 'Inquire', fr: 'Réserver' },
+          };
+          if (currentLang !== 'en') {
+            setLanguage(currentLang);
+          }
+        });
 
       let currentLang = localStorage.getItem('lang') || 'en';
 
@@ -535,11 +548,19 @@ const {
         localStorage.setItem('lang', lang);
         document.documentElement.lang = lang;
 
-        // Update all elements with data-i18n
+        // Update all elements with data-i18n (textContent)
         document.querySelectorAll('[data-i18n]').forEach((el) => {
           const key = el.getAttribute('data-i18n');
           if (key && translations[key] && translations[key][lang]) {
             el.textContent = translations[key][lang];
+          }
+        });
+
+        // Update all elements with data-i18n-placeholder
+        document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (key && translations[key] && translations[key][lang]) {
+            (el as HTMLInputElement).placeholder = translations[key][lang];
           }
         });
 

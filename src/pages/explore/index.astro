@@ -11,16 +11,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Things to Do</h1>
-      <p class="hero__tagline">Forests, villages, châteaux, and Paris. All within reach.</p>
+      <h1 class="hero__title" data-i18n="explore.hero.title">Things to Do</h1>
+      <p class="hero__tagline" data-i18n="explore.hero.tagline">Forests, villages, châteaux, and Paris. All within reach.</p>
     </div>
   </section>
 
   <!-- Intro -->
   <section class="section">
     <div class="container--narrow text-center fade-in">
-      <h2>You Won't Run Out of Days</h2>
-      <p style="margin-top: 24px;">
+      <h2 data-i18n="explore.intro.heading">You Won't Run Out of Days</h2>
+      <p data-i18n="explore.intro.text" style="margin-top: 24px;">
         Moulin a Reves sits at the southern edge of the Ile-de-France, where Paris gives way to forest, fields, and villages that still move at their own pace. You can spend a week here and never repeat yourself — or you can do nothing at all, and that's just as good.
       </p>
     </div>
@@ -30,8 +30,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="section section--stone">
     <div class="container">
       <div class="fade-in" style="margin-bottom: 48px;">
-        <h2>Cultural</h2>
-        <p style="margin-top: 8px;">Art, history, and the kind of villages that make you slow down.</p>
+        <h2 data-i18n="explore.cultural.heading">Cultural</h2>
+        <p data-i18n="explore.cultural.subheading" style="margin-top: 8px;">Art, history, and the kind of villages that make you slow down.</p>
       </div>
       <div class="grid grid--3">
         <div class="card fade-in">
@@ -39,8 +39,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/barbizon.webp" alt="Barbizon village street with stone houses and lavender" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Barbizon Village</h3>
-            <p class="card__description">The painters' village where Millet, Rousseau, and Corot came to capture the light. Galleries, ateliers, and a single main street that still feels like the 19th century. Ten minutes by car.</p>
+            <h3 class="card__title" data-i18n="explore.cultural.barbizon.title">Barbizon Village</h3>
+            <p class="card__description" data-i18n="explore.cultural.barbizon.desc">The painters' village where Millet, Rousseau, and Corot came to capture the light. Galleries, ateliers, and a single main street that still feels like the 19th century. Ten minutes by car.</p>
           </div>
         </div>
         <div class="card fade-in">
@@ -48,8 +48,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/chateau.webp" alt="Château de Fontainebleau overlooking the pond and gardens" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Chateau de Fontainebleau</h3>
-            <p class="card__description">Eight centuries of French royalty, from the medieval keep to Napoleon's apartments. Quieter than Versailles, and arguably more beautiful. Twenty minutes.</p>
+            <h3 class="card__title" data-i18n="explore.cultural.chateau.title">Chateau de Fontainebleau</h3>
+            <p class="card__description" data-i18n="explore.cultural.chateau.desc">Eight centuries of French royalty, from the medieval keep to Napoleon's apartments. Quieter than Versailles, and arguably more beautiful. Twenty minutes.</p>
           </div>
         </div>
         <div class="card fade-in">
@@ -57,8 +57,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/moret-day.webp" alt="Moret-sur-Loing medieval bridge and river" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Moret-sur-Loing</h3>
-            <p class="card__description">A medieval town on the river where Sisley painted some of his finest work. Stone bridges, timbered houses, and a bakery that makes sucre d'orge the old way. Twenty-five minutes.</p>
+            <h3 class="card__title" data-i18n="explore.cultural.moret.title">Moret-sur-Loing</h3>
+            <p class="card__description" data-i18n="explore.cultural.moret.desc">A medieval town on the river where Sisley painted some of his finest work. Stone bridges, timbered houses, and a bakery that makes sucre d'orge the old way. Twenty-five minutes.</p>
           </div>
         </div>
       </div>
@@ -69,8 +69,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="section">
     <div class="container">
       <div class="fade-in" style="margin-bottom: 48px;">
-        <h2>Nature</h2>
-        <p style="margin-top: 8px;">Forests, rivers, and the kind of quiet that restores.</p>
+        <h2 data-i18n="explore.nature.heading">Nature</h2>
+        <p data-i18n="explore.nature.subheading" style="margin-top: 8px;">Forests, rivers, and the kind of quiet that restores.</p>
       </div>
       <div class="grid grid--3">
         <div class="card fade-in">
@@ -78,8 +78,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/forest.webp" alt="Fontainebleau Forest pine trees and sandstone" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Fontainebleau Forest</h3>
-            <p class="card__description">25,000 hectares of ancient oak, beech, and sandstone boulders shaped by wind and time. Walking, cycling, bouldering, or simply sitting in a clearing and listening. Fifteen minutes to the main trails.</p>
+            <h3 class="card__title" data-i18n="explore.nature.forest.title">Fontainebleau Forest</h3>
+            <p class="card__description" data-i18n="explore.nature.forest.desc">25,000 hectares of ancient oak, beech, and sandstone boulders shaped by wind and time. Walking, cycling, bouldering, or simply sitting in a clearing and listening. Fifteen minutes to the main trails.</p>
           </div>
         </div>
         <div class="card fade-in">
@@ -87,8 +87,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/gorges.webp" alt="Gorges de Franchard sandstone and pine trees" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Gorges de Franchard</h3>
-            <p class="card__description">Dramatic sandstone gorges with marked hiking trails through pine and heather. The most popular walking destination in the forest, and worth every step. Twenty minutes.</p>
+            <h3 class="card__title" data-i18n="explore.nature.gorges.title">Gorges de Franchard</h3>
+            <p class="card__description" data-i18n="explore.nature.gorges.desc">Dramatic sandstone gorges with marked hiking trails through pine and heather. The most popular walking destination in the forest, and worth every step. Twenty minutes.</p>
           </div>
         </div>
         <div class="card fade-in">
@@ -96,8 +96,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/barbizon2.webp" alt="Cycling through the French countryside" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Cycling & Walking</h3>
-            <p class="card__description">Quiet lanes connect the villages, and the forest is laced with paths. We can arrange bike rentals delivered to the compound, with route suggestions for every level.</p>
+            <h3 class="card__title" data-i18n="explore.nature.cycling.title">Cycling & Walking</h3>
+            <p class="card__description" data-i18n="explore.nature.cycling.desc">Quiet lanes connect the villages, and the forest is laced with paths. We can arrange bike rentals delivered to the compound, with route suggestions for every level.</p>
           </div>
         </div>
       </div>
@@ -108,8 +108,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="section section--stone">
     <div class="container">
       <div class="fade-in" style="margin-bottom: 48px;">
-        <h2>Food & Wine</h2>
-        <p style="margin-top: 8px;">Markets, restaurants, and the taste of the region.</p>
+        <h2 data-i18n="explore.food.heading">Food & Wine</h2>
+        <p data-i18n="explore.food.subheading" style="margin-top: 8px;">Markets, restaurants, and the taste of the region.</p>
       </div>
       <div class="grid grid--3">
         <div class="card fade-in">
@@ -117,8 +117,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/barbizon.webp" alt="Local French market village street" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Local Markets</h3>
-            <p class="card__description">The Saturday marche in Milly-la-Foret is the closest and the best — goat cheese, fresh bread, seasonal vegetables, and flowers. Fontainebleau has a market on Tuesday, Friday, and Sunday mornings. Ten to twenty minutes.</p>
+            <h3 class="card__title" data-i18n="explore.food.markets.title">Local Markets</h3>
+            <p class="card__description" data-i18n="explore.food.markets.desc">The Saturday marche in Milly-la-Foret is the closest and the best — goat cheese, fresh bread, seasonal vegetables, and flowers. Fontainebleau has a market on Tuesday, Friday, and Sunday mornings. Ten to twenty minutes.</p>
           </div>
         </div>
         <div class="card fade-in">
@@ -126,8 +126,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/gazebo-dining.webp" alt="French countryside restaurant terrace" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Restaurants</h3>
-            <p class="card__description">From the auberge in Barbizon to the brasseries of Fontainebleau, you'll eat well without trying hard. We keep a list of current favourites and can book for you.</p>
+            <h3 class="card__title" data-i18n="explore.food.restaurants.title">Restaurants</h3>
+            <p class="card__description" data-i18n="explore.food.restaurants.desc">From the auberge in Barbizon to the brasseries of Fontainebleau, you'll eat well without trying hard. We keep a list of current favourites and can book for you.</p>
           </div>
         </div>
         <div class="card fade-in">
@@ -135,8 +135,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/moret2.webp" alt="French village street scene at night" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Wine & Tastings</h3>
-            <p class="card__description">The Seine-et-Marne is not Burgundy, but the local vignerons are producing honest, interesting wines. We can arrange a tasting at the compound or a visit to a nearby domaine.</p>
+            <h3 class="card__title" data-i18n="explore.food.wine.title">Wine & Tastings</h3>
+            <p class="card__description" data-i18n="explore.food.wine.desc">The Seine-et-Marne is not Burgundy, but the local vignerons are producing honest, interesting wines. We can arrange a tasting at the compound or a visit to a nearby domaine.</p>
           </div>
         </div>
       </div>
@@ -147,8 +147,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="section">
     <div class="container">
       <div class="fade-in" style="margin-bottom: 48px;">
-        <h2>Family</h2>
-        <p style="margin-top: 8px;">Adventures for small people (and the adults who love them).</p>
+        <h2 data-i18n="explore.family.heading">Family</h2>
+        <p data-i18n="explore.family.subheading" style="margin-top: 8px;">Adventures for small people (and the adults who love them).</p>
       </div>
       <div class="grid grid--3">
         <div class="card fade-in">
@@ -156,8 +156,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/gorges.webp" alt="Sandstone boulders for bouldering in Fontainebleau" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Bouldering</h3>
-            <p class="card__description">Fontainebleau is one of the world's great bouldering destinations, with routes graded for every level — including beginners and children. Fifteen minutes to the circuits.</p>
+            <h3 class="card__title" data-i18n="explore.family.bouldering.title">Bouldering</h3>
+            <p class="card__description" data-i18n="explore.family.bouldering.desc">Fontainebleau is one of the world's great bouldering destinations, with routes graded for every level — including beginners and children. Fifteen minutes to the circuits.</p>
           </div>
         </div>
         <div class="card fade-in">
@@ -165,8 +165,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/forest.webp" alt="Forest trails for horseback riding" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Horseback Riding</h3>
-            <p class="card__description">Several stables near the forest offer rides through the trails — from introductory lessons for children to longer hacks for experienced riders. We'll arrange it.</p>
+            <h3 class="card__title" data-i18n="explore.family.horse.title">Horseback Riding</h3>
+            <p class="card__description" data-i18n="explore.family.horse.desc">Several stables near the forest offer rides through the trails — from introductory lessons for children to longer hacks for experienced riders. We'll arrange it.</p>
           </div>
         </div>
         <div class="card fade-in">
@@ -174,8 +174,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/explore/paris.webp" alt="Aerial view of Paris with the Eiffel Tower" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">A Day in Paris</h3>
-            <p class="card__description">An hour by car or train from Fontainebleau-Avon station. The Louvre, the Marais, a boat on the Seine — then back to the countryside in time for dinner in the garden.</p>
+            <h3 class="card__title" data-i18n="explore.family.paris.title">A Day in Paris</h3>
+            <p class="card__description" data-i18n="explore.family.paris.desc">An hour by car or train from Fontainebleau-Avon station. The Louvre, the Marais, a boat on the Seine — then back to the countryside in time for dinner in the garden.</p>
           </div>
         </div>
       </div>
@@ -185,11 +185,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- CTA -->
   <section class="section section--stone text-center">
     <div class="container fade-in">
-      <h2>Need Suggestions?</h2>
-      <p style="margin-top: 16px; margin-bottom: 32px;">
+      <h2 data-i18n="explore.cta.heading">Need Suggestions?</h2>
+      <p data-i18n="explore.cta.text" style="margin-top: 16px; margin-bottom: 32px;">
         We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.
       </p>
-      <a href="/contact/" class="btn btn--primary">Start Your Conversation</a>
+      <a href="/contact/" class="btn btn--primary" data-i18n="explore.cta.button">Start Your Conversation</a>
     </div>
   </section>
 

@@ -11,8 +11,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Get in Touch</h1>
-      <p class="hero__tagline">Tell us your dates, your group, your dreams. We'll take it from there.</p>
+      <h1 class="hero__title" data-i18n="contact.hero.title">Get in Touch</h1>
+      <p class="hero__tagline" data-i18n="contact.hero.tagline">Tell us your dates, your group, your dreams. We'll take it from there.</p>
     </div>
   </section>
 
@@ -23,8 +23,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Form -->
         <div class="fade-in">
-          <h2>Start Your Conversation</h2>
-          <p style="margin-top: 12px; margin-bottom: 32px;">
+          <h2 data-i18n="contact.form.heading">Start Your Conversation</h2>
+          <p data-i18n="contact.form.intro" style="margin-top: 12px; margin-bottom: 32px;">
             Fill out the form below and we'll respond within 24 hours with availability and a personalised proposal.
           </p>
 
@@ -33,31 +33,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
             <div class="form__group">
-              <label class="form__label" for="name">Your Name</label>
+              <label class="form__label" data-i18n="contact.form.name" for="name">Your Name</label>
               <input type="text" id="name" name="name" class="form__input" required />
             </div>
 
             <div class="form__group">
-              <label class="form__label" for="email">Email</label>
+              <label class="form__label" data-i18n="contact.form.email" for="email">Email</label>
               <input type="email" id="email" name="email" class="form__input" required />
             </div>
 
             <div class="grid grid--2" style="gap: 16px;">
               <div class="form__group">
-                <label class="form__label" for="checkin">Check-in</label>
+                <label class="form__label" data-i18n="contact.form.checkin" for="checkin">Check-in</label>
                 <input type="date" id="checkin" name="checkin" class="form__input" />
               </div>
               <div class="form__group">
-                <label class="form__label" for="checkout">Check-out</label>
+                <label class="form__label" data-i18n="contact.form.checkout" for="checkout">Check-out</label>
                 <input type="date" id="checkout" name="checkout" class="form__input" />
               </div>
             </div>
 
             <div class="form__group">
-              <label class="form__label">Your Group</label>
+              <label class="form__label" data-i18n="contact.form.group">Your Group</label>
               <div class="guest-counters">
                 <div class="guest-counter">
-                  <span class="guest-counter__label">Adults</span>
+                  <span class="guest-counter__label" data-i18n="contact.form.adults">Adults</span>
                   <div class="guest-counter__controls">
                     <button type="button" class="guest-counter__btn" data-target="adults" data-action="decrease" aria-label="Decrease adults">−</button>
                     <input type="number" id="adults" name="adults" class="guest-counter__value" value="2" min="1" max="20" readonly />
@@ -65,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   </div>
                 </div>
                 <div class="guest-counter">
-                  <span class="guest-counter__label">Children</span>
+                  <span class="guest-counter__label" data-i18n="contact.form.children">Children</span>
                   <div class="guest-counter__controls">
                     <button type="button" class="guest-counter__btn" data-target="children" data-action="decrease" aria-label="Decrease children">−</button>
                     <input type="number" id="children" name="children" class="guest-counter__value" value="0" min="0" max="20" readonly />
@@ -73,7 +73,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   </div>
                 </div>
                 <div class="guest-counter">
-                  <span class="guest-counter__label">Dogs</span>
+                  <span class="guest-counter__label" data-i18n="contact.form.dogs">Dogs</span>
                   <div class="guest-counter__controls">
                     <button type="button" class="guest-counter__btn" data-target="dogs" data-action="decrease" aria-label="Decrease dogs">−</button>
                     <input type="number" id="dogs" name="dogs" class="guest-counter__value" value="0" min="0" max="5" readonly />
@@ -84,65 +84,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
 
             <div class="form__group">
-              <label class="form__label" for="houses">Which House(s)?</label>
+              <label class="form__label" data-i18n="contact.form.houses" for="houses">Which House(s)?</label>
               <select id="houses" name="houses" class="form__select">
-                <option value="">Select a preference</option>
+                <option value="" data-i18n="contact.form.houses.select">Select a preference</option>
                 <option value="le-moulin">Le Moulin</option>
                 <option value="la-grange">La Grange</option>
                 <option value="le-jardin">Le Jardin</option>
-                <option value="two-houses">Two Houses</option>
-                <option value="all-three">All Three (The Compound)</option>
-                <option value="not-sure">Not Sure Yet</option>
+                <option value="two-houses" data-i18n="contact.form.houses.two">Two Houses</option>
+                <option value="all-three" data-i18n="contact.form.houses.all">All Three (The Compound)</option>
+                <option value="not-sure" data-i18n="contact.form.houses.notsure">Not Sure Yet</option>
               </select>
             </div>
 
             <div class="form__group">
-              <label class="form__label" for="message">Your Message</label>
+              <label class="form__label" data-i18n="contact.form.message" for="message">Your Message</label>
               <textarea id="message" name="message" class="form__textarea" placeholder="Tell us about your trip — occasion, interests, any services you'd like (catering, wellness, etc.)..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn--primary">Send Your Inquiry</button>
+            <button type="submit" class="btn btn--primary" data-i18n="contact.form.submit">Send Your Inquiry</button>
           </form>
         </div>
 
         <!-- Contact Info + Directions -->
         <div>
           <div class="fade-in">
-            <h2>Contact Details</h2>
+            <h2 data-i18n="contact.details.heading">Contact Details</h2>
             <div style="margin-top: 24px;">
-              <h4>Email</h4>
+              <h4 data-i18n="contact.details.email">Email</h4>
               <p><a href="mailto:hello@moulin-a-reves.com">hello@moulin-a-reves.com</a></p>
             </div>
             <div style="margin-top: 20px;">
-              <h4>Phone</h4>
+              <h4 data-i18n="contact.details.phone">Phone</h4>
               <p><a href="tel:+19172085853">+1 (917) 208-5853</a></p>
             </div>
             <div style="margin-top: 20px;">
-              <h4>Address</h4>
+              <h4 data-i18n="contact.details.address">Address</h4>
               <p>Moulin a Reves<br />Seine-et-Marne (77)<br />Ile-de-France, France</p>
             </div>
           </div>
 
           <div class="fade-in" style="margin-top: 48px;">
-            <h2>Getting Here</h2>
+            <h2 data-i18n="contact.getting.heading">Getting Here</h2>
 
             <div style="margin-top: 24px;">
-              <h4>From Paris by Car</h4>
-              <p style="margin-top: 8px;">
+              <h4 data-i18n="contact.getting.car.heading">From Paris by Car</h4>
+              <p data-i18n="contact.getting.car.text" style="margin-top: 8px;">
                 Take the A6 south from Paris towards Lyon. Exit at Fontainebleau and follow signs towards Barbizon / Milly-la-Foret. The compound is approximately one hour from central Paris, depending on traffic. Detailed directions and GPS coordinates will be sent with your booking confirmation.
               </p>
             </div>
 
             <div style="margin-top: 24px;">
-              <h4>From Paris by Train</h4>
-              <p style="margin-top: 8px;">
+              <h4 data-i18n="contact.getting.train.heading">From Paris by Train</h4>
+              <p data-i18n="contact.getting.train.text" style="margin-top: 8px;">
                 Take the Transilien Line R from Gare de Lyon to Fontainebleau-Avon station (approximately 40 minutes). From the station, the compound is a 20-minute drive. We can arrange a taxi to meet you, or you can rent a car at the station.
               </p>
             </div>
 
             <div style="margin-top: 24px;">
-              <h4>From the Airports</h4>
-              <p style="margin-top: 8px;">
+              <h4 data-i18n="contact.getting.airport.heading">From the Airports</h4>
+              <p data-i18n="contact.getting.airport.text" style="margin-top: 8px;">
                 Charles de Gaulle (CDG): approximately 1 hour 30 minutes by car. Orly (ORY): approximately 1 hour. We can arrange private transfers from either airport on request.
               </p>
             </div>
@@ -158,7 +158,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 title="Map showing Moulin à Rêves location near Barbizon, France"
               ></iframe>
             </div>
-            <p style="margin-top: 8px; font-size: 0.8125rem; color: var(--text-light);">
+            <p data-i18n="contact.map.caption" style="margin-top: 8px; font-size: 0.8125rem; color: var(--text-light);">
               Near Barbizon, Seine-et-Marne &middot; One hour south of Paris
             </p>
           </div>
