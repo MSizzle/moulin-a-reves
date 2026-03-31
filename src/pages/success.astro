@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Message Sent — Moulin à Rêves" description="Thank you for your inquiry. We'll be in touch shortly.">
+
+  <section class="section" style="min-height: 70vh; display: flex; align-items: center;">
+    <div class="container--narrow text-center fade-in">
+      <h1 style="margin-bottom: 16px;">Thank You</h1>
+      <p style="font-family: var(--font-display); font-size: 1.25rem; color: var(--text-primary); margin-bottom: 24px;">
+        Your message is on its way to us.
+      </p>
+      <p style="margin-bottom: 48px;">
+        We'll respond within 24 hours with availability and a personalised proposal for your stay.
+        In the meantime, you might enjoy exploring what the region has to offer.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="/explore/" class="btn btn--primary">Explore the Area</a>
+        <a href="/" class="btn btn--outline">Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

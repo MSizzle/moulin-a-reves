@@ -120,7 +120,9 @@ const {
             <p><a href="tel:+19172085853">+1 (917) 208-5853</a></p>
             <div class="footer__newsletter">
               <p class="footer__newsletter-label">Seasonal updates, no spam — just France.</p>
-              <form class="footer__newsletter-form" name="newsletter" method="POST" data-netlify="true">
+              <form class="footer__newsletter-form" name="newsletter" method="POST" action="/success/" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="newsletter" />
+                <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
                 <input type="email" name="email" placeholder="Your email" class="form__input" required />
                 <button type="submit" class="btn btn--primary">Subscribe</button>
               </form>
