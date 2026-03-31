@@ -90,6 +90,25 @@ collections:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Description", name: "body", widget: "markdown" }
 
+  - name: "journal"
+    label: "Journal"
+    folder: "src/content/journal"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short summary for the listing page (1-2 sentences)" }
+      - { label: "Hero Image", name: "heroImage", widget: "image" }
+      - { label: "Hero Image Alt", name: "heroImageAlt", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Related Posts"
+        name: "relatedPosts"
+        widget: "list"
+        required: false
+        field: { label: "Post Slug", name: "slug", widget: "string" }
+
   - name: "testimonials"
     label: "Testimonials"
     folder: "src/content/testimonials"

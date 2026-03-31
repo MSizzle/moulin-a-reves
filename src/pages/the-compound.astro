@@ -4,6 +4,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="The Compound — Moulin à Rêves" description="Rent all three houses at Moulin à Rêves. 9 bedrooms, sleeps 20. Perfect for family reunions, retreats, weddings, and celebrations near Paris.">
 
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "VacationRental",
+      "name": "The Compound — Moulin à Rêves",
+      "description": "Rent all three stone houses at Moulin à Rêves. 9 bedrooms, 6 bathrooms, sleeps 20. Perfect for family reunions, retreats, weddings, and celebrations near Paris.",
+      "url": "https://moulin-a-reves.com/the-compound/",
+      "image": "/images/hero-compound.webp",
+      "numberOfBedrooms": 9,
+      "numberOfBathroomsTotal": 6,
+      "occupancy": { "@type": "QuantitativeValue", "value": 20 },
+      "floorSize": { "@type": "QuantitativeValue", "value": 420, "unitCode": "MTK" },
+      "petsAllowed": true,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barbizon",
+        "addressRegion": "Seine-et-Marne",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.4433,
+        "longitude": 2.6033
+      },
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "WiFi", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Garden", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Hot Tub", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Gym", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Screening Room", "value": true}
+      ]
+    })} />
+  </Fragment>
+
   <!-- Hero -->
   <section class="hero">
     <div class="hero__image">
@@ -66,7 +101,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid--4">
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/outdoor-dining.webp" alt="Multi-generational family gathered for dinner" />
+            <img src="/images/outdoor-dining.webp" alt="Multi-generational family gathered for outdoor dinner at Moulin à Rêves, Barbizon" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="compound.madefor.reunion.title">Family Reunions</h3>
@@ -75,7 +110,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/screening-room.webp" alt="Corporate retreat in a country setting" />
+            <img src="/images/screening-room.webp" alt="Corporate retreat screening room at Moulin à Rêves near Fontainebleau, France" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="compound.madefor.corporate.title">Corporate Retreats</h3>
@@ -84,7 +119,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/wellness-pool.webp" alt="Yoga retreat on the lawn" />
+            <img src="/images/wellness-pool.webp" alt="Yoga retreat by the indoor pool at Moulin à Rêves countryside compound" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="compound.madefor.yoga.title">Yoga Retreats</h3>
@@ -93,7 +128,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/gazebo-dining.webp" alt="Evening celebration in the garden" />
+            <img src="/images/gazebo-dining.webp" alt="Evening celebration dining under the gazebo at Moulin à Rêves, Seine-et-Marne" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="compound.madefor.celebrations.title">Celebrations</h3>
@@ -133,7 +168,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid--3">
         <a href="/homes/le-moulin/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin exterior" />
+            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin stone mill house with blue shutters at Moulin à Rêves, Barbizon" />
           </div>
           <div class="card__body">
             <h3 class="card__title">Le Moulin</h3>
@@ -147,7 +182,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
         <a href="/homes/la-grange/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="La Grange exterior" />
+            <img src="/images/homes/la-grange-hero.webp" alt="La Grange converted stone barn with tall windows at Moulin à Rêves, Barbizon" />
           </div>
           <div class="card__body">
             <h3 class="card__title">La Grange</h3>
@@ -161,7 +196,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
         <a href="/homes/le-jardin/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-jardin-hero.webp" alt="Le Jardin exterior" />
+            <img src="/images/homes/le-jardin-hero.webp" alt="Le Jardin garden cottage wrapped in wisteria at Moulin à Rêves, Barbizon" />
           </div>
           <div class="card__body">
             <h3 class="card__title">Le Jardin</h3>

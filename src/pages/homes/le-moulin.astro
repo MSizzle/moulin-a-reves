@@ -4,6 +4,40 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <BaseLayout title="Le Moulin — Moulin à Rêves" description="Le Moulin: the original stone mill house at Moulin à Rêves. 3 bedrooms, sleeps 6, with thick walls, a working fireplace, and the millstream at your door.">
 
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "VacationRental",
+      "name": "Le Moulin — Moulin à Rêves",
+      "description": "The original stone mill house at Moulin à Rêves. 3 bedrooms, 2 bathrooms, sleeps 6. Thick walls, a working fireplace, and the millstream at your door.",
+      "url": "https://moulin-a-reves.com/homes/le-moulin/",
+      "image": "/images/homes/le-moulin-hero.webp",
+      "numberOfBedrooms": 3,
+      "numberOfBathroomsTotal": 2,
+      "occupancy": { "@type": "QuantitativeValue", "value": 6 },
+      "floorSize": { "@type": "QuantitativeValue", "value": 150, "unitCode": "MTK" },
+      "petsAllowed": true,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barbizon",
+        "addressRegion": "Seine-et-Marne",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.4433,
+        "longitude": 2.6033
+      },
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "WiFi", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Fireplace", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Garden", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Hot Tub", "value": true}
+      ]
+    })} />
+  </Fragment>
+
   <!-- Hero -->
   <section class="hero">
     <div class="hero__image">
@@ -70,7 +104,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="grid grid--3">
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin master bedroom with exposed beams" />
+            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin master bedroom with exposed oak beams at Moulin à Rêves, Barbizon" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="moulin.room.master.title">Master Bedroom</h3>
@@ -79,7 +113,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin second bedroom overlooking the garden" />
+            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin garden bedroom with antique armoire and morning light at Moulin à Rêves" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="moulin.room.garden.title">Garden Bedroom</h3>
@@ -88,7 +122,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin third bedroom with twin beds" />
+            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin cosy nook bedroom with twin beds beneath the eaves at Moulin à Rêves" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="moulin.room.nook.title">The Nook</h3>
@@ -97,7 +131,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin farmhouse kitchen" />
+            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin farmhouse kitchen with copper pans and farmhouse table at Moulin à Rêves" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="moulin.room.kitchen.title">Kitchen & Dining</h3>
@@ -106,7 +140,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin living room with fireplace" />
+            <img src="/images/homes/le-moulin-living.webp" alt="Le Moulin stone living room with working fireplace and deep sofas at Moulin à Rêves" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="moulin.room.living.title">Living Room</h3>
@@ -115,7 +149,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/bridge-garden.webp" alt="Le Moulin terrace above the millstream" />
+            <img src="/images/bridge-garden.webp" alt="Le Moulin stone terrace above the millstream shaded by linden trees at Moulin à Rêves" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="moulin.room.terrace.title">Millstream Terrace</h3>
@@ -235,7 +269,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="grid grid--2">
         <a href="/homes/la-grange/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="La Grange exterior" />
+            <img src="/images/homes/la-grange-hero.webp" alt="La Grange converted stone barn with tall windows at Moulin à Rêves, Barbizon" />
           </div>
           <div class="card__body">
             <h3 class="card__title">La Grange</h3>
@@ -245,7 +279,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </a>
         <a href="/homes/le-jardin/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-jardin-hero.webp" alt="Le Jardin exterior" />
+            <img src="/images/homes/le-jardin-hero.webp" alt="Le Jardin garden cottage wrapped in wisteria at Moulin à Rêves, Barbizon" />
           </div>
           <div class="card__body">
             <h3 class="card__title">Le Jardin</h3>

@@ -4,6 +4,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Moulin à Rêves — Luxury French Countryside Rental Near Paris">
 
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "Moulin à Rêves",
+      "description": "A compound of three stone houses in the French countryside, one hour from Paris.",
+      "url": "https://moulin-a-reves.com",
+      "telephone": "+19172085853",
+      "email": "hello@moulin-a-reves.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barbizon",
+        "addressRegion": "Seine-et-Marne",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.4433,
+        "longitude": 2.6033
+      },
+      "image": "/images/hero-compound.webp",
+      "numberOfRooms": 9,
+      "petsAllowed": true,
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "WiFi", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Garden", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Hot Tub", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Gym", "value": true}
+      ]
+    })} />
+  </Fragment>
+
   <!-- Hero -->
   <section class="hero">
     <div class="hero__image">
@@ -113,7 +146,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid--4">
         <a href="/catering/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/catering-table.webp" alt="Dinner table set under garden lights" />
+            <img src="/images/catering-table.webp" alt="Dinner table set under garden lights at Moulin à Rêves near Barbizon, France" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="home.exp.catering.title">Catering</h3>
@@ -122,7 +155,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
         <a href="/wellness/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/yoga-lawn.webp" alt="Morning yoga on the lawn" />
+            <img src="/images/yoga-lawn.webp" alt="Morning yoga on the lawn at Moulin à Rêves countryside retreat near Fontainebleau" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="home.exp.wellness.title">Wellness</h3>
@@ -131,7 +164,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
         <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/barbizon-village.webp" alt="Barbizon village street" />
+            <img src="/images/barbizon-village.webp" alt="Barbizon village street with stone houses near Moulin à Rêves, Seine-et-Marne" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="home.exp.explore.title">Explore</h3>
@@ -140,7 +173,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
         <a href="/the-compound/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/group-dinner.webp" alt="Group of friends dining outdoors" />
+            <img src="/images/group-dinner.webp" alt="Group of friends dining outdoors at Moulin à Rêves compound in the French countryside" />
           </div>
           <div class="card__body">
             <h3 class="card__title" data-i18n="home.exp.events.title">Events</h3>
@@ -166,7 +199,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CTA -->
   <section class="hero" style="height: 45vh; min-height: 350px;">
     <div class="hero__image">
-      <img src="/images/evening-compound.webp" alt="Moulin à Rêves at golden hour" />
+      <img src="/images/evening-compound.webp" alt="Moulin à Rêves stone compound at golden hour, near Fontainebleau Forest, France" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
