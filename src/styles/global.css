@@ -7,7 +7,7 @@
 
 :root {
   /* Backgrounds */
-  --bg-cream: #FAF7F2;
+  --bg-cream: #FDFBF7;
   --bg-warm-white: #FEFCF8;
   --bg-stone: #F0EAE0;
   --bg-dark: #1A1A1A;
@@ -34,13 +34,13 @@
   --font-body: 'DM Sans', -apple-system, sans-serif;
 
   /* Spacing */
-  --section-gap: 120px;
-  --section-gap-mobile: 64px;
-  --content-max: 1300px;
+  --section-gap: 80px;
+  --section-gap-mobile: 48px;
+  --content-max: 1400px;
   --content-narrow: 720px;
-  --side-padding: 80px;
-  --side-padding-tablet: 48px;
-  --side-padding-mobile: 24px;
+  --side-padding: 48px;
+  --side-padding-tablet: 32px;
+  --side-padding-mobile: 20px;
 
   /* Transitions */
   --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -307,6 +307,57 @@ p {
   gap: 16px;
   padding-top: 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ---- Card Variants ---- */
+.card--home .card__image {
+  aspect-ratio: 4 / 3;
+}
+
+.card--featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.card--featured .card__image {
+  aspect-ratio: auto;
+  min-height: 320px;
+}
+
+.card--featured .card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px;
+}
+
+.card--featured .card__title {
+  font-size: 2rem;
+}
+
+.card--featured .card__description {
+  font-size: 1.0625rem;
+  max-width: 40ch;
+}
+
+@media (max-width: 768px) {
+  .card--featured {
+    grid-template-columns: 1fr;
+  }
+  .card--featured .card__image {
+    aspect-ratio: 16 / 9;
+    min-height: auto;
+  }
+  .card--featured .card__body {
+    padding: 28px;
+  }
+}
+
+/* ---- Section Tight ---- */
+.section--tight {
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
 /* ---- Stats Bar ---- */

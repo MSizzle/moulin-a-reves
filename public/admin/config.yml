@@ -57,6 +57,14 @@ collections:
           - { label: "Hero Image", name: "heroImage", widget: "image" }
           - { label: "Introduction Heading", name: "introHeading", widget: "string" }
           - { label: "Introduction Text", name: "introText", widget: "text" }
+          - { label: "Sense of Place Quote", name: "senseOfPlaceQuote", widget: "text" }
+          - { label: "Groups Heading", name: "groupsHeading", widget: "string" }
+          - { label: "Groups Description", name: "groupsDescription", widget: "text" }
+          - { label: "Groups CTA Text", name: "groupsCta", widget: "string" }
+          - { label: "Groups Image", name: "groupsImage", widget: "image" }
+          - { label: "History Heading", name: "historyHeading", widget: "string" }
+          - { label: "History Text", name: "historyText", widget: "text" }
+          - { label: "History CTA Text", name: "historyCta", widget: "string" }
           - { label: "Testimonial Quote", name: "testimonialQuote", widget: "text" }
           - { label: "Testimonial Attribution", name: "testimonialAttribution", widget: "string" }
 

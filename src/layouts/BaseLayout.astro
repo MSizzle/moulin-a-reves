@@ -40,6 +40,9 @@ const {
     <!-- Schema Markup -->
     <slot name="schema" />
 
+    <!-- Netlify Identity (for Decap CMS login) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <!-- Analytics -->
     <script src="https://maison-admin-production.up.railway.app/tracker.js" data-site-id="moulin"></script>
 
@@ -599,6 +602,19 @@ const {
       // Apply saved language on load
       if (currentLang !== 'en') {
         setLanguage(currentLang);
+      }
+    </script>
+
+    <!-- Redirect to /admin/ after Netlify Identity login confirmation -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', user => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
       }
     </script>
   </body>
