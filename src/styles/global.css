@@ -100,6 +100,16 @@ h1 {
 
 h2 {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: var(--blue-dark);
+}
+
+.text-center h2::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: var(--blue-primary);
+  margin: 16px auto 0;
 }
 
 h3 {
@@ -167,7 +177,7 @@ p {
 /* ---- Grid ---- */
 .grid {
   display: grid;
-  gap: 32px;
+  gap: 0;
 }
 
 .grid--2 {
@@ -256,15 +266,15 @@ p {
 /* ---- Cards ---- */
 .card {
   background: var(--bg-warm-white);
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: none;
   transition: box-shadow var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
 }
 
 .card:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 .card__image {
@@ -285,6 +295,7 @@ p {
 
 .card__body {
   padding: 28px;
+  border-bottom: 3px solid var(--blue-primary);
 }
 
 .card__title {
@@ -292,6 +303,7 @@ p {
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 8px;
+  color: var(--blue-dark);
 }
 
 .card__description {
@@ -302,11 +314,11 @@ p {
 
 .card__meta {
   font-size: 0.8125rem;
-  color: var(--text-light);
+  color: var(--blue-primary);
   display: flex;
   gap: 16px;
   padding-top: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 1px solid var(--blue-pale);
 }
 
 /* ---- Card Variants ---- */
@@ -404,7 +416,7 @@ p {
   font-family: var(--font-body);
   font-style: normal;
   font-size: 0.875rem;
-  color: var(--text-light);
+  color: var(--blue-primary);
   margin-top: 24px;
 }
 
