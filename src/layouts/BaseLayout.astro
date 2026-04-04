@@ -605,9 +605,10 @@ const {
       }
     </script>
 
-    <!-- Redirect to /admin/ after Netlify Identity login confirmation -->
+    <!-- Netlify Identity: handle invite tokens and redirect after login -->
     <script>
       if (window.netlifyIdentity) {
+        window.netlifyIdentity.init();
         window.netlifyIdentity.on('init', user => {
           if (!user) {
             window.netlifyIdentity.on('login', () => {
