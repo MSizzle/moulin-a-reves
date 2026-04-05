@@ -505,17 +505,28 @@ const {
       toggle?.addEventListener('click', () => mobile?.classList.add('active'));
       close?.addEventListener('click', () => mobile?.classList.remove('active'));
 
-      // Scroll animations
+      // Scroll animations — with sibling stagger for grid children
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.12 }
       );
+
+      // Assign sequential delays to fade-in siblings inside grids (80ms per step, capped)
+      document.querySelectorAll('.grid').forEach((grid) => {
+        const fades = grid.querySelectorAll(':scope > .fade-in');
+        fades.forEach((el, i) => {
+          if (el instanceof HTMLElement) {
+            el.style.setProperty('--fade-delay', Math.min(i * 80, 480) + 'ms');
+          }
+        });
+      });
 
       document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 

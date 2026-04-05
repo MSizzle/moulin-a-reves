@@ -69,24 +69,30 @@ const writings = [
     })} />
   </Fragment>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero__image">
-      <img src={cms.heroImage} alt="Moulin à Rêves compound — stone houses with blue shutters along the millstream" />
-    </div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <h1 class="hero__title" data-i18n="home.title">Moulin à Rêves</h1>
-      <p class="hero__tagline" data-i18n="home.tagline">{cms.heroTagline}</p>
-      <div class="hero__cta">
-        <a href="/homes/" class="btn btn--white" data-i18n="home.cta">Explore the Homes</a>
+  <!-- Hero — Editorial Split -->
+  <section class="hero-split fade-in">
+    <div class="hero-split__text">
+      <span class="hero-split__eyebrow">Barbizon · Seine-et-Marne</span>
+      <h1 class="hero-split__title" data-i18n="home.title">Moulin<br/>à Rêves</h1>
+      <p class="hero-split__tagline" data-i18n="home.tagline">{cms.heroTagline}</p>
+      <div>
+        <a href="/homes/" class="btn btn--outline" data-i18n="home.cta">Explore the Homes</a>
       </div>
+      <div class="hero-split__meta">
+        <span>Three Stone Houses</span>
+        <span>Sleeps Twenty</span>
+        <span>One Hour from Paris</span>
+      </div>
+    </div>
+    <div class="hero-split__image">
+      <img src={cms.heroImage} alt="Moulin à Rêves compound — stone houses with blue shutters along the millstream" />
     </div>
   </section>
 
   <!-- Introduction -->
   <section class="section--tight text-center">
     <div class="container--narrow fade-in">
+      <span class="eyebrow">An Invitation</span>
       <h2 data-i18n="home.intro.heading">{cms.introHeading}</h2>
       <p data-i18n="home.intro.text" style="margin-top: 24px;">
         {cms.introText}
@@ -97,6 +103,7 @@ const writings = [
   <!-- The Homes -->
   <section class="section section--stone">
     <div class="container text-center fade-in" style="margin-bottom: 48px;">
+      <span class="eyebrow">The Compound</span>
       <h2 data-i18n="home.homes.heading">The Homes</h2>
       <p data-i18n="home.homes.subheading" style="margin-top: 12px;">Three houses, each with a story of its own.</p>
     </div>
@@ -149,12 +156,22 @@ const writings = [
     </div>
   </section>
 
-  <!-- Sense of Place -->
-  <section class="section--tight text-center" style="background-color: var(--bg-stone);">
-    <div class="container--narrow fade-in">
-      <p style="font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-style: italic; color: var(--text-primary); max-width: 700px; margin: 0 auto;" data-i18n="home.senseof.quote">
-        "{cms.senseOfPlaceQuote}"
-      </p>
+  <!-- Sense of Place — Editorial Split -->
+  <section class="fade-in">
+    <div class="split split--reverse">
+      <div class="split__body">
+        <span class="eyebrow">A Sense of Place</span>
+        <h2>Where the light <em style="font-family: var(--font-display); font-weight: 300;">still falls</em> the way it did two centuries ago.</h2>
+        <p data-i18n="home.senseof.quote">
+          {cms.senseOfPlaceQuote}
+        </p>
+        <div>
+          <a href="/explore/" class="link-arrow">Discover the Region</a>
+        </div>
+      </div>
+      <div class="split__image">
+        <img src="/images/forest-path.webp" alt="Dappled sunlight through Fontainebleau Forest near Moulin à Rêves" loading="lazy" />
+      </div>
     </div>
   </section>
 
@@ -181,6 +198,7 @@ const writings = [
   <!-- Experiences -->
   <section class="section">
     <div class="container text-center fade-in" style="margin-bottom: 48px;">
+      <span class="eyebrow">The Art of Staying</span>
       <h2 data-i18n="home.experiences.heading">Your Stay, Your Way</h2>
       <p data-i18n="home.experiences.subheading" style="margin-top: 12px;">More than a place to sleep — a place to live well.</p>
     </div>
@@ -243,6 +261,7 @@ const writings = [
   <!-- Writings Carousel -->
   <section class="section writings">
     <div class="container text-center fade-in" style="margin-bottom: 48px;">
+      <span class="eyebrow">From the Journal</span>
       <h2>Writings from the Compound</h2>
       <p style="margin-top: 12px;">Stories, guides, and seasonal notes from the French countryside.</p>
     </div>
