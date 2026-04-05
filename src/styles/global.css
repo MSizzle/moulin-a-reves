@@ -270,6 +270,9 @@ p {
   overflow: hidden;
   box-shadow: none;
   transition: box-shadow var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
@@ -296,6 +299,7 @@ p {
 .card__body {
   padding: 28px;
   border-bottom: 3px solid var(--blue-primary);
+  flex: 1;
 }
 
 .card__title {

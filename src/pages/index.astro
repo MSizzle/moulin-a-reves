@@ -5,6 +5,33 @@ import fs from 'node:fs';
 
 const raw = fs.readFileSync('src/content/pages/homepage.md', 'utf-8');
 const { data: cms } = matter(raw);
+
+const writings = [
+  {
+    slug: 'spring-in-barbizon',
+    title: 'Spring in Barbizon: What to See When the Light Returns',
+    excerpt: 'The painters came for the light. In spring, you will understand why.',
+    image: '/images/explore/barbizon.webp',
+    date: '2026-03-15',
+    alt: 'Spring blossoms along a stone street in Barbizon village near Moulin à Rêves'
+  },
+  {
+    slug: 'fontainebleau-forest-guide',
+    title: "A Walker's Guide to Fontainebleau Forest",
+    excerpt: 'Twenty-five thousand hectares of ancient oak, sandstone boulders, and trails that lead somewhere quieter.',
+    image: '/images/explore/forest.webp',
+    date: '2026-02-20',
+    alt: 'Dappled sunlight on a forest path through Fontainebleau near Moulin à Rêves'
+  },
+  {
+    slug: 'planning-family-reunion-france',
+    title: 'How to Plan a Family Reunion in the French Countryside',
+    excerpt: 'Three generations, three houses, one unforgettable week — everything we have learned about bringing families together.',
+    image: '/images/outdoor-dining.webp',
+    date: '2026-01-10',
+    alt: 'Multi-generational family dining outdoors at Moulin à Rêves compound, Barbizon'
+  }
+];
 ---
 
 <BaseLayout title="Moulin à Rêves — Luxury French Countryside Rental Near Paris">
@@ -212,6 +239,150 @@ const { data: cms } = matter(raw);
       <p class="testimonial__attribution" data-i18n="home.testimonial.attribution">— {cms.testimonialAttribution}</p>
     </div>
   </section>
+
+  <!-- Writings Carousel -->
+  <section class="section writings">
+    <div class="container text-center fade-in" style="margin-bottom: 48px;">
+      <h2>Writings from the Compound</h2>
+      <p style="margin-top: 12px;">Stories, guides, and seasonal notes from the French countryside.</p>
+    </div>
+    <div class="writings__carousel-wrap">
+      <button class="writings__arrow writings__arrow--prev" id="writings-prev" aria-label="Previous writing">&#8249;</button>
+      <div class="writings__carousel" id="writings-carousel">
+        {writings.map((post) => (
+          <a href={`/journal/${post.slug}/`} class="writings__card" style="text-decoration:none;color:inherit;">
+            <div class="writings__image">
+              <img src={post.image} alt={post.alt} loading="lazy" />
+            </div>
+            <div class="writings__body">
+              <p class="writings__date">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              <h3 class="writings__title">{post.title}</h3>
+              <p class="writings__excerpt">{post.excerpt}</p>
+              <span class="link-arrow">Read More</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <button class="writings__arrow writings__arrow--next" id="writings-next" aria-label="Next writing">&#8250;</button>
+    </div>
+  </section>
+
+  <style>
+    .writings__carousel-wrap {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .writings__carousel {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      padding-bottom: 8px;
+    }
+    .writings__carousel::-webkit-scrollbar { display: none; }
+    .writings__card {
+      flex: 0 0 calc((100% - 48px) / 3);
+      min-width: 280px;
+      scroll-snap-align: start;
+      background: var(--bg-warm-white);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out);
+    }
+    .writings__card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .writings__image {
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+    }
+    .writings__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration) var(--ease-out);
+    }
+    .writings__card:hover .writings__image img { transform: scale(1.03); }
+    .writings__body {
+      padding: 24px;
+      border-bottom: 3px solid var(--blue-primary);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .writings__date {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+    .writings__title {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      font-weight: 500;
+      color: var(--blue-dark);
+      margin-bottom: 10px;
+    }
+    .writings__excerpt {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .writings__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--blue-primary);
+      background: var(--bg-warm-white);
+      color: var(--blue-dark);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--duration) var(--ease-out), color var(--duration) var(--ease-out);
+    }
+    .writings__arrow:hover {
+      background: var(--blue-primary);
+      color: var(--bg-warm-white);
+    }
+    .writings__arrow--prev { left: -8px; }
+    .writings__arrow--next { right: -8px; }
+    @media (max-width: 768px) {
+      .writings__card { flex: 0 0 85%; }
+      .writings__arrow { display: none; }
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const carousel = document.getElementById('writings-carousel');
+      const prev = document.getElementById('writings-prev');
+      const next = document.getElementById('writings-next');
+      if (!carousel || !prev || !next) return;
+      const scrollBy = () => {
+        const card = carousel.querySelector('.writings__card');
+        if (!card) return carousel.clientWidth;
+        const style = window.getComputedStyle(carousel);
+        const gap = parseFloat(style.columnGap || style.gap || '24');
+        return card.getBoundingClientRect().width + gap;
+      };
+      prev.addEventListener('click', () => carousel.scrollBy({ left: -scrollBy(), behavior: 'smooth' }));
+      next.addEventListener('click', () => carousel.scrollBy({ left: scrollBy(), behavior: 'smooth' }));
+    })();
+  </script>
 
   <!-- CTA -->
   <section class="hero" style="height: 45vh; min-height: 350px;">
