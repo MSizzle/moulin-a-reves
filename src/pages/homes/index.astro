@@ -2,82 +2,76 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="The Homes — Moulin à Rêves" description="Three charming stone houses with blue shutters, each with its own character. Part of the Moulin à Rêves compound near Barbizon, France.">
+<BaseLayout title="The Maisons — Moulin à Rêves" description="Three maisons in a historic compound in Mereville, France. Le Moulin à Rêves (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5).">
 
   <section class="hero" style="height: 60vh;">
     <div class="hero__image">
-      <img src="/images/homes/all-three.webp" alt="The three stone houses of Moulin à Rêves with blue shutters near Barbizon, France" />
+      <img src="/images/homes/all-three.webp" alt="The compound at Moulin à Rêves in Mereville, France" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title" data-i18n="homes.hero.title">The Maisons</h1>
-      <p class="hero__tagline" data-i18n="homes.hero.tagline">Three maisons, each with a story. All with blue shutters.</p>
+      <h1 class="hero__title">The Maisons</h1>
+      <p class="hero__tagline">Three maisons, each with a story. 25 guests across 10 bedrooms.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="grid grid--3">
-        <a href="/homes/le-moulin/" class="card fade-in">
+      <div class="grid grid--3" style="gap: 24px;">
+        <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin stone mill house with blue shutters at Moulin à Rêves, Barbizon" />
+            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" />
           </div>
-          <div class="card__body">
-            <h3 class="card__title">Le Moulin</h3>
-            <p class="card__description" data-i18n="homes.moulin.desc">The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.</p>
+          <div class="card__overlay">
+            <span class="card__eyebrow">Maison One</span>
+            <h3 class="card__title">Le Moulin à Rêves</h3>
             <div class="card__meta">
-              <span data-i18n="homes.moulin.beds">3 Bedrooms</span>
-              <span data-i18n="homes.moulin.baths">2 Bathrooms</span>
-              <span data-i18n="homes.moulin.sleeps">Sleeps 6</span>
-              <span>150 m&sup2;</span>
+              <span>5 Bedrooms</span>
+              <span>4 Bathrooms</span>
+              <span>Sleeps 12</span>
             </div>
-            <span class="link-arrow" data-i18n="homes.moulin.link" style="margin-top: 16px;">Discover Le Moulin</span>
           </div>
         </a>
-        <a href="/homes/la-grange/" class="card fade-in">
+        <a href="/homes/hollywood-hideaway/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="La Grange converted stone barn with garden views at Moulin à Rêves, Barbizon" />
+            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway at Moulin à Rêves" />
           </div>
-          <div class="card__body">
-            <h3 class="card__title">La Grange</h3>
-            <p class="card__description" data-i18n="homes.grange.desc">A converted stone barn with soaring ceilings, an open kitchen, and doors that open straight onto the garden.</p>
+          <div class="card__overlay">
+            <span class="card__eyebrow">Maison Two</span>
+            <h3 class="card__title">The Hollywood Hideaway</h3>
             <div class="card__meta">
-              <span data-i18n="homes.grange.beds">3 Bedrooms</span>
-              <span data-i18n="homes.grange.baths">2 Bathrooms</span>
-              <span data-i18n="homes.grange.sleeps">Sleeps 6</span>
-              <span>140 m&sup2;</span>
+              <span>3 Bedrooms + Suite</span>
+              <span>2 Bathrooms</span>
+              <span>Sleeps 8</span>
             </div>
-            <span class="link-arrow" data-i18n="homes.grange.link" style="margin-top: 16px;">Discover La Grange</span>
           </div>
         </a>
-        <a href="/homes/le-jardin/" class="card fade-in">
+        <a href="/homes/maison-de-la-riviere/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-jardin-hero.webp" alt="Le Jardin garden cottage wrapped in wisteria at Moulin à Rêves, Barbizon" />
+            <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière at Moulin à Rêves" />
           </div>
-          <div class="card__body">
-            <h3 class="card__title">Le Jardin</h3>
-            <p class="card__description" data-i18n="homes.jardin.desc">The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.</p>
+          <div class="card__overlay">
+            <span class="card__eyebrow">Maison Three</span>
+            <h3 class="card__title">La Maison de la Rivière</h3>
             <div class="card__meta">
-              <span data-i18n="homes.jardin.beds">3 Bedrooms</span>
-              <span data-i18n="homes.jardin.baths">2 Bathrooms</span>
-              <span data-i18n="homes.jardin.sleeps">Sleeps 6</span>
-              <span>130 m&sup2;</span>
+              <span>2 Bedrooms</span>
+              <span>1 Bathroom</span>
+              <span>Sleeps 5</span>
             </div>
-            <span class="link-arrow" data-i18n="homes.jardin.link" style="margin-top: 16px;">Discover Le Jardin</span>
           </div>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section section--stone text-center">
+  <section class="section section--soft text-center">
     <div class="container fade-in">
-      <h2 data-i18n="homes.rentall.heading">Rent All Three</h2>
-      <p data-i18n="homes.rentall.text" style="margin-top: 16px; margin-bottom: 32px;">
-        Book the entire compound for up to 20 guests. Family reunions, retreats,
-        celebrations — the whole place, exclusively yours.
+      <h2>Rent All Three</h2>
+      <p style="margin-top: 16px; margin-bottom: 32px;">
+        Book the entire compound for up to 25 guests. Family reunions, retreats,
+        celebrations, yoga weekends — the whole place, exclusively yours.
       </p>
-      <a href="/the-compound/" class="btn btn--primary" data-i18n="homes.rentall.button">Explore the Compound</a>
+      <a href="/the-compound/" class="btn btn--primary">Explore the Compound</a>
     </div>
   </section>
 

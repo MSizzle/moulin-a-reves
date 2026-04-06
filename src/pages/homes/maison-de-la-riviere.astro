@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import matter from 'gray-matter';
+import fs from 'node:fs';
+
+const raw = fs.readFileSync('src/content/pages/maison-de-la-riviere.md', 'utf-8');
+const { data: cms } = matter(raw);
+---
+
+<BaseLayout title={`${cms.title} — Moulin à Rêves`} description={cms.summary}>
+
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "VacationRental",
+      "name": `${cms.title} — Moulin à Rêves`,
+      "description": cms.summary,
+      "url": "https://moulin-a-reves.com/homes/maison-de-la-riviere/",
+      "image": cms.heroImage,
+      "numberOfBedrooms": cms.bedrooms,
+      "numberOfBathroomsTotal": cms.bathrooms,
+      "occupancy": { "@type": "QuantitativeValue", "value": cms.sleeps },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mereville",
+        "addressRegion": "Essonne",
+        "addressCountry": "FR"
+      }
+    })} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__image">
+      <img src={cms.heroImage} alt={`${cms.title} — sunny cottage overlooking the stream`} />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__eyebrow">{cms.eyebrow}</span>
+      <h1 class="hero__title">{cms.title}</h1>
+      <p class="hero__tagline">{cms.tagline}</p>
+    </div>
+  </section>
+
+  <style>
+    .hero__eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.96);
+      margin-bottom: 24px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+      padding-left: 0.28em;
+    }
+  </style>
+
+  <!-- Stats Bar -->
+  <section class="section" style="padding-top: 48px; padding-bottom: 48px;">
+    <div class="container">
+      <div class="stats-bar">
+        <div class="stats-bar__item">
+          <div class="stats-bar__number">{cms.bedrooms}</div>
+          <div class="stats-bar__label">Bedrooms</div>
+        </div>
+        <div class="stats-bar__item">
+          <div class="stats-bar__number">{cms.bathrooms}</div>
+          <div class="stats-bar__label">Bathrooms</div>
+        </div>
+        <div class="stats-bar__item">
+          <div class="stats-bar__number">{cms.sleeps}</div>
+          <div class="stats-bar__label">Guests</div>
+        </div>
+        <div class="stats-bar__item">
+          <div class="stats-bar__number">{cms.beds}</div>
+          <div class="stats-bar__label">Beds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Narrative Description -->
+  <section class="section">
+    <div class="container--narrow fade-in">
+      <span class="eyebrow">The Maison</span>
+      <h2>{cms.title}</h2>
+      <div style="margin-top: 32px;">
+        <p class="prose-lead">
+          {cms.summary}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Room by Room -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="text-center fade-in" style="margin-bottom: 64px;">
+        <span class="eyebrow">Room by Room</span>
+        <h2>Two Bedrooms, Sun-Drenched Spaces</h2>
+      </div>
+      <div class="grid grid--3" style="gap: 24px;">
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/homes/le-jardin-hero.webp" alt="La Chambre des Artistes" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">La Chambre des Artistes</h3>
+            <p class="card__description">The Artists' Room. Upstairs. King bed in a large bedroom, plus a twin bed and sink.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/homes/le-jardin-hero.webp" alt="La Chambre des Écrivains" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">La Chambre des Écrivains</h3>
+            <p class="card__description">The Writers' Room. Upstairs. Double bed with sink. Both bedrooms share a bathroom with tub/shower in the hall.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/homes/le-jardin-hero.webp" alt="Living room at La Maison de la Rivière" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Living Room</h3>
+            <p class="card__description">Spacious, sun-drenched with 2 couches, fine antiques and art, including an authentic Louis Vuitton trunk. Huge French doors overlook the stream and apple trees.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/homes/le-jardin-hero.webp" alt="Dining room at La Maison de la Rivière" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Dining Room</h3>
+            <p class="card__description">Elegant dining room with a table for up to 18 people. Perfect for dinner parties and gatherings.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__image">
+            <img src="/images/homes/le-jardin-hero.webp" alt="Kitchen at La Maison de la Rivière" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Kitchen</h3>
+            <p class="card__description">Eat-in kitchen with oven, full-size refrigerator and freezer, microwave, toaster, Nespresso maker, electric kettle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section text-center">
+    <div class="container fade-in">
+      <h2>Interested in {cms.title}?</h2>
+      <p style="margin-top: 16px; margin-bottom: 32px;">
+        Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.
+      </p>
+      <a href="/contact/" class="btn btn--primary">Inquire About Dates</a>
+    </div>
+  </section>
+
+  <!-- Cross Links -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="text-center fade-in" style="margin-bottom: 48px;">
+        <h2>The Other Maisons</h2>
+      </div>
+      <div class="grid grid--2" style="gap: 24px;">
+        <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card__image">
+            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves" />
+          </div>
+          <div class="card__overlay">
+            <span class="card__eyebrow">Maison One</span>
+            <h3 class="card__title">Le Moulin à Rêves</h3>
+            <div class="card__meta">
+              <span>5 Bedrooms</span>
+              <span>Sleeps 12</span>
+            </div>
+          </div>
+        </a>
+        <a href="/homes/hollywood-hideaway/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card__image">
+            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway" />
+          </div>
+          <div class="card__overlay">
+            <span class="card__eyebrow">Maison Two</span>
+            <h3 class="card__title">The Hollywood Hideaway</h3>
+            <div class="card__meta">
+              <span>3 Bedrooms + Suite</span>
+              <span>Sleeps 8</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="text-center" style="margin-top: 48px;">
+        <a href="/the-compound/" class="link-arrow">Rent All Three Maisons</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

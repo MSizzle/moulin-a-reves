@@ -3,8 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import matter from 'gray-matter';
 import fs from 'node:fs';
 
-const raw = fs.readFileSync('src/content/pages/le-moulin.md', 'utf-8');
-const { data: cms, content: body } = matter(raw);
+const raw = fs.readFileSync('src/content/pages/hollywood-hideaway.md', 'utf-8');
+const { data: cms } = matter(raw);
 ---
 
 <BaseLayout title={`${cms.title} — Moulin à Rêves`} description={cms.summary}>
@@ -15,7 +15,7 @@ const { data: cms, content: body } = matter(raw);
       "@type": "VacationRental",
       "name": `${cms.title} — Moulin à Rêves`,
       "description": cms.summary,
-      "url": "https://moulin-a-reves.com/homes/le-moulin/",
+      "url": "https://moulin-a-reves.com/homes/hollywood-hideaway/",
       "image": cms.heroImage,
       "numberOfBedrooms": cms.bedrooms,
       "numberOfBathroomsTotal": cms.bathrooms,
@@ -25,24 +25,14 @@ const { data: cms, content: body } = matter(raw);
         "addressLocality": "Mereville",
         "addressRegion": "Essonne",
         "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 48.3167,
-        "longitude": 2.0833
-      },
-      "amenityFeature": [
-        {"@type": "LocationFeatureSpecification", "name": "WiFi", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Garden", "value": true}
-      ]
+      }
     })} />
   </Fragment>
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero__image">
-      <img src={cms.heroImage} alt={`${cms.title} — historic mill house on the Juine River`} />
+      <img src={cms.heroImage} alt={`${cms.title} — a treasured sanctuary in the French countryside`} />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
@@ -72,8 +62,8 @@ const { data: cms, content: body } = matter(raw);
     <div class="container">
       <div class="stats-bar">
         <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.bedrooms}</div>
-          <div class="stats-bar__label">Bedrooms</div>
+          <div class="stats-bar__number">{cms.bedrooms}+1</div>
+          <div class="stats-bar__label">Bedrooms + Suite</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bathrooms}</div>
@@ -101,10 +91,10 @@ const { data: cms, content: body } = matter(raw);
           {cms.summary}
         </p>
         <p style="margin-top: 20px;">
-          Relax in the gardens and watch as the day goes by. Let your worries float away on the Juine River. Wake up to the roosters crowing in the chicken coop. Go back in time as you gaze at the flower gardens and Giverny-style bridge. Make a wish in the wishing well!
+          For 60 years, The Hollywood Hideaway was a treasured sanctuary getaway for Hollywood's #1 power lawyer whose clients included Tom Cruise, Dustin Hoffman, Michael Jackson, Mario Puzzo and the luminaries of LA.
         </p>
         <p style="margin-top: 20px;">
-          Dine al fresco with friends, colleagues, family or students. This is a wonderful compound for inspiration, fun, reflection and quiet time together.
+          This was his happy home where he entertained his Hollywood pals and cooked and relaxed in the French countryside. Now you can follow in the footsteps of the stars and make this your own home in France. It is beautifully furnished with French antiques.
         </p>
       </div>
     </div>
@@ -115,82 +105,69 @@ const { data: cms, content: body } = matter(raw);
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 64px;">
         <span class="eyebrow">Room by Room</span>
-        <h2>Five Bedrooms Across Three Floors</h2>
+        <h2>Three Bedrooms Plus a Suite</h2>
       </div>
       <div class="grid grid--3" style="gap: 24px;">
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="La Chambre de la Rivière at Le Moulin à Rêves" />
+            <img src="/images/homes/la-grange-hero.webp" alt="Through the Looking Glass bedroom" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">La Chambre de la Rivière</h3>
-            <p class="card__description">The River Room. 2 twin beds on the ground floor. Bathroom in the hall with a shower.</p>
+            <h3 class="card__title">Through the Looking Glass</h3>
+            <p class="card__description">Ground floor. King bedroom with en-suite bathroom featuring tub/shower.</p>
           </div>
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="La Suite Romantique at Le Moulin à Rêves" />
+            <img src="/images/homes/la-grange-hero.webp" alt="The Secret Garden suite" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">La Suite Romantique</h3>
-            <p class="card__description">King bed in a large master bedroom upstairs. En-suite bathroom with a shower.</p>
+            <h3 class="card__title">The Secret Garden</h3>
+            <p class="card__description">Adjacent sitting room suite with pull-out sofa for 1 person. Accesses bathroom through Bedroom 1.</p>
           </div>
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Les Cerises at Le Moulin à Rêves" />
+            <img src="/images/homes/la-grange-hero.webp" alt="An American in Paris bedroom" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Les Cerises</h3>
-            <p class="card__description">The Cherry Room. Queen bed with sink and bidet. Shares a bathroom with Les Roses — clawfoot bathtub and bidet in the hall.</p>
+            <h3 class="card__title">An American in Paris</h3>
+            <p class="card__description">Ground floor. Queen bedroom. Bathroom in the hall with tub/shower and separate toilet. Washing machine.</p>
           </div>
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Les Roses at Le Moulin à Rêves" />
+            <img src="/images/homes/la-grange-hero.webp" alt="Sleeping Beauty bedroom" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Les Roses</h3>
-            <p class="card__description">The Rose Room. 2 twin beds. Shares a bathroom with Les Cerises in the hall.</p>
+            <h3 class="card__title">Sleeping Beauty</h3>
+            <p class="card__description">Attic room. 2 twins + 1 twin in foyer. Bathroom in the hall down 2 flights. Note: steep stairs required.</p>
           </div>
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Le Loft Suite at Le Moulin à Rêves" />
+            <img src="/images/homes/la-grange-hero.webp" alt="Upstairs living and dining space" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Le Loft Suite</h3>
-            <p class="card__description">Second-floor attic. 2 twins (or King) plus a separate TV room with 2 floor twins. Shared bathroom with shower. Note: steep stairs.</p>
+            <h3 class="card__title">Living & Dining</h3>
+            <p class="card__description">Upstairs open space. Dining table seats 10. Induction stove, oven, Nespresso, full fridge. Works for yoga and meetings too.</p>
           </div>
         </div>
         <div class="card fade-in">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-living.webp" alt="Kitchen and dining at Le Moulin à Rêves" />
+            <img src="/images/gazebo-dining.webp" alt="Covered gazebo dining" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Kitchen & Dining</h3>
-            <p class="card__description">Eat-in kitchen for 6 with 2 Viking-style ovens, 6 gas burners, Nespresso. Formal dining room for 12 with art and antiques.</p>
+            <h3 class="card__title">Outdoor Gazebo</h3>
+            <p class="card__description">Covered gazebo with a dining table for 8. Al fresco dining in the French countryside.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Entertaining Spaces -->
-  <section class="section">
-    <div class="container--narrow fade-in">
-      <span class="eyebrow">Living Spaces</span>
-      <h2>Made for Long Evenings</h2>
-      <div style="margin-top: 32px;">
-        <p><strong>Le Salon</strong> — Large living room with leather couch, club chairs, and antiques. Beautiful view of the river and bridge illuminated at night.</p>
-        <p style="margin-top: 16px;"><strong>Office</strong> — Separate office with a desk and printer.</p>
-        <p style="margin-top: 16px;"><strong>Outdoor</strong> — Wonderful patio for outdoor dining, lounge chairs, and gorgeous gardens overlooking the Juine River.</p>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section section--soft text-center">
+  <section class="section text-center">
     <div class="container fade-in">
       <h2>Interested in {cms.title}?</h2>
       <p style="margin-top: 16px; margin-bottom: 32px;">
@@ -201,28 +178,28 @@ const { data: cms, content: body } = matter(raw);
   </section>
 
   <!-- Cross Links -->
-  <section class="section">
+  <section class="section section--soft">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 48px;">
         <h2>The Other Maisons</h2>
       </div>
       <div class="grid grid--2" style="gap: 24px;">
-        <a href="/homes/hollywood-hideaway/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+        <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway at Moulin à Rêves" />
+            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison Two</span>
-            <h3 class="card__title">The Hollywood Hideaway</h3>
+            <span class="card__eyebrow">Maison One</span>
+            <h3 class="card__title">Le Moulin à Rêves</h3>
             <div class="card__meta">
-              <span>3 Bedrooms + Suite</span>
-              <span>Sleeps 8</span>
+              <span>5 Bedrooms</span>
+              <span>Sleeps 12</span>
             </div>
           </div>
         </a>
         <a href="/homes/maison-de-la-riviere/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière at Moulin à Rêves" />
+            <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière" />
           </div>
           <div class="card__overlay">
             <span class="card__eyebrow">Maison Three</span>
