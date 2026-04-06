@@ -40,9 +40,6 @@ const {
     <!-- Schema Markup -->
     <slot name="schema" />
 
-    <!-- Netlify Identity (for Decap CMS login) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
     <!-- Analytics -->
     <script src="https://maison-admin-production.up.railway.app/tracker.js" data-site-id="moulin"></script>
 
@@ -138,8 +135,7 @@ const {
             <p><a href="tel:+19172085853">+1 (917) 208-5853</a></p>
             <div class="footer__newsletter">
               <p class="footer__newsletter-label" data-i18n="footer.newsletter">Seasonal updates, no spam — just France.</p>
-              <form class="footer__newsletter-form" name="newsletter" method="POST" action="/success/" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="newsletter" />
+              <form class="footer__newsletter-form" id="footer-newsletter-form">
                 <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
                 <input type="email" name="email" placeholder="Your email" class="form__input" data-i18n-placeholder="footer.emailplaceholder" required />
                 <button type="submit" class="btn btn--primary" data-i18n="footer.subscribe">Subscribe</button>
@@ -167,8 +163,7 @@ const {
           <p class="chocolate-popup__copy">
             Join our letter and we'll welcome you to Moulin à Rêves with a box of hand-picked French chocolates on your first day — along with seasonal notes, stories, and quiet news from the compound.
           </p>
-          <form class="chocolate-popup__form" name="chocolate-newsletter" method="POST" action="/success/" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="chocolate-newsletter" />
+          <form class="chocolate-popup__form" id="popup-newsletter-form">
             <p style="display:none;"><label>Do not fill this out: <input name="bot-field" /></label></p>
             <div class="chocolate-popup__field">
               <input type="email" name="email" placeholder="Your email" required aria-label="Email address" />
@@ -218,7 +213,7 @@ const {
           if (e.key === 'Escape' && popup.classList.contains('is-open')) close();
         });
 
-        // Treat Netlify form submit as acceptance
+        // Treat form submit as acceptance
         var form = popup.querySelector('form');
         if (form) {
           form.addEventListener('submit', function () {
@@ -875,18 +870,49 @@ const {
       }
     </script>
 
-    <!-- Netlify Identity: handle invite tokens and redirect after login -->
+    <!-- Newsletter form handlers (footer + popup) -->
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.init();
-        window.netlifyIdentity.on('init', user => {
-          if (!user) {
-            window.netlifyIdentity.on('login', () => {
-              document.location.href = '/admin/';
-            });
+      async function submitNewsletter(form: HTMLFormElement, source: string) {
+        const bot = (form.querySelector('[name="bot-field"]') as HTMLInputElement)?.value;
+        if (bot) return;
+
+        const emailInput = form.querySelector('input[type="email"]') as HTMLInputElement;
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+        const originalText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        try {
+          const res = await fetch('/api/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailInput.value, source }),
+          });
+          if (res.ok) {
+            btn.textContent = 'Subscribed!';
+            emailInput.value = '';
+            setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 3000);
+          } else {
+            btn.disabled = false;
+            btn.textContent = originalText;
+            alert('Something went wrong. Please try again.');
           }
-        });
+        } catch {
+          btn.disabled = false;
+          btn.textContent = originalText;
+          alert('Something went wrong. Please try again.');
+        }
       }
+
+      document.getElementById('footer-newsletter-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitNewsletter(e.target as HTMLFormElement, 'Footer');
+      });
+
+      document.getElementById('popup-newsletter-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitNewsletter(e.target as HTMLFormElement, 'Popup');
+      });
     </script>
   </body>
 </html>

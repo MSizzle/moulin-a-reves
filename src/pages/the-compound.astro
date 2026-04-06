@@ -256,8 +256,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2 data-i18n="compound.form.heading">Plan Your Group Stay</h2>
         <p data-i18n="compound.form.subheading" style="margin-top: 12px;">Tell us about your group and your occasion. We'll put together a proposal.</p>
       </div>
-      <form name="compound-inquiry" method="POST" action="/success/" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="compound-inquiry" />
+      <form id="compound-form">
         <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
         <div class="grid grid--2">
@@ -306,5 +305,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </form>
     </div>
   </section>
+
+<script>
+  const compoundForm = document.getElementById('compound-form') as HTMLFormElement;
+  compoundForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const bot = (compoundForm.querySelector('[name="bot-field"]') as HTMLInputElement)?.value;
+    if (bot) return;
+
+    const btn = compoundForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch('/api/compound', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: (document.getElementById('name') as HTMLInputElement).value,
+          email: (document.getElementById('email') as HTMLInputElement).value,
+          dates: (document.getElementById('dates') as HTMLInputElement).value,
+          guests: (document.getElementById('guests') as HTMLInputElement).value,
+          occasion: (document.getElementById('occasion') as HTMLSelectElement).value,
+          message: (document.getElementById('message') as HTMLTextAreaElement).value,
+        }),
+      });
+      if (res.ok) {
+        window.location.href = '/success/';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Start Your Conversation';
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Start Your Conversation';
+      alert('Something went wrong. Please try again or email us directly.');
+    }
+  });
+</script>
 
 </BaseLayout>

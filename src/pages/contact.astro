@@ -28,8 +28,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Fill out the form below and we'll respond within 24 hours with availability and a personalised proposal.
           </p>
 
-          <form name="contact" method="POST" action="/success/" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="contact" />
+          <form id="contact-form">
             <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
             <div class="form__group">
@@ -287,6 +286,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (checkout.value && checkout.value < checkin.value) {
         checkout.value = checkin.value;
       }
+    }
+  });
+
+  // Submit to Airtable via API route
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+  contactForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const bot = (contactForm.querySelector('[name="bot-field"]') as HTMLInputElement)?.value;
+    if (bot) return;
+
+    const btn = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: (document.getElementById('name') as HTMLInputElement).value,
+          email: (document.getElementById('email') as HTMLInputElement).value,
+          checkin: (document.getElementById('checkin') as HTMLInputElement).value,
+          checkout: (document.getElementById('checkout') as HTMLInputElement).value,
+          adults: (document.getElementById('adults') as HTMLInputElement).value,
+          children: (document.getElementById('children') as HTMLInputElement).value,
+          dogs: (document.getElementById('dogs') as HTMLInputElement).value,
+          houses: (document.getElementById('houses') as HTMLSelectElement).value,
+          message: (document.getElementById('message') as HTMLTextAreaElement).value,
+        }),
+      });
+      if (res.ok) {
+        window.location.href = '/success/';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send Your Inquiry';
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send Your Inquiry';
+      alert('Something went wrong. Please try again or email us directly.');
     }
   });
 </script>
