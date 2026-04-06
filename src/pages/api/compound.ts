@@ -25,7 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
                 Occasion: data.occasion || null,
                 Message: data.message,
                 'Submitted At': new Date().toISOString(),
-                Status: 'New',
+                Status: 'Todo',
               },
             },
           ],
