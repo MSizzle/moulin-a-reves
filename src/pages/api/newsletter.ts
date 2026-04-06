@@ -19,7 +19,7 @@ export const POST: APIRoute = async ({ request }) => {
             {
               fields: {
                 Email: data.email,
-                Source: { name: data.source || 'Footer' },
+                Source: data.source || 'Footer',
                 'Submitted At': new Date().toISOString(),
               },
             },

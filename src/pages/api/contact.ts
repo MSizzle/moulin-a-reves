@@ -28,7 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
                 Houses: data.houses,
                 Message: data.message,
                 'Submitted At': new Date().toISOString(),
-                Status: { name: 'New' },
+                Status: 'New',
               },
             },
           ],
