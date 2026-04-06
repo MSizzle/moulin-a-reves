@@ -2,7 +2,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   // Navigation
   // =====================
-  'nav.homes': { en: 'Homes', fr: 'Les Maisons' },
+  'nav.homes': { en: 'Maisons', fr: 'Les Maisons' },
   'nav.compound': { en: 'The Compound', fr: 'Le Domaine' },
   'nav.explore': { en: 'Explore', fr: 'Explorer' },
   'nav.catering': { en: 'Catering', fr: 'Restauration' },
@@ -16,7 +16,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'footer.tagline': { en: 'Mill of Dreams \u00b7 Seine-et-Marne, France', fr: 'Le Moulin des Rêves \u00b7 Seine-et-Marne, France' },
   'footer.explore': { en: 'Explore', fr: 'Explorer' },
-  'footer.homes': { en: 'The Homes', fr: 'Les Maisons' },
+  'footer.homes': { en: 'The Maisons', fr: 'Les Maisons' },
   'footer.compound': { en: 'The Compound', fr: 'Le Domaine' },
   'footer.thingstodo': { en: 'Things to Do', fr: 'À Découvrir' },
   'footer.catering': { en: 'Catering', fr: 'Restauration' },
@@ -36,14 +36,14 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'home.title': { en: 'Moulin à Rêves', fr: 'Moulin à Rêves' },
   'home.tagline': { en: 'Three homes. One unforgettable stay. One hour from Paris.', fr: 'Trois maisons. Un séjour inoubliable. À une heure de Paris.' },
-  'home.cta': { en: 'Explore the Homes', fr: 'Découvrir les Maisons' },
+  'home.cta': { en: 'Discover the Maisons', fr: 'Découvrir les Maisons' },
   'home.intro.heading': { en: 'Where the millstream meets your morning coffee', fr: 'Là où le bief rencontre votre café du matin' },
   'home.intro.text': {
     en: 'Moulin à Rêves is a compound of three stone houses gathered around a millstream in the French countryside, one hour south of Paris. Each home has its own character — blue shutters, garden views, and the quiet hum of water over stone — but together, they become something greater: a place where families reconnect, friends gather, and mornings stretch long.',
     fr: "Moulin à Rêves est un ensemble de trois maisons en pierre réunies autour d'un bief dans la campagne française, à une heure au sud de Paris. Chaque maison a son caractère propre — volets bleus, vue sur le jardin et le murmure de l'eau sur la pierre — mais ensemble, elles deviennent quelque chose de plus grand : un lieu où les familles se retrouvent, les amis se rassemblent et les matins s'étirent en douceur."
   },
-  'home.homes.heading': { en: 'The Homes', fr: 'Les Maisons' },
-  'home.homes.subheading': { en: 'Three houses, each with a story of its own.', fr: 'Trois maisons, chacune avec sa propre histoire.' },
+  'home.homes.heading': { en: 'Three stone maisons. One story.', fr: 'Trois maisons de pierre. Une histoire.' },
+  'home.homes.subheading': { en: 'Each with its own character, its own view, its own reason to linger.', fr: 'Chacune avec son propre caractère, sa propre vue, sa propre raison de s\'attarder.' },
   'home.moulin.title': { en: 'Le Moulin', fr: 'Le Moulin' },
   'home.moulin.description': { en: 'The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.', fr: "Le cœur du domaine. Un moulin en pierre où les murs épais gardent la fraîcheur de l'été et le bief coule juste en contrebas." },
   'home.moulin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
@@ -83,8 +83,8 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   // Homes Index
   // =====================
-  'homes.hero.title': { en: 'The Homes', fr: 'Les Maisons' },
-  'homes.hero.tagline': { en: 'Three houses, each with a story. All with blue shutters.', fr: 'Trois maisons, chacune avec son histoire. Toutes avec des volets bleus.' },
+  'homes.hero.title': { en: 'The Maisons', fr: 'Les Maisons' },
+  'homes.hero.tagline': { en: 'Three maisons, each with a story. All with blue shutters.', fr: 'Trois maisons, chacune avec son histoire. Toutes avec des volets bleus.' },
   'homes.moulin.desc': { en: 'The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.', fr: "Le cœur du domaine. Un moulin en pierre où les murs épais gardent la fraîcheur de l'été et le bief coule juste en contrebas." },
   'homes.moulin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
   'homes.moulin.baths': { en: '2 Bathrooms', fr: '2 Salles de bain' },
@@ -150,12 +150,12 @@ export const translations: Record<string, Record<string, string>> = {
   'moulin.cta.heading': { en: 'Interested in Le Moulin?', fr: 'Intéressé par Le Moulin ?' },
   'moulin.cta.text': { en: "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.", fr: 'Dites-nous vos dates et nous préparerons tout pour vous. Tarifs disponibles sur demande.' },
   'moulin.cta.button': { en: 'Inquire About Dates', fr: 'Demander les Disponibilités' },
-  'moulin.otherhomes.heading': { en: 'The Other Homes', fr: 'Les Autres Maisons' },
+  'moulin.otherhomes.heading': { en: 'The Other Maisons', fr: 'Les Autres Maisons' },
   'moulin.cross.grange.desc': { en: 'A converted stone barn with soaring ceilings, an open kitchen, and doors that open straight onto the garden.', fr: "Une grange en pierre convertie, avec de hauts plafonds, une cuisine ouverte et des portes qui s'ouvrent directement sur le jardin." },
   'moulin.cross.grange.link': { en: 'Discover La Grange', fr: 'Découvrir La Grange' },
   'moulin.cross.jardin.desc': { en: 'The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.', fr: "La plus paisible des trois. Un cottage de jardin habillé de glycine, avec une terrasse faite pour les longues après-midi." },
   'moulin.cross.jardin.link': { en: 'Discover Le Jardin', fr: 'Découvrir Le Jardin' },
-  'moulin.rentall': { en: 'Rent All Three Houses', fr: 'Louer les Trois Maisons' },
+  'moulin.rentall': { en: 'Rent All Three Maisons', fr: 'Louer les Trois Maisons' },
 
   // =====================
   // La Grange
@@ -203,12 +203,12 @@ export const translations: Record<string, Record<string, string>> = {
   'grange.cta.heading': { en: 'Interested in La Grange?', fr: 'Intéressé par La Grange ?' },
   'grange.cta.text': { en: "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.", fr: 'Dites-nous vos dates et nous préparerons tout pour vous. Tarifs disponibles sur demande.' },
   'grange.cta.button': { en: 'Inquire About Dates', fr: 'Demander les Disponibilités' },
-  'grange.otherhomes.heading': { en: 'The Other Homes', fr: 'Les Autres Maisons' },
+  'grange.otherhomes.heading': { en: 'The Other Maisons', fr: 'Les Autres Maisons' },
   'grange.cross.moulin.desc': { en: 'The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.', fr: "Le cœur du domaine. Un moulin en pierre où les murs épais gardent la fraîcheur de l'été et le bief coule juste en contrebas." },
   'grange.cross.moulin.link': { en: 'Discover Le Moulin', fr: 'Découvrir Le Moulin' },
   'grange.cross.jardin.desc': { en: 'The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.', fr: "La plus paisible des trois. Un cottage de jardin habillé de glycine, avec une terrasse faite pour les longues après-midi." },
   'grange.cross.jardin.link': { en: 'Discover Le Jardin', fr: 'Découvrir Le Jardin' },
-  'grange.rentall': { en: 'Rent All Three Houses', fr: 'Louer les Trois Maisons' },
+  'grange.rentall': { en: 'Rent All Three Maisons', fr: 'Louer les Trois Maisons' },
 
   // =====================
   // Le Jardin
@@ -256,12 +256,12 @@ export const translations: Record<string, Record<string, string>> = {
   'jardin.cta.heading': { en: 'Interested in Le Jardin?', fr: 'Intéressé par Le Jardin ?' },
   'jardin.cta.text': { en: "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.", fr: 'Dites-nous vos dates et nous préparerons tout pour vous. Tarifs disponibles sur demande.' },
   'jardin.cta.button': { en: 'Inquire About Dates', fr: 'Demander les Disponibilités' },
-  'jardin.otherhomes.heading': { en: 'The Other Homes', fr: 'Les Autres Maisons' },
+  'jardin.otherhomes.heading': { en: 'The Other Maisons', fr: 'Les Autres Maisons' },
   'jardin.cross.moulin.desc': { en: 'The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.', fr: "Le cœur du domaine. Un moulin en pierre où les murs épais gardent la fraîcheur de l'été et le bief coule juste en contrebas." },
   'jardin.cross.moulin.link': { en: 'Discover Le Moulin', fr: 'Découvrir Le Moulin' },
   'jardin.cross.grange.desc': { en: 'A converted stone barn with soaring ceilings, an open kitchen, and doors that open straight onto the garden.', fr: "Une grange en pierre convertie, avec de hauts plafonds, une cuisine ouverte et des portes qui s'ouvrent directement sur le jardin." },
   'jardin.cross.grange.link': { en: 'Discover La Grange', fr: 'Découvrir La Grange' },
-  'jardin.rentall': { en: 'Rent All Three Houses', fr: 'Louer les Trois Maisons' },
+  'jardin.rentall': { en: 'Rent All Three Maisons', fr: 'Louer les Trois Maisons' },
 
   // =====================
   // Shared amenities (used across property pages)
@@ -295,7 +295,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'compound.hero.title': { en: 'The Compound', fr: 'Le Domaine' },
   'compound.hero.tagline': { en: 'Three houses. Shared grounds. The whole place, exclusively yours.', fr: 'Trois maisons. Des espaces partagés. Le lieu entier, rien que pour vous.' },
-  'compound.stats.houses': { en: 'Houses', fr: 'Maisons' },
+  'compound.stats.houses': { en: 'Maisons', fr: 'Maisons' },
   'compound.stats.bedrooms': { en: 'Bedrooms', fr: 'Chambres' },
   'compound.stats.bathrooms': { en: 'Bathrooms', fr: 'Salles de bain' },
   'compound.stats.guests': { en: 'Guests', fr: 'Voyageurs' },
@@ -327,7 +327,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "There's a petanque court on the gravel near the linden trees, a long communal table that seats twenty for outdoor dinners, and a lawn large enough for yoga, croquet, or simply lying in the grass watching the clouds move over the forest canopy. In the evening, the grounds are lit by low lanterns, and the only sounds are conversation, the stream, and the occasional owl.",
     fr: "Il y a un terrain de pétanque sur le gravier près des tilleuls, une grande table commune de vingt places pour les dîners en plein air, et une pelouse assez vaste pour le yoga, le croquet ou simplement pour s'allonger dans l'herbe en regardant les nuages passer au-dessus de la canopée. Le soir, le parc s'illumine de lanternes basses, et les seuls bruits sont la conversation, le bief et un hibou de temps à autre."
   },
-  'compound.threehomes.heading': { en: 'The Three Houses', fr: 'Les Trois Maisons' },
+  'compound.threehomes.heading': { en: 'The Three Maisons', fr: 'Les Trois Maisons' },
   'compound.moulin.desc': { en: 'The original mill house. Thick stone walls, a working fireplace, and the millstream at your door.', fr: "Le moulin d'origine. Des murs de pierre épais, une cheminée fonctionnelle et le bief à votre porte." },
   'compound.moulin.beds': { en: '3 Bed', fr: '3 Ch.' },
   'compound.moulin.sleeps': { en: 'Sleeps 6', fr: '6 Couch.' },
