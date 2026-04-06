@@ -1,24 +1,78 @@
 ---
-title: "The Compound"
-heroImage: "/images/compound-aerial.jpg"
-heroAlt: "Aerial view of the three houses gathered around the millstream"
+# The Moulin à Rêves Compound — Content
+# Edit this file to update the Compound page on the deployed website.
+
+title: "The Moulin à Rêves Compound"
+tagline: "A historic 4-building compound — just 1 hour from Paris"
+heroImage: "/images/hero-compound.webp"
+
+# Stats
+buildings: 4
+bedrooms: 10
+bathrooms: 7
+sleeps: 25
+
+# Summary
+summary: "This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It sleeps 25 people with 10 bedrooms, 7 bathrooms. Encircled by a walled garden, this private compound offers 3 homes plus the versatile Grange entertaining space."
+
+# Location
+location: "Mereville, France"
+locationDescription: "The watercress capital of France, on the Juine River"
+distanceFromParis: "1 hour drive"
 ---
 
-## Three Houses, One Address
+## Description
 
-Moulin a Reves is not a hotel. It is a compound of three independent stone houses arranged around a shared millstream and gardens. Each home has its own entrance, kitchen, and private outdoor space, but all three share the sweeping lawns, the petanque court, and the long table under the linden trees where everyone gathers at the end of the day.
+This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It sleeps 25 people with 10 bedrooms, 7 bathrooms.
 
-## Perfect For
+Encircled by a walled garden, this private compound offers 3 homes plus the versatile Grange entertaining space.
 
-- **Family reunions** -- grandparents in one house, parents in another, cousins running between all three.
-- **Friend getaways** -- close enough to share meals, private enough for afternoon naps.
-- **Creative retreats** -- writers, painters, and thinkers find inspiration in the quiet grounds.
-- **Celebrations** -- birthdays, anniversaries, and milestones with room for everyone.
+It is an ideal getaway for the weekend, the week, the month or the season!
 
-## The Grounds
+## Ideal For
 
-The shared gardens include a millstream with a stone bridge, a walled rose garden, a petanque court under mature linden trees, and a large lawn suitable for yoga, games, or simply lying in the grass with a book. The long outdoor dining table seats up to 20 guests comfortably.
+- Writing and painting retreats
+- Yoga retreats
+- Birthday and anniversary celebrations
+- Holidays
+- Quiet getaways from Paris
+- Destination trips from America
 
-## Booking
+## The Three Maisons
 
-The compound can be booked as individual homes or as a whole. For groups of 12 or more, we recommend booking all three houses for the full experience.
+### Le Moulin à Rêves
+5 bedrooms, 4 baths, 8 beds, 2 day beds — Sleeps 12
+
+### The Hollywood Hideaway
+3 bedrooms + suite with pull-out sofa, 2 baths, 5 beds, 1 pull-out sofa — Sleeps 8
+
+### La Maison de la Rivière
+2 bedrooms, 1 bath, 3 beds — Sleeps 5
+
+## La Grange — Entertaining Space
+
+The Grange offers an enormous covered space to enjoy being together outside — even in the rain.
+
+- Huge dining table for all 25 guests to eat together
+- Full-size ping pong table
+- BBQ charcoal grills
+- Fireplace
+- Antique carriage for charm!
+- Wonderful covered place for yoga, meetings, painting
+- 4 bikes to explore the wood paths
+
+## Add-Ons
+
+Enjoy your vacation and make it even more luxurious. Add on these perks for a nightly fee.
+
+### Gym — €50/day
+The brand new gym features a treadmill, elliptical, boxing bag, 8 yoga mats, weight bench with free weights, large TV, and mirror.
+
+### Screening Room — €50/day
+The upstairs screening room features a huge TV, leather couches and is an elegant space for entertaining.
+
+### Jacuzzi — €50/day
+The jacuzzi in the solarium gives you a beautiful spa feel.
+
+### Electric Bikes — €25/day
+Add 2 electric bikes and make exploring the rolling hills even easier!
