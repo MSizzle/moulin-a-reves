@@ -11,10 +11,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
+      <span class="hero__eyebrow">Moulin à Rêves</span>
       <h1 class="hero__title" data-i18n="catering.hero.title">Catering</h1>
       <p class="hero__tagline" data-i18n="catering.hero.tagline">From breakfast at your door to a private chef for the weekend.</p>
     </div>
   </section>
+
+  <style>
+    .hero__eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.96);
+      margin-bottom: 24px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+      padding-left: 0.28em;
+    }
+  </style>
 
   <!-- Intro -->
   <section class="section">
@@ -27,81 +43,77 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- Breakfast -->
-  <section class="section section--stone">
-    <div class="container">
-      <div class="grid grid--2" style="align-items: center;">
-        <div class="fade-in">
-          <img src="/images/outdoor-dining.webp" alt="Fresh breakfast basket with croissants and local jam delivered to your door at Moulin à Rêves" style="border-radius: 8px; width: 100%;" loading="lazy" />
-        </div>
-        <div class="fade-in">
-          <h2 data-i18n="catering.breakfast.heading">Breakfast Delivery</h2>
-          <p data-i18n="catering.breakfast.p1" style="margin-top: 24px;">
-            Each morning, a basket arrives at your door before you've finished your first coffee. Inside: croissants from the boulangerie in Barbizon, a fresh baguette, local butter and confiture, seasonal fruit, yoghurt, and juice. If you have dietary needs or preferences, let us know — everything is prepared to order.
-          </p>
-          <p data-i18n="catering.breakfast.p2" style="margin-top: 16px;">
-            You'll take it to the terrace, or the kitchen table, or the garden — wherever your morning happens to lead. It's the simplest thing, and it changes the whole rhythm of the day.
-          </p>
-        </div>
+  <section class="fade-in">
+    <div class="split">
+      <div class="split__image">
+        <img src="/images/outdoor-dining.webp" alt="Fresh breakfast basket with croissants and local jam delivered to your door at Moulin à Rêves" loading="lazy" />
+      </div>
+      <div class="split__body">
+        <span class="eyebrow">Morning</span>
+        <h2 data-i18n="catering.breakfast.heading">Breakfast Delivery</h2>
+        <p data-i18n="catering.breakfast.p1">
+          Each morning, a basket arrives at your door before you've finished your first coffee. Inside: croissants from the boulangerie in Barbizon, a fresh baguette, local butter and confiture, seasonal fruit, yoghurt, and juice. If you have dietary needs or preferences, let us know — everything is prepared to order.
+        </p>
+        <p data-i18n="catering.breakfast.p2">
+          You'll take it to the terrace, or the kitchen table, or the garden — wherever your morning happens to lead. It's the simplest thing, and it changes the whole rhythm of the day.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- Dinner Service -->
-  <section class="section">
-    <div class="container">
-      <div class="grid grid--2" style="align-items: center;">
-        <div class="fade-in">
-          <h2 data-i18n="catering.dinner.heading">Dinner Service</h2>
-          <p data-i18n="catering.dinner.p1" style="margin-top: 24px;">
-            On the evenings you'd rather not cook, our local chef prepares a three-course meal and delivers it to your kitchen — still warm, beautifully presented, ready to plate. The menus change with the season: a cold cucumber soup in July, a duck confit with roasted figs in October, a tarte tatin made with apples from the garden's own tree.
-          </p>
-          <p data-i18n="catering.dinner.p2" style="margin-top: 16px;">
-            You set the table, open the wine, and take all the credit. The dishes are collected the next morning with the breakfast delivery.
-          </p>
-        </div>
-        <div class="fade-in">
-          <img src="/images/gazebo-dining.webp" alt="Beautifully plated seasonal dinner under the gazebo at Moulin à Rêves, France" style="border-radius: 8px; width: 100%;" loading="lazy" />
-        </div>
+  <section class="fade-in">
+    <div class="split split--reverse">
+      <div class="split__body">
+        <span class="eyebrow">Evening</span>
+        <h2 data-i18n="catering.dinner.heading">Dinner Service</h2>
+        <p data-i18n="catering.dinner.p1">
+          On the evenings you'd rather not cook, our local chef prepares a three-course meal and delivers it to your kitchen — still warm, beautifully presented, ready to plate. The menus change with the season: a cold cucumber soup in July, a duck confit with roasted figs in October, a tarte tatin made with apples from the garden's own tree.
+        </p>
+        <p data-i18n="catering.dinner.p2">
+          You set the table, open the wine, and take all the credit. The dishes are collected the next morning with the breakfast delivery.
+        </p>
+      </div>
+      <div class="split__image">
+        <img src="/images/gazebo-dining.webp" alt="Beautifully plated seasonal dinner under the gazebo at Moulin à Rêves, France" loading="lazy" />
       </div>
     </div>
   </section>
 
   <!-- Special Occasions -->
-  <section class="section section--stone">
-    <div class="container">
-      <div class="grid grid--2" style="align-items: center;">
-        <div class="fade-in">
-          <img src="/images/catering-table.webp" alt="Special occasion dinner in the garden with candles and flowers at Moulin à Rêves" style="border-radius: 8px; width: 100%;" loading="lazy" />
-        </div>
-        <div class="fade-in">
-          <h2 data-i18n="catering.special.heading">Special Occasions</h2>
-          <p data-i18n="catering.special.p1" style="margin-top: 24px;">
-            A birthday. An anniversary. The last night of a reunion when everyone is finally, fully relaxed. For these evenings, we arrange something more: a multi-course menu designed around your preferences, table settings, flowers, candles in the garden. The chef cooks on-site while you enjoy apéritifs on the lawn, and the meal unfolds at whatever pace the evening demands.
-          </p>
-          <p data-i18n="catering.special.p2" style="margin-top: 16px;">
-            Tell us the occasion, the number of guests, and any dietary requirements, and we'll put together a proposal.
-          </p>
-        </div>
+  <section class="fade-in">
+    <div class="split">
+      <div class="split__image">
+        <img src="/images/catering-table.webp" alt="Special occasion dinner in the garden with candles and flowers at Moulin à Rêves" loading="lazy" />
+      </div>
+      <div class="split__body">
+        <span class="eyebrow">Celebrations</span>
+        <h2 data-i18n="catering.special.heading">Special Occasions</h2>
+        <p data-i18n="catering.special.p1">
+          A birthday. An anniversary. The last night of a reunion when everyone is finally, fully relaxed. For these evenings, we arrange something more: a multi-course menu designed around your preferences, table settings, flowers, candles in the garden. The chef cooks on-site while you enjoy apéritifs on the lawn, and the meal unfolds at whatever pace the evening demands.
+        </p>
+        <p data-i18n="catering.special.p2">
+          Tell us the occasion, the number of guests, and any dietary requirements, and we'll put together a proposal.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- Private Chef -->
-  <section class="section">
-    <div class="container">
-      <div class="grid grid--2" style="align-items: center;">
-        <div class="fade-in">
-          <h2 data-i18n="catering.chef.heading">Private Chef Weekends</h2>
-          <p data-i18n="catering.chef.p1" style="margin-top: 24px;">
-            For groups who want to hand over the kitchen entirely, we arrange a private chef for the duration of your stay. They'll shop at the morning markets, cook breakfast and dinner each day, and adapt the menus to your group — vegan guests, children's meals, a birthday cake at the end.
-          </p>
-          <p data-i18n="catering.chef.p2" style="margin-top: 16px;">
-            Your chef knows the local producers, the seasonal ingredients, and the way a meal should feel when you're eating it outdoors in the French countryside: generous, unhurried, built around what's good right now.
-          </p>
-        </div>
-        <div class="fade-in">
-          <img src="/images/outdoor-dining.webp" alt="Outdoor dining prepared by private chef at Moulin à Rêves countryside compound" style="border-radius: 8px; width: 100%;" loading="lazy" />
-        </div>
+  <section class="fade-in">
+    <div class="split split--reverse">
+      <div class="split__body">
+        <span class="eyebrow">Full Service</span>
+        <h2 data-i18n="catering.chef.heading">Private Chef Weekends</h2>
+        <p data-i18n="catering.chef.p1">
+          For groups who want to hand over the kitchen entirely, we arrange a private chef for the duration of your stay. They'll shop at the morning markets, cook breakfast and dinner each day, and adapt the menus to your group — vegan guests, children's meals, a birthday cake at the end.
+        </p>
+        <p data-i18n="catering.chef.p2">
+          Your chef knows the local producers, the seasonal ingredients, and the way a meal should feel when you're eating it outdoors in the French countryside: generous, unhurried, built around what's good right now.
+        </p>
+      </div>
+      <div class="split__image">
+        <img src="/images/outdoor-dining.webp" alt="Outdoor dining prepared by private chef at Moulin à Rêves countryside compound" loading="lazy" />
       </div>
     </div>
   </section>
@@ -117,13 +129,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="section text-center">
-    <div class="container fade-in">
-      <h2 data-i18n="catering.cta.heading">Hungry?</h2>
-      <p data-i18n="catering.cta.text" style="margin-top: 16px; margin-bottom: 32px;">
-        Tell us what you'd like and we'll put together a catering proposal for your stay. All pricing is available on inquiry.
-      </p>
-      <a href="/contact/" class="btn btn--primary" data-i18n="catering.cta.button">Inquire About Catering</a>
+  <section class="hero" style="height: 45vh; min-height: 350px;">
+    <div class="hero__image">
+      <img src="/images/catering-table.webp" alt="Dinner table in the garden at Moulin à Rêves" loading="lazy" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h2 class="hero__title" data-i18n="catering.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Hungry?</h2>
+      <p class="hero__tagline" data-i18n="catering.cta.text">Tell us what you'd like and we'll put together a catering proposal for your stay. All pricing is available on inquiry.</p>
+      <a href="/contact/" class="btn btn--white" data-i18n="catering.cta.button">Inquire About Catering</a>
     </div>
   </section>
 

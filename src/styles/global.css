@@ -166,6 +166,10 @@ p {
   background-color: var(--bg-stone);
 }
 
+.section--soft {
+  background: var(--bg-warm-white);
+}
+
 .section--dark {
   background-color: var(--bg-dark);
   color: var(--text-on-dark);

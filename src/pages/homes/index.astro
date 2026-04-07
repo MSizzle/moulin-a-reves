@@ -10,10 +10,26 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
+      <span class="hero__eyebrow">Moulin à Rêves</span>
       <h1 class="hero__title">The Maisons</h1>
       <p class="hero__tagline">Three maisons, each with a story. 25 guests across 10 bedrooms.</p>
     </div>
   </section>
+
+  <style>
+    .hero__eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.96);
+      margin-bottom: 24px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+      padding-left: 0.28em;
+    }
+  </style>
 
   <section class="section">
     <div class="container">

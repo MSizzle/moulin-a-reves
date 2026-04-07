@@ -11,10 +11,26 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
+      <span class="hero__eyebrow">Moulin à Rêves</span>
       <h1 class="hero__title" data-i18n="explore.hero.title">Things to Do</h1>
       <p class="hero__tagline" data-i18n="explore.hero.tagline">Forests, villages, châteaux, and Paris. All within reach.</p>
     </div>
   </section>
+
+  <style>
+    .hero__eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.96);
+      margin-bottom: 24px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+      padding-left: 0.28em;
+    }
+  </style>
 
   <!-- Intro -->
   <section class="section">
@@ -183,13 +199,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="section section--stone text-center">
-    <div class="container fade-in">
-      <h2 data-i18n="explore.cta.heading">Need Suggestions?</h2>
-      <p data-i18n="explore.cta.text" style="margin-top: 16px; margin-bottom: 32px;">
-        We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.
-      </p>
-      <a href="/contact/" class="btn btn--primary" data-i18n="explore.cta.button">Start Your Conversation</a>
+  <section class="hero" style="height: 45vh; min-height: 350px;">
+    <div class="hero__image">
+      <img src="/images/explore/forest.webp" alt="Fontainebleau Forest path near Moulin à Rêves" loading="lazy" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h2 class="hero__title" data-i18n="explore.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Need Suggestions?</h2>
+      <p class="hero__tagline" data-i18n="explore.cta.text">We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.</p>
+      <a href="/contact/" class="btn btn--white" data-i18n="explore.cta.button">Start Your Conversation</a>
     </div>
   </section>
 

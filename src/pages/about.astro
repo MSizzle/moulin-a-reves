@@ -11,10 +11,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
+      <span class="hero__eyebrow">Moulin à Rêves</span>
       <h1 class="hero__title" data-i18n="about.hero.title">About</h1>
       <p class="hero__tagline" data-i18n="about.hero.tagline">The story of the Mill of Dreams.</p>
     </div>
   </section>
+
+  <style>
+    .hero__eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.96);
+      margin-bottom: 24px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+      padding-left: 0.28em;
+    }
+  </style>
 
   <!-- History -->
   <section class="section">
@@ -46,24 +62,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- The Owners -->
-  <section class="section">
-    <div class="container">
-      <div class="grid grid--2" style="align-items: center;">
-        <div class="fade-in">
-          <img src="/images/personality.webp" alt="The owners of Moulin à Rêves in the garden of their French countryside compound" style="border-radius: 8px; width: 100%;" loading="lazy" />
-        </div>
-        <div class="fade-in">
-          <h2 data-i18n="about.people.heading">The People</h2>
-          <p data-i18n="about.people.p1" style="margin-top: 24px;">
-            We found this place the way most people find the places that change their lives — by accident, while looking for something else. We were searching for a weekend house within reach of Paris, somewhere the children could run, somewhere the evenings would be long and the mornings slow. What we found was a compound of three forgotten stone buildings beside a millstream at the edge of a forest.
-          </p>
-          <p data-i18n="about.people.p2" style="margin-top: 20px;">
-            The restoration took two years. We learned more about lime mortar, oak beams, and French building regulations than we ever planned to. But the result is a place we love — and a place we believe other families, friends, and groups will love too. When the houses aren't occupied by our own extended family (which is often), we share them with guests who appreciate what makes them special.
-          </p>
-          <p data-i18n="about.people.p3" style="margin-top: 20px;">
-            We're not a hotel. There's no reception desk, no room service bell. But we're attentive to the details that matter — fresh flowers when you arrive, a list of our favourite restaurants, the name of the farmer who sells the best goat cheese at the Saturday marche. We want your stay to feel the way ours always does: like coming home to a place you didn't know you'd been missing.
-          </p>
-        </div>
+  <section class="fade-in">
+    <div class="split">
+      <div class="split__image">
+        <img src="/images/personality.webp" alt="The owners of Moulin à Rêves in the garden of their French countryside compound" loading="lazy" />
+      </div>
+      <div class="split__body">
+        <span class="eyebrow">The People</span>
+        <h2 data-i18n="about.people.heading">The People</h2>
+        <p data-i18n="about.people.p1">
+          We found this place the way most people find the places that change their lives — by accident, while looking for something else. We were searching for a weekend house within reach of Paris, somewhere the children could run, somewhere the evenings would be long and the mornings slow. What we found was a compound of three forgotten stone buildings beside a millstream at the edge of a forest.
+        </p>
+        <p data-i18n="about.people.p2">
+          The restoration took two years. We learned more about lime mortar, oak beams, and French building regulations than we ever planned to. But the result is a place we love — and a place we believe other families, friends, and groups will love too. When the houses aren't occupied by our own extended family (which is often), we share them with guests who appreciate what makes them special.
+        </p>
+        <p data-i18n="about.people.p3">
+          We're not a hotel. There's no reception desk, no room service bell. But we're attentive to the details that matter — fresh flowers when you arrive, a list of our favourite restaurants, the name of the farmer who sells the best goat cheese at the Saturday marche. We want your stay to feel the way ours always does: like coming home to a place you didn't know you'd been missing.
+        </p>
       </div>
     </div>
   </section>
@@ -82,13 +97,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="section text-center">
-    <div class="container fade-in">
-      <h2 data-i18n="about.cta.heading">Come and See</h2>
-      <p data-i18n="about.cta.text" style="margin-top: 16px; margin-bottom: 32px;">
-        We'd love to welcome you. Tell us your dates and we'll take it from there.
-      </p>
-      <a href="/contact/" class="btn btn--primary" data-i18n="about.cta.button">Plan Your Stay</a>
+  <section class="hero" style="height: 45vh; min-height: 350px;">
+    <div class="hero__image">
+      <img src="/images/evening-compound.webp" alt="Moulin à Rêves at golden hour" loading="lazy" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h2 class="hero__title" data-i18n="about.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Come and See</h2>
+      <p class="hero__tagline" data-i18n="about.cta.text">We'd love to welcome you. Tell us your dates and we'll take it from there.</p>
+      <a href="/contact/" class="btn btn--white" data-i18n="about.cta.button">Plan Your Stay</a>
     </div>
   </section>
 

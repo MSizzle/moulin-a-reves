@@ -167,13 +167,15 @@ const { data: cms } = matter(raw);
   </section>
 
   <!-- CTA -->
-  <section class="section text-center">
-    <div class="container fade-in">
-      <h2>Interested in {cms.title}?</h2>
-      <p style="margin-top: 16px; margin-bottom: 32px;">
-        Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.
-      </p>
-      <a href="/contact/" class="btn btn--primary">Inquire About Dates</a>
+  <section class="hero" style="height: 45vh; min-height: 350px;">
+    <div class="hero__image">
+      <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway at golden hour" loading="lazy" />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);">Interested in {cms.title}?</h2>
+      <p class="hero__tagline">Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.</p>
+      <a href="/contact/" class="btn btn--white">Inquire About Dates</a>
     </div>
   </section>
 

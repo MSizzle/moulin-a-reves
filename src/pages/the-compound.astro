@@ -46,10 +46,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
+      <span class="hero__eyebrow">Moulin à Rêves</span>
       <h1 class="hero__title" data-i18n="compound.hero.title">The Compound</h1>
       <p class="hero__tagline" data-i18n="compound.hero.tagline">Three houses. Shared grounds. The whole place, exclusively yours.</p>
     </div>
   </section>
+
+  <style>
+    .hero__eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.96);
+      margin-bottom: 24px;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+      padding-left: 0.28em;
+    }
+  </style>
 
   <!-- Stats Bar -->
   <section class="section" style="padding-top: 48px; padding-bottom: 48px;">
@@ -140,21 +156,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- The Grounds -->
-  <section class="section">
-    <div class="container">
-      <div class="grid grid--2" style="align-items: center;">
-        <div class="fade-in">
-          <h2 data-i18n="compound.grounds.heading">The Shared Grounds</h2>
-          <p data-i18n="compound.grounds.p1" style="margin-top: 24px;">
-            Between the three houses lies the heart of Moulin a Reves: a millstream that has been running for centuries, crossed by a stone footbridge worn smooth by generations of feet. The gardens are informal — old roses along the walls, lavender borders, a kitchen garden where the herbs grow faster than anyone can use them.
-          </p>
-          <p data-i18n="compound.grounds.p2" style="margin-top: 20px;">
-            There's a petanque court on the gravel near the linden trees, a long communal table that seats twenty for outdoor dinners, and a lawn large enough for yoga, croquet, or simply lying in the grass watching the clouds move over the forest canopy. In the evening, the grounds are lit by low lanterns, and the only sounds are conversation, the stream, and the occasional owl.
-          </p>
-        </div>
-        <div class="fade-in">
-          <img src="/images/bridge-garden.webp" alt="The shared gardens and millstream at Moulin à Rêves" style="border-radius: 8px; width: 100%;" loading="lazy" />
-        </div>
+  <section class="fade-in">
+    <div class="split split--reverse">
+      <div class="split__body">
+        <span class="eyebrow">The Grounds</span>
+        <h2 data-i18n="compound.grounds.heading">The Shared Grounds</h2>
+        <p data-i18n="compound.grounds.p1">
+          Between the three houses lies the heart of Moulin a Reves: a millstream that has been running for centuries, crossed by a stone footbridge worn smooth by generations of feet. The gardens are informal — old roses along the walls, lavender borders, a kitchen garden where the herbs grow faster than anyone can use them.
+        </p>
+        <p data-i18n="compound.grounds.p2">
+          There's a petanque court on the gravel near the linden trees, a long communal table that seats twenty for outdoor dinners, and a lawn large enough for yoga, croquet, or simply lying in the grass watching the clouds move over the forest canopy. In the evening, the grounds are lit by low lanterns, and the only sounds are conversation, the stream, and the occasional owl.
+        </p>
+      </div>
+      <div class="split__image">
+        <img src="/images/bridge-garden.webp" alt="The shared gardens and millstream at Moulin à Rêves" loading="lazy" />
       </div>
     </div>
   </section>
