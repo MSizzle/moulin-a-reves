@@ -130,10 +130,19 @@ export const GET: APIRoute = async ({ url }) => {
 };
 
 export const POST: APIRoute = async ({ request }) => {
-  const body = await request.json();
-  const password = body.password as string;
+  let password = '';
+  try {
+    const body = await request.json();
+    password = body.password || '';
+  } catch {
+    return new Response(JSON.stringify({ error: 'Invalid request body' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 
-  if (password === DASHBOARD_PASSWORD) {
+  const expected = import.meta.env.DASHBOARD_PASSWORD || 'moulin2024';
+  if (password === expected) {
     const token = createSession();
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
