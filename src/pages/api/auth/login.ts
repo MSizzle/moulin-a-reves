@@ -142,7 +142,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const envPw = import.meta.env.DASHBOARD_PASSWORD;
-  const expected = (typeof envPw === 'string' && envPw.length > 0) ? envPw : 'moulin2024';
+  const expected = (typeof envPw === 'string' && envPw.trim().length > 0) ? envPw.trim() : 'moulin2024';
   if (password === expected) {
     const token = createSession();
     return new Response(JSON.stringify({ ok: true }), {
@@ -154,7 +154,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
-  return new Response(JSON.stringify({ error: 'Invalid password', debug: { gotLen: password.length, expectedLen: expected.length, match: password === expected } }), {
+  return new Response(JSON.stringify({ error: 'Invalid password' }), {
     status: 401,
     headers: { 'Content-Type': 'application/json' },
   });
