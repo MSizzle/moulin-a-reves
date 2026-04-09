@@ -144,7 +144,7 @@ export const POST: APIRoute = async ({ request }) => {
   const envPw = import.meta.env.DASHBOARD_PASSWORD;
   const expected = (typeof envPw === 'string' && envPw.trim().length > 0) ? envPw.trim() : 'moulin2024';
   if (password === expected) {
-    const token = createSession();
+    const token = await createSession();
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
       headers: {

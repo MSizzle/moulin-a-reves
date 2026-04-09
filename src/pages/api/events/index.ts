@@ -68,7 +68,7 @@ export const POST: APIRoute = async ({ request }) => {
 };
 
 export const GET: APIRoute = async ({ request, url }) => {
-  if (!checkAuth(request)) {
+  if (!await checkAuth(request)) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
       headers: { 'Content-Type': 'application/json' },

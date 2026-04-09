@@ -44,7 +44,7 @@ async function commitFile(path: string, content: string, message: string): Promi
 }
 
 export const POST: APIRoute = async ({ request }) => {
-  if (!checkAuth(request)) {
+  if (!await checkAuth(request)) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
       headers: { 'Content-Type': 'application/json' },
