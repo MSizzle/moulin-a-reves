@@ -1,7 +1,8 @@
 {
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/analytics", "destination": "https://maison-admin-production.up.railway.app/" },
-    { "source": "/analytics/:path*", "destination": "https://maison-admin-production.up.railway.app/:path*" }
+    { "source": "/analytics", "destination": "https://maison-admin-production.up.railway.app/analytics/" },
+    { "source": "/analytics/", "destination": "https://maison-admin-production.up.railway.app/analytics/" },
+    { "source": "/analytics/:path*", "destination": "https://maison-admin-production.up.railway.app/analytics/:path*" }
   ]
 }
