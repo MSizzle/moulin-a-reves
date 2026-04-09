@@ -21,7 +21,7 @@ export const GET: APIRoute = async ({ request, url }) => {
 
     const pages = await queries.getTopPages(start, end);
 
-    return new Response(JSON.stringify({ pages }), {
+    return new Response(JSON.stringify(pages), {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (err: any) {

@@ -20,7 +20,7 @@ export const GET: APIRoute = async ({ request }) => {
 
     const visitors = await queries.getActiveVisitors();
 
-    return new Response(JSON.stringify({ visitors, count: visitors.length }), {
+    return new Response(JSON.stringify(visitors), {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (err: any) {

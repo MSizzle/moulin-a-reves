@@ -22,7 +22,7 @@ export const GET: APIRoute = async ({ request, url }) => {
 
     const traffic = await queries.getTrafficOverTime(start, end, group);
 
-    return new Response(JSON.stringify({ traffic }), {
+    return new Response(JSON.stringify(traffic), {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (err: any) {

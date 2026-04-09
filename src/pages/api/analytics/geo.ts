@@ -21,7 +21,7 @@ export const GET: APIRoute = async ({ request, url }) => {
 
     const geo = await queries.getGeoBreakdown(start, end);
 
-    return new Response(JSON.stringify({ geo }), {
+    return new Response(JSON.stringify(geo), {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (err: any) {

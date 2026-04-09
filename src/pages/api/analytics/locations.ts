@@ -21,7 +21,7 @@ export const GET: APIRoute = async ({ request, url }) => {
 
     const locations = await queries.getVisitorLocations(start, end);
 
-    return new Response(JSON.stringify({ locations }), {
+    return new Response(JSON.stringify(locations), {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (err: any) {
