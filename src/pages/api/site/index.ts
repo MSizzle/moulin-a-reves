@@ -4,7 +4,7 @@ import type { APIRoute } from 'astro';
 import { checkAuth } from '../../../lib/auth';
 
 const GITHUB_TOKEN = import.meta.env.GITHUB_TOKEN;
-const GITHUB_REPO = import.meta.env.GITHUB_REPO; // format: owner/repo
+const GITHUB_REPO = import.meta.env.GITHUB_REPO;
 
 async function fetchGitHubFile(path: string): Promise<string | null> {
   try {
@@ -21,21 +21,61 @@ async function fetchGitHubFile(path: string): Promise<string | null> {
   }
 }
 
-function extractCSSProperties(css: string): Record<string, string> {
-  const properties: Record<string, string> = {};
-  // Match CSS custom properties in :root
-  const rootMatch = css.match(/:root\s*\{([^}]+)\}/s);
+function organizeConfig(cssContent: string, translationsContent: string) {
+  // Parse CSS variables from :root block
+  const rootMatch = cssContent.match(/:root\s*\{([^}]+)\}/s);
+  const colors: Record<string, string> = {};
+  const fonts: Record<string, string> = {};
+  const spacing: Record<string, string> = {};
+
   if (rootMatch) {
-    const lines = rootMatch[1].split('\n');
-    for (const line of lines) {
-      const match = line.match(/\s*(--[\w-]+)\s*:\s*([^;]+);/);
-      if (match) {
-        properties[match[1].trim()] = match[2].trim();
+    for (const line of rootMatch[1].split('\n')) {
+      const varMatch = line.match(/--([^:]+):\s*([^;]+);/);
+      if (varMatch) {
+        const name = varMatch[1].trim();
+        const value = varMatch[2].trim();
+        if (name.startsWith('bg-') || name.startsWith('blue-') || name.startsWith('text-') ||
+            name === 'gold' || name === 'green-garden' || name === 'terracotta') {
+          colors[name] = value;
+        } else if (name.startsWith('font-')) {
+          fonts[name] = value;
+        } else if (name.startsWith('section-') || name.startsWith('content-') || name.startsWith('side-')) {
+          spacing[name] = value;
+        }
       }
     }
   }
-  return properties;
+
+  // Organize translations by section prefix
+  const translations = JSON.parse(translationsContent || '{}');
+  const pages: Record<string, Record<string, any>> = {};
+  for (const [key, value] of Object.entries(translations)) {
+    const prefix = key.split('.')[0];
+    if (!pages[prefix]) pages[prefix] = {};
+    pages[prefix][key] = value;
+  }
+
+  return { colors, fonts, spacing, pages };
 }
+
+const SECTIONS = [
+  { id: 'home', label: 'Homepage', icon: 'home' },
+  { id: 'nav', label: 'Navigation', icon: 'nav' },
+  { id: 'homes', label: 'Homes Overview', icon: 'houses' },
+  { id: 'moulin', label: 'Le Moulin', icon: 'house' },
+  { id: 'grange', label: 'La Grange', icon: 'house' },
+  { id: 'jardin', label: 'Le Jardin', icon: 'house' },
+  { id: 'compound', label: 'The Compound', icon: 'compound' },
+  { id: 'explore', label: 'Explore', icon: 'explore' },
+  { id: 'catering', label: 'Catering', icon: 'catering' },
+  { id: 'wellness', label: 'Wellness', icon: 'wellness' },
+  { id: 'about', label: 'About', icon: 'about' },
+  { id: 'contact', label: 'Contact', icon: 'contact' },
+  { id: 'gallery', label: 'Gallery', icon: 'gallery' },
+  { id: 'footer', label: 'Footer', icon: 'footer' },
+  { id: 'amenity', label: 'Amenities', icon: 'amenity' },
+  { id: 'success', label: 'Success Page', icon: 'success' },
+];
 
 export const GET: APIRoute = async ({ request }) => {
   if (!await checkAuth(request)) {
@@ -51,18 +91,11 @@ export const GET: APIRoute = async ({ request }) => {
       fetchGitHubFile('public/i18n/translations.json'),
     ]);
 
-    const cssProperties = cssContent ? extractCSSProperties(cssContent) : {};
-    let translations = {};
-    try {
-      translations = translationsContent ? JSON.parse(translationsContent) : {};
-    } catch {
-      translations = {};
-    }
+    const config = organizeConfig(cssContent || '', translationsContent || '{}');
 
     return new Response(JSON.stringify({
-      css: cssProperties,
-      rawCSS: cssContent || '',
-      translations,
+      ...config,
+      sections: SECTIONS,
     }), {
       headers: { 'Content-Type': 'application/json' },
     });
