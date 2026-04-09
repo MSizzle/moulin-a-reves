@@ -96,11 +96,27 @@ const loginHTML = (error?: boolean) => `<!DOCTYPE html>
     <h1>Moulin a Reves</h1>
     <p class="subtitle">Dashboard Login</p>
     ${error ? '<div class="error">Invalid password. Please try again.</div>' : ''}
-    <form method="POST" action="/api/auth/login">
+    <form id="loginForm">
       <label for="password">Password</label>
       <input type="password" id="password" name="password" placeholder="Enter dashboard password" autofocus required>
       <button type="submit">Sign In</button>
     </form>
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const password = document.getElementById('password').value;
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password }),
+        });
+        if (res.ok) {
+          window.location.href = '/analytics/';
+        } else {
+          window.location.href = '/api/auth/login?error=1';
+        }
+      });
+    </script>
   </div>
   <div class="prometheus">Prometheus</div>
 </body>
@@ -114,24 +130,22 @@ export const GET: APIRoute = async ({ url }) => {
 };
 
 export const POST: APIRoute = async ({ request }) => {
-  const formData = await request.formData();
-  const password = formData.get('password') as string;
+  const body = await request.json();
+  const password = body.password as string;
 
   if (password === DASHBOARD_PASSWORD) {
     const token = createSession();
-    return new Response(null, {
-      status: 302,
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
       headers: {
-        Location: '/analytics/',
-        'Set-Cookie': `maison_session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=86400`,
+        'Content-Type': 'application/json',
+        'Set-Cookie': `maison_session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=2592000`,
       },
     });
   }
 
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: '/api/auth/login?error=1',
-    },
+  return new Response(JSON.stringify({ error: 'Invalid password' }), {
+    status: 401,
+    headers: { 'Content-Type': 'application/json' },
   });
 };
