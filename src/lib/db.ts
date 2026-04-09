@@ -135,13 +135,13 @@ export const queries = {
     // Build parameterized query - since neon sql tag doesn't support dynamic WHERE easily,
     // we use a raw approach with the conditions pre-built by the caller
     const query = `SELECT * FROM events WHERE ${whereClause} ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`;
-    return sql(query, Object.values(params));
+    return sql.query(query, Object.values(params));
   },
 
   async getEventsCount(conditions: string[], params: Record<string, any>) {
     const whereClause = conditions.length > 0 ? conditions.join(' AND ') : '1=1';
     const query = `SELECT COUNT(*) as count FROM events WHERE ${whereClause}`;
-    const result = await sql(query, Object.values(params));
+    const result = await sql.query(query, Object.values(params));
     return result[0]?.count ?? 0;
   },
 
@@ -166,7 +166,7 @@ export const queries = {
       GROUP BY period
       ORDER BY period ASC
     `;
-    return sql(query, [validGroupBy, start, end]);
+    return sql.query(query, [validGroupBy, start, end]);
   },
 
   async getGeoBreakdown(start: string, end: string) {
