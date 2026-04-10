@@ -32,8 +32,10 @@ export async function checkAuth(request: Request): Promise<boolean> {
       return [key, rest.join('=')];
     })
   );
-  const token = cookies['maison_session'];
-  if (!token) return false;
+  const raw = cookies['maison_session'];
+  if (!raw) return false;
+  // Astro's cookies.set() URL-encodes the value; decode before parsing
+  const token = decodeURIComponent(raw);
 
   // Parse token: "authenticated:<timestamp>:<signature>"
   const parts = token.split(':');

@@ -96,7 +96,7 @@ const loginHTML = (error?: boolean) => `<!DOCTYPE html>
     <h1>Moulin a Reves</h1>
     <p class="subtitle">Dashboard Login</p>
     ${error ? '<div class="error">Invalid password. Please try again.</div>' : ''}
-    <form id="loginForm">
+    <form id="loginForm" method="POST" action="/api/auth/login">
       <label for="password">Password</label>
       <input type="password" id="password" name="password" placeholder="Enter dashboard password" autofocus required>
       <button type="submit">Sign In</button>
@@ -129,31 +129,53 @@ export const GET: APIRoute = async ({ url }) => {
   });
 };
 
-export const POST: APIRoute = async ({ request }) => {
+function redirect(path: string) {
+  return new Response(null, {
+    status: 302,
+    headers: { Location: path },
+  });
+}
+
+export const POST: APIRoute = async ({ request, cookies }) => {
   let password = '';
+  const contentType = request.headers.get('content-type') || '';
+  const isFormSubmit = contentType.includes('application/x-www-form-urlencoded');
+
   try {
-    const body = await request.json();
-    password = body.password || '';
+    if (isFormSubmit) {
+      const text = await request.text();
+      const params = new URLSearchParams(text);
+      password = params.get('password') || '';
+    } else {
+      const body = await request.json();
+      password = body.password || '';
+    }
   } catch {
+    if (isFormSubmit) return redirect('/api/auth/login?error=1');
     return new Response(JSON.stringify({ error: 'Invalid request body' }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  const envPw = import.meta.env.DASHBOARD_PASSWORD;
-  const expected = (typeof envPw === 'string' && envPw.trim().length > 0) ? envPw.trim() : 'moulin2024';
-  if (password === expected) {
+  if (password === DASHBOARD_PASSWORD) {
     const token = await createSession();
+    cookies.set('maison_session', token, {
+      path: '/',
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      maxAge: 2592000,
+    });
+
+    if (isFormSubmit) return redirect('/analytics/');
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Set-Cookie': `maison_session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=2592000`,
-      },
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 
+  if (isFormSubmit) return redirect('/api/auth/login?error=1');
   return new Response(JSON.stringify({ error: 'Invalid password' }), {
     status: 401,
     headers: { 'Content-Type': 'application/json' },
