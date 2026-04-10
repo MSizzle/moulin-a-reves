@@ -1,6 +1,23 @@
 {
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/analytics", "destination": "/analytics/index.html" }
+    { "source": "/editor", "destination": "/editor/index.html" },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "editor.moulinareves.com" }],
+      "destination": "/editor/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/analytics",
+      "destination": "https://analytics.moulinareves.com/",
+      "permanent": false
+    },
+    {
+      "source": "/analytics/:path*",
+      "destination": "https://analytics.moulinareves.com/",
+      "permanent": false
+    }
   ]
 }
