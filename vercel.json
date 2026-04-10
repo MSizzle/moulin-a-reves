@@ -4,7 +4,7 @@
     { "source": "/editor", "destination": "/editor/index.html" },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "editor.moulinareves.com" }],
+      "has": [{ "type": "header", "key": "host", "value": "editor\\.moulinareves\\.com" }],
       "destination": "/editor/index.html"
     }
   ],
