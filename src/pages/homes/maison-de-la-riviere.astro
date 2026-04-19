@@ -27,6 +27,15 @@ const { data: cms } = matter(raw);
         "addressCountry": "FR"
       }
     })} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://moulin-a-reves.com/"},
+        {"@type": "ListItem", "position": 2, "name": "The Maisons", "item": "https://moulin-a-reves.com/homes/"},
+        {"@type": "ListItem", "position": 3, "name": "La Maison de la Rivière", "item": "https://moulin-a-reves.com/homes/maison-de-la-riviere/"}
+      ]
+    })} />
   </Fragment>
 
   <!-- Hero -->

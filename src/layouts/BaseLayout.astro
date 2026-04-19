@@ -12,6 +12,8 @@ const {
   description = "Moulin à Rêves — A compound of three stone houses in the French countryside, one hour from Paris. Blue shutters, a millstream, and the quiet of the forest.",
   ogImage = "/images/og-default.jpg"
 } = Astro.props;
+
+const canonicalUrl = `https://moulin-a-reves.com${Astro.url.pathname}`;
 ---
 
 <!doctype html>
@@ -22,13 +24,18 @@ const {
     <meta name="description" content={description} />
     <title>{title}</title>
 
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={`https://moulin-a-reves.com${ogImage}`} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:site_name" content="Moulin à Rêves" />
 
     <!-- Fonts preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -113,7 +120,7 @@ const {
         <div class="footer__grid">
           <div class="footer__brand">
             <h3 class="footer__logo">Moulin à Rêves</h3>
-            <p class="footer__tagline" data-i18n="footer.tagline">Mill of Dreams &middot; Seine-et-Marne, France</p>
+            <p class="footer__tagline" data-i18n="footer.tagline">Mill of Dreams &middot; Essonne, France</p>
           </div>
           <div class="footer__links">
             <h4 data-i18n="footer.explore">Explore</h4>
@@ -152,6 +159,9 @@ const {
         </div>
       </div>
     </footer>
+
+    <!-- Prometheus watermark -->
+    <div style="position:fixed;bottom:12px;right:16px;z-index:9998;font-size:10px;letter-spacing:0.08em;color:rgba(0,0,0,0.18);pointer-events:none;font-family:sans-serif;">Prometheus</div>
 
     <!-- Chocolate welcome popup -->
     <div class="chocolate-popup" id="chocolate-popup" role="dialog" aria-modal="true" aria-labelledby="chocolate-popup-title" aria-hidden="true">

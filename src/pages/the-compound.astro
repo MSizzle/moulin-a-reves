@@ -2,39 +2,78 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="The Compound — Moulin à Rêves" description="Rent all three houses at Moulin à Rêves. 9 bedrooms, sleeps 20. Perfect for family reunions, retreats, weddings, and celebrations near Paris.">
+<BaseLayout title="Rent the Full Compound — Moulin à Rêves | 25 Guests Near Paris" description="Rent all three houses at Moulin à Rêves — 10 bedrooms, 7 bathrooms, sleeps 25. Perfect for family reunions, retreats, weddings, and celebrations near Paris, Essonne.">
 
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "VacationRental",
       "name": "The Compound — Moulin à Rêves",
-      "description": "Rent all three stone houses at Moulin à Rêves. 9 bedrooms, 6 bathrooms, sleeps 20. Perfect for family reunions, retreats, weddings, and celebrations near Paris.",
+      "description": "Rent all three stone houses at Moulin à Rêves. 10 bedrooms, 7 bathrooms, sleeps 25. Perfect for family reunions, retreats, weddings, and celebrations near Paris.",
       "url": "https://moulin-a-reves.com/the-compound/",
       "image": "/images/hero-compound.webp",
-      "numberOfBedrooms": 9,
-      "numberOfBathroomsTotal": 6,
-      "occupancy": { "@type": "QuantitativeValue", "value": 20 },
+      "numberOfBedrooms": 10,
+      "numberOfBathroomsTotal": 7,
+      "occupancy": { "@type": "QuantitativeValue", "value": 25 },
       "floorSize": { "@type": "QuantitativeValue", "value": 420, "unitCode": "MTK" },
       "petsAllowed": true,
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Barbizon",
-        "addressRegion": "Seine-et-Marne",
+        "addressLocality": "Mereville",
+        "addressRegion": "Essonne",
         "addressCountry": "FR"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 48.4433,
-        "longitude": 2.6033
+        "latitude": 48.3167,
+        "longitude": 2.0833
       },
       "amenityFeature": [
         {"@type": "LocationFeatureSpecification", "name": "WiFi", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Garden", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Hot Tub", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Hot Tub / Jacuzzi", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Gym", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Screening Room", "value": true}
+        {"@type": "LocationFeatureSpecification", "name": "Screening Room", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Electric Bikes", "value": true}
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many guests can the full compound accommodate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The full compound at Moulin à Rêves sleeps 25 guests across 10 bedrooms and 7 bathrooms in three separate houses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included when you rent the compound?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The compound rental includes exclusive use of three houses (Le Moulin, The Hollywood Hideaway, La Maison de la Rivière), shared gardens, millstream, La Grange event barn, pétanque court, and communal dining terrace. Optional add-ons: gym, jacuzzi/solarium, screening room (€50/day each), electric bikes (€25/day)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Moulin à Rêves suitable for weddings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The compound is well-suited for intimate weddings and celebrations with its walled gardens, millstream, La Grange covered barn (seats 25+), and gazebo dining area."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far is the compound from Paris?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Moulin à Rêves is approximately one hour from Paris by car, located in Mereville, Essonne near the Juine River."
+          }
+        }
       ]
     })} />
   </Fragment>
@@ -76,15 +115,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="stats-bar__label" data-i18n="compound.stats.houses">Houses</div>
         </div>
         <div class="stats-bar__item">
-          <div class="stats-bar__number">9</div>
+          <div class="stats-bar__number">10</div>
           <div class="stats-bar__label" data-i18n="compound.stats.bedrooms">Bedrooms</div>
         </div>
         <div class="stats-bar__item">
-          <div class="stats-bar__number">6</div>
+          <div class="stats-bar__number">7</div>
           <div class="stats-bar__label" data-i18n="compound.stats.bathrooms">Bathrooms</div>
         </div>
         <div class="stats-bar__item">
-          <div class="stats-bar__number">20</div>
+          <div class="stats-bar__number">25</div>
           <div class="stats-bar__label" data-i18n="compound.stats.guests">Guests</div>
         </div>
         <div class="stats-bar__item">
@@ -100,7 +139,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container--narrow fade-in">
       <h2 class="text-center" data-i18n="compound.intro.heading">Rent All Three</h2>
       <p data-i18n="compound.intro.p1" style="margin-top: 32px;">
-        Some occasions call for more than a single house. When you book the entire compound at Moulin a Reves, you get three separate homes arranged around shared gardens, a millstream, and the kind of space that lets a group of twenty spread out during the day and come together for the evening. Each house has its own kitchen, its own living room, its own front door — but the grounds between them are where the real life of your stay will happen.
+        Some occasions call for more than a single house. When you book the entire compound at Moulin a Reves, you get three separate homes arranged around shared gardens, a millstream, and the kind of space that lets a group of up to twenty-five spread out during the day and come together for the evening. Each house has its own kitchen, its own living room, its own front door — but the grounds between them are where the real life of your stay will happen.
       </p>
       <p data-i18n="compound.intro.p2" style="margin-top: 20px;">
         You'll gather at the long table beneath the linden trees for dinner. The children will move between houses as if they've always lived here. Someone will start a game of petanque on the gravel court while the apéritif is being poured. And at the end of the evening, everyone walks home — just not very far.
@@ -183,43 +222,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid--3">
         <a href="/homes/le-moulin/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin stone mill house with blue shutters at Moulin à Rêves, Barbizon" loading="lazy" />
+            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River, Mereville" loading="lazy" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Le Moulin</h3>
-            <p class="card__description" data-i18n="compound.moulin.desc">The original mill house. Thick stone walls, a working fireplace, and the millstream at your door.</p>
+            <h3 class="card__title">Le Moulin à Rêves</h3>
+            <p class="card__description">The original mill house. Built 1800, the Juine River flows through the house. Five bedrooms across three floors.</p>
             <div class="card__meta">
-              <span data-i18n="compound.moulin.beds">3 Bed</span>
-              <span data-i18n="compound.moulin.sleeps">Sleeps 6</span>
-              <span>150 m&sup2;</span>
+              <span>5 Bed</span>
+              <span>Sleeps 12</span>
             </div>
           </div>
         </a>
-        <a href="/homes/la-grange/" class="card fade-in" style="text-decoration:none;color:inherit;">
+        <a href="/homes/hollywood-hideaway/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="La Grange converted stone barn with tall windows at Moulin à Rêves, Barbizon" loading="lazy" />
+            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway — French countryside sanctuary near Paris" loading="lazy" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">La Grange</h3>
-            <p class="card__description" data-i18n="compound.grange.desc">The converted barn. Soaring ceilings, an open kitchen, and doors that fold onto the garden.</p>
+            <h3 class="card__title">The Hollywood Hideaway</h3>
+            <p class="card__description">60-year sanctuary of Hollywood's top power lawyer. Three bedrooms plus suite, French antiques, private gazebo.</p>
             <div class="card__meta">
-              <span data-i18n="compound.grange.beds">3 Bed</span>
-              <span data-i18n="compound.grange.sleeps">Sleeps 6</span>
-              <span>140 m&sup2;</span>
+              <span>3 Bed + Suite</span>
+              <span>Sleeps 8</span>
             </div>
           </div>
         </a>
-        <a href="/homes/le-jardin/" class="card fade-in" style="text-decoration:none;color:inherit;">
+        <a href="/homes/maison-de-la-riviere/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-jardin-hero.webp" alt="Le Jardin garden cottage wrapped in wisteria at Moulin à Rêves, Barbizon" loading="lazy" />
+            <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière — sunny cottage overlooking the stream" loading="lazy" />
           </div>
           <div class="card__body">
-            <h3 class="card__title">Le Jardin</h3>
-            <p class="card__description" data-i18n="compound.jardin.desc">The garden cottage. Wrapped in wisteria, with a terrace made for long afternoons.</p>
+            <h3 class="card__title">La Maison de la Rivière</h3>
+            <p class="card__description">Sunny cottage overlooking the stream and apple trees. Spacious living room with authentic Louis Vuitton trunk.</p>
             <div class="card__meta">
-              <span data-i18n="compound.jardin.beds">3 Bed</span>
-              <span data-i18n="compound.jardin.sleeps">Sleeps 6</span>
-              <span>130 m&sup2;</span>
+              <span>2 Bed</span>
+              <span>Sleeps 5</span>
             </div>
           </div>
         </a>

@@ -41,30 +41,86 @@ const writings = [
       "@context": "https://schema.org",
       "@type": "LodgingBusiness",
       "name": "Moulin à Rêves",
-      "description": "A compound of three stone houses in the French countryside, one hour from Paris.",
+      "description": "A compound of three stone houses on the Juine River in Mereville, Essonne, one hour from Paris. Sleeps 25 across 10 bedrooms.",
       "url": "https://moulin-a-reves.com",
       "telephone": "+19176806739",
       "email": "lemoulinfrance@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Barbizon",
-        "addressRegion": "Seine-et-Marne",
+        "addressLocality": "Mereville",
+        "addressRegion": "Essonne",
         "addressCountry": "FR"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 48.4433,
-        "longitude": 2.6033
+        "latitude": 48.3167,
+        "longitude": 2.0833
       },
       "image": cms.heroImage,
-      "numberOfRooms": 9,
+      "numberOfRooms": 10,
       "petsAllowed": true,
       "amenityFeature": [
         {"@type": "LocationFeatureSpecification", "name": "WiFi", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Kitchen", "value": true},
         {"@type": "LocationFeatureSpecification", "name": "Garden", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Hot Tub", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Gym", "value": true}
+        {"@type": "LocationFeatureSpecification", "name": "Hot Tub / Jacuzzi", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Gym", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Screening Room", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Electric Bikes", "value": true}
+      ]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is Moulin à Rêves located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Moulin à Rêves is located in Mereville, Essonne, France, on the banks of the Juine River — one hour south of Paris by car or train."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many guests can Moulin à Rêves accommodate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The full compound sleeps up to 25 guests across three houses: Le Moulin à Rêves (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I rent just one house at Moulin à Rêves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, each of the three houses can be rented individually. Le Moulin (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5). The full compound can also be rented exclusively for groups up to 25."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are dogs allowed at Moulin à Rêves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, dogs are welcome at Moulin à Rêves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is catering available at Moulin à Rêves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Catering services include breakfast delivery, dinner service, and a private chef for your entire stay. Yoga, massage, and beauty treatments can also be arranged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How far is Moulin à Rêves from Paris?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Moulin à Rêves is approximately one hour from Paris by car, and easily reachable by train via the RER C to Étréchy."
+          }
+        }
       ]
     })} />
   </Fragment>

@@ -7,5 +7,7 @@ export default defineConfig({
   site: 'https://moulin-a-reves.com',
   output: 'static',
   adapter: vercel(),
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    filter: (page) => !page.includes('/success/')
+  })],
 });
