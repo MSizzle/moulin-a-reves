@@ -10,10 +10,11 @@ interface Props {
 const {
   title,
   description = "Moulin à Rêves — A compound of three stone houses in the French countryside, one hour from Paris. Blue shutters, a millstream, and the quiet of the forest.",
-  ogImage = "/images/og-default.jpg"
+  ogImage = "/images/og-hero.jpg"
 } = Astro.props;
 
 const canonicalUrl = `https://moulin-a-reves.com${Astro.url.pathname}`;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://moulin-a-reves.com${ogImage}`;
 ---
 
 <!doctype html>
@@ -32,10 +33,22 @@ const canonicalUrl = `https://moulin-a-reves.com${Astro.url.pathname}`;
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`https://moulin-a-reves.com${ogImage}`} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Moulin à Rêves stone maisons with blue shutters beside the millstream" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="fr_FR" />
     <meta property="og:site_name" content="Moulin à Rêves" />
+
+    <!-- Social previews -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="Moulin à Rêves stone maisons with blue shutters beside the millstream" />
 
     <!-- Fonts preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
