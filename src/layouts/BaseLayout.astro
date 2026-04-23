@@ -13,8 +13,8 @@ const {
   ogImage = "/images/og-hero.jpg"
 } = Astro.props;
 
-const canonicalUrl = `https://moulin-a-reves.com${Astro.url.pathname}`;
-const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://moulin-a-reves.com${ogImage}`;
+const canonicalUrl = `https://www.moulinareves.com${Astro.url.pathname}`;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinareves.com${ogImage}`;
 ---
 
 <!doctype html>
@@ -56,6 +56,9 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://moulin-a-reve
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Schema Markup -->
     <slot name="schema" />
