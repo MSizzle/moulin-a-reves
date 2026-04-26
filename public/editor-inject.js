@@ -99,19 +99,6 @@
 
       deactivate();
 
-      const key = target.getAttribute('data-i18n');
-      const lang = currentLang();
-
-      // If this element's static markup differs from the canonical translation
-      // (e.g. inline <br> tags), normalize to the canonical value first so the
-      // edit produces the canonical string the editor stores.
-      if (key && translations[key] && translations[key][lang] != null) {
-        const canonical = translations[key][lang];
-        if (target.textContent.trim() !== canonical.trim()) {
-          target.textContent = canonical;
-        }
-      }
-
       active = target;
       target.setAttribute('data-ed-active', '');
       target.setAttribute('contenteditable', 'plaintext-only');
