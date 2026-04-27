@@ -104,9 +104,21 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     if (body.translations) {
+      // Merge editor's payload into the latest remote translations so keys a
+      // developer added directly to git survive a publish from a stale editor.
+      const currentRaw = await fetchFileContent('public/i18n/translations.json');
+      let merged = body.translations;
+      if (currentRaw) {
+        try {
+          const current = JSON.parse(currentRaw);
+          merged = { ...current, ...body.translations };
+        } catch {
+          // Current file unparseable — fall back to editor's payload.
+        }
+      }
       results.translations = await commitFile(
         'public/i18n/translations.json',
-        JSON.stringify(body.translations, null, 2),
+        JSON.stringify(merged, null, 2),
         `Publish translations - ${timestamp}`
       );
     }
