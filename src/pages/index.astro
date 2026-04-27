@@ -41,7 +41,7 @@ const writings = [
       "@context": "https://schema.org",
       "@type": "LodgingBusiness",
       "name": "Moulin à Rêves",
-      "description": "A compound of three stone houses on the Juine River in Mereville, Essonne, one hour from Paris. Sleeps 25 across 10 bedrooms.",
+      "description": "A compound of three stone houses on the Juine River in Mereville, Essonne, one hour from Paris. Sleeps 20 across 10 bedrooms.",
       "url": "https://www.moulinareves.com",
       "telephone": "+19176806739",
       "email": "lemoulinfrance@gmail.com",
@@ -86,7 +86,7 @@ const writings = [
           "name": "How many guests can Moulin à Rêves accommodate?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The full compound sleeps up to 25 guests across three houses: Le Moulin à Rêves (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5)."
+            "text": "The full compound sleeps up to 20 guests across three houses: Le Moulin à Rêves (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5)."
           }
         },
         {
@@ -94,7 +94,7 @@ const writings = [
           "name": "Can I rent just one house at Moulin à Rêves?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, each of the three houses can be rented individually. Le Moulin (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5). The full compound can also be rented exclusively for groups up to 25."
+            "text": "Yes, each of the three houses can be rented individually. Le Moulin (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5). The full compound can also be rented exclusively for groups up to 20."
           }
         },
         {
@@ -140,6 +140,7 @@ const writings = [
         <a href="/contact/" class="btn btn--ghost">Speak with the Concierge</a>
       </div>
     </div>
+    <span class="hero__scroll" aria-hidden="true">découvrir</span>
   </section>
 
   <style>
@@ -198,17 +199,17 @@ const writings = [
   <!-- The Homes -->
   <section class="section">
     <div class="container text-center fade-in" style="margin-bottom: 56px;">
-      <span class="eyebrow">The Compound</span>
-      <h2 data-i18n="home.homes.heading">Three stone maisons. One story.</h2>
+      <span class="eyebrow">Le Domaine</span>
+      <h2 data-i18n="home.homes.heading">Three stone maisons. <span class="serif-italic">One story.</span></h2>
       <p data-i18n="home.homes.subheading" style="margin-top: 16px;">Each with its own character, its own view, its own reason to linger.</p>
     </div>
     <div class="container">
-      <div class="grid grid--3" style="gap: 24px;">
-        <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+      <div class="showcase showcase--triple">
+        <a href="/homes/le-moulin/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" loading="lazy" />
           </div>
-          <div class="card__overlay">
+          <div class="card__body">
             <span class="card__eyebrow">Maison One</span>
             <h3 class="card__title">Le Moulin à Rêves</h3>
             <div class="card__meta">
@@ -217,11 +218,11 @@ const writings = [
             </div>
           </div>
         </a>
-        <a href="/homes/hollywood-hideaway/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+        <a href="/homes/hollywood-hideaway/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway — a treasured sanctuary in the French countryside" loading="lazy" />
           </div>
-          <div class="card__overlay">
+          <div class="card__body">
             <span class="card__eyebrow">Maison Two</span>
             <h3 class="card__title">The Hollywood Hideaway</h3>
             <div class="card__meta">
@@ -230,11 +231,11 @@ const writings = [
             </div>
           </div>
         </a>
-        <a href="/homes/maison-de-la-riviere/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+        <a href="/homes/maison-de-la-riviere/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière — sunny cottage overlooking the stream" loading="lazy" />
           </div>
-          <div class="card__overlay">
+          <div class="card__body">
             <span class="card__eyebrow">Maison Three</span>
             <h3 class="card__title">La Maison de la Rivière</h3>
             <div class="card__meta">
@@ -245,7 +246,7 @@ const writings = [
         </a>
       </div>
       <div class="text-center" style="margin-top: 56px;">
-        <a href="/the-compound/" class="link-arrow" data-i18n="home.rentall">Rent the Entire Compound</a>
+        <a href="/the-compound/" class="editorial-link" data-i18n="home.rentall">Rent the entire domaine</a>
       </div>
     </div>
   </section>

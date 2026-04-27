@@ -136,12 +136,12 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         <div class="footer__grid">
           <div class="footer__brand">
             <h3 class="footer__logo">Moulin à Rêves</h3>
-            <p class="footer__tagline" data-i18n="footer.tagline">Mill of Dreams &middot; Essonne, France</p>
+            <p class="footer__tagline" data-i18n="footer.tagline">Le Moulin des Rêves &middot; Essonne &middot; France &middot; 48° 19′ N · 2° 5′ E</p>
           </div>
           <div class="footer__links">
             <h4 data-i18n="footer.explore">Explore</h4>
             <ul>
-              <li><a href="/homes/" data-i18n="footer.homes">The Maisons</a></li>
+              <li><a href="/homes/" data-i18n="footer.homes">Les Maisons</a></li>
               <li><a href="/the-compound/" data-i18n="footer.compound">The Compound</a></li>
               <li><a href="/explore/" data-i18n="footer.thingstodo">Things to Do</a></li>
               <li><a href="/catering/" data-i18n="footer.catering">Catering</a></li>
@@ -458,21 +458,31 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 40px;
+      }
+
+      .nav__logo {
+        flex-shrink: 0;
       }
 
       .nav__logo-text {
-        font-family: var(--font-display);
-        font-size: 1.5rem;
-        font-weight: 500;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 1.625rem;
+        font-weight: 400;
+        letter-spacing: 0.005em;
         color: white;
         text-decoration: none;
+        white-space: nowrap;
         transition: color var(--duration) var(--ease-out);
       }
 
       .nav__links {
         display: flex;
+        flex-wrap: nowrap;
         list-style: none;
-        gap: 32px;
+        gap: 28px;
       }
 
       .nav__links a {
@@ -481,6 +491,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         letter-spacing: 0.02em;
         color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
+        white-space: nowrap;
         transition: color var(--duration) var(--ease-out);
       }
 
@@ -491,7 +502,9 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .nav__actions {
         display: flex;
         align-items: center;
+        flex-shrink: 0;
         gap: 16px;
+        white-space: nowrap;
       }
 
       .nav__phone {
@@ -659,24 +672,30 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       }
 
       .footer__logo {
-        font-family: var(--font-display);
-        font-size: 1.75rem;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 2rem;
         font-weight: 400;
-        color: var(--text-on-dark);
-        margin-bottom: 8px;
+        letter-spacing: 0.005em;
+        color: var(--blue-dark);
+        margin-bottom: 10px;
       }
 
       .footer__tagline {
-        font-size: 0.875rem;
-        color: var(--text-light);
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 0.9375rem;
+        color: var(--ink);
+        letter-spacing: 0.01em;
       }
 
       .footer__links h4,
       .footer__contact h4 {
         font-size: 0.75rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text-light);
+        letter-spacing: 0.12em;
+        color: var(--ink);
+        font-weight: 700;
         margin-bottom: 16px;
       }
 
@@ -689,26 +708,29 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       }
 
       .footer__links a {
-        color: rgba(250, 247, 242, 0.7);
+        color: var(--ink);
         font-size: 0.9375rem;
         text-decoration: none;
+        transition: color var(--duration) var(--ease-out);
       }
 
       .footer__links a:hover {
-        color: white;
+        color: var(--blue-dark);
       }
 
       .footer__contact p {
         margin-bottom: 8px;
+        color: var(--ink);
       }
 
       .footer__contact a {
-        color: rgba(250, 247, 242, 0.7);
+        color: var(--ink);
         text-decoration: none;
+        transition: color var(--duration) var(--ease-out);
       }
 
       .footer__contact a:hover {
-        color: white;
+        color: var(--blue-dark);
       }
 
       .footer__newsletter {
@@ -717,7 +739,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
 
       .footer__newsletter-label {
         font-size: 0.8125rem;
-        color: var(--text-light);
+        color: var(--ink);
         margin-bottom: 12px;
       }
 
@@ -730,9 +752,13 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         flex: 1;
         padding: 10px 14px;
         font-size: 0.875rem;
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.15);
-        color: white;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(27, 79, 114, 0.25);
+        color: var(--ink);
+      }
+
+      .footer__newsletter-form .form__input::placeholder {
+        color: var(--ink-mute);
       }
 
       .footer__newsletter-form .btn {
@@ -742,29 +768,31 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       }
 
       .footer__bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid rgba(27, 79, 114, 0.18);
         padding-top: 24px;
         text-align: center;
       }
 
       .footer__bottom p {
         font-size: 0.8125rem;
-        color: var(--text-light);
+        color: var(--ink);
         max-width: none;
       }
 
-      @media (max-width: 1024px) {
-        .nav__inner {
-          padding-left: var(--side-padding-tablet);
-          padding-right: var(--side-padding-tablet);
-        }
-
+      @media (max-width: 1200px) {
         .nav__links {
           display: none;
         }
 
         .nav__hamburger {
           display: flex;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .nav__inner {
+          padding-left: var(--side-padding-tablet);
+          padding-right: var(--side-padding-tablet);
         }
 
         .footer__grid {

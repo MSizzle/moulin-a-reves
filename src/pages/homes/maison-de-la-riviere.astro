@@ -91,7 +91,7 @@ const { data: cms } = matter(raw);
   </section>
 
   <!-- Narrative Description -->
-  <section class="section">
+  <section class="section section--tight">
     <div class="container--narrow fade-in">
       <span class="eyebrow">The Maison</span>
       <h2>{cms.title}</h2>
@@ -104,13 +104,13 @@ const { data: cms } = matter(raw);
   </section>
 
   <!-- Room by Room -->
-  <section class="section section--soft">
+  <section class="section section--tight section--soft">
     <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 64px;">
+      <div class="text-center fade-in" style="margin-bottom: 32px;">
         <span class="eyebrow">Room by Room</span>
         <h2>Two Bedrooms, Sun-Drenched Spaces</h2>
       </div>
-      <div class="grid grid--3" style="gap: 24px;">
+      <div class="showcase">
         <div class="card fade-in">
           <div class="card__image">
             <img src="/images/homes/maison-artistes.webp" alt="La Chambre des Artistes" loading="lazy" />
@@ -174,10 +174,10 @@ const { data: cms } = matter(raw);
   </section>
 
   <!-- Cross Links -->
-  <section class="section section--soft">
+  <section class="section section--tight section--soft">
     <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 48px;">
-        <h2>The Other Maisons</h2>
+      <div class="text-center fade-in" style="margin-bottom: 32px;">
+        <h2>Les <span class="serif-italic">Autres Maisons</span></h2>
       </div>
       <div class="grid grid--2" style="gap: 24px;">
         <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">

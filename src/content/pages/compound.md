@@ -10,10 +10,10 @@ heroImage: "/images/hero-compound.webp"
 buildings: 4
 bedrooms: 10
 bathrooms: 7
-sleeps: 25
+sleeps: 20
 
 # Summary
-summary: "This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It sleeps 25 people with 10 bedrooms, 7 bathrooms. Encircled by a walled garden, this private compound offers 3 homes plus the versatile Grange entertaining space."
+summary: "This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It sleeps 20 people with 10 bedrooms, 7 bathrooms. Encircled by a walled garden, this private compound offers 3 homes plus the versatile Grange entertaining space."
 
 # Location
 location: "Mereville, France"
@@ -23,7 +23,7 @@ distanceFromParis: "1 hour drive"
 
 ## Description
 
-This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It sleeps 25 people with 10 bedrooms, 7 bathrooms.
+This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It sleeps 20 people with 10 bedrooms, 7 bathrooms.
 
 Encircled by a walled garden, this private compound offers 3 homes plus the versatile Grange entertaining space.
 
@@ -53,7 +53,7 @@ It is an ideal getaway for the weekend, the week, the month or the season!
 
 The Grange offers an enormous covered space to enjoy being together outside — even in the rain.
 
-- Huge dining table for all 25 guests to eat together
+- Huge dining table for all 20 guests to eat together
 - Full-size ping pong table
 - BBQ charcoal grills
 - Fireplace

@@ -2,19 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Rent the Full Compound — Moulin à Rêves | 25 Guests Near Paris" description="Rent all three houses at Moulin à Rêves — 10 bedrooms, 7 baths, sleeps 25. Family reunions, retreats, weddings & celebrations near Paris, France.">
+<BaseLayout title="Rent the Full Compound — Moulin à Rêves | 20 Guests Near Paris" description="Rent all three houses at Moulin à Rêves — 10 bedrooms, 7 baths, sleeps 20. Family reunions, retreats, weddings & celebrations near Paris, France.">
 
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "VacationRental",
       "name": "The Compound — Moulin à Rêves",
-      "description": "Rent all three stone houses at Moulin à Rêves. 10 bedrooms, 7 bathrooms, sleeps 25. Perfect for family reunions, retreats, weddings, and celebrations near Paris.",
+      "description": "Rent all three stone houses at Moulin à Rêves. 10 bedrooms, 7 bathrooms, sleeps 20. Perfect for family reunions, retreats, weddings, and celebrations near Paris.",
       "url": "https://www.moulinareves.com/the-compound/",
       "image": "/images/hero-compound.webp",
       "numberOfBedrooms": 10,
       "numberOfBathroomsTotal": 7,
-      "occupancy": { "@type": "QuantitativeValue", "value": 25 },
+      "occupancy": { "@type": "QuantitativeValue", "value": 20 },
       "floorSize": { "@type": "QuantitativeValue", "value": 420, "unitCode": "MTK" },
       "petsAllowed": true,
       "address": {
@@ -47,7 +47,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           "name": "How many guests can the full compound accommodate?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The full compound at Moulin à Rêves sleeps 25 guests across 10 bedrooms and 7 bathrooms in three separate houses."
+            "text": "The full compound at Moulin à Rêves sleeps 20 guests across 10 bedrooms and 7 bathrooms in three separate houses."
           }
         },
         {
@@ -63,7 +63,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           "name": "Is Moulin à Rêves suitable for weddings?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The compound is well-suited for intimate weddings and celebrations with its walled gardens, millstream, La Grange covered barn (seats 25+), and gazebo dining area."
+            "text": "Yes. The compound is well-suited for intimate weddings and celebrations with its walled gardens, millstream, La Grange covered barn (seats 20+), and gazebo dining area."
           }
         },
         {
@@ -123,7 +123,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="stats-bar__label" data-i18n="compound.stats.bathrooms">Bathrooms</div>
         </div>
         <div class="stats-bar__item">
-          <div class="stats-bar__number">25</div>
+          <div class="stats-bar__number">20</div>
           <div class="stats-bar__label" data-i18n="compound.stats.guests">Guests</div>
         </div>
         <div class="stats-bar__item">
@@ -148,12 +148,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- Use Cases -->
-  <section class="section section--stone">
+  <section class="section section--tight section--stone">
     <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 64px;">
+      <div class="text-center fade-in" style="margin-bottom: 32px;">
         <h2 data-i18n="compound.madefor.heading">Made For</h2>
       </div>
-      <div class="grid grid--4">
+      <div class="showcase">
         <div class="card fade-in">
           <div class="card__image">
             <img src="/images/outdoor-dining.webp" alt="Multi-generational family gathered for outdoor dinner at Moulin à Rêves, Barbizon" loading="lazy" />
@@ -214,12 +214,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- The Three Houses -->
-  <section class="section section--stone">
+  <section class="section section--tight section--stone">
     <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 64px;">
-        <h2 data-i18n="compound.threehomes.heading">The Three Houses</h2>
+      <div class="text-center fade-in" style="margin-bottom: 32px;">
+        <span class="eyebrow">Trois Maisons</span>
+        <h2 data-i18n="compound.threehomes.heading">Les <span class="serif-italic">Trois Maisons</span></h2>
       </div>
-      <div class="grid grid--3">
+      <div class="showcase showcase--triple">
         <a href="/homes/le-moulin/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River, Mereville" loading="lazy" />
@@ -294,7 +295,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section section--stone">
     <div class="container text-center fade-in">
       <blockquote class="testimonial" data-i18n="compound.testimonial">
-        "We booked all three houses for my parents' 50th anniversary. Twenty of us, three generations, a week in the French countryside. The children made friends with the frogs in the millstream. The adults made friends with the local wine. It was the best week we've had as a family."
+        «&nbsp;We booked all three houses for my parents' 50th anniversary. Twenty of us, three generations, a week in the French countryside. The children made friends with the frogs in the millstream. The adults made friends with the local wine. It was the best week we've had as a family.&nbsp;»
       </blockquote>
       <p class="testimonial__attribution" data-i18n="compound.testimonial.attribution">— James & Catherine, September 2025</p>
     </div>
