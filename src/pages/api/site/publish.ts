@@ -22,6 +22,35 @@ async function getFileSha(path: string): Promise<string | null> {
   }
 }
 
+async function fetchFileContent(path: string): Promise<string | null> {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+      headers: {
+        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Accept: 'application/vnd.github.v3.raw',
+      },
+    });
+    if (!res.ok) return null;
+    return await res.text();
+  } catch {
+    return null;
+  }
+}
+
+function applyColorsToCss(css: string, colors: Record<string, string>): string {
+  return css.replace(/(:root\s*\{)([\s\S]*?)(\n?\})/, (_m, open, inner, close) => {
+    let updated = inner;
+    for (const [name, value] of Object.entries(colors)) {
+      const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp(`(--${escaped}\\s*:\\s*)([^;\\n]+)(;)`);
+      if (re.test(updated)) {
+        updated = updated.replace(re, `$1${value}$3`);
+      }
+    }
+    return `${open}${updated}${close}`;
+  });
+}
+
 async function commitFile(path: string, content: string, message: string): Promise<boolean> {
   const sha = await getFileSha(path);
   const body: any = {
@@ -56,12 +85,22 @@ export const POST: APIRoute = async ({ request }) => {
     const results: Record<string, boolean> = {};
     const timestamp = new Date().toISOString();
 
-    if (body.css) {
-      results.css = await commitFile(
-        'src/styles/global.css',
-        body.css,
-        `Publish site styles - ${timestamp}`
-      );
+    if (body.colors && Object.keys(body.colors).length > 0) {
+      const currentCss = await fetchFileContent('src/styles/global.css');
+      if (currentCss) {
+        const newCss = applyColorsToCss(currentCss, body.colors);
+        if (newCss !== currentCss) {
+          results.colors = await commitFile(
+            'src/styles/global.css',
+            newCss,
+            `Publish colors - ${timestamp}`
+          );
+        } else {
+          results.colors = true;
+        }
+      } else {
+        results.colors = false;
+      }
     }
 
     if (body.translations) {
