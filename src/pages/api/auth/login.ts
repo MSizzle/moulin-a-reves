@@ -111,7 +111,7 @@ const loginHTML = (error?: boolean) => `<!DOCTYPE html>
           body: JSON.stringify({ password }),
         });
         if (res.ok) {
-          window.location.href = '/analytics/';
+          window.location.href = '/editor/';
         } else {
           window.location.href = '/api/auth/login?error=1';
         }
@@ -168,7 +168,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       maxAge: 2592000,
     });
 
-    if (isFormSubmit) return redirect('/analytics/');
+    if (isFormSubmit) return redirect('/editor/');
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
