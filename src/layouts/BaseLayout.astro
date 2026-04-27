@@ -838,7 +838,9 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
 
       // Fetch translations asynchronously and always apply — including for EN —
       // so dashboard edits to English text replace the static markup at runtime.
-      fetch('/i18n/translations.json', { cache: 'no-store' })
+      // /api/translations proxies the latest translations.json straight from
+      // GitHub so Publish appears on the live site without a Vercel rebuild.
+      fetch('/api/translations', { cache: 'no-store' })
         .then(res => res.json())
         .then(data => {
           translations = data;

@@ -36,7 +36,7 @@
   let active = null;
   let translations = {};
 
-  fetch('/i18n/translations.json')
+  fetch('/api/translations', { cache: 'no-store' })
     .then((r) => r.json())
     .then((data) => {
       translations = data || {};
