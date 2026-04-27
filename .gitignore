@@ -27,3 +27,6 @@ pnpm-debug.log*
 .netlify
 .vercel
 .env*.local
+
+# Original photography masters — converted to webp under public/images/
+public/images/new/

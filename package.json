@@ -18,5 +18,8 @@
     "@vercel/edge": "^1.2.2",
     "astro": "^6.1.2",
     "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
