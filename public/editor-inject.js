@@ -13,9 +13,11 @@
 
   const ACCENT = '#FF6B2B';
 
+  const SELECTOR = '[data-i18n], [data-i18n-html]';
+
   const style = document.createElement('style');
   style.textContent = `
-    [data-i18n] { transition: outline-color 0.15s ease; }
+    [data-i18n], [data-i18n-html] { transition: outline-color 0.15s ease; }
     [data-ed-hover]:not([data-ed-active]) {
       outline: 2px dashed rgba(255,107,43,0.55) !important;
       outline-offset: 3px !important;
@@ -47,6 +49,16 @@
     return document.documentElement.lang || 'en';
   }
 
+  // Returns { key, isHtml } for an i18n target, or null.
+  function keyOf(el) {
+    if (!el) return null;
+    const html = el.getAttribute('data-i18n-html');
+    if (html) return { key: html, isHtml: true };
+    const plain = el.getAttribute('data-i18n');
+    if (plain) return { key: plain, isHtml: false };
+    return null;
+  }
+
   function clearHover() {
     document
       .querySelectorAll('[data-ed-hover]')
@@ -63,7 +75,7 @@
   document.addEventListener(
     'mouseover',
     (e) => {
-      const target = e.target.closest && e.target.closest('[data-i18n]');
+      const target = e.target.closest && e.target.closest(SELECTOR);
       if (!target) {
         clearHover();
         return;
@@ -78,7 +90,7 @@
   document.addEventListener(
     'mouseout',
     (e) => {
-      const target = e.target.closest && e.target.closest('[data-i18n]');
+      const target = e.target.closest && e.target.closest(SELECTOR);
       if (target) target.removeAttribute('data-ed-hover');
     },
     true
@@ -87,7 +99,7 @@
   document.addEventListener(
     'click',
     (e) => {
-      const target = e.target.closest && e.target.closest('[data-i18n]');
+      const target = e.target.closest && e.target.closest(SELECTOR);
       if (!target) {
         deactivate();
         return;
@@ -99,9 +111,13 @@
 
       deactivate();
 
+      const meta = keyOf(target);
       active = target;
       target.setAttribute('data-ed-active', '');
-      target.setAttribute('contenteditable', 'plaintext-only');
+      // For HTML-bearing fields, allow rich content editing so child markup
+      // (e.g. <span class="serif-italic">) survives the edit. For plain
+      // text fields, lock down to plaintext-only.
+      target.setAttribute('contenteditable', meta && meta.isHtml ? 'true' : 'plaintext-only');
       target.focus();
 
       // Place caret at end of text
@@ -121,14 +137,14 @@
     'input',
     (e) => {
       if (!active || e.target !== active) return;
-      const key = active.getAttribute('data-i18n');
-      if (!key) return;
+      const meta = keyOf(active);
+      if (!meta) return;
       window.parent.postMessage(
         {
           type: 'mar-i18n-edit',
-          key,
+          key: meta.key,
           lang: currentLang(),
-          value: active.textContent || '',
+          value: meta.isHtml ? (active.innerHTML || '') : (active.textContent || ''),
         },
         '*'
       );
