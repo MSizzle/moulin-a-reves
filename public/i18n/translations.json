@@ -1731,13 +1731,13 @@
     "en": "Dine al fresco with friends, colleagues, family or students. This is a wonderful compound for inspiration, fun, reflection and quiet time together."
   },
   "le-moulin.bedrooms.eyebrow": {
-    "en": "Rooms"
+    "en": ""
   },
   "le-moulin.bedrooms.heading": {
     "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
   },
   "le-moulin.bedrooms.intro": {
-    "en": "Five bedrooms across three floors. Tap any room for details and photos."
+    "en": "Five bedrooms across on floors. Tap any room for details and photos."
   },
   "le-moulin.bedrooms.room.riviere.title": {
     "en": "La Chambre de la Rivière"
@@ -1758,7 +1758,7 @@
     "en": "The Cherry Room. Queen bed with a sink and bidet in the room. Shares the clawfoot-tub hall bath with Les Roses."
   },
   "le-moulin.bedrooms.room.roses.title": {
-    "en": "Les Roses"
+    "en": "La Roses"
   },
   "le-moulin.bedrooms.room.roses.summary": {
     "en": "The Rose Room. Two twin beds. Shares the clawfoot-tub hall bath with Les Cerises."
@@ -1767,13 +1767,13 @@
     "en": "Le Loft Suite"
   },
   "le-moulin.bedrooms.room.loft.summary": {
-    "en": "Second-floor attic with two twins (combinable as a king) plus a separate TV room with two floor twins. Shared hall bath with shower."
+    "en": "Second-floor loft attic with two twins (combinable as a king) plus a separate TV room with two floor twins. Shared hall bath with shower."
   },
   "le-moulin.living.eyebrow": {
-    "en": "Living Spaces"
+    "en": ""
   },
   "le-moulin.living.heading": {
-    "en": "Where you'll <span class=\"serif-italic\">gather</span>"
+    "en": "Where you'll gather"
   },
   "le-moulin.living.intro": {
     "en": "Salon, dining, and kitchen — the rooms made for long evenings together."
