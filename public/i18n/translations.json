@@ -1701,7 +1701,7 @@
     "en": "Le Moulin à Rêves"
   },
   "le-moulin.hero.tagline": {
-    "en": "The historic mill, the heart of the compound."
+    "en": "The heart of the compound."
   },
   "le-moulin.stats.bedrooms": {
     "en": "Bedrooms"
@@ -1716,28 +1716,28 @@
     "en": "Beds"
   },
   "le-moulin.narrative.eyebrow": {
-    "en": "The Maison"
+    "en": ""
   },
   "le-moulin.narrative.heading": {
     "en": "Le Moulin à Rêves"
   },
   "le-moulin.narrative.summary": {
-    "en": ""
+    "en": " A beautiful, historic mill house in Mèrèville, the watercress capital of France. Built in 1800, this was a working mill — in fact the Juine River still flows right through the house! "
   },
   "le-moulin.narrative.p1": {
-    "en": "Relax in the gardens and watch as the day goes by. Let your worries float away on the Juine River. Wake up to the roosters crowing in the chicken coop. Go back in time as you gaze at the flower gardens and Giverny-style bridge. Make a wish in the wishing well!"
+    "en": "Relax in the gardens. Let your worries float away on the Juine River. Wake up to the roosters crowing in the chicken coop. Go back in time as you gaze at the flower gardens and Giverny-style bridge. Make a wish in the wishing well."
   },
   "le-moulin.narrative.p2": {
-    "en": "Dine al fresco with friends, colleagues, family or students. This is a wonderful compound for inspiration, fun, reflection and quiet time together."
+    "en": "Dine al fresco in the beautiful setting. This is a place inspiration, fun and quiet time together."
   },
   "le-moulin.bedrooms.eyebrow": {
     "en": ""
   },
   "le-moulin.bedrooms.heading": {
-    "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
+    "en": "Where you'll sleep"
   },
   "le-moulin.bedrooms.intro": {
-    "en": "Five bedrooms across on floors. Tap any room for details and photos."
+    "en": "Five bedrooms on three floors. Tap any room for details and photos."
   },
   "le-moulin.bedrooms.room.riviere.title": {
     "en": "La Chambre de la Rivière"
@@ -1758,7 +1758,7 @@
     "en": "The Cherry Room. Queen bed with a sink and bidet in the room. Shares the clawfoot-tub hall bath with Les Roses."
   },
   "le-moulin.bedrooms.room.roses.title": {
-    "en": "La Roses"
+    "en": "La ChambreRoses"
   },
   "le-moulin.bedrooms.room.roses.summary": {
     "en": "The Rose Room. Two twin beds. Shares the clawfoot-tub hall bath with Les Cerises."
