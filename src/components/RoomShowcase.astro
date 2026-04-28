@@ -40,7 +40,7 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
   <div class="container">
     <div class="text-center fade-in" style="margin-bottom: 36px;">
       <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>
-      <h2 set:html={heading} {...(headingKey ? { 'data-i18n': headingKey } : {})} />
+      <h2 set:html={heading} {...(headingKey ? { 'data-i18n-html': headingKey } : {})} />
       {intro && <p style="margin-top: 12px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
     </div>
     <div class="showcase">

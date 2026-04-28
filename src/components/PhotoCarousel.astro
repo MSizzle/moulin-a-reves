@@ -22,7 +22,7 @@ const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 28px;">
         {eyebrow && <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>}
-        {heading && <h2 set:html={heading} {...(headingKey ? { 'data-i18n': headingKey } : {})} />}
+        {heading && <h2 set:html={heading} {...(headingKey ? { 'data-i18n-html': headingKey } : {})} />}
       </div>
     </div>
   )}
