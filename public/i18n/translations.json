@@ -2655,31 +2655,31 @@
     "en": "Kitchen"
   },
   "le-moulin.living.room.kitchen.longDescription": {
-    "en": "A working cook's kitchen with light pouring in through the tall windows. Built around a French armoire and a long farmhouse table — equally good for a leisurely breakfast or a serious dinner prep."
+    "en": "A wonderful kitchen to cook in together."
   },
   "le-moulin.living.room.kitchen.detail.0.label": {
-    "en": "Seats"
+    "en": "Seats: "
   },
   "le-moulin.living.room.kitchen.detail.0.value": {
     "en": "6 at the table"
   },
   "le-moulin.living.room.kitchen.detail.1.label": {
-    "en": "Ovens"
+    "en": "Ovens: "
   },
   "le-moulin.living.room.kitchen.detail.1.value": {
     "en": "2 Viking-style"
   },
   "le-moulin.living.room.kitchen.detail.2.label": {
-    "en": "Burners"
+    "en": "Burners: "
   },
   "le-moulin.living.room.kitchen.detail.2.value": {
     "en": "6 gas"
   },
   "le-moulin.living.room.kitchen.detail.3.label": {
-    "en": "Coffee"
+    "en": "Coffee: "
   },
   "le-moulin.living.room.kitchen.detail.3.value": {
-    "en": "Nespresso"
+    "en": "Nespresso, Drip"
   },
   "hideaway.bedrooms.room.looking-glass.eyebrow": {
     "en": "Bedroom · Ground Floor"
