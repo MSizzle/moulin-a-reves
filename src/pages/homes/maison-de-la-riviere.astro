@@ -22,15 +22,12 @@ const carouselImages = [
 const bedrooms = [
   {
     id: 'artistes',
-    eyebrow: 'Bedroom · Upstairs',
     title: 'La Chambre des Artistes',
-    summary: 'The Artists\' Room. Upstairs. King bed in a large bedroom, plus a twin bed and an in-room sink.',
-    longDescription: 'The bigger of the two bedrooms — a king bed with room to spare for a third guest on the twin. The in-room sink keeps morning routines uncomplicated.',
+    summary: 'The Artists\' Room — upstairs. King bed plus a twin.',
     details: [
-      { label: 'Beds', value: 'King + twin' },
+      { label: 'Bed', value: 'King + twin' },
       { label: 'Floor', value: 'Upstairs' },
-      { label: 'In-room', value: 'Sink' },
-      { label: 'Bathroom', value: 'Hall · tub + shower (shared)' },
+      { label: 'Bathroom', value: 'Hall, tub + shower (shared)' },
     ],
     photos: [
       { src: '/images/homes/maison-artistes.webp', alt: 'La Chambre des Artistes — the Artists\' Room' },
@@ -38,14 +35,12 @@ const bedrooms = [
   },
   {
     id: 'ecrivains',
-    eyebrow: 'Bedroom · Upstairs',
     title: 'La Chambre des Écrivains',
-    summary: 'The Writers\' Room. Upstairs. Double bed with an in-room sink. Shares the hall bathroom with Les Artistes.',
+    summary: 'The Writers\' Room — upstairs. Double bed, in-room sink.',
     details: [
       { label: 'Bed', value: 'Double' },
       { label: 'Floor', value: 'Upstairs' },
-      { label: 'In-room', value: 'Sink' },
-      { label: 'Bathroom', value: 'Hall · tub + shower (shared)' },
+      { label: 'Bathroom', value: 'Hall, tub + shower (shared)' },
     ],
     photos: [
       { src: '/images/homes/maison-ecrivains.webp', alt: 'La Chambre des Écrivains — the Writers\' Room' },
@@ -56,10 +51,8 @@ const bedrooms = [
 const livingSpaces = [
   {
     id: 'living',
-    eyebrow: 'Living',
-    title: 'The Living Room',
-    summary: 'Spacious and sun-drenched, with two couches, fine antiques, and an authentic Louis Vuitton trunk as a coffee table. French doors open to the stream and apple trees.',
-    longDescription: 'The light is what guests remember. Tall French doors open onto the stream and the apple orchard, and the room fills from morning until evening. Two couches, a fireplace, and the Louis Vuitton trunk that doubles as the coffee table.',
+    title: 'Living Room',
+    summary: 'Sun-drenched with two couches, French doors to the stream and apple trees.',
     photos: [
       { src: '/images/homes/maison-living.webp', alt: 'Sun-drenched living room with French doors' },
       { src: '/images/homes/le-jardin-hero.webp', alt: 'View from the living room toward the stream' },
@@ -67,25 +60,26 @@ const livingSpaces = [
   },
   {
     id: 'dining',
-    eyebrow: 'Dining',
-    title: 'The Dining Room',
-    summary: 'Elegant dining room with a table that seats up to eighteen — built for dinner parties and long, candlelit evenings.',
+    title: 'Dining Room',
+    summary: 'Elegant dining room — table seats up to eighteen.',
     photos: [
       { src: '/images/homes/maison-dining.webp', alt: 'Dining room — table for up to eighteen' },
     ],
   },
   {
     id: 'kitchen',
-    eyebrow: 'Kitchen',
-    title: 'The Kitchen',
-    summary: 'Eat-in kitchen with stone walls and exposed beams. Oven, full fridge + freezer, microwave, toaster, Nespresso, kettle.',
-    details: [
-      { label: 'Coffee', value: 'Nespresso' },
-      { label: 'Fridge', value: 'Full size + freezer' },
-      { label: 'Style', value: 'Stone walls, beams' },
-    ],
+    title: 'Kitchen',
+    summary: 'Eat-in kitchen with stone walls and exposed beams.',
     photos: [
       { src: '/images/homes/maison-kitchen.webp', alt: 'Eat-in kitchen with stone walls and beams' },
+    ],
+  },
+  {
+    id: 'gardens',
+    title: 'Gardens',
+    summary: 'Stream, apple trees, and shared compound gardens.',
+    photos: [
+      { src: '/images/bridge-garden.webp', alt: 'Compound gardens' },
     ],
   },
 ];
@@ -124,7 +118,7 @@ const amenities = [
 ];
 ---
 
-<BaseLayout title="La Maison de la Rivière — Sunny Cottage Rental Near Paris" description="Sunny two-bedroom cottage rental in Mereville, France — sleeps 5. Overlooks the Juine River and apple trees. Dining for 18, one hour from Paris.">
+<BaseLayout title="La Maison de la Rivière — Sunny Cottage Rental Near Paris" description="Sunny two-bedroom cottage rental in Méréville, France — sleeps 5. Overlooks the Juine River and apple trees. Dining for 18, one hour from Paris.">
 
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -139,8 +133,9 @@ const amenities = [
       "occupancy": { "@type": "QuantitativeValue", "value": cms.sleeps },
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Mereville",
-        "addressRegion": "Essonne",
+        "streetAddress": "16 Rue des Crocs au Renard",
+        "postalCode": "91660",
+        "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
       }
     })} />
@@ -184,7 +179,7 @@ const amenities = [
   </style>
 
   <!-- Stats Bar -->
-  <section class="section" style="padding-top: 48px; padding-bottom: 32px;">
+  <section class="section" style="padding-top: 32px; padding-bottom: 24px;">
     <div class="container">
       <div class="stats-bar">
         <div class="stats-bar__item">
@@ -211,11 +206,10 @@ const amenities = [
   <PhotoCarousel images={carouselImages} />
 
   <!-- Narrative Description -->
-  <section class="section section--tight">
+  <section class="section--tight">
     <div class="container--narrow fade-in">
-      <span class="eyebrow" data-i18n="riviere.narrative.eyebrow">The Maison</span>
       <h2 data-i18n="riviere.narrative.heading">{cms.title}</h2>
-      <div style="margin-top: 32px;">
+      <div style="margin-top: 24px;">
         <p class="prose-lead" data-i18n="riviere.narrative.summary">
           {cms.summary}
         </p>
@@ -225,9 +219,9 @@ const amenities = [
 
   <!-- Rooms (bedrooms) -->
   <RoomShowcase
-    eyebrow="Rooms"
+    eyebrow=""
     heading={`Where you'll <span class="serif-italic">sleep</span>`}
-    intro="Two upstairs bedrooms sharing a hall bath. Tap any room for details and photos."
+    intro="2 bedrooms upstairs, sharing a hall bath."
     rooms={bedrooms}
     background="stone"
     i18nKey="riviere.bedrooms"
@@ -235,16 +229,16 @@ const amenities = [
 
   <!-- Living Spaces -->
   <RoomShowcase
-    eyebrow="Living Spaces"
+    eyebrow=""
     heading={`Where you'll <span class="serif-italic">gather</span>`}
-    intro="A sun-drenched living room, a dining room for eighteen, and a stone-and-beam kitchen."
+    intro="Living room, dining for 18, kitchen, gardens."
     rooms={livingSpaces}
     i18nKey="riviere.living"
   />
 
   <!-- Amenities -->
   <AmenitiesSection
-    eyebrow="Amenities & Grounds"
+    eyebrow=""
     heading={`What's <span class="serif-italic">here</span>`}
     features={amenityFeatures}
     amenities={amenities}
@@ -254,9 +248,10 @@ const amenities = [
 
   <!-- Availability -->
   <AvailabilityCalendar
-    eyebrow="Availability"
+    monthsToShow={12}
+    eyebrow=""
     heading={`When You Can <span class="serif-italic">Stay</span>`}
-    intro="Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
+    intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
     i18nKey="riviere.availability"
   />
 
@@ -274,22 +269,21 @@ const amenities = [
   </section>
 
   <!-- Cross Links -->
-  <section class="section section--tight">
+  <section class="section--tight">
     <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 32px;">
+      <div class="text-center fade-in" style="margin-bottom: 24px;">
         <h2 data-i18n-html="riviere.cross.heading">Les <span class="serif-italic">Autres Maisons</span></h2>
       </div>
-      <div class="grid grid--2" style="gap: 24px;">
+      <div class="grid grid--2" style="gap: 20px;">
         <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow" data-i18n="riviere.cross.moulin.eyebrow">Maison One</span>
             <h3 class="card__title" data-i18n="riviere.cross.moulin.title">Le Moulin à Rêves</h3>
             <div class="card__meta">
               <span data-i18n="riviere.cross.moulin.beds">5 Bedrooms</span>
-              <span data-i18n="riviere.cross.moulin.sleeps">Sleeps 12</span>
+              <span data-i18n="riviere.cross.moulin.sleeps">Sleeps 10</span>
             </div>
           </div>
         </a>
@@ -298,17 +292,16 @@ const amenities = [
             <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow" data-i18n="riviere.cross.hideaway.eyebrow">Maison Two</span>
             <h3 class="card__title" data-i18n="riviere.cross.hideaway.title">The Hollywood Hideaway</h3>
             <div class="card__meta">
               <span data-i18n="riviere.cross.hideaway.beds">3 Bedrooms + Suite</span>
-              <span data-i18n="riviere.cross.hideaway.sleeps">Sleeps 8</span>
+              <span data-i18n="riviere.cross.hideaway.sleeps">Sleeps 7</span>
             </div>
           </div>
         </a>
       </div>
-      <div class="text-center" style="margin-top: 48px;">
-        <a href="/the-compound/" class="link-arrow" data-i18n="riviere.cross.cta">Rent All Three Maisons</a>
+      <div class="text-center" style="margin-top: 32px;">
+        <a href="/the-compound/" class="link-arrow" data-i18n="riviere.cross.cta">Rent the Compound</a>
       </div>
     </div>
   </section>

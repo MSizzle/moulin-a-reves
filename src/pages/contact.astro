@@ -19,9 +19,10 @@ import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
 
   <!-- Live Availability -->
   <AvailabilityCalendar
-    eyebrow="Step One"
-    heading="Check Availability First"
-    intro="Live calendar synced from our Airbnb and VRBO listings. Greyed dates are already booked across the compound. Once you've found a window, fill out the inquiry below."
+    monthsToShow={12}
+    eyebrow=""
+    heading={`When You Can <span class="serif-italic">Stay</span>`}
+    intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
   />
 
   <!-- Form + Contact Info -->
@@ -126,47 +127,63 @@ import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
             </div>
             <div style="margin-top: 20px;">
               <h4 data-i18n="contact.details.address">Address</h4>
-              <p>Moulin a Reves<br />Seine-et-Marne (77)<br />Ile-de-France, France</p>
+              <p data-i18n="contact.details.addressLines">16 Rue des Crocs au Renard<br />91660 Le Mérévillois<br />France</p>
             </div>
           </div>
 
-          <div class="fade-in" style="margin-top: 48px;">
+          <div class="fade-in" style="margin-top: 40px;">
             <h2 data-i18n="contact.getting.heading">Getting Here</h2>
 
-            <div style="margin-top: 24px;">
-              <h4 data-i18n="contact.getting.car.heading">From Paris by Car</h4>
-              <p data-i18n="contact.getting.car.text" style="margin-top: 8px;">
-                Take the A6 south from Paris towards Lyon. Exit at Fontainebleau and follow signs towards Barbizon / Milly-la-Foret. The compound is approximately one hour from central Paris, depending on traffic. Detailed directions and GPS coordinates will be sent with your booking confirmation.
-              </p>
-            </div>
-
-            <div style="margin-top: 24px;">
-              <h4 data-i18n="contact.getting.train.heading">From Paris by Train</h4>
+            <div style="margin-top: 20px;">
+              <h4 data-i18n="contact.getting.train.heading">By Train (recommended)</h4>
               <p data-i18n="contact.getting.train.text" style="margin-top: 8px;">
-                Take the Transilien Line R from Gare de Lyon to Fontainebleau-Avon station (approximately 40 minutes). From the station, the compound is a 20-minute drive. We can arrange a taxi to meet you, or you can rent a car at the station.
+                Take the Intercités or Transilien from <strong>Gare d'Austerlitz</strong> in Paris to <strong>Étampes</strong> (about 45 minutes). From Étampes station, taxi or Uber to the compound is 15–20 minutes.
               </p>
             </div>
 
-            <div style="margin-top: 24px;">
+            <div style="margin-top: 20px;">
+              <h4 data-i18n="contact.getting.car.heading">By Car from Paris</h4>
+              <p data-i18n="contact.getting.car.text" style="margin-top: 8px;">
+                Approximately 1 hour from central Paris via the A10. Detailed directions and GPS coordinates are sent with your booking confirmation.
+              </p>
+            </div>
+
+            <div style="margin-top: 20px;">
               <h4 data-i18n="contact.getting.airport.heading">From the Airports</h4>
               <p data-i18n="contact.getting.airport.text" style="margin-top: 8px;">
-                Charles de Gaulle (CDG): approximately 1 hour 30 minutes by car. Orly (ORY): approximately 1 hour. We can arrange private transfers from either airport on request.
+                <strong>Orly (ORY)</strong>: about 1 hour by Uber or taxi.<br />
+                <strong>Charles de Gaulle (CDG)</strong>: about 1 hr 30 min by Uber or taxi.<br />
+                Private transfers can be arranged on request.
+              </p>
+            </div>
+
+            <div style="margin-top: 20px;">
+              <h4 data-i18n="contact.getting.taxi.heading">Taxis & Ride Apps</h4>
+              <p data-i18n="contact.getting.taxi.text" style="margin-top: 8px;">
+                Uber and Bolt operate in Paris and the surrounding region. From Étampes station: <a href="tel:+33169782343">+33 1 69 78 23 43</a> (Taxi Étampes). We can also arrange a driver to meet your train.
+              </p>
+            </div>
+
+            <div style="margin-top: 20px;">
+              <h4 data-i18n="contact.getting.car-rental.heading">Car Rental</h4>
+              <p data-i18n="contact.getting.car-rental.text" style="margin-top: 8px;">
+                Rental cars are available at Orly, CDG, and Gare d'Austerlitz. Driving the last 5–10 km on country roads is straightforward.
               </p>
             </div>
           </div>
 
           <!-- Map -->
-          <div class="fade-in" style="margin-top: 48px;">
+          <div class="fade-in" style="margin-top: 40px;">
             <div style="border-radius: 8px; overflow: hidden; height: 350px;">
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=2.55%2C48.40%2C2.70%2C48.47&layer=mapnik&marker=48.4433%2C2.6033"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=2.05%2C48.28%2C2.15%2C48.36&layer=mapnik&marker=48.3167%2C2.0833"
                 style="border: 0; width: 100%; height: 100%;"
                 loading="lazy"
-                title="Map showing Moulin à Rêves location near Barbizon, France"
+                title="Map showing Moulin à Rêves in Méréville, France"
               ></iframe>
             </div>
             <p data-i18n="contact.map.caption" style="margin-top: 8px; font-size: 0.8125rem; color: var(--text-light);">
-              Near Barbizon, Seine-et-Marne &middot; One hour south of Paris
+              Méréville, France &middot; One hour south of Paris
             </p>
           </div>
         </div>

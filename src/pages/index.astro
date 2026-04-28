@@ -29,26 +29,43 @@ const writings = [
     excerpt: 'Three generations, three houses, one unforgettable week — everything we have learned about bringing families together.',
     image: '/images/outdoor-dining.webp',
     date: '2026-01-10',
-    alt: 'Multi-generational family dining outdoors at Moulin à Rêves compound, Barbizon'
+    alt: 'Multi-generational family dining outdoors at Moulin à Rêves compound'
   }
+];
+
+const compoundFeatures = [
+  { title: 'La Grange', summary: 'Covered entertaining space — long table for 20, ping pong, fireplace.', image: '/images/barn-events.webp', alt: 'La Grange covered entertaining barn at Moulin à Rêves', href: '/the-compound/' },
+  { title: 'Spa', summary: 'Solarium spa with jacuzzi for warm-weather and winter use.', image: '/images/wellness-pool.webp', alt: 'Spa solarium with jacuzzi at Moulin à Rêves' },
+  { title: 'Jacuzzi', summary: 'Heated jacuzzi inside the solarium — open year round.', image: '/images/wellness-pool.webp', alt: 'Jacuzzi at Moulin à Rêves' },
+  { title: 'Gym', summary: 'Treadmill, elliptical, weights, boxing bag, eight yoga mats.', image: '/images/screening-room.webp', alt: 'Private gym at Moulin à Rêves' },
+  { title: 'Gardens', summary: 'Walled gardens, the millstream, a Giverny-style bridge, and the lawn.', image: '/images/bridge-garden.webp', alt: 'Walled gardens and the millstream at Moulin à Rêves' },
+  { title: 'Screening Room', summary: 'Upstairs cinema room with leather couches and a large screen.', image: '/images/screening-room.webp', alt: 'Screening room at Moulin à Rêves' },
+  { title: 'Chickens', summary: 'A working chicken coop. Wake up to the roosters; collect the eggs.', image: '/images/forest-path.webp', alt: 'Chicken coop at Moulin à Rêves' },
+];
+
+const groupTypes = [
+  { title: 'Family reunions', summary: 'Three houses, one garden — together by day, separate when needed.', image: '/images/outdoor-dining.webp', alt: 'Family dinner outdoors at Moulin à Rêves' },
+  { title: 'Yoga retreats', summary: 'Lawn, La Grange, and the spa — set up for retreat hosts.', image: '/images/yoga-lawn.webp', alt: 'Morning yoga on the lawn at Moulin à Rêves' },
+  { title: 'Friends trips', summary: 'Twenty beds, long dinners, the millstream, and Paris an hour away.', image: '/images/gazebo-dining.webp', alt: 'Friends gathered for evening dining at Moulin à Rêves' },
 ];
 ---
 
-<BaseLayout title="Moulin à Rêves" description="Three stone maisons on the Juine River in the French countryside, one hour from Paris.">
+<BaseLayout title="Moulin à Rêves" description="A private historic compound of three stone maisons in Méréville, France. Sleeps 20 across 10 bedrooms. One hour from Paris.">
 
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "LodgingBusiness",
       "name": "Moulin à Rêves",
-      "description": "A compound of three stone houses on the Juine River in Mereville, Essonne, one hour from Paris. Sleeps 20 across 10 bedrooms.",
+      "description": "A private historic compound of three stone houses in Méréville, France. Sleeps 20 across 10 bedrooms.",
       "url": "https://www.moulinareves.com",
       "telephone": "+19176806739",
       "email": "lemoulinfrance@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Mereville",
-        "addressRegion": "Essonne",
+        "streetAddress": "16 Rue des Crocs au Renard",
+        "postalCode": "91660",
+        "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
       },
       "geo": {
@@ -78,7 +95,7 @@ const writings = [
           "name": "Where is Moulin à Rêves located?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Moulin à Rêves is located in Mereville, Essonne, France, on the banks of the Juine River — one hour south of Paris by car or train."
+            "text": "Moulin à Rêves is located in Méréville, France, on the banks of the Juine River — one hour south of Paris by car or train."
           }
         },
         {
@@ -86,7 +103,7 @@ const writings = [
           "name": "How many guests can Moulin à Rêves accommodate?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The full compound sleeps up to 20 guests across three houses: Le Moulin à Rêves (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5)."
+            "text": "The full compound sleeps up to 20 guests across three houses: Le Moulin à Rêves (sleeps 10), The Hollywood Hideaway (sleeps 7), and La Maison de la Rivière (sleeps 5)."
           }
         },
         {
@@ -94,7 +111,7 @@ const writings = [
           "name": "Can I rent just one house at Moulin à Rêves?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, each of the three houses can be rented individually. Le Moulin (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5). The full compound can also be rented exclusively for groups up to 20."
+            "text": "Yes, each of the three houses can be rented individually, or rent the full compound for groups up to 20."
           }
         },
         {
@@ -107,18 +124,10 @@ const writings = [
         },
         {
           "@type": "Question",
-          "name": "Is catering available at Moulin à Rêves?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Catering services include breakfast delivery, dinner service, and a private chef for your entire stay. Yoga, massage, and beauty treatments can also be arranged."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "How far is Moulin à Rêves from Paris?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Moulin à Rêves is approximately one hour from Paris by car, and easily reachable by train via the RER C to Étréchy."
+            "text": "Approximately one hour from Paris by car, or by train from Gare d'Austerlitz to Étampes (then 15–20 minutes by taxi)."
           }
         }
       ]
@@ -132,11 +141,11 @@ const writings = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow">Mereville · Essonne · France</span>
+      <span class="hero__eyebrow">Méréville · France</span>
       <h1 class="hero__title" data-i18n="home.title">Live the countryside,<br/>unhurried.</h1>
       <p class="hero__tagline" data-i18n="home.tagline">{cms.heroTagline}</p>
       <div class="hero__actions">
-        <a href="/homes/" class="btn btn--white" data-i18n="home.cta">Discover the Maisons</a>
+        <a href="/the-compound/" class="btn btn--white" data-i18n="home.cta">Discover the Compound</a>
         <a href="/contact/" class="btn btn--ghost">Speak with the Concierge</a>
       </div>
     </div>
@@ -144,7 +153,7 @@ const writings = [
   </section>
 
   <style>
-    .hero--lc { height: 94vh; min-height: 620px; align-items: center; padding-bottom: 0; }
+    .hero--lc { height: 88vh; min-height: 580px; align-items: center; padding-bottom: 0; }
     .hero--lc .hero__content { display: flex; flex-direction: column; align-items: center; }
     .hero__eyebrow {
       display: block;
@@ -154,9 +163,8 @@ const writings = [
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.96);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
-      /* Compensate for trailing letter-spacing so centered text sits optically centered */
       padding-left: 0.28em;
     }
     .hero__actions {
@@ -181,27 +189,67 @@ const writings = [
       text-decoration-color: white;
     }
     @media (max-width: 768px) {
-      .hero--lc { height: 80vh; min-height: 520px; }
+      .hero--lc { height: 76vh; min-height: 480px; }
+    }
+    .section--tighter { padding-top: 56px; padding-bottom: 56px; }
+    .compound-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .compound-tile {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--bg-stone);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .compound-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out);
+    }
+    .compound-tile:hover img { transform: scale(1.04); }
+    .compound-tile__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,15,15,0.78) 0%, rgba(15,15,15,0) 55%);
+      display: flex;
+      align-items: flex-end;
+      padding: 22px 22px 24px;
+    }
+    .compound-tile__body { color: white; }
+    .compound-tile__title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.5rem;
+      margin: 0 0 6px;
+    }
+    .compound-tile__summary {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.88);
+      margin: 0;
+      line-height: 1.5;
     }
   </style>
 
   <!-- Introduction -->
-  <section class="section--tight text-center">
+  <section class="section--tighter text-center">
     <div class="container--narrow fade-in">
-      <span class="eyebrow">An Invitation</span>
       <h2 data-i18n="home.intro.heading">{cms.introHeading}</h2>
-      <p data-i18n="home.intro.text" style="margin-top: 24px;">
+      <p data-i18n="home.intro.text" style="margin-top: 20px;">
         {cms.introText}
       </p>
     </div>
   </section>
 
-  <!-- The Homes -->
-  <section class="section">
-    <div class="container text-center fade-in" style="margin-bottom: 56px;">
-      <span class="eyebrow">Le Domaine</span>
-      <h2 data-i18n="home.homes.heading">Three stone maisons. <span class="serif-italic">One story.</span></h2>
-      <p data-i18n="home.homes.subheading" style="margin-top: 16px;">Each with its own character, its own view, its own reason to linger.</p>
+  <!-- Les Maisons -->
+  <section class="section--tighter">
+    <div class="container text-center fade-in" style="margin-bottom: 36px;">
+      <h2 data-i18n-html="home.homes.heading">Les <span class="serif-italic">Maisons</span></h2>
     </div>
     <div class="container">
       <div class="showcase showcase--triple">
@@ -210,24 +258,24 @@ const writings = [
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" loading="lazy" />
           </div>
           <div class="card__body">
-            <span class="card__eyebrow">Maison One</span>
             <h3 class="card__title">Le Moulin à Rêves</h3>
             <div class="card__meta">
               <span>5 Bedrooms</span>
-              <span>Sleeps 12</span>
+              <span>4 Baths</span>
+              <span>Sleeps 10</span>
             </div>
           </div>
         </a>
         <a href="/homes/hollywood-hideaway/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway — a treasured sanctuary in the French countryside" loading="lazy" />
+            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway" loading="lazy" />
           </div>
           <div class="card__body">
-            <span class="card__eyebrow">Maison Two</span>
             <h3 class="card__title">The Hollywood Hideaway</h3>
             <div class="card__meta">
               <span>3 Bedrooms + Suite</span>
-              <span>Sleeps 8</span>
+              <span>2 Baths</span>
+              <span>Sleeps 7</span>
             </div>
           </div>
         </a>
@@ -236,109 +284,82 @@ const writings = [
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière — sunny cottage overlooking the stream" loading="lazy" />
           </div>
           <div class="card__body">
-            <span class="card__eyebrow">Maison Three</span>
             <h3 class="card__title">La Maison de la Rivière</h3>
             <div class="card__meta">
               <span>2 Bedrooms</span>
+              <span>1 Bath</span>
               <span>Sleeps 5</span>
             </div>
           </div>
         </a>
       </div>
-      <div class="text-center" style="margin-top: 56px;">
-        <a href="/the-compound/" class="editorial-link" data-i18n="home.rentall">Rent the entire domaine</a>
+      <div class="text-center" style="margin-top: 36px;">
+        <a href="/the-compound/" class="editorial-link" data-i18n="home.rentall">Rent the entire compound</a>
       </div>
     </div>
   </section>
 
-  <!-- Sense of Place — Editorial Split -->
-  <section class="fade-in">
-    <div class="split split--reverse">
-      <div class="split__body">
-        <span class="eyebrow">A Sense of Place</span>
-        <h2>Where the light <em style="font-family: var(--font-display); font-weight: 300;">still falls</em> the way it did two centuries ago.</h2>
-        <p data-i18n="home.senseof.quote">
-          {cms.senseOfPlaceQuote}
-        </p>
-        <div>
-          <a href="/explore/" class="link-arrow">Discover the Region</a>
-        </div>
-      </div>
-      <div class="split__image">
-        <img src="/images/forest-path.webp" alt="Dappled sunlight through Fontainebleau Forest near Moulin à Rêves" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Groups — Featured -->
-  <section class="section">
-    <div class="container">
-      <a href="/the-compound/" class="card card--featured fade-in" style="text-decoration:none;color:inherit;">
-        <div class="card__image">
-          <img src={cms.groupsImage} alt="Group of friends dining outdoors at Moulin à Rêves compound in the French countryside" loading="lazy" />
-        </div>
-        <div class="card__body">
-          <h2 class="card__title" data-i18n="home.groups.heading">{cms.groupsHeading}</h2>
-          <p class="card__description" data-i18n="home.groups.desc">
-            {cms.groupsDescription}
-          </p>
-          <div style="margin-top: 24px;">
-            <span class="link-arrow" data-i18n="home.groups.cta">{cms.groupsCta}</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Experiences -->
-  <section class="section section--soft">
-    <div class="container text-center fade-in" style="margin-bottom: 56px;">
-      <span class="eyebrow">The Art of Staying</span>
-      <h2 data-i18n="home.experiences.heading">Your stay, composed.</h2>
-      <p data-i18n="home.experiences.subheading" style="margin-top: 16px;">More than a place to sleep — a place to live well.</p>
+  <!-- Discover the Compound -->
+  <section class="section--tighter section--soft">
+    <div class="container text-center fade-in" style="margin-bottom: 36px;">
+      <h2 data-i18n-html="home.compound.heading">Discover the <span class="serif-italic">Compound</span></h2>
     </div>
     <div class="container">
-      <div class="grid grid--3" style="gap: 24px;">
-        <a href="/catering/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/catering-table.webp" alt="Dinner table set under garden lights at Moulin à Rêves near Barbizon, France" loading="lazy" />
-          </div>
-          <div class="card__overlay">
-            <span class="card__eyebrow">Experience 01</span>
-            <h3 class="card__title" data-i18n="home.exp.catering.title">Catering</h3>
-            <p class="card__description" style="color: rgba(255,255,255,0.85); margin-bottom: 0; font-size: 0.875rem;" data-i18n="home.exp.catering.desc">From breakfast at your door to a private chef for the weekend.</p>
-          </div>
-        </a>
-        <a href="/wellness/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/yoga-lawn.webp" alt="Morning yoga on the lawn at Moulin à Rêves countryside retreat near Fontainebleau" loading="lazy" />
-          </div>
-          <div class="card__overlay">
-            <span class="card__eyebrow">Experience 02</span>
-            <h3 class="card__title" data-i18n="home.exp.wellness.title">Wellness</h3>
-            <p class="card__description" style="color: rgba(255,255,255,0.85); margin-bottom: 0; font-size: 0.875rem;" data-i18n="home.exp.wellness.desc">Yoga, massage, and beauty — let someone else take care of you.</p>
-          </div>
-        </a>
-        <a href="/explore/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/barbizon-village.webp" alt="Barbizon village street with stone houses near Moulin à Rêves, Seine-et-Marne" loading="lazy" />
-          </div>
-          <div class="card__overlay">
-            <span class="card__eyebrow">Experience 03</span>
-            <h3 class="card__title" data-i18n="home.exp.explore.title">Explore</h3>
-            <p class="card__description" style="color: rgba(255,255,255,0.85); margin-bottom: 0; font-size: 0.875rem;" data-i18n="home.exp.explore.desc">Forests, châteaux, painters' villages, and Paris — all within reach.</p>
-          </div>
-        </a>
+      <div class="compound-grid">
+        {compoundFeatures.map((feat, i) => (
+          feat.href ? (
+            <a href={feat.href} class="compound-tile fade-in">
+              <img src={feat.image} alt={feat.alt} loading="lazy" />
+              <div class="compound-tile__overlay">
+                <div class="compound-tile__body">
+                  <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
+                  <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
+                </div>
+              </div>
+            </a>
+          ) : (
+            <div class="compound-tile fade-in">
+              <img src={feat.image} alt={feat.alt} loading="lazy" />
+              <div class="compound-tile__overlay">
+                <div class="compound-tile__body">
+                  <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
+                  <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
+                </div>
+              </div>
+            </div>
+          )
+        ))}
       </div>
     </div>
   </section>
 
-  <style>
-    .section--soft { background: var(--bg-warm-white); }
-  </style>
+  <!-- Groups -->
+  <section class="section--tighter">
+    <div class="container text-center fade-in" style="margin-bottom: 36px;">
+      <h2 data-i18n="home.groups.heading">{cms.groupsHeading}</h2>
+    </div>
+    <div class="container">
+      <div class="grid grid--3" style="gap: 20px;">
+        {groupTypes.map((g, i) => (
+          <a href="/the-compound/" class="card fade-in" style="text-decoration:none;color:inherit;">
+            <div class="card__image">
+              <img src={g.image} alt={g.alt} loading="lazy" />
+            </div>
+            <div class="card__body">
+              <h3 class="card__title" data-i18n={`home.groups.type.${i}.title`}>{g.title}</h3>
+              <p class="card__description" data-i18n={`home.groups.type.${i}.summary`}>{g.summary}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="text-center" style="margin-top: 36px;">
+        <a href="/the-compound/" class="link-arrow" data-i18n="home.groups.cta">{cms.groupsCta}</a>
+      </div>
+    </div>
+  </section>
 
   <!-- History Beat -->
-  <section class="hero" style="height: 50vh; min-height: 400px;">
+  <section class="hero" style="height: 44vh; min-height: 340px;">
     <div class="hero__image">
       <img src="/images/forest-path.webp" alt="Ancient millstream running through stone buildings at Moulin à Rêves" loading="lazy" />
     </div>
@@ -353,7 +374,7 @@ const writings = [
   </section>
 
   <!-- Testimonial -->
-  <section class="section section--stone">
+  <section class="section--tighter section--stone">
     <div class="container text-center fade-in">
       <blockquote class="testimonial" data-i18n="home.testimonial">
         "{cms.testimonialQuote}"
@@ -363,11 +384,9 @@ const writings = [
   </section>
 
   <!-- Writings Carousel -->
-  <section class="section writings">
-    <div class="container text-center fade-in" style="margin-bottom: 48px;">
-      <span class="eyebrow">From the Journal</span>
-      <h2>Writings from the Compound</h2>
-      <p style="margin-top: 12px;">Stories, guides, and seasonal notes from the French countryside.</p>
+  <section class="section--tighter writings">
+    <div class="container text-center fade-in" style="margin-bottom: 32px;">
+      <h2 data-i18n="home.journal.heading">From the Journal</h2>
     </div>
     <div class="writings__carousel-wrap">
       <button class="writings__arrow writings__arrow--prev" id="writings-prev" aria-label="Previous writing">&#8249;</button>
@@ -507,15 +526,51 @@ const writings = [
     })();
   </script>
 
+  <!-- Discover the Area (moved to bottom) -->
+  <section class="section--tighter section--soft">
+    <div class="container text-center fade-in" style="margin-bottom: 32px;">
+      <h2 data-i18n-html="home.area.heading">Discover the <span class="serif-italic">Area</span></h2>
+      <p data-i18n="home.area.intro" style="margin-top: 12px;">Forests, châteaux, painters' villages, and Paris — all within reach.</p>
+    </div>
+    <div class="container">
+      <div class="grid grid--3" style="gap: 20px;">
+        <a href="/explore/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card__image">
+            <img src="/images/barbizon-village.webp" alt="Barbizon village street near Moulin à Rêves" loading="lazy" />
+          </div>
+          <div class="card__overlay">
+            <h3 class="card__title" data-i18n="home.area.barbizon">Barbizon</h3>
+          </div>
+        </a>
+        <a href="/explore/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card__image">
+            <img src="/images/explore/forest.webp" alt="Fontainebleau Forest near Moulin à Rêves" loading="lazy" />
+          </div>
+          <div class="card__overlay">
+            <h3 class="card__title" data-i18n="home.area.forest">Fontainebleau Forest</h3>
+          </div>
+        </a>
+        <a href="/explore/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card__image">
+            <img src="/images/explore/barbizon.webp" alt="Paris an hour from Moulin à Rêves" loading="lazy" />
+          </div>
+          <div class="card__overlay">
+            <h3 class="card__title" data-i18n="home.area.paris">Paris (1 hr)</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="hero" style="height: 45vh; min-height: 350px;">
+  <section class="hero" style="height: 42vh; min-height: 320px;">
     <div class="hero__image">
-      <img src="/images/evening-compound.webp" alt="Moulin à Rêves stone compound at golden hour, near Fontainebleau Forest, France" loading="lazy" />
+      <img src="/images/evening-compound.webp" alt="Moulin à Rêves stone compound at golden hour" loading="lazy" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <h2 class="hero__title" data-i18n="home.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Plan Your Stay</h2>
-      <p class="hero__tagline" data-i18n="home.cta.text">Tell us your dates, your group, your dreams. We'll take it from there.</p>
+      <p class="hero__tagline" data-i18n="home.cta.text">Tell us your dates, your group, your dreams.</p>
       <a href="/contact/" class="btn btn--white" data-i18n="home.cta.button">Start Your Conversation</a>
     </div>
   </section>

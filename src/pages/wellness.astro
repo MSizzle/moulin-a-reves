@@ -2,42 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Yoga, Massage & Wellness Retreats — Moulin à Rêves, France" description="Yoga on the lawn, in-house massage, and beauty treatments at Moulin à Rêves. Wellness services arranged for your stay in the French countryside.">
+<BaseLayout title="Wellness Recommendations — Moulin à Rêves" description="Trusted local yoga teachers, massage therapists, and beauty practitioners near Moulin à Rêves. We share contacts; you book directly.">
 
   <!-- Hero -->
-  <section class="hero" style="height: 60vh;">
+  <section class="hero" style="height: 56vh;">
     <div class="hero__image">
-      <img src="/images/wellness-hero.webp" alt="Garden chaises on the lawn under willows at Moulin à Rêves — the quiet that restores" />
+      <img src="/images/wellness-hero.webp" alt="Garden chaises on the lawn at Moulin à Rêves" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow">Moulin à Rêves</span>
       <h1 class="hero__title" data-i18n="wellness.hero.title">Wellness</h1>
-      <p class="hero__tagline" data-i18n="wellness.hero.tagline">Yoga, massage, and the kind of quiet that restores.</p>
+      <p class="hero__tagline" data-i18n="wellness.hero.tagline">Local practitioners we trust. We share contacts; you book directly.</p>
     </div>
   </section>
 
-  <style>
-    .hero__eyebrow {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.96);
-      margin-bottom: 24px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
-      padding-left: 0.28em;
-    }
-  </style>
-
   <!-- Intro -->
-  <section class="section">
+  <section class="section--tight">
     <div class="container--narrow text-center fade-in">
-      <h2 data-i18n="wellness.intro.heading">Let Someone Take Care of You</h2>
-      <p data-i18n="wellness.intro.text" style="margin-top: 24px;">
-        The countryside does most of the work. The air, the silence, the rhythm of days that have nowhere urgent to go. But sometimes your shoulders need more than fresh air, and your mind needs more than a good view. That's where our wellness partners come in — local practitioners who come to the compound so you don't have to go anywhere at all.
+      <h2 data-i18n="wellness.intro.heading">How wellness works at Moulin à Rêves</h2>
+      <p data-i18n="wellness.intro.text" style="margin-top: 20px;">
+        We do not provide wellness services ourselves. We share trusted local contacts — yoga teachers, massage therapists, beauty professionals — and you arrange directly with them.
       </p>
     </div>
   </section>
@@ -46,16 +30,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="fade-in">
     <div class="split">
       <div class="split__image">
-        <img src="/images/yoga-lawn.webp" alt="The lawn between the houses with chaises and the Giverny-style bridge — where morning yoga is set up at Moulin à Rêves" loading="lazy" />
+        <img src="/images/yoga-lawn.webp" alt="The lawn between the houses at Moulin à Rêves" loading="lazy" />
       </div>
       <div class="split__body">
-        <span class="eyebrow">Morning Practice</span>
-        <h2 data-i18n="wellness.yoga.heading">Yoga on the Lawn</h2>
+        <h2 data-i18n="wellness.yoga.heading">Yoga</h2>
         <p data-i18n="wellness.yoga.p1">
-          The lawn between the houses catches the morning sun from the east, and by eight o'clock, it's warm enough for bare feet on grass. Your instructor arrives with mats and props, and for the next hour, the only sounds are breath, birdsong, and the millstream.
-        </p>
-        <p data-i18n="wellness.yoga.p2">
-          Sessions are available for all levels — from gentle morning flows to more dynamic vinyasa. For groups, we can arrange a daily practice throughout your stay. For yoga retreat organisers, we can help structure a full programme with meals, accommodation, and additional wellness services.
+          Local instructors are available for one-off sessions or full retreat programmes on the lawn or in La Grange. Pricing and scheduling go directly through the teacher.
         </p>
       </div>
     </div>
@@ -65,17 +45,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="fade-in">
     <div class="split split--reverse">
       <div class="split__body">
-        <span class="eyebrow">Restoration</span>
         <h2 data-i18n="wellness.massage.heading">Massage</h2>
         <p data-i18n="wellness.massage.p1">
-          Your massage therapist sets up in one of the houses or, on warm days, on the shaded terrace — wherever you're most comfortable. Treatments range from deep tissue to relaxation massage, using plant-based oils from a producer in Provence.
-        </p>
-        <p data-i18n="wellness.massage.p2">
-          You'll book a time, and that's the last decision you have to make. Afterwards, you'll sit in the garden with a glass of water and wonder why you don't do this more often. Sessions are typically 60 or 90 minutes, and can be arranged for individuals or for the whole group over the course of a day.
+          Local massage therapists travel to the compound. Treatments range from relaxation to deep tissue. Book directly once we share the contact.
         </p>
       </div>
       <div class="split__image">
-        <img src="/images/wellness-massage.webp" alt="A secluded garden corner with a bistro table — the kind of quiet that follows a massage at Moulin à Rêves" loading="lazy" />
+        <img src="/images/wellness-massage.webp" alt="A quiet corner at Moulin à Rêves" loading="lazy" />
       </div>
     </div>
   </section>
@@ -84,55 +60,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="fade-in">
     <div class="split">
       <div class="split__image">
-        <img src="/images/wellness-beauty.webp" alt="A fresh white robe and double sink with pink flowers in a bright tile bathroom at Moulin à Rêves" loading="lazy" />
+        <img src="/images/wellness-beauty.webp" alt="Bright tile bathroom at Moulin à Rêves" loading="lazy" />
       </div>
       <div class="split__body">
-        <span class="eyebrow">Indulgence</span>
-        <h2 data-i18n="wellness.beauty.heading">Beauty Treatments</h2>
+        <h2 data-i18n="wellness.beauty.heading">Beauty</h2>
         <p data-i18n="wellness.beauty.p1">
-          Facials, manicures, pedicures — small indulgences that fit naturally into an afternoon when you have no plans and no intention of making any. Our beauty therapist comes to the compound with everything needed, using French skincare products that smell the way the countryside looks.
+          Facials, manicures, pedicures — local beauty practitioners come to the compound on request.
         </p>
-        <p data-i18n="wellness.beauty.p2">
-          Treatments can be booked individually or as part of a group spa afternoon. Particularly good for the day before a celebration, or the day after a long hike through Fontainebleau Forest.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Practitioner Note -->
-  <section class="section">
-    <div class="container--narrow text-center fade-in">
-      <h2 data-i18n="wellness.practitioners.heading">Our Practitioners</h2>
-      <p data-i18n="wellness.practitioners.text" style="margin-top: 24px;">
-        We work with a small group of independent practitioners based in the region — people we know personally, whose work we trust. They're not part of a spa chain or a corporate wellness programme. They're local professionals who are very good at what they do and who appreciate the setting as much as you will. All wellness services are arranged in advance and priced on inquiry.
-      </p>
-    </div>
-  </section>
-
-  <!-- For Retreat Organisers -->
-  <section class="section section--stone">
-    <div class="container--narrow text-center fade-in">
-      <h2 data-i18n="wellness.retreat.heading">For Retreat Organisers</h2>
-      <p data-i18n="wellness.retreat.text" style="margin-top: 24px;">
-        If you're planning a yoga retreat, wellness weekend, or mindfulness gathering, we can help. The compound sleeps up to 20 across three houses, with shared gardens, a lawn for practice, and the kind of environment that supports the work you do. We'll handle accommodation, catering, and logistics — you focus on leading your programme.
-      </p>
-      <div style="margin-top: 32px;">
-        <a href="/the-compound/" class="link-arrow" data-i18n="wellness.retreat.link">Learn About the Compound</a>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="hero" style="height: 45vh; min-height: 350px;">
+  <section class="hero" style="height: 40vh; min-height: 320px;">
     <div class="hero__image">
-      <img src="/images/evening-compound.webp" alt="Slippered feet on the lawn at dusk — restoration at Moulin à Rêves" loading="lazy" />
+      <img src="/images/evening-compound.webp" alt="Lawn at dusk at Moulin à Rêves" loading="lazy" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h2 class="hero__title" data-i18n="wellness.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Ready to Unwind?</h2>
-      <p class="hero__tagline" data-i18n="wellness.cta.text">Tell us what you'd like and we'll arrange it. All wellness services are priced on inquiry.</p>
-      <a href="/contact/" class="btn btn--white" data-i18n="wellness.cta.button">Inquire About Wellness</a>
+      <h2 class="hero__title" data-i18n="wellness.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Need contacts?</h2>
+      <p class="hero__tagline" data-i18n="wellness.cta.text">Tell us what you would like and we will share trusted local practitioners.</p>
+      <a href="/contact/" class="btn btn--white" data-i18n="wellness.cta.button">Request Recommendations</a>
     </div>
   </section>
+
+  <style>
+    .section--tight { padding-top: 56px; padding-bottom: 56px; }
+  </style>
 
 </BaseLayout>

@@ -23,14 +23,13 @@ const carouselImages = [
 const bedrooms = [
   {
     id: 'looking-glass',
-    eyebrow: 'Bedroom · Ground Floor',
     title: 'Through the Looking Glass',
-    summary: 'King bedroom on the ground floor with an en-suite bathroom featuring a tub and shower.',
-    longDescription: 'The largest of the bedrooms — a king bed under a generous window, with a full en-suite tub-and-shower bathroom. The Secret Garden suite shares its bath through a connecting door.',
+    summary: 'King bedroom on the ground floor — en-suite bath with tub and shower.',
+    longDescription: 'The largest bedroom. The Secret Garden suite shares its bath through a connecting door.',
     details: [
       { label: 'Bed', value: 'King' },
       { label: 'Floor', value: 'Ground' },
-      { label: 'Bathroom', value: 'En-suite · tub + shower' },
+      { label: 'Bathroom', value: 'En-suite, tub + shower' },
     ],
     photos: [
       { src: '/images/homes/hh-looking-glass.webp', alt: 'Through the Looking Glass bedroom' },
@@ -38,12 +37,12 @@ const bedrooms = [
   },
   {
     id: 'secret-garden',
-    eyebrow: 'Suite · Adjacent',
     title: 'The Secret Garden',
-    summary: 'A small adjacent sitting-room suite with a pull-out sofa for one. Accesses the bathroom through Through the Looking Glass.',
-    longDescription: 'A bonus space attached to the master — perfect for a kid, an extra adult, or a quiet reading nook by day. The pull-out sofa sleeps one comfortably.',
+    summary: 'Adjacent suite with a pull-out sofa for one.',
+    longDescription: 'A bonus space attached to the master.',
     details: [
-      { label: 'Sleeps', value: '1 (pull-out sofa)' },
+      { label: 'Bed', value: '1 pull-out sofa' },
+      { label: 'Floor', value: 'Ground' },
       { label: 'Bathroom', value: 'Shared via Through the Looking Glass' },
     ],
     photos: [
@@ -52,14 +51,12 @@ const bedrooms = [
   },
   {
     id: 'american-in-paris',
-    eyebrow: 'Bedroom · Ground Floor',
     title: 'An American in Paris',
-    summary: 'Queen bedroom on the ground floor. Hall bathroom with tub/shower and a separate toilet. Washing machine on this level.',
+    summary: 'Queen bedroom on the ground floor.',
     details: [
       { label: 'Bed', value: 'Queen' },
       { label: 'Floor', value: 'Ground' },
-      { label: 'Bathroom', value: 'Hall · tub + shower' },
-      { label: 'Also', value: 'Separate WC, washing machine' },
+      { label: 'Bathroom', value: 'Hall, tub + shower' },
     ],
     photos: [
       { src: '/images/homes/hh-american-in-paris.webp', alt: 'An American in Paris bedroom' },
@@ -67,15 +64,12 @@ const bedrooms = [
   },
   {
     id: 'sleeping-beauty',
-    eyebrow: 'Bedroom · Attic',
     title: 'Sleeping Beauty',
-    summary: 'Attic room with two twins, plus a third twin in the foyer. Bathroom is in the hall, two flights down.',
-    longDescription: 'A storybook attic — sloping beams, twin beds, and one extra twin in the foyer for a third guest. Note: only suitable for guests comfortable climbing two steep flights.',
+    summary: 'Attic room with two twins. Up two steep flights.',
     details: [
-      { label: 'Beds', value: '2 twin + 1 foyer twin' },
+      { label: 'Bed', value: '2 twin' },
       { label: 'Floor', value: 'Attic' },
       { label: 'Bathroom', value: 'Hall, two flights down' },
-      { label: 'Note', value: 'Steep stairs required' },
     ],
     photos: [
       { src: '/images/homes/hh-sleeping-beauty.webp', alt: 'Sleeping Beauty bedroom' },
@@ -86,13 +80,10 @@ const bedrooms = [
 const livingSpaces = [
   {
     id: 'upstairs',
-    eyebrow: 'Living & Dining',
-    title: 'The Upstairs Room',
-    summary: 'Open upstairs space — dining table for ten, sitting area, and the room many guests use for yoga or morning meetings.',
-    longDescription: 'The upstairs of the Hideaway is one long, light-filled room. The dining table seats ten, the sitting area runs alongside it, and there is enough open floor for a yoga class or a private workshop.',
+    title: 'Upstairs Living & Dining',
+    summary: 'Open upstairs space — dining for ten, sitting area, room for yoga.',
     details: [
-      { label: 'Seats at table', value: '10' },
-      { label: 'Best for', value: 'Dinners, yoga, meetings' },
+      { label: 'Seats', value: '10' },
     ],
     photos: [
       { src: '/images/homes/la-grange-living.webp', alt: 'Upstairs living and dining space' },
@@ -100,16 +91,26 @@ const livingSpaces = [
   },
   {
     id: 'kitchen',
-    eyebrow: 'Kitchen',
-    title: 'The Kitchen',
-    summary: 'Bright white kitchen with red accents. Induction stove, oven, Nespresso, full fridge.',
-    details: [
-      { label: 'Stove', value: 'Induction' },
-      { label: 'Coffee', value: 'Nespresso' },
-      { label: 'Fridge', value: 'Full size' },
-    ],
+    title: 'Kitchen',
+    summary: 'Bright kitchen with induction stove, oven, full fridge.',
     photos: [
       { src: '/images/homes/hh-kitchen.webp', alt: 'Bright white kitchen with red accents' },
+    ],
+  },
+  {
+    id: 'gazebo',
+    title: 'Gazebo',
+    summary: 'Covered gazebo dining table for eight.',
+    photos: [
+      { src: '/images/homes/hh-gazebo.webp', alt: 'Covered gazebo dining at the Hollywood Hideaway' },
+    ],
+  },
+  {
+    id: 'gardens',
+    title: 'Gardens',
+    summary: 'Shared compound gardens, the lawn, and the millstream.',
+    photos: [
+      { src: '/images/bridge-garden.webp', alt: 'Compound gardens' },
     ],
   },
 ];
@@ -144,11 +145,11 @@ const amenities = [
   { label: 'Washing machine', icon: 'washer' },
   { label: 'Compound gardens', icon: 'garden' },
   { label: 'Covered gazebo dining', icon: 'patio' },
-  { label: 'Sleeps 8 across 5 beds', icon: 'guests' },
+  { label: 'Sleeps 7 across 4 beds', icon: 'guests' },
 ];
 ---
 
-<BaseLayout title="The Hollywood Hideaway — French Countryside Rental Near Paris" description="Three-bedroom French countryside rental with a suite, sleeps 8. A 60-year sanctuary of Hollywood's top power lawyer. Mereville, France — one hour from Paris.">
+<BaseLayout title="The Hollywood Hideaway — French Countryside Rental Near Paris" description="Three-bedroom French countryside rental with a suite, sleeps 7. A 60-year sanctuary of Hollywood's top power lawyer. Méréville, France — one hour from Paris.">
 
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -163,8 +164,9 @@ const amenities = [
       "occupancy": { "@type": "QuantitativeValue", "value": cms.sleeps },
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Mereville",
-        "addressRegion": "Essonne",
+        "streetAddress": "16 Rue des Crocs au Renard",
+        "postalCode": "91660",
+        "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
       }
     })} />
@@ -208,7 +210,7 @@ const amenities = [
   </style>
 
   <!-- Stats Bar -->
-  <section class="section" style="padding-top: 48px; padding-bottom: 32px;">
+  <section class="section" style="padding-top: 32px; padding-bottom: 24px;">
     <div class="container">
       <div class="stats-bar">
         <div class="stats-bar__item">
@@ -217,7 +219,7 @@ const amenities = [
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bathrooms}</div>
-          <div class="stats-bar__label" data-i18n="hideaway.stats.bathrooms">Bathrooms</div>
+          <div class="stats-bar__label" data-i18n="hideaway.stats.bathrooms">Baths</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.sleeps}</div>
@@ -235,19 +237,15 @@ const amenities = [
   <PhotoCarousel images={carouselImages} />
 
   <!-- Narrative Description -->
-  <section class="section section--tight">
+  <section class="section--tight">
     <div class="container--narrow fade-in">
-      <span class="eyebrow" data-i18n="hideaway.narrative.eyebrow">The Maison</span>
       <h2 data-i18n="hideaway.narrative.heading">{cms.title}</h2>
-      <div style="margin-top: 32px;">
+      <div style="margin-top: 24px;">
         <p class="prose-lead" data-i18n="hideaway.narrative.summary">
           {cms.summary}
         </p>
-        <p style="margin-top: 20px;" data-i18n="hideaway.narrative.p1">
-          For 60 years, The Hollywood Hideaway was a treasured sanctuary getaway for Hollywood's #1 power lawyer whose clients included Tom Cruise, Dustin Hoffman, Michael Jackson, Mario Puzzo and the luminaries of LA.
-        </p>
-        <p style="margin-top: 20px;" data-i18n="hideaway.narrative.p2">
-          This was his happy home where he entertained his Hollywood pals and cooked and relaxed in the French countryside. Now you can follow in the footsteps of the stars and make this your own home in France. It is beautifully furnished with French antiques.
+        <p style="margin-top: 16px;" data-i18n="hideaway.narrative.p1">
+          For 60 years, the 60-year sanctuary of Hollywood's #1 power lawyer — clients included Tom Cruise, Dustin Hoffman, Michael Jackson, and Mario Puzo. Furnished with French antiques.
         </p>
       </div>
     </div>
@@ -255,9 +253,9 @@ const amenities = [
 
   <!-- Rooms (bedrooms) -->
   <RoomShowcase
-    eyebrow="Rooms"
+    eyebrow=""
     heading={`Where you'll <span class="serif-italic">sleep</span>`}
-    intro="Three bedrooms plus an adjacent suite. Tap any room for details and photos."
+    intro="3 bedrooms + 1 suite."
     rooms={bedrooms}
     background="stone"
     i18nKey="hideaway.bedrooms"
@@ -265,16 +263,16 @@ const amenities = [
 
   <!-- Living Spaces -->
   <RoomShowcase
-    eyebrow="Living Spaces"
+    eyebrow=""
     heading={`Where you'll <span class="serif-italic">gather</span>`}
-    intro="One long upstairs room and the bright kitchen below — the working heart of the Hideaway."
+    intro="Upstairs living + dining, kitchen, gazebo, gardens."
     rooms={livingSpaces}
     i18nKey="hideaway.living"
   />
 
   <!-- Amenities -->
   <AmenitiesSection
-    eyebrow="Amenities & Grounds"
+    eyebrow=""
     heading={`What's <span class="serif-italic">here</span>`}
     features={amenityFeatures}
     amenities={amenities}
@@ -284,9 +282,10 @@ const amenities = [
 
   <!-- Availability -->
   <AvailabilityCalendar
-    eyebrow="Availability"
+    monthsToShow={12}
+    eyebrow=""
     heading={`When You Can <span class="serif-italic">Stay</span>`}
-    intro="Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
+    intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
     i18nKey="hideaway.availability"
   />
 
@@ -304,22 +303,21 @@ const amenities = [
   </section>
 
   <!-- Cross Links -->
-  <section class="section section--tight">
+  <section class="section--tight">
     <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 32px;">
+      <div class="text-center fade-in" style="margin-bottom: 24px;">
         <h2 data-i18n-html="hideaway.cross.heading">Les <span class="serif-italic">Autres Maisons</span></h2>
       </div>
-      <div class="grid grid--2" style="gap: 24px;">
+      <div class="grid grid--2" style="gap: 20px;">
         <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow" data-i18n="hideaway.cross.moulin.eyebrow">Maison One</span>
             <h3 class="card__title" data-i18n="hideaway.cross.moulin.title">Le Moulin à Rêves</h3>
             <div class="card__meta">
               <span data-i18n="hideaway.cross.moulin.beds">5 Bedrooms</span>
-              <span data-i18n="hideaway.cross.moulin.sleeps">Sleeps 12</span>
+              <span data-i18n="hideaway.cross.moulin.sleeps">Sleeps 10</span>
             </div>
           </div>
         </a>
@@ -328,7 +326,6 @@ const amenities = [
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow" data-i18n="hideaway.cross.riviere.eyebrow">Maison Three</span>
             <h3 class="card__title" data-i18n="hideaway.cross.riviere.title">La Maison de la Rivière</h3>
             <div class="card__meta">
               <span data-i18n="hideaway.cross.riviere.beds">2 Bedrooms</span>
@@ -337,8 +334,8 @@ const amenities = [
           </div>
         </a>
       </div>
-      <div class="text-center" style="margin-top: 48px;">
-        <a href="/the-compound/" class="link-arrow" data-i18n="hideaway.cross.cta">Rent All Three Maisons</a>
+      <div class="text-center" style="margin-top: 32px;">
+        <a href="/the-compound/" class="link-arrow" data-i18n="hideaway.cross.cta">Rent the Compound</a>
       </div>
     </div>
   </section>

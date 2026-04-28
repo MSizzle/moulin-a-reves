@@ -53,17 +53,6 @@ const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
       )}
     </div>
 
-    {images.length > 1 && (
-      <div class="container">
-        <div class="photo-carousel__thumbs" data-carousel-thumbs>
-          {images.map((img, i) => (
-            <button class={`photo-carousel__thumb ${i === 0 ? 'is-active' : ''}`} data-carousel-thumb={i} aria-label={`Show photo ${i + 1}`} type="button">
-              <img src={img.src} alt="" loading="lazy" />
-            </button>
-          ))}
-        </div>
-      </div>
-    )}
   </div>
 </section>
 
