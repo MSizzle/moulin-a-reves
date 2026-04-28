@@ -18,10 +18,15 @@ interface Props {
   features: Feature[];
   amenities: AmenityItem[];
   background?: 'cream' | 'stone';
+  i18nKey?: string;
 }
 
-const { eyebrow = 'Amenities & Grounds', heading = "What's Here", intro, features, amenities, background = 'cream' } = Astro.props;
+const { eyebrow = 'Amenities & Grounds', heading = "What's Here", intro, features, amenities, background = 'cream', i18nKey } = Astro.props;
 const sectionClass = background === 'stone' ? 'section section--tight section--soft' : 'section section--tight';
+const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
+const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
+const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
+const includedKey = i18nKey ? `${i18nKey}.includedHeading` : undefined;
 
 const ICONS: Record<string, string> = {
   wifi: '<path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/>',
@@ -52,37 +57,44 @@ function svgFor(key: string | undefined): string {
 <section class={sectionClass}>
   <div class="container">
     <div class="text-center fade-in" style="margin-bottom: 36px;">
-      <span class="eyebrow">{eyebrow}</span>
-      <h2 set:html={heading} />
-      {intro && <p style="margin-top: 12px; font-size: 0.875rem; color: var(--ink-mute);">{intro}</p>}
+      <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>
+      <h2 set:html={heading} {...(headingKey ? { 'data-i18n': headingKey } : {})} />
+      {intro && <p style="margin-top: 12px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
     </div>
 
     {features.length > 0 && (
       <div class="amenity-features">
-        {features.map((f) => (
-          <article class="amenity-feature fade-in">
-            <div class="amenity-feature__image">
-              <img src={f.image} alt={f.alt || f.title} loading="lazy" />
-            </div>
-            <div class="amenity-feature__body">
-              <h3 class="amenity-feature__title">{f.title}</h3>
-              <p class="amenity-feature__summary">{f.summary}</p>
-            </div>
-          </article>
-        ))}
+        {features.map((f, i) => {
+          const featTitleKey = i18nKey ? `${i18nKey}.feature.${i}.title` : undefined;
+          const featSummaryKey = i18nKey ? `${i18nKey}.feature.${i}.summary` : undefined;
+          return (
+            <article class="amenity-feature fade-in">
+              <div class="amenity-feature__image">
+                <img src={f.image} alt={f.alt || f.title} loading="lazy" />
+              </div>
+              <div class="amenity-feature__body">
+                <h3 class="amenity-feature__title" {...(featTitleKey ? { 'data-i18n': featTitleKey } : {})}>{f.title}</h3>
+                <p class="amenity-feature__summary" {...(featSummaryKey ? { 'data-i18n': featSummaryKey } : {})}>{f.summary}</p>
+              </div>
+            </article>
+          );
+        })}
       </div>
     )}
 
     {amenities.length > 0 && (
       <div class="amenity-list fade-in">
-        <h4 class="amenity-list__heading">Also included</h4>
+        <h4 class="amenity-list__heading" {...(includedKey ? { 'data-i18n': includedKey } : {})}>Also included</h4>
         <ul class="amenity-list__grid">
-          {amenities.map((a) => (
-            <li class="amenity-list__item">
-              <svg class="amenity-list__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" set:html={svgFor(a.icon)}></svg>
-              <span>{a.label}</span>
-            </li>
-          ))}
+          {amenities.map((a, i) => {
+            const labelKey = i18nKey ? `${i18nKey}.amenity.${i}` : undefined;
+            return (
+              <li class="amenity-list__item">
+                <svg class="amenity-list__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" set:html={svgFor(a.icon)}></svg>
+                <span {...(labelKey ? { 'data-i18n': labelKey } : {})}>{a.label}</span>
+              </li>
+            );
+          })}
         </ul>
       </div>
     )}

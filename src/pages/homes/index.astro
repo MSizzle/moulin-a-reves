@@ -10,9 +10,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow">Moulin à Rêves</span>
-      <h1 class="hero__title">The Maisons</h1>
-      <p class="hero__tagline">Three maisons, each with a story. 20 guests across 10 bedrooms.</p>
+      <span class="hero__eyebrow" data-i18n="homes.hero.eyebrow">Moulin à Rêves</span>
+      <h1 class="hero__title" data-i18n="homes.hero.title">The Maisons</h1>
+      <p class="hero__tagline" data-i18n="homes.hero.tagline">Three maisons, each with a story. 20 guests across 10 bedrooms.</p>
     </div>
   </section>
 
@@ -39,12 +39,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison One</span>
-            <h3 class="card__title">Le Moulin à Rêves</h3>
+            <span class="card__eyebrow" data-i18n="homes.card.moulin.eyebrow">Maison One</span>
+            <h3 class="card__title" data-i18n="homes.card.moulin.title">Le Moulin à Rêves</h3>
             <div class="card__meta">
-              <span>5 Bedrooms</span>
-              <span>4 Bathrooms</span>
-              <span>Sleeps 12</span>
+              <span data-i18n="homes.card.moulin.beds">5 Bedrooms</span>
+              <span data-i18n="homes.card.moulin.baths">4 Bathrooms</span>
+              <span data-i18n="homes.card.moulin.sleeps">Sleeps 12</span>
             </div>
           </div>
         </a>
@@ -53,12 +53,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway at Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison Two</span>
-            <h3 class="card__title">The Hollywood Hideaway</h3>
+            <span class="card__eyebrow" data-i18n="homes.card.hideaway.eyebrow">Maison Two</span>
+            <h3 class="card__title" data-i18n="homes.card.hideaway.title">The Hollywood Hideaway</h3>
             <div class="card__meta">
-              <span>3 Bedrooms + Suite</span>
-              <span>2 Bathrooms</span>
-              <span>Sleeps 8</span>
+              <span data-i18n="homes.card.hideaway.beds">3 Bedrooms + Suite</span>
+              <span data-i18n="homes.card.hideaway.baths">2 Bathrooms</span>
+              <span data-i18n="homes.card.hideaway.sleeps">Sleeps 8</span>
             </div>
           </div>
         </a>
@@ -67,12 +67,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière at Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison Three</span>
-            <h3 class="card__title">La Maison de la Rivière</h3>
+            <span class="card__eyebrow" data-i18n="homes.card.riviere.eyebrow">Maison Three</span>
+            <h3 class="card__title" data-i18n="homes.card.riviere.title">La Maison de la Rivière</h3>
             <div class="card__meta">
-              <span>2 Bedrooms</span>
-              <span>1 Bathroom</span>
-              <span>Sleeps 5</span>
+              <span data-i18n="homes.card.riviere.beds">2 Bedrooms</span>
+              <span data-i18n="homes.card.riviere.baths">1 Bathroom</span>
+              <span data-i18n="homes.card.riviere.sleeps">Sleeps 5</span>
             </div>
           </div>
         </a>
@@ -82,12 +82,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section class="section section--soft text-center">
     <div class="container fade-in">
-      <h2>Rent All Three</h2>
-      <p style="margin-top: 16px; margin-bottom: 32px;">
+      <h2 data-i18n="homes.rentall.heading">Rent All Three</h2>
+      <p style="margin-top: 16px; margin-bottom: 32px;" data-i18n="homes.rentall.text">
         Book the entire compound for up to 20 guests. Family reunions, retreats,
         celebrations, yoga weekends — the whole place, exclusively yours.
       </p>
-      <a href="/the-compound/" class="btn btn--primary">Explore the Compound</a>
+      <a href="/the-compound/" class="btn btn--primary" data-i18n="homes.rentall.cta">Explore the Compound</a>
     </div>
   </section>
 
