@@ -33,7 +33,7 @@
   },
   "footer.tagline": {
     "en": "Moulin à Rêves · Méréville, France · 48° 19′ N · 2° 5′ E",
-    "fr": "Moulin à Rêves · Méréville, France · 48° 19′ N · 2° 5′ E"
+    "fr": "Le Moulin des Rêves · Seine-et-Marne, France"
   },
   "footer.explore": {
     "en": "Explore",
@@ -101,26 +101,26 @@
   },
   "home.tagline": {
     "en": "A private historic compound in Méréville, France. One hour from Paris.",
-    "fr": "Un domaine privé historique à Méréville, France. À une heure de Paris."
+    "fr": "Trois maisons. Un séjour inoubliable. À une heure de Paris."
   },
   "home.cta": {
     "en": "Discover the Compound",
-    "fr": "Découvrir le Domaine"
+    "fr": "Découvrir les Maisons"
   },
   "home.intro.heading": {
     "en": "A private compound, one hour from Paris.",
-    "fr": "Un domaine privé, à une heure de Paris."
+    "fr": "Là où le bief rencontre votre café du matin"
   },
   "home.intro.text": {
     "en": "Three stone maisons, a walled garden, a millstream, and the buildings around them — gym, spa with jacuzzi, screening room, La Grange — all on one private property in Méréville, France. Sleeps 20 across 10 bedrooms.",
-    "fr": "Trois maisons en pierre, un jardin clos, un bief, et les bâtiments autour — gym, spa avec jacuzzi, salle de cinéma, La Grange — sur une propriété privée à Méréville, France. 20 couchages, 10 chambres."
+    "fr": "Moulin à Rêves est un ensemble de trois maisons en pierre réunies autour d'un bief dans la campagne française, à une heure au sud de Paris. Chaque maison a son caractère propre — volets bleus, vue sur le jardin et le murmure de l'eau sur la pierre — mais ensemble, elles deviennent quelque chose de plus grand : un lieu où les familles se retrouvent, les amis se rassemblent et les matins s'étirent en douceur."
   },
   "home.homes.heading": {
     "en": "Les Maisons",
     "fr": "Les Maisons"
   },
   "home.homes.subheading": {
-    "en": "Each homes has a story of its own.",
+    "en": "",
     "fr": "Trois maisons, chacune avec sa propre histoire."
   },
   "home.moulin.title": {
@@ -240,11 +240,11 @@
     "fr": "Commençons la Conversation"
   },
   "homes.hero.title": {
-    "en": "The Homes",
+    "en": "Les Maisons",
     "fr": "Les Maisons"
   },
   "homes.hero.tagline": {
-    "en": "Three houses, each with a story. All with blue shutters.",
+    "en": "Three beautiful homes, each with a story.",
     "fr": "Trois maisons, chacune avec son histoire. Toutes avec des volets bleus."
   },
   "homes.moulin.desc": {
@@ -308,11 +308,11 @@
     "fr": "Découvrir Le Jardin"
   },
   "homes.rentall.heading": {
-    "en": "Rent All Three",
+    "en": "Your French Countryside Estate.",
     "fr": "Louez les Trois"
   },
   "homes.rentall.text": {
-    "en": "Book the entire compound for up to 20 guests. Family reunions, retreats, celebrations — the whole place, exclusively yours.",
+    "en": "Reunions, Retreats and Relaxation for up to 20 guests.",
     "fr": "Réservez le domaine entier pour jusqu'à 20 personnes. Réunions de famille, retraites, célébrations — le lieu, rien que pour vous."
   },
   "homes.rentall.button": {
@@ -1224,7 +1224,7 @@
     "fr": "Laissez-vous Servir"
   },
   "catering.intro.text": {
-    "en": "You're on holiday. The kitchen is stocked, the markets are close, and cooking with fresh ingredients is part of the joy. But some mornings, you'd rather find a basket of warm croissants at the door. And some evenings, you'd rather sit down to a table already set, a meal already made, a bottle already opened. That's what this is for.",
+    "en": "The kitchen is stocked, the markets are close, and cooking with fresh ingredients is part of the joy. But some mornings, you'd rather find a basket of warm croissants at the door. And some evenings, you'd rather sit down to a table already set, a meal already made, a bottle already opened. That's what this is for",
     "fr": "Vous êtes en vacances. La cuisine est équipée, les marchés sont proches, et cuisiner avec des produits frais fait partie du plaisir. Mais certains matins, on préfère trouver un panier de croissants chauds à la porte. Et certains soirs, s'asseoir à une table déjà dressée, devant un repas déjà prêt, une bouteille déjà ouverte. C'est à cela que ce service est destiné."
   },
   "catering.breakfast.heading": {
@@ -1644,7 +1644,7 @@
     "fr": "Retour à l'Accueil"
   },
   "homes.hero.eyebrow": {
-    "en": "Moulin à Rêves"
+    "en": " "
   },
   "homes.card.moulin.eyebrow": {
     "en": ""
@@ -1656,7 +1656,7 @@
     "en": "5 Bedrooms"
   },
   "homes.card.moulin.baths": {
-    "en": "4 Bathrooms"
+    "en": "4 Baths"
   },
   "homes.card.moulin.sleeps": {
     "en": "Sleeps 10"
@@ -1671,7 +1671,7 @@
     "en": "3 Bedrooms + Suite"
   },
   "homes.card.hideaway.baths": {
-    "en": "2 Bathrooms"
+    "en": "2 Baths"
   },
   "homes.card.hideaway.sleeps": {
     "en": "Sleeps 7"
@@ -1686,7 +1686,7 @@
     "en": "2 Bedrooms"
   },
   "homes.card.riviere.baths": {
-    "en": "1 Bathroom"
+    "en": "1 Bath"
   },
   "homes.card.riviere.sleeps": {
     "en": "Sleeps 5"
@@ -1695,13 +1695,13 @@
     "en": "Explore the Compound"
   },
   "le-moulin.hero.eyebrow": {
-    "en": ""
+    "en": " "
   },
   "le-moulin.hero.title": {
     "en": "Le Moulin à Rêves"
   },
   "le-moulin.hero.tagline": {
-    "en": "The historic mill at the heart of the compound."
+    "en": "The heart of the compound."
   },
   "le-moulin.stats.bedrooms": {
     "en": "Bedrooms"
@@ -1722,85 +1722,85 @@
     "en": "Le Moulin à Rêves"
   },
   "le-moulin.narrative.summary": {
-    "en": "An historic mill on the Juine River in Méréville, France. The river runs through the house. Five bedrooms across three floors. Sleeps 10."
+    "en": " A beautiful, historic mill house in Mèrèville, the watercress capital of France. Built in 1800, this was a working mill — in fact the Juine River still flows right through the house! "
   },
   "le-moulin.narrative.p1": {
-    "en": "Built in 1800. The Juine River flows through the house. Wake up to the roosters; cross the Giverny-style bridge to the gardens."
+    "en": "Relax in the gardens. Let your worries float away on the Juine River. Wake up to the roosters crowing in the chicken coop. Go back in time as you gaze at the flower gardens and Giverny-style bridge. Make a wish in the wishing well."
   },
   "le-moulin.narrative.p2": {
-    "en": ""
+    "en": "Dine al fresco in the beautiful setting. This is a place inspiration, fun and quiet time together."
   },
   "le-moulin.bedrooms.eyebrow": {
     "en": ""
   },
   "le-moulin.bedrooms.heading": {
-    "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
+    "en": "Where you'll sleep"
   },
   "le-moulin.bedrooms.intro": {
-    "en": "5 bedrooms on 3 floors."
+    "en": "Five bedrooms on three floors"
   },
   "le-moulin.bedrooms.room.riviere.title": {
     "en": "La Chambre de la Rivière"
   },
   "le-moulin.bedrooms.room.riviere.summary": {
-    "en": "The River Room. Two twin beds on the ground floor, with a hall bathroom and shower just outside the door."
+    "en": "The river runs through it (well under it.) Two twin beds. Ground floor. Full bathroom and shower in the hall."
   },
   "le-moulin.bedrooms.room.romantique.title": {
     "en": "La Suite Romantique"
   },
   "le-moulin.bedrooms.room.romantique.summary": {
-    "en": "King bed in the upstairs master, beneath original exposed beams. En-suite bathroom with shower."
+    "en": "King master bedroom, drenched in light, decorated with fine antiques. Upstairs. En-suite bathroom with shower."
   },
   "le-moulin.bedrooms.room.cerises.title": {
-    "en": "Les Cerises"
+    "en": "La Chambre de Cerises"
   },
   "le-moulin.bedrooms.room.cerises.summary": {
-    "en": "The Cherry Room. Queen bed with a sink and bidet in the room. Shares the clawfoot-tub hall bath with Les Roses."
+    "en": "Charming queen bedroom upstairs with a sink and bidet, gorgeous art and antiques. Shares the bathroom in the hall with Les Roses."
   },
   "le-moulin.bedrooms.room.roses.title": {
-    "en": "Les Roses"
+    "en": "La Chambre des Roses"
   },
   "le-moulin.bedrooms.room.roses.summary": {
-    "en": "The Rose Room. Two twin beds. Shares the clawfoot-tub hall bath with Les Cerises."
+    "en": "Two twin beds. Upstairs. Shares the bath in the hall with Les Cerises."
   },
   "le-moulin.bedrooms.room.loft.title": {
     "en": "Le Loft Suite"
   },
   "le-moulin.bedrooms.room.loft.summary": {
-    "en": "Second-floor attic with two twins (combinable as a king) plus a separate TV room with two floor twins. Shared hall bath with shower."
+    "en": "Large loft attic suite with a huge sitting room with smart TV and couch. The bedroom can be two twins or combined as a king. Bathroom with shower. Requires climbing steep stairs."
   },
   "le-moulin.living.eyebrow": {
     "en": ""
   },
   "le-moulin.living.heading": {
-    "en": "Where you'll <span class=\"serif-italic\">gather</span>"
+    "en": "Where You'll Gather"
   },
   "le-moulin.living.intro": {
-    "en": "Salon, dining, and kitchen — the rooms made for long evenings together."
+    "en": ""
   },
   "le-moulin.living.room.salon.title": {
-    "en": "Le Salon"
+    "en": "Le Salon Living Room"
   },
   "le-moulin.living.room.salon.summary": {
-    "en": "Large living room with leather couch, club chairs, and antiques. The river and bridge are illuminated at night."
+    "en": "Leather couch, club chairs, and antiques. Stunning view of the river at night. See the authentic mill wheels. Great for board games and wine. Stereo system."
   },
   "le-moulin.living.room.dining.title": {
     "en": "The Dining Room"
   },
   "le-moulin.living.room.dining.summary": {
-    "en": "Formal dining room for up to twelve, with art, antiques, a chandelier, and a long candlelit table."
+    "en": "Dinner is sur la table! Formal dining room decorated with art and antiques, a decorative fireplace."
   },
   "le-moulin.living.room.kitchen.title": {
-    "en": "The Kitchen"
+    "en": "The Eat-In-Kitchen"
   },
   "le-moulin.living.room.kitchen.summary": {
-    "en": "Eat-in kitchen for six. Two Viking-style ovens, six gas burners, full fridge and freezer, Nespresso, kettle."
+    "en": "Very large kitchen with every appliance: Two Viking ovens, fullsize fridge, freezer, ice machine, microwave, dishwasher, Nespresso maker, drip coffee maker, kettle."
   },
   "le-moulin.amenities.eyebrow": {
     "en": ""
   },
   "le-moulin.amenities.heading": {
-    "en": "What's <span class=\"serif-italic\">here</span>"
+    "en": "The Grounds"
   },
   "le-moulin.amenities.includedHeading": {
     "en": "Also included"
@@ -1908,7 +1908,7 @@
     "en": "The Hollywood Hideaway"
   },
   "hideaway.hero.tagline": {
-    "en": "A treasured sanctuary in the French countryside."
+    "en": "Where French and American stars entertained."
   },
   "hideaway.stats.bedroomsSuite": {
     "en": "Bedrooms + Suite"
@@ -1929,13 +1929,13 @@
     "en": "The Hollywood Hideaway"
   },
   "hideaway.narrative.summary": {
-    "en": "Three bedrooms plus a suite. The 60-year sanctuary of Hollywood's #1 power lawyer — French antiques, a covered gazebo, the compound's gardens."
+    "en": ""
   },
   "hideaway.narrative.p1": {
-    "en": "For 60 years, the 60-year sanctuary of Hollywood's #1 power lawyer — clients included Tom Cruise, Dustin Hoffman, Michael Jackson, and Mario Puzo. Furnished with French antiques."
+    "en": "For 60 years, The Hollywood Hideaway was a treasured sanctuary getaway for Hollywood's #1 power lawyer whose clients included Tom Cruise, Dustin Hoffman, Michael Jackson, Mario Puzzo and the luminaries of LA."
   },
   "hideaway.narrative.p2": {
-    "en": ""
+    "en": "This was his happy home where he entertained his Hollywood pals and cooked and relaxed in the French countryside. Now you can follow in the footsteps of the stars and make this your own home in France. It is beautifully furnished with French antiques."
   },
   "hideaway.bedrooms.eyebrow": {
     "en": ""
@@ -1944,7 +1944,7 @@
     "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
   },
   "hideaway.bedrooms.intro": {
-    "en": "3 bedrooms + 1 suite."
+    "en": "Three bedrooms plus an adjacent suite"
   },
   "hideaway.bedrooms.room.looking-glass.title": {
     "en": "Through the Looking Glass"
@@ -2100,7 +2100,7 @@
     "en": "La Maison de la Rivière"
   },
   "riviere.hero.tagline": {
-    "en": "A sunny cottage overlooking the stream and the orchard."
+    "en": "A light infused home brimming with inspiration.  "
   },
   "riviere.stats.bedrooms": {
     "en": "Bedrooms"
@@ -2121,7 +2121,7 @@
     "en": "La Maison de la Rivière"
   },
   "riviere.narrative.summary": {
-    "en": "Sun-drenched cottage with French doors onto the stream and apple trees. Two bedrooms, dining for 18, an authentic Louis Vuitton trunk as a coffee table."
+    "en": ""
   },
   "riviere.bedrooms.eyebrow": {
     "en": ""
@@ -2130,7 +2130,7 @@
     "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
   },
   "riviere.bedrooms.intro": {
-    "en": "2 bedrooms upstairs, sharing a hall bath."
+    "en": "Two upstairs bedrooms sharing a hall bath"
   },
   "riviere.bedrooms.room.artistes.title": {
     "en": "La Chambre des Artistes"
@@ -2640,10 +2640,10 @@
     "en": "Steep stairs"
   },
   "le-moulin.living.room.salon.eyebrow": {
-    "en": ""
+    "en": "L"
   },
   "le-moulin.living.room.salon.longDescription": {
-    "en": "The heart of the house in the evenings. Light a fire (decorative), pour something French, and watch the bridge glow over the millstream through the tall windows."
+    "en": "T"
   },
   "le-moulin.living.room.dining.eyebrow": {
     "en": ""
@@ -2655,31 +2655,31 @@
     "en": ""
   },
   "le-moulin.living.room.kitchen.longDescription": {
-    "en": "A working cook's kitchen with light pouring in through the tall windows. Built around a French armoire and a long farmhouse table — equally good for a leisurely breakfast or a serious dinner prep."
+    "en": "A wonderful kitchen to cook in together."
   },
   "le-moulin.living.room.kitchen.detail.0.label": {
-    "en": "Seats"
+    "en": "Seats: "
   },
   "le-moulin.living.room.kitchen.detail.0.value": {
     "en": "6 at the table"
   },
   "le-moulin.living.room.kitchen.detail.1.label": {
-    "en": "Ovens"
+    "en": "Ovens: "
   },
   "le-moulin.living.room.kitchen.detail.1.value": {
     "en": "2 Viking-style"
   },
   "le-moulin.living.room.kitchen.detail.2.label": {
-    "en": "Burners"
+    "en": "Burners: "
   },
   "le-moulin.living.room.kitchen.detail.2.value": {
     "en": "6 gas"
   },
   "le-moulin.living.room.kitchen.detail.3.label": {
-    "en": "Coffee"
+    "en": "Coffee: "
   },
   "le-moulin.living.room.kitchen.detail.3.value": {
-    "en": "Nespresso"
+    "en": "Nespresso, Drip"
   },
   "hideaway.bedrooms.room.looking-glass.eyebrow": {
     "en": ""
