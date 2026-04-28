@@ -26,34 +26,63 @@ interface Props {
   intro?: string;
   rooms: Room[];
   background?: 'cream' | 'stone';
+  i18nKey?: string;
 }
 
-const { eyebrow, heading, intro, rooms, background = 'cream' } = Astro.props;
+const { eyebrow, heading, intro, rooms, background = 'cream', i18nKey } = Astro.props;
 const sectionClass = background === 'stone' ? 'section section--tight section--soft' : 'section section--tight';
+const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
+const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
+const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
 ---
 
 <section class={sectionClass}>
   <div class="container">
     <div class="text-center fade-in" style="margin-bottom: 36px;">
-      <span class="eyebrow">{eyebrow}</span>
-      <h2 set:html={heading} />
-      {intro && <p style="margin-top: 12px; font-size: 0.875rem; color: var(--ink-mute);">{intro}</p>}
+      <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>
+      <h2 set:html={heading} {...(headingKey ? { 'data-i18n': headingKey } : {})} />
+      {intro && <p style="margin-top: 12px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
     </div>
     <div class="showcase">
-      {rooms.map((room) => (
-        <div class="card fade-in" data-room={JSON.stringify(room)} role="button" tabindex="0">
-          <div class="card__image">
-            <img src={room.photos[0].src} alt={room.photos[0].alt || room.title} loading="lazy" />
-            {room.photos.length > 1 && (
-              <span class="card__photo-count">{room.photos.length} photos</span>
-            )}
+      {rooms.map((room, i) => {
+        const slug = room.id || `${i}`;
+        const base = i18nKey ? `${i18nKey}.room.${slug}` : undefined;
+        const titleKey = base ? `${base}.title` : undefined;
+        const summaryKey = base ? `${base}.summary` : undefined;
+        const eyebrowKey = base ? `${base}.eyebrow` : undefined;
+        const longKey = base ? `${base}.longDescription` : undefined;
+        const detailKeys = base && room.details
+          ? room.details.map((_, j) => ({ label: `${base}.detail.${j}.label`, value: `${base}.detail.${j}.value` }))
+          : undefined;
+        const roomPayload = {
+          ...room,
+          ...(base
+            ? {
+                i18nKeys: {
+                  eyebrow: eyebrowKey,
+                  title: titleKey,
+                  summary: summaryKey,
+                  longDescription: longKey,
+                  details: detailKeys,
+                },
+              }
+            : {}),
+        };
+        return (
+          <div class="card fade-in" data-room={JSON.stringify(roomPayload)} role="button" tabindex="0">
+            <div class="card__image">
+              <img src={room.photos[0].src} alt={room.photos[0].alt || room.title} loading="lazy" />
+              {room.photos.length > 1 && (
+                <span class="card__photo-count">{room.photos.length} photos</span>
+              )}
+            </div>
+            <div class="card__body">
+              <h3 class="card__title" {...(titleKey ? { 'data-i18n': titleKey } : {})}>{room.title}</h3>
+              <p class="card__description" {...(summaryKey ? { 'data-i18n': summaryKey } : {})}>{room.summary}</p>
+            </div>
           </div>
-          <div class="card__body">
-            <h3 class="card__title">{room.title}</h3>
-            <p class="card__description">{room.summary}</p>
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 </section>

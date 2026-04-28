@@ -766,19 +766,39 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           }
         }
 
+        function setI18n(el, key) {
+          if (!el) return;
+          if (key) el.setAttribute('data-i18n', key);
+          else el.removeAttribute('data-i18n');
+        }
+
         function open(room) {
+          var keys = room.i18nKeys || {};
           eyebrowEl.textContent = room.eyebrow || '';
+          setI18n(eyebrowEl, keys.eyebrow);
           titleEl.textContent = room.title || '';
+          setI18n(titleEl, keys.title);
           summaryEl.textContent = room.summary || '';
+          setI18n(summaryEl, keys.summary);
           descEl.textContent = room.longDescription || '';
+          setI18n(descEl, keys.longDescription);
           detailsEl.innerHTML = '';
           if (room.details && room.details.length) {
-            room.details.forEach(function (d) {
+            room.details.forEach(function (d, i) {
               var row = document.createElement('div');
               row.className = 'room-modal__detail';
-              row.innerHTML =
-                '<span class="room-modal__detail-label">' + escapeHTML(d.label) + '</span>' +
-                '<span class="room-modal__detail-value">' + escapeHTML(d.value) + '</span>';
+              var labelEl = document.createElement('span');
+              labelEl.className = 'room-modal__detail-label';
+              labelEl.textContent = d.label;
+              var valueEl = document.createElement('span');
+              valueEl.className = 'room-modal__detail-value';
+              valueEl.textContent = d.value;
+              if (keys.details && keys.details[i]) {
+                setI18n(labelEl, keys.details[i].label);
+                setI18n(valueEl, keys.details[i].value);
+              }
+              row.appendChild(labelEl);
+              row.appendChild(valueEl);
               detailsEl.appendChild(row);
             });
           }

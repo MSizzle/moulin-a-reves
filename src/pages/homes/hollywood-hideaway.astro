@@ -22,6 +22,7 @@ const carouselImages = [
 
 const bedrooms = [
   {
+    id: 'looking-glass',
     eyebrow: 'Bedroom · Ground Floor',
     title: 'Through the Looking Glass',
     summary: 'King bedroom on the ground floor with an en-suite bathroom featuring a tub and shower.',
@@ -36,6 +37,7 @@ const bedrooms = [
     ],
   },
   {
+    id: 'secret-garden',
     eyebrow: 'Suite · Adjacent',
     title: 'The Secret Garden',
     summary: 'A small adjacent sitting-room suite with a pull-out sofa for one. Accesses the bathroom through Through the Looking Glass.',
@@ -49,6 +51,7 @@ const bedrooms = [
     ],
   },
   {
+    id: 'american-in-paris',
     eyebrow: 'Bedroom · Ground Floor',
     title: 'An American in Paris',
     summary: 'Queen bedroom on the ground floor. Hall bathroom with tub/shower and a separate toilet. Washing machine on this level.',
@@ -63,6 +66,7 @@ const bedrooms = [
     ],
   },
   {
+    id: 'sleeping-beauty',
     eyebrow: 'Bedroom · Attic',
     title: 'Sleeping Beauty',
     summary: 'Attic room with two twins, plus a third twin in the foyer. Bathroom is in the hall, two flights down.',
@@ -81,6 +85,7 @@ const bedrooms = [
 
 const livingSpaces = [
   {
+    id: 'upstairs',
     eyebrow: 'Living & Dining',
     title: 'The Upstairs Room',
     summary: 'Open upstairs space — dining table for ten, sitting area, and the room many guests use for yoga or morning meetings.',
@@ -94,6 +99,7 @@ const livingSpaces = [
     ],
   },
   {
+    id: 'kitchen',
     eyebrow: 'Kitchen',
     title: 'The Kitchen',
     summary: 'Bright white kitchen with red accents. Induction stove, oven, Nespresso, full fridge.',
@@ -180,9 +186,9 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow">{cms.eyebrow}</span>
-      <h1 class="hero__title">{cms.title}</h1>
-      <p class="hero__tagline">{cms.tagline}</p>
+      <span class="hero__eyebrow" data-i18n="hideaway.hero.eyebrow">{cms.eyebrow}</span>
+      <h1 class="hero__title" data-i18n="hideaway.hero.title">{cms.title}</h1>
+      <p class="hero__tagline" data-i18n="hideaway.hero.tagline">{cms.tagline}</p>
     </div>
   </section>
 
@@ -207,19 +213,19 @@ const amenities = [
       <div class="stats-bar">
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bedrooms}+1</div>
-          <div class="stats-bar__label">Bedrooms + Suite</div>
+          <div class="stats-bar__label" data-i18n="hideaway.stats.bedroomsSuite">Bedrooms + Suite</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bathrooms}</div>
-          <div class="stats-bar__label">Bathrooms</div>
+          <div class="stats-bar__label" data-i18n="hideaway.stats.bathrooms">Bathrooms</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.sleeps}</div>
-          <div class="stats-bar__label">Guests</div>
+          <div class="stats-bar__label" data-i18n="hideaway.stats.guests">Guests</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.beds}</div>
-          <div class="stats-bar__label">Beds</div>
+          <div class="stats-bar__label" data-i18n="hideaway.stats.beds">Beds</div>
         </div>
       </div>
     </div>
@@ -231,16 +237,16 @@ const amenities = [
   <!-- Narrative Description -->
   <section class="section section--tight">
     <div class="container--narrow fade-in">
-      <span class="eyebrow">The Maison</span>
-      <h2>{cms.title}</h2>
+      <span class="eyebrow" data-i18n="hideaway.narrative.eyebrow">The Maison</span>
+      <h2 data-i18n="hideaway.narrative.heading">{cms.title}</h2>
       <div style="margin-top: 32px;">
-        <p class="prose-lead">
+        <p class="prose-lead" data-i18n="hideaway.narrative.summary">
           {cms.summary}
         </p>
-        <p style="margin-top: 20px;">
+        <p style="margin-top: 20px;" data-i18n="hideaway.narrative.p1">
           For 60 years, The Hollywood Hideaway was a treasured sanctuary getaway for Hollywood's #1 power lawyer whose clients included Tom Cruise, Dustin Hoffman, Michael Jackson, Mario Puzzo and the luminaries of LA.
         </p>
-        <p style="margin-top: 20px;">
+        <p style="margin-top: 20px;" data-i18n="hideaway.narrative.p2">
           This was his happy home where he entertained his Hollywood pals and cooked and relaxed in the French countryside. Now you can follow in the footsteps of the stars and make this your own home in France. It is beautifully furnished with French antiques.
         </p>
       </div>
@@ -254,6 +260,7 @@ const amenities = [
     intro="Three bedrooms plus an adjacent suite. Tap any room for details and photos."
     rooms={bedrooms}
     background="stone"
+    i18nKey="hideaway.bedrooms"
   />
 
   <!-- Living Spaces -->
@@ -262,6 +269,7 @@ const amenities = [
     heading={`Where you'll <span class="serif-italic">gather</span>`}
     intro="One long upstairs room and the bright kitchen below — the working heart of the Hideaway."
     rooms={livingSpaces}
+    i18nKey="hideaway.living"
   />
 
   <!-- Amenities -->
@@ -271,6 +279,7 @@ const amenities = [
     features={amenityFeatures}
     amenities={amenities}
     background="stone"
+    i18nKey="hideaway.amenities"
   />
 
   <!-- Availability -->
@@ -278,6 +287,7 @@ const amenities = [
     eyebrow="Availability"
     heading={`When You Can <span class="serif-italic">Stay</span>`}
     intro="Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
+    i18nKey="hideaway.availability"
   />
 
   <!-- CTA -->
@@ -287,9 +297,9 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);">Interested in {cms.title}?</h2>
-      <p class="hero__tagline">Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.</p>
-      <a href="/contact/" class="btn btn--white">Inquire About Dates</a>
+      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);" data-i18n="hideaway.cta.heading">Interested in {cms.title}?</h2>
+      <p class="hero__tagline" data-i18n="hideaway.cta.text">Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.</p>
+      <a href="/contact/" class="btn btn--white" data-i18n="hideaway.cta.button">Inquire About Dates</a>
     </div>
   </section>
 
@@ -297,7 +307,7 @@ const amenities = [
   <section class="section section--tight">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 32px;">
-        <h2>Les <span class="serif-italic">Autres Maisons</span></h2>
+        <h2 data-i18n="hideaway.cross.heading">Les <span class="serif-italic">Autres Maisons</span></h2>
       </div>
       <div class="grid grid--2" style="gap: 24px;">
         <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
@@ -305,11 +315,11 @@ const amenities = [
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison One</span>
-            <h3 class="card__title">Le Moulin à Rêves</h3>
+            <span class="card__eyebrow" data-i18n="hideaway.cross.moulin.eyebrow">Maison One</span>
+            <h3 class="card__title" data-i18n="hideaway.cross.moulin.title">Le Moulin à Rêves</h3>
             <div class="card__meta">
-              <span>5 Bedrooms</span>
-              <span>Sleeps 12</span>
+              <span data-i18n="hideaway.cross.moulin.beds">5 Bedrooms</span>
+              <span data-i18n="hideaway.cross.moulin.sleeps">Sleeps 12</span>
             </div>
           </div>
         </a>
@@ -318,17 +328,17 @@ const amenities = [
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison Three</span>
-            <h3 class="card__title">La Maison de la Rivière</h3>
+            <span class="card__eyebrow" data-i18n="hideaway.cross.riviere.eyebrow">Maison Three</span>
+            <h3 class="card__title" data-i18n="hideaway.cross.riviere.title">La Maison de la Rivière</h3>
             <div class="card__meta">
-              <span>2 Bedrooms</span>
-              <span>Sleeps 5</span>
+              <span data-i18n="hideaway.cross.riviere.beds">2 Bedrooms</span>
+              <span data-i18n="hideaway.cross.riviere.sleeps">Sleeps 5</span>
             </div>
           </div>
         </a>
       </div>
       <div class="text-center" style="margin-top: 48px;">
-        <a href="/the-compound/" class="link-arrow">Rent All Three Maisons</a>
+        <a href="/the-compound/" class="link-arrow" data-i18n="hideaway.cross.cta">Rent All Three Maisons</a>
       </div>
     </div>
   </section>

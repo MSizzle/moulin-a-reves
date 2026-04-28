@@ -9,17 +9,20 @@ interface Props {
   interval?: number;
   eyebrow?: string;
   heading?: string;
+  i18nKey?: string;
 }
 
-const { images, interval = 5500, eyebrow, heading } = Astro.props;
+const { images, interval = 5500, eyebrow, heading, i18nKey } = Astro.props;
+const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
+const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
 ---
 
 <section class="photo-carousel-section section section--tight">
   {(eyebrow || heading) && (
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 28px;">
-        {eyebrow && <span class="eyebrow">{eyebrow}</span>}
-        {heading && <h2 set:html={heading} />}
+        {eyebrow && <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>}
+        {heading && <h2 set:html={heading} {...(headingKey ? { 'data-i18n': headingKey } : {})} />}
       </div>
     </div>
   )}

@@ -21,6 +21,7 @@ const carouselImages = [
 
 const bedrooms = [
   {
+    id: 'artistes',
     eyebrow: 'Bedroom · Upstairs',
     title: 'La Chambre des Artistes',
     summary: 'The Artists\' Room. Upstairs. King bed in a large bedroom, plus a twin bed and an in-room sink.',
@@ -36,6 +37,7 @@ const bedrooms = [
     ],
   },
   {
+    id: 'ecrivains',
     eyebrow: 'Bedroom · Upstairs',
     title: 'La Chambre des Écrivains',
     summary: 'The Writers\' Room. Upstairs. Double bed with an in-room sink. Shares the hall bathroom with Les Artistes.',
@@ -53,6 +55,7 @@ const bedrooms = [
 
 const livingSpaces = [
   {
+    id: 'living',
     eyebrow: 'Living',
     title: 'The Living Room',
     summary: 'Spacious and sun-drenched, with two couches, fine antiques, and an authentic Louis Vuitton trunk as a coffee table. French doors open to the stream and apple trees.',
@@ -63,6 +66,7 @@ const livingSpaces = [
     ],
   },
   {
+    id: 'dining',
     eyebrow: 'Dining',
     title: 'The Dining Room',
     summary: 'Elegant dining room with a table that seats up to eighteen — built for dinner parties and long, candlelit evenings.',
@@ -71,6 +75,7 @@ const livingSpaces = [
     ],
   },
   {
+    id: 'kitchen',
     eyebrow: 'Kitchen',
     title: 'The Kitchen',
     summary: 'Eat-in kitchen with stone walls and exposed beams. Oven, full fridge + freezer, microwave, toaster, Nespresso, kettle.',
@@ -157,9 +162,9 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow">{cms.eyebrow}</span>
-      <h1 class="hero__title">{cms.title}</h1>
-      <p class="hero__tagline">{cms.tagline}</p>
+      <span class="hero__eyebrow" data-i18n="riviere.hero.eyebrow">{cms.eyebrow}</span>
+      <h1 class="hero__title" data-i18n="riviere.hero.title">{cms.title}</h1>
+      <p class="hero__tagline" data-i18n="riviere.hero.tagline">{cms.tagline}</p>
     </div>
   </section>
 
@@ -184,19 +189,19 @@ const amenities = [
       <div class="stats-bar">
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bedrooms}</div>
-          <div class="stats-bar__label">Bedrooms</div>
+          <div class="stats-bar__label" data-i18n="riviere.stats.bedrooms">Bedrooms</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bathrooms}</div>
-          <div class="stats-bar__label">Bathrooms</div>
+          <div class="stats-bar__label" data-i18n="riviere.stats.bathrooms">Bathrooms</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.sleeps}</div>
-          <div class="stats-bar__label">Guests</div>
+          <div class="stats-bar__label" data-i18n="riviere.stats.guests">Guests</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.beds}</div>
-          <div class="stats-bar__label">Beds</div>
+          <div class="stats-bar__label" data-i18n="riviere.stats.beds">Beds</div>
         </div>
       </div>
     </div>
@@ -208,10 +213,10 @@ const amenities = [
   <!-- Narrative Description -->
   <section class="section section--tight">
     <div class="container--narrow fade-in">
-      <span class="eyebrow">The Maison</span>
-      <h2>{cms.title}</h2>
+      <span class="eyebrow" data-i18n="riviere.narrative.eyebrow">The Maison</span>
+      <h2 data-i18n="riviere.narrative.heading">{cms.title}</h2>
       <div style="margin-top: 32px;">
-        <p class="prose-lead">
+        <p class="prose-lead" data-i18n="riviere.narrative.summary">
           {cms.summary}
         </p>
       </div>
@@ -225,6 +230,7 @@ const amenities = [
     intro="Two upstairs bedrooms sharing a hall bath. Tap any room for details and photos."
     rooms={bedrooms}
     background="stone"
+    i18nKey="riviere.bedrooms"
   />
 
   <!-- Living Spaces -->
@@ -233,6 +239,7 @@ const amenities = [
     heading={`Where you'll <span class="serif-italic">gather</span>`}
     intro="A sun-drenched living room, a dining room for eighteen, and a stone-and-beam kitchen."
     rooms={livingSpaces}
+    i18nKey="riviere.living"
   />
 
   <!-- Amenities -->
@@ -242,6 +249,7 @@ const amenities = [
     features={amenityFeatures}
     amenities={amenities}
     background="stone"
+    i18nKey="riviere.amenities"
   />
 
   <!-- Availability -->
@@ -249,6 +257,7 @@ const amenities = [
     eyebrow="Availability"
     heading={`When You Can <span class="serif-italic">Stay</span>`}
     intro="Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
+    i18nKey="riviere.availability"
   />
 
   <!-- CTA -->
@@ -258,9 +267,9 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);">Interested in {cms.title}?</h2>
-      <p class="hero__tagline">Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.</p>
-      <a href="/contact/" class="btn btn--white">Inquire About Dates</a>
+      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);" data-i18n="riviere.cta.heading">Interested in {cms.title}?</h2>
+      <p class="hero__tagline" data-i18n="riviere.cta.text">Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.</p>
+      <a href="/contact/" class="btn btn--white" data-i18n="riviere.cta.button">Inquire About Dates</a>
     </div>
   </section>
 
@@ -268,7 +277,7 @@ const amenities = [
   <section class="section section--tight">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 32px;">
-        <h2>Les <span class="serif-italic">Autres Maisons</span></h2>
+        <h2 data-i18n="riviere.cross.heading">Les <span class="serif-italic">Autres Maisons</span></h2>
       </div>
       <div class="grid grid--2" style="gap: 24px;">
         <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
@@ -276,11 +285,11 @@ const amenities = [
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison One</span>
-            <h3 class="card__title">Le Moulin à Rêves</h3>
+            <span class="card__eyebrow" data-i18n="riviere.cross.moulin.eyebrow">Maison One</span>
+            <h3 class="card__title" data-i18n="riviere.cross.moulin.title">Le Moulin à Rêves</h3>
             <div class="card__meta">
-              <span>5 Bedrooms</span>
-              <span>Sleeps 12</span>
+              <span data-i18n="riviere.cross.moulin.beds">5 Bedrooms</span>
+              <span data-i18n="riviere.cross.moulin.sleeps">Sleeps 12</span>
             </div>
           </div>
         </a>
@@ -289,17 +298,17 @@ const amenities = [
             <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison Two</span>
-            <h3 class="card__title">The Hollywood Hideaway</h3>
+            <span class="card__eyebrow" data-i18n="riviere.cross.hideaway.eyebrow">Maison Two</span>
+            <h3 class="card__title" data-i18n="riviere.cross.hideaway.title">The Hollywood Hideaway</h3>
             <div class="card__meta">
-              <span>3 Bedrooms + Suite</span>
-              <span>Sleeps 8</span>
+              <span data-i18n="riviere.cross.hideaway.beds">3 Bedrooms + Suite</span>
+              <span data-i18n="riviere.cross.hideaway.sleeps">Sleeps 8</span>
             </div>
           </div>
         </a>
       </div>
       <div class="text-center" style="margin-top: 48px;">
-        <a href="/the-compound/" class="link-arrow">Rent All Three Maisons</a>
+        <a href="/the-compound/" class="link-arrow" data-i18n="riviere.cross.cta">Rent All Three Maisons</a>
       </div>
     </div>
   </section>

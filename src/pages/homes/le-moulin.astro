@@ -22,6 +22,7 @@ const carouselImages = [
 
 const bedrooms = [
   {
+    id: 'riviere',
     eyebrow: 'Bedroom · Ground Floor',
     title: 'La Chambre de la Rivière',
     summary: 'The River Room. Two twin beds on the ground floor, with a hall bathroom and shower just outside the door.',
@@ -36,6 +37,7 @@ const bedrooms = [
     ],
   },
   {
+    id: 'romantique',
     eyebrow: 'Bedroom · Upstairs',
     title: 'La Suite Romantique',
     summary: 'King bed in the upstairs master, beneath original exposed beams. En-suite bathroom with shower.',
@@ -50,6 +52,7 @@ const bedrooms = [
     ],
   },
   {
+    id: 'cerises',
     eyebrow: 'Bedroom · Upstairs',
     title: 'Les Cerises',
     summary: 'The Cherry Room. Queen bed with a sink and bidet in the room. Shares the clawfoot-tub hall bath with Les Roses.',
@@ -64,6 +67,7 @@ const bedrooms = [
     ],
   },
   {
+    id: 'roses',
     eyebrow: 'Bedroom · Upstairs',
     title: 'Les Roses',
     summary: 'The Rose Room. Two twin beds. Shares the clawfoot-tub hall bath with Les Cerises.',
@@ -77,6 +81,7 @@ const bedrooms = [
     ],
   },
   {
+    id: 'loft',
     eyebrow: 'Suite · Attic',
     title: 'Le Loft Suite',
     summary: 'Second-floor attic with two twins (combinable as a king) plus a separate TV room with two floor twins. Shared hall bath with shower.',
@@ -95,6 +100,7 @@ const bedrooms = [
 
 const livingSpaces = [
   {
+    id: 'salon',
     eyebrow: 'Living',
     title: 'Le Salon',
     summary: 'Large living room with leather couch, club chairs, and antiques. The river and bridge are illuminated at night.',
@@ -104,6 +110,7 @@ const livingSpaces = [
     ],
   },
   {
+    id: 'dining',
     eyebrow: 'Dining',
     title: 'The Dining Room',
     summary: 'Formal dining room for up to twelve, with art, antiques, a chandelier, and a long candlelit table.',
@@ -112,6 +119,7 @@ const livingSpaces = [
     ],
   },
   {
+    id: 'kitchen',
     eyebrow: 'Kitchen',
     title: 'The Kitchen',
     summary: 'Eat-in kitchen for six. Two Viking-style ovens, six gas burners, full fridge and freezer, Nespresso, kettle.',
@@ -211,9 +219,9 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow">{cms.eyebrow}</span>
-      <h1 class="hero__title">{cms.title}</h1>
-      <p class="hero__tagline">{cms.tagline}</p>
+      <span class="hero__eyebrow" data-i18n="le-moulin.hero.eyebrow">{cms.eyebrow}</span>
+      <h1 class="hero__title" data-i18n="le-moulin.hero.title">{cms.title}</h1>
+      <p class="hero__tagline" data-i18n="le-moulin.hero.tagline">{cms.tagline}</p>
     </div>
   </section>
 
@@ -238,19 +246,19 @@ const amenities = [
       <div class="stats-bar">
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bedrooms}</div>
-          <div class="stats-bar__label">Bedrooms</div>
+          <div class="stats-bar__label" data-i18n="le-moulin.stats.bedrooms">Bedrooms</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bathrooms}</div>
-          <div class="stats-bar__label">Bathrooms</div>
+          <div class="stats-bar__label" data-i18n="le-moulin.stats.bathrooms">Bathrooms</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.sleeps}</div>
-          <div class="stats-bar__label">Guests</div>
+          <div class="stats-bar__label" data-i18n="le-moulin.stats.guests">Guests</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.beds}</div>
-          <div class="stats-bar__label">Beds</div>
+          <div class="stats-bar__label" data-i18n="le-moulin.stats.beds">Beds</div>
         </div>
       </div>
     </div>
@@ -262,16 +270,16 @@ const amenities = [
   <!-- Narrative Description -->
   <section class="section section--tight">
     <div class="container--narrow fade-in">
-      <span class="eyebrow">The Maison</span>
-      <h2>{cms.title}</h2>
+      <span class="eyebrow" data-i18n="le-moulin.narrative.eyebrow">The Maison</span>
+      <h2 data-i18n="le-moulin.narrative.heading">{cms.title}</h2>
       <div style="margin-top: 32px;">
-        <p class="prose-lead">
+        <p class="prose-lead" data-i18n="le-moulin.narrative.summary">
           {cms.summary}
         </p>
-        <p style="margin-top: 20px;">
+        <p style="margin-top: 20px;" data-i18n="le-moulin.narrative.p1">
           Relax in the gardens and watch as the day goes by. Let your worries float away on the Juine River. Wake up to the roosters crowing in the chicken coop. Go back in time as you gaze at the flower gardens and Giverny-style bridge. Make a wish in the wishing well!
         </p>
-        <p style="margin-top: 20px;">
+        <p style="margin-top: 20px;" data-i18n="le-moulin.narrative.p2">
           Dine al fresco with friends, colleagues, family or students. This is a wonderful compound for inspiration, fun, reflection and quiet time together.
         </p>
       </div>
@@ -285,6 +293,7 @@ const amenities = [
     intro="Five bedrooms across three floors. Tap any room for details and photos."
     rooms={bedrooms}
     background="stone"
+    i18nKey="le-moulin.bedrooms"
   />
 
   <!-- Living Spaces -->
@@ -293,6 +302,7 @@ const amenities = [
     heading={`Where you'll <span class="serif-italic">gather</span>`}
     intro="Salon, dining, and kitchen — the rooms made for long evenings together."
     rooms={livingSpaces}
+    i18nKey="le-moulin.living"
   />
 
   <!-- Amenities -->
@@ -302,6 +312,7 @@ const amenities = [
     features={amenityFeatures}
     amenities={amenities}
     background="stone"
+    i18nKey="le-moulin.amenities"
   />
 
   <!-- Availability -->
@@ -309,6 +320,7 @@ const amenities = [
     eyebrow="Availability"
     heading={`When You Can <span class="serif-italic">Stay</span>`}
     intro="Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
+    i18nKey="le-moulin.availability"
   />
 
   <!-- CTA -->
@@ -318,9 +330,9 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);">Interested in {cms.title}?</h2>
-      <p class="hero__tagline">Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.</p>
-      <a href="/contact/" class="btn btn--white">Inquire About Dates</a>
+      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);" data-i18n="le-moulin.cta.heading">Interested in {cms.title}?</h2>
+      <p class="hero__tagline" data-i18n="le-moulin.cta.text">Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.</p>
+      <a href="/contact/" class="btn btn--white" data-i18n="le-moulin.cta.button">Inquire About Dates</a>
     </div>
   </section>
 
@@ -328,7 +340,7 @@ const amenities = [
   <section class="section section--tight">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 32px;">
-        <h2>Les <span class="serif-italic">Autres Maisons</span></h2>
+        <h2 data-i18n="le-moulin.cross.heading">Les <span class="serif-italic">Autres Maisons</span></h2>
       </div>
       <div class="grid grid--2" style="gap: 24px;">
         <a href="/homes/hollywood-hideaway/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
@@ -336,11 +348,11 @@ const amenities = [
             <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway at Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison Two</span>
-            <h3 class="card__title">The Hollywood Hideaway</h3>
+            <span class="card__eyebrow" data-i18n="le-moulin.cross.hideaway.eyebrow">Maison Two</span>
+            <h3 class="card__title" data-i18n="le-moulin.cross.hideaway.title">The Hollywood Hideaway</h3>
             <div class="card__meta">
-              <span>3 Bedrooms + Suite</span>
-              <span>Sleeps 8</span>
+              <span data-i18n="le-moulin.cross.hideaway.beds">3 Bedrooms + Suite</span>
+              <span data-i18n="le-moulin.cross.hideaway.sleeps">Sleeps 8</span>
             </div>
           </div>
         </a>
@@ -349,17 +361,17 @@ const amenities = [
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière at Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow">Maison Three</span>
-            <h3 class="card__title">La Maison de la Rivière</h3>
+            <span class="card__eyebrow" data-i18n="le-moulin.cross.riviere.eyebrow">Maison Three</span>
+            <h3 class="card__title" data-i18n="le-moulin.cross.riviere.title">La Maison de la Rivière</h3>
             <div class="card__meta">
-              <span>2 Bedrooms</span>
-              <span>Sleeps 5</span>
+              <span data-i18n="le-moulin.cross.riviere.beds">2 Bedrooms</span>
+              <span data-i18n="le-moulin.cross.riviere.sleeps">Sleeps 5</span>
             </div>
           </div>
         </a>
       </div>
       <div class="text-center" style="margin-top: 48px;">
-        <a href="/the-compound/" class="link-arrow">Rent All Three Maisons</a>
+        <a href="/the-compound/" class="link-arrow" data-i18n="le-moulin.cross.cta">Rent All Three Maisons</a>
       </div>
     </div>
   </section>

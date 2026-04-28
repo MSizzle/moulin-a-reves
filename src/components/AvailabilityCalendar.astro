@@ -5,6 +5,7 @@ interface Props {
   eyebrow?: string;
   intro?: string;
   compact?: boolean;
+  i18nKey?: string;
 }
 
 const {
@@ -13,15 +14,19 @@ const {
   eyebrow = 'Availability',
   intro = "Live calendar synced from Airbnb and VRBO. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm.",
   compact = false,
+  i18nKey,
 } = Astro.props;
+const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
+const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
+const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
 ---
 
 <section class={`section availability ${compact ? 'availability--compact' : ''}`}>
   <div class="container">
     <div class="text-center fade-in availability__header">
-      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
-      <h2 set:html={heading}></h2>
-      {intro && <p class="availability__lede">{intro}</p>}
+      {eyebrow && <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>}
+      <h2 set:html={heading} {...(headingKey ? { 'data-i18n': headingKey } : {})}></h2>
+      {intro && <p class="availability__lede" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
       <div class="availability__legend" aria-hidden="true">
         <span class="availability__chip"><i class="dot dot--available"></i>Available</span>
         <span class="availability__chip"><i class="dot dot--booked"></i>Booked</span>
