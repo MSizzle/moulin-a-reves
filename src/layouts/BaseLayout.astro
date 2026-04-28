@@ -179,6 +179,689 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
     <!-- Prometheus watermark -->
     <div style="position:fixed;bottom:12px;right:16px;z-index:9998;font-size:10px;letter-spacing:0.08em;color:rgba(0,0,0,0.18);pointer-events:none;font-family:sans-serif;">Prometheus</div>
 
+    <!-- Room detail modal — used by [data-room] cards (rich content + gallery) -->
+    <div class="room-modal" id="room-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="room-modal-title">
+      <div class="room-modal__backdrop" data-room-close></div>
+      <div class="room-modal__inner" role="document">
+        <button class="room-modal__close" data-room-close aria-label="Close">&times;</button>
+        <div class="room-modal__media">
+          <div class="room-modal__stage">
+            <img class="room-modal__image" id="room-modal-image" src="" alt="" />
+            <button class="room-modal__nav room-modal__nav--prev" data-room-prev aria-label="Previous photo">&#8249;</button>
+            <button class="room-modal__nav room-modal__nav--next" data-room-next aria-label="Next photo">&#8250;</button>
+            <div class="room-modal__counter" id="room-modal-counter"></div>
+          </div>
+          <div class="room-modal__thumbs" id="room-modal-thumbs"></div>
+        </div>
+        <aside class="room-modal__panel">
+          <span class="room-modal__eyebrow" id="room-modal-eyebrow"></span>
+          <h2 class="room-modal__title" id="room-modal-title"></h2>
+          <p class="room-modal__summary" id="room-modal-summary"></p>
+          <div class="room-modal__details" id="room-modal-details"></div>
+          <div class="room-modal__description" id="room-modal-description"></div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Lightbox for clickable room/photo galleries -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+      <button class="lightbox__close" aria-label="Close gallery" data-lightbox-close>&times;</button>
+      <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image" data-lightbox-prev>&#8249;</button>
+      <button class="lightbox__nav lightbox__nav--next" aria-label="Next image" data-lightbox-next>&#8250;</button>
+      <div class="lightbox__stage">
+        <img class="lightbox__image" id="lightbox-image" src="" alt="" />
+        <div class="lightbox__caption" id="lightbox-caption"></div>
+        <div class="lightbox__counter" id="lightbox-counter"></div>
+      </div>
+    </div>
+
+    <style>
+      /* ---- Room Modal ---- */
+      .room-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s var(--ease-out), visibility 0.4s var(--ease-out);
+      }
+      .room-modal.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .room-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 15, 15, 0.85);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+      .room-modal__inner {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        width: min(1320px, calc(100% - 48px));
+        max-height: calc(100vh - 48px);
+        margin: auto;
+        background: var(--bg-cream);
+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
+        overflow: hidden;
+        transform: translateY(16px) scale(0.985);
+        transition: transform 0.5s var(--ease-out);
+      }
+      .room-modal.is-open .room-modal__inner {
+        transform: translateY(0) scale(1);
+      }
+      .room-modal__close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--ink);
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+      }
+      .room-modal__close:hover {
+        background: white;
+        transform: scale(1.05);
+      }
+      .room-modal__media {
+        position: relative;
+        background: var(--bg-stone);
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      .room-modal__stage {
+        position: relative;
+        flex: 1;
+        min-height: 0;
+        background: #111;
+        overflow: hidden;
+      }
+      .room-modal__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .room-modal__nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink);
+        border: none;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+      }
+      .room-modal__nav:hover {
+        background: white;
+        transform: translateY(-50%) scale(1.05);
+      }
+      .room-modal__nav--prev { left: 16px; }
+      .room-modal__nav--next { right: 16px; }
+      .room-modal__counter {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        background: rgba(15, 15, 15, 0.65);
+        color: white;
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        padding: 6px 12px;
+        z-index: 2;
+      }
+      .room-modal__thumbs {
+        flex-shrink: 0;
+        display: flex;
+        gap: 6px;
+        padding: 10px;
+        overflow-x: auto;
+        background: var(--bg-cream);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+      .room-modal__thumb {
+        flex: 0 0 auto;
+        width: 78px;
+        aspect-ratio: 4 / 3;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        overflow: hidden;
+        background: var(--bg-stone);
+        opacity: 0.55;
+        transition: opacity var(--duration) var(--ease-out);
+      }
+      .room-modal__thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .room-modal__thumb:hover { opacity: 0.85; }
+      .room-modal__thumb.is-active {
+        opacity: 1;
+        outline: 2px solid var(--ink);
+        outline-offset: -2px;
+      }
+      .room-modal--single .room-modal__nav,
+      .room-modal--single .room-modal__counter,
+      .room-modal--single .room-modal__thumbs {
+        display: none;
+      }
+      .room-modal__panel {
+        padding: clamp(28px, 3.2vw, 48px);
+        overflow-y: auto;
+        background: var(--bg-cream);
+        display: flex;
+        flex-direction: column;
+      }
+      .room-modal__eyebrow {
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--ink-mute);
+        margin-bottom: 14px;
+      }
+      .room-modal__eyebrow:empty {
+        display: none;
+      }
+      .room-modal__title {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--ink);
+        margin-bottom: 18px;
+        letter-spacing: 0;
+      }
+      .room-modal__summary {
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        color: var(--ink-soft);
+        margin-bottom: 20px;
+        max-width: none;
+      }
+      .room-modal__description {
+        font-size: 0.9375rem;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin-bottom: 24px;
+        max-width: none;
+      }
+      .room-modal__description:empty {
+        display: none;
+      }
+      .room-modal__details {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 8px;
+        margin-bottom: 24px;
+        border-top: 1px solid rgba(32, 32, 32, 0.1);
+      }
+      .room-modal__details:empty {
+        display: none;
+      }
+      .room-modal__detail {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(32, 32, 32, 0.08);
+      }
+      .room-modal__detail-label {
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-mute);
+      }
+      .room-modal__detail-value {
+        font-size: 0.9375rem;
+        color: var(--ink);
+        text-align: right;
+      }
+
+      @media (max-width: 900px) {
+        .room-modal__inner {
+          grid-template-columns: 1fr;
+          width: 100%;
+          max-height: 100vh;
+          height: 100vh;
+          overflow-y: auto;
+        }
+        .room-modal__media {
+          height: 50vh;
+          flex-shrink: 0;
+        }
+        .room-modal__panel {
+          padding: 24px 20px 40px;
+        }
+        .room-modal__nav {
+          width: 36px;
+          height: 36px;
+          font-size: 1.2rem;
+        }
+        .room-modal__nav--prev { left: 10px; }
+        .room-modal__nav--next { right: 10px; }
+      }
+
+      /* ---- Lightbox ---- */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        background: rgba(15, 15, 15, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.35s var(--ease-out), visibility 0.35s var(--ease-out);
+      }
+      .lightbox.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .lightbox__stage {
+        position: relative;
+        width: min(92vw, 1400px);
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+      }
+      .lightbox__image {
+        max-width: 100%;
+        max-height: 80vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+        background: var(--bg-cream);
+      }
+      .lightbox__caption {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        max-width: 60ch;
+      }
+      .lightbox__counter {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .lightbox__close,
+      .lightbox__nav {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        cursor: pointer;
+        transition: background 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+        font-family: var(--font-body);
+        z-index: 2;
+      }
+      .lightbox__close:hover,
+      .lightbox__nav:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .lightbox__close {
+        top: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox__nav {
+        top: 50%;
+        transform: translateY(-50%);
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        font-size: 1.6rem;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox__nav--prev { left: 24px; }
+      .lightbox__nav--next { right: 24px; }
+      .lightbox__nav:hover { transform: translateY(-50%) scale(1.05); }
+      .lightbox--single .lightbox__nav,
+      .lightbox--single .lightbox__counter {
+        display: none;
+      }
+
+      /* Make gallery cards visually clickable */
+      [data-gallery] {
+        cursor: zoom-in;
+      }
+      [data-gallery] .card__image {
+        position: relative;
+      }
+      [data-gallery] .card__image::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(15, 15, 15, 0.35) 0%, rgba(15, 15, 15, 0) 50%);
+        opacity: 0;
+        transition: opacity var(--duration) var(--ease-out);
+        z-index: 2;
+        pointer-events: none;
+      }
+      [data-gallery]:hover .card__image::before { opacity: 1; }
+      .card__view-more {
+        position: absolute;
+        right: 14px;
+        bottom: 14px;
+        z-index: 3;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink);
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+        pointer-events: none;
+      }
+      [data-gallery]:hover .card__view-more {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .card__view-more::after {
+        content: '\2197';
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .lightbox__nav { width: 44px; height: 44px; font-size: 1.25rem; }
+        .lightbox__nav--prev { left: 12px; }
+        .lightbox__nav--next { right: 12px; }
+        .lightbox__close { top: 14px; right: 14px; }
+        .card__view-more { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+
+    <script is:inline>
+      (function () {
+        var lb = document.getElementById('lightbox');
+        if (!lb) return;
+        var img = document.getElementById('lightbox-image');
+        var cap = document.getElementById('lightbox-caption');
+        var counter = document.getElementById('lightbox-counter');
+        var prevBtn = lb.querySelector('[data-lightbox-prev]');
+        var nextBtn = lb.querySelector('[data-lightbox-next]');
+        var current = [];
+        var index = 0;
+
+        function render() {
+          if (!current.length) return;
+          var item = current[index];
+          img.src = item.src;
+          img.alt = item.alt || '';
+          cap.textContent = item.caption || item.alt || '';
+          counter.textContent = (index + 1) + ' / ' + current.length;
+          if (current.length <= 1) {
+            lb.classList.add('lightbox--single');
+          } else {
+            lb.classList.remove('lightbox--single');
+          }
+        }
+
+        function open(items, startIndex) {
+          if (!items || !items.length) return;
+          current = items;
+          index = startIndex || 0;
+          render();
+          lb.classList.add('is-open');
+          lb.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+        function close() {
+          lb.classList.remove('is-open');
+          lb.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+        function next() { if (current.length < 2) return; index = (index + 1) % current.length; render(); }
+        function prev() { if (current.length < 2) return; index = (index - 1 + current.length) % current.length; render(); }
+
+        // Wire global click handler for any element with data-gallery
+        document.addEventListener('click', function (e) {
+          var target = e.target;
+          while (target && target !== document.body) {
+            if (target.dataset && target.dataset.gallery) {
+              e.preventDefault();
+              try {
+                var raw = target.dataset.gallery;
+                var items = JSON.parse(raw);
+                // Normalize to array of objects
+                items = items.map(function (it) {
+                  if (typeof it === 'string') return { src: it, alt: '', caption: '' };
+                  return it;
+                });
+                open(items, 0);
+              } catch (_) {}
+              return;
+            }
+            target = target.parentNode;
+          }
+        });
+
+        // Add a "View gallery" pill into each gallery card
+        document.querySelectorAll('[data-gallery] .card__image').forEach(function (el) {
+          if (el.querySelector('.card__view-more')) return;
+          var pill = document.createElement('span');
+          pill.className = 'card__view-more';
+          pill.textContent = 'View';
+          el.appendChild(pill);
+        });
+
+        lb.querySelectorAll('[data-lightbox-close]').forEach(function (el) {
+          el.addEventListener('click', close);
+        });
+        prevBtn && prevBtn.addEventListener('click', function (e) { e.stopPropagation(); prev(); });
+        nextBtn && nextBtn.addEventListener('click', function (e) { e.stopPropagation(); next(); });
+        lb.addEventListener('click', function (e) {
+          if (e.target === lb) close();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (!lb.classList.contains('is-open')) return;
+          if (e.key === 'Escape') close();
+          if (e.key === 'ArrowRight') next();
+          if (e.key === 'ArrowLeft') prev();
+        });
+      })();
+    </script>
+
+    <script is:inline>
+      (function () {
+        var modal = document.getElementById('room-modal');
+        if (!modal) return;
+        var img = document.getElementById('room-modal-image');
+        var counter = document.getElementById('room-modal-counter');
+        var thumbsEl = document.getElementById('room-modal-thumbs');
+        var eyebrowEl = document.getElementById('room-modal-eyebrow');
+        var titleEl = document.getElementById('room-modal-title');
+        var summaryEl = document.getElementById('room-modal-summary');
+        var detailsEl = document.getElementById('room-modal-details');
+        var descEl = document.getElementById('room-modal-description');
+        var prevBtn = modal.querySelector('[data-room-prev]');
+        var nextBtn = modal.querySelector('[data-room-next]');
+        var photos = [];
+        var idx = 0;
+        var lastFocus = null;
+
+        function escapeHTML(s) {
+          return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+        }
+
+        function render() {
+          if (!photos.length) return;
+          var p = photos[idx];
+          img.src = p.src;
+          img.alt = p.alt || '';
+          if (counter) counter.textContent = (idx + 1) + ' / ' + photos.length;
+          if (thumbsEl) {
+            Array.prototype.forEach.call(thumbsEl.children, function (t, i) {
+              t.classList.toggle('is-active', i === idx);
+              if (i === idx && t.scrollIntoView) {
+                t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              }
+            });
+          }
+        }
+
+        function open(room) {
+          eyebrowEl.textContent = room.eyebrow || '';
+          titleEl.textContent = room.title || '';
+          summaryEl.textContent = room.summary || '';
+          descEl.textContent = room.longDescription || '';
+          detailsEl.innerHTML = '';
+          if (room.details && room.details.length) {
+            room.details.forEach(function (d) {
+              var row = document.createElement('div');
+              row.className = 'room-modal__detail';
+              row.innerHTML =
+                '<span class="room-modal__detail-label">' + escapeHTML(d.label) + '</span>' +
+                '<span class="room-modal__detail-value">' + escapeHTML(d.value) + '</span>';
+              detailsEl.appendChild(row);
+            });
+          }
+          photos = (room.photos || []).slice();
+          thumbsEl.innerHTML = '';
+          photos.forEach(function (p, i) {
+            var t = document.createElement('button');
+            t.type = 'button';
+            t.className = 'room-modal__thumb';
+            t.setAttribute('aria-label', 'Show photo ' + (i + 1));
+            var im = document.createElement('img');
+            im.src = p.src;
+            im.alt = '';
+            im.loading = 'lazy';
+            t.appendChild(im);
+            t.addEventListener('click', function () { idx = i; render(); });
+            thumbsEl.appendChild(t);
+          });
+          idx = 0;
+          if (photos.length <= 1) {
+            modal.classList.add('room-modal--single');
+          } else {
+            modal.classList.remove('room-modal--single');
+          }
+          render();
+          lastFocus = document.activeElement;
+          modal.classList.add('is-open');
+          modal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          var closeBtn = modal.querySelector('.room-modal__close');
+          if (closeBtn) closeBtn.focus();
+        }
+
+        function close() {
+          modal.classList.remove('is-open');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          if (lastFocus && lastFocus.focus) lastFocus.focus();
+        }
+
+        function next() { if (photos.length < 2) return; idx = (idx + 1) % photos.length; render(); }
+        function prev() { if (photos.length < 2) return; idx = (idx - 1 + photos.length) % photos.length; render(); }
+
+        document.addEventListener('click', function (e) {
+          var target = e.target;
+          while (target && target !== document.body) {
+            if (target.dataset && target.dataset.room) {
+              e.preventDefault();
+              try {
+                var data = JSON.parse(target.dataset.room);
+                open(data);
+              } catch (_) {}
+              return;
+            }
+            target = target.parentNode;
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          var card = e.target && e.target.closest && e.target.closest('[data-room]');
+          if (card && (e.key === 'Enter' || e.key === ' ')) {
+            e.preventDefault();
+            try {
+              var data = JSON.parse(card.dataset.room);
+              open(data);
+            } catch (_) {}
+          }
+        });
+
+        modal.querySelectorAll('[data-room-close]').forEach(function (el) {
+          el.addEventListener('click', close);
+        });
+        prevBtn && prevBtn.addEventListener('click', function (e) { e.stopPropagation(); prev(); });
+        nextBtn && nextBtn.addEventListener('click', function (e) { e.stopPropagation(); next(); });
+        document.addEventListener('keydown', function (e) {
+          if (!modal.classList.contains('is-open')) return;
+          if (e.key === 'Escape') close();
+          if (e.key === 'ArrowRight') next();
+          if (e.key === 'ArrowLeft') prev();
+        });
+      })();
+    </script>
+
     <!-- Editor click-to-edit overlay (only loads inside the editor iframe with ?edit=1) -->
     <script is:inline>
       (function () {
@@ -687,6 +1370,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         font-size: 0.9375rem;
         color: var(--ink);
         letter-spacing: 0.01em;
+        font-weight: 600;
       }
 
       .footer__links h4,
@@ -695,7 +1379,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         text-transform: uppercase;
         letter-spacing: 0.12em;
         color: var(--ink);
-        font-weight: 700;
+        font-weight: 800;
         margin-bottom: 16px;
       }
 
@@ -710,27 +1394,30 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .footer__links a {
         color: var(--ink);
         font-size: 0.9375rem;
+        font-weight: 600;
         text-decoration: none;
         transition: color var(--duration) var(--ease-out);
       }
 
       .footer__links a:hover {
-        color: var(--blue-dark);
+        color: white;
       }
 
       .footer__contact p {
         margin-bottom: 8px;
         color: var(--ink);
+        font-weight: 600;
       }
 
       .footer__contact a {
         color: var(--ink);
+        font-weight: 600;
         text-decoration: none;
         transition: color var(--duration) var(--ease-out);
       }
 
       .footer__contact a:hover {
-        color: var(--blue-dark);
+        color: white;
       }
 
       .footer__newsletter {
@@ -740,6 +1427,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .footer__newsletter-label {
         font-size: 0.8125rem;
         color: var(--ink);
+        font-weight: 600;
         margin-bottom: 12px;
       }
 
@@ -776,6 +1464,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .footer__bottom p {
         font-size: 0.8125rem;
         color: var(--ink);
+        font-weight: 600;
         max-width: none;
       }
 

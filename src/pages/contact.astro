@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
 ---
 
 <BaseLayout title="Contact — Moulin à Rêves" description="Get in touch with Moulin à Rêves. Inquire about availability, pricing, and services for your stay in the French countryside near Paris.">
@@ -15,6 +16,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="hero__tagline" data-i18n="contact.hero.tagline">Tell us your dates, your group, your dreams. We'll take it from there.</p>
     </div>
   </section>
+
+  <!-- Live Availability -->
+  <AvailabilityCalendar
+    eyebrow="Step One"
+    heading="Check Availability First"
+    intro="Live calendar synced from our Airbnb and VRBO listings. Greyed dates are already booked across the compound. Once you've found a window, fill out the inquiry below."
+  />
 
   <!-- Form + Contact Info -->
   <section class="section">

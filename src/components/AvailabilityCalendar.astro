@@ -1,0 +1,319 @@
+---
+interface Props {
+  monthsToShow?: number;
+  heading?: string;
+  eyebrow?: string;
+  intro?: string;
+  compact?: boolean;
+}
+
+const {
+  monthsToShow = 4,
+  heading = 'When You Can <span class="serif-italic">Stay</span>',
+  eyebrow = 'Availability',
+  intro = "Live calendar synced from Airbnb and VRBO. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm.",
+  compact = false,
+} = Astro.props;
+---
+
+<section class={`section availability ${compact ? 'availability--compact' : ''}`}>
+  <div class="container">
+    <div class="text-center fade-in availability__header">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2 set:html={heading}></h2>
+      {intro && <p class="availability__lede">{intro}</p>}
+      <div class="availability__legend" aria-hidden="true">
+        <span class="availability__chip"><i class="dot dot--available"></i>Available</span>
+        <span class="availability__chip"><i class="dot dot--booked"></i>Booked</span>
+        <span class="availability__chip"><i class="dot dot--today"></i>Today</span>
+      </div>
+    </div>
+
+    <div
+      class="availability__calendar fade-in"
+      data-months={monthsToShow}
+      role="region"
+      aria-label="Availability calendar"
+    >
+      <div class="availability__months" id="availability-months">
+        <div class="availability__loading">Loading availability…</div>
+      </div>
+
+      <div class="availability__footer">
+        <span class="availability__sync" id="availability-sync">Syncing live from Airbnb + VRBO…</span>
+        <a href="/contact/" class="link-arrow">Inquire About Dates →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .availability {
+    background: var(--bg-warm-white);
+  }
+  .availability--compact {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    background: transparent;
+  }
+
+  /* Centered editorial header to match the rest of the page rhythm */
+  .availability__header {
+    margin-bottom: 56px;
+  }
+  .availability__lede {
+    margin-top: 14px;
+    max-width: 56ch;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--ink-soft);
+    font-size: 0.9375rem;
+  }
+
+  .availability__legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(32, 32, 32, 0.08);
+  }
+  .availability__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .dot--available {
+    background: transparent;
+    border: 1px solid rgba(32, 32, 32, 0.45);
+  }
+  .dot--booked {
+    background: rgba(32, 32, 32, 0.28);
+  }
+  .dot--today {
+    background: var(--blue-shutter);
+  }
+
+  /* Calendar — bare months, no card chrome */
+  .availability__calendar {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .availability__months {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 72px;
+    row-gap: 56px;
+  }
+  .availability__loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--ink-mute);
+    padding: 56px 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+  }
+
+  .availability__footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(32, 32, 32, 0.08);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .availability__sync {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.9375rem;
+    color: var(--ink-mute);
+  }
+
+  @media (max-width: 900px) {
+    .availability__months {
+      column-gap: 48px;
+      row-gap: 40px;
+    }
+  }
+  /* Inner-month styles live in a separate <style is:global> block below
+     because the markup is injected by the script at runtime, so Astro's
+     scoped class-hashing can't reach it. */
+
+  @media (max-width: 640px) {
+    .availability__header {
+      margin-bottom: 40px;
+    }
+    .availability__legend {
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+    .availability__months {
+      grid-template-columns: 1fr;
+      column-gap: 0;
+      row-gap: 32px;
+    }
+    .availability__footer {
+      justify-content: center;
+      text-align: center;
+      margin-top: 40px;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Inner-month markup is injected by the inline script below at runtime,
+     so it never receives Astro's scoped class hash. These rules MUST be
+     global to apply. */
+  .month__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.375rem;
+    color: var(--ink);
+    text-align: left;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(32, 32, 32, 0.14);
+  }
+  .month__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+  .month__dow {
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    padding: 4px 0 10px;
+  }
+  .day {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--ink);
+    position: relative;
+    isolation: isolate;
+  }
+  .day--blank { visibility: hidden; }
+  .day--past {
+    color: var(--ink-mute);
+    opacity: 0.4;
+  }
+  .day--booked {
+    color: rgba(32, 32, 32, 0.32);
+    text-decoration: line-through;
+    text-decoration-color: rgba(32, 32, 32, 0.5);
+    text-decoration-thickness: 1px;
+  }
+  .day--today {
+    color: white;
+    font-weight: 600;
+  }
+  .day--today::after {
+    content: '';
+    position: absolute;
+    inset: 12%;
+    border-radius: 50%;
+    background: var(--blue-shutter);
+    z-index: -1;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById('availability-months');
+    if (!root) return;
+    var calendar = root.closest('.availability__calendar');
+    var monthsToShow = parseInt((calendar && calendar.dataset.months) || '6', 10);
+    var syncEl = document.getElementById('availability-sync');
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function isoDay(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+
+    function buildMonth(year, month, blocked, today) {
+      var first = new Date(year, month, 1);
+      var last = new Date(year, month + 1, 0);
+      var monthName = first.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+      var html = '<div class="month"><div class="month__title">' + monthName + '</div><div class="month__grid">';
+      ['Mo','Tu','We','Th','Fr','Sa','Su'].forEach(function (d) {
+        html += '<div class="month__dow">' + d + '</div>';
+      });
+      // Monday = 0
+      var leading = (first.getDay() + 6) % 7;
+      for (var i = 0; i < leading; i++) {
+        html += '<div class="day day--blank"></div>';
+      }
+      for (var d = 1; d <= last.getDate(); d++) {
+        var date = new Date(year, month, d);
+        var iso = isoDay(date);
+        var classes = ['day'];
+        var isPast = date < today && iso !== isoDay(today);
+        if (isPast) classes.push('day--past');
+        if (blocked.has(iso)) classes.push('day--booked');
+        if (iso === isoDay(today)) classes.push('day--today');
+        var label = isPast ? 'past' : (blocked.has(iso) ? 'booked' : 'available');
+        html += '<div class="' + classes.join(' ') + '" title="' + iso + ' — ' + label + '">' + d + '</div>';
+      }
+      html += '</div></div>';
+      return html;
+    }
+
+    function render(blocked, lastSynced) {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var html = '';
+      var d = new Date(today.getFullYear(), today.getMonth(), 1);
+      for (var i = 0; i < monthsToShow; i++) {
+        html += buildMonth(d.getFullYear(), d.getMonth(), blocked, today);
+        d.setMonth(d.getMonth() + 1);
+      }
+      root.innerHTML = html;
+      if (syncEl && lastSynced) {
+        try {
+          var fmt = new Date(lastSynced).toLocaleString(undefined, {
+            month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
+          });
+          syncEl.textContent = 'Synced ' + fmt + ' from Airbnb + VRBO';
+        } catch (_) {}
+      }
+    }
+
+    function showError() {
+      root.innerHTML =
+        '<div class="availability__loading">Couldn’t load live calendar. ' +
+        '<a href="/contact/">Send us your dates</a> and we’ll confirm.</div>';
+    }
+
+    fetch('/api/availability', { cache: 'default' })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (data) {
+        var set = new Set(data.blocked || []);
+        render(set, data.lastSynced);
+      })
+      .catch(showError);
+  })();
+</script>

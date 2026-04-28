@@ -1,0 +1,343 @@
+---
+interface Image {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: Image[];
+  interval?: number;
+  eyebrow?: string;
+  heading?: string;
+}
+
+const { images, interval = 5500, eyebrow, heading } = Astro.props;
+---
+
+<section class="photo-carousel-section section section--tight">
+  {(eyebrow || heading) && (
+    <div class="container">
+      <div class="text-center fade-in" style="margin-bottom: 28px;">
+        {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+        {heading && <h2 set:html={heading} />}
+      </div>
+    </div>
+  )}
+
+  <div class="photo-carousel" data-carousel data-interval={interval}>
+    <div class="photo-carousel__stage">
+      {images.map((img, i) => (
+        <div class={`photo-carousel__slide ${i === 0 ? 'is-active' : ''}`} data-carousel-slide>
+          <img src={img.src} alt={img.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+        </div>
+      ))}
+
+      {images.length > 1 && (
+        <>
+          <button class="photo-carousel__arrow photo-carousel__arrow--prev" data-carousel-prev aria-label="Previous photo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button class="photo-carousel__arrow photo-carousel__arrow--next" data-carousel-next aria-label="Next photo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+          <div class="photo-carousel__counter" data-carousel-counter>
+            <span data-carousel-current>1</span><span class="photo-carousel__counter-divider">/</span><span>{images.length}</span>
+          </div>
+          <div class="photo-carousel__progress" data-carousel-progress aria-hidden="true">
+            <span class="photo-carousel__progress-bar" data-carousel-progress-bar></span>
+          </div>
+        </>
+      )}
+    </div>
+
+    {images.length > 1 && (
+      <div class="container">
+        <div class="photo-carousel__thumbs" data-carousel-thumbs>
+          {images.map((img, i) => (
+            <button class={`photo-carousel__thumb ${i === 0 ? 'is-active' : ''}`} data-carousel-thumb={i} aria-label={`Show photo ${i + 1}`} type="button">
+              <img src={img.src} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .photo-carousel-section {
+    padding-top: 24px;
+    padding-bottom: 64px;
+  }
+
+  .photo-carousel {
+    position: relative;
+  }
+
+  .photo-carousel__stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg-stone);
+  }
+
+  .photo-carousel__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.1s var(--ease-out);
+    pointer-events: none;
+  }
+
+  .photo-carousel__slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .photo-carousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.0);
+    transition: transform 7s var(--ease-out);
+  }
+
+  .photo-carousel__slide.is-active img {
+    transform: scale(1.04);
+  }
+
+  .photo-carousel__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: var(--ink);
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+    backdrop-filter: blur(4px);
+  }
+
+  .photo-carousel__arrow:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .photo-carousel__arrow--prev { left: 28px; }
+  .photo-carousel__arrow--next { right: 28px; }
+
+  .photo-carousel__counter {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    background: rgba(15, 15, 15, 0.55);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    z-index: 3;
+    backdrop-filter: blur(4px);
+  }
+
+  .photo-carousel__counter-divider {
+    margin: 0 8px;
+    opacity: 0.6;
+  }
+
+  .photo-carousel__progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.18);
+    z-index: 3;
+  }
+
+  .photo-carousel__progress-bar {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    transition: width 60ms linear;
+  }
+
+  .photo-carousel__thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    overflow-x: auto;
+    padding: 4px 0 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.15) transparent;
+  }
+
+  .photo-carousel__thumbs::-webkit-scrollbar {
+    height: 6px;
+  }
+  .photo-carousel__thumbs::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+  }
+
+  .photo-carousel__thumb {
+    flex: 0 0 auto;
+    width: 120px;
+    aspect-ratio: 4 / 3;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-stone);
+    opacity: 0.5;
+    transition: opacity var(--duration) var(--ease-out);
+  }
+
+  .photo-carousel__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-carousel__thumb:hover {
+    opacity: 0.9;
+  }
+
+  .photo-carousel__thumb.is-active {
+    opacity: 1;
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+  }
+
+  @media (max-width: 768px) {
+    .photo-carousel-section {
+      padding-bottom: 40px;
+    }
+    .photo-carousel__stage {
+      aspect-ratio: 4 / 3;
+    }
+    .photo-carousel__arrow {
+      width: 40px;
+      height: 40px;
+    }
+    .photo-carousel__arrow--prev { left: 12px; }
+    .photo-carousel__arrow--next { right: 12px; }
+    .photo-carousel__counter {
+      bottom: 16px;
+      right: 16px;
+      padding: 6px 10px;
+    }
+    .photo-carousel__thumb {
+      width: 84px;
+    }
+    .photo-carousel__thumbs {
+      margin-top: 14px;
+      gap: 8px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .photo-carousel__slide,
+    .photo-carousel__slide img {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((carousel) => {
+    const slides = carousel.querySelectorAll<HTMLElement>('[data-carousel-slide]');
+    const thumbs = carousel.querySelectorAll<HTMLButtonElement>('[data-carousel-thumb]');
+    const currentEl = carousel.querySelector<HTMLElement>('[data-carousel-current]');
+    const prevBtn = carousel.querySelector<HTMLButtonElement>('[data-carousel-prev]');
+    const nextBtn = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    const progressBar = carousel.querySelector<HTMLElement>('[data-carousel-progress-bar]');
+    const interval = parseInt(carousel.getAttribute('data-interval') || '5500', 10);
+
+    if (slides.length === 0) return;
+
+    let current = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+    let progressTimer: ReturnType<typeof setInterval> | null = null;
+    let progressStart = 0;
+    let paused = false;
+
+    function show(i: number) {
+      slides[current]?.classList.remove('is-active');
+      thumbs[current]?.classList.remove('is-active');
+      current = (i + slides.length) % slides.length;
+      slides[current]?.classList.add('is-active');
+      thumbs[current]?.classList.add('is-active');
+      if (currentEl) currentEl.textContent = String(current + 1);
+      const activeThumb = thumbs[current];
+      if (activeThumb && activeThumb.scrollIntoView) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+      resetProgress();
+    }
+
+    function resetProgress() {
+      progressStart = Date.now();
+      if (progressBar) progressBar.style.width = '0%';
+    }
+
+    function startProgress() {
+      if (!progressBar) return;
+      if (progressTimer) clearInterval(progressTimer);
+      progressTimer = setInterval(() => {
+        if (paused) return;
+        const elapsed = Date.now() - progressStart;
+        const pct = Math.min(100, (elapsed / interval) * 100);
+        progressBar.style.width = pct + '%';
+      }, 60);
+    }
+
+    function startTimer() {
+      stopTimer();
+      paused = false;
+      resetProgress();
+      timer = setInterval(() => {
+        if (!paused) show(current + 1);
+      }, interval);
+    }
+
+    function stopTimer() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    if (slides.length > 1) {
+      prevBtn?.addEventListener('click', () => { show(current - 1); startTimer(); });
+      nextBtn?.addEventListener('click', () => { show(current + 1); startTimer(); });
+      thumbs.forEach((thumb, i) => {
+        thumb.addEventListener('click', () => { show(i); startTimer(); });
+      });
+
+      carousel.addEventListener('mouseenter', () => { paused = true; });
+      carousel.addEventListener('mouseleave', () => { paused = false; resetProgress(); });
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            startTimer();
+            startProgress();
+          } else {
+            stopTimer();
+          }
+        });
+      }, { threshold: 0.2 });
+      obs.observe(carousel);
+    }
+  });
+</script>

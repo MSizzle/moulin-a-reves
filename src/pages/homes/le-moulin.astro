@@ -1,10 +1,166 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AvailabilityCalendar from '../../components/AvailabilityCalendar.astro';
+import PhotoCarousel from '../../components/PhotoCarousel.astro';
+import RoomShowcase from '../../components/RoomShowcase.astro';
+import AmenitiesSection from '../../components/AmenitiesSection.astro';
 import matter from 'gray-matter';
 import fs from 'node:fs';
 
 const raw = fs.readFileSync('src/content/pages/le-moulin.md', 'utf-8');
-const { data: cms, content: body } = matter(raw);
+const { data: cms } = matter(raw);
+
+const carouselImages = [
+  { src: '/images/homes/le-moulin-hero.webp', alt: 'Le Moulin à Rêves — exterior with the Juine River' },
+  { src: '/images/homes/le-moulin-living.webp', alt: 'Le Salon — leather couch and club chairs with river view' },
+  { src: '/images/homes/le-moulin-dining.webp', alt: 'Formal dining room set for twelve' },
+  { src: '/images/homes/le-moulin-kitchen.webp', alt: 'Eat-in kitchen with French armoire and Viking ovens' },
+  { src: '/images/homes/le-moulin-suite-romantique.webp', alt: 'La Suite Romantique — master bedroom with exposed beams' },
+  { src: '/images/homes/le-moulin-river-room.webp', alt: 'La Chambre de la Rivière' },
+  { src: '/images/homes/le-moulin-loft.webp', alt: 'Le Loft Suite — second-floor attic' },
+];
+
+const bedrooms = [
+  {
+    eyebrow: 'Bedroom · Ground Floor',
+    title: 'La Chambre de la Rivière',
+    summary: 'The River Room. Two twin beds on the ground floor, with a hall bathroom and shower just outside the door.',
+    longDescription: 'A quiet ground-floor bedroom that opens onto the millhouse hall. The river runs just beyond the wall, so this is the room where the water is loudest at night — a steady, soothing rush that most guests come to miss when they leave.',
+    details: [
+      { label: 'Beds', value: '2 twin' },
+      { label: 'Floor', value: 'Ground' },
+      { label: 'Bathroom', value: 'Hall · shower' },
+    ],
+    photos: [
+      { src: '/images/homes/le-moulin-river-room.webp', alt: 'La Chambre de la Rivière — twin beds and antique wardrobe' },
+    ],
+  },
+  {
+    eyebrow: 'Bedroom · Upstairs',
+    title: 'La Suite Romantique',
+    summary: 'King bed in the upstairs master, beneath original exposed beams. En-suite bathroom with shower.',
+    longDescription: 'The largest bedroom in the house. Tall windows, exposed beams, and a king bed dressed in white linen. Step into the en-suite bathroom for a hot shower after a long Paris day.',
+    details: [
+      { label: 'Bed', value: 'King' },
+      { label: 'Floor', value: 'Upstairs' },
+      { label: 'Bathroom', value: 'En-suite · shower' },
+    ],
+    photos: [
+      { src: '/images/homes/le-moulin-suite-romantique.webp', alt: 'La Suite Romantique — master bedroom' },
+    ],
+  },
+  {
+    eyebrow: 'Bedroom · Upstairs',
+    title: 'Les Cerises',
+    summary: 'The Cherry Room. Queen bed with a sink and bidet in the room. Shares the clawfoot-tub hall bath with Les Roses.',
+    details: [
+      { label: 'Bed', value: 'Queen' },
+      { label: 'Floor', value: 'Upstairs' },
+      { label: 'In-room', value: 'Sink, bidet' },
+      { label: 'Bathroom', value: 'Hall · clawfoot tub (shared with Les Roses)' },
+    ],
+    photos: [
+      { src: '/images/homes/le-moulin-cerises.webp', alt: 'Les Cerises — the Cherry Room' },
+    ],
+  },
+  {
+    eyebrow: 'Bedroom · Upstairs',
+    title: 'Les Roses',
+    summary: 'The Rose Room. Two twin beds. Shares the clawfoot-tub hall bath with Les Cerises.',
+    details: [
+      { label: 'Beds', value: '2 twin' },
+      { label: 'Floor', value: 'Upstairs' },
+      { label: 'Bathroom', value: 'Hall · clawfoot tub (shared with Les Cerises)' },
+    ],
+    photos: [
+      { src: '/images/homes/le-moulin-roses.webp', alt: 'Les Roses — the Rose Room' },
+    ],
+  },
+  {
+    eyebrow: 'Suite · Attic',
+    title: 'Le Loft Suite',
+    summary: 'Second-floor attic with two twins (combinable as a king) plus a separate TV room with two floor twins. Shared hall bath with shower.',
+    longDescription: 'A whole-floor retreat for the kids, the cousins, or anyone who wants their own private wing. Note: the loft is up a steep flight of stairs — best for guests comfortable with a climb.',
+    details: [
+      { label: 'Beds', value: '2 twin (or king) + 2 floor twins' },
+      { label: 'Floor', value: 'Second-floor attic' },
+      { label: 'Bathroom', value: 'Hall · shower' },
+      { label: 'Note', value: 'Steep stairs' },
+    ],
+    photos: [
+      { src: '/images/homes/le-moulin-loft.webp', alt: 'Le Loft Suite' },
+    ],
+  },
+];
+
+const livingSpaces = [
+  {
+    eyebrow: 'Living',
+    title: 'Le Salon',
+    summary: 'Large living room with leather couch, club chairs, and antiques. The river and bridge are illuminated at night.',
+    longDescription: 'The heart of the house in the evenings. Light a fire (decorative), pour something French, and watch the bridge glow over the millstream through the tall windows.',
+    photos: [
+      { src: '/images/homes/le-moulin-living.webp', alt: 'Le Salon at Le Moulin à Rêves' },
+    ],
+  },
+  {
+    eyebrow: 'Dining',
+    title: 'The Dining Room',
+    summary: 'Formal dining room for up to twelve, with art, antiques, a chandelier, and a long candlelit table.',
+    photos: [
+      { src: '/images/homes/le-moulin-dining.webp', alt: 'Formal dining room at Le Moulin à Rêves' },
+    ],
+  },
+  {
+    eyebrow: 'Kitchen',
+    title: 'The Kitchen',
+    summary: 'Eat-in kitchen for six. Two Viking-style ovens, six gas burners, full fridge and freezer, Nespresso, kettle.',
+    longDescription: 'A working cook\'s kitchen with light pouring in through the tall windows. Built around a French armoire and a long farmhouse table — equally good for a leisurely breakfast or a serious dinner prep.',
+    details: [
+      { label: 'Seats', value: '6 at the table' },
+      { label: 'Ovens', value: '2 Viking-style' },
+      { label: 'Burners', value: '6 gas' },
+      { label: 'Coffee', value: 'Nespresso' },
+    ],
+    photos: [
+      { src: '/images/homes/le-moulin-kitchen.webp', alt: 'Kitchen at Le Moulin à Rêves' },
+    ],
+  },
+];
+
+const amenityFeatures = [
+  {
+    title: 'Gardens & the Bridge',
+    summary: 'Flower gardens and a Giverny-style bridge across the millstream — the photo-spot of the property.',
+    image: '/images/bridge-garden.webp',
+    alt: 'The Giverny-style bridge across the millstream',
+  },
+  {
+    title: 'Al Fresco Patio',
+    summary: 'A wide patio for outdoor dining and lounge chairs, opening directly onto the gardens and the river.',
+    image: '/images/gazebo-dining.webp',
+    alt: 'Patio dining at the compound',
+  },
+  {
+    title: 'The River at Dusk',
+    summary: 'The Juine flows through the house itself. Stay up for the moment the bridge lights and the water turns gold.',
+    image: '/images/evening-compound.webp',
+    alt: 'Le Moulin at golden hour',
+  },
+];
+
+const amenities = [
+  { label: 'WiFi throughout', icon: 'wifi' },
+  { label: 'Full kitchen', icon: 'kitchen' },
+  { label: '2 Viking-style ovens', icon: 'oven' },
+  { label: 'Nespresso & kettle', icon: 'coffee' },
+  { label: 'Full fridge + freezer', icon: 'fridge' },
+  { label: 'Office with desk + printer', icon: 'office' },
+  { label: 'Garden & wishing well', icon: 'garden' },
+  { label: 'River frontage', icon: 'river' },
+  { label: 'Patio dining', icon: 'patio' },
+  { label: 'Sleeps 12 across 8 beds', icon: 'guests' },
+];
 ---
 
 <BaseLayout title="Le Moulin à Rêves — Historic Mill Vacation Rental, Mereville France" description="Historic 1800s mill house in Mereville, France. Sleeps 12 across 5 bedrooms and 4 baths. The Juine River flows through the house. One hour from Paris.">
@@ -77,7 +233,7 @@ const { data: cms, content: body } = matter(raw);
   </style>
 
   <!-- Stats Bar -->
-  <section class="section" style="padding-top: 48px; padding-bottom: 48px;">
+  <section class="section" style="padding-top: 48px; padding-bottom: 32px;">
     <div class="container">
       <div class="stats-bar">
         <div class="stats-bar__item">
@@ -100,6 +256,9 @@ const { data: cms, content: body } = matter(raw);
     </div>
   </section>
 
+  <!-- Photo Carousel -->
+  <PhotoCarousel images={carouselImages} />
+
   <!-- Narrative Description -->
   <section class="section section--tight">
     <div class="container--narrow fade-in">
@@ -119,84 +278,38 @@ const { data: cms, content: body } = matter(raw);
     </div>
   </section>
 
-  <!-- Room by Room -->
-  <section class="section section--tight section--soft">
-    <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 32px;">
-        <span class="eyebrow">Room by Room</span>
-        <h2>Five Bedrooms Across Three Floors</h2>
-      </div>
-      <div class="showcase">
-        <div class="card fade-in">
-          <div class="card__image">
-            <img src="/images/homes/le-moulin-river-room.webp" alt="La Chambre de la Rivière at Le Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title">La Chambre de la Rivière</h3>
-            <p class="card__description">The River Room. 2 twin beds on the ground floor. Bathroom in the hall with a shower.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <div class="card__image">
-            <img src="/images/homes/le-moulin-suite-romantique.webp" alt="La Suite Romantique at Le Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title">La Suite Romantique</h3>
-            <p class="card__description">King bed in a large master bedroom upstairs. En-suite bathroom with a shower.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <div class="card__image">
-            <img src="/images/homes/le-moulin-cerises.webp" alt="Les Cerises at Le Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title">Les Cerises</h3>
-            <p class="card__description">The Cherry Room. Queen bed with sink and bidet. Shares a bathroom with Les Roses — clawfoot bathtub and bidet in the hall.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <div class="card__image">
-            <img src="/images/homes/le-moulin-roses.webp" alt="Les Roses at Le Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title">Les Roses</h3>
-            <p class="card__description">The Rose Room. 2 twin beds. Shares a bathroom with Les Cerises in the hall.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <div class="card__image">
-            <img src="/images/homes/le-moulin-loft.webp" alt="Le Loft Suite at Le Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title">Le Loft Suite</h3>
-            <p class="card__description">Second-floor attic. 2 twins (or King) plus a separate TV room with 2 floor twins. Shared bathroom with shower. Note: steep stairs.</p>
-          </div>
-        </div>
-        <div class="card fade-in">
-          <div class="card__image">
-            <img src="/images/homes/le-moulin-kitchen.webp" alt="Kitchen and dining at Le Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title">Kitchen & Dining</h3>
-            <p class="card__description">Eat-in kitchen for 6 with 2 Viking-style ovens, 6 gas burners, Nespresso. Formal dining room for 12 with art and antiques.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Rooms (bedrooms) -->
+  <RoomShowcase
+    eyebrow="Rooms"
+    heading={`Where you'll <span class="serif-italic">sleep</span>`}
+    intro="Five bedrooms across three floors. Tap any room for details and photos."
+    rooms={bedrooms}
+    background="stone"
+  />
 
-  <!-- Entertaining Spaces -->
-  <section class="section section--tight">
-    <div class="container--narrow fade-in">
-      <span class="eyebrow">Living Spaces</span>
-      <h2>Made for Long Evenings</h2>
-      <div style="margin-top: 32px;">
-        <p><strong>Le Salon</strong> — Large living room with leather couch, club chairs, and antiques. Beautiful view of the river and bridge illuminated at night.</p>
-        <p style="margin-top: 16px;"><strong>Office</strong> — Separate office with a desk and printer.</p>
-        <p style="margin-top: 16px;"><strong>Outdoor</strong> — Wonderful patio for outdoor dining, lounge chairs, and gorgeous gardens overlooking the Juine River.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Living Spaces -->
+  <RoomShowcase
+    eyebrow="Living Spaces"
+    heading={`Where you'll <span class="serif-italic">gather</span>`}
+    intro="Salon, dining, and kitchen — the rooms made for long evenings together."
+    rooms={livingSpaces}
+  />
+
+  <!-- Amenities -->
+  <AmenitiesSection
+    eyebrow="Amenities & Grounds"
+    heading={`What's <span class="serif-italic">here</span>`}
+    features={amenityFeatures}
+    amenities={amenities}
+    background="stone"
+  />
+
+  <!-- Availability -->
+  <AvailabilityCalendar
+    eyebrow="Availability"
+    heading={`When You Can <span class="serif-italic">Stay</span>`}
+    intro="Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
+  />
 
   <!-- CTA -->
   <section class="hero" style="height: 45vh; min-height: 350px;">

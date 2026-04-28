@@ -20,7 +20,8 @@
   /* Primary accent — Volet Bleu (retained as subtle accent only) */
   --blue-primary: #2E5A88;
   --blue-dark: #1B4F72;
-  --blue-light: #5B8DB8;
+  --blue-light: #4577A8;
+  --blue-shutter: #4577A8;
   --blue-pale: #E8F0F8;
 
   /* Text */
@@ -219,17 +220,19 @@ p {
 }
 
 .section--dark {
-  background-color: var(--blue-light);
+  background-color: var(--blue-shutter);
   color: var(--ink);
 }
 
 .section--dark h2,
 .section--dark h3 {
-  color: var(--blue-dark);
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .section--dark p {
-  color: var(--ink-soft);
+  color: var(--ink);
+  font-weight: 500;
 }
 
 /* ---- Grid ---- */
