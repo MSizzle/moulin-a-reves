@@ -32,7 +32,7 @@
     "fr": "Réserver"
   },
   "footer.tagline": {
-    "en": "Mill of Dreams · Seine-et-Marne, France",
+    "en": "Moulin à Rêves · Méréville, France · 48° 19′ N · 2° 5′ E",
     "fr": "Le Moulin des Rêves · Seine-et-Marne, France"
   },
   "footer.explore": {
@@ -100,19 +100,19 @@
     "fr": "Moulin à Rêves"
   },
   "home.tagline": {
-    "en": "Three historic homes. One magnificent compound. One hour from Paris.",
+    "en": "A private historic compound in Méréville, France. One hour from Paris.",
     "fr": "Trois maisons. Un séjour inoubliable. À une heure de Paris."
   },
   "home.cta": {
-    "en": "Explore the Homes",
+    "en": "Discover the Compound",
     "fr": "Découvrir les Maisons"
   },
   "home.intro.heading": {
-    "en": "Bienvenue!",
+    "en": "A private compound, one hour from Paris.",
     "fr": "Là où le bief rencontre votre café du matin"
   },
   "home.intro.text": {
-    "en": " Moulin à Rêves is a historic 4-building compound encircled by a walled garden in Mereville, the watercress capital of France. Three independent maisons and the versatile Grange entertaining space sleep 20 guests across 10 bedrooms. Whether you are planning a family reunion, a yoga retreat, a creative getaway, or a celebration, the compound gives your group the rare gift of being together while still having space for privacy and relaxation. ",
+    "en": "Three stone maisons, a walled garden, a millstream, and the buildings around them — gym, spa with jacuzzi, screening room, La Grange — all on one private property in Méréville, France. Sleeps 20 across 10 bedrooms.",
     "fr": "Moulin à Rêves est un ensemble de trois maisons en pierre réunies autour d'un bief dans la campagne française, à une heure au sud de Paris. Chaque maison a son caractère propre — volets bleus, vue sur le jardin et le murmure de l'eau sur la pierre — mais ensemble, elles deviennent quelque chose de plus grand : un lieu où les familles se retrouvent, les amis se rassemblent et les matins s'étirent en douceur."
   },
   "home.homes.heading": {
@@ -1647,7 +1647,7 @@
     "en": " "
   },
   "homes.card.moulin.eyebrow": {
-    "en": "Maison One"
+    "en": ""
   },
   "homes.card.moulin.title": {
     "en": "Le Moulin à Rêves"
@@ -1656,13 +1656,13 @@
     "en": "5 Bedrooms"
   },
   "homes.card.moulin.baths": {
-    "en": "4 Bathrooms"
+    "en": "4 Baths"
   },
   "homes.card.moulin.sleeps": {
-    "en": "Sleeps 12"
+    "en": "Sleeps 10"
   },
   "homes.card.hideaway.eyebrow": {
-    "en": "Maison Two"
+    "en": ""
   },
   "homes.card.hideaway.title": {
     "en": "The Hollywood Hideaway"
@@ -1671,13 +1671,13 @@
     "en": "3 Bedrooms + Suite"
   },
   "homes.card.hideaway.baths": {
-    "en": "2 Bathrooms"
+    "en": "2 Baths"
   },
   "homes.card.hideaway.sleeps": {
-    "en": "Sleeps 8"
+    "en": "Sleeps 7"
   },
   "homes.card.riviere.eyebrow": {
-    "en": "Maison Three"
+    "en": ""
   },
   "homes.card.riviere.title": {
     "en": "La Maison de la Rivière"
@@ -1686,7 +1686,7 @@
     "en": "2 Bedrooms"
   },
   "homes.card.riviere.baths": {
-    "en": "1 Bathroom"
+    "en": "1 Bath"
   },
   "homes.card.riviere.sleeps": {
     "en": "Sleeps 5"
@@ -1737,7 +1737,7 @@
     "en": "Where you'll sleep"
   },
   "le-moulin.bedrooms.intro": {
-    "en": "Five bedrooms on three floors. Tap any room for details and photos."
+    "en": "Five bedrooms on three floors"
   },
   "le-moulin.bedrooms.room.riviere.title": {
     "en": "La Chambre de la Rivière"
@@ -1875,7 +1875,7 @@
     "en": "Les <span class=\"serif-italic\">Autres Maisons</span>"
   },
   "le-moulin.cross.hideaway.eyebrow": {
-    "en": "Maison Two"
+    "en": ""
   },
   "le-moulin.cross.hideaway.title": {
     "en": "The Hollywood Hideaway"
@@ -1884,10 +1884,10 @@
     "en": "3 Bedrooms + Suite"
   },
   "le-moulin.cross.hideaway.sleeps": {
-    "en": "Sleeps 8"
+    "en": "Sleeps 7"
   },
   "le-moulin.cross.riviere.eyebrow": {
-    "en": "Maison Three"
+    "en": ""
   },
   "le-moulin.cross.riviere.title": {
     "en": "La Maison de la Rivière"
@@ -1923,7 +1923,7 @@
     "en": "Beds"
   },
   "hideaway.narrative.eyebrow": {
-    "en": "The Maison"
+    "en": ""
   },
   "hideaway.narrative.heading": {
     "en": "The Hollywood Hideaway"
@@ -1938,13 +1938,13 @@
     "en": "This was his happy home where he entertained his Hollywood pals and cooked and relaxed in the French countryside. Now you can follow in the footsteps of the stars and make this your own home in France. It is beautifully furnished with French antiques."
   },
   "hideaway.bedrooms.eyebrow": {
-    "en": "Rooms"
+    "en": ""
   },
   "hideaway.bedrooms.heading": {
     "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
   },
   "hideaway.bedrooms.intro": {
-    "en": "Three bedrooms plus an adjacent suite. Tap any room for details and photos."
+    "en": "Three bedrooms plus an adjacent suite"
   },
   "hideaway.bedrooms.room.looking-glass.title": {
     "en": "Through the Looking Glass"
@@ -1971,7 +1971,7 @@
     "en": "Attic room with two twins, plus a third twin in the foyer. Bathroom is in the hall, two flights down."
   },
   "hideaway.living.eyebrow": {
-    "en": "Living Spaces"
+    "en": ""
   },
   "hideaway.living.heading": {
     "en": "Where you'll <span class=\"serif-italic\">gather</span>"
@@ -1992,7 +1992,7 @@
     "en": "Bright white kitchen with red accents. Induction stove, oven, Nespresso, full fridge."
   },
   "hideaway.amenities.eyebrow": {
-    "en": "Amenities & Grounds"
+    "en": ""
   },
   "hideaway.amenities.heading": {
     "en": "What's <span class=\"serif-italic\">here</span>"
@@ -2067,7 +2067,7 @@
     "en": "Les <span class=\"serif-italic\">Autres Maisons</span>"
   },
   "hideaway.cross.moulin.eyebrow": {
-    "en": "Maison One"
+    "en": ""
   },
   "hideaway.cross.moulin.title": {
     "en": "Le Moulin à Rêves"
@@ -2076,10 +2076,10 @@
     "en": "5 Bedrooms"
   },
   "hideaway.cross.moulin.sleeps": {
-    "en": "Sleeps 12"
+    "en": "Sleeps 10"
   },
   "hideaway.cross.riviere.eyebrow": {
-    "en": "Maison Three"
+    "en": ""
   },
   "hideaway.cross.riviere.title": {
     "en": "La Maison de la Rivière"
@@ -2115,7 +2115,7 @@
     "en": "Beds"
   },
   "riviere.narrative.eyebrow": {
-    "en": "The Maison"
+    "en": ""
   },
   "riviere.narrative.heading": {
     "en": "La Maison de la Rivière"
@@ -2124,13 +2124,13 @@
     "en": ""
   },
   "riviere.bedrooms.eyebrow": {
-    "en": "Rooms"
+    "en": ""
   },
   "riviere.bedrooms.heading": {
     "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
   },
   "riviere.bedrooms.intro": {
-    "en": "Two upstairs bedrooms sharing a hall bath. Tap any room for details and photos."
+    "en": "Two upstairs bedrooms sharing a hall bath"
   },
   "riviere.bedrooms.room.artistes.title": {
     "en": "La Chambre des Artistes"
@@ -2145,7 +2145,7 @@
     "en": "The Writers' Room. Upstairs. Double bed with an in-room sink. Shares the hall bathroom with Les Artistes."
   },
   "riviere.living.eyebrow": {
-    "en": "Living Spaces"
+    "en": ""
   },
   "riviere.living.heading": {
     "en": "Where you'll <span class=\"serif-italic\">gather</span>"
@@ -2172,7 +2172,7 @@
     "en": "Eat-in kitchen with stone walls and exposed beams. Oven, full fridge + freezer, microwave, toaster, Nespresso, kettle."
   },
   "riviere.amenities.eyebrow": {
-    "en": "Amenities & Grounds"
+    "en": ""
   },
   "riviere.amenities.heading": {
     "en": "What's <span class=\"serif-italic\">here</span>"
@@ -2247,7 +2247,7 @@
     "en": "Les <span class=\"serif-italic\">Autres Maisons</span>"
   },
   "riviere.cross.moulin.eyebrow": {
-    "en": "Maison One"
+    "en": ""
   },
   "riviere.cross.moulin.title": {
     "en": "Le Moulin à Rêves"
@@ -2256,10 +2256,10 @@
     "en": "5 Bedrooms"
   },
   "riviere.cross.moulin.sleeps": {
-    "en": "Sleeps 12"
+    "en": "Sleeps 10"
   },
   "riviere.cross.hideaway.eyebrow": {
-    "en": "Maison Two"
+    "en": ""
   },
   "riviere.cross.hideaway.title": {
     "en": "The Hollywood Hideaway"
@@ -2268,7 +2268,7 @@
     "en": "3 Bedrooms + Suite"
   },
   "riviere.cross.hideaway.sleeps": {
-    "en": "Sleeps 8"
+    "en": "Sleeps 7"
   },
   "riviere.cross.cta": {
     "en": "Rent All Three Maisons"
@@ -2508,7 +2508,7 @@
     "en": "Back to Journal"
   },
   "le-moulin.bedrooms.room.riviere.eyebrow": {
-    "en": "Bedroom · Ground Floor"
+    "en": ""
   },
   "le-moulin.bedrooms.room.riviere.longDescription": {
     "en": "A quiet ground-floor bedroom that opens onto the millhouse hall. The river runs just beyond the wall, so this is the room where the water is loudest at night — a steady, soothing rush that most guests come to miss when they leave."
@@ -2532,7 +2532,7 @@
     "en": "Hall · shower"
   },
   "le-moulin.bedrooms.room.romantique.eyebrow": {
-    "en": "Bedroom · Upstairs"
+    "en": ""
   },
   "le-moulin.bedrooms.room.romantique.longDescription": {
     "en": "The largest bedroom in the house. Tall windows, exposed beams, and a king bed dressed in white linen. Step into the en-suite bathroom for a hot shower after a long Paris day."
@@ -2556,7 +2556,7 @@
     "en": "En-suite · shower"
   },
   "le-moulin.bedrooms.room.cerises.eyebrow": {
-    "en": "Bedroom · Upstairs"
+    "en": ""
   },
   "le-moulin.bedrooms.room.cerises.longDescription": {
     "en": ""
@@ -2586,7 +2586,7 @@
     "en": "Hall · clawfoot tub (shared with Les Roses)"
   },
   "le-moulin.bedrooms.room.roses.eyebrow": {
-    "en": "Bedroom · Upstairs"
+    "en": ""
   },
   "le-moulin.bedrooms.room.roses.longDescription": {
     "en": ""
@@ -2610,7 +2610,7 @@
     "en": "Hall · clawfoot tub (shared with Les Cerises)"
   },
   "le-moulin.bedrooms.room.loft.eyebrow": {
-    "en": "Suite · Attic"
+    "en": ""
   },
   "le-moulin.bedrooms.room.loft.longDescription": {
     "en": "A whole-floor retreat for the kids, the cousins, or anyone who wants their own private wing. Note: the loft is up a steep flight of stairs — best for guests comfortable with a climb."
@@ -2646,13 +2646,13 @@
     "en": "T"
   },
   "le-moulin.living.room.dining.eyebrow": {
-    "en": "Dining"
+    "en": ""
   },
   "le-moulin.living.room.dining.longDescription": {
     "en": ""
   },
   "le-moulin.living.room.kitchen.eyebrow": {
-    "en": "Kitchen"
+    "en": ""
   },
   "le-moulin.living.room.kitchen.longDescription": {
     "en": "A wonderful kitchen to cook in together."
@@ -2682,7 +2682,7 @@
     "en": "Nespresso, Drip"
   },
   "hideaway.bedrooms.room.looking-glass.eyebrow": {
-    "en": "Bedroom · Ground Floor"
+    "en": ""
   },
   "hideaway.bedrooms.room.looking-glass.longDescription": {
     "en": "The largest of the bedrooms — a king bed under a generous window, with a full en-suite tub-and-shower bathroom. The Secret Garden suite shares its bath through a connecting door."
@@ -2706,7 +2706,7 @@
     "en": "En-suite · tub + shower"
   },
   "hideaway.bedrooms.room.secret-garden.eyebrow": {
-    "en": "Suite · Adjacent"
+    "en": ""
   },
   "hideaway.bedrooms.room.secret-garden.longDescription": {
     "en": "A bonus space attached to the master — perfect for a kid, an extra adult, or a quiet reading nook by day. The pull-out sofa sleeps one comfortably."
@@ -2724,7 +2724,7 @@
     "en": "Shared via Through the Looking Glass"
   },
   "hideaway.bedrooms.room.american-in-paris.eyebrow": {
-    "en": "Bedroom · Ground Floor"
+    "en": ""
   },
   "hideaway.bedrooms.room.american-in-paris.longDescription": {
     "en": ""
@@ -2754,7 +2754,7 @@
     "en": "Separate WC, washing machine"
   },
   "hideaway.bedrooms.room.sleeping-beauty.eyebrow": {
-    "en": "Bedroom · Attic"
+    "en": ""
   },
   "hideaway.bedrooms.room.sleeping-beauty.longDescription": {
     "en": "A storybook attic — sloping beams, twin beds, and one extra twin in the foyer for a third guest. Note: only suitable for guests comfortable climbing two steep flights."
@@ -2784,7 +2784,7 @@
     "en": "Steep stairs required"
   },
   "hideaway.living.room.upstairs.eyebrow": {
-    "en": "Living & Dining"
+    "en": ""
   },
   "hideaway.living.room.upstairs.longDescription": {
     "en": "The upstairs of the Hideaway is one long, light-filled room. The dining table seats ten, the sitting area runs alongside it, and there is enough open floor for a yoga class or a private workshop."
@@ -2802,7 +2802,7 @@
     "en": "Dinners, yoga, meetings"
   },
   "hideaway.living.room.kitchen.eyebrow": {
-    "en": "Kitchen"
+    "en": ""
   },
   "hideaway.living.room.kitchen.longDescription": {
     "en": ""
@@ -2826,7 +2826,7 @@
     "en": "Full size"
   },
   "riviere.bedrooms.room.artistes.eyebrow": {
-    "en": "Bedroom · Upstairs"
+    "en": ""
   },
   "riviere.bedrooms.room.artistes.longDescription": {
     "en": "The bigger of the two bedrooms — a king bed with room to spare for a third guest on the twin. The in-room sink keeps morning routines uncomplicated."
@@ -2856,7 +2856,7 @@
     "en": "Hall · tub + shower (shared)"
   },
   "riviere.bedrooms.room.ecrivains.eyebrow": {
-    "en": "Bedroom · Upstairs"
+    "en": ""
   },
   "riviere.bedrooms.room.ecrivains.longDescription": {
     "en": ""
@@ -2886,19 +2886,19 @@
     "en": "Hall · tub + shower (shared)"
   },
   "riviere.living.room.living.eyebrow": {
-    "en": "Living"
+    "en": ""
   },
   "riviere.living.room.living.longDescription": {
     "en": "The light is what guests remember. Tall French doors open onto the stream and the apple orchard, and the room fills from morning until evening. Two couches, a fireplace, and the Louis Vuitton trunk that doubles as the coffee table."
   },
   "riviere.living.room.dining.eyebrow": {
-    "en": "Dining"
+    "en": ""
   },
   "riviere.living.room.dining.longDescription": {
     "en": ""
   },
   "riviere.living.room.kitchen.eyebrow": {
-    "en": "Kitchen"
+    "en": ""
   },
   "riviere.living.room.kitchen.longDescription": {
     "en": ""

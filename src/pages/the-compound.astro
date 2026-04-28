@@ -15,12 +15,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "numberOfBedrooms": 10,
       "numberOfBathroomsTotal": 7,
       "occupancy": { "@type": "QuantitativeValue", "value": 20 },
-      "floorSize": { "@type": "QuantitativeValue", "value": 420, "unitCode": "MTK" },
       "petsAllowed": true,
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Mereville",
-        "addressRegion": "Essonne",
+        "streetAddress": "16 Rue des Crocs au Renard",
+        "postalCode": "91660",
+        "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
       },
       "geo": {
@@ -71,7 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           "name": "How far is the compound from Paris?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Moulin à Rêves is approximately one hour from Paris by car, located in Mereville, Essonne near the Juine River."
+            "text": "Moulin à Rêves is approximately one hour from Paris by car, located in Méréville, France near the Juine River."
           }
         }
       ]
@@ -107,7 +107,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </style>
 
   <!-- Stats Bar -->
-  <section class="section" style="padding-top: 48px; padding-bottom: 48px;">
+  <section class="section" style="padding-top: 32px; padding-bottom: 32px;">
     <div class="container">
       <div class="stats-bar">
         <div class="stats-bar__item">
@@ -126,29 +126,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="stats-bar__number">20</div>
           <div class="stats-bar__label" data-i18n="compound.stats.guests">Guests</div>
         </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">420</div>
-          <div class="stats-bar__label" data-i18n="compound.stats.total">m&sup2; total</div>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- Introduction -->
-  <section class="section">
+  <section class="section--tight">
     <div class="container--narrow fade-in">
-      <h2 class="text-center" data-i18n="compound.intro.heading">Rent All Three</h2>
-      <p data-i18n="compound.intro.p1" style="margin-top: 32px;">
-        Some occasions call for more than a single house. When you book the entire compound at Moulin a Reves, you get three separate homes arranged around shared gardens, a millstream, and the kind of space that lets a group of up to twenty-five spread out during the day and come together for the evening. Each house has its own kitchen, its own living room, its own front door — but the grounds between them are where the real life of your stay will happen.
+      <h2 class="text-center" data-i18n="compound.intro.heading">Rent the Compound</h2>
+      <p data-i18n="compound.intro.p1" style="margin-top: 24px;">
+        Three houses around shared gardens, a millstream, and the buildings between them — La Grange, the spa with jacuzzi, the gym, the screening room. 10 bedrooms, 7 bathrooms, sleeps 20.
       </p>
-      <p data-i18n="compound.intro.p2" style="margin-top: 20px;">
-        You'll gather at the long table beneath the linden trees for dinner. The children will move between houses as if they've always lived here. Someone will start a game of petanque on the gravel court while the apéritif is being poured. And at the end of the evening, everyone walks home — just not very far.
+      <p data-i18n="compound.intro.p2" style="margin-top: 16px;">
+        Each house has its own kitchen, living room, and front door. The grounds between them are where the real life of the stay happens.
       </p>
     </div>
   </section>
 
   <!-- Use Cases -->
-  <section class="section section--tight section--stone">
+  <section class="section--tight section--stone">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 32px;">
         <h2 data-i18n="compound.madefor.heading">Made For</h2>
@@ -198,7 +194,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="fade-in">
     <div class="split split--reverse">
       <div class="split__body">
-        <span class="eyebrow">The Grounds</span>
         <h2 data-i18n="compound.grounds.heading">The Shared Grounds</h2>
         <p data-i18n="compound.grounds.p1">
           Between the three houses lies the heart of Moulin a Reves: a millstream that has been running for centuries, crossed by a stone footbridge worn smooth by generations of feet. The gardens are informal — old roses along the walls, lavender borders, a kitchen garden where the herbs grow faster than anyone can use them.
@@ -214,36 +209,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- The Three Houses -->
-  <section class="section section--tight section--stone">
+  <section class="section--tight section--stone">
     <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 32px;">
-        <span class="eyebrow">Trois Maisons</span>
-        <h2 data-i18n="compound.threehomes.heading">Les <span class="serif-italic">Trois Maisons</span></h2>
+      <div class="text-center fade-in" style="margin-bottom: 24px;">
+        <h2 data-i18n-html="compound.threehomes.heading">Les <span class="serif-italic">Trois Maisons</span></h2>
       </div>
       <div class="showcase showcase--triple">
         <a href="/homes/le-moulin/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River, Mereville" loading="lazy" />
+            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" loading="lazy" />
           </div>
           <div class="card__body">
             <h3 class="card__title">Le Moulin à Rêves</h3>
-            <p class="card__description">The original mill house. Built 1800, the Juine River flows through the house. Five bedrooms across three floors.</p>
             <div class="card__meta">
               <span>5 Bed</span>
-              <span>Sleeps 12</span>
+              <span>4 Bath</span>
+              <span>Sleeps 10</span>
             </div>
           </div>
         </a>
         <a href="/homes/hollywood-hideaway/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway — French countryside sanctuary near Paris" loading="lazy" />
+            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway — French countryside sanctuary" loading="lazy" />
           </div>
           <div class="card__body">
             <h3 class="card__title">The Hollywood Hideaway</h3>
-            <p class="card__description">60-year sanctuary of Hollywood's top power lawyer. Three bedrooms plus suite, French antiques, private gazebo.</p>
             <div class="card__meta">
               <span>3 Bed + Suite</span>
-              <span>Sleeps 8</span>
+              <span>2 Bath</span>
+              <span>Sleeps 7</span>
             </div>
           </div>
         </a>
@@ -253,9 +247,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div class="card__body">
             <h3 class="card__title">La Maison de la Rivière</h3>
-            <p class="card__description">Sunny cottage overlooking the stream and apple trees. Spacious living room with authentic Louis Vuitton trunk.</p>
             <div class="card__meta">
               <span>2 Bed</span>
+              <span>1 Bath</span>
               <span>Sleeps 5</span>
             </div>
           </div>

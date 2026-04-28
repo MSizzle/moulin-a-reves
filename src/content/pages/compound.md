@@ -3,7 +3,7 @@
 # Edit this file to update the Compound page on the deployed website.
 
 title: "The Moulin à Rêves Compound"
-tagline: "A historic 4-building compound — just 1 hour from Paris"
+tagline: "A private historic compound — 1 hour from Paris"
 heroImage: "/images/hero-compound.webp"
 
 # Stats
@@ -13,11 +13,11 @@ bathrooms: 7
 sleeps: 20
 
 # Summary
-summary: "This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It sleeps 20 people with 10 bedrooms, 7 bathrooms. Encircled by a walled garden, this private compound offers 3 homes plus the versatile Grange entertaining space."
+summary: "Three houses, the Grange, the spa, the gym, the screening room — all on one private property. 10 bedrooms, 7 bathrooms, sleeps 20."
 
 # Location
-location: "Mereville, France"
-locationDescription: "The watercress capital of France, on the Juine River"
+location: "Méréville, France"
+locationDescription: "On the Juine River, one hour from Paris"
 distanceFromParis: "1 hour drive"
 ---
 
@@ -41,10 +41,10 @@ It is an ideal getaway for the weekend, the week, the month or the season!
 ## The Three Maisons
 
 ### Le Moulin à Rêves
-5 bedrooms, 4 baths, 8 beds, 2 day beds — Sleeps 12
+5 bedrooms, 4 baths, 8 beds, 2 day beds — Sleeps 10
 
 ### The Hollywood Hideaway
-3 bedrooms + suite with pull-out sofa, 2 baths, 5 beds, 1 pull-out sofa — Sleeps 8
+3 bedrooms + suite with pull-out sofa, 2 baths, 4 beds, 1 pull-out sofa — Sleeps 7
 
 ### La Maison de la Rivière
 2 bedrooms, 1 bath, 3 beds — Sleeps 5

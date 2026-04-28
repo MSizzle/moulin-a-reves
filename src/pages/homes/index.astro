@@ -2,49 +2,32 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="The Maisons — Three Vacation Rentals in Mereville, France" description="Three maisons in a historic compound in Mereville, France. Le Moulin à Rêves (sleeps 12), The Hollywood Hideaway (sleeps 8), and La Maison de la Rivière (sleeps 5).">
+<BaseLayout title="Les Maisons — Three Vacation Rentals in Méréville, France" description="Three maisons in a private historic compound in Méréville, France. Le Moulin à Rêves, The Hollywood Hideaway, and La Maison de la Rivière.">
 
-  <section class="hero" style="height: 60vh;">
+  <section class="hero" style="height: 56vh;">
     <div class="hero__image">
-      <img src="/images/homes/all-three.webp" alt="The compound at Moulin à Rêves in Mereville, France" />
+      <img src="/images/homes/all-three.webp" alt="The compound at Moulin à Rêves in Méréville, France" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow" data-i18n="homes.hero.eyebrow">Moulin à Rêves</span>
-      <h1 class="hero__title" data-i18n="homes.hero.title">The Maisons</h1>
-      <p class="hero__tagline" data-i18n="homes.hero.tagline">Three maisons, each with a story. 20 guests across 10 bedrooms.</p>
+      <h1 class="hero__title" data-i18n-html="homes.hero.title">Les <span class="serif-italic">Maisons</span></h1>
+      <p class="hero__tagline" data-i18n="homes.hero.tagline">Three maisons. Sleeps 20 across 10 bedrooms.</p>
     </div>
   </section>
 
-  <style>
-    .hero__eyebrow {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.96);
-      margin-bottom: 24px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
-      padding-left: 0.28em;
-    }
-  </style>
-
-  <section class="section">
+  <section class="section--tighter">
     <div class="container">
-      <div class="grid grid--3" style="gap: 24px;">
+      <div class="grid grid--3" style="gap: 20px;">
         <a href="/homes/le-moulin/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow" data-i18n="homes.card.moulin.eyebrow">Maison One</span>
             <h3 class="card__title" data-i18n="homes.card.moulin.title">Le Moulin à Rêves</h3>
             <div class="card__meta">
               <span data-i18n="homes.card.moulin.beds">5 Bedrooms</span>
-              <span data-i18n="homes.card.moulin.baths">4 Bathrooms</span>
-              <span data-i18n="homes.card.moulin.sleeps">Sleeps 12</span>
+              <span data-i18n="homes.card.moulin.baths">4 Baths</span>
+              <span data-i18n="homes.card.moulin.sleeps">Sleeps 10</span>
             </div>
           </div>
         </a>
@@ -53,12 +36,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway at Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow" data-i18n="homes.card.hideaway.eyebrow">Maison Two</span>
             <h3 class="card__title" data-i18n="homes.card.hideaway.title">The Hollywood Hideaway</h3>
             <div class="card__meta">
               <span data-i18n="homes.card.hideaway.beds">3 Bedrooms + Suite</span>
-              <span data-i18n="homes.card.hideaway.baths">2 Bathrooms</span>
-              <span data-i18n="homes.card.hideaway.sleeps">Sleeps 8</span>
+              <span data-i18n="homes.card.hideaway.baths">2 Baths</span>
+              <span data-i18n="homes.card.hideaway.sleeps">Sleeps 7</span>
             </div>
           </div>
         </a>
@@ -67,11 +49,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière at Moulin à Rêves" loading="lazy" />
           </div>
           <div class="card__overlay">
-            <span class="card__eyebrow" data-i18n="homes.card.riviere.eyebrow">Maison Three</span>
             <h3 class="card__title" data-i18n="homes.card.riviere.title">La Maison de la Rivière</h3>
             <div class="card__meta">
               <span data-i18n="homes.card.riviere.beds">2 Bedrooms</span>
-              <span data-i18n="homes.card.riviere.baths">1 Bathroom</span>
+              <span data-i18n="homes.card.riviere.baths">1 Bath</span>
               <span data-i18n="homes.card.riviere.sleeps">Sleeps 5</span>
             </div>
           </div>
@@ -80,15 +61,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <section class="section section--soft text-center">
+  <section class="section--tighter section--soft text-center">
     <div class="container fade-in">
-      <h2 data-i18n="homes.rentall.heading">Rent All Three</h2>
-      <p style="margin-top: 16px; margin-bottom: 32px;" data-i18n="homes.rentall.text">
-        Book the entire compound for up to 20 guests. Family reunions, retreats,
-        celebrations, yoga weekends — the whole place, exclusively yours.
+      <h2 data-i18n="homes.rentall.heading">Rent the Compound</h2>
+      <p style="margin-top: 16px; margin-bottom: 28px;" data-i18n="homes.rentall.text">
+        Book all three houses for up to 20 guests. Family reunions, retreats, celebrations.
       </p>
       <a href="/the-compound/" class="btn btn--primary" data-i18n="homes.rentall.cta">Explore the Compound</a>
     </div>
   </section>
+
+  <style>
+    .section--tighter { padding-top: 56px; padding-bottom: 56px; }
+  </style>
 
 </BaseLayout>
