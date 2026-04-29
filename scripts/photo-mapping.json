@@ -1,0 +1,496 @@
+{
+  "../photo-source/Hollywood Hideaway/American in Paris bathroom hollywood hideaway 2.jpeg": {
+    "target": "public/images/homes/hh-american-in-paris-bath.webp",
+    "alt": "American in Paris suite bathroom at the Hollywood Hideaway",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/American in Paris lead photo.jpeg": {
+    "target": "public/images/homes/hh-american-in-paris.webp",
+    "alt": "American in Paris suite bedroom with floral wallpaper at the Hollywood Hideaway",
+    "useFor": "hollywood-hideaway gallery",
+    "overwrites": "hh-american-in-paris.webp"
+  },
+  "../photo-source/Hollywood Hideaway/American in paris # 2 window view.jpeg": {
+    "target": "public/images/homes/hh-american-in-paris-window.webp",
+    "alt": "American in Paris suite with view through the window onto the gardens",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/Art in house - barbaras scarf collection.jpeg": {
+    "target": "public/images/homes/hh-scarf-stairwell.webp",
+    "alt": "Stairwell at the Hollywood Hideaway lined with framed scarf-print art descending toward the Sleeping Beauty bedroom",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/IMG_7776.jpeg": {
+    "target": "public/images/homes/hh-needlework-stairwell.webp",
+    "alt": "Narrow stairwell with red carpet runner and walls lined with framed embroidered art",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/Through looking glass bathroom 1 hollywood hideaway robe.jpeg": {
+    "target": "public/images/homes/hh-looking-glass-bath.webp",
+    "alt": "Through the Looking Glass suite bathroom with hanging robe",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/Through looking glass bathroom hollywood hideaway 1.jpeg": {
+    "target": "public/images/homes/hh-looking-glass-bath-2.webp",
+    "alt": "Through the Looking Glass suite bathroom, alternate view",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/american in paris bath 2.jpeg": {
+    "target": "public/images/homes/hh-american-in-paris-bath-2.webp",
+    "alt": "American in Paris suite bathroom, alternate view",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/dining and living room HH.jpeg": {
+    "target": "public/images/homes/hh-dining-living.webp",
+    "alt": "Open dining and living room at the Hollywood Hideaway",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/dining room living room into kitchen HH.jpeg": {
+    "target": "public/images/homes/hh-dining-into-kitchen.webp",
+    "alt": "View from the dining and living room through to the kitchen",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/ext hollywood hideaway 1 patio facing home.jpeg": {
+    "target": "public/images/homes/hh-patio-facing-home.webp",
+    "alt": "Patio facing the Hollywood Hideaway facade",
+    "useFor": "hollywood-hideaway gallery, hero candidate"
+  },
+  "../photo-source/Hollywood Hideaway/gazeebo HH.jpeg": {
+    "target": "public/images/homes/hh-gazebo.webp",
+    "alt": "Garden gazebo at the Hollywood Hideaway with cafe seating",
+    "useFor": "hollywood-hideaway gallery",
+    "overwrites": "hh-gazebo.webp"
+  },
+  "../photo-source/Hollywood Hideaway/hollywood hideway ext.jpeg": {
+    "target": "public/images/homes/hh-exterior.webp",
+    "alt": "Exterior of the Hollywood Hideaway among the gardens",
+    "useFor": "hollywood-hideaway gallery, hero candidate"
+  },
+  "../photo-source/Hollywood Hideaway/hollywood patio.jpeg": {
+    "target": "public/images/homes/hh-patio.webp",
+    "alt": "Patio at the Hollywood Hideaway",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/kitchen hollywood hideawy.jpeg": {
+    "target": "public/images/homes/hh-kitchen.webp",
+    "alt": "Cherry-red themed kitchen at the Hollywood Hideaway",
+    "useFor": "hollywood-hideaway gallery",
+    "overwrites": "hh-kitchen.webp"
+  },
+  "../photo-source/Hollywood Hideaway/sitting room suite - the secret garden.jpeg": {
+    "target": "public/images/homes/hh-secret-garden-sitting.webp",
+    "alt": "The Secret Garden suite sitting room with floral wallpaper and fireplace",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/sleeping beauty 1 loft facing beds.jpeg": {
+    "target": "public/images/homes/hh-sleeping-beauty-loft.webp",
+    "alt": "Sleeping Beauty loft bedroom with twin beds under the eaves",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/sleeping beauty facing spinning wheels.jpeg": {
+    "target": "public/images/homes/hh-sleeping-beauty.webp",
+    "alt": "Sleeping Beauty room with antique spinning wheels through the doorway",
+    "useFor": "hollywood-hideaway gallery",
+    "overwrites": "hh-sleeping-beauty.webp"
+  },
+  "../photo-source/Hollywood Hideaway/steps to hollywood hideaway.jpeg": {
+    "target": "public/images/homes/hh-steps.webp",
+    "alt": "Stone steps leading up to the Hollywood Hideaway entrance",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/through looking glass 2.jpeg": {
+    "target": "public/images/homes/hh-looking-glass-2.webp",
+    "alt": "Through the Looking Glass suite bedroom, alternate view",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Hollywood Hideaway/through the looking glass.jpeg": {
+    "target": "public/images/homes/hh-looking-glass.webp",
+    "alt": "Through the Looking Glass suite bedroom with vanity mirror and ornate frame",
+    "useFor": "hollywood-hideaway gallery",
+    "overwrites": "hh-looking-glass.webp"
+  },
+  "../photo-source/Hollywood Hideaway/washing machine put in bathrrom 2 .jpeg": {
+    "target": "public/images/homes/hh-laundry-bath.webp",
+    "alt": "Laundry alcove inside the Hollywood Hideaway bathroom",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/ kitchen table 2 moulin.jpeg": {
+    "target": "public/images/homes/le-moulin-kitchen-table.webp",
+    "alt": "Le Moulin kitchen table set with fruit bowls under a beamed ceiling",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/Cherries master with sink bideti.jpeg": {
+    "target": "public/images/homes/le-moulin-cerises-bath.webp",
+    "alt": "Cerises master bathroom with sink and bidet at Le Moulin",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/Melissa Jetson_s Welcome en rose best.jpeg": {
+    "target": "public/images/homes/le-moulin-welcome-rose.webp",
+    "alt": "Welcome at Le Moulin: hostess in a rose-pink gown with Jetson the Cavalier in front of the stone facade",
+    "useFor": "le-moulin gallery, hero candidate"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/Moulin a Reves estate with river.jpeg": {
+    "target": "public/images/homes/le-moulin-estate-river.webp",
+    "alt": "Le Moulin estate with the river running through the property",
+    "useFor": "le-moulin gallery, hero candidate"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/Moulin a reve master ext  welcome to the compound.jpeg": {
+    "target": "public/images/homes/le-moulin-courtyard.webp",
+    "alt": "Cobblestone courtyard at Le Moulin welcoming guests to the compound",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/The rose bedroom.jpeg": {
+    "target": "public/images/homes/le-moulin-roses.webp",
+    "alt": "The Rose bedroom at Le Moulin with twin beds and rose-print wallpaper",
+    "useFor": "le-moulin gallery",
+    "overwrites": "le-moulin-roses.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/catering - let them eat crossiants!.jpeg": {
+    "target": "public/images/homes/le-moulin-marie-antoinette.webp",
+    "alt": "Marie Antoinette themed breakfast in the garden with the Giverny bridge in the distance",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/cherries 2.jpeg": {
+    "target": "public/images/homes/le-moulin-cerises.webp",
+    "alt": "Cerises master bedroom at Le Moulin with portraits and patterned bedspread",
+    "useFor": "le-moulin gallery",
+    "overwrites": "le-moulin-cerises.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/cherries and rose bathroom moulin.jpeg": {
+    "target": "public/images/homes/le-moulin-cerises-rose-bath.webp",
+    "alt": "Shared bathroom serving the Cerises and Rose bedrooms at Le Moulin",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/cherries bath sink.jpeg": {
+    "target": "public/images/homes/le-moulin-cerises-sink.webp",
+    "alt": "Cerises bathroom sink and vanity at Le Moulin",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/dining room le moulin great.jpeg": {
+    "target": "public/images/homes/le-moulin-dining.webp",
+    "alt": "Le Moulin dining room set for a meal with the fireplace and copper pots",
+    "useFor": "le-moulin gallery",
+    "overwrites": "le-moulin-dining.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/dining room moulin great angle 3.jpeg": {
+    "target": "public/images/homes/le-moulin-dining-2.webp",
+    "alt": "Le Moulin dining room from an alternate angle showing the fireplace",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/ext Gate with jetson and bike and baguette.jpeg": {
+    "target": "public/images/homes/le-moulin-gate.webp",
+    "alt": "Front gate at Le Moulin with a vintage bicycle and baguette",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/ext moulin.jpeg": {
+    "target": "public/images/homes/le-moulin-back-patio.webp",
+    "alt": "Back patio at Le Moulin with cafe table seating outside the stone facade",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/kitchen master le moulin.jpeg": {
+    "target": "public/images/homes/le-moulin-kitchen.webp",
+    "alt": "Le Moulin kitchen with cast-iron stove, beamed ceiling, and country paintings",
+    "useFor": "le-moulin gallery",
+    "overwrites": "le-moulin-kitchen.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/le loft #2 twin beds.jpeg": {
+    "target": "public/images/homes/le-moulin-loft-2-twins.webp",
+    "alt": "Le Loft second bedroom with twin beds, exposed beams, and figurine shelves",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/le loft bathroom bathroom 4 2.jpeg": {
+    "target": "public/images/homes/le-moulin-loft-bath-2.webp",
+    "alt": "Le Loft bathroom, alternate view",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/le loft bathroom shower sink.jpeg": {
+    "target": "public/images/homes/le-moulin-loft-bath.webp",
+    "alt": "Le Loft bathroom with shower and sink",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/le loft bedroom master.jpeg": {
+    "target": "public/images/homes/le-moulin-loft.webp",
+    "alt": "Le Loft master bedroom under cathedral ceilings with floral wallpaper",
+    "useFor": "le-moulin gallery",
+    "overwrites": "le-moulin-loft.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/le loft twin beds.jpeg": {
+    "target": "public/images/homes/le-moulin-loft-2-twins-2.webp",
+    "alt": "Le Loft second bedroom with twin beds, alternate angle",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/living room facing couch.jpeg": {
+    "target": "public/images/homes/le-moulin-living-couch.webp",
+    "alt": "Le Moulin living room facing the floral couch and stone walls",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/living room facing wheels.jpeg": {
+    "target": "public/images/homes/le-moulin-living.webp",
+    "alt": "Le Moulin living room with leather club chairs and the antique mill wheel",
+    "useFor": "le-moulin gallery",
+    "overwrites": "le-moulin-living.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/living room.jpeg": {
+    "target": "public/images/homes/le-moulin-living-detail.webp",
+    "alt": "Detail of the antique mill wheel in Le Moulin's living room with backgammon on the table",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/lovely moulin a pot but needs flowers cleanelectric wife.jpeg": {
+    "target": "public/images/homes/le-moulin-flower-cart.webp",
+    "alt": "Le Moulin's stone facade with blue shutters and the antique flower cart in the courtyard",
+    "useFor": "le-moulin gallery, hero candidate"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/marie antoinette patio croissants.jpeg": {
+    "target": "public/images/homes/le-moulin-marie-antoinette-patio.webp",
+    "alt": "Marie Antoinette themed breakfast with croissants on the patio at Le Moulin",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/moulin a reves ext.jpeg": {
+    "target": "public/images/homes/le-moulin-hero.webp",
+    "alt": "Le Moulin's stone facade with blue shutters and ivy, antique flower cart in the foreground",
+    "useFor": "le-moulin gallery, hero",
+    "overwrites": "le-moulin-hero.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/office.jpeg": {
+    "target": "public/images/homes/le-moulin-office.webp",
+    "alt": "Floral-papered home office at Le Moulin with vintage wooden desk and wicker chair",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/river room 2 twins.jpeg": {
+    "target": "public/images/homes/le-moulin-river-room.webp",
+    "alt": "River Room with twin beds, lantern light, and stone walls under a vaulted ceiling",
+    "useFor": "le-moulin gallery",
+    "overwrites": "le-moulin-river-room.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/river room bath Le Moulin.jpeg": {
+    "target": "public/images/homes/le-moulin-river-room-bath.webp",
+    "alt": "River Room bathroom at Le Moulin",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/river room entrance.jpeg": {
+    "target": "public/images/homes/le-moulin-river-room-entrance.webp",
+    "alt": "Entrance to the River Room at Le Moulin",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/suite romantique bathroom facing painting.jpeg": {
+    "target": "public/images/homes/le-moulin-suite-romantique-bath.webp",
+    "alt": "Suite Romantique bathroom with painting at Le Moulin",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/suite romantique best.jpeg": {
+    "target": "public/images/homes/le-moulin-suite-romantique.webp",
+    "alt": "Suite Romantique master bedroom at Le Moulin with beamed ceiling and fireplace",
+    "useFor": "le-moulin gallery",
+    "overwrites": "le-moulin-suite-romantique.webp"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/suite romantique master bathroom Moulin.jpeg": {
+    "target": "public/images/homes/le-moulin-suite-romantique-master-bath.webp",
+    "alt": "Suite Romantique master bathroom at Le Moulin",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/Moulin a Reve 5 bedrooms/suite romantique.jpeg": {
+    "target": "public/images/homes/le-moulin-suite-romantique-2.webp",
+    "alt": "Suite Romantique alternate view from the bed toward the windows",
+    "useFor": "le-moulin gallery"
+  },
+  "../photo-source/River House New/Kitchen close up Riviere.jpeg": {
+    "target": "public/images/homes/maison-kitchen.webp",
+    "alt": "Kitchen at Maison sur la Rivière with wood cabinetry and bread on the stovetop",
+    "useFor": "maison-de-la-riviere gallery",
+    "overwrites": "maison-kitchen.webp"
+  },
+  "../photo-source/River House New/La chambre des ecriteurs.jpeg": {
+    "target": "public/images/homes/maison-ecrivains.webp",
+    "alt": "La Chambre des Écrivains with toile-print wallpaper and corner sink at Maison sur la Rivière",
+    "useFor": "maison-de-la-riviere gallery",
+    "overwrites": "maison-ecrivains.webp"
+  },
+  "../photo-source/River House New/La chamrbre des ecriteurs 2.jpeg": {
+    "target": "public/images/homes/maison-ecrivains-2.webp",
+    "alt": "La Chambre des Écrivains with the door to the balcony, alternate view",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/Maison sur la Riviere ext.jpeg": {
+    "target": "public/images/homes/maison-ext.webp",
+    "alt": "Front facade of Maison sur la Rivière with dormers and ivy",
+    "useFor": "maison-de-la-riviere gallery, hero candidate"
+  },
+  "../photo-source/River House New/bathroom river house.jpeg": {
+    "target": "public/images/homes/maison-bath.webp",
+    "alt": "Bathroom at Maison sur la Rivière",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/chambre des artistes wide.jpeg": {
+    "target": "public/images/homes/maison-artistes.webp",
+    "alt": "La Chambre des Artistes attic bedroom with cathedral ceiling and antique drawings",
+    "useFor": "maison-de-la-riviere gallery",
+    "overwrites": "maison-artistes.webp"
+  },
+  "../photo-source/River House New/dining room 3 board table angle.jpeg": {
+    "target": "public/images/homes/maison-dining.webp",
+    "alt": "Dining room board table at Maison sur la Rivière under the large landscape painting",
+    "useFor": "maison-de-la-riviere gallery",
+    "overwrites": "maison-dining.webp"
+  },
+  "../photo-source/River House New/dining room into living room.jpeg": {
+    "target": "public/images/homes/maison-dining-into-living.webp",
+    "alt": "View from the dining room through to the living room with bookshelves and floral couch",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/dinner 1 with light.jpeg": {
+    "target": "public/images/homes/maison-dinner-light.webp",
+    "alt": "Dinner laid on the long dining table at Maison sur la Rivière, lit by warm chandelier light",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/eat in kitchen Maison sur la Riviere.jpeg": {
+    "target": "public/images/homes/maison-eat-in-kitchen.webp",
+    "alt": "Eat-in kitchen at Maison sur la Rivière with wooden staircase and dining nook",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/la chambre des artistes facing couch.jpeg": {
+    "target": "public/images/homes/maison-artistes-couch.webp",
+    "alt": "La Chambre des Artistes facing the couch, alternate angle",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/living room 1centered.jpeg": {
+    "target": "public/images/homes/maison-living-fire.webp",
+    "alt": "Living room at Maison sur la Rivière facing the stone fireplace with floral couches",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/living room into dining room - rivere.jpeg": {
+    "target": "public/images/homes/maison-living-into-dining.webp",
+    "alt": "View from the living room into the dining room",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/living room trunk.jpeg": {
+    "target": "public/images/homes/maison-living-trunk.webp",
+    "alt": "Vintage Louis Vuitton steamer trunk used as a coffee table in the Maison sur la Rivière living room",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/River House New/maison de la riviere with the river.jpeg": {
+    "target": "public/images/homes/le-jardin-hero.webp",
+    "alt": "Maison sur la Rivière with the stream running alongside the garden",
+    "useFor": "maison-de-la-riviere gallery, hero",
+    "overwrites": "le-jardin-hero.webp"
+  },
+  "../photo-source/River House New/your board room retreat house.jpeg": {
+    "target": "public/images/homes/maison-board-room.webp",
+    "alt": "Long wooden board-room dining table at Maison sur la Rivière for retreat-style gatherings",
+    "useFor": "maison-de-la-riviere gallery"
+  },
+  "../photo-source/gardens moulin/A RIVER runs through it.jpeg": {
+    "target": "public/images/compound-river-courtyard.webp",
+    "alt": "Stone footbridge with planter boxes over the small stream at Le Moulin",
+    "useFor": "compound / homepage / about, hero candidate"
+  },
+  "../photo-source/gardens moulin/best jetson in chaise.jpeg": {
+    "target": "public/images/garden-chaise-jetson.webp",
+    "alt": "Garden chaise lounges with Jetson the Cavalier resting in the sun near the willow trees",
+    "useFor": "compound / homepage / about"
+  },
+  "../photo-source/gardens moulin/breakfast in garden.jpeg": {
+    "target": "public/images/garden-breakfast.webp",
+    "alt": "Breakfast set on the patio outside the stone cottage",
+    "useFor": "compound / homepage / about"
+  },
+  "../photo-source/gardens moulin/have a seat in the garden.jpeg": {
+    "target": "public/images/garden-chaises.webp",
+    "alt": "Garden chaise lounges facing the Giverny-style bridge",
+    "useFor": "compound / homepage / about"
+  },
+  "../photo-source/gardens moulin/lovely garden no jetson.jpeg": {
+    "target": "public/images/garden-chaises-wide.webp",
+    "alt": "Wide garden view with chaise lounges and the painted bridge",
+    "useFor": "compound / homepage / about"
+  },
+  "../photo-source/gardens moulin/private spot in garden.jpeg": {
+    "target": "public/images/garden-private-spot.webp",
+    "alt": "Private wicker bistro table in a wooded corner of the garden",
+    "useFor": "compound / homepage / about"
+  },
+  "../photo-source/gardens moulin/put your feet up and rest dusk.jpeg": {
+    "target": "public/images/evening-compound.webp",
+    "alt": "Garden at dusk with feet propped up looking toward the stone cottage",
+    "useFor": "compound / homepage / about",
+    "overwrites": "evening-compound.webp"
+  },
+  "../photo-source/gardens moulin/the giverny bridge.jpeg": {
+    "target": "public/images/bridge-garden.webp",
+    "alt": "Giverny-style painted bridge over the stream beneath willow trees",
+    "useFor": "compound / homepage / about, hero candidate",
+    "overwrites": "bridge-garden.webp"
+  },
+  "../photo-source/gardens moulin/well well well.jpeg": {
+    "target": "public/images/garden-stone-well.webp",
+    "alt": "Vine-covered antique stone well sheltered in the garden",
+    "useFor": "compound / homepage / about"
+  },
+  "../photo-source/the grange new/bikes 1 in grange facing door.jpeg": {
+    "target": "public/images/homes/la-grange-bikes-door.webp",
+    "alt": "Bicycles lined up inside La Grange facing the door",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/the grange new/bikes.jpeg": {
+    "target": "public/images/homes/la-grange-bikes.webp",
+    "alt": "Bicycles parked in La Grange under exposed wood beams",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/the grange new/fire in grange.jpeg": {
+    "target": "public/images/homes/la-grange-fire.webp",
+    "alt": "Fire crackling in the stone hearth of La Grange",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/the grange new/grange 1 dinner is served GREAT.jpeg": {
+    "target": ["public/images/group-dinner.webp", "public/images/barn-events.webp"],
+    "alt": "Dinner laid on the long table under La Grange's covered open-air pavilion",
+    "useFor": "compound / catering",
+    "overwrites": "group-dinner.webp + barn-events.webp"
+  },
+  "../photo-source/the grange new/ground fl bath le moulin toilet.jpeg": {
+    "target": "public/images/homes/la-grange-bath.webp",
+    "alt": "Ground floor bathroom at La Grange",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/the grange new/le grange 2 wide arial.jpeg": {
+    "target": "public/images/homes/la-grange-pavilion-wide.webp",
+    "alt": "Wide view of La Grange's open pavilion with ping-pong table and dining table",
+    "useFor": "hollywood-hideaway gallery, hero candidate"
+  },
+  "../photo-source/the grange new/massive grange.jpeg": {
+    "target": "public/images/homes/la-grange-pavilion.webp",
+    "alt": "La Grange's open pavilion with stone fireplace and ping-pong table",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/the grange new/screening room facing chairs.jpeg": {
+    "target": "public/images/homes/la-grange-screening-2.webp",
+    "alt": "Screening room at La Grange facing the leather chairs from the rear",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/the grange new/the gym mirror.jpeg": {
+    "target": "public/images/gym.webp",
+    "alt": "Gym at La Grange with elliptical, treadmill, and mirrored wall",
+    "useFor": "compound / wellness",
+    "overwrites": "gym.webp"
+  },
+  "../photo-source/the grange new/the gym treadmikk and boxing.jpeg": {
+    "target": "public/images/homes/la-grange-gym-boxing.webp",
+    "alt": "Gym at La Grange with treadmill and Everlast boxing setup",
+    "useFor": "hollywood-hideaway gallery, wellness"
+  },
+  "../photo-source/the grange new/the screening room.jpeg": {
+    "target": "public/images/screening-room.webp",
+    "alt": "Screening room at La Grange with leather club chairs facing the screen",
+    "useFor": "compound",
+    "overwrites": "screening-room.webp"
+  },
+  "../photo-source/the grange new/washer dryer in the grange.jpeg": {
+    "target": "public/images/homes/la-grange-laundry.webp",
+    "alt": "Laundry room with washer and dryer at La Grange",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/the grange new/your chariot awaits.jpeg": {
+    "target": "public/images/homes/la-grange-carriage.webp",
+    "alt": "Antique red horse-drawn carriage on display in La Grange",
+    "useFor": "hollywood-hideaway gallery"
+  }
+}
