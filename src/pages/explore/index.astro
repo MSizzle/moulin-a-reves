@@ -30,22 +30,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
       padding-left: 0.28em;
     }
-    /* No-photo placeholder tile — used when a unique image is not yet available */
-    .compound-tile__media--placeholder {
-      background: var(--bg-warm-white, #f4ede0);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      text-align: center;
-    }
-    .compound-tile__placeholder-text {
-      font-family: var(--font-body);
-      font-size: 0.6875rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(32, 32, 32, 0.32);
-    }
   </style>
 
   <!-- Intro -->
@@ -145,8 +129,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="compound-grid compound-grid--3">
         <div class="compound-tile fade-in">
-          <div class="compound-tile__media compound-tile__media--placeholder">
-            <span class="compound-tile__placeholder-text">Photo coming</span>
+          <div class="compound-tile__media">
+            <img src="/images/explore/markets.webp" alt="Halle de Milly-la-Forêt 15th-century medieval timber market hall, ten minutes from Moulin à Rêves" loading="lazy" />
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.food.markets.title">Local Markets</h3>
@@ -184,8 +168,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="compound-grid compound-grid--3">
         <div class="compound-tile fade-in">
-          <div class="compound-tile__media compound-tile__media--placeholder">
-            <span class="compound-tile__placeholder-text">Photo coming</span>
+          <div class="compound-tile__media">
+            <img src="/images/explore/bouldering.webp" alt="Climber bouldering on a Fontainebleau Forest sandstone block, fifteen minutes from Moulin à Rêves" loading="lazy" />
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.family.bouldering.title">Bouldering</h3>
@@ -193,8 +177,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </div>
         <div class="compound-tile fade-in">
-          <div class="compound-tile__media compound-tile__media--placeholder">
-            <span class="compound-tile__placeholder-text">Photo coming</span>
+          <div class="compound-tile__media">
+            <img src="/images/explore/horseback.webp" alt="Horseback riders on a forest trail near Fontainebleau, France" loading="lazy" />
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.family.horse.title">Horseback Riding</h3>
@@ -223,8 +207,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="compound-grid compound-grid--3">
         <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Chartres_Cathedral" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media compound-tile__media--placeholder">
-            <span class="compound-tile__placeholder-text">Photo coming</span>
+          <div class="compound-tile__media">
+            <img src="/images/explore/chartres.webp" alt="Notre-Dame de Chartres UNESCO Gothic cathedral, a day trip from Moulin à Rêves" loading="lazy" />
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.daytrips.chartres.title">Chartres Cathedral</h3>
@@ -232,8 +216,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </a>
         <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Vaux-le-Vicomte" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media compound-tile__media--placeholder">
-            <span class="compound-tile__placeholder-text">Photo coming</span>
+          <div class="compound-tile__media">
+            <img src="/images/explore/vaux.webp" alt="Château de Vaux-le-Vicomte baroque facade and Le Nôtre formal gardens, a day trip from Moulin à Rêves" loading="lazy" />
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.daytrips.vaux.title">Vaux-le-Vicomte</h3>
@@ -241,8 +225,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </a>
         <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Chambord" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media compound-tile__media--placeholder">
-            <span class="compound-tile__placeholder-text">Photo coming</span>
+          <div class="compound-tile__media">
+            <img src="/images/explore/chambord.webp" alt="Château de Chambord Renaissance facade reflected in the canal, a day trip from Moulin à Rêves to the Loire Valley" loading="lazy" />
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.daytrips.chambord.title">Chambord & the Loire</h3>
@@ -250,8 +234,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </a>
         <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Orl%C3%A9ans" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media compound-tile__media--placeholder">
-            <span class="compound-tile__placeholder-text">Photo coming</span>
+          <div class="compound-tile__media">
+            <img src="/images/explore/orleans.webp" alt="The Loire river quays at Orléans with the medieval city skyline and Sainte-Croix Cathedral" loading="lazy" />
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.daytrips.orleans.title">Orléans</h3>
