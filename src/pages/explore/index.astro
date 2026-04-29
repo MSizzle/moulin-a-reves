@@ -7,7 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- Hero -->
   <section class="hero" style="height: 60vh;">
     <div class="hero__image">
-      <img src="/images/explore/chateau.webp" alt="Château de Fontainebleau royal palace and gardens, twenty minutes from Moulin à Rêves" />
+      <img src="/images/explore/moret-bridge.webp" alt="Stone bridge over the Loing river in Moret-sur-Loing, twenty-five minutes from Moulin à Rêves" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
@@ -29,6 +29,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       margin-bottom: 24px;
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
       padding-left: 0.28em;
+    }
+    /* No-photo placeholder tile — used when a unique image is not yet available */
+    .compound-tile__media--placeholder {
+      background: var(--bg-warm-white, #f4ede0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .compound-tile__placeholder-text {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(32, 32, 32, 0.32);
     }
   </style>
 
@@ -129,8 +145,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="compound-grid compound-grid--3">
         <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/barbizon.webp" alt="Local French market in Milly-la-Foret near Moulin à Rêves, Seine-et-Marne" loading="lazy" />
+          <div class="compound-tile__media compound-tile__media--placeholder">
+            <span class="compound-tile__placeholder-text">Photo coming</span>
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.food.markets.title">Local Markets</h3>
@@ -168,8 +184,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="compound-grid compound-grid--3">
         <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/gorges.webp" alt="Sandstone bouldering circuits in Fontainebleau Forest near Moulin à Rêves" loading="lazy" />
+          <div class="compound-tile__media compound-tile__media--placeholder">
+            <span class="compound-tile__placeholder-text">Photo coming</span>
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.family.bouldering.title">Bouldering</h3>
@@ -177,8 +193,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </div>
         <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/forest.webp" alt="Horseback riding through Fontainebleau Forest trails near Moulin à Rêves" loading="lazy" />
+          <div class="compound-tile__media compound-tile__media--placeholder">
+            <span class="compound-tile__placeholder-text">Photo coming</span>
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.family.horse.title">Horseback Riding</h3>
@@ -199,7 +215,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <!-- Day Trips -->
-  <!-- TODO(Melissa): drop dedicated photos in /public/images/explore/ for chartres, vaux, chambord, orleans and update src + alt below. -->
   <section class="section section--stone">
     <div class="container">
       <div class="fade-in" style="margin-bottom: 48px;">
@@ -208,8 +223,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="compound-grid compound-grid--3">
         <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Chartres_Cathedral" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media">
-            <img src="/images/explore/chateau.webp" alt="Chartres Cathedral, a UNESCO World Heritage gothic cathedral roughly an hour from Moulin à Rêves" loading="lazy" />
+          <div class="compound-tile__media compound-tile__media--placeholder">
+            <span class="compound-tile__placeholder-text">Photo coming</span>
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.daytrips.chartres.title">Chartres Cathedral</h3>
@@ -217,8 +232,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </a>
         <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Vaux-le-Vicomte" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media">
-            <img src="/images/bridge-garden.webp" alt="Château de Vaux-le-Vicomte, the 17th-century baroque château that inspired Versailles" loading="lazy" />
+          <div class="compound-tile__media compound-tile__media--placeholder">
+            <span class="compound-tile__placeholder-text">Photo coming</span>
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.daytrips.vaux.title">Vaux-le-Vicomte</h3>
@@ -226,8 +241,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </a>
         <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Chambord" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media">
-            <img src="/images/explore/chateau.webp" alt="Château de Chambord, the largest Renaissance château in the Loire Valley" loading="lazy" />
+          <div class="compound-tile__media compound-tile__media--placeholder">
+            <span class="compound-tile__placeholder-text">Photo coming</span>
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.daytrips.chambord.title">Chambord & the Loire</h3>
@@ -235,8 +250,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </div>
         </a>
         <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Orl%C3%A9ans" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media">
-            <img src="/images/explore/moret-bridge.webp" alt="Orléans, the medieval city of Joan of Arc on the Loire river" loading="lazy" />
+          <div class="compound-tile__media compound-tile__media--placeholder">
+            <span class="compound-tile__placeholder-text">Photo coming</span>
           </div>
           <div class="compound-tile__body">
             <h3 class="compound-tile__title" data-i18n="explore.daytrips.orleans.title">Orléans</h3>
@@ -248,15 +263,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="hero" style="height: 45vh; min-height: 350px;">
-    <div class="hero__image">
-      <img src="/images/garden-breakfast.webp" alt="Sunlit breakfast on the patio at Moulin à Rêves" loading="lazy" />
-    </div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <h2 class="hero__title" data-i18n="explore.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Need Suggestions?</h2>
-      <p class="hero__tagline" data-i18n="explore.cta.text">We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.</p>
-      <a href="/contact/" class="btn btn--white" data-i18n="explore.cta.button">Start Your Conversation</a>
+  <section class="section section--stone text-center">
+    <div class="container--narrow fade-in">
+      <h2 data-i18n="explore.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Need Suggestions?</h2>
+      <p data-i18n="explore.cta.text" style="margin-top: 14px; max-width: 56ch; margin-left: auto; margin-right: auto;">We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.</p>
+      <a href="/contact/" class="btn btn--primary" data-i18n="explore.cta.button" style="margin-top: 24px;">Start Your Conversation</a>
     </div>
   </section>
 
