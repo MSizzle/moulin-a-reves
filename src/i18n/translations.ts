@@ -2,7 +2,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   // Navigation
   // =====================
-  'nav.homes': { en: 'Maisons', fr: 'Les Maisons' },
+  'nav.homes': { en: 'Les Maisons', fr: 'Les Maisons' },
   'nav.compound': { en: 'The Compound', fr: 'Le Domaine' },
   'nav.explore': { en: 'Explore', fr: 'Explorer' },
   'nav.catering': { en: 'Catering', fr: 'Restauration' },
@@ -16,7 +16,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'footer.tagline': { en: 'Mill of Dreams \u00b7 Seine-et-Marne, France', fr: 'Le Moulin des Rêves \u00b7 Seine-et-Marne, France' },
   'footer.explore': { en: 'Explore', fr: 'Explorer' },
-  'footer.homes': { en: 'The Maisons', fr: 'Les Maisons' },
+  'footer.homes': { en: 'Les Maisons', fr: 'Les Maisons' },
   'footer.compound': { en: 'The Compound', fr: 'Le Domaine' },
   'footer.thingstodo': { en: 'Things to Do', fr: 'À Découvrir' },
   'footer.catering': { en: 'Catering', fr: 'Restauration' },
@@ -35,7 +35,7 @@ export const translations: Record<string, Record<string, string>> = {
   // Homepage
   // =====================
   'home.title': { en: 'Moulin à Rêves', fr: 'Moulin à Rêves' },
-  'home.tagline': { en: 'Three homes. One unforgettable stay. One hour from Paris.', fr: 'Trois maisons. Un séjour inoubliable. À une heure de Paris.' },
+  'home.tagline': { en: 'Three maisons. One unforgettable stay. One hour from Paris.', fr: 'Trois maisons. Un séjour inoubliable. À une heure de Paris.' },
   'home.cta': { en: 'Discover the Maisons', fr: 'Découvrir les Maisons' },
   'home.intro.heading': { en: 'Where the millstream meets your morning coffee', fr: 'Là où le bief rencontre votre café du matin' },
   'home.intro.text': {
@@ -56,7 +56,8 @@ export const translations: Record<string, Record<string, string>> = {
   'home.jardin.description': { en: 'The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.', fr: "La plus paisible des trois. Un cottage de jardin habillé de glycine, avec une terrasse faite pour les longues après-midi." },
   'home.jardin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
   'home.jardin.sleeps': { en: 'Sleeps 6', fr: '6 Couchages' },
-  'home.rentall': { en: 'Rent the Entire Compound', fr: 'Louer le Domaine Entier' },
+  'home.availability.heading': { en: 'When You Can <span class="serif-italic">Stay</span>', fr: 'Quand <span class="serif-italic">Réserver</span>' },
+  'home.availability.intro': { en: 'Live calendar synced from Airbnb and VRBO. Greyed dates are booked.', fr: 'Calendrier en direct synchronisé depuis Airbnb et VRBO. Les dates grisées sont réservées.' },
   'home.senseof.quote': {
     en: '"At the edge of Fontainebleau Forest, in the land that inspired the Barbizon painters, where the light still falls the way it did two centuries ago."',
     fr: "\"En lisière de la forêt de Fontainebleau, sur la terre qui inspira les peintres de Barbizon, où la lumière tombe encore comme il y a deux siècles.\""
@@ -302,7 +303,7 @@ export const translations: Record<string, Record<string, string>> = {
   'compound.stats.total': { en: 'm\u00b2 total', fr: 'm\u00b2 au total' },
   'compound.intro.heading': { en: 'Rent All Three', fr: 'Louez les Trois' },
   'compound.intro.p1': {
-    en: "Some occasions call for more than a single house. When you book the entire compound at Moulin a Reves, you get three separate homes arranged around shared gardens, a millstream, and the kind of space that lets a group of twenty spread out during the day and come together for the evening. Each house has its own kitchen, its own living room, its own front door \u2014 but the grounds between them are where the real life of your stay will happen.",
+    en: "Some occasions call for more than a single maison. When you book the entire compound at Moulin a Reves, you get three separate maisons arranged around shared gardens, a millstream, and the kind of space that lets a group of twenty spread out during the day and come together for the evening. Each maison has its own kitchen, its own living room, its own front door \u2014 but the grounds between them are where the real life of your stay will happen.",
     fr: "Certaines occasions méritent plus qu'une seule maison. Lorsque vous réservez l'ensemble du domaine de Moulin à Rêves, vous disposez de trois maisons distinctes réparties autour de jardins partagés, d'un bief et du genre d'espace qui permet à un groupe de vingt personnes de se disperser la journée et de se retrouver le soir. Chaque maison a sa propre cuisine, son propre salon, sa propre porte d'entrée \u2014 mais c'est entre les maisons, dans les espaces communs, que la vraie vie de votre séjour se déroule."
   },
   'compound.intro.p2': {
@@ -644,6 +645,12 @@ export const translations: Record<string, Record<string, string>> = {
   'contact.details.phone': { en: 'Phone', fr: 'Téléphone' },
   'contact.details.address': { en: 'Address', fr: 'Adresse' },
   'contact.getting.heading': { en: 'Getting Here', fr: 'Venir Chez Nous' },
+  'contact.getting.summary': {
+    en: 'About 1 hour from Paris by car or train. <a href="/about/#getting-here">See the full directions FAQ →</a> for airport transfers, train options, taxis, ride apps, and car rental.',
+    fr: 'Environ 1 heure de Paris en voiture ou en train. <a href="/about/#getting-here">Voir la FAQ complète sur l\'accès →</a> avec transferts aéroport, trains, taxis, applis VTC et location de voiture.'
+  },
+  'about.faq.heading': { en: 'Frequently Asked <span class="serif-italic">Questions</span>', fr: 'Questions <span class="serif-italic">Fréquentes</span>' },
+  'about.faq.lede': { en: 'Address, directions from Paris and the airports, taxis, ride apps, car rental, and nearby day trips.', fr: 'Adresse, accès depuis Paris et les aéroports, taxis, applis VTC, location de voiture et excursions à proximité.' },
   'contact.getting.car.heading': { en: 'From Paris by Car', fr: 'Depuis Paris en Voiture' },
   'contact.getting.car.text': {
     en: 'Take the A6 south from Paris towards Lyon. Exit at Fontainebleau and follow signs towards Barbizon / Milly-la-Foret. The compound is approximately one hour from central Paris, depending on traffic. Detailed directions and GPS coordinates will be sent with your booking confirmation.',
@@ -692,4 +699,74 @@ export const translations: Record<string, Record<string, string>> = {
   },
   'success.explore': { en: 'Explore the Area', fr: 'Explorer la Région' },
   'success.home': { en: 'Back to Home', fr: "Retour à l'Accueil" },
+
+  // =====================
+  // Getting Here
+  // =====================
+  'getting.hero.eyebrow': { en: 'Moulin à Rêves', fr: 'Moulin à Rêves' },
+  'getting.hero.title': { en: 'Getting Here', fr: 'Comment Venir' },
+  'getting.hero.tagline': { en: 'From Paris airport to the front door — three good ways to arrive.', fr: "De l'aéroport de Paris jusqu'à notre porte — trois bonnes façons d'arriver." },
+  'getting.address.label': { en: 'Address', fr: 'Adresse' },
+  'getting.options.heading': { en: 'Three Ways to <span class="serif-italic">Arrive</span>', fr: 'Trois Façons d\'<span class="serif-italic">Arriver</span>' },
+  'getting.options.lede': { en: 'Times and prices vary by traffic and time of day — check the apps for live rates.', fr: 'Les durées et tarifs varient selon le trafic et l\'heure — consultez les applis pour des prix en direct.' },
+
+  'getting.opt1.num': { en: 'Option 1', fr: 'Option 1' },
+  'getting.opt1.title': { en: 'Uber or Taxi from the Airport', fr: "Uber ou Taxi depuis l'Aéroport" },
+  'getting.opt1.orly.h': { en: 'From Paris Orly (ORY)', fr: 'Depuis Paris Orly (ORY)' },
+  'getting.opt1.orly.p': { en: '45–55 min · €65–€105 (car) · €90–€160 (van, up to 6)', fr: '45–55 min · 65–105 € (voiture) · 90–160 € (van, jusqu\'à 6)' },
+  'getting.opt1.cdg.h': { en: 'From Charles de Gaulle (CDG)', fr: 'Depuis Charles de Gaulle (CDG)' },
+  'getting.opt1.cdg.p': { en: '1h15–1h30 · €130–€250 (car or van)', fr: '1h15–1h30 · 130–250 € (voiture ou van)' },
+  'getting.opt1.note': { en: 'Simplest door-to-door option — no transfers.', fr: 'Solution porte-à-porte la plus simple — sans correspondance.' },
+
+  'getting.opt2.num': { en: 'Option 2', fr: 'Option 2' },
+  'getting.opt2.title': { en: 'Car & Train via Étampes', fr: 'Voiture & Train via Étampes' },
+  'getting.opt2.s1.h': { en: "Step 1 — Uber to Gare d'Austerlitz", fr: "Étape 1 — Uber jusqu'à Gare d'Austerlitz" },
+  'getting.opt2.s1.p': { en: 'From Orly: €30–€50 (30–40 min) · From CDG: €50–€70 (45–60 min)', fr: 'Depuis Orly : 30–50 € (30–40 min) · Depuis CDG : 50–70 € (45–60 min)' },
+  'getting.opt2.s2.h': { en: 'Step 2 — Train to Étampes', fr: 'Étape 2 — Train jusqu\'à Étampes' },
+  'getting.opt2.s2.p': {
+    en: 'RER C: ~50 min · ~€2.50 · every ~30 min<br />TER / Intercités: 30–35 min · €10–€20 · fewer departures',
+    fr: 'RER C : ~50 min · ~2,50 € · toutes les ~30 min<br />TER / Intercités : 30–35 min · 10–20 € · moins de départs'
+  },
+  'getting.opt2.s3.h': { en: 'Step 3 — Taxi from Étampes', fr: 'Étape 3 — Taxi depuis Étampes' },
+  'getting.opt2.s3.p': {
+    en: '~20 min · ~€25. Book ahead with <a class="gh-link" href="https://www.allotaxisetampes.fr" target="_blank" rel="noopener">Allo Taxis Étampes</a>, <a class="gh-link" href="https://taxietampes.fr" target="_blank" rel="noopener">Taxi Étampes</a>, or <a class="gh-link" href="https://www.taxi-91.fr/Taxi-etampes" target="_blank" rel="noopener">Taxi 91</a>.',
+    fr: '~20 min · ~25 €. Réservez à l\'avance avec <a class="gh-link" href="https://www.allotaxisetampes.fr" target="_blank" rel="noopener">Allo Taxis Étampes</a>, <a class="gh-link" href="https://taxietampes.fr" target="_blank" rel="noopener">Taxi Étampes</a> ou <a class="gh-link" href="https://www.taxi-91.fr/Taxi-etampes" target="_blank" rel="noopener">Taxi 91</a>.'
+  },
+
+  'getting.opt3.num': { en: 'Option 3', fr: 'Option 3' },
+  'getting.opt3.title': { en: 'Public Transport All the Way', fr: 'Transports en Commun' },
+  'getting.opt3.s1.h': { en: 'Airport to Paris', fr: 'Aéroport vers Paris' },
+  'getting.opt3.s1.p': {
+    en: 'RER B from the airport → Denfert-Rochereau → Metro 6 → Gare d\'Austerlitz<br />~50–70 min · ~€12–€15',
+    fr: 'RER B depuis l\'aéroport → Denfert-Rochereau → Métro 6 → Gare d\'Austerlitz<br />~50–70 min · ~12–15 €'
+  },
+  'getting.opt3.s2.h': { en: 'Train to Étampes', fr: 'Train jusqu\'à Étampes' },
+  'getting.opt3.s2.p': { en: 'RER C or TER (see Option 2)', fr: 'RER C ou TER (voir Option 2)' },
+  'getting.opt3.s3.h': { en: 'Taxi to the Moulin', fr: 'Taxi jusqu\'au Moulin' },
+  'getting.opt3.s3.p': { en: '~20 min · ~€25', fr: '~20 min · ~25 €' },
+
+  'getting.rideapps.heading': { en: 'Ride Apps in France', fr: 'Applis VTC en France' },
+  'getting.rental.heading': { en: 'Car Rental', fr: 'Location de Voiture' },
+  'getting.rental.airports.h': { en: 'At the airports', fr: 'Aux aéroports' },
+  'getting.rental.airports.p': { en: 'Europcar, Sixt, Hertz · typically €40–€120/day', fr: 'Europcar, Sixt, Hertz · environ 40–120 €/jour' },
+  'getting.rental.etampes.h': { en: 'In Étampes', fr: 'À Étampes' },
+
+  'getting.trips.heading': { en: 'Day Trips from <span class="serif-italic">Here</span>', fr: 'Excursions <span class="serif-italic">Depuis Ici</span>' },
+  'getting.trips.lede': { en: 'All within an easy drive of the compound.', fr: 'Tous accessibles facilement en voiture depuis le domaine.' },
+  'getting.trips.chartres.h': { en: 'Chartres', fr: 'Chartres' },
+  'getting.trips.chartres.p': { en: 'Home of the iconic Gothic cathedral.', fr: 'Sa cathédrale gothique emblématique.' },
+  'getting.trips.orleans.h': { en: 'Orléans', fr: 'Orléans' },
+  'getting.trips.orleans.p': { en: 'City of Joan of Arc on the Loire.', fr: 'La ville de Jeanne d\'Arc sur la Loire.' },
+  'getting.trips.barbizon.h': { en: 'Barbizon', fr: 'Barbizon' },
+  'getting.trips.barbizon.p': {
+    en: 'Painters\' village at the edge of Fontainebleau forest, where Impressionism took root. <a class="gh-link" href="/journal/spring-in-barbizon/">Read more →</a>',
+    fr: 'Village des peintres en lisière de Fontainebleau, berceau de l\'impressionnisme. <a class="gh-link" href="/journal/spring-in-barbizon/">En savoir plus →</a>'
+  },
+  'getting.trips.vaux.h': { en: 'Vaux-le-Vicomte', fr: 'Vaux-le-Vicomte' },
+  'getting.trips.vaux.p': { en: 'The château that inspired Versailles.', fr: 'Le château qui inspira Versailles.' },
+  'getting.trips.loire.h': { en: 'Loire Valley', fr: 'Vallée de la Loire' },
+  'getting.trips.loire.p': { en: '90 minutes away — Chambord, Chenonceau, Amboise, Blois.', fr: 'À 90 minutes — Chambord, Chenonceau, Amboise, Blois.' },
+  'getting.trips.fontainebleau.h': { en: 'Fontainebleau', fr: 'Fontainebleau' },
+  'getting.trips.fontainebleau.p': { en: 'Royal château and 25,000 hectares of ancient forest, twenty minutes away.', fr: 'Château royal et 25 000 hectares de forêt ancienne, à vingt minutes.' },
+  'getting.map.caption': { en: 'Méréville, France · One hour south of Paris', fr: 'Méréville, France · À une heure au sud de Paris' },
 };

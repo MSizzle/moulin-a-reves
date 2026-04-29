@@ -39,6 +39,83 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="hero__overlay"></div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section--tight section--soft" id="faq">
+    <div class="container--narrow fade-in text-center">
+      <h2 data-i18n-html="about.faq.heading">Frequently Asked <span class="serif-italic">Questions</span></h2>
+      <p data-i18n="about.faq.lede" style="margin-top: 12px; max-width: 56ch; margin-left: auto; margin-right: auto;">Address, directions from Paris and the airports, taxis, ride apps, car rental, and nearby day trips.</p>
+    </div>
+    <div class="container--narrow fade-in" style="margin-top: 36px;">
+      <div class="faq" id="getting-here">
+        <details class="faq__item" open>
+          <summary class="faq__q" data-i18n="about.faq.address.q">What's the address?</summary>
+          <div class="faq__a">
+            <p data-i18n="about.faq.address.a">16 rue des Crocs aux Renards, 91660 Méréville, France.</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q" data-i18n="about.faq.opt1.q">How do I get there from the airport by Uber or taxi?</summary>
+          <div class="faq__a">
+            <p><strong data-i18n="about.faq.opt1.orly.h">From Paris Orly (ORY):</strong> <span data-i18n="about.faq.opt1.orly.p">45–55 min · €65–€105 (car) · €90–€160 (van, up to 6).</span></p>
+            <p style="margin-top: 10px;"><strong data-i18n="about.faq.opt1.cdg.h">From Charles de Gaulle (CDG):</strong> <span data-i18n="about.faq.opt1.cdg.p">1h15–1h30 · €130–€250 (car or van).</span></p>
+            <p style="margin-top: 10px;" data-i18n="about.faq.opt1.note">Simplest door-to-door option — no transfers. Live prices vary by time of day.</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q" data-i18n="about.faq.opt2.q">Can I take the train via Étampes?</summary>
+          <div class="faq__a">
+            <p><strong data-i18n="about.faq.opt2.s1.h">Step 1 — Uber to Gare d'Austerlitz:</strong> <span data-i18n="about.faq.opt2.s1.p">From Orly: €30–€50 (30–40 min) · From CDG: €50–€70 (45–60 min).</span></p>
+            <p style="margin-top: 10px;"><strong data-i18n="about.faq.opt2.s2.h">Step 2 — Train to Étampes:</strong> <span data-i18n="about.faq.opt2.s2.p">RER C: ~50 min, ~€2.50, every ~30 min. TER / Intercités: 30–35 min, €10–€20, fewer departures.</span></p>
+            <p style="margin-top: 10px;"><strong data-i18n="about.faq.opt2.s3.h">Step 3 — Taxi from Étampes:</strong> <span data-i18n="about.faq.opt2.s3.p">~20 min, ~€25.</span> Book ahead with <a href="https://www.allotaxisetampes.fr" target="_blank" rel="noopener">Allo Taxis Étampes</a>, <a href="https://taxietampes.fr" target="_blank" rel="noopener">Taxi Étampes</a>, or <a href="https://www.taxi-91.fr/Taxi-etampes" target="_blank" rel="noopener">Taxi 91</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q" data-i18n="about.faq.opt3.q">Can I get there entirely by public transport?</summary>
+          <div class="faq__a">
+            <p><strong data-i18n="about.faq.opt3.s1.h">Airport to Paris:</strong> <span data-i18n="about.faq.opt3.s1.p">RER B from the airport → Denfert-Rochereau → Métro 6 → Gare d'Austerlitz. ~50–70 min, ~€12–€15.</span></p>
+            <p style="margin-top: 10px;" data-i18n="about.faq.opt3.s2.p">Then RER C or TER to Étampes (see above), and a taxi (~20 min, ~€25) to the Moulin.</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q" data-i18n="about.faq.rideapps.q">Which ride apps work in France?</summary>
+          <div class="faq__a">
+            <ul>
+              <li><strong>Uber</strong> — <a href="https://www.uber.com" target="_blank" rel="noopener">uber.com</a></li>
+              <li><strong>Heetch</strong> (often cheaper) — <a href="https://www.heetch.com" target="_blank" rel="noopener">heetch.com</a></li>
+              <li><strong>FREE NOW</strong> (connects to taxis) — <a href="https://www.free-now.com" target="_blank" rel="noopener">free-now.com</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q" data-i18n="about.faq.rental.q">Where can I rent a car?</summary>
+          <div class="faq__a">
+            <p><strong data-i18n="about.faq.rental.airports.h">At the airports:</strong> <span data-i18n="about.faq.rental.airports.p">Europcar, Sixt, Hertz · typically €40–€120/day.</span></p>
+            <p style="margin-top: 10px;"><strong data-i18n="about.faq.rental.etampes.h">In Étampes:</strong> <a href="https://www.avis.fr/services-avis/location-voiture/europe/france/%C3%A9tampes/etampes-location-de-voiture" target="_blank" rel="noopener">Avis Étampes</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q" data-i18n="about.faq.trips.q">What's nearby for a day trip?</summary>
+          <div class="faq__a">
+            <ul>
+              <li><strong>Chartres</strong> — <span data-i18n="about.faq.trips.chartres">home of the iconic Gothic cathedral.</span></li>
+              <li><strong>Orléans</strong> — <span data-i18n="about.faq.trips.orleans">city of Joan of Arc on the Loire.</span></li>
+              <li><strong>Barbizon</strong> — <span data-i18n="about.faq.trips.barbizon">painters' village at the edge of Fontainebleau forest.</span> <a href="/journal/spring-in-barbizon/">Read more →</a></li>
+              <li><strong>Vaux-le-Vicomte</strong> — <span data-i18n="about.faq.trips.vaux">the château that inspired Versailles.</span></li>
+              <li><strong data-i18n="about.faq.trips.loire.h">Loire Valley</strong> — <span data-i18n="about.faq.trips.loire">90 minutes away — Chambord, Chenonceau, Amboise, Blois.</span></li>
+              <li><strong>Fontainebleau</strong> — <span data-i18n="about.faq.trips.fontainebleau">royal château and 25,000 hectares of ancient forest, twenty minutes away.</span></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="hero" style="height: 40vh; min-height: 320px;">
     <div class="hero__image">
@@ -54,6 +131,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <style>
     .section--tight { padding-top: 64px; padding-bottom: 64px; }
+    .faq__item {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 18px 0;
+    }
+    .faq__item:last-child { border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    .faq__q {
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq__q::-webkit-details-marker { display: none; }
+    .faq__q::after {
+      content: '+';
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 1.5rem;
+      color: var(--blue-primary, #3a5a8a);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    details[open] .faq__q::after { content: '–'; }
+    .faq__a {
+      padding-top: 14px;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+    .faq__a p { margin: 0; }
+    .faq__a ul { margin: 0; padding-left: 18px; }
+    .faq__a li { margin: 4px 0; }
+    .faq__a a { color: var(--blue-primary, #3a5a8a); text-decoration: underline; }
   </style>
 
 </BaseLayout>
