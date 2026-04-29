@@ -69,16 +69,14 @@ const compoundFeatures = [
       { src: '/images/yoga-lawn.webp', alt: 'Morning yoga on the lawn between the houses' },
     ],
   },
+  // TODO(Melissa): drop additional jacuzzi/solarium photos in /public/images/ and add them to gallery below.
   {
-    title: 'Spa & Solarium',
-    summary: 'A quiet glassed-in spa with jacuzzi, garden views, and space for massage treatments.',
+    title: 'Solarium & Jacuzzi',
+    summary: 'A glassed-in solarium with jacuzzi — warm-weather mornings, winter evenings, year-round.',
     image: '/images/wellness-pool.webp',
-    alt: 'Spa solarium with jacuzzi at Moulin à Rêves',
+    alt: 'Solarium with jacuzzi at Moulin à Rêves',
     gallery: [
-      { src: '/images/wellness-pool.webp', alt: 'Solarium spa with jacuzzi' },
-      { src: '/images/wellness-massage.webp', alt: 'A quiet corner for massage' },
-      { src: '/images/wellness-beauty.webp', alt: 'Bright tile bathroom for spa treatments' },
-      { src: '/images/wellness-hero.webp', alt: 'Garden chaises on the lawn outside the spa' },
+      { src: '/images/wellness-pool.webp', alt: 'Solarium with jacuzzi at Moulin à Rêves' },
     ],
   },
   {
@@ -104,12 +102,16 @@ const compoundFeatures = [
       { src: '/images/homes/la-grange-screening-2.webp', alt: 'Screening room facing the leather chairs from the rear' },
     ],
   },
-  // TODO: replace placeholder image and add real photos when Melissa drops them in /public/images/
+  // TODO(Melissa): drop chicken-coop photos in /public/images/ and append them to the gallery below.
   {
     title: 'Chicken Coop',
     summary: 'A working chicken coop. Wake up to the roosters; collect the eggs.',
     image: '/images/personality.webp',
     alt: 'Marie Antoinette near the rooster in the garden at Moulin à Rêves',
+    comingSoon: true,
+    gallery: [
+      { src: '/images/personality.webp', alt: 'Marie Antoinette near the rooster in the garden' },
+    ],
   },
 ];
 
@@ -133,7 +135,7 @@ const groupTypes = [
       "email": "lemoulinfrance@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "16 Rue des Crocs au Renard",
+        "streetAddress": "16 Rue des Crocs aux Renards",
         "postalCode": "91660",
         "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
@@ -262,6 +264,25 @@ const groupTypes = [
       .hero--lc { height: 76vh; min-height: 480px; }
     }
     .section--tighter { padding-top: 36px; padding-bottom: 36px; }
+
+    /* Tile pill: low-key "more photos coming" indicator */
+    .compound-tile__media { position: relative; }
+    .compound-tile__pill {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--ink);
+      border-radius: 999px;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      pointer-events: none;
+    }
 
     /* Maisons hero spread — tightened so the trio sits closer to the intro */
     .maisons-section {
@@ -393,6 +414,9 @@ const groupTypes = [
             <div class="compound-tile compound-tile--clickable fade-in" data-gallery={JSON.stringify(feat.gallery)} role="button" tabindex="0">
               <div class="compound-tile__media">
                 <img src={feat.image} alt={feat.alt} loading="lazy" />
+                {feat.comingSoon && (
+                  <span class="compound-tile__pill">More photos coming</span>
+                )}
               </div>
               <div class="compound-tile__body">
                 <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
