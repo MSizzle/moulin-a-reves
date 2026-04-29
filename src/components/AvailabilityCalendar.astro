@@ -40,6 +40,15 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
       role="region"
       aria-label="Availability calendar"
     >
+      <div class="availability__controls">
+        <label for="availability-month-select" class="availability__select-label">Starting month</label>
+        <div class="availability__select-wrap">
+          <button type="button" class="availability__nav availability__nav--prev" id="availability-prev" aria-label="Previous month" disabled>‹</button>
+          <select id="availability-month-select" class="availability__select" aria-label="Select starting month"></select>
+          <button type="button" class="availability__nav availability__nav--next" id="availability-next" aria-label="Next month">›</button>
+        </div>
+      </div>
+
       <div class="availability__months" id="availability-months">
         <div class="availability__loading">Loading availability…</div>
       </div>
@@ -117,6 +126,74 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
   .availability__calendar {
     max-width: 980px;
     margin: 0 auto;
+  }
+
+  .availability__controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .availability__select-label {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .availability__select-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .availability__select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 1px solid rgba(32, 32, 32, 0.18);
+    border-radius: 999px;
+    padding: 9px 38px 9px 18px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink);
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='none' stroke='%23202020' stroke-width='1.2' d='M1 1l4 4 4-4'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    transition: border-color 0.2s ease;
+  }
+  .availability__select:hover,
+  .availability__select:focus-visible {
+    border-color: var(--blue-shutter, rgba(32, 32, 32, 0.55));
+    outline: none;
+  }
+  .availability__nav {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(32, 32, 32, 0.18);
+    background: transparent;
+    color: var(--ink);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+    font-family: var(--font-serif);
+  }
+  .availability__nav:hover:not(:disabled),
+  .availability__nav:focus-visible:not(:disabled) {
+    border-color: var(--blue-shutter, rgba(32, 32, 32, 0.55));
+    outline: none;
+  }
+  .availability__nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
   }
   .availability__months {
     display: grid;
@@ -253,8 +330,18 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
     var root = document.getElementById('availability-months');
     if (!root) return;
     var calendar = root.closest('.availability__calendar');
-    var monthsToShow = parseInt((calendar && calendar.dataset.months) || '6', 10);
+    var monthsToShow = parseInt((calendar && calendar.dataset.months) || '12', 10);
+    var monthsPerView = 2;
+    var maxOffset = Math.max(0, monthsToShow - monthsPerView);
     var syncEl = document.getElementById('availability-sync');
+    var selectEl = document.getElementById('availability-month-select');
+    var prevBtn = document.getElementById('availability-prev');
+    var nextBtn = document.getElementById('availability-next');
+
+    var state = {
+      blocked: new Set(),
+      offset: 0,
+    };
 
     function pad(n) { return n < 10 ? '0' + n : '' + n; }
     function isoDay(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
@@ -287,24 +374,58 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
       return html;
     }
 
-    function render(blocked, lastSynced) {
+    function populateSelect() {
+      if (!selectEl) return;
       var today = new Date();
       today.setHours(0, 0, 0, 0);
+      var frag = document.createDocumentFragment();
+      for (var i = 0; i <= maxOffset; i++) {
+        var d = new Date(today.getFullYear(), today.getMonth() + i, 1);
+        var label = d.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+        var opt = document.createElement('option');
+        opt.value = String(i);
+        opt.textContent = label;
+        frag.appendChild(opt);
+      }
+      selectEl.innerHTML = '';
+      selectEl.appendChild(frag);
+      selectEl.value = String(state.offset);
+    }
+
+    function updateNavButtons() {
+      if (prevBtn) prevBtn.disabled = state.offset <= 0;
+      if (nextBtn) nextBtn.disabled = state.offset >= maxOffset;
+    }
+
+    function renderMonths() {
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var d = new Date(today.getFullYear(), today.getMonth() + state.offset, 1);
       var html = '';
-      var d = new Date(today.getFullYear(), today.getMonth(), 1);
-      for (var i = 0; i < monthsToShow; i++) {
-        html += buildMonth(d.getFullYear(), d.getMonth(), blocked, today);
+      for (var i = 0; i < monthsPerView; i++) {
+        html += buildMonth(d.getFullYear(), d.getMonth(), state.blocked, today);
         d.setMonth(d.getMonth() + 1);
       }
       root.innerHTML = html;
-      if (syncEl && lastSynced) {
-        try {
-          var fmt = new Date(lastSynced).toLocaleString(undefined, {
-            month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
-          });
-          syncEl.textContent = 'Synced ' + fmt + ' from Airbnb + VRBO';
-        } catch (_) {}
-      }
+      updateNavButtons();
+    }
+
+    function setOffset(next) {
+      var clamped = Math.max(0, Math.min(maxOffset, next));
+      if (clamped === state.offset) return;
+      state.offset = clamped;
+      if (selectEl) selectEl.value = String(clamped);
+      renderMonths();
+    }
+
+    function updateSyncLabel(lastSynced) {
+      if (!syncEl || !lastSynced) return;
+      try {
+        var fmt = new Date(lastSynced).toLocaleString(undefined, {
+          month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
+        });
+        syncEl.textContent = 'Synced ' + fmt + ' from Airbnb + VRBO';
+      } catch (_) {}
     }
 
     function showError() {
@@ -313,11 +434,27 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
         '<a href="/contact/">Send us your dates</a> and we’ll confirm.</div>';
     }
 
+    populateSelect();
+    updateNavButtons();
+
+    if (selectEl) {
+      selectEl.addEventListener('change', function () {
+        setOffset(parseInt(selectEl.value, 10) || 0);
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () { setOffset(state.offset - 1); });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () { setOffset(state.offset + 1); });
+    }
+
     fetch('/api/availability', { cache: 'default' })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (data) {
-        var set = new Set(data.blocked || []);
-        render(set, data.lastSynced);
+        state.blocked = new Set(data.blocked || []);
+        renderMonths();
+        updateSyncLabel(data.lastSynced);
       })
       .catch(showError);
   })();

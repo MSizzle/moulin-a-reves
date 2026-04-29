@@ -1,5 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import RoomShowcase from '../components/RoomShowcase.astro';
+
+const sharedSpaces = [
+  {
+    id: 'pavilion',
+    title: 'La Grange — Covered Pavilion',
+    summary: 'Open-air entertaining barn with stone fireplace, ping-pong table, and the long communal table for twenty.',
+    longDescription: 'The heart of the compound when the houses come together. Stone fireplace, ping-pong, dinner for twenty under cover.',
+    photos: [
+      { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'Wide view of La Grange\'s open pavilion with ping-pong and dining table' },
+      { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange\'s open pavilion with stone fireplace' },
+      { src: '/images/homes/la-grange-fire.webp', alt: 'Fire crackling in the stone hearth of La Grange' },
+      { src: '/images/group-dinner.webp', alt: 'Dinner laid on the long table under La Grange\'s pavilion' },
+      { src: '/images/homes/la-grange-bath.webp', alt: 'Ground floor bathroom at La Grange' },
+      { src: '/images/homes/la-grange-laundry.webp', alt: 'Laundry room with washer and dryer at La Grange' },
+    ],
+  },
+  {
+    id: 'gym',
+    title: 'The Gym',
+    summary: 'Treadmill, elliptical, weights, boxing bag, eight yoga mats.',
+    photos: [
+      { src: '/images/gym.webp', alt: 'Gym at La Grange with elliptical, treadmill, and mirrored wall' },
+      { src: '/images/homes/la-grange-gym-boxing.webp', alt: 'Gym with treadmill and Everlast boxing setup' },
+    ],
+  },
+  {
+    id: 'screening',
+    title: 'Screening Room',
+    summary: 'Cinema room with leather club chairs and a large screen.',
+    photos: [
+      { src: '/images/screening-room.webp', alt: 'Screening room with leather club chairs facing the screen' },
+      { src: '/images/homes/la-grange-screening-2.webp', alt: 'Screening room facing the leather chairs from the rear' },
+    ],
+  },
+  {
+    id: 'spa',
+    title: 'Spa & Solarium',
+    summary: 'Solarium with jacuzzi for warm-weather and winter use, plus quiet corners for massage.',
+    photos: [
+      { src: '/images/wellness-pool.webp', alt: 'Solarium spa with jacuzzi at Moulin à Rêves' },
+      { src: '/images/wellness-massage.webp', alt: 'A quiet corner for massage at Moulin à Rêves' },
+      { src: '/images/wellness-beauty.webp', alt: 'Bright tile bathroom for spa treatments' },
+      { src: '/images/wellness-hero.webp', alt: 'Garden chaises on the lawn outside the spa' },
+    ],
+  },
+  {
+    id: 'bikes',
+    title: 'Bikes & The Carriage',
+    summary: 'Electric bikes for exploring the village and forest, plus the antique horse-drawn carriage.',
+    photos: [
+      { src: '/images/homes/la-grange-bikes.webp', alt: 'Bicycles parked in La Grange under exposed wood beams' },
+      { src: '/images/homes/la-grange-bikes-door.webp', alt: 'Bicycles lined up inside La Grange facing the door' },
+      { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique red horse-drawn carriage on display in La Grange' },
+    ],
+  },
+  {
+    id: 'gardens',
+    title: 'Gardens, Bridge & Stream',
+    summary: 'The Giverny-style bridge over the millstream, walled gardens, the lawn, and quiet corners.',
+    longDescription: 'Between the houses: a millstream that has been running for centuries, crossed by a stone footbridge worn smooth by generations. The gardens are informal — old roses, lavender, a kitchen garden where the herbs grow faster than anyone can use them.',
+    photos: [
+      { src: '/images/bridge-garden.webp', alt: 'Giverny-style painted bridge over the stream beneath willow trees' },
+      { src: '/images/garden-chaises.webp', alt: 'Garden chaise lounges facing the painted bridge' },
+      { src: '/images/garden-chaises-wide.webp', alt: 'Wide garden view with chaise lounges and the painted bridge' },
+      { src: '/images/garden-chaise-jetson.webp', alt: 'Garden chaise lounges with Jetson the Cavalier in the sun' },
+      { src: '/images/garden-private-spot.webp', alt: 'Private wicker bistro table in a wooded corner of the garden' },
+      { src: '/images/garden-stone-well.webp', alt: 'Vine-covered antique stone well sheltered in the garden' },
+      { src: '/images/garden-breakfast.webp', alt: 'Breakfast set on the patio outside the stone cottage' },
+      { src: '/images/compound-river-courtyard.webp', alt: 'Stone footbridge with planter boxes over the small stream' },
+      { src: '/images/evening-compound.webp', alt: 'Garden at dusk with feet propped up looking toward the stone cottage' },
+      { src: '/images/personality.webp', alt: 'Marie Antoinette in the garden by the gate with a rooster' },
+      { src: '/images/yoga-lawn.webp', alt: 'Morning yoga on the lawn between the houses' },
+    ],
+  },
+];
 ---
 
 <BaseLayout title="Rent the Full Compound — Moulin à Rêves | 20 Guests Near Paris" description="Rent all three houses at Moulin à Rêves — 10 bedrooms, 7 baths, sleeps 20. Family reunions, retreats, weddings & celebrations near Paris, France.">
@@ -208,6 +284,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Shared Spaces -->
+  <RoomShowcase
+    eyebrow=""
+    heading={`Shared <span class="serif-italic">Spaces</span>`}
+    intro="La Grange, the spa, the gym, the screening room, the gardens — open to all guests staying at the compound."
+    rooms={sharedSpaces}
+    background="stone"
+    i18nKey="compound.sharedspaces"
+  />
+
   <!-- The Three Houses -->
   <section class="section--tight section--stone">
     <div class="container">
@@ -230,7 +316,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
         <a href="/homes/hollywood-hideaway/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway — French countryside sanctuary" loading="lazy" />
+            <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway — French countryside sanctuary" loading="lazy" />
           </div>
           <div class="card__body">
             <h3 class="card__title">The Hollywood Hideaway</h3>
