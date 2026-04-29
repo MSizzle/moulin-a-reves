@@ -40,7 +40,6 @@ const compoundFeatures = [
     summary: 'The covered pavilion for long dinners, fireside evenings, ping pong, and gathering under the beams.',
     image: '/images/homes/la-grange-pavilion-wide.webp',
     alt: 'La Grange covered entertaining barn at Moulin à Rêves',
-    href: '/the-compound/',
     gallery: [
       { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange — wide view of the open pavilion' },
       { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
@@ -263,56 +262,65 @@ const groupTypes = [
       .hero--lc { height: 76vh; min-height: 480px; }
     }
     .section--tighter { padding-top: 40px; padding-bottom: 40px; }
-    .compound-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 32px 28px;
+
+    /* Maisons hero spread */
+    .maisons-section {
+      padding-top: clamp(72px, 9vw, 120px);
+      padding-bottom: clamp(72px, 9vw, 120px);
+    }
+    .maisons-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      position: relative;
+      padding: 0 18px;
+    }
+    .maisons-eyebrow::before,
+    .maisons-eyebrow::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 32px;
+      height: 1px;
+      background: var(--ink-mute);
+      opacity: 0.5;
+    }
+    .maisons-eyebrow::before { right: 100%; }
+    .maisons-eyebrow::after { left: 100%; }
+    .maisons-section h2 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.05;
+    }
+    .maisons-intro {
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.0625rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+    .maisons-grid {
+      gap: 44px !important;
+    }
+    .maisons-section .card__eyebrow {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 8px;
     }
     @media (max-width: 900px) {
-      .compound-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .maisons-grid { gap: 28px !important; }
     }
     @media (max-width: 600px) {
-      .compound-grid { grid-template-columns: 1fr; }
-    }
-    .compound-tile {
-      background: transparent;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    .compound-tile__media {
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      background: var(--bg-warm-white);
-    }
-    .compound-tile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
-      transition: transform 0.8s var(--ease-out);
-    }
-    .compound-tile:hover img { transform: scale(1.04); }
-    .compound-tile--clickable { cursor: zoom-in; }
-    .compound-tile--clickable:focus-visible { outline: 2px solid var(--blue-primary); outline-offset: 4px; }
-    .compound-tile__body {
-      padding: 18px 0 0;
-    }
-    .compound-tile__title {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 500;
-      font-size: 1.5rem;
-      margin: 0 0 8px;
-      color: var(--ink);
-      letter-spacing: 0;
-    }
-    .compound-tile__summary {
-      font-size: 0.9375rem;
-      color: var(--ink-soft);
-      margin: 0;
-      line-height: 1.55;
-      max-width: 34ch;
+      .maisons-eyebrow::before, .maisons-eyebrow::after { display: none; }
     }
   </style>
 
@@ -327,17 +335,20 @@ const groupTypes = [
   </section>
 
   <!-- Les Maisons -->
-  <section class="section--tighter">
-    <div class="container text-center fade-in" style="margin-bottom: 24px;">
-      <h2 data-i18n-html="home.homes.heading">Les <span class="serif-italic">Maisons</span></h2>
+  <section class="section maisons-section">
+    <div class="container text-center fade-in" style="margin-bottom: 36px;">
+      <span class="maisons-eyebrow" data-i18n="home.homes.eyebrow">The Three Houses</span>
+      <h2 data-i18n-html="home.homes.heading" style="margin-top: 12px;">Les <span class="serif-italic">Maisons</span></h2>
+      <p class="maisons-intro" data-i18n="home.homes.subheading" style="margin-top: 14px;">Three stone houses around shared gardens. Each its own world; together, the compound.</p>
     </div>
     <div class="container">
-      <div class="showcase showcase--triple">
+      <div class="showcase showcase--triple maisons-grid">
         <a href="/homes/le-moulin/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" loading="lazy" />
           </div>
           <div class="card__body">
+            <span class="card__eyebrow">The Mill House</span>
             <h3 class="card__title">Le Moulin à Rêves</h3>
             <div class="card__meta">
               <span>5 Bedrooms</span>
@@ -351,6 +362,7 @@ const groupTypes = [
             <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway" loading="lazy" />
           </div>
           <div class="card__body">
+            <span class="card__eyebrow">The Sanctuary</span>
             <h3 class="card__title">The Hollywood Hideaway</h3>
             <div class="card__meta">
               <span>3 Bedrooms + Suite</span>
@@ -364,6 +376,7 @@ const groupTypes = [
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière — sunny cottage overlooking the stream" loading="lazy" />
           </div>
           <div class="card__body">
+            <span class="card__eyebrow">The Garden Cottage</span>
             <h3 class="card__title">La Maison de la Rivière</h3>
             <div class="card__meta">
               <span>2 Bedrooms</span>
@@ -436,7 +449,7 @@ const groupTypes = [
       <h2 data-i18n="home.groups.heading">{cms.groupsHeading}</h2>
     </div>
     <div class="container">
-      <div class="grid grid--3" style="gap: 20px;">
+      <div class="showcase showcase--triple">
         {groupTypes.map((g, i) => (
           <a href="/the-compound/" class="card fade-in" style="text-decoration:none;color:inherit;">
             <div class="card__image">
@@ -456,13 +469,13 @@ const groupTypes = [
   </section>
 
   <!-- History Beat -->
-  <section class="hero" style="height: 36vh; min-height: 280px;">
+  <section class="hero" style="height: auto; min-height: 380px; padding-top: 72px; padding-bottom: 72px; align-items: center;">
     <div class="hero__image">
       <img src="/images/forest-path.webp" alt="Ancient millstream running through stone buildings at Moulin à Rêves" loading="lazy" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h2 class="hero__title" data-i18n="home.history.heading" style="font-size: clamp(1.75rem, 4vw, 3rem);">{cms.historyHeading}</h2>
+      <h2 class="hero__title" data-i18n="home.history.heading" style="font-size: clamp(1.75rem, 4vw, 3rem); margin-bottom: 18px;">{cms.historyHeading}</h2>
       <p class="hero__tagline" data-i18n="home.history.text">
         {cms.historyText}
       </p>

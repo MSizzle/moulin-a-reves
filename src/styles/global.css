@@ -253,6 +253,140 @@ p {
   grid-template-columns: repeat(4, 1fr);
 }
 
+/* ---- Compound Grid (small-tile secondary feature strip — reusable) ---- */
+.compound-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 24px 18px;
+}
+.compound-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.compound-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+@media (max-width: 900px) {
+  .compound-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .compound-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .compound-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .compound-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; }
+  .compound-grid--4,
+  .compound-grid--3 { grid-template-columns: 1fr; gap: 16px 12px; }
+}
+
+.compound-tile {
+  background: transparent;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.compound-tile__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg-warm-white);
+}
+.compound-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+.compound-tile:hover img { transform: scale(1.04); }
+.compound-tile--clickable { cursor: zoom-in; }
+.compound-tile--clickable:focus-visible { outline: 2px solid var(--blue-primary); outline-offset: 4px; }
+
+.compound-tile__body { padding: 10px 0 0; }
+.compound-tile__title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+.compound-tile__summary { display: none; }
+
+/* Wider tile variants always show summary + bigger title */
+.compound-grid--4 .compound-tile__title,
+.compound-grid--3 .compound-tile__title {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+.compound-grid--4 .compound-tile__summary,
+.compound-grid--3 .compound-tile__summary {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 34ch;
+}
+.compound-grid--4 .compound-tile__body,
+.compound-grid--3 .compound-tile__body { padding: 14px 0 0; }
+
+@media (max-width: 900px) {
+  .compound-grid:not(.compound-grid--4):not(.compound-grid--3) .compound-tile__title { font-size: 1.25rem; margin-bottom: 6px; }
+  .compound-grid:not(.compound-grid--4):not(.compound-grid--3) .compound-tile__summary {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.5;
+    max-width: 34ch;
+  }
+  .compound-grid:not(.compound-grid--4):not(.compound-grid--3) .compound-tile__body { padding: 14px 0 0; }
+}
+
+/* ---- Photos: square corners site-wide ---- */
+img,
+.card__image,
+.compound-tile__media,
+.split__image,
+.writings__image,
+.hero__image,
+.photo-grid > * {
+  border-radius: 0;
+}
+
+/* ---- Photo Grid (shared masonry) ---- */
+.photo-grid {
+  columns: 3;
+  column-gap: 16px;
+}
+
+.photo-grid > * {
+  break-inside: avoid;
+  margin: 0 0 16px;
+  overflow: hidden;
+  background: var(--bg-warm-white);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  display: block;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+.photo-grid > *:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 1024px) {
+  .photo-grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .photo-grid {
+    columns: 1;
+  }
+}
+
 /* ---- Buttons ---- */
 .btn {
   display: inline-block;
@@ -357,7 +491,7 @@ p {
 }
 
 .card__image {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
@@ -414,9 +548,9 @@ p {
 }
 
 .card--tall .card__image {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   height: 100%;
-  min-height: 520px;
+  min-height: 0;
 }
 
 .card--tall .card__image::after {
@@ -605,9 +739,14 @@ p {
   border-top: none;
 }
 
-/* Larger title in showcase--triple (3 wider cards) */
+/* Larger title in showcase--triple (Maisons: headline tier) */
 .showcase--triple .card__title {
-  font-size: clamp(1.5rem, 1.9vw, 1.875rem);
+  font-size: clamp(1.75rem, 2.4vw, 2.375rem);
+  margin-top: 4px;
+}
+
+.showcase--triple .card__body {
+  padding: 22px 4px 0;
 }
 
 @media (max-width: 768px) {
@@ -648,18 +787,30 @@ p {
   }
 }
 
-/* ---- Showcase triple (always 3 across, photos at native aspect) ---- */
+/* ---- Showcase triple (always 3 across — Maisons hero tier, uniform 4:3) ---- */
 .showcase--triple {
   column-count: initial;
   column-gap: initial;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 32px;
   align-items: start;
 }
 
 .showcase--triple .card {
   margin-bottom: 0;
+}
+
+.showcase--triple .card__image {
+  aspect-ratio: 4 / 3;
+  height: auto;
+  overflow: hidden;
+}
+
+.showcase--triple .card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Allow card--tall (overlay) photos to display at native aspect inside showcase */

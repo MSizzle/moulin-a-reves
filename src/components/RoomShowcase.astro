@@ -43,7 +43,7 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
       <h2 set:html={heading} {...(headingKey ? { 'data-i18n-html': headingKey } : {})} />
       {intro && <p style="margin-top: 12px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
     </div>
-    <div class="showcase">
+    <div class="compound-grid compound-grid--3">
       {rooms.map((room, i) => {
         const slug = room.id || `${i}`;
         const base = i18nKey ? `${i18nKey}.room.${slug}` : undefined;
@@ -69,16 +69,16 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
             : {}),
         };
         return (
-          <div class="card fade-in" data-room={JSON.stringify(roomPayload)} role="button" tabindex="0">
-            <div class="card__image">
+          <div class="compound-tile compound-tile--clickable fade-in" data-room={JSON.stringify(roomPayload)} role="button" tabindex="0">
+            <div class="compound-tile__media">
               <img src={room.photos[0].src} alt={room.photos[0].alt || room.title} loading="lazy" />
               {room.photos.length > 1 && (
                 <span class="card__photo-count">{room.photos.length} photos</span>
               )}
             </div>
-            <div class="card__body">
-              <h3 class="card__title" {...(titleKey ? { 'data-i18n': titleKey } : {})}>{room.title}</h3>
-              <p class="card__description" {...(summaryKey ? { 'data-i18n': summaryKey } : {})}>{room.summary}</p>
+            <div class="compound-tile__body">
+              <h3 class="compound-tile__title" {...(titleKey ? { 'data-i18n': titleKey } : {})}>{room.title}</h3>
+              <p class="compound-tile__summary" {...(summaryKey ? { 'data-i18n': summaryKey } : {})}>{room.summary}</p>
             </div>
           </div>
         );
@@ -91,10 +91,10 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
   [data-room] {
     cursor: zoom-in;
   }
-  [data-room] .card__image {
+  [data-room] .compound-tile__media {
     position: relative;
   }
-  [data-room] .card__image::before {
+  [data-room] .compound-tile__media::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -104,7 +104,7 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
     z-index: 2;
     pointer-events: none;
   }
-  [data-room]:hover .card__image::before {
+  [data-room]:hover .compound-tile__media::before {
     opacity: 1;
   }
   [data-room]:focus-visible {
