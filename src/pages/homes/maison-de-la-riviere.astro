@@ -148,7 +148,7 @@ const amenities = [
       "occupancy": { "@type": "QuantitativeValue", "value": cms.sleeps },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "16 Rue des Crocs au Renard",
+        "streetAddress": "16 Rue des Crocs aux Renards",
         "postalCode": "91660",
         "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
@@ -246,9 +246,10 @@ const amenities = [
   <RoomShowcase
     eyebrow=""
     heading={`Where you'll <span class="serif-italic">gather</span>`}
-    intro="Living room, dining for 18, kitchen, gardens."
+    intro=""
     rooms={livingSpaces}
     i18nKey="riviere.living"
+    hideTileSummary={true}
   />
 
   <!-- Amenities -->

@@ -37,13 +37,11 @@ const sharedSpaces = [
   },
   {
     id: 'spa',
-    title: 'Spa & Solarium',
-    summary: 'Solarium with jacuzzi for warm-weather and winter use, plus quiet corners for massage.',
+    title: 'Solarium & Jacuzzi',
+    summary: 'A glassed-in solarium with jacuzzi — warm-weather mornings, winter evenings, year-round.',
+    // TODO(Melissa): drop additional jacuzzi/solarium photos in /public/images/ and add them below.
     photos: [
-      { src: '/images/wellness-pool.webp', alt: 'Solarium spa with jacuzzi at Moulin à Rêves' },
-      { src: '/images/wellness-massage.webp', alt: 'A quiet corner for massage at Moulin à Rêves' },
-      { src: '/images/wellness-beauty.webp', alt: 'Bright tile bathroom for spa treatments' },
-      { src: '/images/wellness-hero.webp', alt: 'Garden chaises on the lawn outside the spa' },
+      { src: '/images/wellness-pool.webp', alt: 'Solarium with jacuzzi at Moulin à Rêves' },
     ],
   },
   {
@@ -94,7 +92,7 @@ const sharedSpaces = [
       "petsAllowed": true,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "16 Rue des Crocs au Renard",
+        "streetAddress": "16 Rue des Crocs aux Renards",
         "postalCode": "91660",
         "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
@@ -345,9 +343,9 @@ const sharedSpaces = [
   </section>
 
   <!-- Services -->
-  <section class="section">
+  <section class="section--tight">
     <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 48px;">
+      <div class="text-center fade-in" style="margin-bottom: 28px;">
         <h2 data-i18n="compound.services.heading">We'll Handle the Details</h2>
         <p data-i18n="compound.services.subheading" style="margin-top: 12px;">Everything can be arranged in advance. Just ask.</p>
       </div>
@@ -382,9 +380,9 @@ const sharedSpaces = [
   </section>
 
   <!-- Inquiry Form -->
-  <section class="section" id="inquire">
+  <section class="section--tight" id="inquire">
     <div class="container--narrow fade-in">
-      <div class="text-center" style="margin-bottom: 48px;">
+      <div class="text-center" style="margin-bottom: 28px;">
         <h2 data-i18n="compound.form.heading">Plan Your Group Stay</h2>
         <p data-i18n="compound.form.subheading" style="margin-top: 12px;">Tell us about your group and your occasion. We'll put together a proposal.</p>
       </div>

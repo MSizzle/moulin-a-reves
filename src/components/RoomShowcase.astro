@@ -27,23 +27,25 @@ interface Props {
   rooms: Room[];
   background?: 'cream' | 'stone';
   i18nKey?: string;
+  hideTileSummary?: boolean;
 }
 
-const { eyebrow, heading, intro, rooms, background = 'cream', i18nKey } = Astro.props;
+const { eyebrow, heading, intro, rooms, background = 'cream', i18nKey, hideTileSummary = false } = Astro.props;
 const sectionClass = background === 'stone' ? 'section section--tight section--soft' : 'section section--tight';
 const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
 const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
 const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
+const tileSummaryClass = hideTileSummary ? 'compound-tile__summary compound-tile__summary--hidden' : 'compound-tile__summary';
 ---
 
 <section class={sectionClass}>
   <div class="container">
-    <div class="text-center fade-in" style="margin-bottom: 36px;">
-      <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>
+    <div class="text-center fade-in" style="margin-bottom: 28px;">
+      {eyebrow && <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>}
       <h2 set:html={heading} {...(headingKey ? { 'data-i18n-html': headingKey } : {})} />
-      {intro && <p style="margin-top: 12px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
+      {intro && <p style="margin-top: 10px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
     </div>
-    <div class="compound-grid compound-grid--3">
+    <div class="compound-grid compound-grid--3 compound-grid--rooms">
       {rooms.map((room, i) => {
         const slug = room.id || `${i}`;
         const base = i18nKey ? `${i18nKey}.room.${slug}` : undefined;
@@ -78,7 +80,9 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
             </div>
             <div class="compound-tile__body">
               <h3 class="compound-tile__title" {...(titleKey ? { 'data-i18n': titleKey } : {})}>{room.title}</h3>
-              <p class="compound-tile__summary" {...(summaryKey ? { 'data-i18n': summaryKey } : {})}>{room.summary}</p>
+              {!hideTileSummary && (
+                <p class={tileSummaryClass} {...(summaryKey ? { 'data-i18n': summaryKey } : {})}>{room.summary}</p>
+              )}
             </div>
           </div>
         );

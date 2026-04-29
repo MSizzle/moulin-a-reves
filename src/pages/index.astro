@@ -69,16 +69,14 @@ const compoundFeatures = [
       { src: '/images/yoga-lawn.webp', alt: 'Morning yoga on the lawn between the houses' },
     ],
   },
+  // TODO(Melissa): drop additional jacuzzi/solarium photos in /public/images/ and add them to gallery below.
   {
-    title: 'Spa & Solarium',
-    summary: 'A quiet glassed-in spa with jacuzzi, garden views, and space for massage treatments.',
+    title: 'Solarium & Jacuzzi',
+    summary: 'A glassed-in solarium with jacuzzi — warm-weather mornings, winter evenings, year-round.',
     image: '/images/wellness-pool.webp',
-    alt: 'Spa solarium with jacuzzi at Moulin à Rêves',
+    alt: 'Solarium with jacuzzi at Moulin à Rêves',
     gallery: [
-      { src: '/images/wellness-pool.webp', alt: 'Solarium spa with jacuzzi' },
-      { src: '/images/wellness-massage.webp', alt: 'A quiet corner for massage' },
-      { src: '/images/wellness-beauty.webp', alt: 'Bright tile bathroom for spa treatments' },
-      { src: '/images/wellness-hero.webp', alt: 'Garden chaises on the lawn outside the spa' },
+      { src: '/images/wellness-pool.webp', alt: 'Solarium with jacuzzi at Moulin à Rêves' },
     ],
   },
   {
@@ -104,12 +102,16 @@ const compoundFeatures = [
       { src: '/images/homes/la-grange-screening-2.webp', alt: 'Screening room facing the leather chairs from the rear' },
     ],
   },
-  // TODO: replace placeholder image and add real photos when Melissa drops them in /public/images/
+  // TODO(Melissa): drop chicken-coop photos in /public/images/ and append them to the gallery below.
   {
     title: 'Chicken Coop',
     summary: 'A working chicken coop. Wake up to the roosters; collect the eggs.',
     image: '/images/personality.webp',
     alt: 'Marie Antoinette near the rooster in the garden at Moulin à Rêves',
+    comingSoon: true,
+    gallery: [
+      { src: '/images/personality.webp', alt: 'Marie Antoinette near the rooster in the garden' },
+    ],
   },
 ];
 
@@ -133,7 +135,7 @@ const groupTypes = [
       "email": "lemoulinfrance@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "16 Rue des Crocs au Renard",
+        "streetAddress": "16 Rue des Crocs aux Renards",
         "postalCode": "91660",
         "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
@@ -261,12 +263,31 @@ const groupTypes = [
     @media (max-width: 768px) {
       .hero--lc { height: 76vh; min-height: 480px; }
     }
-    .section--tighter { padding-top: 40px; padding-bottom: 40px; }
+    .section--tighter { padding-top: 36px; padding-bottom: 36px; }
 
-    /* Maisons hero spread */
+    /* Tile pill: low-key "more photos coming" indicator */
+    .compound-tile__media { position: relative; }
+    .compound-tile__pill {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--ink);
+      border-radius: 999px;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      pointer-events: none;
+    }
+
+    /* Maisons hero spread — tightened so the trio sits closer to the intro */
     .maisons-section {
-      padding-top: clamp(72px, 9vw, 120px);
-      padding-bottom: clamp(72px, 9vw, 120px);
+      padding-top: clamp(28px, 4vw, 48px);
+      padding-bottom: clamp(48px, 6vw, 72px);
     }
     .maisons-eyebrow {
       display: inline-block;
@@ -276,21 +297,7 @@ const groupTypes = [
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--ink-mute);
-      position: relative;
-      padding: 0 18px;
     }
-    .maisons-eyebrow::before,
-    .maisons-eyebrow::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 32px;
-      height: 1px;
-      background: var(--ink-mute);
-      opacity: 0.5;
-    }
-    .maisons-eyebrow::before { right: 100%; }
-    .maisons-eyebrow::after { left: 100%; }
     .maisons-section h2 {
       font-size: clamp(2.5rem, 5vw, 4rem);
       line-height: 1.05;
@@ -319,16 +326,13 @@ const groupTypes = [
     @media (max-width: 900px) {
       .maisons-grid { gap: 28px !important; }
     }
-    @media (max-width: 600px) {
-      .maisons-eyebrow::before, .maisons-eyebrow::after { display: none; }
-    }
   </style>
 
   <!-- Introduction -->
-  <section class="section--tighter text-center">
+  <section class="text-center" style="padding-top: 32px; padding-bottom: 8px;">
     <div class="container--narrow fade-in">
       <h2 data-i18n="home.intro.heading">{cms.introHeading}</h2>
-      <p data-i18n="home.intro.text" style="margin-top: 20px;">
+      <p data-i18n="home.intro.text" style="margin-top: 18px;">
         {cms.introText}
       </p>
     </div>
@@ -336,10 +340,9 @@ const groupTypes = [
 
   <!-- Les Maisons -->
   <section class="section maisons-section">
-    <div class="container text-center fade-in" style="margin-bottom: 36px;">
-      <span class="maisons-eyebrow" data-i18n="home.homes.eyebrow">The Three Houses</span>
-      <h2 data-i18n-html="home.homes.heading" style="margin-top: 12px;">Les <span class="serif-italic">Maisons</span></h2>
-      <p class="maisons-intro" data-i18n="home.homes.subheading" style="margin-top: 14px;">Three stone houses around shared gardens. Each its own world; together, the compound.</p>
+    <div class="container text-center fade-in" style="margin-bottom: 28px;">
+      <h2 data-i18n-html="home.homes.heading">Les <span class="serif-italic">Maisons</span></h2>
+      <p class="maisons-intro" data-i18n="home.homes.subheading" style="margin-top: 12px;">Three stone houses around shared gardens. Each its own world; together, the compound.</p>
     </div>
     <div class="container">
       <div class="showcase showcase--triple maisons-grid">
@@ -411,6 +414,9 @@ const groupTypes = [
             <div class="compound-tile compound-tile--clickable fade-in" data-gallery={JSON.stringify(feat.gallery)} role="button" tabindex="0">
               <div class="compound-tile__media">
                 <img src={feat.image} alt={feat.alt} loading="lazy" />
+                {feat.comingSoon && (
+                  <span class="compound-tile__pill">More photos coming</span>
+                )}
               </div>
               <div class="compound-tile__body">
                 <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
@@ -432,16 +438,6 @@ const groupTypes = [
       </div>
     </div>
   </section>
-
-  <!-- Availability Calendar -->
-  <AvailabilityCalendar
-    monthsToShow={6}
-    eyebrow=""
-    heading={`When You Can <span class="serif-italic">Stay</span>`}
-    intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
-    compact
-    i18nKey="home.availability"
-  />
 
   <!-- Groups -->
   <section class="section--tighter">
@@ -684,5 +680,15 @@ const groupTypes = [
       <a href="/contact/" class="btn btn--white" data-i18n="home.cta.button">Start Your Conversation</a>
     </div>
   </section>
+
+  <!-- Availability Calendar (moved to the bottom, under Plan Your Stay) -->
+  <AvailabilityCalendar
+    monthsToShow={6}
+    eyebrow=""
+    heading={`When You Can <span class="serif-italic">Stay</span>`}
+    intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
+    compact
+    i18nKey="home.availability"
+  />
 
 </BaseLayout>
