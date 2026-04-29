@@ -34,12 +34,83 @@ const writings = [
 ];
 
 const compoundFeatures = [
-  { title: 'La Grange', summary: 'Covered entertaining space — long table for 20, ping pong, fireplace.', image: '/images/barn-events.webp', alt: 'La Grange covered entertaining barn at Moulin à Rêves', href: '/the-compound/' },
-  { title: 'Spa', summary: 'Solarium spa with jacuzzi for warm-weather and winter use.', image: '/images/wellness-pool.webp', alt: 'Spa solarium with jacuzzi at Moulin à Rêves' },
-  { title: 'Jacuzzi', summary: 'Heated jacuzzi inside the solarium — open year round.', image: '/images/wellness-pool.webp', alt: 'Jacuzzi at Moulin à Rêves' },
-  { title: 'Gym', summary: 'Treadmill, elliptical, weights, boxing bag, eight yoga mats.', image: '/images/screening-room.webp', alt: 'Private gym at Moulin à Rêves' },
-  { title: 'Gardens', summary: 'Walled gardens, the millstream, a Giverny-style bridge, and the lawn.', image: '/images/bridge-garden.webp', alt: 'Walled gardens and the millstream at Moulin à Rêves' },
-  { title: 'Screening Room', summary: 'Upstairs cinema room with leather couches and a large screen.', image: '/images/screening-room.webp', alt: 'Screening room at Moulin à Rêves' },
+  {
+    title: 'La Grange',
+    summary: 'Covered entertaining space — long table for 20, ping pong, fireplace.',
+    image: '/images/homes/la-grange-pavilion-wide.webp',
+    alt: 'La Grange covered entertaining barn at Moulin à Rêves',
+    href: '/the-compound/',
+    gallery: [
+      { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange — wide view of the open pavilion' },
+      { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
+      { src: '/images/homes/la-grange-fire.webp', alt: 'Fire crackling in the stone hearth of La Grange' },
+      { src: '/images/group-dinner.webp', alt: 'Dinner laid on the long table under La Grange\'s pavilion' },
+      { src: '/images/homes/la-grange-bath.webp', alt: 'Ground floor bathroom at La Grange' },
+      { src: '/images/homes/la-grange-laundry.webp', alt: 'Laundry room at La Grange' },
+      { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse-drawn carriage on display in La Grange' },
+    ],
+  },
+  {
+    title: 'Spa',
+    summary: 'Solarium spa with jacuzzi for warm-weather and winter use.',
+    image: '/images/wellness-pool.webp',
+    alt: 'Spa solarium with jacuzzi at Moulin à Rêves',
+    gallery: [
+      { src: '/images/wellness-pool.webp', alt: 'Solarium spa with jacuzzi' },
+      { src: '/images/wellness-massage.webp', alt: 'A quiet corner for massage' },
+      { src: '/images/wellness-beauty.webp', alt: 'Bright tile bathroom for spa treatments' },
+      { src: '/images/wellness-hero.webp', alt: 'Garden chaises on the lawn outside the spa' },
+    ],
+  },
+  {
+    title: 'Jacuzzi',
+    summary: 'Heated jacuzzi inside the solarium — open year round.',
+    image: '/images/wellness-pool.webp',
+    alt: 'Jacuzzi at Moulin à Rêves',
+    gallery: [
+      { src: '/images/wellness-pool.webp', alt: 'Heated jacuzzi inside the solarium' },
+      { src: '/images/wellness-hero.webp', alt: 'Lounging by the spa' },
+    ],
+  },
+  {
+    title: 'Gym',
+    summary: 'Treadmill, elliptical, weights, boxing bag, eight yoga mats.',
+    image: '/images/gym.webp',
+    alt: 'Private gym at Moulin à Rêves with elliptical, treadmill, and mirrored wall',
+    gallery: [
+      { src: '/images/gym.webp', alt: 'Gym at La Grange with elliptical, treadmill, and mirrored wall' },
+      { src: '/images/homes/la-grange-gym-boxing.webp', alt: 'Gym with treadmill and Everlast boxing setup' },
+    ],
+  },
+  {
+    title: 'Gardens',
+    summary: 'Walled gardens, the millstream, a Giverny-style bridge, and the lawn.',
+    image: '/images/bridge-garden.webp',
+    alt: 'Walled gardens and the millstream at Moulin à Rêves',
+    gallery: [
+      { src: '/images/bridge-garden.webp', alt: 'Giverny-style painted bridge over the stream beneath willow trees' },
+      { src: '/images/garden-chaises.webp', alt: 'Garden chaise lounges facing the painted bridge' },
+      { src: '/images/garden-chaises-wide.webp', alt: 'Wide garden view with chaise lounges' },
+      { src: '/images/garden-chaise-jetson.webp', alt: 'Garden chaise lounges with Jetson the Cavalier' },
+      { src: '/images/garden-private-spot.webp', alt: 'Private wicker bistro table in a wooded corner' },
+      { src: '/images/garden-stone-well.webp', alt: 'Vine-covered antique stone well in the garden' },
+      { src: '/images/garden-breakfast.webp', alt: 'Breakfast set on the patio outside the stone cottage' },
+      { src: '/images/compound-river-courtyard.webp', alt: 'Stone footbridge with planter boxes over the small stream' },
+      { src: '/images/evening-compound.webp', alt: 'Garden at dusk' },
+      { src: '/images/personality.webp', alt: 'Marie Antoinette in the garden by the gate with a rooster' },
+      { src: '/images/yoga-lawn.webp', alt: 'Morning yoga on the lawn between the houses' },
+    ],
+  },
+  {
+    title: 'Screening Room',
+    summary: 'Upstairs cinema room with leather couches and a large screen.',
+    image: '/images/screening-room.webp',
+    alt: 'Screening room at Moulin à Rêves',
+    gallery: [
+      { src: '/images/screening-room.webp', alt: 'Screening room with leather club chairs facing the screen' },
+      { src: '/images/homes/la-grange-screening-2.webp', alt: 'Screening room facing the leather chairs from the rear' },
+    ],
+  },
   { title: 'Chickens', summary: 'A working chicken coop. Wake up to the roosters; collect the eggs.', image: '/images/forest-path.webp', alt: 'Chicken coop at Moulin à Rêves' },
 ];
 
@@ -213,6 +284,8 @@ const groupTypes = [
       transition: transform 0.8s var(--ease-out);
     }
     .compound-tile:hover img { transform: scale(1.04); }
+    .compound-tile--clickable { cursor: zoom-in; }
+    .compound-tile--clickable:focus-visible { outline: 2px solid var(--blue-primary); outline-offset: 4px; }
     .compound-tile__overlay {
       position: absolute;
       inset: 0;
@@ -268,7 +341,7 @@ const groupTypes = [
         </a>
         <a href="/homes/hollywood-hideaway/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/homes/la-grange-hero.webp" alt="The Hollywood Hideaway" loading="lazy" />
+            <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway" loading="lazy" />
           </div>
           <div class="card__body">
             <h3 class="card__title">The Hollywood Hideaway</h3>
@@ -317,6 +390,16 @@ const groupTypes = [
                 </div>
               </div>
             </a>
+          ) : feat.gallery ? (
+            <div class="compound-tile compound-tile--clickable fade-in" data-gallery={JSON.stringify(feat.gallery)} role="button" tabindex="0">
+              <img src={feat.image} alt={feat.alt} loading="lazy" />
+              <div class="compound-tile__overlay">
+                <div class="compound-tile__body">
+                  <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
+                  <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
+                </div>
+              </div>
+            </div>
           ) : (
             <div class="compound-tile fade-in">
               <img src={feat.image} alt={feat.alt} loading="lazy" />
