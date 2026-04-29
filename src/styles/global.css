@@ -288,7 +288,16 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Bias the crop toward the bottom — beds, floors, fixtures stay visible */
+  object-position: center 65%;
   transition: transform 0.8s var(--ease-out);
+}
+/* Room/gallery tiles: prefer a taller frame so the full room reads */
+.compound-grid--rooms .compound-tile__media {
+  aspect-ratio: 4 / 3.2;
+}
+.compound-grid--rooms .compound-tile img {
+  object-position: center 68%;
 }
 .compound-tile:hover img { transform: scale(1.04); }
 .compound-tile--clickable { cursor: zoom-in; }
@@ -1091,19 +1100,14 @@ img,
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--ink-mute);
-  margin-bottom: 18px;
 }
 
-.eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: var(--ink-mute);
-  vertical-align: middle;
-  margin-right: 12px;
-  transform: translateY(-2px);
+/* Eyebrow only takes vertical space when it has actual text */
+.eyebrow:not(:empty) {
+  margin-bottom: 14px;
 }
+
+/* No decorative dashes on section eyebrows */
 
 /* Oversized display heading for detail pages */
 .display-xxl {

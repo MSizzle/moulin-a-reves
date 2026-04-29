@@ -14,22 +14,6 @@ const carouselImages = cms.gallery ?? [];
 
 const bedrooms = [
   {
-    id: 'riviere',
-    title: 'La Chambre de la Rivière',
-    summary: 'The River Room — two twin beds on the ground floor.',
-    longDescription: 'A quiet ground-floor bedroom that opens onto the millhouse hall. The river runs just beyond the wall.',
-    details: [
-      { label: 'Bed', value: '2 twin' },
-      { label: 'Floor', value: 'Ground' },
-      { label: 'Bathroom', value: 'Hall, shower' },
-    ],
-    photos: [
-      { src: '/images/homes/le-moulin-river-room.webp', alt: 'La Chambre de la Rivière — twin beds with stone walls and lantern light' },
-      { src: '/images/homes/le-moulin-river-room-entrance.webp', alt: 'Entrance to La Chambre de la Rivière' },
-      { src: '/images/homes/le-moulin-river-room-bath.webp', alt: 'River Room bathroom' },
-    ],
-  },
-  {
     id: 'romantique',
     title: 'La Suite Romantique',
     summary: 'Upstairs master with king bed, en-suite shower.',
@@ -47,6 +31,22 @@ const bedrooms = [
     ],
   },
   {
+    id: 'riviere',
+    title: 'La Chambre de la Rivière',
+    summary: 'The River Room — two twin beds on the ground floor.',
+    longDescription: 'A quiet ground-floor bedroom that opens onto the millhouse hall. The river runs just beyond the wall.',
+    details: [
+      { label: 'Bed', value: '2 twin' },
+      { label: 'Floor', value: 'Ground' },
+      { label: 'Bathroom', value: 'Hall, shower' },
+    ],
+    photos: [
+      { src: '/images/homes/le-moulin-river-room.webp', alt: 'La Chambre de la Rivière — twin beds with stone walls and lantern light' },
+      { src: '/images/homes/le-moulin-river-room-entrance.webp', alt: 'Entrance to La Chambre de la Rivière' },
+      { src: '/images/homes/le-moulin-river-room-bath.webp', alt: 'River Room bathroom' },
+    ],
+  },
+  {
     id: 'cerises',
     title: 'Les Cerises',
     summary: 'The Cherry Room — queen bed, in-room sink and bidet.',
@@ -56,9 +56,9 @@ const bedrooms = [
       { label: 'Bathroom', value: 'Hall clawfoot tub (shared with Les Roses)' },
     ],
     photos: [
-      { src: '/images/homes/le-moulin-cerises.webp', alt: 'Les Cerises — the Cherry Room with portraits and patterned bedspread' },
-      { src: '/images/homes/le-moulin-cerises-bath.webp', alt: 'Les Cerises master bathroom with sink and bidet' },
-      { src: '/images/homes/le-moulin-cerises-sink.webp', alt: 'Les Cerises bathroom sink and vanity' },
+      // Lead is the alternate room view (showing the bidet and sink); previous lead was a near-duplicate of this same room and has been removed.
+      { src: '/images/homes/le-moulin-cerises-bath.webp', alt: 'Les Cerises — the Cherry Room with painted portrait, in-room sink and bidet' },
+      { src: '/images/homes/le-moulin-cerises-sink.webp', alt: 'Les Cerises in-room sink, mirror and bidet detail' },
       { src: '/images/homes/le-moulin-cerises-rose-bath.webp', alt: 'Shared clawfoot bathroom serving Les Cerises and Les Roses' },
     ],
   },
@@ -314,9 +314,10 @@ const amenities = [
   <RoomShowcase
     eyebrow=""
     heading={`Where you'll <span class="serif-italic">gather</span>`}
-    intro="Salon, dining, kitchen, and office."
+    intro=""
     rooms={livingSpaces}
     i18nKey="le-moulin.living"
+    hideTileSummary={true}
   />
 
   <!-- Amenities -->
