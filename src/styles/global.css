@@ -671,6 +671,19 @@ img,
   padding-bottom: 40px;
 }
 
+/* ---- Section Tighter — small but elegant rhythm (default body cadence) ---- */
+.section--tighter {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+@media (max-width: 768px) {
+  .section--tight,
+  .section--tighter {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
 /* ---- Showcase grid (photos shown at native aspect — no crop) ---- */
 .showcase {
   column-count: 2;
