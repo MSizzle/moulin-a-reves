@@ -115,12 +115,16 @@
     "en": "Three stone maisons, a walled garden, a millstream, and the buildings around them — gym, spa with jacuzzi, screening room, La Grange — all on one private property in Méréville, France. Sleeps 20 across 10 bedrooms.",
     "fr": "Moulin à Rêves est un ensemble de trois maisons en pierre réunies autour d'un bief dans la campagne française, à une heure au sud de Paris. Chaque maison a son caractère propre — volets bleus, vue sur le jardin et le murmure de l'eau sur la pierre — mais ensemble, elles deviennent quelque chose de plus grand : un lieu où les familles se retrouvent, les amis se rassemblent et les matins s'étirent en douceur."
   },
+  "home.homes.eyebrow": {
+    "en": "The Three Houses",
+    "fr": "Les Trois Maisons"
+  },
   "home.homes.heading": {
     "en": "Les Maisons",
     "fr": "Les Maisons"
   },
   "home.homes.subheading": {
-    "en": "",
+    "en": "Three stone houses around shared gardens. Each its own world; together, the compound.",
     "fr": "Trois maisons, chacune avec sa propre histoire."
   },
   "home.moulin.title": {
