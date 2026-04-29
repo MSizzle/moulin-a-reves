@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/check-public-clean.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -18,5 +19,8 @@
     "@vercel/edge": "^1.2.2",
     "astro": "^6.1.2",
     "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
