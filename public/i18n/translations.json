@@ -32,8 +32,8 @@
     "fr": "Réserver"
   },
   "footer.tagline": {
-    "en": "Moulin à Rêves · Méréville, France · 48° 19′ N · 2° 5′ E",
-    "fr": "Le Moulin des Rêves · Seine-et-Marne, France"
+    "en": "16 rue des Crocs aux Renards<br/>91660 Méréville, France",
+    "fr": "16 rue des Crocs aux Renards<br/>91660 Méréville, France"
   },
   "footer.explore": {
     "en": "Explore",
@@ -1557,6 +1557,8 @@
   },
   "about.faq.heading": { "en": "Frequently Asked <span class=\"serif-italic\">Questions</span>", "fr": "Questions <span class=\"serif-italic\">Fréquentes</span>" },
   "about.faq.lede": { "en": "Address, directions from Paris and the airports, taxis, ride apps, car rental, and nearby day trips.", "fr": "Adresse, accès depuis Paris et les aéroports, taxis, applis VTC, location de voiture et excursions à proximité." },
+  "about.faq.dogs.q": { "en": "Is the property dog-friendly?", "fr": "La propriété accueille-t-elle les chiens ?" },
+  "about.faq.dogs.a": { "en": "Yes — Moulin à Rêves is dog-friendly. We have walked our own dogs through the gardens for years and welcome well-behaved pups. Let us know in advance so we can prepare the houses, and please keep dogs off the beds and out of the spa.", "fr": "Oui — Moulin à Rêves accueille les chiens. Nous avons promené nos propres chiens dans les jardins pendant des années et accueillons volontiers les compagnons bien élevés. Prévenez-nous à l'avance afin que nous puissions préparer les maisons ; merci de ne pas laisser les chiens monter sur les lits ni entrer dans le spa." },
   "contact.getting.car.heading": {
     "en": "From Paris by Car",
     "fr": "Depuis Paris en Voiture"
