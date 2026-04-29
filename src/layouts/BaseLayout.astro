@@ -226,16 +226,33 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         justify-content: center;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.4s var(--ease-out), visibility 0.4s var(--ease-out);
+        pointer-events: none;
+        transition:
+          opacity 0.6s var(--ease-out),
+          visibility 0s linear 0.6s;
       }
       .room-modal.is-open {
         opacity: 1;
         visibility: visible;
+        pointer-events: auto;
+        transition:
+          opacity 0.6s var(--ease-out),
+          visibility 0s linear 0s;
       }
       .room-modal__backdrop {
         position: absolute;
         inset: 0;
         background: rgba(15, 15, 15, 0.85);
+        opacity: 0;
+        backdrop-filter: blur(0);
+        -webkit-backdrop-filter: blur(0);
+        transition:
+          opacity 0.7s var(--ease-out),
+          backdrop-filter 0.7s var(--ease-out),
+          -webkit-backdrop-filter 0.7s var(--ease-out);
+      }
+      .room-modal.is-open .room-modal__backdrop {
+        opacity: 1;
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
       }
@@ -249,10 +266,16 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         background: var(--bg-cream);
         box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
         overflow: hidden;
-        transform: translateY(16px) scale(0.985);
-        transition: transform 0.5s var(--ease-out);
+        opacity: 0;
+        transform: translateY(28px) scale(0.96);
+        transform-origin: center;
+        transition:
+          opacity 0.55s var(--ease-out),
+          transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
       }
       .room-modal.is-open .room-modal__inner {
+        opacity: 1;
         transform: translateY(0) scale(1);
       }
       .room-modal__close {
@@ -284,6 +307,11 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         display: flex;
         flex-direction: column;
         min-height: 0;
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 0.6s var(--ease-out) 0.1s,
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
       }
       .room-modal__stage {
         position: relative;
@@ -297,6 +325,8 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         height: 100%;
         object-fit: cover;
         display: block;
+        transform: scale(1.035);
+        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .room-modal__nav {
         position: absolute;
@@ -380,6 +410,19 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         background: var(--bg-cream);
         display: flex;
         flex-direction: column;
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.6s var(--ease-out) 0.18s,
+          transform 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.18s;
+      }
+      .room-modal.is-open .room-modal__media,
+      .room-modal.is-open .room-modal__panel {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .room-modal.is-open .room-modal__image {
+        transform: scale(1);
       }
       .room-modal__eyebrow {
         font-family: var(--font-body);
@@ -474,6 +517,17 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         }
         .room-modal__nav--prev { left: 10px; }
         .room-modal__nav--next { right: 10px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .room-modal,
+        .room-modal__backdrop,
+        .room-modal__inner,
+        .room-modal__media,
+        .room-modal__panel,
+        .room-modal__image {
+          transition: none;
+        }
       }
 
       /* ---- Lightbox ---- */
@@ -740,6 +794,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         var photos = [];
         var idx = 0;
         var lastFocus = null;
+        var focusTimer = null;
 
         function escapeHTML(s) {
           return String(s == null ? '' : s)
@@ -825,14 +880,21 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           }
           render();
           lastFocus = document.activeElement;
-          modal.classList.add('is-open');
           modal.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
-          var closeBtn = modal.querySelector('.room-modal__close');
-          if (closeBtn) closeBtn.focus();
+          modal.offsetHeight;
+          requestAnimationFrame(function () {
+            modal.classList.add('is-open');
+            window.clearTimeout(focusTimer);
+            focusTimer = window.setTimeout(function () {
+              var closeBtn = modal.querySelector('.room-modal__close');
+              if (modal.classList.contains('is-open') && closeBtn) closeBtn.focus();
+            }, 320);
+          });
         }
 
         function close() {
+          window.clearTimeout(focusTimer);
           modal.classList.remove('is-open');
           modal.setAttribute('aria-hidden', 'true');
           document.body.style.overflow = '';
