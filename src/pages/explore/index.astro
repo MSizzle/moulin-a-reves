@@ -7,7 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- Hero -->
   <section class="hero" style="height: 60vh;">
     <div class="hero__image">
-      <img src="/images/forest-path.webp" alt="Forest path through Fontainebleau with dappled sunlight near Moulin à Rêves, Barbizon" />
+      <img src="/images/explore/chateau.webp" alt="Château de Fontainebleau royal palace and gardens, twenty minutes from Moulin à Rêves" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
@@ -198,10 +198,59 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Day Trips -->
+  <!-- TODO(Melissa): drop dedicated photos in /public/images/explore/ for chartres, vaux, chambord, orleans and update src + alt below. -->
+  <section class="section section--stone">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <h2 data-i18n="explore.daytrips.heading">Day Trips Worth the Drive</h2>
+        <p data-i18n="explore.daytrips.subheading" style="margin-top: 8px;">Some of France's great châteaux and cathedrals — close enough to make a day of it.</p>
+      </div>
+      <div class="compound-grid compound-grid--3">
+        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Chartres_Cathedral" target="_blank" rel="noopener noreferrer">
+          <div class="compound-tile__media">
+            <img src="/images/explore/chateau.webp" alt="Chartres Cathedral, a UNESCO World Heritage gothic cathedral roughly an hour from Moulin à Rêves" loading="lazy" />
+          </div>
+          <div class="compound-tile__body">
+            <h3 class="compound-tile__title" data-i18n="explore.daytrips.chartres.title">Chartres Cathedral</h3>
+            <p class="compound-tile__summary" data-i18n="explore.daytrips.chartres.desc">UNESCO-listed Gothic cathedral renowned for its 12th-century stained glass and labyrinth. About an hour and a quarter from the compound.</p>
+          </div>
+        </a>
+        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Vaux-le-Vicomte" target="_blank" rel="noopener noreferrer">
+          <div class="compound-tile__media">
+            <img src="/images/bridge-garden.webp" alt="Château de Vaux-le-Vicomte, the 17th-century baroque château that inspired Versailles" loading="lazy" />
+          </div>
+          <div class="compound-tile__body">
+            <h3 class="compound-tile__title" data-i18n="explore.daytrips.vaux.title">Vaux-le-Vicomte</h3>
+            <p class="compound-tile__summary" data-i18n="explore.daytrips.vaux.desc">The 17th-century baroque château that inspired Versailles, with Le Nôtre gardens you can walk for hours. About an hour east.</p>
+          </div>
+        </a>
+        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Chambord" target="_blank" rel="noopener noreferrer">
+          <div class="compound-tile__media">
+            <img src="/images/explore/chateau.webp" alt="Château de Chambord, the largest Renaissance château in the Loire Valley" loading="lazy" />
+          </div>
+          <div class="compound-tile__body">
+            <h3 class="compound-tile__title" data-i18n="explore.daytrips.chambord.title">Chambord & the Loire</h3>
+            <p class="compound-tile__summary" data-i18n="explore.daytrips.chambord.desc">The largest Renaissance château in the Loire Valley — Leonardo da Vinci's double-helix staircase and a forest the size of Paris. Around two hours; well worth a full day or an overnight.</p>
+          </div>
+        </a>
+        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Orl%C3%A9ans" target="_blank" rel="noopener noreferrer">
+          <div class="compound-tile__media">
+            <img src="/images/explore/moret-bridge.webp" alt="Orléans, the medieval city of Joan of Arc on the Loire river" loading="lazy" />
+          </div>
+          <div class="compound-tile__body">
+            <h3 class="compound-tile__title" data-i18n="explore.daytrips.orleans.title">Orléans</h3>
+            <p class="compound-tile__summary" data-i18n="explore.daytrips.orleans.desc">The medieval city of Joan of Arc on the Loire river — half-timbered houses, a Gothic cathedral, and good lunch on the quays. Just over an hour by car.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="hero" style="height: 45vh; min-height: 350px;">
     <div class="hero__image">
-      <img src="/images/explore/forest.webp" alt="Fontainebleau Forest path near Moulin à Rêves" loading="lazy" />
+      <img src="/images/garden-breakfast.webp" alt="Sunlit breakfast on the patio at Moulin à Rêves" loading="lazy" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
