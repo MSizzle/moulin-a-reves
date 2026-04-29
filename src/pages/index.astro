@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
 import matter from 'gray-matter';
 import fs from 'node:fs';
 
@@ -36,7 +37,7 @@ const writings = [
 const compoundFeatures = [
   {
     title: 'La Grange',
-    summary: 'Covered entertaining space — long table for 20, ping pong, fireplace.',
+    summary: 'The covered pavilion for long dinners, fireside evenings, ping pong, and gathering under the beams.',
     image: '/images/homes/la-grange-pavilion-wide.webp',
     alt: 'La Grange covered entertaining barn at Moulin à Rêves',
     href: '/the-compound/',
@@ -51,40 +52,8 @@ const compoundFeatures = [
     ],
   },
   {
-    title: 'Spa',
-    summary: 'Solarium spa with jacuzzi for warm-weather and winter use.',
-    image: '/images/wellness-pool.webp',
-    alt: 'Spa solarium with jacuzzi at Moulin à Rêves',
-    gallery: [
-      { src: '/images/wellness-pool.webp', alt: 'Solarium spa with jacuzzi' },
-      { src: '/images/wellness-massage.webp', alt: 'A quiet corner for massage' },
-      { src: '/images/wellness-beauty.webp', alt: 'Bright tile bathroom for spa treatments' },
-      { src: '/images/wellness-hero.webp', alt: 'Garden chaises on the lawn outside the spa' },
-    ],
-  },
-  {
-    title: 'Jacuzzi',
-    summary: 'Heated jacuzzi inside the solarium — open year round.',
-    image: '/images/wellness-pool.webp',
-    alt: 'Jacuzzi at Moulin à Rêves',
-    gallery: [
-      { src: '/images/wellness-pool.webp', alt: 'Heated jacuzzi inside the solarium' },
-      { src: '/images/wellness-hero.webp', alt: 'Lounging by the spa' },
-    ],
-  },
-  {
-    title: 'Gym',
-    summary: 'Treadmill, elliptical, weights, boxing bag, eight yoga mats.',
-    image: '/images/gym.webp',
-    alt: 'Private gym at Moulin à Rêves with elliptical, treadmill, and mirrored wall',
-    gallery: [
-      { src: '/images/gym.webp', alt: 'Gym at La Grange with elliptical, treadmill, and mirrored wall' },
-      { src: '/images/homes/la-grange-gym-boxing.webp', alt: 'Gym with treadmill and Everlast boxing setup' },
-    ],
-  },
-  {
     title: 'Gardens',
-    summary: 'Walled gardens, the millstream, a Giverny-style bridge, and the lawn.',
+    summary: 'The millstream, lawns, old stone, quiet corners, and the blue bridge over the water.',
     image: '/images/bridge-garden.webp',
     alt: 'Walled gardens and the millstream at Moulin à Rêves',
     gallery: [
@@ -102,8 +71,33 @@ const compoundFeatures = [
     ],
   },
   {
+    title: 'Spa & Solarium',
+    summary: 'A quiet glassed-in spa with jacuzzi, garden views, and space for massage treatments.',
+    image: '/images/wellness-pool.webp',
+    alt: 'Spa solarium with jacuzzi at Moulin à Rêves',
+    gallery: [
+      { src: '/images/wellness-pool.webp', alt: 'Solarium spa with jacuzzi' },
+      { src: '/images/wellness-massage.webp', alt: 'A quiet corner for massage' },
+      { src: '/images/wellness-beauty.webp', alt: 'Bright tile bathroom for spa treatments' },
+      { src: '/images/wellness-hero.webp', alt: 'Garden chaises on the lawn outside the spa' },
+    ],
+  },
+  {
+    title: 'Gym & Bikes',
+    summary: 'Treadmill, elliptical, weights, boxing bag, yoga mats, and electric bikes for the village and forest.',
+    image: '/images/gym.webp',
+    alt: 'Private gym at Moulin à Rêves with elliptical, treadmill, and mirrored wall',
+    gallery: [
+      { src: '/images/gym.webp', alt: 'Gym at La Grange with elliptical, treadmill, and mirrored wall' },
+      { src: '/images/homes/la-grange-gym-boxing.webp', alt: 'Gym with treadmill and Everlast boxing setup' },
+      { src: '/images/homes/la-grange-bikes.webp', alt: 'Bicycles parked in La Grange under exposed wood beams' },
+      { src: '/images/homes/la-grange-bikes-door.webp', alt: 'Bicycles lined up inside La Grange facing the door' },
+      { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse-drawn carriage on display in La Grange' },
+    ],
+  },
+  {
     title: 'Screening Room',
-    summary: 'Upstairs cinema room with leather couches and a large screen.',
+    summary: 'An upstairs cinema room with leather club chairs for films, talks, and rainy afternoons.',
     image: '/images/screening-room.webp',
     alt: 'Screening room at Moulin à Rêves',
     gallery: [
@@ -111,7 +105,13 @@ const compoundFeatures = [
       { src: '/images/homes/la-grange-screening-2.webp', alt: 'Screening room facing the leather chairs from the rear' },
     ],
   },
-  { title: 'Chickens', summary: 'A working chicken coop. Wake up to the roosters; collect the eggs.', image: '/images/forest-path.webp', alt: 'Chicken coop at Moulin à Rêves' },
+  // TODO: replace placeholder image and add real photos when Melissa drops them in /public/images/
+  {
+    title: 'Chicken Coop',
+    summary: 'A working chicken coop. Wake up to the roosters; collect the eggs.',
+    image: '/images/personality.webp',
+    alt: 'Marie Antoinette near the rooster in the garden at Moulin à Rêves',
+  },
 ];
 
 const groupTypes = [
@@ -262,50 +262,57 @@ const groupTypes = [
     @media (max-width: 768px) {
       .hero--lc { height: 76vh; min-height: 480px; }
     }
-    .section--tighter { padding-top: 56px; padding-bottom: 56px; }
+    .section--tighter { padding-top: 40px; padding-bottom: 40px; }
     .compound-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px 28px;
+    }
+    @media (max-width: 900px) {
+      .compound-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      .compound-grid { grid-template-columns: 1fr; }
     }
     .compound-tile {
-      position: relative;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      background: var(--bg-stone);
+      background: transparent;
       text-decoration: none;
       color: inherit;
       display: block;
+    }
+    .compound-tile__media {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--bg-warm-white);
     }
     .compound-tile img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 40%;
       transition: transform 0.8s var(--ease-out);
     }
     .compound-tile:hover img { transform: scale(1.04); }
     .compound-tile--clickable { cursor: zoom-in; }
     .compound-tile--clickable:focus-visible { outline: 2px solid var(--blue-primary); outline-offset: 4px; }
-    .compound-tile__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(15,15,15,0.78) 0%, rgba(15,15,15,0) 55%);
-      display: flex;
-      align-items: flex-end;
-      padding: 22px 22px 24px;
+    .compound-tile__body {
+      padding: 18px 0 0;
     }
-    .compound-tile__body { color: white; }
     .compound-tile__title {
-      font-family: var(--font-display);
+      font-family: var(--font-serif);
+      font-style: italic;
       font-weight: 500;
       font-size: 1.5rem;
-      margin: 0 0 6px;
+      margin: 0 0 8px;
+      color: var(--ink);
+      letter-spacing: 0;
     }
     .compound-tile__summary {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.88);
+      font-size: 0.9375rem;
+      color: var(--ink-soft);
       margin: 0;
-      line-height: 1.5;
+      line-height: 1.55;
+      max-width: 34ch;
     }
   </style>
 
@@ -321,7 +328,7 @@ const groupTypes = [
 
   <!-- Les Maisons -->
   <section class="section--tighter">
-    <div class="container text-center fade-in" style="margin-bottom: 36px;">
+    <div class="container text-center fade-in" style="margin-bottom: 24px;">
       <h2 data-i18n-html="home.homes.heading">Les <span class="serif-italic">Maisons</span></h2>
     </div>
     <div class="container">
@@ -366,15 +373,12 @@ const groupTypes = [
           </div>
         </a>
       </div>
-      <div class="text-center" style="margin-top: 36px;">
-        <a href="/the-compound/" class="editorial-link" data-i18n="home.rentall">Rent the entire compound</a>
-      </div>
     </div>
   </section>
 
   <!-- Discover the Compound -->
   <section class="section--tighter section--soft">
-    <div class="container text-center fade-in" style="margin-bottom: 36px;">
+    <div class="container text-center fade-in" style="margin-bottom: 24px;">
       <h2 data-i18n-html="home.compound.heading">Discover the <span class="serif-italic">Compound</span></h2>
     </div>
     <div class="container">
@@ -382,32 +386,32 @@ const groupTypes = [
         {compoundFeatures.map((feat, i) => (
           feat.href ? (
             <a href={feat.href} class="compound-tile fade-in">
-              <img src={feat.image} alt={feat.alt} loading="lazy" />
-              <div class="compound-tile__overlay">
-                <div class="compound-tile__body">
-                  <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
-                  <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
-                </div>
+              <div class="compound-tile__media">
+                <img src={feat.image} alt={feat.alt} loading="lazy" />
+              </div>
+              <div class="compound-tile__body">
+                <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
+                <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
               </div>
             </a>
           ) : feat.gallery ? (
             <div class="compound-tile compound-tile--clickable fade-in" data-gallery={JSON.stringify(feat.gallery)} role="button" tabindex="0">
-              <img src={feat.image} alt={feat.alt} loading="lazy" />
-              <div class="compound-tile__overlay">
-                <div class="compound-tile__body">
-                  <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
-                  <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
-                </div>
+              <div class="compound-tile__media">
+                <img src={feat.image} alt={feat.alt} loading="lazy" />
+              </div>
+              <div class="compound-tile__body">
+                <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
+                <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
               </div>
             </div>
           ) : (
             <div class="compound-tile fade-in">
-              <img src={feat.image} alt={feat.alt} loading="lazy" />
-              <div class="compound-tile__overlay">
-                <div class="compound-tile__body">
-                  <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
-                  <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
-                </div>
+              <div class="compound-tile__media">
+                <img src={feat.image} alt={feat.alt} loading="lazy" />
+              </div>
+              <div class="compound-tile__body">
+                <h3 class="compound-tile__title" data-i18n={`home.compound.feat.${i}.title`}>{feat.title}</h3>
+                <p class="compound-tile__summary" data-i18n={`home.compound.feat.${i}.summary`}>{feat.summary}</p>
               </div>
             </div>
           )
@@ -416,9 +420,19 @@ const groupTypes = [
     </div>
   </section>
 
+  <!-- Availability Calendar -->
+  <AvailabilityCalendar
+    monthsToShow={6}
+    eyebrow=""
+    heading={`When You Can <span class="serif-italic">Stay</span>`}
+    intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
+    compact
+    i18nKey="home.availability"
+  />
+
   <!-- Groups -->
   <section class="section--tighter">
-    <div class="container text-center fade-in" style="margin-bottom: 36px;">
+    <div class="container text-center fade-in" style="margin-bottom: 24px;">
       <h2 data-i18n="home.groups.heading">{cms.groupsHeading}</h2>
     </div>
     <div class="container">
@@ -435,14 +449,14 @@ const groupTypes = [
           </a>
         ))}
       </div>
-      <div class="text-center" style="margin-top: 36px;">
+      <div class="text-center" style="margin-top: 24px;">
         <a href="/the-compound/" class="link-arrow" data-i18n="home.groups.cta">{cms.groupsCta}</a>
       </div>
     </div>
   </section>
 
   <!-- History Beat -->
-  <section class="hero" style="height: 44vh; min-height: 340px;">
+  <section class="hero" style="height: 36vh; min-height: 280px;">
     <div class="hero__image">
       <img src="/images/forest-path.webp" alt="Ancient millstream running through stone buildings at Moulin à Rêves" loading="lazy" />
     </div>

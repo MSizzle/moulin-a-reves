@@ -82,7 +82,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         </a>
 
         <ul class="nav__links" id="nav-links">
-          <li><a href="/homes/" data-i18n="nav.homes">Maisons</a></li>
+          <li><a href="/homes/" data-i18n="nav.homes">Les Maisons</a></li>
           <li><a href="/the-compound/" data-i18n="nav.compound">The Compound</a></li>
           <li><a href="/explore/" data-i18n="nav.explore">Explore</a></li>
           <li><a href="/catering/" data-i18n="nav.catering">Catering</a></li>
@@ -113,7 +113,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       <div class="nav__mobile" id="nav-mobile">
         <button class="nav__close" id="nav-close" aria-label="Close menu">&times;</button>
         <ul class="nav__mobile-links">
-          <li><a href="/homes/" data-i18n="nav.homes">Maisons</a></li>
+          <li><a href="/homes/" data-i18n="nav.homes">Les Maisons</a></li>
           <li><a href="/the-compound/" data-i18n="nav.compound">The Compound</a></li>
           <li><a href="/explore/" data-i18n="nav.explore">Explore</a></li>
           <li><a href="/catering/" data-i18n="nav.catering">Catering</a></li>
@@ -1425,44 +1425,56 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
 
       /* ---- Footer ---- */
       .footer {
-        padding-top: 80px;
-        padding-bottom: 40px;
+        --footer-bg: #B7DCEB;
+        --footer-ink: #163E58;
+        --footer-ink-soft: rgba(22, 62, 88, 0.78);
+        --footer-line: rgba(22, 62, 88, 0.18);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 42%),
+          var(--footer-bg);
+        color: var(--footer-ink);
+        padding-top: 72px;
+        padding-bottom: 34px;
+        border-top: 1px solid rgba(22, 62, 88, 0.12);
       }
 
       .footer__grid {
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr 2fr;
-        gap: 48px;
-        margin-bottom: 64px;
+        grid-template-columns: minmax(240px, 2fr) minmax(140px, 1fr) minmax(140px, 1fr) minmax(280px, 1.4fr);
+        gap: 44px;
+        margin-bottom: 56px;
+        align-items: start;
       }
 
       .footer__logo {
         font-family: var(--font-serif);
         font-style: italic;
-        font-size: 2rem;
+        font-size: clamp(2rem, 3vw, 2.75rem);
         font-weight: 400;
-        letter-spacing: 0.005em;
-        color: var(--blue-dark);
-        margin-bottom: 10px;
+        letter-spacing: 0;
+        color: var(--footer-ink);
+        margin-bottom: 12px;
       }
 
       .footer__tagline {
         font-family: var(--font-serif);
         font-style: italic;
-        font-size: 0.9375rem;
-        color: var(--ink);
+        font-size: 1.0625rem;
+        color: var(--footer-ink-soft);
         letter-spacing: 0.01em;
-        font-weight: 600;
+        font-weight: 500;
+        line-height: 1.45;
+        max-width: 28ch;
       }
 
       .footer__links h4,
       .footer__contact h4 {
         font-size: 0.75rem;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--ink);
-        font-weight: 800;
-        margin-bottom: 16px;
+        letter-spacing: 0.16em;
+        color: var(--footer-ink);
+        font-weight: 700;
+        margin-bottom: 18px;
       }
 
       .footer__links ul {
@@ -1470,83 +1482,97 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       }
 
       .footer__links li {
-        margin-bottom: 10px;
+        margin-bottom: 9px;
       }
 
       .footer__links a {
-        color: var(--ink);
+        color: var(--footer-ink-soft);
         font-size: 0.9375rem;
-        font-weight: 600;
+        font-weight: 500;
         text-decoration: none;
         transition: color var(--duration) var(--ease-out);
       }
 
       .footer__links a:hover {
-        color: white;
+        color: var(--footer-ink);
       }
 
       .footer__contact p {
-        margin-bottom: 8px;
-        color: var(--ink);
-        font-weight: 600;
+        margin-bottom: 9px;
+        color: var(--footer-ink-soft);
+        font-weight: 500;
       }
 
       .footer__contact a {
-        color: var(--ink);
-        font-weight: 600;
+        color: var(--footer-ink);
+        font-weight: 500;
         text-decoration: none;
         transition: color var(--duration) var(--ease-out);
       }
 
       .footer__contact a:hover {
-        color: white;
+        color: var(--blue-dark);
       }
 
       .footer__newsletter {
-        margin-top: 24px;
+        margin-top: 26px;
+        padding-top: 22px;
+        border-top: 1px solid var(--footer-line);
       }
 
       .footer__newsletter-label {
-        font-size: 0.8125rem;
-        color: var(--ink);
-        font-weight: 600;
-        margin-bottom: 12px;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 1rem;
+        color: var(--footer-ink-soft);
+        font-weight: 500;
+        margin-bottom: 14px;
+        line-height: 1.35;
       }
 
       .footer__newsletter-form {
         display: flex;
-        gap: 8px;
+        gap: 10px;
       }
 
       .footer__newsletter-form .form__input {
         flex: 1;
-        padding: 10px 14px;
+        min-width: 0;
+        padding: 12px 14px;
         font-size: 0.875rem;
-        background: rgba(255, 255, 255, 0.6);
-        border: 1px solid rgba(27, 79, 114, 0.25);
-        color: var(--ink);
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(22, 62, 88, 0.22);
+        color: var(--footer-ink);
+        border-radius: 0;
       }
 
       .footer__newsletter-form .form__input::placeholder {
-        color: var(--ink-mute);
+        color: rgba(22, 62, 88, 0.58);
       }
 
       .footer__newsletter-form .btn {
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 0.75rem;
         white-space: nowrap;
+        background: var(--footer-ink);
+        color: white;
+      }
+
+      .footer__newsletter-form .btn:hover {
+        background: var(--blue-dark);
+        color: white;
       }
 
       .footer__bottom {
-        border-top: 1px solid rgba(27, 79, 114, 0.18);
-        padding-top: 24px;
-        text-align: center;
+        border-top: 1px solid var(--footer-line);
+        padding-top: 22px;
+        text-align: left;
       }
 
       .footer__bottom p {
         font-size: 0.8125rem;
-        color: var(--ink);
-        font-weight: 600;
+        color: rgba(22, 62, 88, 0.68);
+        font-weight: 500;
         max-width: none;
       }
 
@@ -1648,7 +1674,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         .catch(() => {
           // Fallback: nav-only translations if fetch fails
           translations = {
-            'nav.homes': { en: 'Maisons', fr: 'Les Maisons' },
+          'nav.homes': { en: 'Les Maisons', fr: 'Les Maisons' },
             'nav.compound': { en: 'The Compound', fr: 'Le Domaine' },
             'nav.explore': { en: 'Explore', fr: 'Explorer' },
             'nav.catering': { en: 'Catering', fr: 'Restauration' },
