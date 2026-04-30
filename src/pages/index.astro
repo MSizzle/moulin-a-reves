@@ -45,8 +45,6 @@ const compoundFeatures = [
       { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
       { src: '/images/homes/la-grange-fire.webp', alt: 'Fire crackling in the stone hearth of La Grange' },
       { src: '/images/group-dinner.webp', alt: 'Dinner laid on the long table under La Grange\'s pavilion' },
-      { src: '/images/homes/la-grange-bath.webp', alt: 'Ground floor bathroom at La Grange' },
-      { src: '/images/homes/la-grange-laundry.webp', alt: 'Laundry room at La Grange' },
       { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse-drawn carriage on display in La Grange' },
     ],
   },
@@ -74,11 +72,9 @@ const compoundFeatures = [
     summary: 'A glassed-in solarium with jacuzzi — warm-weather mornings, winter evenings, year-round.',
     image: '/images/wellness-pool.webp',
     alt: 'Solarium with jacuzzi at Moulin à Rêves',
+    comingSoon: true,
     gallery: [
       { src: '/images/wellness-pool.webp', alt: 'Solarium with jacuzzi at Moulin à Rêves' },
-      { src: '/images/wellness-hero.webp', alt: 'Garden chaises on the lawn outside the solarium' },
-      { src: '/images/wellness-massage.webp', alt: 'A quiet treatment corner inside the solarium' },
-      { src: '/images/wellness-beauty.webp', alt: 'Bright tile bath connected to the solarium' },
     ],
   },
   {
@@ -91,7 +87,6 @@ const compoundFeatures = [
       { src: '/images/homes/la-grange-gym-boxing.webp', alt: 'Gym with treadmill and Everlast boxing setup' },
       { src: '/images/homes/la-grange-bikes.webp', alt: 'Bicycles parked in La Grange under exposed wood beams' },
       { src: '/images/homes/la-grange-bikes-door.webp', alt: 'Bicycles lined up inside La Grange facing the door' },
-      { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse-drawn carriage on display in La Grange' },
     ],
   },
   {
@@ -137,7 +132,7 @@ const groupTypes = [
       "email": "lemoulinfrance@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "16 Rue des Crocs aux Renards",
+        "streetAddress": "14, 16, 18 Rue des Crocs au Renard",
         "postalCode": "91660",
         "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
@@ -215,9 +210,8 @@ const groupTypes = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow">Méréville · France</span>
       <h1 class="hero__title" data-i18n-html="home.title">Your Dream French Vacation Come True</h1>
-      <p class="hero__tagline" data-i18n="home.tagline">{cms.heroTagline}</p>
+      <p class="hero__tagline" data-i18n="home.tagline">Méréville · France</p>
       <div class="hero__actions">
         <a href="/the-compound/" class="btn btn--white" data-i18n="home.cta">Discover the Compound</a>
         <a href="/contact/" class="btn btn--ghost">Speak with the Concierge</a>
@@ -300,10 +294,6 @@ const groupTypes = [
       text-transform: uppercase;
       color: var(--ink-mute);
     }
-    .maisons-section h2 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      line-height: 1.05;
-    }
     .maisons-intro {
       max-width: 540px;
       margin-left: auto;
@@ -344,53 +334,50 @@ const groupTypes = [
   <section class="section maisons-section" style="padding-top: 24px;">
     <div class="container text-center fade-in" style="margin-bottom: 28px;">
       <h2 data-i18n-html="home.homes.heading">Les <span class="serif-italic">Maisons</span></h2>
-      <p class="maisons-intro" data-i18n="home.homes.subheading" style="margin-top: 12px;">Three stone houses around shared gardens. Each its own world; together, the compound.</p>
     </div>
-    <div class="container">
-      <div class="showcase showcase--triple maisons-grid">
-        <a href="/homes/le-moulin/" class="card fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" loading="lazy" />
+    <div class="maisons-stack">
+      <a href="/homes/le-moulin/" class="split split--maison fade-in">
+        <div class="split__image">
+          <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin à Rêves — historic mill house on the Juine River" loading="lazy" />
+        </div>
+        <div class="split__body">
+          <span class="split__eyebrow">The Mill House</span>
+          <h2>Le Moulin à Rêves</h2>
+          <div class="split__meta">
+            <span>5 Bedrooms</span><span>4 Baths</span><span>Sleeps 10</span>
           </div>
-          <div class="card__body">
-            <span class="card__eyebrow">The Mill House</span>
-            <h3 class="card__title">Le Moulin à Rêves</h3>
-            <div class="card__meta">
-              <span>5 Bedrooms</span>
-              <span>4 Baths</span>
-              <span>Sleeps 10</span>
-            </div>
+          <p>An historic mill on the Juine River. The river runs through the house. Five bedrooms across three floors.</p>
+          <span class="link-arrow">Discover Le Moulin →</span>
+        </div>
+      </a>
+      <a href="/homes/hollywood-hideaway/" class="split split--maison split--reverse fade-in">
+        <div class="split__image">
+          <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway" loading="lazy" />
+        </div>
+        <div class="split__body">
+          <span class="split__eyebrow">The Refuge</span>
+          <h2>The Hollywood Hideaway</h2>
+          <div class="split__meta">
+            <span>3 Bedrooms + Suite</span><span>2 Baths</span><span>Sleeps 7</span>
           </div>
-        </a>
-        <a href="/homes/hollywood-hideaway/" class="card fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway" loading="lazy" />
+          <p>Three bedrooms plus a suite. The 60-year sanctuary of Hollywood's #1 power lawyer — French antiques, a covered gazebo, the compound's gardens.</p>
+          <span class="link-arrow">Discover the Hideaway →</span>
+        </div>
+      </a>
+      <a href="/homes/maison-de-la-riviere/" class="split split--maison fade-in">
+        <div class="split__image">
+          <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière — sunny cottage overlooking the stream" loading="lazy" />
+        </div>
+        <div class="split__body">
+          <span class="split__eyebrow">The Garden Cottage</span>
+          <h2>La Maison de la Rivière</h2>
+          <div class="split__meta">
+            <span>2 Bedrooms</span><span>1 Bath</span><span>Sleeps 5</span>
           </div>
-          <div class="card__body">
-            <span class="card__eyebrow">The Sanctuary</span>
-            <h3 class="card__title">The Hollywood Hideaway</h3>
-            <div class="card__meta">
-              <span>3 Bedrooms + Suite</span>
-              <span>2 Baths</span>
-              <span>Sleeps 7</span>
-            </div>
-          </div>
-        </a>
-        <a href="/homes/maison-de-la-riviere/" class="card fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière — sunny cottage overlooking the stream" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <span class="card__eyebrow">The Garden Cottage</span>
-            <h3 class="card__title">La Maison de la Rivière</h3>
-            <div class="card__meta">
-              <span>2 Bedrooms</span>
-              <span>1 Bath</span>
-              <span>Sleeps 5</span>
-            </div>
-          </div>
-        </a>
-      </div>
+          <p>Sun-drenched cottage with French doors onto the stream and apple trees. Two bedrooms, dining for 18, an authentic Louis Vuitton trunk as a coffee table.</p>
+          <span class="link-arrow">Discover La Maison →</span>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -400,7 +387,7 @@ const groupTypes = [
       <h2 data-i18n-html="home.compound.heading">Discover the <span class="serif-italic">Compound</span></h2>
     </div>
     <div class="container">
-      <div class="compound-grid">
+      <div class="compound-grid compound-grid--3">
         {compoundFeatures.map((feat, i) => (
           feat.href ? (
             <a href={feat.href} class="compound-tile fade-in">
@@ -441,6 +428,44 @@ const groupTypes = [
     </div>
   </section>
 
+  <!-- We Make It Easy -->
+  <section class="section--tighter">
+    <div class="container text-center fade-in" style="margin-bottom: 24px;">
+      <h2>We Make It <span class="serif-italic">Easy</span></h2>
+    </div>
+    <div class="container">
+      <div class="showcase showcase--triple">
+        <a href="/catering/" class="card fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card__image">
+            <img src="/images/garden-breakfast.webp" alt="Breakfast set on the patio at Moulin à Rêves — local catering and traiteurs" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Catering</h3>
+            <p class="card__description">Breakfast delivery, dinner traiteurs, and private chefs — we share the contacts, you book directly.</p>
+          </div>
+        </a>
+        <a href="/wellness/#massage" class="card fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card__image">
+            <img src="/images/wellness-massage.webp" alt="A quiet treatment corner at Moulin à Rêves — local massage therapists" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Wellness</h3>
+            <p class="card__description">Yoga, massages, and beauty — trusted local practitioners who travel to the compound.</p>
+          </div>
+        </a>
+        <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card__image">
+            <img src="/images/explore/forest.webp" alt="Dappled sunlight on a forest path through Fontainebleau near Moulin à Rêves" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Nearby Adventures</h3>
+            <p class="card__description">Fontainebleau forest, Barbizon village, châteaux, day trips — everything within reach.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Groups -->
   <section class="section--tighter">
     <div class="container text-center fade-in" style="margin-bottom: 24px;">
@@ -466,20 +491,22 @@ const groupTypes = [
     </div>
   </section>
 
-  <!-- History Beat -->
-  <section class="hero" style="height: auto; min-height: 380px; padding-top: 72px; padding-bottom: 72px; align-items: center;">
-    <div class="hero__image">
-      <img src="/images/forest-path.webp" alt="Ancient millstream running through stone buildings at Moulin à Rêves" loading="lazy" />
-    </div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <h2 class="hero__title" data-i18n="home.history.heading" style="font-size: clamp(1.75rem, 4vw, 3rem); margin-bottom: 18px;">{cms.historyHeading}</h2>
-      <p class="hero__tagline" data-i18n="home.history.text">
-        {cms.historyText}
-      </p>
-      <a href="/about/" class="btn btn--white" data-i18n="home.history.cta">{cms.historyCta}</a>
-    </div>
-  </section>
+  {/* History Beat — hidden for now per Melissa */}
+  {false && (
+    <section class="hero" style="height: auto; min-height: 380px; padding-top: 72px; padding-bottom: 72px; align-items: center;">
+      <div class="hero__image">
+        <img src="/images/forest-path.webp" alt="Ancient millstream running through stone buildings at Moulin à Rêves" loading="lazy" />
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h2 class="hero__title" data-i18n="home.history.heading" style="font-size: clamp(1.75rem, 4vw, 3rem); margin-bottom: 18px;">{cms.historyHeading}</h2>
+        <p class="hero__tagline" data-i18n="home.history.text">
+          {cms.historyText}
+        </p>
+        <a href="/about/" class="btn btn--white" data-i18n="home.history.cta">{cms.historyCta}</a>
+      </div>
+    </section>
+  )}
 
   <!-- Testimonial -->
   <section class="section--tighter section--stone">
@@ -491,31 +518,33 @@ const groupTypes = [
     </div>
   </section>
 
-  <!-- Writings Carousel -->
-  <section class="section--tighter writings">
-    <div class="container text-center fade-in" style="margin-bottom: 32px;">
-      <h2 data-i18n="home.journal.heading">From the Journal</h2>
-    </div>
-    <div class="writings__carousel-wrap">
-      <button class="writings__arrow writings__arrow--prev" id="writings-prev" aria-label="Previous writing">&#8249;</button>
-      <div class="writings__carousel" id="writings-carousel">
-        {writings.map((post) => (
-          <a href={`/journal/${post.slug}/`} class="writings__card" style="text-decoration:none;color:inherit;">
-            <div class="writings__image">
-              <img src={post.image} alt={post.alt} loading="lazy" />
-            </div>
-            <div class="writings__body">
-              <p class="writings__date">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-              <h3 class="writings__title">{post.title}</h3>
-              <p class="writings__excerpt">{post.excerpt}</p>
-              <span class="link-arrow">Read More</span>
-            </div>
-          </a>
-        ))}
+  {/* Writings Carousel — hidden for now per Melissa */}
+  {false && (
+    <section class="section--tighter writings">
+      <div class="container text-center fade-in" style="margin-bottom: 32px;">
+        <h2 data-i18n="home.journal.heading">From the Journal</h2>
       </div>
-      <button class="writings__arrow writings__arrow--next" id="writings-next" aria-label="Next writing">&#8250;</button>
-    </div>
-  </section>
+      <div class="writings__carousel-wrap">
+        <button class="writings__arrow writings__arrow--prev" id="writings-prev" aria-label="Previous writing">&#8249;</button>
+        <div class="writings__carousel" id="writings-carousel">
+          {writings.map((post) => (
+            <a href={`/journal/${post.slug}/`} class="writings__card" style="text-decoration:none;color:inherit;">
+              <div class="writings__image">
+                <img src={post.image} alt={post.alt} loading="lazy" />
+              </div>
+              <div class="writings__body">
+                <p class="writings__date">{new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                <h3 class="writings__title">{post.title}</h3>
+                <p class="writings__excerpt">{post.excerpt}</p>
+                <span class="link-arrow">Read More</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <button class="writings__arrow writings__arrow--next" id="writings-next" aria-label="Next writing">&#8250;</button>
+      </div>
+    </section>
+  )}
 
   <style>
     .writings__carousel-wrap {
@@ -641,28 +670,28 @@ const groupTypes = [
       <p data-i18n="home.area.intro" style="margin-top: 12px;">Forests, châteaux, painters' villages, and Paris — all within reach.</p>
     </div>
     <div class="container">
-      <div class="grid grid--3" style="gap: 20px;">
-        <a href="/explore/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+      <div class="showcase showcase--triple">
+        <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/barbizon-village.webp" alt="Barbizon village street near Moulin à Rêves" loading="lazy" />
           </div>
-          <div class="card__overlay">
+          <div class="card__body">
             <h3 class="card__title" data-i18n="home.area.barbizon">Barbizon</h3>
           </div>
         </a>
-        <a href="/explore/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+        <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
             <img src="/images/explore/forest.webp" alt="Fontainebleau Forest near Moulin à Rêves" loading="lazy" />
           </div>
-          <div class="card__overlay">
+          <div class="card__body">
             <h3 class="card__title" data-i18n="home.area.forest">Fontainebleau Forest</h3>
           </div>
         </a>
-        <a href="/explore/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
+        <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
           <div class="card__image">
-            <img src="/images/explore/barbizon.webp" alt="Paris an hour from Moulin à Rêves" loading="lazy" />
+            <img src="/images/explore/paris.webp" alt="Paris an hour from Moulin à Rêves" loading="lazy" />
           </div>
-          <div class="card__overlay">
+          <div class="card__body">
             <h3 class="card__title" data-i18n="home.area.paris">Paris (1 hr)</h3>
           </div>
         </a>

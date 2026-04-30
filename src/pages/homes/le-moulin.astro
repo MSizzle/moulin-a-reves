@@ -203,7 +203,7 @@ const amenities = [
       "occupancy": { "@type": "QuantitativeValue", "value": cms.sleeps },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "16 Rue des Crocs aux Renards",
+        "streetAddress": "14, 16, 18 Rue des Crocs au Renard",
         "postalCode": "91660",
         "addressLocality": "Le Mérévillois",
         "addressCountry": "FR"
@@ -358,29 +358,35 @@ const amenities = [
       <div class="text-center fade-in" style="margin-bottom: 24px;">
         <h2 data-i18n-html="le-moulin.cross.heading">Les <span class="serif-italic">Autres Maisons</span></h2>
       </div>
-      <div class="grid grid--2" style="gap: 20px; max-width: 880px; margin: 0 auto;">
-        <a href="/homes/hollywood-hideaway/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
+      <div class="maisons-stack">
+        <a href="/homes/hollywood-hideaway/" class="split split--maison fade-in">
+          <div class="split__image">
             <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway at Moulin à Rêves" loading="lazy" />
           </div>
-          <div class="card__overlay">
-            <h3 class="card__title" data-i18n="le-moulin.cross.hideaway.title">The Hollywood Hideaway</h3>
-            <div class="card__meta">
+          <div class="split__body">
+            <span class="split__eyebrow">The Refuge</span>
+            <h2 data-i18n="le-moulin.cross.hideaway.title">The Hollywood Hideaway</h2>
+            <div class="split__meta">
               <span data-i18n="le-moulin.cross.hideaway.beds">3 Bedrooms + Suite</span>
               <span data-i18n="le-moulin.cross.hideaway.sleeps">Sleeps 7</span>
             </div>
+            <p>Three bedrooms plus a suite. The 60-year sanctuary of Hollywood's #1 power lawyer — French antiques, a covered gazebo, the compound's gardens.</p>
+            <span class="link-arrow">Discover the Hideaway →</span>
           </div>
         </a>
-        <a href="/homes/maison-de-la-riviere/" class="card card--tall fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
+        <a href="/homes/maison-de-la-riviere/" class="split split--maison split--reverse fade-in">
+          <div class="split__image">
             <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière at Moulin à Rêves" loading="lazy" />
           </div>
-          <div class="card__overlay">
-            <h3 class="card__title" data-i18n="le-moulin.cross.riviere.title">La Maison de la Rivière</h3>
-            <div class="card__meta">
+          <div class="split__body">
+            <span class="split__eyebrow">The Garden Cottage</span>
+            <h2 data-i18n="le-moulin.cross.riviere.title">La Maison de la Rivière</h2>
+            <div class="split__meta">
               <span data-i18n="le-moulin.cross.riviere.beds">2 Bedrooms</span>
               <span data-i18n="le-moulin.cross.riviere.sleeps">Sleeps 5</span>
             </div>
+            <p>Sun-drenched cottage with French doors onto the stream and apple trees. Two bedrooms, dining for 18, an authentic Louis Vuitton trunk as a coffee table.</p>
+            <span class="link-arrow">Discover La Maison →</span>
           </div>
         </a>
       </div>
