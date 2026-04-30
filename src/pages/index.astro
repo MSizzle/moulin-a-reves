@@ -341,7 +341,7 @@ const groupTypes = [
   </section>
 
   <!-- Les Maisons -->
-  <section class="section maisons-section">
+  <section class="section maisons-section" style="padding-top: 24px;">
     <div class="container text-center fade-in" style="margin-bottom: 28px;">
       <h2 data-i18n-html="home.homes.heading">Les <span class="serif-italic">Maisons</span></h2>
       <p class="maisons-intro" data-i18n="home.homes.subheading" style="margin-top: 12px;">Three stone houses around shared gardens. Each its own world; together, the compound.</p>
@@ -449,7 +449,7 @@ const groupTypes = [
     <div class="container">
       <div class="showcase showcase--triple">
         {groupTypes.map((g, i) => (
-          <a href="/the-compound/" class="card fade-in" style="text-decoration:none;color:inherit;">
+          <div class="card fade-in">
             <div class="card__image">
               <img src={g.image} alt={g.alt} loading="lazy" />
             </div>
@@ -457,11 +457,11 @@ const groupTypes = [
               <h3 class="card__title" data-i18n={`home.groups.type.${i}.title`}>{g.title}</h3>
               <p class="card__description" data-i18n={`home.groups.type.${i}.summary`}>{g.summary}</p>
             </div>
-          </a>
+          </div>
         ))}
       </div>
       <div class="text-center" style="margin-top: 24px;">
-        <a href="/the-compound/" class="link-arrow" data-i18n="home.groups.cta">{cms.groupsCta}</a>
+        <a href="/contact/" class="link-arrow" data-i18n="home.groups.cta">{cms.groupsCta}</a>
       </div>
     </div>
   </section>
