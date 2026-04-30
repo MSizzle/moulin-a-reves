@@ -442,7 +442,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "Several stables near the forest offer rides through the trails \u2014 from introductory lessons for children to longer hacks for experienced riders. We'll arrange it.",
     fr: "Plusieurs écuries près de la forêt proposent des balades sur les sentiers \u2014 des leçons d'initiation pour les enfants aux randonnées pour les cavaliers confirmés. Nous organisons tout."
   },
-  'explore.family.paris.title': { en: 'A Day in Paris', fr: 'Une Journée à Paris' },
+  'explore.family.paris.title': { en: 'Paris', fr: 'Paris' },
   'explore.family.paris.desc': {
     en: "An hour by car or train from Fontainebleau-Avon station. The Louvre, the Marais, a boat on the Seine \u2014 then back to the countryside in time for dinner in the garden.",
     fr: "Une heure en voiture ou en train depuis la gare de Fontainebleau-Avon. Le Louvre, le Marais, une croisière sur la Seine \u2014 puis retour à la campagne pour dîner au jardin."
