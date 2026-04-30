@@ -490,10 +490,6 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         text-transform: none;
         color: var(--ink);
       }
-      .room-modal__detail-label::after {
-        content: ':';
-        margin-left: 0;
-      }
       .room-modal__detail-value {
         font-size: 0.9375rem;
         color: var(--ink-soft);
@@ -858,6 +854,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
                 setI18n(valueEl, keys.details[i].value);
               }
               row.appendChild(labelEl);
+              row.appendChild(document.createTextNode(': '));
               row.appendChild(valueEl);
               detailsEl.appendChild(row);
             });
