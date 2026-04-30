@@ -1,5 +1,5 @@
 ---
-heroTagline: "A private historic compound in Méréville, France. One hour from Paris."
+heroTagline: "Méréville · France"
 heroImage: "/images/hero-compound.webp"
 introHeading: "A private compound, one hour from Paris."
 introText: "Three stone maisons, a walled garden, a millstream, and the buildings around them — gym, spa with jacuzzi, screening room, La Grange — all on one private property in Méréville, France. Sleeps 20 across 10 bedrooms."

@@ -35,7 +35,7 @@ export const translations: Record<string, Record<string, string>> = {
   // Homepage
   // =====================
   'home.title': { en: 'Your Dream French Vacation Come True', fr: 'Moulin à Rêves' },
-  'home.tagline': { en: 'Three maisons. One unforgettable stay. One hour from Paris.', fr: 'Trois maisons. Un séjour inoubliable. À une heure de Paris.' },
+  'home.tagline': { en: 'Méréville · France', fr: 'Méréville · France' },
   'home.cta': { en: 'Discover the Maisons', fr: 'Découvrir les Maisons' },
   'home.intro.heading': { en: 'Where the millstream meets your morning coffee', fr: 'Là où le bief rencontre votre café du matin' },
   'home.intro.text': {
@@ -635,8 +635,8 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   // Contact
   // =====================
-  'contact.hero.title': { en: 'Get in Touch', fr: 'Contactez-nous' },
-  'contact.hero.tagline': { en: "Tell us your dates, your group, your dreams. We'll take it from there.", fr: 'Dites-nous vos dates, votre groupe, vos envies. Nous nous occupons du reste.' },
+  'contact.hero.title': { en: 'Join us!', fr: 'Rejoignez-nous !' },
+  'contact.hero.tagline': { en: "Tell us your dates, your group size, your dreams. We'll take it from there.", fr: 'Dites-nous vos dates, la taille de votre groupe, vos envies. Nous nous occupons du reste.' },
   'contact.form.heading': { en: 'Start Your Conversation', fr: 'Commençons la Conversation' },
   'contact.form.intro': {
     en: "Fill out the form below and we'll respond within 24 hours with availability and a personalised proposal.",
