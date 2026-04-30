@@ -34,7 +34,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   // Homepage
   // =====================
-  'home.title': { en: 'Moulin à Rêves', fr: 'Moulin à Rêves' },
+  'home.title': { en: 'Live the countryside,<br/>unhurried.', fr: 'Vivez la campagne,<br/>sans hâte.' },
   'home.tagline': { en: 'Three maisons. One unforgettable stay. One hour from Paris.', fr: 'Trois maisons. Un séjour inoubliable. À une heure de Paris.' },
   'home.cta': { en: 'Discover the Maisons', fr: 'Découvrir les Maisons' },
   'home.intro.heading': { en: 'Where the millstream meets your morning coffee', fr: 'Là où le bief rencontre votre café du matin' },
