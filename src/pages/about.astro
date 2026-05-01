@@ -1,5 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const historyGallery = [
+  {
+    src: '/images/history/borrah-minevitch-portrait.webp',
+    alt: 'Vaudeville harmonica virtuoso Borrah Minevitch — Library of Congress portrait',
+    caption: 'Borrah Minevitch, c. 1920s — vaudeville harmonica virtuoso who bought the Moulin in 1948.',
+  },
+  {
+    src: '/images/history/borrah-harmonica-contest-poster.webp',
+    alt: 'WPA-era poster — Harmonica Contest on the Mall, Central Park — Borrah Minevitch, Director',
+    caption: 'WPA-era Central Park "Harmonica Contest" poster — Borrah Minevitch named as Director of the Harmonica Institute of America.',
+  },
+];
 ---
 
 <BaseLayout title="About Moulin à Rêves — Historic French Mill Compound Near Paris" description="The history of Moulin à Rêves — a 19th-century mill on the Juine River in Méréville, France.">
@@ -9,7 +22,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="hero__image">
       <img src="/images/hero-compound.webp" alt="Stone wall with blue shutters at Moulin à Rêves" />
     </div>
-    <div class="hero__overlay"></div>
     <div class="hero__content">
       <h1 class="hero__title" data-i18n="about.hero.title">About</h1>
       <p class="hero__tagline" data-i18n="about.hero.tagline">The story of the Mill of Dreams.</p>
@@ -21,11 +33,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container--narrow fade-in">
       <h2 data-i18n="about.history.heading">The History of Moulin à Rêves — From Vaudeville to Hollywood to You</h2>
       <div style="margin-top: 24px;">
-        <p data-i18n="about.history.p1">
-          The history of Moulin à Rêves is as magical as the setting. It has been owned by one family for over 75 years. It was purchased in 1948 by Vaudeville legend Borrah Minevitch. Borrah began playing the harmonica as a 5-year-old boy to pass the time while he sold newspapers. He earned $1,000,000 from the Hohner harmonica company for his chromatic harmonica invention. He was friends with Charlie Chaplin and producer Billy Rose, and toured the world with his band, the Harmonica Rascals — from Florenz Ziegfeld's Broadway theatres to Berlin, London, and Vienna. He fell in love with France.
+        <p data-i18n-html="about.history.p1">
+          The history of Moulin à Rêves is as magical as the setting. It has been owned by one family for over 75 years. It was purchased in 1948 by Vaudeville legend <a href="https://en.wikipedia.org/wiki/Borrah_Minevitch" target="_blank" rel="noopener">Borrah Minevitch</a>. Borrah began playing the harmonica as a 5-year-old boy to pass the time while he sold newspapers. He earned $1,000,000 from the Hohner harmonica company for his chromatic harmonica invention. He was friends with Charlie Chaplin and producer Billy Rose, and toured the world with his band, the Harmonica Rascals — from Florenz Ziegfeld's Broadway theatres to Berlin, London, and Vienna. He fell in love with France. Watch the Rascals: <a href="https://www.youtube.com/watch?v=mESI_bER0v8" target="_blank" rel="noopener">vintage performance</a> · <a href="https://www.youtube.com/watch?v=-C4Qj8nyvaw" target="_blank" rel="noopener">on film</a>.
         </p>
-        <p data-i18n="about.history.p2" style="margin-top: 16px;">
-          He used his harmonica fortune to acquire this Mill and a famous jazz club on Paris's Île Saint-Louis. Alongside his friend, the owner of the legendary Maxim's, they planned to turn the Moulin into an inn for Paris artists. Their guests and friends included icons like Jacques Tati and Jean Cocteau. Borrah's daughter married Hollywood star lawyer Bert Fields, whose clients included Michael Jackson, Dustin Hoffman, Tom Cruise, and so many others. For 50 years, this was Bert's "Hollywood Hideaway" where he cooked, wrote, and entertained. His Hollywood friends would visit him here, far from the paparazzi.
+        <p data-i18n-html="about.history.p2" style="margin-top: 16px;">
+          He used his harmonica fortune to acquire this Mill and a famous jazz club on Paris's Île Saint-Louis. Alongside his friend, the owner of the legendary Maxim's, they planned to turn the Moulin into an inn for Paris artists. Their guests and friends included icons like Jacques Tati and Jean Cocteau. Borrah's daughter married Hollywood star lawyer <a href="https://en.wikipedia.org/wiki/Bert_Fields" target="_blank" rel="noopener">Bert Fields</a>, whose clients included Michael Jackson, Dustin Hoffman, Tom Cruise, and so many others. For 50 years, this was Bert's "Hollywood Hideaway" where he cooked, wrote, and entertained. His Hollywood friends would visit him here, far from the paparazzi.
         </p>
         <p data-i18n="about.history.p3" style="margin-top: 16px;">
           Today, the interiors reflect the impeccable eye of Bert's second wife, world-renowned art advisor Barbara Guggenheim. She has lovingly restored the Moulin and decorated it with 18th-century country antiques, including original Folies Bergère posters, fabric-upholstered walls, and a coffee table made from a Louis Vuitton trunk.
@@ -43,6 +55,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <img src="/images/bridge-garden.webp" alt="The millstream at Moulin à Rêves" loading="lazy" />
     </div>
     <div class="hero__overlay"></div>
+  </section>
+
+  <!-- History Gallery -->
+  <section class="section--tight">
+    <div class="container--narrow fade-in text-center">
+      <h2 data-i18n-html="about.gallery.heading">From the <span class="serif-italic">archives</span></h2>
+      <p data-i18n="about.gallery.lede" style="margin-top: 12px; max-width: 56ch; margin-left: auto; margin-right: auto;">A few glimpses of Borrah Minevitch and the era he came from. More family photos to come.</p>
+    </div>
+    <div class="container fade-in" style="margin-top: 36px;">
+      <div class="history-gallery">
+        {historyGallery.map((img) => (
+          <figure class="history-gallery__item">
+            <img src={img.src} alt={img.alt} loading="lazy" />
+            <figcaption>{img.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
   </section>
 
   <!-- FAQ -->
@@ -134,7 +164,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="hero__image">
       <img src="/images/evening-compound.webp" alt="Moulin à Rêves at golden hour" loading="lazy" />
     </div>
-    <div class="hero__overlay"></div>
     <div class="hero__content">
       <h2 class="hero__title" data-i18n="about.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Come and See</h2>
       <p class="hero__tagline" data-i18n="about.cta.text">Tell us your dates.</p>
@@ -183,6 +212,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .faq__a ul { margin: 0; padding-left: 18px; }
     .faq__a li { margin: 4px 0; }
     .faq__a a { color: var(--blue-primary, #3a5a8a); text-decoration: underline; }
+
+    .history-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      align-items: start;
+    }
+    .history-gallery__item { margin: 0; }
+    .history-gallery__item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #f5f3ee;
+    }
+    .history-gallery__item figcaption {
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
   </style>
 
 </BaseLayout>
