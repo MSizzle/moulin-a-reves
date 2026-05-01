@@ -104,7 +104,7 @@
     "fr": "Trois maisons. Un séjour inoubliable. À une heure de Paris."
   },
   "home.cta": {
-    "en": "Discover the Maisons",
+    "en": "Discover the Compound",
     "fr": "Découvrir les Maisons"
   },
   "home.intro.heading": {
@@ -3160,5 +3160,8 @@
   "getting.map.caption": {
     "en": "Méréville, France · One hour south of Paris",
     "fr": "Méréville, France · À une heure au sud de Paris"
+  },
+  "home.groups.heading": {
+    "en": "Host the group retreat of your dreams!"
   }
 }
