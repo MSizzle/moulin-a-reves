@@ -221,8 +221,9 @@ const groupTypes = [
   </section>
 
   <!-- Stats Bar -->
-  <section class="section" style="padding-top: 32px; padding-bottom: 32px;">
+  <section class="section" style="padding-top: 40px; padding-bottom: 32px;">
     <div class="container">
+      <p class="stats-bar__intro text-center" data-i18n="home.stats.intro">A private compound one hour from Paris.</p>
       <div class="stats-bar">
         <div class="stats-bar__item">
           <div class="stats-bar__number">3</div>
@@ -245,6 +246,13 @@ const groupTypes = [
   </section>
 
   <style>
+    .stats-bar__intro {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+    }
     .hero--lc { height: 88vh; min-height: 580px; align-items: center; padding-bottom: 0; }
     .hero--lc .hero__content { display: flex; flex-direction: column; align-items: center; }
     .hero__eyebrow {
