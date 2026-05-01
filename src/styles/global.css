@@ -43,9 +43,9 @@
   /* Spacing */
   --section-gap: 64px;
   --section-gap-mobile: 40px;
-  --content-max: 1400px;
-  --content-narrow: 720px;
-  --side-padding: 48px;
+  --content-max: 1680px;
+  --content-narrow: 820px;
+  --side-padding: 64px;
   --side-padding-tablet: 32px;
   --side-padding-mobile: 20px;
 
@@ -67,6 +67,13 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Scale the page up on wide displays — every rem-based value (typography,
+   nav, padding, gaps) grows proportionally so a 1920px or 2560px monitor
+   doesn't sit on a 1400px island of empty margin. */
+@media (min-width: 1600px) { html { font-size: 17px; } }
+@media (min-width: 1920px) { html { font-size: 18.5px; } }
+@media (min-width: 2400px) { html { font-size: 20px; } }
 
 body {
   font-family: var(--font-body);
@@ -103,7 +110,7 @@ h1, h2, h3, h4 {
 
 h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5.5vw, 5rem);
+  font-size: clamp(2.5rem, 5.5vw, 6.5rem);
   font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 1.05;
@@ -111,7 +118,7 @@ h1 {
 
 h2 {
   font-family: var(--font-serif);
-  font-size: clamp(1.625rem, 2.6vw, 2.25rem);
+  font-size: clamp(1.625rem, 2.6vw, 3rem);
   font-weight: 400;
   color: var(--ink);
   letter-spacing: -0.015em;
@@ -123,7 +130,7 @@ h2 {
 
 h3 {
   font-family: var(--font-serif);
-  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  font-size: clamp(1.125rem, 1.6vw, 1.875rem);
   font-weight: 500;
 }
 
@@ -965,7 +972,7 @@ img,
 
 .hero__title {
   font-family: var(--font-serif);
-  font-size: clamp(2.75rem, 6.2vw, 5.25rem);
+  font-size: clamp(2.75rem, 6.2vw, 8rem);
   font-weight: 400;
   color: white;
   margin-bottom: 24px;
@@ -1176,7 +1183,7 @@ img,
 }
 
 .split__body h2 {
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: clamp(2rem, 4vw, 4.5rem);
   line-height: 1.1;
   margin-bottom: 20px;
 }
