@@ -77,6 +77,7 @@ const sharedSpaces = [
 <BaseLayout title="Rent the Full Compound — Moulin à Rêves | 20 Guests Near Paris" description="Rent all three houses at Moulin à Rêves — 10 bedrooms, 7 baths, sleeps 20. Family reunions, retreats, weddings & celebrations near Paris, France.">
 
   <Fragment slot="schema">
+    <meta name="robots" content="noindex, nofollow" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "VacationRental",
@@ -178,29 +179,6 @@ const sharedSpaces = [
     }
   </style>
 
-  <!-- Stats Bar -->
-  <section class="section" style="padding-top: 32px; padding-bottom: 32px;">
-    <div class="container">
-      <div class="stats-bar">
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">3</div>
-          <div class="stats-bar__label" data-i18n="compound.stats.houses">Houses</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">10</div>
-          <div class="stats-bar__label" data-i18n="compound.stats.bedrooms">Bedrooms</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">7</div>
-          <div class="stats-bar__label" data-i18n="compound.stats.bathrooms">Bathrooms</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">20</div>
-          <div class="stats-bar__label" data-i18n="compound.stats.guests">Guests</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Introduction -->
   <section class="section--tight">
