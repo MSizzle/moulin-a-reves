@@ -37,6 +37,7 @@ export const translations: Record<string, Record<string, string>> = {
   'home.title': { en: 'Your Dream French Vacation Come True', fr: 'Moulin à Rêves' },
   'home.tagline': { en: 'Méréville · France', fr: 'Méréville · France' },
   'home.cta': { en: 'Discover the Maisons', fr: 'Découvrir les Maisons' },
+  'home.stats.intro': { en: 'A private compound one hour from Paris.', fr: 'Un domaine privé à une heure de Paris.' },
   'home.intro.heading': { en: 'Where the millstream meets your morning coffee', fr: 'Là où le bief rencontre votre café du matin' },
   'home.intro.text': {
     en: 'Moulin à Rêves is a compound of three stone houses gathered around a millstream in the French countryside, one hour south of Paris. Each home has its own character — blue shutters, garden views, and the quiet hum of water over stone — but together, they become something greater: a place where families reconnect, friends gather, and mornings stretch long.',

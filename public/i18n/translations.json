@@ -107,6 +107,10 @@
     "en": "Discover the Compound",
     "fr": "Découvrir les Maisons"
   },
+  "home.stats.intro": {
+    "en": "A private compound one hour from Paris.",
+    "fr": "Un domaine privé à une heure de Paris."
+  },
   "home.intro.heading": {
     "en": "A private compound, one hour from Paris.",
     "fr": "Là où le bief rencontre votre café du matin"
