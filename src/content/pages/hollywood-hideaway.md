@@ -3,8 +3,8 @@
 
 title: "The Hollywood Hideaway"
 tagline: "A 60-year sanctuary in the French countryside — sleeps 7."
-heroImage: "/images/homes/hh-exterior.webp"
-eyebrow: "The Hollywood Hideaway"
+heroImage: "/images/homes/hh-patio.webp"
+eyebrow: ""
 
 # Stats
 bedrooms: 3

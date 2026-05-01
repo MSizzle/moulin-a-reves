@@ -17,7 +17,7 @@ const bedrooms = [
     id: 'looking-glass',
     title: 'Through the Looking Glass',
     summary: 'King bedroom on the ground floor — en-suite bath with tub and shower.',
-    longDescription: 'The largest bedroom. The Secret Garden suite shares its bath through a connecting door.',
+    longDescription: 'The largest bedroom.',
     details: [
       { label: 'Bed', value: 'King' },
       { label: 'Floor', value: 'Ground' },
@@ -28,21 +28,8 @@ const bedrooms = [
       { src: '/images/homes/hh-looking-glass-2.webp', alt: 'Through the Looking Glass bedroom, alternate view' },
       { src: '/images/homes/hh-looking-glass-bath.webp', alt: 'Through the Looking Glass bathroom with hanging robe' },
       { src: '/images/homes/hh-looking-glass-bath-2.webp', alt: 'Through the Looking Glass bathroom, alternate view' },
-    ],
-  },
-  {
-    id: 'secret-garden',
-    title: 'The Secret Garden',
-    summary: 'Adjacent suite with a pull-out sofa for one.',
-    longDescription: 'A bonus space attached to the master.',
-    details: [
-      { label: 'Bed', value: '1 Pull-out Sofa' },
-      { label: 'Floor', value: 'Ground' },
-      { label: 'Bathroom', value: 'Shared via Through the Looking Glass' },
-    ],
-    photos: [
-      { src: '/images/homes/hh-secret-garden.webp', alt: 'The Secret Garden suite' },
-      { src: '/images/homes/hh-secret-garden-sitting.webp', alt: 'The Secret Garden sitting room with floral wallpaper and fireplace' },
+      { src: '/images/homes/hh-secret-garden.webp', alt: 'Adjoining sitting nook off Through the Looking Glass' },
+      { src: '/images/homes/hh-secret-garden-sitting.webp', alt: 'Adjoining sitting room with floral wallpaper and fireplace' },
     ],
   },
   {
@@ -59,6 +46,8 @@ const bedrooms = [
       { src: '/images/homes/hh-american-in-paris-window.webp', alt: 'An American in Paris — window view onto the gardens' },
       { src: '/images/homes/hh-american-in-paris-bath.webp', alt: 'An American in Paris bathroom' },
       { src: '/images/homes/hh-american-in-paris-bath-2.webp', alt: 'An American in Paris bathroom, alternate view' },
+      { src: '/images/homes/hh-secret-garden.webp', alt: 'Adjoining sitting nook with floral wallpaper' },
+      { src: '/images/homes/hh-secret-garden-sitting.webp', alt: 'Adjoining sitting room with floral wallpaper and fireplace' },
     ],
   },
   {
@@ -205,7 +194,6 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow" data-i18n="hideaway.hero.eyebrow">{cms.eyebrow}</span>
       <h1 class="hero__title" data-i18n="hideaway.hero.title">{cms.title}</h1>
       <p class="hero__tagline" data-i18n="hideaway.hero.tagline">{cms.tagline}</p>
     </div>
@@ -231,8 +219,8 @@ const amenities = [
     <div class="container">
       <div class="stats-bar">
         <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.bedrooms}+1</div>
-          <div class="stats-bar__label" data-i18n="hideaway.stats.bedroomsSuite">Bedrooms + Suite</div>
+          <div class="stats-bar__number">{cms.bedrooms}</div>
+          <div class="stats-bar__label" data-i18n="hideaway.stats.bedrooms">Bedrooms</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">{cms.bathrooms}</div>
@@ -272,7 +260,7 @@ const amenities = [
   <RoomShowcase
     eyebrow=""
     heading={`Where you'll <span class="serif-italic">sleep</span>`}
-    intro="3 bedrooms + 1 suite."
+    intro="3 bedrooms."
     rooms={bedrooms}
     background="stone"
     i18nKey="hideaway.bedrooms"
