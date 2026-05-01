@@ -403,7 +403,7 @@ const sharedSpaces = [
         </div>
 
         <div class="text-center">
-          <button type="submit" class="btn btn--primary" data-i18n="compound.form.submit">Start Your Conversation</button>
+          <button type="submit" class="btn btn--primary" data-i18n="compound.form.submit">Bonjour!</button>
         </div>
       </form>
     </div>
@@ -437,12 +437,12 @@ const sharedSpaces = [
         window.location.href = '/success/';
       } else {
         btn.disabled = false;
-        btn.textContent = 'Start Your Conversation';
+        btn.textContent = 'Bonjour!';
         alert('Something went wrong. Please try again or email us directly.');
       }
     } catch {
       btn.disabled = false;
-      btn.textContent = 'Start Your Conversation';
+      btn.textContent = 'Bonjour!';
       alert('Something went wrong. Please try again or email us directly.');
     }
   });
