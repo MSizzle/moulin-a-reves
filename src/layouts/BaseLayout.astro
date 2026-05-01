@@ -545,6 +545,20 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         opacity: 1;
         visibility: visible;
       }
+      .lightbox--cream { background: var(--bg-cream); }
+      .lightbox--cream .lightbox__image { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18); }
+      .lightbox--cream .lightbox__caption { color: var(--ink-soft); }
+      .lightbox--cream .lightbox__counter { color: var(--ink-mute); }
+      .lightbox--cream .lightbox__close,
+      .lightbox--cream .lightbox__nav {
+        background: rgba(0, 0, 0, 0.04);
+        color: var(--ink);
+        border-color: rgba(0, 0, 0, 0.12);
+      }
+      .lightbox--cream .lightbox__close:hover,
+      .lightbox--cream .lightbox__nav:hover {
+        background: rgba(0, 0, 0, 0.08);
+      }
       .lightbox__stage {
         position: relative;
         width: min(92vw, 1400px);
@@ -710,17 +724,23 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           }
         }
 
-        function open(items, startIndex) {
+        function open(items, startIndex, opts) {
           if (!items || !items.length) return;
           current = items;
           index = startIndex || 0;
           render();
+          if (opts && opts.cream) {
+            lb.classList.add('lightbox--cream');
+          } else {
+            lb.classList.remove('lightbox--cream');
+          }
           lb.classList.add('is-open');
           lb.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
         }
         function close() {
           lb.classList.remove('is-open');
+          lb.classList.remove('lightbox--cream');
           lb.setAttribute('aria-hidden', 'true');
           document.body.style.overflow = '';
         }
@@ -741,7 +761,8 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
                   if (typeof it === 'string') return { src: it, alt: '', caption: '' };
                   return it;
                 });
-                open(items, 0);
+                var cream = target.classList && target.classList.contains('compound-tile--clickable');
+                open(items, 0, { cream: cream });
               } catch (_) {}
               return;
             }
