@@ -66,6 +66,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 body {
@@ -74,6 +75,8 @@ body {
   line-height: 1.7;
   color: var(--text-primary);
   background-color: var(--bg-cream);
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 img {
