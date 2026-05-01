@@ -1,277 +1,325 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Méréville gallery — placeholders. Photos to be supplied.
+const merevilleGallery = [
+  { caption: 'Watercress beds at the gates' },
+  { caption: 'Le Mérévillois village square' },
+  { caption: 'The mill and the millstream' },
+  { caption: 'Sunday cycling on the country lanes' },
+];
+
+// "Nearby" — within ~30 minutes of the compound.
+const nearby = [
+  {
+    href: 'https://en.wikipedia.org/wiki/Barbizon,_Seine-et-Marne',
+    image: '/images/explore/barbizon.webp',
+    alt: "Barbizon painters' village street with stone houses, ten minutes from Moulin à Rêves",
+    title: 'Barbizon Village',
+    drive: '10 min',
+    desc: "The painters' village where Millet, Rousseau, and Corot came to capture the light. Galleries, ateliers, and a single main street that still feels like the 19th century.",
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Forest_of_Fontainebleau',
+    image: '/images/explore/forest.webp',
+    alt: 'Fontainebleau Forest ancient oak and sandstone boulders near Moulin à Rêves',
+    title: 'Fontainebleau Forest',
+    drive: '15 min',
+    desc: '25,000 hectares of ancient oak, beech, and sandstone boulders shaped by wind and time. Walk, cycle, or sit in a clearing and listen.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Palace_of_Fontainebleau',
+    image: '/images/explore/chateau.webp',
+    alt: 'Château de Fontainebleau royal palace and gardens, twenty minutes from Moulin à Rêves',
+    title: 'Château de Fontainebleau',
+    drive: '20 min',
+    desc: "Eight centuries of French royalty, from the medieval keep to Napoleon's apartments. Quieter than Versailles — and arguably more beautiful.",
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Gorges_de_Franchard',
+    image: '/images/explore/gorges.webp',
+    alt: 'Gorges de Franchard hiking trail through sandstone and pine in Fontainebleau Forest',
+    title: 'Gorges de Franchard',
+    drive: '20 min',
+    desc: 'Dramatic sandstone gorges with marked hiking trails through pine and heather. The most popular walking destination in the forest.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Milly-la-For%C3%AAt',
+    image: '/images/explore/markets.webp',
+    alt: 'Halle de Milly-la-Forêt 15th-century medieval timber market hall, ten to twenty minutes from Moulin à Rêves',
+    title: 'Milly-la-Forêt',
+    drive: '15 min',
+    desc: 'A medieval town with a 15th-century timber market hall. The Saturday morning marché is the closest and the best — goat cheese, fresh bread, seasonal vegetables, flowers.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Le_Cyclop',
+    image: '/images/explore/horseback.webp',
+    alt: 'Forest near Milly-la-Forêt where Niki de Saint Phalle and Jean Tinguely built Le Cyclop',
+    title: 'Le Cyclop',
+    drive: '20 min',
+    desc: 'The 22-metre mirror-clad sculpture Niki de Saint Phalle and Jean Tinguely built in secret in the woods near Milly-la-Forêt. Open to the public; book ahead.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Moret-Loing-et-Orvanne',
+    image: '/images/explore/moret-day.webp',
+    alt: 'Moret-sur-Loing medieval stone bridge and river, twenty-five minutes from Moulin à Rêves',
+    title: 'Moret-sur-Loing',
+    drive: '25 min',
+    desc: 'A medieval town on the river where Sisley painted some of his finest work. Stone bridges, timbered houses, and a bakery that makes sucre d\'orge the old way.',
+  },
+  {
+    href: null,
+    image: '/images/explore/bouldering.webp',
+    alt: 'Climber bouldering on a Fontainebleau Forest sandstone block',
+    title: 'Bouldering',
+    drive: '15 min',
+    desc: "Fontainebleau is one of the world's great bouldering destinations, with circuits graded for every level — beginners, children, and seasoned climbers alike.",
+  },
+  {
+    href: null,
+    image: '/images/explore/cycling.webp',
+    alt: 'Cycling through the French countryside lanes near Barbizon and Moulin à Rêves',
+    title: 'Cycling & Walking',
+    drive: 'From the door',
+    desc: 'Quiet lanes connect the villages, and the forest is laced with paths. We can arrange bike rentals delivered to the compound, with route suggestions for every level.',
+  },
+];
+
+// "Day Trips & Things To Do" — further afield (~1 h+).
+const dayTrips = [
+  {
+    href: 'https://en.wikipedia.org/wiki/Paris',
+    image: '/images/explore/paris.webp',
+    alt: 'Paris skyline with the Eiffel Tower, one hour from Moulin à Rêves',
+    title: 'Paris',
+    drive: '1 h by car · 1 h via Étampes train',
+    desc: 'The Louvre, the Marais, the Musée d\'Orsay, a boat on the Seine — then back to the countryside in time for dinner in the garden. Trains run from Étampes (15 min away) every half hour.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Vaux-le-Vicomte',
+    image: '/images/explore/vaux.webp',
+    alt: 'Château de Vaux-le-Vicomte baroque facade and Le Nôtre formal gardens',
+    title: 'Vaux-le-Vicomte',
+    drive: '1 h',
+    desc: 'The 17th-century baroque château that inspired Versailles, with Le Nôtre gardens you can walk for hours. Candlelit Saturday evenings in summer.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Palace_of_Versailles',
+    image: '/images/explore/chateau.webp',
+    alt: 'Palace of Versailles seen from the gardens',
+    title: 'Versailles',
+    drive: '1 h 10',
+    desc: "Louis XIV's stage set for absolute monarchy. The Hall of Mirrors, Marie-Antoinette's hamlet, and the Grand Canal where you can hire a rowing boat in summer.",
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Chartres_Cathedral',
+    image: '/images/explore/chartres.webp',
+    alt: 'Notre-Dame de Chartres UNESCO Gothic cathedral, a day trip from Moulin à Rêves',
+    title: 'Chartres Cathedral',
+    drive: '1 h 15',
+    desc: 'UNESCO-listed Gothic cathedral renowned for its 12th-century stained glass — the famous Chartres blue — and the labyrinth on the nave floor.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Orl%C3%A9ans',
+    image: '/images/explore/orleans.webp',
+    alt: 'The Loire river quays at Orléans with the medieval city skyline and Sainte-Croix Cathedral',
+    title: 'Orléans',
+    drive: '1 h 10',
+    desc: 'The medieval city of Joan of Arc on the Loire — half-timbered houses, a Gothic cathedral, and good lunch on the quays where she turned the tide of the Hundred Years\' War.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Chambord',
+    image: '/images/explore/chambord.webp',
+    alt: 'Château de Chambord Renaissance facade reflected in the canal, in the Loire Valley',
+    title: 'Chambord & the Loire',
+    drive: '2 h',
+    desc: "The largest Renaissance château in the Loire — Leonardo da Vinci's double-helix staircase and a forest the size of Paris. Pair it with Chenonceau, Blois, Amboise, or Da Vinci's final home at Le Clos Lucé. Worth a full day or an overnight.",
+  },
+];
 ---
 
-<BaseLayout title="Things to Do Near Fontainebleau Forest — Moulin à Rêves Guide" description="Explore Fontainebleau Forest, Barbizon village, châteaux, local markets, and Paris — all within easy reach of Moulin à Rêves in Méréville, France.">
+<BaseLayout title="Things to Do Near Fontainebleau Forest — Moulin à Rêves Guide" description="Explore Méréville, Fontainebleau Forest, Barbizon village, châteaux, local markets, and Paris — all within easy reach of Moulin à Rêves in Méréville, France.">
 
   <!-- Hero -->
   <section class="hero" style="height: 60vh;">
     <div class="hero__image">
       <img src="/images/explore/moret-bridge.webp" alt="Stone bridge over the Loing river in Moret-sur-Loing, twenty-five minutes from Moulin à Rêves" />
     </div>
-    <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow">Moulin à Rêves</span>
       <h1 class="hero__title" data-i18n="explore.hero.title">Things to Do</h1>
-      <p class="hero__tagline" data-i18n="explore.hero.tagline">Forests, villages, châteaux, and Paris. All within reach.</p>
+      <p class="hero__tagline" data-i18n="explore.hero.tagline">Châteaux, Villages, Forests and Paris — all an hour away.</p>
     </div>
   </section>
 
-  <style>
-    .hero__eyebrow {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.96);
-      margin-bottom: 24px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
-      padding-left: 0.28em;
-    }
-  </style>
+  <!-- A. Discover Méréville -->
+  <section class="section">
+    <div class="container--narrow fade-in text-center">
+      <h2>Discover <span class="serif-italic">Méréville</span></h2>
+      <p class="prose-lead" style="margin-top: 16px;">
+        Moulin à Rêves sits in <a href="https://en.wikipedia.org/wiki/M%C3%A9r%C3%A9ville" target="_blank" rel="noopener">Le Mérévillois</a> — the watercress capital of France. Emerald watercress beds run right past the gates. An easy half-hour loop from your door takes you along the millstream and through the fields. We keep a small fleet of bikes (two of them electric) so you can ride out into the lanes, the windmills, and the medieval villages beyond.
+      </p>
+      <p style="margin-top: 16px;">
+        And Étampes — fifteen minutes by car — has a train to Paris every half hour. Go for the museums, be home for dinner in the garden.
+      </p>
+    </div>
 
-  <!-- Méréville: Watercress Capital -->
-  <section class="section section--stone">
-    <div class="container--narrow fade-in">
-      <h2 data-i18n="explore.mereville.heading">Méréville: The Watercress Capital of France</h2>
-      <div style="margin-top: 24px;">
-        <p data-i18n="explore.mereville.p1">
-          Only one hour from Paris, Moulin à Rêves is located in Le Merevillios, the watercress capital of France. Stroll by the emerald watercress beds right outside the gates. Enjoy an easy half hour loop walk from your door, past the countless fields of watercress beds. We also provide a fleet of 6 mountain bikes, including 2 electric bikes, so you can discover the miles of fertile farmland, windmills and small medieval towns.
-        </p>
-        <p data-i18n="explore.mereville.p2" style="margin-top: 16px;">
-          Day trips nearby: There are trains to Paris every half hour from Etampes which is a 15 minute drive away. Go for the day and take in the museums and be home for bed!
-        </p>
-        <p data-i18n="explore.mereville.p3" style="margin-top: 16px;">
-          Less than one hour away discover these famous towns:
-        </p>
-        <ul data-i18n-html="explore.mereville.list" style="margin-top: 12px; padding-left: 20px;">
-          <li><strong>Orleans</strong> - Joan of Arc's home where she turned the tide of the 100 year's war</li>
-          <li style="margin-top: 8px;"><strong>Chartres</strong> - the marvelous cathedral and middle age city</li>
-          <li style="margin-top: 8px;"><strong>Fontainebleau</strong> - Napoleon's favorite chateau from where he departed to Elba,</li>
-          <li style="margin-top: 8px;"><strong>Barbizon</strong>, the home of plein air painting and the Fontainebleau forest for rockclimbing</li>
-          <li style="margin-top: 8px;"><strong>Vaux le Vicompte</strong> - the sumptuous chateau that inspired Louis 14 to build Versailles</li>
-          <li style="margin-top: 8px;"><strong>Milley La Forret</strong> - a charming medieval town and home to Nikki de Saint Phalle and Jean Tingley's magical Cyclops art installation</li>
-        </ul>
-        <p data-i18n="explore.mereville.p4" style="margin-top: 16px;">
-          The Loire Valley Chateaux are just 90 minutes away -- discover Blois, Chambourg, Chenancaugh and Leonado di Vinci's final home, Clois de Pray.
-        </p>
+    <div class="container fade-in" style="margin-top: 40px;">
+      <div class="mereville-gallery">
+        {merevilleGallery.map((item) => (
+          <figure class="mereville-gallery__item">
+            <div class="mereville-gallery__placeholder" aria-label={item.caption}>
+              <span>Photo to come</span>
+            </div>
+            <figcaption>{item.caption}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Cultural -->
+  <!-- B. Nearby -->
   <section class="section section--stone">
     <div class="container">
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h2 data-i18n="explore.cultural.heading">Cultural</h2>
-        <p data-i18n="explore.cultural.subheading" style="margin-top: 8px;">Art, history, and the kind of villages that make you slow down.</p>
+      <div class="fade-in" style="margin-bottom: 36px; text-align: center;">
+        <h2><span class="serif-italic">Nearby</span></h2>
+        <p style="margin-top: 12px; max-width: 56ch; margin-left: auto; margin-right: auto;">Towns, forest trails, and markets within roughly half an hour. Drive times from the gate.</p>
       </div>
       <div class="compound-grid compound-grid--3">
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/barbizon.webp" alt="Barbizon painters' village street with stone houses and lavender near Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.cultural.barbizon.title">Barbizon Village</h3>
-            <p class="compound-tile__summary" data-i18n="explore.cultural.barbizon.desc">The painters' village where Millet, Rousseau, and Corot came to capture the light. Galleries, ateliers, and a single main street that still feels like the 19th century. Ten minutes by car.</p>
-          </div>
-        </div>
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/chateau.webp" alt="Chateau de Fontainebleau royal palace and gardens, 20 minutes from Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.cultural.chateau.title">Chateau de Fontainebleau</h3>
-            <p class="compound-tile__summary" data-i18n="explore.cultural.chateau.desc">Eight centuries of French royalty, from the medieval keep to Napoleon's apartments. Quieter than Versailles, and arguably more beautiful. Twenty minutes.</p>
-          </div>
-        </div>
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/moret-day.webp" alt="Moret-sur-Loing medieval stone bridge and river, a day trip from Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.cultural.moret.title">Moret-sur-Loing</h3>
-            <p class="compound-tile__summary" data-i18n="explore.cultural.moret.desc">A medieval town on the river where Sisley painted some of his finest work. Stone bridges, timbered houses, and a bakery that makes sucre d'orge the old way. Twenty-five minutes.</p>
-          </div>
-        </div>
+        {nearby.map((item) => (
+          item.href ? (
+            <a class="compound-tile fade-in" href={item.href} target="_blank" rel="noopener noreferrer">
+              <div class="compound-tile__media">
+                <img src={item.image} alt={item.alt} loading="lazy" />
+              </div>
+              <div class="compound-tile__body">
+                <h3 class="compound-tile__title">{item.title} <span class="drive-time">· {item.drive}</span></h3>
+                <p class="compound-tile__summary">{item.desc}</p>
+              </div>
+            </a>
+          ) : (
+            <div class="compound-tile fade-in">
+              <div class="compound-tile__media">
+                <img src={item.image} alt={item.alt} loading="lazy" />
+              </div>
+              <div class="compound-tile__body">
+                <h3 class="compound-tile__title">{item.title} <span class="drive-time">· {item.drive}</span></h3>
+                <p class="compound-tile__summary">{item.desc}</p>
+              </div>
+            </div>
+          )
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Nature -->
+  <!-- Food and Markets -->
   <section class="section">
     <div class="container">
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h2 data-i18n="explore.nature.heading">Nature</h2>
-        <p data-i18n="explore.nature.subheading" style="margin-top: 8px;">Forests, rivers, and the kind of quiet that restores.</p>
+      <div class="fade-in" style="margin-bottom: 36px; text-align: center;">
+        <h2>Food and <span class="serif-italic">Markets</span></h2>
+        <p style="margin-top: 12px; max-width: 56ch; margin-left: auto; margin-right: auto;">The taste of the region — close, simple, very good.</p>
       </div>
       <div class="compound-grid compound-grid--3">
-        <div class="compound-tile fade-in">
+        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Milly-la-For%C3%AAt" target="_blank" rel="noopener noreferrer">
           <div class="compound-tile__media">
-            <img src="/images/explore/forest.webp" alt="Fontainebleau Forest ancient oak and sandstone boulders near Moulin à Rêves, Barbizon" loading="lazy" />
+            <img src="/images/explore/markets.webp" alt="Halle de Milly-la-Forêt 15th-century medieval timber market hall, near Moulin à Rêves" loading="lazy" />
           </div>
           <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.nature.forest.title">Fontainebleau Forest</h3>
-            <p class="compound-tile__summary" data-i18n="explore.nature.forest.desc">25,000 hectares of ancient oak, beech, and sandstone boulders shaped by wind and time. Walking, cycling, bouldering, or simply sitting in a clearing and listening. Fifteen minutes to the main trails.</p>
+            <h3 class="compound-tile__title">Saturday Market — Milly-la-Forêt <span class="drive-time">· 15 min</span></h3>
+            <p class="compound-tile__summary">The closest market and the best. Goat cheese, sourdough, seasonal vegetables, and flowers under a 15th-century timber hall. Saturday mornings.</p>
+          </div>
+        </a>
+        <div class="compound-tile fade-in">
+          <div class="compound-tile__media">
+            <img src="/images/gazebo-dining.webp" alt="Outdoor dining at a French countryside restaurant near Fontainebleau" loading="lazy" />
+          </div>
+          <div class="compound-tile__body">
+            <h3 class="compound-tile__title">Restaurants <span class="drive-time">· 10–25 min</span></h3>
+            <p class="compound-tile__summary">From the auberge in Barbizon to the brasseries of Fontainebleau, you'll eat well without trying hard. We keep a list of current favourites and can book for you.</p>
           </div>
         </div>
         <div class="compound-tile fade-in">
           <div class="compound-tile__media">
-            <img src="/images/explore/gorges.webp" alt="Gorges de Franchard hiking trail through sandstone and pine in Fontainebleau Forest" loading="lazy" />
+            <img src="/images/explore/wine.webp" alt="Wine tasting in a French village near Moulin à Rêves" loading="lazy" />
           </div>
           <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.nature.gorges.title">Gorges de Franchard</h3>
-            <p class="compound-tile__summary" data-i18n="explore.nature.gorges.desc">Dramatic sandstone gorges with marked hiking trails through pine and heather. The most popular walking destination in the forest, and worth every step. Twenty minutes.</p>
-          </div>
-        </div>
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/cycling.webp" alt="Cycling through the French countryside lanes near Barbizon and Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.nature.cycling.title">Cycling & Walking</h3>
-            <p class="compound-tile__summary" data-i18n="explore.nature.cycling.desc">Quiet lanes connect the villages, and the forest is laced with paths. We can arrange bike rentals delivered to the compound, with route suggestions for every level.</p>
+            <h3 class="compound-tile__title">Tastings & Tables <span class="drive-time">· On request</span></h3>
+            <p class="compound-tile__summary">Local vignerons, traiteurs, and chefs come to the compound. Catering pages tell you more — or just tell us what you have in mind.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Food & Wine -->
+  <!-- C. Day Trips & Things To Do -->
   <section class="section section--stone">
     <div class="container">
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h2 data-i18n="explore.food.heading">Food & Wine</h2>
-        <p data-i18n="explore.food.subheading" style="margin-top: 8px;">Markets, restaurants, and the taste of the region.</p>
+      <div class="fade-in" style="margin-bottom: 36px; text-align: center;">
+        <h2>Day Trips &amp; <span class="serif-italic">Things To Do</span></h2>
+        <p style="margin-top: 12px; max-width: 56ch; margin-left: auto; margin-right: auto;">Some of France's great châteaux, cathedrals, and cities — close enough to make a day of it. Drive times from the gate.</p>
       </div>
       <div class="compound-grid compound-grid--3">
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/markets.webp" alt="Halle de Milly-la-Forêt 15th-century medieval timber market hall, ten minutes from Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.food.markets.title">Local Markets</h3>
-            <p class="compound-tile__summary" data-i18n="explore.food.markets.desc">The Saturday marche in Milly-la-Foret is the closest and the best — goat cheese, fresh bread, seasonal vegetables, and flowers. Fontainebleau has a market on Tuesday, Friday, and Sunday mornings. Ten to twenty minutes.</p>
-          </div>
-        </div>
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/gazebo-dining.webp" alt="Outdoor dining at a French countryside restaurant near Fontainebleau and Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.food.restaurants.title">Restaurants</h3>
-            <p class="compound-tile__summary" data-i18n="explore.food.restaurants.desc">From the auberge in Barbizon to the brasseries of Fontainebleau, you'll eat well without trying hard. We keep a list of current favourites and can book for you.</p>
-          </div>
-        </div>
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/wine.webp" alt="Wine tasting in a French village near Moulin à Rêves, Seine-et-Marne" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.food.wine.title">Wine & Tastings</h3>
-            <p class="compound-tile__summary" data-i18n="explore.food.wine.desc">The Seine-et-Marne is not Burgundy, but the local vignerons are producing honest, interesting wines. We can arrange a tasting at the compound or a visit to a nearby domaine.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Family -->
-  <section class="section">
-    <div class="container">
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h2 data-i18n="explore.family.heading">Family</h2>
-        <p data-i18n="explore.family.subheading" style="margin-top: 8px;">Adventures for small people (and the adults who love them).</p>
-      </div>
-      <div class="compound-grid compound-grid--3">
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/bouldering.webp" alt="Climber bouldering on a Fontainebleau Forest sandstone block, fifteen minutes from Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.family.bouldering.title">Bouldering</h3>
-            <p class="compound-tile__summary" data-i18n="explore.family.bouldering.desc">Fontainebleau is one of the world's great bouldering destinations, with routes graded for every level — including beginners and children. Fifteen minutes to the circuits.</p>
-          </div>
-        </div>
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/horseback.webp" alt="Horseback riders on a forest trail near Fontainebleau, France" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.family.horse.title">Horseback Riding</h3>
-            <p class="compound-tile__summary" data-i18n="explore.family.horse.desc">Several stables near the forest offer rides through the trails — from introductory lessons for children to longer hacks for experienced riders. We'll arrange it.</p>
-          </div>
-        </div>
-        <div class="compound-tile fade-in">
-          <div class="compound-tile__media">
-            <img src="/images/explore/paris.webp" alt="Paris skyline with the Eiffel Tower, one hour from Moulin à Rêves by train" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.family.paris.title">Paris</h3>
-            <p class="compound-tile__summary" data-i18n="explore.family.paris.desc">An hour by car or train from Fontainebleau-Avon station. The Louvre, the Marais, a boat on the Seine — then back to the countryside in time for dinner in the garden.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Day Trips -->
-  <section class="section section--stone">
-    <div class="container">
-      <div class="fade-in" style="margin-bottom: 48px;">
-        <h2 data-i18n="explore.daytrips.heading">Day Trips Worth the Drive</h2>
-        <p data-i18n="explore.daytrips.subheading" style="margin-top: 8px;">Some of France's great châteaux and cathedrals — close enough to make a day of it.</p>
-      </div>
-      <div class="compound-grid compound-grid--3">
-        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Chartres_Cathedral" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media">
-            <img src="/images/explore/chartres.webp" alt="Notre-Dame de Chartres UNESCO Gothic cathedral, a day trip from Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.daytrips.chartres.title">Chartres Cathedral</h3>
-            <p class="compound-tile__summary" data-i18n="explore.daytrips.chartres.desc">UNESCO-listed Gothic cathedral renowned for its 12th-century stained glass and labyrinth. About an hour and a quarter from the compound.</p>
-          </div>
-        </a>
-        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Vaux-le-Vicomte" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media">
-            <img src="/images/explore/vaux.webp" alt="Château de Vaux-le-Vicomte baroque facade and Le Nôtre formal gardens, a day trip from Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.daytrips.vaux.title">Vaux-le-Vicomte</h3>
-            <p class="compound-tile__summary" data-i18n="explore.daytrips.vaux.desc">The 17th-century baroque château that inspired Versailles, with Le Nôtre gardens you can walk for hours. About an hour east.</p>
-          </div>
-        </a>
-        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Ch%C3%A2teau_de_Chambord" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media">
-            <img src="/images/explore/chambord.webp" alt="Château de Chambord Renaissance facade reflected in the canal, a day trip from Moulin à Rêves to the Loire Valley" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.daytrips.chambord.title">Chambord & the Loire</h3>
-            <p class="compound-tile__summary" data-i18n="explore.daytrips.chambord.desc">The largest Renaissance château in the Loire Valley — Leonardo da Vinci's double-helix staircase and a forest the size of Paris. Around two hours; well worth a full day or an overnight.</p>
-          </div>
-        </a>
-        <a class="compound-tile fade-in" href="https://en.wikipedia.org/wiki/Orl%C3%A9ans" target="_blank" rel="noopener noreferrer">
-          <div class="compound-tile__media">
-            <img src="/images/explore/orleans.webp" alt="The Loire river quays at Orléans with the medieval city skyline and Sainte-Croix Cathedral" loading="lazy" />
-          </div>
-          <div class="compound-tile__body">
-            <h3 class="compound-tile__title" data-i18n="explore.daytrips.orleans.title">Orléans</h3>
-            <p class="compound-tile__summary" data-i18n="explore.daytrips.orleans.desc">The medieval city of Joan of Arc on the Loire river — half-timbered houses, a Gothic cathedral, and good lunch on the quays. Just over an hour by car.</p>
-          </div>
-        </a>
+        {dayTrips.map((item) => (
+          <a class="compound-tile fade-in" href={item.href} target="_blank" rel="noopener noreferrer">
+            <div class="compound-tile__media">
+              <img src={item.image} alt={item.alt} loading="lazy" />
+            </div>
+            <div class="compound-tile__body">
+              <h3 class="compound-tile__title">{item.title} <span class="drive-time">· {item.drive}</span></h3>
+              <p class="compound-tile__summary">{item.desc}</p>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section section--stone text-center">
+  <section class="section text-center">
     <div class="container--narrow fade-in">
       <h2 data-i18n="explore.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Need Suggestions?</h2>
       <p data-i18n="explore.cta.text" style="margin-top: 14px; max-width: 56ch; margin-left: auto; margin-right: auto;">We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.</p>
       <a href="/contact/" class="btn btn--primary" data-i18n="explore.cta.button" style="margin-top: 24px;">Start Your Conversation</a>
     </div>
   </section>
+
+  <style>
+    .mereville-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .mereville-gallery__item { margin: 0; }
+    .mereville-gallery__placeholder {
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, #efeae0 0%, #e6dfd2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      color: rgba(60, 50, 40, 0.55);
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .mereville-gallery__item figcaption {
+      margin-top: 10px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    .drive-time {
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+  </style>
 
 </BaseLayout>

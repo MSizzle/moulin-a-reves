@@ -1,5 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoCarousel from '../components/PhotoCarousel.astro';
+
+const massageGallery = [
+  { src: '/images/wellness-massage-bridge.webp', alt: 'Massage table by the millstream beneath the painted Giverny-style bridge' },
+  { src: '/images/wellness-massage-willow.webp', alt: 'Massage table beneath the weeping willow, bridge in the distance' },
+  { src: '/images/wellness-massage-streamside.webp', alt: 'Massage table beside the canal, the Mill House in the background' },
+  { src: '/images/wellness-massage-mill-lawn.webp', alt: 'Massage table on the lawn facing the blue-shuttered Mill House' },
+  { src: '/images/wellness-massage-garden.webp', alt: 'Massage table on the lawn with espaliered fruit trees and figs' },
+];
 ---
 
 <BaseLayout title="Wellness Recommendations — Moulin à Rêves" description="Trusted local yoga teachers, massage therapists, and beauty practitioners near Moulin à Rêves. We share contacts; you book directly.">
@@ -9,7 +18,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="hero__image">
       <img src="/images/wellness-hero.webp" alt="Garden chaises on the lawn at Moulin à Rêves" />
     </div>
-    <div class="hero__overlay"></div>
     <div class="hero__content">
       <h1 class="hero__title" data-i18n="wellness.hero.title">Wellness</h1>
       <p class="hero__tagline" data-i18n="wellness.hero.tagline">Local practitioners we trust. We share contacts; you book directly.</p>
@@ -51,9 +59,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
       <div class="split__image">
-        <img src="/images/wellness-massage.webp" alt="A quiet corner at Moulin à Rêves" loading="lazy" />
+        <img src="/images/wellness-massage-bridge.webp" alt="Massage table set up by the millstream beneath the painted Giverny-style bridge" loading="lazy" />
       </div>
     </div>
+    <PhotoCarousel images={massageGallery} />
   </section>
 
   <!-- Beauty -->
@@ -76,7 +85,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="hero__image">
       <img src="/images/evening-compound.webp" alt="Lawn at dusk at Moulin à Rêves" loading="lazy" />
     </div>
-    <div class="hero__overlay"></div>
     <div class="hero__content">
       <h2 class="hero__title" data-i18n="wellness.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Need contacts?</h2>
       <p class="hero__tagline" data-i18n="wellness.cta.text">Tell us what you would like and we will share trusted local practitioners.</p>
