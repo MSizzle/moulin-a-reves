@@ -1,5 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoCarousel from '../components/PhotoCarousel.astro';
+
+const massageGallery = [
+  { src: '/images/wellness-massage-bridge.webp', alt: 'Massage table by the millstream beneath the painted Giverny-style bridge' },
+  { src: '/images/wellness-massage-willow.webp', alt: 'Massage table beneath the weeping willow, bridge in the distance' },
+  { src: '/images/wellness-massage-streamside.webp', alt: 'Massage table beside the canal, the Mill House in the background' },
+  { src: '/images/wellness-massage-mill-lawn.webp', alt: 'Massage table on the lawn facing the blue-shuttered Mill House' },
+  { src: '/images/wellness-massage-garden.webp', alt: 'Massage table on the lawn with espaliered fruit trees and figs' },
+];
 ---
 
 <BaseLayout title="Wellness Recommendations — Moulin à Rêves" description="Trusted local yoga teachers, massage therapists, and beauty practitioners near Moulin à Rêves. We share contacts; you book directly.">
@@ -51,9 +60,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
       <div class="split__image">
-        <img src="/images/wellness-massage.webp" alt="A quiet corner at Moulin à Rêves" loading="lazy" />
+        <img src="/images/wellness-massage-bridge.webp" alt="Massage table set up by the millstream beneath the painted Giverny-style bridge" loading="lazy" />
       </div>
     </div>
+    <PhotoCarousel images={massageGallery} />
   </section>
 
   <!-- Beauty -->
