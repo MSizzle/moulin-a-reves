@@ -40,7 +40,7 @@ It is an ideal getaway for the weekend, the week, the month or the season!
 
 ## The Three Maisons
 
-### Le Moulin à Rêves
+### Le Moulin
 5 bedrooms, 4 baths, 8 beds, 2 day beds — Sleeps 10
 
 ### The Hollywood Hideaway

@@ -1,10 +1,10 @@
 ---
-# Le Moulin à Rêves — Content
+# Le Moulin — Content
 
-title: "Le Moulin à Rêves"
+title: "Le Moulin"
 tagline: "The historic mill on the Juine — sleeps 10."
 heroImage: "/images/homes/le-moulin-hero.webp"
-eyebrow: "Le Moulin à Rêves"
+eyebrow: "Le Moulin"
 
 # Stats
 bedrooms: 5
@@ -20,7 +20,7 @@ summary: "An historic mill on the Juine River in Méréville, France. The river 
 # Photo carousel — main page gallery
 gallery:
   - src: "/images/homes/le-moulin-hero.webp"
-    alt: "Le Moulin à Rêves — stone facade with blue shutters and antique flower cart"
+    alt: "Le Moulin — stone facade with blue shutters and antique flower cart"
   - src: "/images/homes/le-moulin-welcome-rose.webp"
     alt: "Welcome to Le Moulin — your hostess in a rose-pink gown with Jetson the Cavalier"
   - src: "/images/homes/le-moulin-estate-river.webp"
