@@ -373,7 +373,7 @@ export const translations: Record<string, Record<string, string>> = {
   // Explore / Things to Do
   // =====================
   'explore.hero.title': { en: 'Things to Do', fr: 'À Découvrir' },
-  'explore.hero.tagline': { en: 'Forests, villages, châteaux, and Paris. All within reach.', fr: 'Forêts, villages, châteaux et Paris. Tout à portée de main.' },
+  'explore.hero.tagline': { en: 'Châteaux, Villages, Forests and Paris — all an hour away.', fr: 'Châteaux, villages, forêts et Paris — à une heure de route.' },
   'explore.intro.heading': { en: "You Won't Run Out of Days", fr: 'Les Journées ne Suffiront Pas' },
   'explore.intro.text': {
     en: "Moulin a Reves sits at the southern edge of the Ile-de-France, where Paris gives way to forest, fields, and villages that still move at their own pace. You can spend a week here and never repeat yourself \u2014 or you can do nothing at all, and that's just as good.",
@@ -413,7 +413,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "Quiet lanes connect the villages, and the forest is laced with paths. We can arrange bike rentals delivered to the compound, with route suggestions for every level.",
     fr: "Des chemins tranquilles relient les villages, et la forêt est sillonnée de sentiers. Nous pouvons organiser la livraison de vélos au domaine, avec des suggestions d'itinéraires pour tous les niveaux."
   },
-  'explore.food.heading': { en: 'Food & Wine', fr: 'Gastronomie & Vins' },
+  'explore.food.heading': { en: 'Food and Markets', fr: 'Gastronomie & Marchés' },
   'explore.food.subheading': { en: 'Markets, restaurants, and the taste of the region.', fr: 'Marchés, restaurants et les saveurs de la région.' },
   'explore.food.markets.title': { en: 'Local Markets', fr: 'Marchés Locaux' },
   'explore.food.markets.desc': {
