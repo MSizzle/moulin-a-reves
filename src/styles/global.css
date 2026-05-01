@@ -1143,6 +1143,8 @@ img,
 .split--reverse {
   grid-template-columns: 1fr 1.35fr;
 }
+.split--reverse .split__image { grid-column: 2; }
+.split--reverse .split__body { grid-column: 1; grid-row: 1; }
 
 .split__image {
   position: relative;
@@ -1193,7 +1195,8 @@ img,
     min-height: auto;
   }
   .split__image { min-height: 320px; aspect-ratio: 4 / 3; }
-  .split--reverse .split__image { order: -1; }
+  .split--reverse .split__image { grid-column: auto; grid-row: auto; order: -1; }
+  .split--reverse .split__body { grid-column: auto; grid-row: auto; }
 }
 
 /* Maison split — clickable editorial row used everywhere a Les Maisons trio appears */
