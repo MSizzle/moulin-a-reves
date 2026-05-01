@@ -8,6 +8,6 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   integrations: [sitemap({
-    filter: (page) => !page.includes('/success/')
+    filter: (page) => !page.includes('/success/') && !page.includes('/the-compound/')
   })],
 });
