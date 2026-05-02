@@ -248,13 +248,13 @@ const groupTypes = [
   <style>
     .stats-bar__intro {
       font-family: var(--font-serif);
-      font-size: clamp(1.75rem, 3.2vw, 3rem);
+      font-size: clamp(1.625rem, 2.6vw, 3rem);
       font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
       color: var(--ink);
       max-width: none;
-      margin: 0 auto 36px;
+      margin: 0 auto 32px;
     }
     .hero--lc { height: 88vh; min-height: 580px; align-items: center; padding-bottom: 0; }
     .hero--lc .hero__content { display: flex; flex-direction: column; align-items: center; }
@@ -358,8 +358,7 @@ const groupTypes = [
   <!-- Introduction -->
   <section class="text-center" style="padding-top: 32px; padding-bottom: 8px;">
     <div class="container--narrow fade-in">
-      <h2 data-i18n="home.intro.heading">{cms.introHeading}</h2>
-      <p data-i18n="home.intro.text" style="margin-top: 18px;">
+      <p data-i18n="home.intro.text">
         {cms.introText}
       </p>
     </div>
