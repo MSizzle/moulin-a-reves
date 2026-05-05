@@ -39,6 +39,7 @@ export const translations: Record<string, Record<string, string>> = {
   'home.hero.tagline': { en: 'A Private Luxurious Compound, One Hour From Paris', fr: 'Un domaine privé de luxe, à une heure de Paris' },
   'home.hero.location': { en: 'Méréville, France', fr: 'Méréville, France' },
   'home.cta': { en: 'Discover the Maisons', fr: 'Découvrir les Maisons' },
+  'home.cta.secondary': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'home.stats.intro': { en: '', fr: '' },
   'home.intro.heading': { en: 'Where the millstream meets your morning coffee', fr: 'Là où le bief rencontre votre café du matin' },
   'home.intro.text': {

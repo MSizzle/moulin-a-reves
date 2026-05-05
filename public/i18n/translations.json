@@ -115,6 +115,10 @@
     "en": "Discover the Compound",
     "fr": "Découvrir les Maisons"
   },
+  "home.cta.secondary": {
+    "en": "Join us!",
+    "fr": "Rejoignez-nous !"
+  },
   "home.stats.intro": {
     "en": "",
     "fr": ""
