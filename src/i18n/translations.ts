@@ -95,8 +95,8 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   // Homes Index
   // =====================
-  'homes.hero.title': { en: 'The Maisons', fr: 'Les Maisons' },
-  'homes.hero.tagline': { en: 'Three maisons, each with a story. All with blue shutters.', fr: 'Trois maisons, chacune avec son histoire. Toutes avec des volets bleus.' },
+  'homes.hero.title': { en: 'Bienvenue Chez Vous', fr: 'Bienvenue Chez Vous' },
+  'homes.hero.tagline': { en: 'All size groups welcome. Rent 1 home or enjoy all 3.', fr: 'Toutes tailles de groupes bienvenues. Louez 1 maison ou profitez des 3.' },
   'homes.moulin.desc': { en: 'The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.', fr: "Le cœur du domaine. Un moulin en pierre où les murs épais gardent la fraîcheur de l'été et le bief coule juste en contrebas." },
   'homes.moulin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
   'homes.moulin.baths': { en: '2 Bathrooms', fr: '2 Salles de bain' },
