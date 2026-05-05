@@ -16,10 +16,10 @@ export const translations: Record<string, Record<string, string>> = {
   // Footer
   // =====================
   'footer.tagline': { en: 'Mill of Dreams \u00b7 Seine-et-Marne, France', fr: 'Le Moulin des Rêves \u00b7 Seine-et-Marne, France' },
-  'footer.explore': { en: 'Explore', fr: 'Explorer' },
+  'footer.explore': { en: 'Discover', fr: 'Découvrir' },
   'footer.homes': { en: 'Les Maisons', fr: 'Les Maisons' },
   'footer.compound': { en: 'The Compound', fr: 'Le Domaine' },
-  'footer.thingstodo': { en: 'Things to Do', fr: 'À Découvrir' },
+  'footer.thingstodo': { en: 'Explore', fr: 'Explorer' },
   'footer.groups': { en: 'Groups', fr: 'Groupes' },
   'footer.catering': { en: 'Catering', fr: 'Restauration' },
   'footer.wellness': { en: 'Wellness', fr: 'Bien-être' },
@@ -62,11 +62,11 @@ export const translations: Record<string, Record<string, string>> = {
   'home.jardin.description': { en: 'The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.', fr: "La plus paisible des trois. Un cottage de jardin habillé de glycine, avec une terrasse faite pour les longues après-midi." },
   'home.jardin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
   'home.jardin.sleeps': { en: 'Sleeps 6', fr: '6 Couchages' },
-  'home.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'home.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'le-moulin.amenities.amenity.8': { en: 'Sleeps 10 across 8 beds', fr: 'Couchage pour 10 sur 8 lits' },
-  'le-moulin.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
-  'hideaway.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
-  'riviere.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'le-moulin.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
+  'hideaway.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
+  'riviere.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'home.availability.intro': { en: 'Live calendar synced from Airbnb and VRBO. Greyed dates are booked.', fr: 'Calendrier en direct synchronisé depuis Airbnb et VRBO. Les dates grisées sont réservées.' },
   'home.senseof.quote': {
     en: '"At the edge of Fontainebleau Forest, in the land that inspired the Barbizon painters, where the light still falls the way it did two centuries ago."',
@@ -626,12 +626,12 @@ export const translations: Record<string, Record<string, string>> = {
   },
   'about.history.heading': { en: 'The History of Moulin à Rêves — From Vaudeville to Hollywood to You', fr: "L'Histoire du Moulin à Rêves — Du Vaudeville à Hollywood à Vous" },
   'about.history.p1': {
-    en: "The history of Moulin à Rêves is as magical as the setting. It has been owned by one family for over 75 years. It was purchased in 1948 by Vaudeville legend <a href=\"https://en.wikipedia.org/wiki/Borrah_Minevitch\" target=\"_blank\" rel=\"noopener\">Borrah Minevitch</a>. Borrah began playing the harmonica as a 5-year-old boy to pass the time while he sold newspapers. He earned $1,000,000 from the Hohner harmonica company for his chromatic harmonica invention. He was friends with Charlie Chaplin and producer Billy Rose, and toured the world with his band, the Harmonica Rascals — from Florenz Ziegfeld's Broadway theatres to Berlin, London, and Vienna. He fell in love with France. Watch the Rascals: <a href=\"https://www.youtube.com/watch?v=mESI_bER0v8\" target=\"_blank\" rel=\"noopener\">vintage performance</a> · <a href=\"https://www.youtube.com/watch?v=-C4Qj8nyvaw\" target=\"_blank\" rel=\"noopener\">on film</a>.",
-    fr: "L'histoire du Moulin à Rêves est aussi magique que son cadre. Il appartient à la même famille depuis plus de 75 ans. Il fut acquis en 1948 par la légende du vaudeville <a href=\"https://en.wikipedia.org/wiki/Borrah_Minevitch\" target=\"_blank\" rel=\"noopener\">Borrah Minevitch</a>. Borrah commença à jouer de l'harmonica à l'âge de 5 ans pour passer le temps en vendant des journaux. Il gagna 1 000 000 $ auprès de la société d'harmonicas Hohner pour son invention de l'harmonica chromatique. Ami de Charlie Chaplin et du producteur Billy Rose, il fit le tour du monde avec son groupe, les Harmonica Rascals — des théâtres de Broadway de Florenz Ziegfeld à Berlin, Londres et Vienne. Il tomba amoureux de la France. Voir les Rascals : <a href=\"https://www.youtube.com/watch?v=mESI_bER0v8\" target=\"_blank\" rel=\"noopener\">prestation d'époque</a> · <a href=\"https://www.youtube.com/watch?v=-C4Qj8nyvaw\" target=\"_blank\" rel=\"noopener\">au cinéma</a>."
+    en: "The history of Moulin à Rêves is as magical as the setting. It has been owned by one family for over 75 years. It was purchased in 1948 by Vaudeville legend Borrah Minevitch. Borrah began playing the harmonica as a 5-year-old boy to pass the time while he sold newspapers. He earned $1,000,000 from the Hohner harmonica company for his chromatic harmonica invention. He was friends with Charlie Chaplin and producer Billy Rose, and toured the world with his band, the Harmonica Rascals — from Florenz Ziegfeld's Broadway theatres to Berlin, London, and Vienna. He fell in love with France. Watch the Rascals: <a href=\"https://www.youtube.com/watch?v=mESI_bER0v8\" target=\"_blank\" rel=\"noopener\">vintage performance</a> · <a href=\"https://www.youtube.com/watch?v=-C4Qj8nyvaw\" target=\"_blank\" rel=\"noopener\">on film</a>.",
+    fr: "L'histoire du Moulin à Rêves est aussi magique que son cadre. Il appartient à la même famille depuis plus de 75 ans. Il fut acquis en 1948 par la légende du vaudeville Borrah Minevitch. Borrah commença à jouer de l'harmonica à l'âge de 5 ans pour passer le temps en vendant des journaux. Il gagna 1 000 000 $ auprès de la société d'harmonicas Hohner pour son invention de l'harmonica chromatique. Ami de Charlie Chaplin et du producteur Billy Rose, il fit le tour du monde avec son groupe, les Harmonica Rascals — des théâtres de Broadway de Florenz Ziegfeld à Berlin, Londres et Vienne. Il tomba amoureux de la France. Voir les Rascals : <a href=\"https://www.youtube.com/watch?v=mESI_bER0v8\" target=\"_blank\" rel=\"noopener\">prestation d'époque</a> · <a href=\"https://www.youtube.com/watch?v=-C4Qj8nyvaw\" target=\"_blank\" rel=\"noopener\">au cinéma</a>."
   },
   'about.history.p2': {
-    en: "He used his harmonica fortune to acquire this Mill and a famous jazz club on Paris's Île Saint-Louis. Alongside his friend, the owner of the legendary Maxim's, they planned to turn the Moulin into an inn for Paris artists. Their guests and friends included icons like Jacques Tati and Jean Cocteau. Borrah's daughter married Hollywood star lawyer <a href=\"https://en.wikipedia.org/wiki/Bert_Fields\" target=\"_blank\" rel=\"noopener\">Bert Fields</a>, whose clients included Michael Jackson, Dustin Hoffman, Tom Cruise, and so many others. For 50 years, this was Bert's \"Hollywood Hideaway\" where he cooked, wrote, and entertained. His Hollywood friends would visit him here, far from the paparazzi.",
-    fr: "Il utilisa sa fortune d'harmoniciste pour acquérir ce Moulin et un célèbre club de jazz sur l'Île Saint-Louis à Paris. Aux côtés de son ami, propriétaire du légendaire Maxim's, ils projetèrent de faire du Moulin une auberge pour les artistes parisiens. Parmi leurs invités et amis figuraient des icônes comme Jacques Tati et Jean Cocteau. La fille de Borrah épousa l'avocat hollywoodien <a href=\"https://en.wikipedia.org/wiki/Bert_Fields\" target=\"_blank\" rel=\"noopener\">Bert Fields</a>, dont la clientèle comprenait Michael Jackson, Dustin Hoffman, Tom Cruise et tant d'autres. Pendant 50 ans, ce fut le « Hollywood Hideaway » de Bert, où il cuisinait, écrivait et recevait. Ses amis d'Hollywood venaient le voir ici, loin des paparazzi."
+    en: "He used his harmonica fortune to acquire this Mill and a famous jazz club on Paris's Île Saint-Louis. Alongside his friend, the owner of the legendary Maxim's, they planned to turn the Moulin into an inn for Paris artists. Their guests and friends included icons like Jacques Tati and Jean Cocteau. Borrah's daughter married Hollywood star lawyer Bert Fields, whose clients included Michael Jackson, Dustin Hoffman, Tom Cruise, and so many others. For 50 years, this was Bert's \"Hollywood Hideaway\" where he cooked, wrote, and entertained. His Hollywood friends would visit him here, far from the paparazzi.",
+    fr: "Il utilisa sa fortune d'harmoniciste pour acquérir ce Moulin et un célèbre club de jazz sur l'Île Saint-Louis à Paris. Aux côtés de son ami, propriétaire du légendaire Maxim's, ils projetèrent de faire du Moulin une auberge pour les artistes parisiens. Parmi leurs invités et amis figuraient des icônes comme Jacques Tati et Jean Cocteau. La fille de Borrah épousa l'avocat hollywoodien Bert Fields, dont la clientèle comprenait Michael Jackson, Dustin Hoffman, Tom Cruise et tant d'autres. Pendant 50 ans, ce fut le « Hollywood Hideaway » de Bert, où il cuisinait, écrivait et recevait. Ses amis d'Hollywood venaient le voir ici, loin des paparazzi."
   },
   'about.gallery.heading': { en: 'From the <span class="serif-italic">archives</span>', fr: 'Issus des <span class="serif-italic">archives</span>' },
   'about.gallery.lede': { en: 'A few glimpses of Borrah Minevitch and the era he came from. More family photos to come.', fr: "Quelques aperçus de Borrah Minevitch et de l'époque dont il venait. D'autres photos de famille à suivre." },
@@ -668,7 +668,7 @@ export const translations: Record<string, Record<string, string>> = {
   'contact.form.houses': { en: 'Which House(s)?', fr: 'Quelle(s) Maison(s) ?' },
   'contact.form.houses.select': { en: 'Select a preference', fr: 'Choisissez une préférence' },
   'contact.form.houses.two': { en: 'Two Houses', fr: 'Deux Maisons' },
-  'contact.form.houses.all': { en: 'All Three (The Compound)', fr: 'Les Trois (Le Domaine)' },
+  'contact.form.houses.all': { en: 'Rent the Compound (all three houses)', fr: 'Louer le Domaine (les trois maisons)' },
   'contact.form.houses.notsure': { en: 'Not Sure Yet', fr: 'Pas Encore Sûr' },
   'contact.form.message': { en: 'Your Message', fr: 'Votre Message' },
   'contact.form.submit': { en: 'Send Your Inquiry', fr: 'Envoyer Votre Demande' },
