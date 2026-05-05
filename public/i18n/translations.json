@@ -103,13 +103,21 @@
     "en": "A private historic compound in Méréville, France. One hour from Paris.",
     "fr": "Trois maisons. Un séjour inoubliable. À une heure de Paris."
   },
+  "home.hero.tagline": {
+    "en": "A Private Luxurious Compound, One Hour From Paris",
+    "fr": "Un domaine privé de luxe, à une heure de Paris"
+  },
+  "home.hero.location": {
+    "en": "Méréville, France",
+    "fr": "Méréville, France"
+  },
   "home.cta": {
     "en": "Discover the Compound",
     "fr": "Découvrir les Maisons"
   },
   "home.stats.intro": {
-    "en": "A private compound one hour from Paris.",
-    "fr": "Un domaine privé à une heure de Paris."
+    "en": "",
+    "fr": ""
   },
   "home.intro.heading": {
     "en": "A private compound, one hour from Paris.",
