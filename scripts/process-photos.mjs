@@ -13,6 +13,7 @@ const MAPPING = JSON.parse(readFileSync(resolve(REPO_ROOT, "scripts/photo-mappin
 
 const MAX_WIDTH = 2000;
 const QUALITY = 85;
+const CONCURRENCY = 8;
 
 const entries = Object.entries(MAPPING);
 const badAlts = entries.filter(([, v]) => !v.alt || /^TODO/i.test(v.alt.trim()));
@@ -29,7 +30,7 @@ const startMs = Date.now();
 let totalBytesIn = 0;
 let totalBytesOut = 0;
 
-const tasks = entries.map(async ([sourceRel, entry]) => {
+async function processEntry([sourceRel, entry]) {
   const source = resolve(REPO_ROOT, sourceRel);
   if (!existsSync(source)) {
     console.error(`MISSING SOURCE: ${sourceRel}`);
@@ -55,11 +56,17 @@ const tasks = entries.map(async ([sourceRel, entry]) => {
   }
 
   mkdirSync(dirname(primaryTarget), { recursive: true });
-  await sharp(source)
-    .rotate()
-    .resize({ width: MAX_WIDTH, withoutEnlargement: true })
-    .webp({ quality: QUALITY })
-    .toFile(primaryTarget);
+  try {
+    await sharp(source)
+      .rotate()
+      .resize({ width: MAX_WIDTH, withoutEnlargement: true })
+      .webp({ quality: QUALITY })
+      .toFile(primaryTarget);
+  } catch (err) {
+    console.error(`FAILED: ${sourceRel}\n  ${err.message.split("\n")[0]}`);
+    failed += 1;
+    return;
+  }
 
   // For multi-target entries (e.g., 084 → group-dinner + barn-events), copy primary to siblings
   for (const t of targets.slice(1)) {
@@ -74,9 +81,19 @@ const tasks = entries.map(async ([sourceRel, entry]) => {
   if (processed % 10 === 0) {
     console.log(`  ${processed} processed (${skipped} skipped) ...`);
   }
-});
+}
 
-await Promise.all(tasks);
+// Process with bounded concurrency. Sharp/libvips can crash when invoked on too many large
+// images at once, so we cap parallel work even though the per-task work itself is async.
+const queue = entries.slice();
+async function worker() {
+  for (;;) {
+    const task = queue.shift();
+    if (!task) return;
+    await processEntry(task);
+  }
+}
+await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 
 const elapsedSec = ((Date.now() - startMs) / 1000).toFixed(1);
 const mb = (b) => (b / 1024 / 1024).toFixed(1);
