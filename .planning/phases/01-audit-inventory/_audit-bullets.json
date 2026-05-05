@@ -1,0 +1,678 @@
+{
+  "source": "MMM may.5.pdf",
+  "extracted_at": "2026-05-05T20:09:59Z",
+  "round_detection_note": "Rounds are identified by anchor phrases in the PDF: 'Hi Mr - Notes May 1st' marks start of May 1 round (~p.2 mid); 'Monty Updated Feedback: April 30' marks start of April 30 round (~p.6 mid). May 5 is everything before the May 1 anchor. PDF layered chronologically (newest first) per CONTEXT.md.",
+  "rounds": [
+    {
+      "name": "May 5",
+      "page_range": [
+        1,
+        2
+      ],
+      "bullets": [
+        {
+          "id": "may5-001",
+          "page": 1,
+          "page_section": "Les Maisons",
+          "verbatim": "may 5th notes good morning Monty! landing page in the bar with the number of houses, bedrooms, bathrooms, and guests, please change the word houses to homes so it reads three homes in gathering and dining spaces, can you please format it so the pictures are full-size and there’s no white space with text to the right of the pictures?",
+          "is_compound": true
+        },
+        {
+          "id": "may5-002",
+          "page": 1,
+          "page_section": "Universal",
+          "verbatim": "This is a universal note for all the houses. the grounds each one of these should be a Gallery so it’s a Gallery for the gardens and the bridge and a Gallery for the patios.",
+          "is_compound": true
+        },
+        {
+          "id": "may5-003",
+          "page": 1,
+          "page_section": "Maison de la Rivière",
+          "verbatim": "You don’t need the river at Dark. Please change the words “when you can stay” with “Join us!” Anytime the final word is in italics change it to straight up and down. fix the beige foote r so it sleeps 10 not 12 discover the compound Make photos full size.",
+          "is_compound": true
+        },
+        {
+          "id": "may5-004",
+          "page": 1,
+          "page_section": "Get in Touch",
+          "verbatim": "Make text under the photos in this section easier to read - remove italics and make it bold about section change lead photo for history replace “come and see” with “come and visit!” get in touch Page: Add an exclamation point after “Join us!” And make the word “us” not in italics.",
+          "is_compound": true
+        },
+        {
+          "id": "may5-005",
+          "page": 1,
+          "page_section": "Unclassified",
+          "verbatim": "Move the bonjour section with the form above the calendar section.",
+          "is_compound": false
+        },
+        {
+          "id": "may5-006",
+          "page": 2,
+          "page_section": "Get in Touch",
+          "verbatim": "Fix the Getting here formatting",
+          "is_compound": false
+        }
+      ]
+    },
+    {
+      "name": "May 1",
+      "page_range": [
+        2,
+        6
+      ],
+      "bullets": [
+        {
+          "id": "may1-001",
+          "page": 2,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "Hi Mr - Notes May 1st from noon your time - 6pm for me Home page: Can you start with A Private Luxurious Compound, One Hour From Paris Then have 10 bedrooms, and that info Please shrink the margins as much as possible Make the image of Hollywood hideaway the same width as other 2 buildings Discover the compound photo galleries Thanks for making the background white.",
+          "is_compound": true
+        },
+        {
+          "id": "may1-002",
+          "page": 2,
+          "page_section": "Universal",
+          "verbatim": "Can you make italicised text easier to read?",
+          "is_compound": false
+        },
+        {
+          "id": "may1-003",
+          "page": 2,
+          "page_section": "About",
+          "verbatim": "Bold? Non italicized maybe? Is there room for me to write more info about the grange I don’t see the x in upper right to return to main page on any of the galleries now I don’t see the arrow to go to the next photo within the gallery This garden gallery is what you can link to on all the house pages when you say the gardens.",
+          "is_compound": true
+        },
+        {
+          "id": "may1-004",
+          "page": 2,
+          "page_section": "Le Moulin",
+          "verbatim": "MOULIN Page Shrink Margin from hero image to text Photo galleries all work well now!",
+          "is_compound": false
+        },
+        {
+          "id": "may1-005",
+          "page": 2,
+          "page_section": "Unclassified",
+          "verbatim": "Small note - can you expand photo width of Rose Room - it is narrower than others.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-006",
+          "page": 2,
+          "page_section": "Unclassified",
+          "verbatim": "Rose room should have same 2 bathroom photos as Cherry room You can remove the office and put it with the living room collection - no one is gathering there.",
+          "is_compound": true
+        },
+        {
+          "id": "may1-007",
+          "page": 3,
+          "page_section": "Unclassified",
+          "verbatim": "Remove the courtyard block as we cover that in gardens below.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-008",
+          "page": 3,
+          "page_section": "Unclassified",
+          "verbatim": "Gathering rooms photos are not as big as the bedroom photos - we want to make them as large as possible.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-009",
+          "page": 3,
+          "page_section": "Unclassified",
+          "verbatim": "Pls expand margins as much as possible in all photos galleries In the beige footer at bottom, now we say sleeps 12 in 10 beds - charge it to sleeps 10 in 8 beds.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-010",
+          "page": 3,
+          "page_section": "Home",
+          "verbatim": "The Grounds Link to the gallery for the grounds in the discover the compound section on the home page.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-011",
+          "page": 3,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "Hollywood Hideaway The hero image white text feels too low - please center it.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-012",
+          "page": 3,
+          "page_section": "Universal",
+          "verbatim": "Delete italicised text below it inside the image The forward arrow on the gallery that is beneath the text is cut off the right side.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-013",
+          "page": 3,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "Delete grange photo from the main carousel photos Decrease the margin beneath the photos and the text that says The Hollywood Hideaway The gardens gallery should link to master gardens collection There is a lot of white blank space in these galleries -- can you increase size of images and decrease white space?",
+          "is_compound": true
+        },
+        {
+          "id": "may1-014",
+          "page": 3,
+          "page_section": "Unclassified",
+          "verbatim": "Remove the what’s here section with 3 photos - we can always add something more useful there.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-015",
+          "page": 3,
+          "page_section": "Universal",
+          "verbatim": "Replace When You Can Stay at Bottom of all pages with Joine Us!",
+          "is_compound": false
+        },
+        {
+          "id": "may1-016",
+          "page": 3,
+          "page_section": "Les Maisons",
+          "verbatim": "Les Autres Maisons at bottom of page - take away italics.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-017",
+          "page": 3,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "MAISON DE LA RIVIERE Delete 2 rows of text in hero image above and below the name of the house Center name of the house Right forward curser is off the page like in the hollywood hideaway images Decrease white space margine beneath hero photo and above text describing house Anything you can do to increase size of image and decrease white on the right side would be great.",
+          "is_compound": true
+        },
+        {
+          "id": "may1-018",
+          "page": 4,
+          "page_section": "Home",
+          "verbatim": "I think living room and dining room, gathering photos shoul all be full size like Discover the Compound photos - there is no reason to keep all the white space.",
+          "is_compound": true
+        },
+        {
+          "id": "may1-019",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "Have the lead dining room photo be the horizontal one with the tables set with plates.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-020",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "Remove exterior section - use the exterior shots in the top gallery of spaces Remove gardens as it is below.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-021",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "In the We Make it Easy section replace nearby adventures with Bring your dog!",
+          "is_compound": false
+        },
+        {
+          "id": "may1-022",
+          "page": 4,
+          "page_section": "About",
+          "verbatim": "Create a gallery of jetson photos. Host the group retreat of your dreams Family reunions - good Change yoga retreats to yoga, painting, writing retreats Change friends trips to Friends celebrations Discover the Area all goes to the same page -- if we are highlighting those 3 links - shouldn’t they go to separate links to those areas?",
+          "is_compound": true
+        },
+        {
+          "id": "may1-023",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "I would say Paris - Nearby Towns - Loire Valley Plan your stay box is good but replace bonjour with Bienvenue!",
+          "is_compound": false
+        },
+        {
+          "id": "may1-024",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "Change when can you stay to When would you like to visit?",
+          "is_compound": false
+        },
+        {
+          "id": "may1-025",
+          "page": 4,
+          "page_section": "Get in Touch",
+          "verbatim": "Maybe this looks better than Join Us!",
+          "is_compound": false
+        },
+        {
+          "id": "may1-026",
+          "page": 4,
+          "page_section": "Get in Touch",
+          "verbatim": "On the contact us page - please put the request for info above the calendar.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-027",
+          "page": 4,
+          "page_section": "La Grange",
+          "verbatim": "Remove under hero Change hollywood Make holly wood full For the le grange photos: replace the black backgrounds with white Don’t have two fonts Change When yOu can stay to join us Remove: Tell us your dates subheader for hero Getting Here: One hour form paris by car, train, or Dyanmically resize popup epending on size.",
+          "is_compound": false
+        },
+        {
+          "id": "may1-028",
+          "page": 5,
+          "page_section": "Universal",
+          "verbatim": "Change bring your group together: Host the retreat of your dreams. may 1 notes 1. without the dark filter in hero image, we lose the text in the bar- can you put a shadow around those links or a color behind the bar itself? remove the italics line “a private compound one hour from paris” inside hero image and all hero images on all pages.",
+          "is_compound": true
+        },
+        {
+          "id": "may1-029",
+          "page": 5,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "I asked you to simplify the fonts - they still are italicizing the final word on headers for example: where you can stay Les Autre Maisons moulin a reves i still cant x out on my laptop from photos- i can from cell the white text is duplicative - we say same info 3 ways I asked you to change the name of house to le moulin instead of moulin a reves the grounds - each of the 3 images should be a clickable gallery footer of moulin page this house sleeps 10 not 12 — replace when you can stay at the footer with “join us!” also - i gave the note before to have one font - no italics on the word stay Hollywood hideaway - thru the looking glass- this formatting works well! the text is duplicate in triple other rooms dont work the garden should be a gallery get in touch remove italics text on hero photo change when you can stay to “Join us!” (I gave you this note before) getting here: please improve directions - this wasnt addressed",
+          "is_compound": true
+        }
+      ]
+    },
+    {
+      "name": "April 30",
+      "page_range": [
+        6,
+        12
+      ],
+      "bullets": [
+        {
+          "id": "april30-001",
+          "page": 6,
+          "page_section": "Home",
+          "verbatim": "HOME PAGE Good job reducing white space I will need to improve and embellish all the text everywhere- these notes are to polish the architecture of the site Universal notes: Fonts: My favorite font is on your french vacation come true header.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-002",
+          "page": 6,
+          "page_section": "Universal",
+          "verbatim": "Can you use this one more? Please use only 2 or 3 fonts so that the website feels more elegant and soothing Remove the dark filter: on photos at the header and footer of every page.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-003",
+          "page": 7,
+          "page_section": "Le Moulin",
+          "verbatim": "Size of photos in listings - my favorite are the layouts in wellness and catering https://www.moulinareves.com/the-compound/ Would it work to change the 3 maison pictures to this size and then make the “discover the compound” photos the size that the maisons photos currently are? __________ Room boxes - perhaps change them all to the format in Discover the compound section I like that these boxes go to full size photos that are easy to click back to the main menu.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-004",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "This is an issue in all the other room/gathering spaces galleries in all the homes, so perhaps you should use this formatting everywhere.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-005",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "Please change the photo gallery backdrop color in each of the rooms from black to a sky blue or white.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-006",
+          "page": 7,
+          "page_section": "La Grange",
+          "verbatim": "Black feels too heavy. In the grange photos library - remove the toilet and laundry pictures Solarium photos should all be of the jacuzzi - now there is a sink and garden.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-007",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "I uploaded 3 jacuzi photos to google drive - do you have them?",
+          "is_compound": false
+        },
+        {
+          "id": "april30-008",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "In Gym and Bikes section: remove the carriage photo.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-009",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "Later I will upload biking photos of me in the countryside on bike.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-010",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "Screening room: can you add the NETFLIX logo on the TV?",
+          "is_compound": false
+        },
+        {
+          "id": "april30-011",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "That would be cool. Make all 6 of these buttons larger so it’s more inviting.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-012",
+          "page": 7,
+          "page_section": "Home",
+          "verbatim": "Move “Mereville France” from above “Your dream french vacation come true” to under it to replace “ A private historic compound in Méréville, France.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-013",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "One hour from Paris” as we say that right below the photo.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-014",
+          "page": 7,
+          "page_section": "Les Maisons",
+          "verbatim": "Les Maisons header should be the same size as the header above it.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-015",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "Delete this description below it: “Three stone houses around shared gardens.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-016",
+          "page": 7,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "Each its own world; together, the compound.” Replace “The sanctuary” above the Hollywood Hideaway with “The Refuge” Above the “Bring your group together” section, please create a new section that says “We Make It Easy” It should feature Catering - photo that links to catering tab.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-017",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "Wellness - photo that links to massages tab Nearby Adventures -Link to things to do.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-018",
+          "page": 8,
+          "page_section": "Home",
+          "verbatim": "Bottom of home page: Remove from the journal section.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-019",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "Just hide that whole section for now.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-020",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "From room carousels: remove subheader above colon. 2.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-021",
+          "page": 8,
+          "page_section": "Get in Touch",
+          "verbatim": "Buttons on home page: “Speak with a concierge” brings us to this page. https://www.moulinareves.com/contact/ Replace Get in touch with the words “Join us!” Add the word size here: Tell us your dates, your group size, your dreams.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-022",
+          "page": 8,
+          "page_section": "Get in Touch",
+          "verbatim": "We'll take it from there. Change the address to: 14, 16, 18 Rue des Crocs au Renard, 91660 Le Mérévillois (Remove the X at the end of the word “au” before Renard.) Getting here section Is that an active google map?",
+          "is_compound": true
+        },
+        {
+          "id": "april30-023",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "That would be great. Please use the specific directions from orly airport 55 min.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-024",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "Charles de gaul 75 min. Currently the formatting is wonky here.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-025",
+          "page": 8,
+          "page_section": "Home",
+          "verbatim": "I like your faqs instructions. We bury bring your dog in FAQs Create a new section towards the bottom of the home page that says Dogs welcome.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-026",
+          "page": 8,
+          "page_section": "Le Moulin",
+          "verbatim": "Use a jetson photo. Create a new section that says: Make your life a masterpiece - life is a work of art at Moulin a Reves.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-027",
+          "page": 9,
+          "page_section": "Unclassified",
+          "verbatim": "Use this monet giverny painting next to the bridge at moulin a reve.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-028",
+          "page": 9,
+          "page_section": "Unclassified",
+          "verbatim": "Then we will include pictures of the beautiful paintings here. 3.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-029",
+          "page": 9,
+          "page_section": "Home",
+          "verbatim": "The Compound Button Change: Three houses.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-030",
+          "page": 9,
+          "page_section": "Home",
+          "verbatim": "Shared grounds. The whole place, exclusively yours Make it: This is a private walled compound where you are master of your own domaine.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-031",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "Peace, privacy. Tranquility. Calander I like that you only display 2 months at a time but the arrows should let you scroll to 12 months Currently it only lets you search for 4 months.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-032",
+          "page": 10,
+          "page_section": "Get in Touch",
+          "verbatim": "Move the calendar link below the request for contact.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-033",
+          "page": 10,
+          "page_section": "Le Moulin",
+          "verbatim": "MOULIN Page of this house Please update the name of this house to Le Moulin.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-034",
+          "page": 10,
+          "page_section": "Le Moulin",
+          "verbatim": "The name of the whole estate is Moulin a Reves - the name of just this house is just Le Moulin.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-035",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "Please change it on the house listing.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-036",
+          "page": 10,
+          "page_section": "Le Moulin",
+          "verbatim": "Good job changing the photos in the main carousel of le moulin - delete my picture in the pink gown in front of the house (you can keep me in the bike by the gate) Beige box where you’ll sleep section -- ISSUE HERE AND ALL PHOTO BOXES IN HOUSES: WHen you click into the room box - the photos are cut off at the bottom.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-037",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "When you click the arrows it adjusts but it would be better if you saw the bottom of the photos as soon as you click on the room.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-038",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "Once you are inside the photos of each room -- it’s very difficult to get back to the main page of moulin photos again. the page shifts down and you lose the ability to click the x button in upper right corner.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-039",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "The only room where this is not an issue is Le Loft Suite.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-040",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "This problem is in all the gathering spaces too.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-041",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "The courtyard and patio space layout is not working well but you can omit this space entirely because it is covered in the grounds photos.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-042",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "The grounds are the biggest selling part of the house.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-043",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "CAn each of those pictures become a bigger box?",
+          "is_compound": false
+        },
+        {
+          "id": "april30-044",
+          "page": 6,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "When You Can Stay Replace the words “When you can stay” with “Join Us!” HOLLYWOOD HIDEAWAY PAGE Remove the small letters that say hollywood hideaway above the text of the house on the main photo Change the lead image of the hollywood hideaway to the patio shot with breakfast on the table Remove the secret garden as an individual room and add it as a photo to both the looking glass and american in paris rooms.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-045",
+          "page": 11,
+          "page_section": "Unclassified",
+          "verbatim": "These rooms and gathering spaces have the same challenge of losing the x in the upper right corner so you can navigate back to the house.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-046",
+          "page": 11,
+          "page_section": "Unclassified",
+          "verbatim": "Is the issue having the white space on the right side for text?",
+          "is_compound": false
+        },
+        {
+          "id": "april30-047",
+          "page": 11,
+          "page_section": "Unclassified",
+          "verbatim": "We can remove the text and put it under the photos if it’s better Delete The What’s here section Add a section called “Join the stars who stayed here” I will upload those photos tonight.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-048",
+          "page": 11,
+          "page_section": "Les Maisons",
+          "verbatim": "Les Autre Maisons should be in just one font.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-049",
+          "page": 11,
+          "page_section": "Unclassified",
+          "verbatim": "Where you’ll gather header: just use one consistent font - now there are 2.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-050",
+          "page": 11,
+          "page_section": "Maison de la Rivière",
+          "verbatim": "Maison de la Riviere page https://www.moulinareves.com/homes/maison-de-la-riviere/ Remove the text above the name of the house - it’s duplicative This has the same issue with not being able to get back to main page from the room.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-051",
+          "page": 11,
+          "page_section": "Les Maisons",
+          "verbatim": "Remove exterior and stream and gardens from where you’ll gather Just use one font in where you’ll sleep and where you’ll gather and what’s here and when you can stay and les autre maisons.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-052",
+          "page": 11,
+          "page_section": "Get in Touch",
+          "verbatim": "Replace When you can stay with “Join us!” The What’s Here section is really about the gardens and space -- that should link to the beautiful gardens page with more photo galleries.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-053",
+          "page": 12,
+          "page_section": "Maison de la Rivière",
+          "verbatim": "The photo is too dark in “Interested in La Maison de la Riviere” and on all the maison pages.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-054",
+          "page": 12,
+          "page_section": "Unclassified",
+          "verbatim": "Can you reduce the black filter on the image on this page and all the house listings.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-055",
+          "page": 12,
+          "page_section": "Les Maisons",
+          "verbatim": "Les Maisons Page Remove: Three maisons.",
+          "is_compound": false
+        },
+        {
+          "id": "april30-056",
+          "page": 12,
+          "page_section": "Unclassified",
+          "verbatim": "Sleeps 20 across 10 bedrooms. Below the photo write: Header: Bienvenue Chez Vous Smaller text: All size groups welcome.",
+          "is_compound": true
+        },
+        {
+          "id": "april30-057",
+          "page": 12,
+          "page_section": "Home",
+          "verbatim": "Rent 1 home or enjoy all 3. That can have the gardens below it.",
+          "is_compound": true
+        }
+      ]
+    }
+  ]
+}
