@@ -361,3 +361,52 @@ Earlier in the project the "Plan your stay" CTA box said **"Bonjour!"** — your
 **Confirm "Bienvenue!" is correct — or revert to "Bonjour" if you preferred the earlier wording.**
 
 ---
+
+## Already Done — please re-review
+
+Several things you've been re-flagging across rounds are actually **already shipped**. Please skim this list and verify on the live site so we can stop the back-and-forth on these. (Commit hashes are included in case you want to confirm with me — they're the same kind of references you've used in your prior PDFs.)
+
+**Items you flagged across multiple rounds — all live now:**
+
+- Address corrected to **14, 16, 18 Rue des Crocs au Renard, 91660 Le Mérévillois** (no trailing X on "au"). — *shipped in commit `111cf9b`*
+- The Le Moulin house page renamed to **"Le Moulin"** — and the "compound = three houses, single house = Le Moulin" naming distinction is now respected throughout the site. — *shipped in commit `333254d`*
+- **"The Sanctuary"** above the Hollywood Hideaway hero → renamed to **"The Refuge"**. — *shipped in commit `d120aed`*
+- Compound section copy updated to **"This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility."** — *shipped in commit `d120aed`*
+- Photo gallery backdrop on rooms changed from **black → cream**. — *shipped in commit `f5579e8`*
+- La Grange — **toilet and laundry photos removed**. — *shipped in commit `1a658c2`*
+- Le Moulin page — hero-to-text margin shrunk and photo galleries cleaned up. — *shipped in commit `ab1ac5d`*
+- Wellness section now correctly links through to the massages tab; nearby-adventures links wired. — *shipped in commit `fd8e979`*
+- Le Loft Suite modal works correctly (you noted it as "the only working one" — I used it as the reference for the rest of the modal fixes still queued for Milestone 2). — *shipped in commit `d626c4b`*
+- Cross-round resolution: the "Plan your stay" box now says **Bienvenue!** (was "Bonjour"). — *shipped this round in COPY-10*
+
+**Things that landed since your last PDF round — easy to miss but already live:**
+
+- **About / History** photo gallery refreshed with the newer photo set. — *shipped in commit `ad07395`*
+- New **Pâtisseries** section added on the catering page. — *shipped in commit `8bd51b9`*
+- **Méréville / Discover-the-Area** photo gallery updated with the newer location photos. — *shipped in commit `182b810`*
+- Large **May 5 photo batch** processed and deployed (the new photos you sent over for several houses). — *shipped in commit `742fb89`*
+
+**If any of these look wrong on the live site, flag the bullet and I'll fix it. Otherwise no action needed — we're done with these and you can stop re-flagging them in future rounds.**
+
+---
+
+## A question from Monty (Groups page)
+
+This one isn't from your PDF — it's a suggestion from me.
+
+Right now if a corporate client, wedding planner, or yoga retreat organiser lands on the site, they have to piece together *"this is a 10-bedroom compound that sleeps 20"* by reading three separate home pages and the Compound page. There's no single page that says **"Here's what we offer for groups"** with:
+
+- (a) the all-three-houses-rented configuration explained up front,
+- (b) the catering + wellness + nearby-adventures bundle,
+- (c) a direct-inquiry CTA framed for organisers (not couples).
+
+My instinct is that a top-level **Groups** page in the navigation would convert these visitors much better. It would lift content that already exists (the "Bienvenue Chez Vous" section, the retreats list, the catering / wellness cards) and reframe it specifically for group bookers — the people who matter most for the high-revenue full-compound bookings.
+
+This would also give us a clean home for the "Yoga, painting, writing retreats" and "Friends celebrations" copy you asked for, and a single landing surface I can point inquiries to from outreach.
+
+**Bold question — do you want me to build this in Milestone 2? Yes / no / "let me think about it".**
+
+---
+
+*Thanks Melissa — once you reply with answers to these, I can wrap the remaining questions into Milestone 2 cleanly. — Monty*
+
