@@ -25,7 +25,7 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
   <div class="container">
     <div class="text-center fade-in availability__header">
       {eyebrow && <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>}
-      <h2 set:html={heading} {...(headingKey ? { 'data-i18n-html': headingKey } : {})}></h2>
+      {heading && <h2 set:html={heading} {...(headingKey ? { 'data-i18n-html': headingKey } : {})}></h2>}
       {intro && <p class="availability__lede" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
       <div class="availability__legend" aria-hidden="true">
         <span class="availability__chip"><i class="dot dot--available"></i>Available</span>
