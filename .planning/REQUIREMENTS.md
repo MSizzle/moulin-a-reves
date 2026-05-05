@@ -124,9 +124,9 @@ Items the client has requested but that need foundational work, structural rewor
 | COPY-13 | Phase 2 | Complete (02-01) |
 | COPY-14 | Phase 2 | Complete (02-01) |
 | COPY-15 | Phase 2 | Complete (02-01) |
-| TYPOG-01 | Phase 2 | Pending |
-| TYPOG-02 | Phase 2 | Pending |
-| TYPOG-03 | Phase 2 | Pending |
+| TYPOG-01 | Phase 2 plan 02 | Done — `f35ef7e` |
+| TYPOG-02 | Phase 2 plan 02 | Done — `9b2de71` |
+| TYPOG-03 | Phase 2 plan 02 | Done — verify-only (no-op; `global.css` already 2 families) |
 | SECT-01 | Phase 2 plan 03 | Done — `8baf8eb` |
 | SECT-02 | Phase 2 plan 03 | Done — `73cce41` (3-photo sub-action deferred to Phase 3) |
 | SECT-03 | Phase 2 plan 03 | Done — `02c0406` |
