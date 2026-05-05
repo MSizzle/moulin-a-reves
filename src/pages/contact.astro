@@ -93,12 +93,11 @@ import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
             <div class="form__group">
               <label class="form__label" data-i18n="contact.form.houses" for="houses">Which House(s)?</label>
               <select id="houses" name="houses" class="form__select">
-                <option value="" data-i18n="contact.form.houses.select">Select a preference</option>
+                <option value="all-three" selected data-i18n="contact.form.houses.all">Rent the Compound (all three houses)</option>
                 <option value="le-moulin">Le Moulin</option>
-                <option value="la-grange">La Grange</option>
-                <option value="le-jardin">Le Jardin</option>
+                <option value="hollywood-hideaway">The Hollywood Hideaway</option>
+                <option value="maison-de-la-riviere">La Maison de la Rivière</option>
                 <option value="two-houses" data-i18n="contact.form.houses.two">Two Houses</option>
-                <option value="all-three" data-i18n="contact.form.houses.all">All Three (The Compound)</option>
                 <option value="not-sure" data-i18n="contact.form.houses.notsure">Not Sure Yet</option>
               </select>
             </div>

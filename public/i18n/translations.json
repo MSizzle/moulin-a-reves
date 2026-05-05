@@ -40,8 +40,8 @@
     "fr": "14, 16, 18 Rue des Crocs au Renard<br/>91660 Le Mérévillois"
   },
   "footer.explore": {
-    "en": "Explore",
-    "fr": "Explorer"
+    "en": "Discover",
+    "fr": "Découvrir"
   },
   "footer.homes": {
     "en": "Les Maisons",
@@ -52,8 +52,8 @@
     "fr": "Le Domaine"
   },
   "footer.thingstodo": {
-    "en": "Things to Do",
-    "fr": "À Découvrir"
+    "en": "Explore",
+    "fr": "Explorer"
   },
   "footer.groups": {
     "en": "Groups",
@@ -1556,8 +1556,8 @@
     "fr": "Deux Maisons"
   },
   "contact.form.houses.all": {
-    "en": "All Three (The Compound)",
-    "fr": "Les Trois (Le Domaine)"
+    "en": "Rent the Compound (all three houses)",
+    "fr": "Louer le Domaine (les trois maisons)"
   },
   "contact.form.houses.notsure": {
     "en": "Not Sure Yet",

@@ -16,10 +16,10 @@ export const translations: Record<string, Record<string, string>> = {
   // Footer
   // =====================
   'footer.tagline': { en: 'Mill of Dreams \u00b7 Seine-et-Marne, France', fr: 'Le Moulin des Rêves \u00b7 Seine-et-Marne, France' },
-  'footer.explore': { en: 'Explore', fr: 'Explorer' },
+  'footer.explore': { en: 'Discover', fr: 'Découvrir' },
   'footer.homes': { en: 'Les Maisons', fr: 'Les Maisons' },
   'footer.compound': { en: 'The Compound', fr: 'Le Domaine' },
-  'footer.thingstodo': { en: 'Things to Do', fr: 'À Découvrir' },
+  'footer.thingstodo': { en: 'Explore', fr: 'Explorer' },
   'footer.groups': { en: 'Groups', fr: 'Groupes' },
   'footer.catering': { en: 'Catering', fr: 'Restauration' },
   'footer.wellness': { en: 'Wellness', fr: 'Bien-être' },
@@ -668,7 +668,7 @@ export const translations: Record<string, Record<string, string>> = {
   'contact.form.houses': { en: 'Which House(s)?', fr: 'Quelle(s) Maison(s) ?' },
   'contact.form.houses.select': { en: 'Select a preference', fr: 'Choisissez une préférence' },
   'contact.form.houses.two': { en: 'Two Houses', fr: 'Deux Maisons' },
-  'contact.form.houses.all': { en: 'All Three (The Compound)', fr: 'Les Trois (Le Domaine)' },
+  'contact.form.houses.all': { en: 'Rent the Compound (all three houses)', fr: 'Louer le Domaine (les trois maisons)' },
   'contact.form.houses.notsure': { en: 'Not Sure Yet', fr: 'Pas Encore Sûr' },
   'contact.form.message': { en: 'Your Message', fr: 'Votre Message' },
   'contact.form.submit': { en: 'Send Your Inquiry', fr: 'Envoyer Votre Demande' },
