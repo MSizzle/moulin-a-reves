@@ -104,24 +104,52 @@ Items the client has requested but that need foundational work, structural rewor
 
 ## Traceability
 
-Will be populated during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUDIT-01 | TBD | Pending |
-| AUDIT-02 | TBD | Pending |
-| AUDIT-03 | TBD | Pending |
-| COPY-01 to COPY-15 | TBD | Pending |
-| TYPOG-01 to TYPOG-03 | TBD | Pending |
-| SECT-01 to SECT-08 | TBD | Pending |
-| PHOTO-01 to PHOTO-03 | TBD | Pending |
-| CLAR-01 to CLAR-06 | TBD | Pending |
+| AUDIT-01 | Phase 1 | Pending |
+| AUDIT-02 | Phase 1 | Pending |
+| AUDIT-03 | Phase 1 | Pending |
+| COPY-01 | Phase 2 | Pending |
+| COPY-02 | Phase 2 | Pending |
+| COPY-03 | Phase 2 | Pending |
+| COPY-04 | Phase 2 | Pending |
+| COPY-05 | Phase 2 | Pending |
+| COPY-06 | Phase 2 | Pending |
+| COPY-07 | Phase 2 | Pending |
+| COPY-08 | Phase 2 | Pending |
+| COPY-09 | Phase 2 | Pending |
+| COPY-10 | Phase 2 | Pending |
+| COPY-11 | Phase 2 | Pending |
+| COPY-12 | Phase 2 | Pending |
+| COPY-13 | Phase 2 | Pending |
+| COPY-14 | Phase 2 | Pending |
+| COPY-15 | Phase 2 | Pending |
+| TYPOG-01 | Phase 2 | Pending |
+| TYPOG-02 | Phase 2 | Pending |
+| TYPOG-03 | Phase 2 | Pending |
+| SECT-01 | Phase 2 | Pending |
+| SECT-02 | Phase 2 | Pending |
+| SECT-03 | Phase 2 | Pending |
+| SECT-04 | Phase 2 | Pending |
+| SECT-05 | Phase 2 | Pending |
+| SECT-06 | Phase 2 | Pending |
+| SECT-07 | Phase 2 | Pending |
+| SECT-08 | Phase 2 | Pending |
+| PHOTO-01 | Phase 2 | Pending |
+| PHOTO-02 | Phase 2 | Pending |
+| PHOTO-03 | Phase 2 | Pending |
+| CLAR-01 | Phase 3 | Pending |
+| CLAR-02 | Phase 3 | Pending |
+| CLAR-03 | Phase 3 | Pending |
+| CLAR-04 | Phase 3 | Pending |
+| CLAR-05 | Phase 3 | Pending |
+| CLAR-06 | Phase 3 | Pending |
 
 **Coverage:**
-- v1 requirements: ~33 total (AUDIT 3 + COPY 15 + TYPOG 3 + SECT 8 + PHOTO 3 + CLAR 6 = 38; some sub-items under SECT may bundle multiple edits)
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 38 ⚠️ (will be fixed by roadmap)
+- v1 requirements: 38 total (AUDIT 3 + COPY 15 + TYPOG 3 + SECT 8 + PHOTO 3 + CLAR 6)
+- Mapped to phases: 38
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-05-05*
-*Last updated: 2026-05-05 after initialization*
+*Last updated: 2026-05-05 — traceability populated after roadmap creation*
