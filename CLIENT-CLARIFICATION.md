@@ -20,6 +20,81 @@ Hi Melissa — this is a single document with all the items from your three roun
 
 ---
 
+## Home
+
+These are the items from your notes that touch the homepage.
+
+### 1. "One hour from Paris" — caption placement
+
+> "One hour from Paris" as we say that right below the photo." *(April 30 round)*
+
+The homepage hero now reads **"A Private Luxurious Compound, One Hour From Paris"** with **"Méréville, France"** beneath it (per your COPY-06 instruction — shipped this round). The phrase "one hour from Paris" also still appears in two other places on the homepage:
+
+1. The stats-bar intro line near the top of the page.
+2. The page's meta description (the snippet that shows up in Google results).
+
+I'm comfortable leaving all three because each serves a different audience (visitor, scroll-reader, search engine), but you may feel it's repetitive on the page itself.
+
+**Should I keep all three — the hero subtitle AND the stats-bar intro AND the meta description — or remove the stats-bar one to avoid repetition on-page?**
+
+### 2. Compound Button — "Three houses" change
+
+> "The Compound Button Change: Three houses." *(April 30 round)*
+
+The Compound section button copy was updated this round to: **"This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility."** (your COPY-08 — shipped). Your "Three houses" annotation in the PDF didn't have a clear before/after, so I'm not sure what you wanted me to change.
+
+**Did you mean something different from the new "private walled compound" wording I shipped — or are you happy with it? If you wanted a literal "Three houses" line back somewhere, tell me where.** (You can see the current version on the homepage scroll-down, below the hero.)
+
+### 3. "Please change it on the house listing"
+
+> "Please change it on the house listing." *(April 30 round)*
+
+This bullet sits next to the Compound Button section in your PDF but doesn't say what specifically to change or where the "house listing" is. My best guess is you meant the **"Houses"** stats-bar label at the top of the homepage — but that was already renamed to **"Homes"** this round (COPY-03 shipped).
+
+**Confirm that's what you meant — or tell me which "house listing" you were pointing at and what you wanted changed.**
+
+### 4. Monet Giverny + Moulin bridge pairing — asset ask
+
+> "Use this monet giverny painting next to the bridge at moulin a reve." *(April 30 round)*
+>
+> "Then we will include pictures of the beautiful paintings here. 3." *(April 30 round)*
+
+The new **"Make your life a masterpiece"** section — pairing a Monet Giverny painting with our Moulin bridge photo — is queued for the next round (Milestone 2). I just need the painting from you.
+
+Two ways to get it:
+
+- **(A)** Point me at a public-domain image on Wikipedia / The Met Museum — they have clean PD scans of several Water Lilies and Giverny garden paintings I can use commercially.
+- **(B)** Drop the specific painting you want into the Google Drive folder we use for site photos and I'll downscale + convert it.
+
+**Which Monet image do you want — and which path (A point me at a URL, or B drop in Drive)?**
+
+---
+
+## Le Moulin
+
+These are the items from your notes that touch the Le Moulin home page.
+
+### 1. Grounds = "biggest selling part" — split into clickable galleries?
+
+> "The grounds are the biggest selling part of the house." *(April 30 round)*
+>
+> "CAn each of those pictures become a bigger box?" *(April 30 round)*
+>
+> "This is a universal note for all the houses. the grounds each one of these should be a Gallery so it's a Gallery for the gardens and the bridge and a Gallery for the patios." *(May 5 round — universal note)*
+
+Right now Le Moulin's grounds section renders one combined carousel — gardens, bridge, and patios all mixed together. Your three notes (April 30 + May 5) all point in the same direction: **split this into three separate clickable galleries** (Gardens / Bridge / Patios), each one a bigger tile a visitor can open into its own gallery.
+
+This is real structural work — it touches the home page layout AND the gallery component — so I'm scoping it as **Milestone 2** (next round, not tomorrow).
+
+The May 5 universal note also says this should apply to **all three houses** (Le Moulin, Hollywood Hideaway, Maison de la Rivière). I'm assuming yes for all three based on that note, but flagging it here so you can confirm.
+
+**Two confirmations needed:**
+
+1. **Yes, split the Le Moulin grounds into three galleries (Gardens / Bridge / Patios)?**
+2. **Same treatment on Hollywood Hideaway and Maison de la Rivière grounds?**
+
+---
+
 ## Universal
 
 These items aren't tied to a single page — they're site-wide policy questions or asset-asks I need from you before I can finish.
