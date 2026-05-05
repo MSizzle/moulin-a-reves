@@ -58,6 +58,7 @@ export const translations: Record<string, Record<string, string>> = {
   'home.jardin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
   'home.jardin.sleeps': { en: 'Sleeps 6', fr: '6 Couchages' },
   'home.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'le-moulin.amenities.amenity.9': { en: 'Sleeps 10 across 8 beds', fr: 'Couchage pour 10 sur 8 lits' },
   'le-moulin.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
   'hideaway.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
   'riviere.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
