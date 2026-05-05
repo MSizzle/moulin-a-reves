@@ -47,7 +47,7 @@ export const translations: Record<string, Record<string, string>> = {
     fr: "Moulin à Rêves est un ensemble de trois maisons en pierre réunies autour d'un bief dans la campagne française, à une heure au sud de Paris. Chaque maison a son caractère propre — volets bleus, vue sur le jardin et le murmure de l'eau sur la pierre — mais ensemble, elles deviennent quelque chose de plus grand : un lieu où les familles se retrouvent, les amis se rassemblent et les matins s'étirent en douceur."
   },
   'home.homes.heading': { en: 'Three stone maisons. One story.', fr: 'Trois maisons de pierre. Une histoire.' },
-  'home.homes.subheading': { en: 'Each with its own character, its own view, its own reason to linger.', fr: 'Chacune avec son propre caractère, sa propre vue, sa propre raison de s\'attarder.' },
+  'home.homes.subheading': { en: '', fr: '' },
   'home.moulin.title': { en: 'Le Moulin', fr: 'Le Moulin' },
   'home.moulin.description': { en: 'The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.', fr: "Le cœur du domaine. Un moulin en pierre où les murs épais gardent la fraîcheur de l'été et le bief coule juste en contrebas." },
   'home.moulin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
