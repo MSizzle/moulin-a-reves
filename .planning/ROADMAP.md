@@ -25,7 +25,9 @@ Three parallel deliverables due 2026-05-06: a code-deep audit of the client's `M
   2. Items addressed by recent commits (`c04e333`, `064839a`, `7b264e7`, `250733e`, `3ff6215`) are explicitly marked Already Done with a file/commit reference — not left as open questions.
   3. Each "Needs Clarification" item has a current-code-state note (file path, line number, or quoted string where applicable) so the question in Phase 3 can be specific rather than vague.
   4. Cross-round conflicts (e.g., "Join us!" vs "When would you like to visit?", italics universal policy, commune naming) are identified and the "newest round wins" resolution is recorded, with the contradiction noted for the clarification doc.
-**Plans**: TBD
+**Plans:** 1 plan
+Plans:
+- [ ] 01-01-audit-inventory-PLAN.md — Parse MMM may.5.pdf, cross-reference current HEAD code, tag every bullet (✅/🔧/❓/⚠️), and write AUDIT.md as the contract for Phase 2 and Phase 3
 **UI hint**: no
 
 ### Phase 2: Ship-the-Clear Edits
@@ -59,6 +61,6 @@ Three parallel deliverables due 2026-05-06: a code-deep audit of the client's `M
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Audit & Inventory | 0/TBD | Not started | - |
+| 1. Audit & Inventory | 0/1 | Planned | - |
 | 2. Ship-the-Clear Edits | 0/TBD | Not started | - |
 | 3. CLIENT-CLARIFICATION.md | 0/TBD | Not started | - |
