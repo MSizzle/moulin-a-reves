@@ -87,7 +87,7 @@ export const translations: Record<string, Record<string, string>> = {
   'home.testimonial.attribution': { en: '\u2014 Sophie & Laurent, August 2025', fr: '\u2014 Sophie & Laurent, août 2025' },
   'home.cta.heading': { en: 'Plan Your Stay', fr: 'Planifiez Votre Séjour' },
   'home.cta.text': { en: 'Tell us your dates, your group, your dreams. We\u2019ll take it from there.', fr: 'Dites-nous vos dates, votre groupe, vos envies. Nous nous occupons du reste.' },
-  'home.cta.button': { en: 'Bonjour!', fr: 'Bonjour !' },
+  'home.cta.button': { en: 'Bienvenue!', fr: 'Bienvenue !' },
 
   // =====================
   // Homes Index
@@ -375,7 +375,7 @@ export const translations: Record<string, Record<string, string>> = {
   'compound.form.occasion.friends': { en: 'Friends Holiday', fr: 'Vacances entre Amis' },
   'compound.form.occasion.other': { en: 'Other', fr: 'Autre' },
   'compound.form.message': { en: 'Tell Us More', fr: 'Dites-nous en Plus' },
-  'compound.form.submit': { en: 'Bonjour!', fr: 'Bonjour !' },
+  'compound.form.submit': { en: 'Bienvenue!', fr: 'Bienvenue !' },
 
   // =====================
   // Explore / Things to Do
@@ -460,7 +460,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.",
     fr: "Nous connaissons bien la région. Dites-nous ce qui vous plaît et nous préparerons une liste de choses à voir et à faire pendant votre séjour."
   },
-  'explore.cta.button': { en: 'Bonjour!', fr: 'Bonjour !' },
+  'explore.cta.button': { en: 'Bienvenue!', fr: 'Bienvenue !' },
 
   // =====================
   // Catering
@@ -647,7 +647,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'contact.hero.title': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'contact.hero.tagline': { en: "Tell us your dates, your group size, your dreams. We'll take it from there.", fr: 'Dites-nous vos dates, la taille de votre groupe, vos envies. Nous nous occupons du reste.' },
-  'contact.form.heading': { en: 'Bonjour!', fr: 'Bonjour !' },
+  'contact.form.heading': { en: 'Bienvenue!', fr: 'Bienvenue !' },
   'contact.form.intro': {
     en: "Fill out the form below and we'll respond within 24 hours with availability and a personalised proposal.",
     fr: "Remplissez le formulaire ci-dessous et nous vous répondrons sous 24 heures avec les disponibilités et une proposition personnalisée."
