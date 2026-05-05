@@ -41,8 +41,6 @@ gallery:
     alt: "Le Loft Suite — master bedroom under cathedral ceilings"
   - src: "/images/homes/le-moulin-river-room.webp"
     alt: "La Chambre de la Rivière — twin beds with stone walls and lantern light"
-  - src: "/images/homes/le-moulin-marie-antoinette-patio.webp"
-    alt: "Marie Antoinette themed breakfast on the patio with croissants"
   - src: "/images/homes/le-moulin-flower-cart.webp"
     alt: "Stone facade with the antique flower cart in the courtyard"
   - src: "/images/homes/le-moulin-back-patio.webp"
