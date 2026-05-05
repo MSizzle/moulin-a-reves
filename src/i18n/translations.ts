@@ -301,7 +301,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'compound.hero.title': { en: 'The Compound', fr: 'Le Domaine' },
   'compound.hero.tagline': { en: 'This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility.', fr: 'Un domaine privé clos de murs, où vous êtes maître des lieux. Paix, intimité. Tranquillité.' },
-  'compound.stats.houses': { en: 'Maisons', fr: 'Maisons' },
+  'compound.stats.houses': { en: 'Homes', fr: 'Maisons' },
   'compound.stats.bedrooms': { en: 'Bedrooms', fr: 'Chambres' },
   'compound.stats.bathrooms': { en: 'Bathrooms', fr: 'Salles de bain' },
   'compound.stats.guests': { en: 'Guests', fr: 'Voyageurs' },
