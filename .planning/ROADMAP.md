@@ -57,7 +57,9 @@ Plans:
   2. Every "Needs Clarification" item from the Phase 1 audit appears in the doc with (a) the verbatim client request quoted, (b) the current code state with file reference, and (c) at least one specific, answerable question.
   3. A clearly labelled "Already Done — please re-review" section lists every item the client has been re-flagging that is already shipped, so she can verify and stop re-submitting them.
   4. The doc includes the Groups page question (Monty's instinct — not from client), all cross-round contradiction flags (Join us! vs "When would you like to visit?", italics global policy, Le Mérévillois vs Méréville naming), and all asset-request items (jacuzzi photos, Stars Who Stayed Here photos, biking photos, Monet Giverny image, Netflix-on-TV decision).
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 03-01-client-clarification-PLAN.md — Compile all 29 ❓ Needs-Clarification items + 1 ⚠️ cross-round conflict + ≥10 ✅ already-done items from AUDIT.md into a single client-readable Markdown doc at project root, grouped by page (Home / Le Moulin / Hollywood Hideaway / Maison de la Rivière / Les Maisons / Get in Touch / Universal), plus Groups-page question (Monty) and Already-Done re-review section
 **UI hint**: no
 
 ## Progress
@@ -68,4 +70,4 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Audit & Inventory | 1/1 | **Complete** | 2026-05-05 |
 | 2. Ship-the-Clear Edits | 4/4 | **Complete** | 2026-05-05 |
-| 3. CLIENT-CLARIFICATION.md | 0/TBD | Ready to plan (parallel) | - |
+| 3. CLIENT-CLARIFICATION.md | 0/1 | Ready to execute | - |
