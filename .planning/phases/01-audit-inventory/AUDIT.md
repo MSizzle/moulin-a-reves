@@ -239,6 +239,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
   - `src/components/RoomShowcase.astro:1` — <!-- room title rendering: 'Room Name : subheader' format -->
 - **Atomic sub-actions:**
   - [ ] (en-copy) Audit src/components/RoomShowcase.astro and remove or hide the subheader-above-colon rendering
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** RoomShowcase component renders room title + colon + subheader; client wants the bit above the colon (subheader) removed across all room carousels.
 
 
@@ -294,6 +295,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
 - **Current code state:**
   - <NOT FOUND — see search_log>
 - **Question:** This bullet from May 1 round is ambiguous: "Can you make italicised text easier to read?" — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.
 
 
@@ -419,6 +421,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
   - `src/pages/homes/index.astro:14` — <p class="hero__tagline">Three maisons. Sleeps 20 across 10 bedrooms.</p>
 - **i18n keys:** `home.area.heading`
 - **Question:** This bullet from April 30 round is ambiguous: "One hour from Paris” as we say that right below the photo." — current code state: description = "...one hour from Paris...". Could you clarify what specific action you want? (file: src/layouts/BaseLayout.astro)
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.
 
 
@@ -530,6 +533,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
 - **Current code state:**
   - <NOT FOUND — see search_log>
 - **Question:** This bullet from April 30 round is ambiguous: "Where you’ll gather header: just use one consistent font - now there are 2." — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.
 
 
@@ -797,6 +801,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
 - **Atomic sub-actions:**
   - [ ] (en-copy) Remove le-moulin-welcome-rose.webp lines (24-25) from gallery in src/content/pages/le-moulin.md
   - [ ] (verify) Confirm le-moulin-gate.webp ('bike by the gate') still in carousel
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** src/content/pages/le-moulin.md:24-25 still has le-moulin-welcome-rose.webp ('hostess in a rose-pink gown with Jetson the Cavalier') in the main carousel.
 
 
@@ -1070,6 +1075,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
 - **Atomic sub-actions:**
   - [ ] (en-copy) Remove duplicative tagline rows above/below the house name in src/pages/homes/maison-de-la-riviere.astro hero
   - [ ] (en-copy) Center the house name (h1) within the hero overlay
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** Maison de la Rivière hero currently shows duplicate text (h1 'La Maison de la Rivière' + tagline that may include redundant phrasing).
 
 
@@ -1167,6 +1173,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
   - `src/pages/homes/index.astro:13` — <h1 class="hero__title" data-i18n-html="homes.hero.title">Les <span class="serif-italic">Maisons</span></h1>
   - `src/pages/homes/index.astro:14` — <p class="hero__tagline">Three maisons. Sleeps 20 across 10 bedrooms.</p>
 - **Question:** This bullet from April 30 round is ambiguous: "Les Maisons header should be the same size as the header above it." — current code state: <h1 class="hero__title" data-i18n-html="homes.hero.title">Les <span class="serif-italic">Maisons</span></h1>. Could you clarify what specific action you want? (file: src/pages/homes/index.astro)
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.
 
 
@@ -1180,6 +1187,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
   - `src/pages/homes/maison-de-la-riviere.astro:236` — heading={`Where you'll <span class="serif-italic">sleep</span>`}
   - `src/pages/homes/maison-de-la-riviere.astro:246` — heading={`Where you'll <span class="serif-italic">gather</span>`}
 - **Question:** This bullet from April 30 round is ambiguous: "Les Autre Maisons should be in just one font." — current code state: @import url('...Google Fonts...'); /* multiple font families */. Could you clarify what specific action you want? (file: src/styles/global.css)
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.
 
 
@@ -1191,6 +1199,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
 - **Current code state:**
   - <NOT FOUND — see search_log>
 - **Question:** This bullet from April 30 round is ambiguous: "Les Maisons Page Remove: Three maisons." — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.
 
 
@@ -1301,6 +1310,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
 - **i18n keys:** `compound.form.submit`, `contact.form.heading`, `explore.cta.button`, `home.cta.button`
 - **Atomic sub-actions:**
   - [ ] (en-copy) Reorder src/pages/contact.astro — move <!-- Form + Contact Info --> section to render BEFORE <AvailabilityCalendar />
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** src/pages/contact.astro currently renders <AvailabilityCalendar /> at line 20 BEFORE the form section that starts at line 27. Client wants form section moved ABOVE the calendar.
 
 
@@ -1332,6 +1342,7 @@ Compound bullets are split into atomic sub-actions as nested checkboxes per D-04
   - `src/pages/homes/maison-de-la-riviere.astro:267` — heading={`Join <span class="serif-italic">us</span>`}
 - **i18n keys:** `contact.hero.heading`, `contact.hero.title`, `home.availability.heading`
 - **Question:** This bullet from May 1 round is ambiguous: "Maybe this looks better than Join Us!" — current code state: <h1 class="hero__title" data-i18n="contact.hero.title">Join us!</h1>. Could you clarify what specific action you want? (file: src/pages/contact.astro)
+- **i18n:** _no FR change required (structural-only edit per D-10) — bullet does not reference a translatable phrase needing FR sibling update_
 - **Rationale:** Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.
 
 
