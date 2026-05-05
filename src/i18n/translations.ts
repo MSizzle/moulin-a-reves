@@ -88,6 +88,9 @@ export const translations: Record<string, Record<string, string>> = {
   'home.cta.heading': { en: 'Plan Your Stay', fr: 'Planifiez Votre Séjour' },
   'home.cta.text': { en: 'Tell us your dates, your group, your dreams. We\u2019ll take it from there.', fr: 'Dites-nous vos dates, votre groupe, vos envies. Nous nous occupons du reste.' },
   'home.cta.button': { en: 'Bienvenue!', fr: 'Bienvenue !' },
+  'home.groups.type.0.title': { en: 'Family reunions', fr: 'Réunions de famille' },
+  'home.groups.type.1.title': { en: 'Yoga, painting, writing retreats', fr: 'Retraites yoga, peinture, écriture' },
+  'home.groups.type.2.title': { en: 'Friends celebrations', fr: 'Célébrations entre amis' },
 
   // =====================
   // Homes Index
@@ -323,7 +326,7 @@ export const translations: Record<string, Record<string, string>> = {
   'compound.madefor.reunion.desc': { en: 'Three generations under three roofs, with a shared garden where everyone meets. Close enough to be together, separate enough to stay sane.', fr: 'Trois générations sous trois toits, avec un jardin commun où tout le monde se retrouve. Assez proches pour être ensemble, assez séparés pour garder le sourire.' },
   'compound.madefor.corporate.title': { en: 'Corporate Retreats', fr: "Séminaires d'Entreprise" },
   'compound.madefor.corporate.desc': { en: "Strategy sessions in the morning, forest walks in the afternoon, long dinners in the evening. The kind of offsite that actually works.", fr: "Réflexion stratégique le matin, promenade en forêt l'après-midi, longs dîners le soir. Le genre de séminaire qui fonctionne vraiment." },
-  'compound.madefor.yoga.title': { en: 'Yoga Retreats', fr: 'Retraites Yoga' },
+  'compound.madefor.yoga.title': { en: 'Yoga, painting, writing retreats', fr: 'Retraites yoga, peinture, écriture' },
   'compound.madefor.yoga.desc': { en: "Morning practice on the lawn, healthy meals prepared by a private chef, massage in the afternoon. We can help you arrange every detail.", fr: "Pratique matinale sur la pelouse, repas sains préparés par un chef privé, massage l'après-midi. Nous vous aidons à organiser chaque détail." },
   'compound.madefor.celebrations.title': { en: 'Celebrations', fr: 'Célébrations' },
   'compound.madefor.celebrations.desc': { en: "Birthdays, anniversaries, intimate weddings. The garden, the millstream, the long evening light \u2014 some settings don't need much decoration.", fr: "Anniversaires, noces intimes. Le jardin, le bief, la longue lumière du soir \u2014 certains décors n'ont besoin de rien d'autre." },

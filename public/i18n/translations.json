@@ -904,8 +904,8 @@
     "fr": "Réflexion stratégique le matin, promenade en forêt l'après-midi, longs dîners le soir. Le genre de séminaire qui fonctionne vraiment."
   },
   "compound.madefor.yoga.title": {
-    "en": "Yoga Retreats",
-    "fr": "Retraites Yoga"
+    "en": "Yoga, painting, writing retreats",
+    "fr": "Retraites yoga, peinture, écriture"
   },
   "compound.madefor.yoga.desc": {
     "en": "Morning practice on the lawn, healthy meals prepared by a private chef, massage in the afternoon. We can help you arrange every detail.",
@@ -3183,5 +3183,17 @@
   },
   "home.groups.heading": {
     "en": "Host the group retreat of your dreams!"
+  },
+  "home.groups.type.0.title": {
+    "en": "Family reunions",
+    "fr": "Réunions de famille"
+  },
+  "home.groups.type.1.title": {
+    "en": "Yoga, painting, writing retreats",
+    "fr": "Retraites yoga, peinture, écriture"
+  },
+  "home.groups.type.2.title": {
+    "en": "Friends celebrations",
+    "fr": "Célébrations entre amis"
   }
 }
