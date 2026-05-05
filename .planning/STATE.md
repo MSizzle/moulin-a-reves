@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Phase 2 complete — all 4 plans shipped (COPY/TYPOG/SECT/PHOTO); ready for Phase 3 (CLIENT-CLARIFICATION.md)
-last_updated: "2026-05-05T22:25:00.000Z"
-last_activity: 2026-05-05 -- Phase 2 plan 04 (photos) complete — 3 PHOTO requirements addressed (PHOTO-01 verify-only, PHOTO-02 + PHOTO-03 commits); Phase 2 100% shipped
+status: complete
+stopped_at: Milestone 1 complete — Phase 3 plan 01 shipped (CLIENT-CLARIFICATION.md, 412 lines, 5 commits); all 6 CLAR requirements done; doc ready to send to Melissa
+last_updated: "2026-05-05T22:00:00.000Z"
+last_activity: 2026-05-05 -- Phase 3 plan 01 complete — CLIENT-CLARIFICATION.md compiled (29 ❓ + 1 ⚠️ + 14 ✅ acks); 5 atomic commits; Milestone 1 100% shipped
 progress:
   total_phases: 3
-  completed_phases: 1
-  total_plans: 5
-  completed_plans: 5
-  percent: 83
+  completed_phases: 3
+  total_plans: 6
+  completed_plans: 6
+  percent: 100
 ---
 
 # Project State
@@ -21,24 +21,24 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-05)
 
 **Core value:** Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.
-**Current focus:** Phase 2 COMPLETE — all 4 plans shipped (COPY/TYPOG/SECT/PHOTO); ready for Phase 3 (CLIENT-CLARIFICATION.md)
+**Current focus:** Milestone 1 COMPLETE — all 3 phases shipped (Audit / Ship-the-Clear / CLIENT-CLARIFICATION.md); doc ready to send to Melissa.
 
 ## Current Position
 
-Phase: 2 of 3 (Ship-the-Clear Edits) — **COMPLETE**
-Plan: 4 of 4 in current phase — COMPLETE (02-04 photos)
-Status: Plan 02-04 complete — 2 commits landed (`10c9007` PHOTO-02 maison dining lead swap, `ae76a67` PHOTO-03 HH hero centering + house CTA overlay reduction); PHOTO-01 verify-only (hh-patio.webp confirmed as the patio-breakfast shot already). Phase 2 100% shipped: 19 commits + 7 verify-only across 26 requirements (15 COPY + 3 TYPOG + 8 SECT + 3 PHOTO). Ready for Phase 3.
-Last activity: 2026-05-05 -- Phase 2 plan 04 (photos) complete — 3 PHOTO requirements addressed; Phase 2 100% shipped
+Phase: 3 of 3 (CLIENT-CLARIFICATION.md) — **COMPLETE**
+Plan: 1 of 1 in current phase — COMPLETE (03-01 client-clarification)
+Status: Plan 03-01 complete — 5 atomic commits landed (`4848518` intro + Universal, `9a45cc2` Home + Le Moulin, `ac020d5` HH + Maison, `344f5fa` Les Maisons + Get in Touch, `cf32a32` Already Done + Groups); CLIENT-CLARIFICATION.md is 412 lines covering all 29 ❓ + 1 ⚠️ + 14 ✅ acks. Milestone 1 100% shipped: 24 commits across Phase 2 + 5 commits in Phase 3 against the 2026-05-06 deadline.
+Last activity: 2026-05-05 -- Phase 3 plan 01 complete — CLIENT-CLARIFICATION.md compiled and committed; Milestone 1 100% shipped
 
-Progress: [████████▎░] 83%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 5
-- Average duration: ~29 min
-- Total execution time: ~2h 25 min
+- Total plans completed: 6
+- Average duration: ~25 min
+- Total execution time: ~2h 30 min
 
 **By Phase:**
 
@@ -46,11 +46,12 @@ Progress: [████████▎░] 83%
 |-------|-------|-------|----------|
 | 1 | 1 | ~50 min | ~50 min |
 | 2 | 4 | ~95 min | ~24 min |
+| 3 | 1 | ~5 min | ~5 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 02-04 (photos, 3 requirements, 2 commits + 1 verify-only, ~25 min); 02-03 (sections, 8 requirements, 6 commits + 2 verify-only, ~30 min); 02-02 (typography, 3 requirements, 2 commits + 1 no-op, ~15 min); 02-01 (copy edits, 15 requirements, 11 commits + 4 verify-only, ~25 min); 01-01 (audit & inventory, 92 bullets, ~50 min)
-- Trend: Plan-execution time scales with code-edit count, not requirement count. Verify-only tasks add minimal overhead. PHOTO was the smallest (3 requirements, 2 commits) but had the highest verify-only ratio (1 of 3) because plan-time research correctly anticipated that PHOTO-01 was already shipped.
+- Last 6 plans: 03-01 (client-clarification, 6 CLAR requirements, 5 commits, ~5 min); 02-04 (photos, 3 requirements, 2 commits + 1 verify-only, ~25 min); 02-03 (sections, 8 requirements, 6 commits + 2 verify-only, ~30 min); 02-02 (typography, 3 requirements, 2 commits + 1 no-op, ~15 min); 02-01 (copy edits, 15 requirements, 11 commits + 4 verify-only, ~25 min); 01-01 (audit & inventory, 92 bullets, ~50 min)
+- Trend: Plan-execution time scales with code-edit count, not requirement count. The Phase 3 plan was the fastest (~5 min) because it was pure markdown compilation with all source data pre-extracted in `_audit-bullets.json`. Phase 1's audit work paid for itself across both Phase 2 (each clear-to-ship row had a file:line anchor) and Phase 3 (each clarification row had a verbatim quote + clarification_question pre-written).
 
 *Updated after each plan completion*
 
@@ -82,10 +83,17 @@ Recent decisions affecting current work:
 - Plan 02-04 — PHOTO-01 verify-only: visual inspection of `hh-patio.webp` and `hh-patio-facing-home.webp` showed both feature the patio breakfast spread (plates, pastries, coffee pot, blue dishes); the currently-deployed `heroImage: hh-patio.webp` IS the breakfast-on-patio shot the client requested. No swap, no commit.
 - Plan 02-04 — PHOTO-03 vertical centering scoped to HH only: client flag named only HH (May 1 p.3); scoped page-only `<style>` overrides the global `.hero` bottom-alignment without touching le-moulin or maison hero alignment. Selector `.hero:not(.hero--cta)` excludes the CTA hero, which keeps its inline `height: 45vh` + global flex-end behavior.
 - Plan 02-04 — PHOTO-03 dark-filter approach: new `.hero--cta .hero__overlay` modifier rule in global.css, ~50% opacity reduction (gradient `0.18/0.10/0.32` → `0.08/0.05/0.16`); applied via class additions on the "Interested in {house}?" CTA section across all 3 house pages. Top-of-page hero overlay deliberately unchanged — it is needed for white-text legibility against bright daytime hero photos.
+- Plan 03-01 — `CLIENT-CLARIFICATION.md` placed at project root (NOT under `.planning/`) per CLAR-01: the file is a client deliverable that gets sent to Melissa directly out-of-band, not an internal artefact. Section ordering Home → Le Moulin → Hollywood Hideaway → Maison de la Rivière → Les Maisons → Get in Touch → Universal → Already Done → Groups question matches the page-grouping requirement.
+- Plan 03-01 — 29 ❓ ids represented across 29 numbered H3 items, with several merged under shared parents and cross-referenced (april30-037 + april30-040 → Universal #3; april30-042 + april30-043 + may5-002 → Le Moulin #1; april30-046 + april30-004 → Universal #5; may1-024 + may1-015 → Universal #10; april30-027 + april30-028 → Home #4). Each represented item has a verbatim quote + plain-English current state + a single bold question.
+- Plan 03-01 — Bonjour → Bienvenue resolution surfaced as Universal #11 confirming-shipped item (covers the may1-023 ⚠️). Le Mérévillois vs Méréville naming framed as a recommendation-with-confirmation (Universal #9) — Monty already shipped the address-only / marketing-Méréville split and just needs client to acknowledge.
+- Plan 03-01 — Groups page question (CLAR-04) framed as Monty's instinct, with explicit "this isn't from your PDF" framing and a clear yes/no/think-about-it ask. Positioned as the final section to give it conversation-ending weight.
+- Plan 03-01 — Style-guide gate enforced: zero `src/...` paths in client-facing body, even at the cost of slightly less precise "current state" descriptions (uses page-level descriptions like "the top of the Hollywood Hideaway page" instead). Commit hashes are the one exception — kept inline in "Already Done" because the client has used those references in prior PDF rounds.
 
 ### Pending Todos
 
-- Phase 3 (CLIENT-CLARIFICATION.md) — compile 29 ❓ rows + 1 ⚠️ + ≥18 ✅ acknowledgements into client-readable Markdown grouped by page; add SECT-02-(a) "What's Here 3-photo" deferral question to the doc; ask global policy questions on TYPOG-01 italic-removal scope and global `.hero__tagline { font-style: italic }` rule.
+- ~~Phase 3 (CLIENT-CLARIFICATION.md)~~ — **COMPLETE 2026-05-05** (Plan 03-01: 412-line doc covering all 29 ❓ + 1 ⚠️ + 14 ✅ acks; SECT-02-(a) "What's Here 3-photo" deferral surfaced as Hollywood Hideaway #1; TYPOG-01 italic-removal global policy + global `.hero__tagline { font-style: italic }` rule surfaced as Universal #1).
+- **Send `/workspace/CLIENT-CLARIFICATION.md` to Melissa** (out-of-band — email/Slack copy-paste; the file is on `feat/may-5-2026-photos` branch and will hit production when that branch merges to main).
+- **Wait on Melissa's reply** — the 11 questions listed in `03-01-SUMMARY.md` "Items the client must answer for Milestone 2 to proceed" gate the start of Milestone 2.
 
 ### Blockers/Concerns
 
@@ -106,6 +114,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-05-05T22:25:00.000Z
-Stopped at: Phase 2 complete — all 4 plans shipped (COPY/TYPOG/SECT/PHOTO); ready for Phase 3 (CLIENT-CLARIFICATION.md)
-Resume file: .planning/phases/02-ship-the-clear-edits/02-04-SUMMARY.md
+Last session: 2026-05-05T22:00:00.000Z
+Stopped at: Milestone 1 complete — Phase 3 plan 01 shipped (CLIENT-CLARIFICATION.md, 412 lines, 5 commits); doc ready to send to Melissa; Milestone 2 gated on her reply.
+Resume file: .planning/phases/03-client-clarification/03-01-SUMMARY.md

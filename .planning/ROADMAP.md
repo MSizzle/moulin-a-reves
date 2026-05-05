@@ -12,7 +12,7 @@ Three parallel deliverables due 2026-05-06: a code-deep audit of the client's `M
 
 - [x] **Phase 1: Audit & Inventory** - Cross-reference every item in `MMM may.5.pdf` against current codebase; tag each as Already Done / Clear-to-Ship / Needs Clarification / Cross-round Conflict
 - [x] **Phase 2: Ship-the-Clear Edits** - Execute all Clear-to-Ship and resolved Cross-round Conflict items as atomic commits grouped by category (copy, typography, sections, photos) — **completed 2026-05-05**
-- [ ] **Phase 3: CLIENT-CLARIFICATION.md** - Compile all Needs Clarification items into a client-facing Markdown document grouped by page, with verbatim requests, current code state, and specific questions
+- [x] **Phase 3: CLIENT-CLARIFICATION.md** - Compile all Needs Clarification items into a client-facing Markdown document grouped by page, with verbatim requests, current code state, and specific questions — **completed 2026-05-05**
 
 ## Phase Details
 
@@ -59,7 +59,7 @@ Plans:
   4. The doc includes the Groups page question (Monty's instinct — not from client), all cross-round contradiction flags (Join us! vs "When would you like to visit?", italics global policy, Le Mérévillois vs Méréville naming), and all asset-request items (jacuzzi photos, Stars Who Stayed Here photos, biking photos, Monet Giverny image, Netflix-on-TV decision).
 **Plans**: 1 plan
 Plans:
-- [ ] 03-01-client-clarification-PLAN.md — Compile all 29 ❓ Needs-Clarification items + 1 ⚠️ cross-round conflict + ≥10 ✅ already-done items from AUDIT.md into a single client-readable Markdown doc at project root, grouped by page (Home / Le Moulin / Hollywood Hideaway / Maison de la Rivière / Les Maisons / Get in Touch / Universal), plus Groups-page question (Monty) and Already-Done re-review section
+- [x] 03-01-client-clarification-PLAN.md — Compile all 29 ❓ Needs-Clarification items + 1 ⚠️ cross-round conflict + ≥10 ✅ already-done items from AUDIT.md into a single client-readable Markdown doc at project root, grouped by page (Home / Le Moulin / Hollywood Hideaway / Maison de la Rivière / Les Maisons / Get in Touch / Universal), plus Groups-page question (Monty) and Already-Done re-review section — **completed 2026-05-05** (5 commits: `4848518` `9a45cc2` `ac020d5` `344f5fa` `cf32a32`; 412 lines; CLIENT-CLARIFICATION.md at project root)
 **UI hint**: no
 
 ## Progress
@@ -70,4 +70,6 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Audit & Inventory | 1/1 | **Complete** | 2026-05-05 |
 | 2. Ship-the-Clear Edits | 4/4 | **Complete** | 2026-05-05 |
-| 3. CLIENT-CLARIFICATION.md | 0/1 | Ready to execute | - |
+| 3. CLIENT-CLARIFICATION.md | 1/1 | **Complete** | 2026-05-05 |
+
+**Milestone 1 — COMPLETE 2026-05-05.** All 38 v1 requirements addressed (3 AUDIT + 15 COPY + 3 TYPOG + 8 SECT + 3 PHOTO + 6 CLAR). Deliverable `/workspace/CLIENT-CLARIFICATION.md` ready to send to Melissa out-of-band; Milestone 2 gated on her reply.

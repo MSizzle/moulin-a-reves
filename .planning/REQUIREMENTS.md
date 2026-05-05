@@ -58,12 +58,12 @@ Coarse-grained category-level requirements. The phase plan + audit phase will it
 
 ### Clarification deliverable
 
-- [ ] **CLAR-01**: `CLIENT-CLARIFICATION.md` exists at the project root, grouped by page (Home / Le Moulin / Hollywood Hideaway / Maison de la Rivière / Les Maisons / Get in Touch / Universal).
-- [ ] **CLAR-02**: Each item includes (a) verbatim client request, (b) current code state with file references, (c) one or more specific questions for the client.
-- [ ] **CLAR-03**: A "✅ Already done — please re-review" section flags items the client has been re-asking that ARE shipped (so she stops re-flagging them).
-- [ ] **CLAR-04**: Includes question about adding a top-level Groups page (Monty's instinct).
-- [ ] **CLAR-05**: Includes cross-round contradictions ("Join us!" vs "When would you like to visit?", italics universal-policy, Le Mérévillois vs Méréville commune naming, etc.).
-- [ ] **CLAR-06**: Includes asset-asks (jacuzzi photos, "Stars Who Stayed Here" photos, biking photos, Monet Giverny image, Netflix-on-TV decision).
+- [x] **CLAR-01**: `CLIENT-CLARIFICATION.md` exists at the project root, grouped by page (Home / Le Moulin / Hollywood Hideaway / Maison de la Rivière / Les Maisons / Get in Touch / Universal). _Completed 2026-05-05 in 03-01 — file at `/workspace/CLIENT-CLARIFICATION.md`, 412 lines, 9 H2 sections in TOC order._
+- [x] **CLAR-02**: Each item includes (a) verbatim client request, (b) current code state with file references, (c) one or more specific questions for the client. _Completed 2026-05-05 in 03-01 — all 29 ❓ ids represented with verbatim quotes + plain-English current state + bold question._
+- [x] **CLAR-03**: A "✅ Already done — please re-review" section flags items the client has been re-asking that ARE shipped (so she stops re-flagging them). _Completed 2026-05-05 in 03-01 — 14 commit-cited bullets (10 verified ✅ + 4 commits client likely hasn't noticed)._
+- [x] **CLAR-04**: Includes question about adding a top-level Groups page (Monty's instinct). _Completed 2026-05-05 in 03-01 — final section with explicit yes/no/think-about-it ask._
+- [x] **CLAR-05**: Includes cross-round contradictions ("Join us!" vs "When would you like to visit?", italics universal-policy, Le Mérévillois vs Méréville commune naming, etc.). _Completed 2026-05-05 in 03-01 — Universal #1 (italics), #9 (Mérévillois), #10 (Join us), #11 (Bienvenue) all surfaced._
+- [x] **CLAR-06**: Includes asset-asks (jacuzzi photos, "Stars Who Stayed Here" photos, biking photos, Monet Giverny image, Netflix-on-TV decision). _Completed 2026-05-05 in 03-01 — Universal #6 (jacuzzi), #7 (biking), #8 (Netflix), Home #4 (Monet), Hollywood Hideaway #4 (Stars)._
 
 ## v2 Requirements
 
@@ -138,18 +138,19 @@ Items the client has requested but that need foundational work, structural rewor
 | PHOTO-01 | Phase 2 plan 04 | Done — verify-only (heroImage `hh-patio.webp` already the patio-breakfast shot) |
 | PHOTO-02 | Phase 2 plan 04 | Done — `10c9007` |
 | PHOTO-03 | Phase 2 plan 04 | Done — `ae76a67` |
-| CLAR-01 | Phase 3 | Pending |
-| CLAR-02 | Phase 3 | Pending |
-| CLAR-03 | Phase 3 | Pending |
-| CLAR-04 | Phase 3 | Pending |
-| CLAR-05 | Phase 3 | Pending |
-| CLAR-06 | Phase 3 | Pending |
+| CLAR-01 | Phase 3 plan 01 | Done — `4848518` (intro + Universal section anchors the 9 H2 page-section structure) |
+| CLAR-02 | Phase 3 plan 01 | Done — verbatim + current-state + bold question on every ❓ across `4848518` `9a45cc2` `ac020d5` `344f5fa` |
+| CLAR-03 | Phase 3 plan 01 | Done — `cf32a32` (Already Done re-review section, 14 commit-cited bullets) |
+| CLAR-04 | Phase 3 plan 01 | Done — `cf32a32` (A question from Monty — Groups page, yes/no ask) |
+| CLAR-05 | Phase 3 plan 01 | Done — `4848518` (Universal #1 italics, #9 Mérévillois, #10 Join us, #11 Bienvenue) |
+| CLAR-06 | Phase 3 plan 01 | Done — Universal #6/#7/#8 (`4848518`), Home #4 (`9a45cc2`), Hollywood Hideaway #4 (`ac020d5`) |
 
 **Coverage:**
 - v1 requirements: 38 total (AUDIT 3 + COPY 15 + TYPOG 3 + SECT 8 + PHOTO 3 + CLAR 6)
 - Mapped to phases: 38
 - Unmapped: 0 ✓
+- **Completed: 38 / 38** ✓ — Milestone 1 100% shipped against the 2026-05-06 deadline.
 
 ---
 *Requirements defined: 2026-05-05*
-*Last updated: 2026-05-05 — traceability populated after roadmap creation*
+*Last updated: 2026-05-05 — Milestone 1 complete; all 38 v1 requirements done; Milestone 2 gated on Melissa's reply to CLIENT-CLARIFICATION.md*
