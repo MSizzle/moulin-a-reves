@@ -95,6 +95,68 @@ The May 5 universal note also says this should apply to **all three houses** (Le
 
 ---
 
+## Hollywood Hideaway
+
+These are the items from your notes that touch the Hollywood Hideaway home page.
+
+### 1. "What's Here" 3-photo section — delete now, or replace with Stars?
+
+> "Remove the what's here section with 3 photos - we can always add something more useful there." *(May 1 round)*
+>
+> "We can remove the text and put it under the photos if it's better Delete The What's here section Add a section called 'Join the stars who stayed here' I will upload those photos tonight." *(April 30 round)*
+
+The Hollywood Hideaway page still has the **"What's here"** 3-photo section (patio / gardens / one more). Your May 1 round said to remove it. Your April 30 round said to **delete it AND replace it with a new "Join the Stars Who Stayed Here" section** — but that new section is waiting on photos from you (see #4 below).
+
+I deferred this to ask you directly because the two notes point at slightly different outcomes:
+
+- **(A)** **Delete now** — pull the "What's Here" section out tomorrow and leave the slot empty until the Stars photos arrive (page reads a little thinner for a few days, but it's clean).
+- **(B)** **Keep for now** — leave "What's Here" in place and stack the Stars section on top once photos arrive (no empty slot, but you keep the section you wanted gone for a bit longer).
+
+**Which would you prefer — A or B?**
+
+### 2. Gathering rooms — make photos as big as the bedroom photos?
+
+> "Gathering rooms photos are not as big as the bedroom photos - we want to make them as large as possible." *(May 1 round)*
+
+Right now on Hollywood Hideaway the **bedroom tiles** render at one size, but the **gathering-room tiles** (living room / dining room / etc.) render smaller because they sit in a different layout block.
+
+Matching them would mean enlarging the gathering-room tiles to the same size as the bedroom tiles. That's a fix to the shared layout that all three houses use, so it'd flow through to Le Moulin and Maison de la Rivière at the same time. **Milestone 2** work because of that shared-component reach.
+
+**Yes, match the gathering-room tile size to the bedroom tile size site-wide?** Yes / no.
+
+### 3. Modal X-button (rooms) — same fix as Universal #4
+
+This is the same issue from **Universal #4** above — Hollywood Hideaway's room and gathering galleries lose the X button in the upper-right when the modal opens. Same Milestone 2 fix as Universal #4. **No separate answer needed — flagging it here so you can see it applies on this page too.**
+
+### 4. "Join the Stars Who Stayed Here" — asset ask
+
+> "Add a section called 'Join the stars who stayed here' I will upload those photos tonight." *(April 30 round)*
+
+The new **"Join the Stars Who Stayed Here"** section is queued (it's logged in my notes as `NEW-04`) but I'm waiting on the photos you mentioned uploading "tonight" — they haven't reached me yet.
+
+**Two things I need:**
+
+1. **Have those star photos landed in Google Drive yet?** If yes — share the folder link.
+2. **A one-line caption per photo** — who's the celebrity, what film/show are they known for, when did they stay (just the year is fine). I'll lay them out into the section once I have both.
+
+---
+
+## Maison de la Rivière
+
+There aren't any open clarification questions specific to Maison de la Rivière — last round's edits (the dining-room photo swap, the Exterior + Gardens section removals, and the hero centering) all shipped this round. Two reminders that touch this page:
+
+### 1. Cross-references — not standalone questions
+
+The gallery white-space issue (Universal #5), the modal X-button issue (Universal #4), and the photo-bottom-cropping issue (Universal #3) all apply to Maison de la Rivière's room and gathering galleries too. Those are the same Milestone 2 fixes — answering Universal #5, #4, and #3 covers this page. **No separate answer needed.**
+
+### 2. Dining-room lead photo — quick confirmation
+
+The dining-room lead photo was swapped this round to the horizontal **tables-set-with-plates** shot — you can see it on the Maison de la Rivière page now (shipped in commit `10c9007`). It's the dining table laid out with plates and the warm wood / window-light look.
+
+If that's not the photo you intended (you wrote *"horizontal shot with tables-set-with-plates"* and there are a couple of plates-on-table photos in the source folder), **let me know and I'll switch to the other one.** Otherwise no action needed — we're done with this one.
+
+---
+
 ## Universal
 
 These items aren't tied to a single page — they're site-wide policy questions or asset-asks I need from you before I can finish.
