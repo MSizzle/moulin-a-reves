@@ -17,21 +17,21 @@ Coarse-grained category-level requirements. The phase plan + audit phase will it
 
 ### Copy edits
 
-- [ ] **COPY-01**: All "When you can stay" / "Where you can stay" replaced with **"Join us!"** across home, all three home pages, and contact page footer.
-- [ ] **COPY-02**: Le Moulin beige footer reads **"sleeps 10 in 8 beds"** (was "sleeps 12 in 10 beds").
-- [ ] **COPY-03**: Landing-page bar reads **"3 homes"** (was "houses").
-- [ ] **COPY-04**: About page CTA changed from "come and see" to **"come and visit!"**.
-- [ ] **COPY-05**: Address corrected to `14, 16, 18 Rue des Crocs au Renard, 91660 Le Mérévillois` (no trailing X on "au").
-- [ ] **COPY-06**: Home page hero leads with **"A Private Luxurious Compound, One Hour From Paris"** then 10-bedrooms info; "Méréville, France" relocated below tagline.
-- [ ] **COPY-07**: Le Moulin house page renamed from "Moulin à Rêves" → **"Le Moulin"** (estate name vs single-house name distinction).
-- [ ] **COPY-08**: Compound button copy replaced with **"This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility."**
-- [ ] **COPY-09**: "Speak with a concierge" / "Get in Touch" CTAs follow the **"Join us!"** pattern.
-- [ ] **COPY-10**: Plan-your-stay box "bonjour" → **"Bienvenue!"**
-- [ ] **COPY-11**: "Yoga retreats" → **"Yoga, painting, writing retreats"**; "Friends trips" → **"Friends celebrations"** in retreat copy.
-- [ ] **COPY-12**: "The Sanctuary" above Hollywood Hideaway → **"The Refuge"**.
-- [ ] **COPY-13**: Les Maisons section: remove "Three maisons. Sleeps 20 across 10 bedrooms." Replace with header **"Bienvenue Chez Vous"** + smaller text **"All size groups welcome. Rent 1 home or enjoy all 3."**
-- [ ] **COPY-14**: Delete "Three stone houses around shared gardens. Each its own world; together, the compound." description.
-- [ ] **COPY-15**: Add word "size" to contact microcopy: **"Tell us your dates, your group size, your dreams."**
+- [x] **COPY-01**: All "When you can stay" / "Where you can stay" replaced with **"Join us!"** across home, all three home pages, and contact page footer.
+- [x] **COPY-02**: Le Moulin beige footer reads **"sleeps 10 in 8 beds"** (was "sleeps 12 in 10 beds").
+- [x] **COPY-03**: Landing-page bar reads **"3 homes"** (was "houses").
+- [x] **COPY-04**: About page CTA changed from "come and see" to **"come and visit!"**.
+- [x] **COPY-05**: Address corrected to `14, 16, 18 Rue des Crocs au Renard, 91660 Le Mérévillois` (no trailing X on "au").
+- [x] **COPY-06**: Home page hero leads with **"A Private Luxurious Compound, One Hour From Paris"** then 10-bedrooms info; "Méréville, France" relocated below tagline.
+- [x] **COPY-07**: Le Moulin house page renamed from "Moulin à Rêves" → **"Le Moulin"** (estate name vs single-house name distinction).
+- [x] **COPY-08**: Compound button copy replaced with **"This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility."**
+- [x] **COPY-09**: "Speak with a concierge" / "Get in Touch" CTAs follow the **"Join us!"** pattern.
+- [x] **COPY-10**: Plan-your-stay box "bonjour" → **"Bienvenue!"**
+- [x] **COPY-11**: "Yoga retreats" → **"Yoga, painting, writing retreats"**; "Friends trips" → **"Friends celebrations"** in retreat copy.
+- [x] **COPY-12**: "The Sanctuary" above Hollywood Hideaway → **"The Refuge"**.
+- [x] **COPY-13**: Les Maisons section: remove "Three maisons. Sleeps 20 across 10 bedrooms." Replace with header **"Bienvenue Chez Vous"** + smaller text **"All size groups welcome. Rent 1 home or enjoy all 3."**
+- [x] **COPY-14**: Delete "Three stone houses around shared gardens. Each its own world; together, the compound." description.
+- [x] **COPY-15**: Add word "size" to contact microcopy: **"Tell us your dates, your group size, your dreams."**
 
 ### Typography
 
@@ -109,21 +109,21 @@ Items the client has requested but that need foundational work, structural rewor
 | AUDIT-01 | Phase 1 | Complete (01-01) |
 | AUDIT-02 | Phase 1 | Complete (01-01) |
 | AUDIT-03 | Phase 1 | Complete (01-01) |
-| COPY-01 | Phase 2 | Pending |
-| COPY-02 | Phase 2 | Pending |
-| COPY-03 | Phase 2 | Pending |
-| COPY-04 | Phase 2 | Pending |
-| COPY-05 | Phase 2 | Pending |
-| COPY-06 | Phase 2 | Pending |
-| COPY-07 | Phase 2 | Pending |
-| COPY-08 | Phase 2 | Pending |
-| COPY-09 | Phase 2 | Pending |
-| COPY-10 | Phase 2 | Pending |
-| COPY-11 | Phase 2 | Pending |
-| COPY-12 | Phase 2 | Pending |
-| COPY-13 | Phase 2 | Pending |
-| COPY-14 | Phase 2 | Pending |
-| COPY-15 | Phase 2 | Pending |
+| COPY-01 | Phase 2 | Complete (02-01) |
+| COPY-02 | Phase 2 | Complete (02-01) |
+| COPY-03 | Phase 2 | Complete (02-01) |
+| COPY-04 | Phase 2 | Complete (02-01) |
+| COPY-05 | Phase 2 | Complete (02-01) |
+| COPY-06 | Phase 2 | Complete (02-01) |
+| COPY-07 | Phase 2 | Complete (02-01) |
+| COPY-08 | Phase 2 | Complete (02-01) |
+| COPY-09 | Phase 2 | Complete (02-01) |
+| COPY-10 | Phase 2 | Complete (02-01) |
+| COPY-11 | Phase 2 | Complete (02-01) |
+| COPY-12 | Phase 2 | Complete (02-01) |
+| COPY-13 | Phase 2 | Complete (02-01) |
+| COPY-14 | Phase 2 | Complete (02-01) |
+| COPY-15 | Phase 2 | Complete (02-01) |
 | TYPOG-01 | Phase 2 | Pending |
 | TYPOG-02 | Phase 2 | Pending |
 | TYPOG-03 | Phase 2 | Pending |

@@ -42,7 +42,7 @@ Plans:
   5. Hollywood Hideaway lead image and Maison de la Rivière dining lead are updated to the requested photos, and Hollywood hero text is vertically centered with the dark filter adjusted per the audit finding (PHOTO-01, PHOTO-02, PHOTO-03).
 **Plans**: 4 plans
 Plans:
-- [ ] 02-01-copy-edits-PLAN.md — Execute COPY-01..COPY-15 across translations.json + .astro files (Wave 1)
+- [x] 02-01-copy-edits-PLAN.md — Execute COPY-01..COPY-15 across translations.json + .astro files (Wave 1) — **completed 2026-05-05** (11 commits + 4 verify-only)
 - [ ] 02-02-typography-edits-PLAN.md — Execute TYPOG-01..TYPOG-03 italic removal + font consolidation (Wave 2)
 - [ ] 02-03-section-edits-PLAN.md — Execute SECT-01..SECT-08 structural removals (Wave 3)
 - [ ] 02-04-photo-edits-PLAN.md — Execute PHOTO-01..PHOTO-03 photo swaps + hero CSS (Wave 4)
@@ -67,5 +67,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Audit & Inventory | 1/1 | **Complete** | 2026-05-05 |
-| 2. Ship-the-Clear Edits | 0/4 | Ready to execute | - |
+| 2. Ship-the-Clear Edits | 1/4 | In progress (plan 01 complete) | - |
 | 3. CLIENT-CLARIFICATION.md | 0/TBD | Ready to plan (parallel) | - |
