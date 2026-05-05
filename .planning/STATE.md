@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 plan 02 (typography) complete — TYPOG-01..TYPOG-03 shipped (2 commits + 1 no-op)
-last_updated: "2026-05-05T21:20:00.000Z"
-last_activity: 2026-05-05 -- Phase 2 plan 02 (typography) complete — 3 requirements shipped
+stopped_at: Phase 2 plan 03 (sections) complete — SECT-01..SECT-08 shipped (6 commits + 2 verify-only)
+last_updated: "2026-05-05T21:55:00.000Z"
+last_activity: 2026-05-05 -- Phase 2 plan 03 (sections) complete — 8 SECT requirements addressed
 progress:
   total_phases: 3
   completed_phases: 0
-  total_plans: 3
-  completed_plans: 3
-  percent: 50
+  total_plans: 4
+  completed_plans: 4
+  percent: 67
 ---
 
 # Project State
@@ -21,36 +21,36 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-05)
 
 **Core value:** Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.
-**Current focus:** Phase 2 in progress — plans 02-01 (copy edits), 02-02 (typography) complete; plans 02-03 (sections), 02-04 (photos) queued
+**Current focus:** Phase 2 in progress — plans 02-01 (copy), 02-02 (typography), 02-03 (sections) complete; plan 02-04 (photos) queued
 
 ## Current Position
 
 Phase: 2 of 3 (Ship-the-Clear Edits) — IN PROGRESS
-Plan: 2 of 4 in current phase — COMPLETE (02-02 typography)
-Status: Plan 02-02 complete — 2 commits landed (TYPOG-01 + TYPOG-02), TYPOG-03 verify-only / no-op (fonts already at 2-family target); ready for plan 02-03 (SECT)
-Last activity: 2026-05-05 -- Phase 2 plan 02 (typography) complete — 3 requirements shipped
+Plan: 3 of 4 in current phase — COMPLETE (02-03 sections)
+Status: Plan 02-03 complete — 6 commits landed (SECT-01, 02, 03, 05, 06, 08); SECT-04 + SECT-07 verify-only (cream lightbox + Journal section both already shipped on prior commits); ready for plan 02-04 (PHOTO)
+Last activity: 2026-05-05 -- Phase 2 plan 03 (sections) complete — 8 SECT requirements addressed
 
-Progress: [█████░░░░░] 50%
+Progress: [██████▌░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: ~30 min
-- Total execution time: ~1.5 hours
+- Total execution time: ~2 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 1 | ~50 min | ~50 min |
-| 2 | 2 | ~40 min | ~20 min |
+| 2 | 3 | ~70 min | ~23 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 02-02 (typography, 3 requirements, 2 commits + 1 no-op, ~15 min); 02-01 (copy edits, 15 requirements, 11 commits + 4 verify-only, ~25 min); 01-01 (audit & inventory, 92 bullets, ~50 min)
-- Trend: Plan-execution time scales with code-edit count, not requirement count. Verify-only tasks add minimal overhead. TYPOG was fast — pattern was repetitive (italic-span removal across 5 .astro files + 9 i18n keys).
+- Last 5 plans: 02-03 (sections, 8 requirements, 6 commits + 2 verify-only, ~30 min); 02-02 (typography, 3 requirements, 2 commits + 1 no-op, ~15 min); 02-01 (copy edits, 15 requirements, 11 commits + 4 verify-only, ~25 min); 01-01 (audit & inventory, 92 bullets, ~50 min)
+- Trend: Plan-execution time scales with code-edit count, not requirement count. Verify-only tasks add minimal overhead. SECT was the largest (3 house pages + 2 top-level pages + 2 content files + 2 i18n stores) but pure structural removal — no logic added.
 
 *Updated after each plan completion*
 
@@ -75,12 +75,15 @@ Recent decisions affecting current work:
 - Plan 02-02 — Hollywood Hideaway hero italic resolved via page-scoped CSS override of global .hero__tagline rule (global.css:986). Other hero taglines (home, le-moulin, riviere, the-compound, about, explore, etc.) still inherit the global italic. Phase 3 CLIENT-CLARIFICATION will ask whether the global rule should be removed site-wide.
 - Plan 02-02 — TYPOG-03 no-op: site already loads exactly 2 Google Font families (Cormorant Garamond + DM Sans) via a single @import. Favorite H1 font (Cormorant Garamond) preserved. No reduction work required.
 - Plan 02-02 — Component-level fix on AvailabilityCalendar.astro default heading prop value preferred over only patching call-sites (Rule 2: missing critical) so future invocations cannot re-introduce the italic span.
+- Plan 02-03 — i18n index renumbering: removing a middle entry from an array consumed by `${i18nKey}.amenity.${i}` requires shifting all subsequent translation keys in BOTH stores; otherwise the runtime overlay maps the wrong English/French to the wrong list slot. Documented as a pattern.
+- Plan 02-03 — SECT-04 + SECT-07 verify-only: cream lightbox shipped in commit f5579e8/1a658c2 prior; Journal section gated `{false && (...)}` in commit cc3ac01e (Apr 30). No commits produced for those two; AUDIT can be marked ✅ Done in retrospect.
+- Plan 02-03 — Hero structural reduction (Maison): delete the entire `<p class="hero__tagline">` markup (not just empty the value) when AUDIT specifies row removal. Markup deletion is more honest than empty-value rendering. Empty the JSON value defensively for editor SPA cleanliness.
+- Plan 02-03 — Carriage removal expanded to BOTH la-grange-carriage.webp AND la-grange-jetson-chariot.webp (same subject); Rule 2 — keeping a near-duplicate would defeat the client's intent.
 
 ### Pending Todos
 
-- Phase 2 plan 03 (SECT) — SECT-01..SECT-08 structural removals.
 - Phase 2 plan 04 (PHOTO) — PHOTO-01..PHOTO-03 photo swaps + hero CSS.
-- Phase 3 (CLIENT-CLARIFICATION.md) — compile 29 ❓ rows + 1 ⚠️ + ≥18 ✅ acknowledgements into client-readable Markdown grouped by page.
+- Phase 3 (CLIENT-CLARIFICATION.md) — compile 29 ❓ rows + 1 ⚠️ + ≥18 ✅ acknowledgements into client-readable Markdown grouped by page; add SECT-02-(a) "What's Here 3-photo" deferral question to the doc.
 
 ### Blockers/Concerns
 
@@ -101,6 +104,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-05-05T21:20:00.000Z
-Stopped at: Phase 2 plan 02 complete — typography edits shipped; ready for plan 02-03 (SECT)
-Resume file: .planning/phases/02-ship-the-clear-edits/02-02-SUMMARY.md
+Last session: 2026-05-05T21:55:00.000Z
+Stopped at: Phase 2 plan 03 complete — section edits shipped (SECT-01..SECT-08); ready for plan 02-04 (PHOTO)
+Resume file: .planning/phases/02-ship-the-clear-edits/02-03-SUMMARY.md

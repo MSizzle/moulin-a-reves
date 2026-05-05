@@ -44,7 +44,7 @@ Plans:
 Plans:
 - [x] 02-01-copy-edits-PLAN.md — Execute COPY-01..COPY-15 across translations.json + .astro files (Wave 1) — **completed 2026-05-05** (11 commits + 4 verify-only)
 - [x] 02-02-typography-edits-PLAN.md — Execute TYPOG-01..TYPOG-03 italic removal + font consolidation (Wave 2) — **completed 2026-05-05** (2 commits + 1 no-op TYPOG-03 — fonts already at 2-family target)
-- [ ] 02-03-section-edits-PLAN.md — Execute SECT-01..SECT-08 structural removals (Wave 3)
+- [x] 02-03-section-edits-PLAN.md — Execute SECT-01..SECT-08 structural removals (Wave 3) — **completed 2026-05-05** (6 commits + 2 verify-only — SECT-04 cream lightbox, SECT-07 Journal section already shipped)
 - [ ] 02-04-photo-edits-PLAN.md — Execute PHOTO-01..PHOTO-03 photo swaps + hero CSS (Wave 4)
 **UI hint**: yes
 
@@ -67,5 +67,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Audit & Inventory | 1/1 | **Complete** | 2026-05-05 |
-| 2. Ship-the-Clear Edits | 2/4 | In progress (plans 01, 02 complete) | - |
+| 2. Ship-the-Clear Edits | 3/4 | In progress (plans 01, 02, 03 complete) | - |
 | 3. CLIENT-CLARIFICATION.md | 0/TBD | Ready to plan (parallel) | - |

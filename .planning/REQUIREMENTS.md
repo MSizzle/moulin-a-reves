@@ -41,14 +41,14 @@ Coarse-grained category-level requirements. The phase plan + audit phase will it
 
 ### Section / content removal & restructuring
 
-- [ ] **SECT-01**: Le Moulin — office removed (folded into living-room collection); courtyard block removed (covered in gardens).
-- [ ] **SECT-02**: Hollywood Hideaway — "What's Here" 3-photo section removed; small "hollywood hideaway" text above hero text removed; Hollywood hero italic text removed; Secret Garden removed as individual room and folded into Looking Glass + American in Paris rooms; grange photo removed from main carousel.
-- [ ] **SECT-03**: Maison de la Rivière — Exterior section removed (covered in top gallery); Gardens section removed (covered below); 2 rows of duplicative hero text removed; house name centered.
-- [ ] **SECT-04**: Le Grange — toilet and laundry photos removed; black photo backgrounds replaced with white.
-- [ ] **SECT-05**: Gym & Bikes — carriage photo removed.
-- [ ] **SECT-06**: Le Moulin main carousel — pink-gown photo removed (keep bike-by-gate).
-- [ ] **SECT-07**: Home page — Journal section hidden.
-- [ ] **SECT-08**: Room carousels — subheaders above colon removed.
+- [x] **SECT-01**: Le Moulin — office removed (folded into living-room collection); courtyard block removed (covered in gardens).
+- [x] **SECT-02**: Hollywood Hideaway — "What's Here" 3-photo section removed; small "hollywood hideaway" text above hero text removed; Hollywood hero italic text removed; Secret Garden removed as individual room and folded into Looking Glass + American in Paris rooms; grange photo removed from main carousel. _(Note: "What's Here 3-photo section" sub-action deferred to Phase 3 per AUDIT ❓; other 4 sub-actions shipped/verified in 02-03.)_
+- [x] **SECT-03**: Maison de la Rivière — Exterior section removed (covered in top gallery); Gardens section removed (covered below); 2 rows of duplicative hero text removed; house name centered.
+- [x] **SECT-04**: Le Grange — toilet and laundry photos removed; black photo backgrounds replaced with white.
+- [x] **SECT-05**: Gym & Bikes — carriage photo removed.
+- [x] **SECT-06**: Le Moulin main carousel — pink-gown photo removed (keep bike-by-gate).
+- [x] **SECT-07**: Home page — Journal section hidden.
+- [x] **SECT-08**: Room carousels — subheaders above colon removed.
 
 ### Photo swaps
 
@@ -127,14 +127,14 @@ Items the client has requested but that need foundational work, structural rewor
 | TYPOG-01 | Phase 2 | Pending |
 | TYPOG-02 | Phase 2 | Pending |
 | TYPOG-03 | Phase 2 | Pending |
-| SECT-01 | Phase 2 | Pending |
-| SECT-02 | Phase 2 | Pending |
-| SECT-03 | Phase 2 | Pending |
-| SECT-04 | Phase 2 | Pending |
-| SECT-05 | Phase 2 | Pending |
-| SECT-06 | Phase 2 | Pending |
-| SECT-07 | Phase 2 | Pending |
-| SECT-08 | Phase 2 | Pending |
+| SECT-01 | Phase 2 plan 03 | Done — `8baf8eb` |
+| SECT-02 | Phase 2 plan 03 | Done — `73cce41` (3-photo sub-action deferred to Phase 3) |
+| SECT-03 | Phase 2 plan 03 | Done — `02c0406` |
+| SECT-04 | Phase 2 plan 03 | Done — verify-only (prior commits `1a658c2`, `f5579e8`) |
+| SECT-05 | Phase 2 plan 03 | Done — `249e9b8` |
+| SECT-06 | Phase 2 plan 03 | Done — `60c5db2` |
+| SECT-07 | Phase 2 plan 03 | Done — verify-only (prior commit `cc3ac01e`) |
+| SECT-08 | Phase 2 plan 03 | Done — `d2f200b` |
 | PHOTO-01 | Phase 2 | Pending |
 | PHOTO-02 | Phase 2 | Pending |
 | PHOTO-03 | Phase 2 | Pending |
