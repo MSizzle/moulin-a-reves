@@ -217,6 +217,13 @@ const amenities = [
     .hero__tagline {
       font-style: normal;
     }
+    /* PHOTO-03: client-flagged hero text "feels too low — please center it".
+       Top-of-page hero only; CTA hero opts out via .hero--cta. */
+    .hero:not(.hero--cta) {
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 0;
+    }
   </style>
 
   <!-- Stats Bar -->
@@ -302,7 +309,7 @@ const amenities = [
   />
 
   <!-- CTA -->
-  <section class="hero" style="height: 45vh; min-height: 350px;">
+  <section class="hero hero--cta" style="height: 45vh; min-height: 350px;">
     <div class="hero__image">
       <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway at golden hour" loading="lazy" />
     </div>
