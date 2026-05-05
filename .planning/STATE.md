@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 plan 03 (sections) complete — SECT-01..SECT-08 shipped (6 commits + 2 verify-only)
-last_updated: "2026-05-05T21:55:00.000Z"
-last_activity: 2026-05-05 -- Phase 2 plan 03 (sections) complete — 8 SECT requirements addressed
+stopped_at: Phase 2 complete — all 4 plans shipped (COPY/TYPOG/SECT/PHOTO); ready for Phase 3 (CLIENT-CLARIFICATION.md)
+last_updated: "2026-05-05T22:25:00.000Z"
+last_activity: 2026-05-05 -- Phase 2 plan 04 (photos) complete — 3 PHOTO requirements addressed (PHOTO-01 verify-only, PHOTO-02 + PHOTO-03 commits); Phase 2 100% shipped
 progress:
   total_phases: 3
-  completed_phases: 0
-  total_plans: 4
-  completed_plans: 4
-  percent: 67
+  completed_phases: 1
+  total_plans: 5
+  completed_plans: 5
+  percent: 83
 ---
 
 # Project State
@@ -21,36 +21,36 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-05)
 
 **Core value:** Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.
-**Current focus:** Phase 2 in progress — plans 02-01 (copy), 02-02 (typography), 02-03 (sections) complete; plan 02-04 (photos) queued
+**Current focus:** Phase 2 COMPLETE — all 4 plans shipped (COPY/TYPOG/SECT/PHOTO); ready for Phase 3 (CLIENT-CLARIFICATION.md)
 
 ## Current Position
 
-Phase: 2 of 3 (Ship-the-Clear Edits) — IN PROGRESS
-Plan: 3 of 4 in current phase — COMPLETE (02-03 sections)
-Status: Plan 02-03 complete — 6 commits landed (SECT-01, 02, 03, 05, 06, 08); SECT-04 + SECT-07 verify-only (cream lightbox + Journal section both already shipped on prior commits); ready for plan 02-04 (PHOTO)
-Last activity: 2026-05-05 -- Phase 2 plan 03 (sections) complete — 8 SECT requirements addressed
+Phase: 2 of 3 (Ship-the-Clear Edits) — **COMPLETE**
+Plan: 4 of 4 in current phase — COMPLETE (02-04 photos)
+Status: Plan 02-04 complete — 2 commits landed (`10c9007` PHOTO-02 maison dining lead swap, `ae76a67` PHOTO-03 HH hero centering + house CTA overlay reduction); PHOTO-01 verify-only (hh-patio.webp confirmed as the patio-breakfast shot already). Phase 2 100% shipped: 19 commits + 7 verify-only across 26 requirements (15 COPY + 3 TYPOG + 8 SECT + 3 PHOTO). Ready for Phase 3.
+Last activity: 2026-05-05 -- Phase 2 plan 04 (photos) complete — 3 PHOTO requirements addressed; Phase 2 100% shipped
 
-Progress: [██████▌░░░] 67%
+Progress: [████████▎░] 83%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 4
-- Average duration: ~30 min
-- Total execution time: ~2 hours
+- Total plans completed: 5
+- Average duration: ~29 min
+- Total execution time: ~2h 25 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 1 | ~50 min | ~50 min |
-| 2 | 3 | ~70 min | ~23 min |
+| 2 | 4 | ~95 min | ~24 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 02-03 (sections, 8 requirements, 6 commits + 2 verify-only, ~30 min); 02-02 (typography, 3 requirements, 2 commits + 1 no-op, ~15 min); 02-01 (copy edits, 15 requirements, 11 commits + 4 verify-only, ~25 min); 01-01 (audit & inventory, 92 bullets, ~50 min)
-- Trend: Plan-execution time scales with code-edit count, not requirement count. Verify-only tasks add minimal overhead. SECT was the largest (3 house pages + 2 top-level pages + 2 content files + 2 i18n stores) but pure structural removal — no logic added.
+- Last 5 plans: 02-04 (photos, 3 requirements, 2 commits + 1 verify-only, ~25 min); 02-03 (sections, 8 requirements, 6 commits + 2 verify-only, ~30 min); 02-02 (typography, 3 requirements, 2 commits + 1 no-op, ~15 min); 02-01 (copy edits, 15 requirements, 11 commits + 4 verify-only, ~25 min); 01-01 (audit & inventory, 92 bullets, ~50 min)
+- Trend: Plan-execution time scales with code-edit count, not requirement count. Verify-only tasks add minimal overhead. PHOTO was the smallest (3 requirements, 2 commits) but had the highest verify-only ratio (1 of 3) because plan-time research correctly anticipated that PHOTO-01 was already shipped.
 
 *Updated after each plan completion*
 
@@ -79,15 +79,17 @@ Recent decisions affecting current work:
 - Plan 02-03 — SECT-04 + SECT-07 verify-only: cream lightbox shipped in commit f5579e8/1a658c2 prior; Journal section gated `{false && (...)}` in commit cc3ac01e (Apr 30). No commits produced for those two; AUDIT can be marked ✅ Done in retrospect.
 - Plan 02-03 — Hero structural reduction (Maison): delete the entire `<p class="hero__tagline">` markup (not just empty the value) when AUDIT specifies row removal. Markup deletion is more honest than empty-value rendering. Empty the JSON value defensively for editor SPA cleanliness.
 - Plan 02-03 — Carriage removal expanded to BOTH la-grange-carriage.webp AND la-grange-jetson-chariot.webp (same subject); Rule 2 — keeping a near-duplicate would defeat the client's intent.
+- Plan 02-04 — PHOTO-01 verify-only: visual inspection of `hh-patio.webp` and `hh-patio-facing-home.webp` showed both feature the patio breakfast spread (plates, pastries, coffee pot, blue dishes); the currently-deployed `heroImage: hh-patio.webp` IS the breakfast-on-patio shot the client requested. No swap, no commit.
+- Plan 02-04 — PHOTO-03 vertical centering scoped to HH only: client flag named only HH (May 1 p.3); scoped page-only `<style>` overrides the global `.hero` bottom-alignment without touching le-moulin or maison hero alignment. Selector `.hero:not(.hero--cta)` excludes the CTA hero, which keeps its inline `height: 45vh` + global flex-end behavior.
+- Plan 02-04 — PHOTO-03 dark-filter approach: new `.hero--cta .hero__overlay` modifier rule in global.css, ~50% opacity reduction (gradient `0.18/0.10/0.32` → `0.08/0.05/0.16`); applied via class additions on the "Interested in {house}?" CTA section across all 3 house pages. Top-of-page hero overlay deliberately unchanged — it is needed for white-text legibility against bright daytime hero photos.
 
 ### Pending Todos
 
-- Phase 2 plan 04 (PHOTO) — PHOTO-01..PHOTO-03 photo swaps + hero CSS.
-- Phase 3 (CLIENT-CLARIFICATION.md) — compile 29 ❓ rows + 1 ⚠️ + ≥18 ✅ acknowledgements into client-readable Markdown grouped by page; add SECT-02-(a) "What's Here 3-photo" deferral question to the doc.
+- Phase 3 (CLIENT-CLARIFICATION.md) — compile 29 ❓ rows + 1 ⚠️ + ≥18 ✅ acknowledgements into client-readable Markdown grouped by page; add SECT-02-(a) "What's Here 3-photo" deferral question to the doc; ask global policy questions on TYPOG-01 italic-removal scope and global `.hero__tagline { font-style: italic }` rule.
 
 ### Blockers/Concerns
 
-- Photo-source assets: Some requested photo swaps (PHOTO-01 ✅ done; PHOTO-02 needs maison-dinner-light.webp confirmation). Asset-pending items: jacuzzi photos, Stars Who Stayed Here photos, biking photos, Monet Giverny image, Netflix-on-TV decision — all flagged in AUDIT.md as ❓.
+- Photo-source assets: Phase 2 PHOTO-01..PHOTO-03 all shipped (PHOTO-01 verify-only — heroImage already the patio-breakfast shot; PHOTO-02 swapped to maison-dinner-light.webp confirmed via visual inspection; PHOTO-03 scoped CSS + new BEM modifier). Remaining asset-pending items live in Phase 3 (CLIENT-CLARIFICATION): jacuzzi photos, Stars Who Stayed Here photos, biking photos, Monet Giverny image, Netflix-on-TV decision — all flagged in AUDIT.md as ❓.
 - i18n dual-update: Every copy change must land in both the `.astro`/`.md` inline strings AND `public/i18n/translations.json` (runtime overlay); forgetting one leaves the FR toggle broken. Several existing partial-shipments (e.g., COPY-01) were caused by exactly this oversight.
 - TYPOG-01 universal policy: client wants italic-on-final-word removed for listed cases (stay, Maisons, Rêves, Where you'll sleep/gather, etc.) but hasn't confirmed whether to apply globally. Phase 2 plan 02 shipped the listed cases (8 body-prose heads remain italic — about/getting/catering/the-compound/explore); Phase 3 asks the global policy question.
 - Hero tagline italic policy: TYPOG-02 fixed Hollywood Hideaway only via scoped override; the global `.hero__tagline { font-style: italic }` rule still applies to 15+ other surfaces. Phase 3 asks whether the global rule should be removed.
@@ -104,6 +106,6 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-05-05T21:55:00.000Z
-Stopped at: Phase 2 plan 03 complete — section edits shipped (SECT-01..SECT-08); ready for plan 02-04 (PHOTO)
-Resume file: .planning/phases/02-ship-the-clear-edits/02-03-SUMMARY.md
+Last session: 2026-05-05T22:25:00.000Z
+Stopped at: Phase 2 complete — all 4 plans shipped (COPY/TYPOG/SECT/PHOTO); ready for Phase 3 (CLIENT-CLARIFICATION.md)
+Resume file: .planning/phases/02-ship-the-clear-edits/02-04-SUMMARY.md

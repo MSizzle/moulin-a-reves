@@ -11,7 +11,7 @@ Three parallel deliverables due 2026-05-06: a code-deep audit of the client's `M
 - Decimal phases: Urgent insertions (none anticipated for this milestone)
 
 - [x] **Phase 1: Audit & Inventory** - Cross-reference every item in `MMM may.5.pdf` against current codebase; tag each as Already Done / Clear-to-Ship / Needs Clarification / Cross-round Conflict
-- [ ] **Phase 2: Ship-the-Clear Edits** - Execute all Clear-to-Ship and resolved Cross-round Conflict items as atomic commits grouped by category (copy, typography, sections, photos)
+- [x] **Phase 2: Ship-the-Clear Edits** - Execute all Clear-to-Ship and resolved Cross-round Conflict items as atomic commits grouped by category (copy, typography, sections, photos) — **completed 2026-05-05**
 - [ ] **Phase 3: CLIENT-CLARIFICATION.md** - Compile all Needs Clarification items into a client-facing Markdown document grouped by page, with verbatim requests, current code state, and specific questions
 
 ## Phase Details
@@ -45,7 +45,7 @@ Plans:
 - [x] 02-01-copy-edits-PLAN.md — Execute COPY-01..COPY-15 across translations.json + .astro files (Wave 1) — **completed 2026-05-05** (11 commits + 4 verify-only)
 - [x] 02-02-typography-edits-PLAN.md — Execute TYPOG-01..TYPOG-03 italic removal + font consolidation (Wave 2) — **completed 2026-05-05** (2 commits + 1 no-op TYPOG-03 — fonts already at 2-family target)
 - [x] 02-03-section-edits-PLAN.md — Execute SECT-01..SECT-08 structural removals (Wave 3) — **completed 2026-05-05** (6 commits + 2 verify-only — SECT-04 cream lightbox, SECT-07 Journal section already shipped)
-- [ ] 02-04-photo-edits-PLAN.md — Execute PHOTO-01..PHOTO-03 photo swaps + hero CSS (Wave 4)
+- [x] 02-04-photo-edits-PLAN.md — Execute PHOTO-01..PHOTO-03 photo swaps + hero CSS (Wave 4) — **completed 2026-05-05** (2 commits + 1 verify-only — PHOTO-01 heroImage already correct)
 **UI hint**: yes
 
 ### Phase 3: CLIENT-CLARIFICATION.md
@@ -67,5 +67,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Audit & Inventory | 1/1 | **Complete** | 2026-05-05 |
-| 2. Ship-the-Clear Edits | 3/4 | In progress (plans 01, 02, 03 complete) | - |
+| 2. Ship-the-Clear Edits | 4/4 | **Complete** | 2026-05-05 |
 | 3. CLIENT-CLARIFICATION.md | 0/TBD | Ready to plan (parallel) | - |

@@ -52,9 +52,9 @@ Coarse-grained category-level requirements. The phase plan + audit phase will it
 
 ### Photo swaps
 
-- [ ] **PHOTO-01**: Hollywood Hideaway lead image → patio shot with breakfast on table.
-- [ ] **PHOTO-02**: Maison de la Rivière dining-room lead → horizontal shot with tables-set-with-plates.
-- [ ] **PHOTO-03**: Hollywood Hideaway hero — white text vertically centered; dark filter removed where requested.
+- [x] **PHOTO-01**: Hollywood Hideaway lead image → patio shot with breakfast on table.
+- [x] **PHOTO-02**: Maison de la Rivière dining-room lead → horizontal shot with tables-set-with-plates.
+- [x] **PHOTO-03**: Hollywood Hideaway hero — white text vertically centered; dark filter removed where requested.
 
 ### Clarification deliverable
 
@@ -135,9 +135,9 @@ Items the client has requested but that need foundational work, structural rewor
 | SECT-06 | Phase 2 plan 03 | Done — `60c5db2` |
 | SECT-07 | Phase 2 plan 03 | Done — verify-only (prior commit `cc3ac01e`) |
 | SECT-08 | Phase 2 plan 03 | Done — `d2f200b` |
-| PHOTO-01 | Phase 2 | Pending |
-| PHOTO-02 | Phase 2 | Pending |
-| PHOTO-03 | Phase 2 | Pending |
+| PHOTO-01 | Phase 2 plan 04 | Done — verify-only (heroImage `hh-patio.webp` already the patio-breakfast shot) |
+| PHOTO-02 | Phase 2 plan 04 | Done — `10c9007` |
+| PHOTO-03 | Phase 2 plan 04 | Done — `ae76a67` |
 | CLAR-01 | Phase 3 | Pending |
 | CLAR-02 | Phase 3 | Pending |
 | CLAR-03 | Phase 3 | Pending |
