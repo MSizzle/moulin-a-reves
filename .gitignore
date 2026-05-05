@@ -34,3 +34,9 @@ scripts/previews/
 .netlify
 .vercel
 .env*.local
+
+# local-only client reference docs (PDFs dropped at repo root)
+*.pdf
+
+# VS Code workspace files (occasionally land in odd places)
+*.code-workspace

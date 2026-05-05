@@ -961,6 +961,14 @@ img,
   z-index: 1;
 }
 
+/* PHOTO-03: reduced dark filter on the per-house "Interested in..." CTA hero only.
+   Client (Apr 30 p.12): "Can you reduce the black filter on the image on this page
+   and all the house listings" — applies to the CTA section, not the top-of-page hero
+   where the overlay is needed for white-text legibility. */
+.hero--cta .hero__overlay {
+  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.08) 0%, rgba(15, 15, 15, 0.05) 40%, rgba(15, 15, 15, 0.16) 100%);
+}
+
 .hero__content {
   position: relative;
   z-index: 2;

@@ -61,9 +61,9 @@ const livingSpaces = [
     title: 'Dining Room',
     summary: 'Elegant dining room — table seats up to eighteen.',
     photos: [
+      { src: '/images/homes/maison-dinner-light.webp', alt: 'Long dining table set with plates, glasses, and bread under warm chandelier light' },
       { src: '/images/homes/maison-dining.webp', alt: 'Dining room board table under the large landscape painting' },
       { src: '/images/homes/maison-dining-into-living.webp', alt: 'View from the dining room through to the living room with bookshelves and floral couch' },
-      { src: '/images/homes/maison-dinner-light.webp', alt: 'Dinner laid on the long dining table, lit by warm chandelier light' },
       { src: '/images/homes/maison-board-room.webp', alt: 'Long wooden board-room dining table for retreat-style gatherings' },
     ],
   },
@@ -74,25 +74,6 @@ const livingSpaces = [
     photos: [
       { src: '/images/homes/maison-kitchen.webp', alt: 'Kitchen with wood cabinetry and bread on the stovetop' },
       { src: '/images/homes/maison-eat-in-kitchen.webp', alt: 'Eat-in kitchen with wooden staircase and dining nook' },
-    ],
-  },
-  {
-    id: 'exterior',
-    title: 'Exterior & Stream',
-    summary: 'Front facade with dormers and ivy, the stream alongside the garden.',
-    photos: [
-      { src: '/images/homes/maison-ext.webp', alt: 'Front facade of Maison sur la Rivière with dormers and ivy' },
-      { src: '/images/homes/le-jardin-hero.webp', alt: 'Maison sur la Rivière with the stream running alongside the garden' },
-    ],
-  },
-  {
-    id: 'gardens',
-    title: 'Gardens',
-    summary: 'Stream, apple trees, and shared compound gardens.',
-    photos: [
-      { src: '/images/bridge-garden.webp', alt: 'Compound gardens with the Giverny-style bridge' },
-      { src: '/images/garden-chaises.webp', alt: 'Garden chaise lounges facing the painted bridge' },
-      { src: '/images/garden-stone-well.webp', alt: 'Vine-covered antique stone well sheltered in the garden' },
     ],
   },
 ];
@@ -170,26 +151,9 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow" data-i18n="riviere.hero.eyebrow">{cms.eyebrow}</span>
       <h1 class="hero__title" data-i18n="riviere.hero.title">{cms.title}</h1>
-      <p class="hero__tagline" data-i18n="riviere.hero.tagline">{cms.tagline}</p>
     </div>
   </section>
-
-  <style>
-    .hero__eyebrow {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.96);
-      margin-bottom: 24px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
-      padding-left: 0.28em;
-    }
-  </style>
 
   <!-- Stats Bar -->
   <section class="section" style="padding-top: 32px; padding-bottom: 24px;">
@@ -233,17 +197,18 @@ const amenities = [
   <!-- Rooms (bedrooms) -->
   <RoomShowcase
     eyebrow=""
-    heading={`Where you'll <span class="serif-italic">sleep</span>`}
+    heading="Where you'll sleep"
     intro="2 bedrooms upstairs, sharing a hall bath."
     rooms={bedrooms}
     background="stone"
     i18nKey="riviere.bedrooms"
+    hideTileSummary={true}
   />
 
   <!-- Living Spaces -->
   <RoomShowcase
     eyebrow=""
-    heading={`Where you'll <span class="serif-italic">gather</span>`}
+    heading="Where you'll gather"
     intro=""
     rooms={livingSpaces}
     i18nKey="riviere.living"
@@ -253,7 +218,7 @@ const amenities = [
   <!-- Amenities -->
   <AmenitiesSection
     eyebrow=""
-    heading={`What's <span class="serif-italic">here</span>`}
+    heading="What's here"
     features={amenityFeatures}
     amenities={amenities}
     background="stone"
@@ -264,13 +229,13 @@ const amenities = [
   <AvailabilityCalendar
     monthsToShow={12}
     eyebrow=""
-    heading={`Join <span class="serif-italic">us</span>`}
+    heading="Join us"
     intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
     i18nKey="riviere.availability"
   />
 
   <!-- CTA -->
-  <section class="hero" style="height: 45vh; min-height: 350px;">
+  <section class="hero hero--cta" style="height: 45vh; min-height: 350px;">
     <div class="hero__image">
       <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière at golden hour" loading="lazy" />
     </div>
@@ -285,7 +250,7 @@ const amenities = [
   <section class="section--tight">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 24px;">
-        <h2 data-i18n-html="riviere.cross.heading">Les <span class="serif-italic">Autres Maisons</span></h2>
+        <h2 data-i18n="riviere.cross.heading">Les Autres Maisons</h2>
       </div>
       <div class="maisons-stack">
         <a href="/homes/le-moulin/" class="split split--maison fade-in">

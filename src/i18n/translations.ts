@@ -36,15 +36,18 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'home.title': { en: 'Your Dream French Vacation Come True', fr: 'Moulin à Rêves' },
   'home.tagline': { en: 'Méréville · France', fr: 'Méréville · France' },
+  'home.hero.tagline': { en: 'A Private Luxurious Compound, One Hour From Paris', fr: 'Un domaine privé de luxe, à une heure de Paris' },
+  'home.hero.location': { en: 'Méréville, France', fr: 'Méréville, France' },
   'home.cta': { en: 'Discover the Maisons', fr: 'Découvrir les Maisons' },
-  'home.stats.intro': { en: 'A private compound one hour from Paris.', fr: 'Un domaine privé à une heure de Paris.' },
+  'home.cta.secondary': { en: 'Join us!', fr: 'Rejoignez-nous !' },
+  'home.stats.intro': { en: '', fr: '' },
   'home.intro.heading': { en: 'Where the millstream meets your morning coffee', fr: 'Là où le bief rencontre votre café du matin' },
   'home.intro.text': {
     en: 'Moulin à Rêves is a compound of three stone houses gathered around a millstream in the French countryside, one hour south of Paris. Each home has its own character — blue shutters, garden views, and the quiet hum of water over stone — but together, they become something greater: a place where families reconnect, friends gather, and mornings stretch long.',
     fr: "Moulin à Rêves est un ensemble de trois maisons en pierre réunies autour d'un bief dans la campagne française, à une heure au sud de Paris. Chaque maison a son caractère propre — volets bleus, vue sur le jardin et le murmure de l'eau sur la pierre — mais ensemble, elles deviennent quelque chose de plus grand : un lieu où les familles se retrouvent, les amis se rassemblent et les matins s'étirent en douceur."
   },
   'home.homes.heading': { en: 'Three stone maisons. One story.', fr: 'Trois maisons de pierre. Une histoire.' },
-  'home.homes.subheading': { en: 'Each with its own character, its own view, its own reason to linger.', fr: 'Chacune avec son propre caractère, sa propre vue, sa propre raison de s\'attarder.' },
+  'home.homes.subheading': { en: '', fr: '' },
   'home.moulin.title': { en: 'Le Moulin', fr: 'Le Moulin' },
   'home.moulin.description': { en: 'The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.', fr: "Le cœur du domaine. Un moulin en pierre où les murs épais gardent la fraîcheur de l'été et le bief coule juste en contrebas." },
   'home.moulin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
@@ -57,7 +60,11 @@ export const translations: Record<string, Record<string, string>> = {
   'home.jardin.description': { en: 'The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.', fr: "La plus paisible des trois. Un cottage de jardin habillé de glycine, avec une terrasse faite pour les longues après-midi." },
   'home.jardin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
   'home.jardin.sleeps': { en: 'Sleeps 6', fr: '6 Couchages' },
-  'home.availability.heading': { en: 'Join <span class="serif-italic">us</span>', fr: 'Rejoignez-<span class="serif-italic">nous</span>' },
+  'home.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'le-moulin.amenities.amenity.8': { en: 'Sleeps 10 across 8 beds', fr: 'Couchage pour 10 sur 8 lits' },
+  'le-moulin.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'hideaway.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'riviere.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
   'home.availability.intro': { en: 'Live calendar synced from Airbnb and VRBO. Greyed dates are booked.', fr: 'Calendrier en direct synchronisé depuis Airbnb et VRBO. Les dates grisées sont réservées.' },
   'home.senseof.quote': {
     en: '"At the edge of Fontainebleau Forest, in the land that inspired the Barbizon painters, where the light still falls the way it did two centuries ago."',
@@ -80,13 +87,16 @@ export const translations: Record<string, Record<string, string>> = {
   'home.testimonial.attribution': { en: '\u2014 Sophie & Laurent, August 2025', fr: '\u2014 Sophie & Laurent, août 2025' },
   'home.cta.heading': { en: 'Plan Your Stay', fr: 'Planifiez Votre Séjour' },
   'home.cta.text': { en: 'Tell us your dates, your group, your dreams. We\u2019ll take it from there.', fr: 'Dites-nous vos dates, votre groupe, vos envies. Nous nous occupons du reste.' },
-  'home.cta.button': { en: 'Bonjour!', fr: 'Bonjour !' },
+  'home.cta.button': { en: 'Bienvenue!', fr: 'Bienvenue !' },
+  'home.groups.type.0.title': { en: 'Family reunions', fr: 'Réunions de famille' },
+  'home.groups.type.1.title': { en: 'Yoga, painting, writing retreats', fr: 'Retraites yoga, peinture, écriture' },
+  'home.groups.type.2.title': { en: 'Friends celebrations', fr: 'Célébrations entre amis' },
 
   // =====================
   // Homes Index
   // =====================
-  'homes.hero.title': { en: 'The Maisons', fr: 'Les Maisons' },
-  'homes.hero.tagline': { en: 'Three maisons, each with a story. All with blue shutters.', fr: 'Trois maisons, chacune avec son histoire. Toutes avec des volets bleus.' },
+  'homes.hero.title': { en: 'Bienvenue Chez Vous', fr: 'Bienvenue Chez Vous' },
+  'homes.hero.tagline': { en: 'All size groups welcome. Rent 1 home or enjoy all 3.', fr: 'Toutes tailles de groupes bienvenues. Louez 1 maison ou profitez des 3.' },
   'homes.moulin.desc': { en: 'The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.', fr: "Le cœur du domaine. Un moulin en pierre où les murs épais gardent la fraîcheur de l'été et le bief coule juste en contrebas." },
   'homes.moulin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
   'homes.moulin.baths': { en: '2 Bathrooms', fr: '2 Salles de bain' },
@@ -297,7 +307,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'compound.hero.title': { en: 'The Compound', fr: 'Le Domaine' },
   'compound.hero.tagline': { en: 'This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility.', fr: 'Un domaine privé clos de murs, où vous êtes maître des lieux. Paix, intimité. Tranquillité.' },
-  'compound.stats.houses': { en: 'Maisons', fr: 'Maisons' },
+  'compound.stats.houses': { en: 'Homes', fr: 'Maisons' },
   'compound.stats.bedrooms': { en: 'Bedrooms', fr: 'Chambres' },
   'compound.stats.bathrooms': { en: 'Bathrooms', fr: 'Salles de bain' },
   'compound.stats.guests': { en: 'Guests', fr: 'Voyageurs' },
@@ -316,7 +326,7 @@ export const translations: Record<string, Record<string, string>> = {
   'compound.madefor.reunion.desc': { en: 'Three generations under three roofs, with a shared garden where everyone meets. Close enough to be together, separate enough to stay sane.', fr: 'Trois générations sous trois toits, avec un jardin commun où tout le monde se retrouve. Assez proches pour être ensemble, assez séparés pour garder le sourire.' },
   'compound.madefor.corporate.title': { en: 'Corporate Retreats', fr: "Séminaires d'Entreprise" },
   'compound.madefor.corporate.desc': { en: "Strategy sessions in the morning, forest walks in the afternoon, long dinners in the evening. The kind of offsite that actually works.", fr: "Réflexion stratégique le matin, promenade en forêt l'après-midi, longs dîners le soir. Le genre de séminaire qui fonctionne vraiment." },
-  'compound.madefor.yoga.title': { en: 'Yoga Retreats', fr: 'Retraites Yoga' },
+  'compound.madefor.yoga.title': { en: 'Yoga, painting, writing retreats', fr: 'Retraites yoga, peinture, écriture' },
   'compound.madefor.yoga.desc': { en: "Morning practice on the lawn, healthy meals prepared by a private chef, massage in the afternoon. We can help you arrange every detail.", fr: "Pratique matinale sur la pelouse, repas sains préparés par un chef privé, massage l'après-midi. Nous vous aidons à organiser chaque détail." },
   'compound.madefor.celebrations.title': { en: 'Celebrations', fr: 'Célébrations' },
   'compound.madefor.celebrations.desc': { en: "Birthdays, anniversaries, intimate weddings. The garden, the millstream, the long evening light \u2014 some settings don't need much decoration.", fr: "Anniversaires, noces intimes. Le jardin, le bief, la longue lumière du soir \u2014 certains décors n'ont besoin de rien d'autre." },
@@ -368,7 +378,7 @@ export const translations: Record<string, Record<string, string>> = {
   'compound.form.occasion.friends': { en: 'Friends Holiday', fr: 'Vacances entre Amis' },
   'compound.form.occasion.other': { en: 'Other', fr: 'Autre' },
   'compound.form.message': { en: 'Tell Us More', fr: 'Dites-nous en Plus' },
-  'compound.form.submit': { en: 'Bonjour!', fr: 'Bonjour !' },
+  'compound.form.submit': { en: 'Bienvenue!', fr: 'Bienvenue !' },
 
   // =====================
   // Explore / Things to Do
@@ -453,7 +463,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "We know the area well. Tell us what you love and we'll put together a list of things to see and do during your stay.",
     fr: "Nous connaissons bien la région. Dites-nous ce qui vous plaît et nous préparerons une liste de choses à voir et à faire pendant votre séjour."
   },
-  'explore.cta.button': { en: 'Bonjour!', fr: 'Bonjour !' },
+  'explore.cta.button': { en: 'Bienvenue!', fr: 'Bienvenue !' },
 
   // =====================
   // Catering
@@ -631,7 +641,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "The wifi is excellent. The Viking professional ovens and Ritz Paris terry robes — every detail has been chosen with care.",
     fr: "Le wifi est excellent. Les fours professionnels Viking et les peignoirs en éponge du Ritz Paris — chaque détail a été choisi avec soin."
   },
-  'about.cta.heading': { en: 'Come and See', fr: 'Venez Voir' },
+  'about.cta.heading': { en: 'come and visit!', fr: 'venez nous voir !' },
   'about.cta.text': { en: "We'd love to welcome you. Tell us your dates and we'll take it from there.", fr: "Nous serions ravis de vous accueillir. Dites-nous vos dates et nous nous occupons du reste." },
   'about.cta.button': { en: 'Plan Your Stay', fr: 'Planifiez Votre Séjour' },
 
@@ -640,7 +650,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'contact.hero.title': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'contact.hero.tagline': { en: "Tell us your dates, your group size, your dreams. We'll take it from there.", fr: 'Dites-nous vos dates, la taille de votre groupe, vos envies. Nous nous occupons du reste.' },
-  'contact.form.heading': { en: 'Bonjour!', fr: 'Bonjour !' },
+  'contact.form.heading': { en: 'Bienvenue!', fr: 'Bienvenue !' },
   'contact.form.intro': {
     en: "Fill out the form below and we'll respond within 24 hours with availability and a personalised proposal.",
     fr: "Remplissez le formulaire ci-dessous et nous vous répondrons sous 24 heures avec les disponibilités et une proposition personnalisée."

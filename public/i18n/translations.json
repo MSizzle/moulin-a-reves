@@ -103,13 +103,25 @@
     "en": "A private historic compound in Méréville, France. One hour from Paris.",
     "fr": "Trois maisons. Un séjour inoubliable. À une heure de Paris."
   },
+  "home.hero.tagline": {
+    "en": "A Private Luxurious Compound, One Hour From Paris",
+    "fr": "Un domaine privé de luxe, à une heure de Paris"
+  },
+  "home.hero.location": {
+    "en": "Méréville, France",
+    "fr": "Méréville, France"
+  },
   "home.cta": {
     "en": "Discover the Compound",
     "fr": "Découvrir les Maisons"
   },
+  "home.cta.secondary": {
+    "en": "Join us!",
+    "fr": "Rejoignez-nous !"
+  },
   "home.stats.intro": {
-    "en": "A private compound one hour from Paris.",
-    "fr": "Un domaine privé à une heure de Paris."
+    "en": "",
+    "fr": ""
   },
   "home.intro.heading": {
     "en": "A private compound, one hour from Paris.",
@@ -128,8 +140,8 @@
     "fr": "Les Maisons"
   },
   "home.homes.subheading": {
-    "en": "Three stone houses around shared gardens. Each its own world; together, the compound.",
-    "fr": "Trois maisons, chacune avec sa propre histoire."
+    "en": "",
+    "fr": ""
   },
   "home.moulin.title": {
     "en": "Le Moulin",
@@ -180,8 +192,8 @@
     "fr": "6 Couchages"
   },
   "home.availability.heading": {
-    "en": "When You Can <span class=\"serif-italic\">Stay</span>",
-    "fr": "Quand <span class=\"serif-italic\">Réserver</span>"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "home.availability.intro": {
     "en": "Live calendar synced from Airbnb and VRBO. Greyed dates are booked.",
@@ -248,16 +260,16 @@
     "fr": "Dites-nous vos dates, votre groupe, vos envies. Nous nous occupons du reste."
   },
   "home.cta.button": {
-    "en": "Bonjour!",
-    "fr": "Bonjour !"
+    "en": "Bienvenue!",
+    "fr": "Bienvenue !"
   },
   "homes.hero.title": {
-    "en": "Les Maisons",
-    "fr": "Les Maisons"
+    "en": "Bienvenue Chez Vous",
+    "fr": "Bienvenue Chez Vous"
   },
   "homes.hero.tagline": {
-    "en": "Three maisons. Sleeps 20 across 10 bedrooms.",
-    "fr": "Trois maisons, chacune avec son histoire. Toutes avec des volets bleus."
+    "en": "All size groups welcome. Rent 1 home or enjoy all 3.",
+    "fr": "Toutes tailles de groupes bienvenues. Louez 1 maison ou profitez des 3."
   },
   "homes.moulin.desc": {
     "en": "The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.",
@@ -840,7 +852,7 @@
     "fr": "Un domaine privé clos de murs, où vous êtes maître des lieux. Paix, intimité. Tranquillité."
   },
   "compound.stats.houses": {
-    "en": "Houses",
+    "en": "Homes",
     "fr": "Maisons"
   },
   "compound.stats.bedrooms": {
@@ -892,8 +904,8 @@
     "fr": "Réflexion stratégique le matin, promenade en forêt l'après-midi, longs dîners le soir. Le genre de séminaire qui fonctionne vraiment."
   },
   "compound.madefor.yoga.title": {
-    "en": "Yoga Retreats",
-    "fr": "Retraites Yoga"
+    "en": "Yoga, painting, writing retreats",
+    "fr": "Retraites yoga, peinture, écriture"
   },
   "compound.madefor.yoga.desc": {
     "en": "Morning practice on the lawn, healthy meals prepared by a private chef, massage in the afternoon. We can help you arrange every detail.",
@@ -1064,8 +1076,8 @@
     "fr": "Dites-nous en Plus"
   },
   "compound.form.submit": {
-    "en": "Bonjour!",
-    "fr": "Bonjour !"
+    "en": "Bienvenue!",
+    "fr": "Bienvenue !"
   },
   "explore.hero.title": {
     "en": "Things to Do",
@@ -1220,8 +1232,8 @@
     "fr": "Nous connaissons bien la région. Dites-nous ce qui vous plaît et nous préparerons une liste de choses à voir et à faire pendant votre séjour."
   },
   "explore.cta.button": {
-    "en": "Bonjour!",
-    "fr": "Bonjour !"
+    "en": "Bienvenue!",
+    "fr": "Bienvenue !"
   },
   "catering.hero.title": {
     "en": "Catering",
@@ -1448,8 +1460,8 @@
     "fr": "Moulin à Rêves n'est pas un resort. Ce sont trois maisons, un jardin, un bief et la lisière d'une forêt. Ce que vous en faites ne regarde que vous. Nous nous sommes simplement assurés que les draps sont beaux, la cuisine fonctionne, le WiFi arrive jusqu'à la terrasse, et la lumière du soir est exactement telle que vous vous en souviendrez."
   },
   "about.cta.heading": {
-    "en": "Come and See",
-    "fr": "Venez Voir"
+    "en": "come and visit!",
+    "fr": "venez nous voir !"
   },
   "about.cta.text": {
     "en": "We'd love to welcome you. Tell us your dates and we'll take it from there.",
@@ -1480,12 +1492,12 @@
     "fr": "Contactez-nous"
   },
   "contact.hero.tagline": {
-    "en": "Tell us your dates, your group, your dreams. We'll take it from there.",
-    "fr": "Dites-nous vos dates, votre groupe, vos envies. Nous nous occupons du reste."
+    "en": "Tell us your dates, your group size, your dreams. We'll take it from there.",
+    "fr": "Dites-nous vos dates, la taille de votre groupe, vos envies. Nous nous occupons du reste."
   },
   "contact.form.heading": {
-    "en": "Bonjour!",
-    "fr": "Bonjour !"
+    "en": "Bienvenue!",
+    "fr": "Bienvenue !"
   },
   "contact.form.intro": {
     "en": "Fill out the form below and we'll respond within 24 hours with availability and a personalised proposal.",
@@ -1887,25 +1899,24 @@
     "en": "Full fridge + freezer"
   },
   "le-moulin.amenities.amenity.5": {
-    "en": "Office with desk + printer"
-  },
-  "le-moulin.amenities.amenity.6": {
     "en": "Garden & wishing well"
   },
-  "le-moulin.amenities.amenity.7": {
+  "le-moulin.amenities.amenity.6": {
     "en": "River frontage"
   },
-  "le-moulin.amenities.amenity.8": {
+  "le-moulin.amenities.amenity.7": {
     "en": "Patio dining"
   },
-  "le-moulin.amenities.amenity.9": {
-    "en": "Sleeps 12 across 8 beds"
+  "le-moulin.amenities.amenity.8": {
+    "en": "Sleeps 10 across 8 beds",
+    "fr": "Couchage pour 10 sur 8 lits"
   },
   "le-moulin.availability.eyebrow": {
     "en": "Availability"
   },
   "le-moulin.availability.heading": {
-    "en": "When You Can <span class=\"serif-italic\">Stay</span>"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "le-moulin.availability.intro": {
     "en": "Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
@@ -1920,7 +1931,7 @@
     "en": "Inquire About Dates"
   },
   "le-moulin.cross.heading": {
-    "en": "Les <span class=\"serif-italic\">Autres Maisons</span>"
+    "en": "Les Autres Maisons"
   },
   "le-moulin.cross.hideaway.eyebrow": {
     "en": ""
@@ -1989,7 +2000,7 @@
     "en": ""
   },
   "hideaway.bedrooms.heading": {
-    "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
+    "en": "Where you'll sleep"
   },
   "hideaway.bedrooms.intro": {
     "en": "Three bedrooms plus an adjacent suite"
@@ -2022,7 +2033,7 @@
     "en": ""
   },
   "hideaway.living.heading": {
-    "en": "Where you'll <span class=\"serif-italic\">gather</span>"
+    "en": "Where you'll gather"
   },
   "hideaway.living.intro": {
     "en": "One long upstairs room and the bright kitchen below — the working heart of the Hideaway."
@@ -2043,7 +2054,7 @@
     "en": ""
   },
   "hideaway.amenities.heading": {
-    "en": "What's <span class=\"serif-italic\">here</span>"
+    "en": "What's here"
   },
   "hideaway.amenities.includedHeading": {
     "en": "Also included"
@@ -2097,7 +2108,8 @@
     "en": "Availability"
   },
   "hideaway.availability.heading": {
-    "en": "When You Can <span class=\"serif-italic\">Stay</span>"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "hideaway.availability.intro": {
     "en": "Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
@@ -2112,7 +2124,7 @@
     "en": "Inquire About Dates"
   },
   "hideaway.cross.heading": {
-    "en": "Les <span class=\"serif-italic\">Autres Maisons</span>"
+    "en": "Les Autres Maisons"
   },
   "hideaway.cross.moulin.eyebrow": {
     "en": ""
@@ -2148,7 +2160,7 @@
     "en": "La Maison de la Rivière"
   },
   "riviere.hero.tagline": {
-    "en": "A light infused home brimming with inspiration.  "
+    "en": ""
   },
   "riviere.stats.bedrooms": {
     "en": "Bedrooms"
@@ -2175,7 +2187,7 @@
     "en": ""
   },
   "riviere.bedrooms.heading": {
-    "en": "Where you'll <span class=\"serif-italic\">sleep</span>"
+    "en": "Where you'll sleep"
   },
   "riviere.bedrooms.intro": {
     "en": "Two upstairs bedrooms sharing a hall bath"
@@ -2196,7 +2208,7 @@
     "en": ""
   },
   "riviere.living.heading": {
-    "en": "Where you'll <span class=\"serif-italic\">gather</span>"
+    "en": "Where you'll gather"
   },
   "riviere.living.intro": {
     "en": "A sun-drenched living room, a dining room for eighteen, and a stone-and-beam kitchen."
@@ -2223,7 +2235,7 @@
     "en": ""
   },
   "riviere.amenities.heading": {
-    "en": "What's <span class=\"serif-italic\">here</span>"
+    "en": "What's here"
   },
   "riviere.amenities.includedHeading": {
     "en": "Also included"
@@ -2277,7 +2289,8 @@
     "en": "Availability"
   },
   "riviere.availability.heading": {
-    "en": "When You Can <span class=\"serif-italic\">Stay</span>"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "riviere.availability.intro": {
     "en": "Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm."
@@ -2292,7 +2305,7 @@
     "en": "Inquire About Dates"
   },
   "riviere.cross.heading": {
-    "en": "Les <span class=\"serif-italic\">Autres Maisons</span>"
+    "en": "Les Autres Maisons"
   },
   "riviere.cross.moulin.eyebrow": {
     "en": ""
@@ -3167,5 +3180,17 @@
   },
   "home.groups.heading": {
     "en": "Host the group retreat of your dreams!"
+  },
+  "home.groups.type.0.title": {
+    "en": "Family reunions",
+    "fr": "Réunions de famille"
+  },
+  "home.groups.type.1.title": {
+    "en": "Yoga, painting, writing retreats",
+    "fr": "Retraites yoga, peinture, écriture"
+  },
+  "home.groups.type.2.title": {
+    "en": "Friends celebrations",
+    "fr": "Célébrations entre amis"
   }
 }

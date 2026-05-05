@@ -213,6 +213,17 @@ const amenities = [
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
       padding-left: 0.28em;
     }
+    /* TYPOG-02: client-flagged italic tagline noise on this page; override the global italic rule */
+    .hero__tagline {
+      font-style: normal;
+    }
+    /* PHOTO-03: client-flagged hero text "feels too low — please center it".
+       Top-of-page hero only; CTA hero opts out via .hero--cta. */
+    .hero:not(.hero--cta) {
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 0;
+    }
   </style>
 
   <!-- Stats Bar -->
@@ -260,17 +271,18 @@ const amenities = [
   <!-- Rooms (bedrooms) -->
   <RoomShowcase
     eyebrow=""
-    heading={`Where you'll <span class="serif-italic">sleep</span>`}
+    heading="Where you'll sleep"
     intro="3 bedrooms."
     rooms={bedrooms}
     background="stone"
     i18nKey="hideaway.bedrooms"
+    hideTileSummary={true}
   />
 
   <!-- Living Spaces -->
   <RoomShowcase
     eyebrow=""
-    heading={`Where you'll <span class="serif-italic">gather</span>`}
+    heading="Where you'll gather"
     intro=""
     rooms={livingSpaces}
     i18nKey="hideaway.living"
@@ -280,7 +292,7 @@ const amenities = [
   <!-- Amenities -->
   <AmenitiesSection
     eyebrow=""
-    heading={`What's <span class="serif-italic">here</span>`}
+    heading="What's here"
     features={amenityFeatures}
     amenities={amenities}
     background="stone"
@@ -291,13 +303,13 @@ const amenities = [
   <AvailabilityCalendar
     monthsToShow={12}
     eyebrow=""
-    heading={`Join <span class="serif-italic">us</span>`}
+    heading="Join us"
     intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
     i18nKey="hideaway.availability"
   />
 
   <!-- CTA -->
-  <section class="hero" style="height: 45vh; min-height: 350px;">
+  <section class="hero hero--cta" style="height: 45vh; min-height: 350px;">
     <div class="hero__image">
       <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway at golden hour" loading="lazy" />
     </div>
@@ -312,7 +324,7 @@ const amenities = [
   <section class="section--tight">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 24px;">
-        <h2 data-i18n-html="hideaway.cross.heading">Les <span class="serif-italic">Autres Maisons</span></h2>
+        <h2 data-i18n="hideaway.cross.heading">Les Autres Maisons</h2>
       </div>
       <div class="maisons-stack">
         <a href="/homes/le-moulin/" class="split split--maison fade-in">

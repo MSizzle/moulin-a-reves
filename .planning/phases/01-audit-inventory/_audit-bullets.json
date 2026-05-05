@@ -1,0 +1,4007 @@
+{
+  "source": "MMM may.5.pdf",
+  "extracted_at": "2026-05-05T20:09:59Z",
+  "round_detection_note": "Rounds are identified by anchor phrases in the PDF: 'Hi Mr - Notes May 1st' marks start of May 1 round (~p.2 mid); 'Monty Updated Feedback: April 30' marks start of April 30 round (~p.6 mid). May 5 is everything before the May 1 anchor. PDF layered chronologically (newest first) per CONTEXT.md.",
+  "rounds": [
+    {
+      "name": "May 5",
+      "page_range": [
+        1,
+        2
+      ],
+      "bullets": [
+        {
+          "id": "may5-001",
+          "page": 1,
+          "page_section": "Les Maisons",
+          "verbatim": "may 5th notes good morning Monty! landing page in the bar with the number of houses, bedrooms, bathrooms, and guests, please change the word houses to homes so it reads three homes in gathering and dining spaces, can you please format it so the pictures are full-size and there’s no white space with text to the right of the pictures?",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 230,
+              "current_text": "<div class=\"stats-bar__label\" data-i18n=\"compound.stats.houses\">Houses</div>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (rendered BEFORE the form section) />"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 27,
+              "current_text": "<!-- Form + Contact Info --> (rendered AFTER calendar)"
+            }
+          ],
+          "i18n_keys": [
+            "compound.stats.houses"
+          ],
+          "search_log": "matched phrase 'houses' → 1 hits; matched phrase 'form/calendar order on contact' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "Stats bar at src/pages/index.astro:230 still labels '3' as 'Houses'; client wants 'homes' specifically on the bar widget per COPY-03.",
+          "commit_hash": null,
+          "requirement_id": "COPY-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Update src/pages/index.astro:230 stats-bar__label from 'Houses' to 'Homes'"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Update public/i18n/translations.json key compound.stats.houses (en/fr) accordingly"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 5"
+          ]
+        },
+        {
+          "id": "may5-002",
+          "page": 1,
+          "page_section": "Universal",
+          "verbatim": "This is a universal note for all the houses. the grounds each one of these should be a Gallery so it’s a Gallery for the gardens and the bridge and a Gallery for the patios.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 230,
+              "current_text": "<div class=\"stats-bar__label\" data-i18n=\"compound.stats.houses\">Houses</div>"
+            }
+          ],
+          "i18n_keys": [
+            "compound.stats.houses"
+          ],
+          "search_log": "matched phrase 'houses' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Current grounds section on Le Moulin renders a single combined gallery, not 3 individually clickable galleries (gardens / bridge / patios).",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "NEW-05",
+          "atomic_subactions": [
+            {
+              "kind": "v2-defer",
+              "description": "Split grounds section into 3 individually clickable galleries (gardens, bridge, patios) — NEW-05 (deferred)."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 5"
+          ]
+        },
+        {
+          "id": "may5-003",
+          "page": 1,
+          "page_section": "Maison de la Rivière",
+          "verbatim": "You don’t need the river at Dark. Please change the words “when you can stay” with “Join us!” Anytime the final word is in italics change it to straight up and down. fix the beige foote r so it sleeps 10 not 12 discover the compound Make photos full size.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 183,
+              "current_text": "\"home.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1908,
+              "current_text": "\"le-moulin.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2100,
+              "current_text": "\"hideaway.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2280,
+              "current_text": "\"riviere.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 15,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 23,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 752,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 333,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 294,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 267,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.heading",
+            "contact.hero.title",
+            "hideaway.availability.heading",
+            "home.availability.heading",
+            "le-moulin.availability.heading",
+            "riviere.availability.heading"
+          ],
+          "search_log": "matched phrase 'when you can stay' → 4 hits; matched phrase 'join us' → 6 hits",
+          "tag": "🔧",
+          "tag_rationale": "Replaced on home page hero CTA (commit 0ef4dc8) but translations.json still has 'When You Can Stay' under home/le-moulin/hideaway/riviere availability keys; per-house pages still show old text via runtime overlay.",
+          "commit_hash": null,
+          "requirement_id": "COPY-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "json-copy",
+              "description": "Update public/i18n/translations.json keys home.availability.heading, le-moulin.availability.heading, hideaway.availability.heading, riviere.availability.heading: en → 'Join us', fr → 'Rejoignez-nous' (no italic span on final word per TYPOG-01)"
+            },
+            {
+              "kind": "ts-copy",
+              "description": "Update src/i18n/translations.ts entries for the same keys to match"
+            },
+            {
+              "kind": "verify",
+              "description": "grep src/ public/i18n/ for 'When You Can Stay' returns 0 matches"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 5"
+          ]
+        },
+        {
+          "id": "may5-004",
+          "page": 1,
+          "page_section": "Get in Touch",
+          "verbatim": "Make text under the photos in this section easier to read - remove italics and make it bold about section change lead photo for history replace “come and see” with “come and visit!” get in touch Page: Add an exclamation point after “Join us!” And make the word “us” not in italics.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/contact.astro",
+              "line": 15,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 23,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 752,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 333,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 294,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 267,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/about.astro",
+              "line": 198,
+              "current_text": "<h2 class=\"hero__title\" data-i18n=\"about.cta.heading\">Come and See</h2>"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1451,
+              "current_text": "\"about.cta.heading\": \"Come and See\""
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 634,
+              "current_text": "'about.cta.heading': { en: 'Come and See', fr: 'Venez Voir' },"
+            }
+          ],
+          "i18n_keys": [
+            "about.cta.heading",
+            "contact.hero.heading",
+            "contact.hero.title",
+            "home.availability.heading"
+          ],
+          "search_log": "matched phrase 'join us' → 6 hits; matched phrase 'come and see' → 3 hits",
+          "tag": "🔧",
+          "tag_rationale": "Compound bullet: (a) 'make text under photos easier to read - remove italics and make it bold' is still 🔧 (TYPOG / Discover-the-Compound captions); (b) 'about section change lead photo for history' was addressed in commit ad07395 (#extend history gallery with six Borrah Minevitch family photos) — the about page now has a richer history gallery. (c) 'replace come and see with come and visit!' is COPY-04 still to do.",
+          "commit_hash": null,
+          "requirement_id": "COPY-04",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Update src/pages/about.astro:198 'Come and See' → 'come and visit!'"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Update public/i18n/translations.json key about.cta.heading en/fr (en: 'come and visit!', fr: 'venez nous voir !')"
+            },
+            {
+              "kind": "ts-copy",
+              "description": "Update src/i18n/translations.ts about.cta.heading"
+            },
+            {
+              "kind": "already-done-history",
+              "description": "About-page history-section lead photo refresh: ✅ landed in ad07395 (#extend history gallery with six Borrah Minevitch family photos). Tell the client this shipped so she can review."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 5"
+          ]
+        },
+        {
+          "id": "may5-005",
+          "page": 1,
+          "page_section": "Unclassified",
+          "verbatim": "Move the bonjour section with the form above the calendar section.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 744,
+              "current_text": "<a href=\"/contact/\" class=\"btn btn--white\" data-i18n=\"home.cta.button\">Bonjour!</a>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 34,
+              "current_text": "<h2 data-i18n=\"contact.form.heading\">Bonjour!</h2>"
+            },
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 414,
+              "current_text": "<button data-i18n=\"compound.form.submit\">Bonjour!</button>"
+            },
+            {
+              "file": "src/pages/explore/index.astro",
+              "line": 292,
+              "current_text": "<a data-i18n=\"explore.cta.button\">Bonjour!</a>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (rendered BEFORE the form section) />"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 27,
+              "current_text": "<!-- Form + Contact Info --> (rendered AFTER calendar)"
+            }
+          ],
+          "i18n_keys": [
+            "compound.form.submit",
+            "contact.form.heading",
+            "explore.cta.button",
+            "home.cta.button"
+          ],
+          "search_log": "matched phrase 'bonjour' → 4 hits; matched phrase 'form/calendar order on contact' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/contact.astro currently renders <AvailabilityCalendar /> at line 20 BEFORE the form section that starts at line 27. Client wants form section moved ABOVE the calendar.",
+          "commit_hash": null,
+          "requirement_id": "CLAR-FORM-CAL",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Reorder src/pages/contact.astro — move <!-- Form + Contact Info --> section to render BEFORE <AvailabilityCalendar />"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 5"
+          ]
+        },
+        {
+          "id": "may5-006",
+          "page": 2,
+          "page_section": "Get in Touch",
+          "verbatim": "Fix the Getting here formatting",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (rendered BEFORE the form section) />"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 27,
+              "current_text": "<!-- Form + Contact Info --> (rendered AFTER calendar)"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'form/calendar order on contact' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "Getting Here section formatting needs improvement; client wants specific times: Orly 55 min, Charles de Gaulle 75 min.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Update Getting Here directions in src/pages/contact.astro to read 'One hour from Paris by car, train, or [airport]. Orly: 55 min by car. Charles de Gaulle: 75 min by car.'"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Update getting.options.* translation keys to match"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 5"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "May 1",
+      "page_range": [
+        2,
+        6
+      ],
+      "bullets": [
+        {
+          "id": "may1-001",
+          "page": 2,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "Hi Mr - Notes May 1st from noon your time - 6pm for me Home page: Can you start with A Private Luxurious Compound, One Hour From Paris Then have 10 bedrooms, and that info Please shrink the margins as much as possible Make the image of Hollywood hideaway the same width as other 2 buildings Discover the compound photo galleries Thanks for making the background white.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/layouts/BaseLayout.astro",
+              "line": 12,
+              "current_text": "description = \"...one hour from Paris...\""
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 226,
+              "current_text": "<p class=\"stats-bar__intro\" data-i18n=\"home.stats.intro\">A private compound one hour from Paris.</p>"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 213,
+              "current_text": "<h1 class=\"hero__title\" data-i18n-html=\"home.title\">Your Dream French Vacation Come True</h1>"
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 43,
+              "current_text": "'home.intro.text': { en: 'Moulin à Rêves is a compound of three stone houses gathered around a millstream...' }"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 233,
+              "current_text": "<div class=\"stats-bar__number\">10</div><div class=\"stats-bar__label\">Bedrooms</div>"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 703,
+              "current_text": "<h2 data-i18n-html=\"home.area.heading\">Discover the <span class=\"serif-italic\">Area</span></h2>"
+            },
+            {
+              "file": "src/pages/explore/index.astro",
+              "line": 1,
+              "current_text": "<!-- Discover the Area destination page; STRUCT-03 split deferred -->"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 196,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"hideaway.hero.title\">{cms.title}</h1>"
+            },
+            {
+              "file": "src/content/pages/hollywood-hideaway.md",
+              "line": 6,
+              "current_text": "heroImage: \"/images/homes/hh-patio.webp\""
+            },
+            {
+              "file": "src/styles/global.css",
+              "line": 1,
+              "current_text": "/* container, section padding tokens — :root --section-gap --container-padding */"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 14,
+              "current_text": "{ id: 'looking-glass', title: 'Through the Looking Glass', /* one of the rooms */ }"
+            },
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- shared room-modal component — Le Loft Suite is the only currently-correct one -->"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 421,
+              "current_text": "<h2 data-i18n-html=\"home.compound.heading\">Discover the <span class=\"serif-italic\">Compound</span></h2>"
+            },
+            {
+              "file": "src/",
+              "line": 1,
+              "current_text": "<!-- Header / framing line — no code action -->"
+            }
+          ],
+          "i18n_keys": [
+            "home.area.heading"
+          ],
+          "search_log": "extended phrase 'ladies hour from paris / one hour from paris' → 2 hits; extended phrase 'private luxurious compound' → 2 hits; extended phrase '10 bedrooms / private compound info' → 1 hits; extended phrase 'discover the area / paris / nearby towns / loire valley' → 2 hits; extended phrase 'hollywood hideaway / hh main' → 2 hits; extended phrase 'shrink margins / margins as much as possible' → 1 hits; extended phrase 'rooms / through the looking glass / le loft suite / formatting works well' → 2 hits; extended phrase 'discover the compound / 6 buttons' → 1 hits; extended phrase 'shrink the margins / margin from hero' → 1 hits; extended phrase 'looking glass / american in paris / rooms' → 1 hits; extended phrase 'monty / good morning / notes' → 1 hits; extended phrase 'background / black to white / cream' → 1 hits; extended phrase 'hi mr / 6pm / from noon' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Home hero currently shows 'Your Dream French Vacation Come True' (h1) with a stats bar below saying 'A private compound one hour from Paris.' (line 226); client wants explicit lead with 'A Private Luxurious Compound, One Hour From Paris' followed by '10 bedrooms' info.",
+          "commit_hash": null,
+          "requirement_id": "COPY-06",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Update home hero h1/lead block in src/pages/index.astro to lead with 'A Private Luxurious Compound, One Hour From Paris' then '10 bedrooms' info; relocate 'Méréville, France' below tagline"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Update translations.json keys home.title / home.tagline / home.stats.intro for matching FR copy"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-002",
+          "page": 2,
+          "page_section": "Universal",
+          "verbatim": "Can you make italicised text easier to read?",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from May 1 round is ambiguous: \"Can you make italicised text easier to read?\" — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-003",
+          "page": 2,
+          "page_section": "About",
+          "verbatim": "Bold? Non italicized maybe? Is there room for me to write more info about the grange I don’t see the x in upper right to return to main page on any of the galleries now I don’t see the arrow to go to the next photo within the gallery This garden gallery is what you can link to on all the house pages when you say the gardens.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/components/PhotoCarousel.astro",
+              "line": 1,
+              "current_text": "<!-- modal close-button (X) — STRUCT-01 deferred -->"
+            },
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- room modal close button — STRUCT-01 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'x in upper right / x to close / can't x out' → 2 hits; extended phrase 'forward arrow / next photo / right forward curser' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Headers use <span class=\"serif-italic\"> on final words across many files: src/pages/homes/le-moulin.astro:305 'Where you\\'ll <span>sleep</span>', src/pages/homes/hollywood-hideaway.astro:263, src/pages/homes/maison-de-la-riviere.astro:236, src/pages/homes/index.astro:13 'Les <span>Maisons</span>', and the cross-links 'Les <span>Autres Maisons</span>' on each house page.",
+          "commit_hash": null,
+          "requirement_id": "TYPOG-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove <span class=\"serif-italic\">…</span> wrappers from final words in: 'Where you\\'ll sleep/gather', 'Les Maisons', 'Les Autres Maisons', 'Moulin à Rêves', 'When You Can Stay' (also part of COPY-01), 'What\\'s here', 'Join us', 'Discover the Compound', 'Discover the Area', 'We Make It Easy'"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Same span removal in matching public/i18n/translations.json fr values where present"
+            },
+            {
+              "kind": "verify",
+              "description": "grep -n 'serif-italic' src/pages/ shows only intentional italic emphasis (not header final words)"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-004",
+          "page": 2,
+          "page_section": "Le Moulin",
+          "verbatim": "MOULIN Page Shrink Margin from hero image to text Photo galleries all work well now!",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/styles/global.css",
+              "line": 1,
+              "current_text": "/* container/hero margin tokens */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'shrink the margins / margin from hero' → 1 hits",
+          "tag": "✅",
+          "tag_rationale": "Client acknowledgement that photo galleries on Le Moulin look right now. Likely landed in commit ab1ac5d (#wire May 5 photos). Underlying pipeline: 742fb89.",
+          "commit_hash": "ab1ac5d",
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "already-done-photo-pipeline",
+              "description": "Underlying photo pipeline + 67 May 5 photos landed in commit 742fb89 — prerequisite for ab1ac5d wiring."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-005",
+          "page": 2,
+          "page_section": "Unclassified",
+          "verbatim": "Small note - can you expand photo width of Rose Room - it is narrower than others.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 66,
+              "current_text": "{ id: 'roses', title: 'Les Roses', /* rose room photo set */ }"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 50,
+              "current_text": "{ id: 'cerises', title: 'Les Cerises', /* cherry room photo set */ }"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'rose room / cherry room / bathroom photos' → 2 hits; extended phrase 'rose room' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Client says Rose Room photo width is narrower than other rooms and Rose Room should have the same 2 bathroom photos as Cherry Room.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Audit Rose Room (src/pages/homes/le-moulin.astro:66ff 'roses' room block) photo widths via CSS"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Mirror Cherry Room's 2 bathroom photos into the Rose Room photo set"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-006",
+          "page": 2,
+          "page_section": "Unclassified",
+          "verbatim": "Rose room should have same 2 bathroom photos as Cherry room You can remove the office and put it with the living room collection - no one is gathering there.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 134,
+              "current_text": "{ id: 'office', title: 'Office', summary: 'Separate office with desk and printer.', ... }"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 183,
+              "current_text": "{ label: 'Office with desk + printer', icon: 'office' },"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'office' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "Office room block still present at src/pages/homes/le-moulin.astro:134-141 ({ id: 'office', title: 'Office', summary: 'Separate office with desk and printer.' }) plus amenity item line 183.",
+          "commit_hash": null,
+          "requirement_id": "SECT-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Delete office room block lines 134-141 in src/pages/homes/le-moulin.astro; fold the office photo into the living-room or studio collection if needed"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Remove 'Office with desk + printer' amenity from src/pages/homes/le-moulin.astro:183"
+            },
+            {
+              "kind": "verify",
+              "description": "grep -n 'office' src/pages/homes/le-moulin.astro returns 0 matches in room/amenity context"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-007",
+          "page": 3,
+          "page_section": "Unclassified",
+          "verbatim": "Remove the courtyard block as we cover that in gardens below.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 142,
+              "current_text": "{ id: 'courtyard', title: 'Courtyard & Patio', ... }"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'courtyard' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Courtyard & Patio room block still present at src/pages/homes/le-moulin.astro:142-150.",
+          "commit_hash": null,
+          "requirement_id": "SECT-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Delete courtyard room block (id: 'courtyard') in src/pages/homes/le-moulin.astro"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Move/keep flower-cart and back-patio photos in main carousel since they are 'covered in gardens below'"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-008",
+          "page": 3,
+          "page_section": "Unclassified",
+          "verbatim": "Gathering rooms photos are not as big as the bedroom photos - we want to make them as large as possible.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 14,
+              "current_text": "{ id: 'looking-glass', title: 'Through the Looking Glass', /* one of the rooms */ }"
+            },
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- shared room-modal component — Le Loft Suite is the only currently-correct one -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'rooms / through the looking glass / le loft suite / formatting works well' → 2 hits; extended phrase 'looking glass / american in paris / rooms' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from May 1 round is ambiguous: \"Gathering rooms photos are not as big as the bedroom photos - we want to make them as large as possible.\" — current code state: { id: 'looking-glass', title: 'Through the Looking Glass', /* one of the rooms */ }. Could you clarify what specific action you want? (file: src/pages/homes/hollywood-hideaway.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-009",
+          "page": 3,
+          "page_section": "Unclassified",
+          "verbatim": "Pls expand margins as much as possible in all photos galleries In the beige footer at bottom, now we say sleeps 12 in 10 beds - charge it to sleeps 10 in 8 beds.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1902,
+              "current_text": "\"le-moulin.amenities.amenity.9\": \"Sleeps 12 across 8 beds\""
+            }
+          ],
+          "i18n_keys": [
+            "le-moulin.amenities.amenity.9"
+          ],
+          "search_log": "matched phrase 'sleeps 12' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "translations.json:1902 still says 'Sleeps 12 across 8 beds' for le-moulin.amenities.amenity.9; src/pages/homes/le-moulin.astro:187 was already updated to 'Sleeps 10 across 8 beds' so the .astro side is correct. Translation needs FR + EN sync.",
+          "commit_hash": null,
+          "requirement_id": "COPY-02",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "json-copy",
+              "description": "Update public/i18n/translations.json key le-moulin.amenities.amenity.9 en → 'Sleeps 10 across 8 beds', add fr equivalent"
+            },
+            {
+              "kind": "verify",
+              "description": "grep -n 'Sleeps 12' public/i18n/translations.json returns no matches"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-010",
+          "page": 3,
+          "page_section": "Home",
+          "verbatim": "The Grounds Link to the gallery for the grounds in the discover the compound section on the home page.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 421,
+              "current_text": "<h2 data-i18n-html=\"home.compound.heading\">Discover the <span class=\"serif-italic\">Compound</span></h2>"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 1,
+              "current_text": "<!-- grounds gallery clickability — gardens-as-individual-galleries NEW-05 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'discover the compound / 6 buttons' → 1 hits; extended phrase 'grounds / each picture clickable / bigger box' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Client wants the garden/grounds gallery to be a single linked gallery referenced from each house page's 'gardens' tile and from Discover the Compound section.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "NEW-05",
+          "atomic_subactions": [
+            {
+              "kind": "v2-defer",
+              "description": "Wire each house page's gardens tile to link to a single master gardens gallery — NEW-05 (deferred to Milestone 2)."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-011",
+          "page": 3,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "Hollywood Hideaway The hero image white text feels too low - please center it.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 198,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"hideaway.hero.title\">{cms.title}</h1>"
+            },
+            {
+              "file": "src/styles/global.css",
+              "line": 957,
+              "current_text": ".hero__overlay { /* dark filter */ }"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 196,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"hideaway.hero.title\">{cms.title}</h1>"
+            },
+            {
+              "file": "src/content/pages/hollywood-hideaway.md",
+              "line": 6,
+              "current_text": "heroImage: \"/images/homes/hh-patio.webp\""
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'hero image white text / center / vertically' → 2 hits; extended phrase 'hollywood hideaway / hh main' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "Hollywood Hideaway hero h1+tagline currently bottom-aligned via .hero__content default; client wants vertical centering. Plus delete italicised text inside the hero image.",
+          "commit_hash": null,
+          "requirement_id": "PHOTO-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Add CSS to vertically center .hero__content on hollywood-hideaway.astro hero (or scoped style override)"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Delete italicised tagline text inside the hero (TYPOG-02 overlap)"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-012",
+          "page": 3,
+          "page_section": "Universal",
+          "verbatim": "Delete italicised text below it inside the image The forward arrow on the gallery that is beneath the text is cut off the right side.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/components/PhotoCarousel.astro",
+              "line": 1,
+              "current_text": "<!-- PhotoCarousel modal — STRUCT-01 deferred -->"
+            },
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- RoomShowcase room-modal — STRUCT-01 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'gallery modal x button / forward arrow / cut off' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "Hero h1/tagline blocks across home, contact, and house pages contain italic styling. Specific cases the client called out: 'Get in Touch' page hero (contact.astro line 23 still has 'Join <span class=\\\"serif-italic\\\">us</span>') and Hollywood hero italic.",
+          "commit_hash": null,
+          "requirement_id": "TYPOG-02",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove serif-italic span from contact.astro:23 hero heading"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Remove italic styling on Hollywood hero text per HH page"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-013",
+          "page": 3,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "Delete grange photo from the main carousel photos Decrease the margin beneath the photos and the text that says The Hollywood Hideaway The gardens gallery should link to master gardens collection There is a lot of white blank space in these galleries -- can you increase size of images and decrease white space?",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 196,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"hideaway.hero.title\">{cms.title}</h1>"
+            },
+            {
+              "file": "src/content/pages/hollywood-hideaway.md",
+              "line": 6,
+              "current_text": "heroImage: \"/images/homes/hh-patio.webp\""
+            },
+            {
+              "file": "src/components/PhotoCarousel.astro",
+              "line": 1,
+              "current_text": "<!-- carousel layout uses padding/margins controlled by global.css -->"
+            },
+            {
+              "file": "src/content/pages/le-moulin.md",
+              "line": 24,
+              "current_text": "/* le-moulin-welcome-rose.webp still in carousel */"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1483,
+              "current_text": "\"contact.hero.tagline\": \"Tell us your dates, your group, your dreams.\" (currently missing word \"size\")"
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 642,
+              "current_text": "'contact.hero.tagline': has 'group size' but translations.json has 'group' (without size)"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.tagline"
+          ],
+          "search_log": "extended phrase 'hollywood hideaway / hh main' → 2 hits; extended phrase 'white space / decrease white' → 1 hits; extended phrase 'main carousel / pink gown / bike by gate' → 1 hits; extended phrase 'size / tell us your dates your group size' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "Hollywood Hideaway main carousel may still include la-grange-* photos. Specifically check src/pages/homes/hollywood-hideaway.astro main carousel array.",
+          "commit_hash": null,
+          "requirement_id": "SECT-02",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Audit src/pages/homes/hollywood-hideaway.astro main carousel for la-grange-*.webp references and remove"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-014",
+          "page": 3,
+          "page_section": "Unclassified",
+          "verbatim": "Remove the what’s here section with 3 photos - we can always add something more useful there.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 281,
+              "current_text": "<AmenitiesSection heading={`What's here`} ... /> /* 3-photo features section */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'what's here section / 3 photo / hh what's here' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from May 1 round is ambiguous: \"Remove the what’s here section with 3 photos - we can always add something more useful there.\" — current code state: <AmenitiesSection heading={`What's here`} ... /> /* 3-photo features section */. Could you clarify what specific action you want? (file: src/pages/homes/hollywood-hideaway.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-015",
+          "page": 3,
+          "page_section": "Universal",
+          "verbatim": "Replace When You Can Stay at Bottom of all pages with Joine Us!",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 183,
+              "current_text": "\"home.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1908,
+              "current_text": "\"le-moulin.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2100,
+              "current_text": "\"hideaway.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2280,
+              "current_text": "\"riviere.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            }
+          ],
+          "i18n_keys": [
+            "hideaway.availability.heading",
+            "home.availability.heading",
+            "le-moulin.availability.heading",
+            "riviere.availability.heading"
+          ],
+          "search_log": "matched phrase 'when you can stay' → 4 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from May 1 round is ambiguous: \"Replace When You Can Stay at Bottom of all pages with Joine Us!\" — current code state: \"home.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\". Could you clarify what specific action you want? (file: public/i18n/translations.json)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-016",
+          "page": 3,
+          "page_section": "Les Maisons",
+          "verbatim": "Les Autres Maisons at bottom of page - take away italics.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "🔧",
+          "tag_rationale": "Headers use <span class=\"serif-italic\"> on final words across many files: src/pages/homes/le-moulin.astro:305 'Where you\\'ll <span>sleep</span>', src/pages/homes/hollywood-hideaway.astro:263, src/pages/homes/maison-de-la-riviere.astro:236, src/pages/homes/index.astro:13 'Les <span>Maisons</span>', and the cross-links 'Les <span>Autres Maisons</span>' on each house page.",
+          "commit_hash": null,
+          "requirement_id": "TYPOG-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove <span class=\"serif-italic\">…</span> wrappers from final words in: 'Where you\\'ll sleep/gather', 'Les Maisons', 'Les Autres Maisons', 'Moulin à Rêves', 'When You Can Stay' (also part of COPY-01), 'What\\'s here', 'Join us', 'Discover the Compound', 'Discover the Area', 'We Make It Easy'"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Same span removal in matching public/i18n/translations.json fr values where present"
+            },
+            {
+              "kind": "verify",
+              "description": "grep -n 'serif-italic' src/pages/ shows only intentional italic emphasis (not header final words)"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-017",
+          "page": 3,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "MAISON DE LA RIVIERE Delete 2 rows of text in hero image above and below the name of the house Center name of the house Right forward curser is off the page like in the hollywood hideaway images Decrease white space margine beneath hero photo and above text describing house Anything you can do to increase size of image and decrease white on the right side would be great.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 198,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"hideaway.hero.title\">{cms.title}</h1>"
+            },
+            {
+              "file": "src/styles/global.css",
+              "line": 957,
+              "current_text": ".hero__overlay { /* dark filter */ }"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 195,
+              "current_text": "<h1 class=\"hero__title\">{cms.title}</h1>  <p class=\"hero__tagline\">{cms.tagline}</p>"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 196,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"hideaway.hero.title\">{cms.title}</h1>"
+            },
+            {
+              "file": "src/content/pages/hollywood-hideaway.md",
+              "line": 6,
+              "current_text": "heroImage: \"/images/homes/hh-patio.webp\""
+            },
+            {
+              "file": "src/components/PhotoCarousel.astro",
+              "line": 1,
+              "current_text": "<!-- carousel layout uses padding/margins controlled by global.css -->"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1483,
+              "current_text": "\"contact.hero.tagline\": \"Tell us your dates, your group, your dreams.\" (currently missing word \"size\")"
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 642,
+              "current_text": "'contact.hero.tagline': has 'group size' but translations.json has 'group' (without size)"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.tagline"
+          ],
+          "search_log": "extended phrase 'hero image white text / center / vertically' → 2 hits; extended phrase 'delete 2 rows of text / duplicative hero text' → 1 hits; extended phrase 'center name of the house / hero title centered' → 1 hits; extended phrase 'hollywood hideaway / hh main' → 2 hits; extended phrase 'white space / decrease white' → 1 hits; extended phrase 'forward arrow / next photo / right forward curser' → 1 hits; extended phrase 'size / tell us your dates your group size' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "Maison de la Rivière hero currently shows duplicate text (h1 'La Maison de la Rivière' + tagline that may include redundant phrasing).",
+          "commit_hash": null,
+          "requirement_id": "SECT-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove duplicative tagline rows above/below the house name in src/pages/homes/maison-de-la-riviere.astro hero"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Center the house name (h1) within the hero overlay"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-018",
+          "page": 4,
+          "page_section": "Home",
+          "verbatim": "I think living room and dining room, gathering photos shoul all be full size like Discover the Compound photos - there is no reason to keep all the white space.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/components/PhotoCarousel.astro",
+              "line": 1,
+              "current_text": "<!-- carousel layout uses padding/margins controlled by global.css -->"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1483,
+              "current_text": "\"contact.hero.tagline\": \"Tell us your dates, your group, your dreams.\" (currently missing word \"size\")"
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 642,
+              "current_text": "'contact.hero.tagline': has 'group size' but translations.json has 'group' (without size)"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 421,
+              "current_text": "<h2 data-i18n-html=\"home.compound.heading\">Discover the <span class=\"serif-italic\">Compound</span></h2>"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.tagline"
+          ],
+          "search_log": "extended phrase 'white space / decrease white' → 1 hits; extended phrase 'size / tell us your dates your group size' → 2 hits; extended phrase 'discover the compound / 6 buttons' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Photo galleries have excessive white space; client wants larger images and less margin.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Reduce gallery section padding + image max-width constraints in src/components/PhotoCarousel.astro and src/styles/global.css"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-019",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "Have the lead dining room photo be the horizontal one with the tables set with plates.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 60,
+              "current_text": "{ id: 'dining', title: 'Dining Room', photos[0]: maison-dining.webp (current lead) }"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'lead dining room photo / horizontal / tables set with plates' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/homes/maison-de-la-riviere.astro:60 dining tile still has maison-dining.webp ('board table under the large landscape painting') as the FIRST photo (lead). Client wants the horizontal tables-set-with-plates shot as lead (likely maison-dinner-light.webp).",
+          "commit_hash": null,
+          "requirement_id": "PHOTO-02",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "In src/pages/homes/maison-de-la-riviere.astro dining-tile photos array (line 60-65), reorder to put maison-dinner-light.webp (or the canonical 'tables-set-with-plates' photo) FIRST"
+            },
+            {
+              "kind": "verify",
+              "description": "Confirm with client that maison-dinner-light.webp is the right horizontal-with-plates image (otherwise add to clarification doc)"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-020",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "Remove exterior section - use the exterior shots in the top gallery of spaces Remove gardens as it is below.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 80,
+              "current_text": "{ id: 'exterior', title: 'Exterior & Stream', ... }"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'exterior' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/homes/maison-de-la-riviere.astro:80-88 still has gathering-spaces tile { id: 'exterior', title: 'Exterior & Stream' }; client wants it removed since exterior shots already in top carousel.",
+          "commit_hash": null,
+          "requirement_id": "SECT-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove 'exterior' tile block from src/pages/homes/maison-de-la-riviere.astro:80-88"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-021",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "In the We Make it Easy section replace nearby adventures with Bring your dog!",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 468,
+              "current_text": "<h2>We Make It <span class=\"serif-italic\">Easy</span></h2>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'we make it easy' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/index.astro:468 already has '<h2>We Make It <span class=\"serif-italic\">Easy</span></h2>' header. Need to verify catering/wellness/dog (or nearby-adventures) tile cards underneath are wired correctly.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "NEW-01",
+          "atomic_subactions": [
+            {
+              "kind": "v2-defer",
+              "description": "Audit We Make It Easy section — Catering/Wellness/Dogs tile cards — NEW-01 / NEW-02 (Dogs Welcome replaces Nearby Adventures per April 30 round)."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-022",
+          "page": 4,
+          "page_section": "About",
+          "verbatim": "Create a gallery of jetson photos. Host the group retreat of your dreams Family reunions - good Change yoga retreats to yoga, painting, writing retreats Change friends trips to Friends celebrations Discover the Area all goes to the same page -- if we are highlighting those 3 links - shouldn’t they go to separate links to those areas?",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 118,
+              "current_text": "{ title: 'Yoga retreats', summary: 'Lawn, La Grange, and the spa...' }"
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 319,
+              "current_text": "'compound.madefor.yoga.title': { en: 'Yoga Retreats', ... }"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 119,
+              "current_text": "{ title: 'Friends trips', summary: 'Twenty beds, long dinners, the millstream...' }"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 703,
+              "current_text": "<h2 data-i18n-html=\"home.area.heading\">Discover the <span class=\"serif-italic\">Area</span></h2>"
+            }
+          ],
+          "i18n_keys": [
+            "compound.madefor.yoga.title",
+            "home.area.heading"
+          ],
+          "search_log": "matched phrase 'yoga retreats' → 2 hits; matched phrase 'friends trips' → 1 hits; matched phrase 'discover the area' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/index.astro:118-119 still has 'Yoga retreats' and 'Friends trips' as group-type tile titles. (Note: Explore page photos updated in 182b810; client may not have noticed.)",
+          "commit_hash": null,
+          "requirement_id": "COPY-11",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Update src/pages/index.astro:118 title 'Yoga retreats' → 'Yoga, painting, writing retreats'"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Update src/pages/index.astro:119 title 'Friends trips' → 'Friends celebrations'"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Update translations.json compound.madefor.yoga.title and any related home.groups tile keys"
+            },
+            {
+              "kind": "already-done-explore-photos",
+              "description": "Méréville placeholder photos replaced + Cyclop + Barbizon mural wired in commit 182b810."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-023",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "I would say Paris - Nearby Towns - Loire Valley Plan your stay box is good but replace bonjour with Bienvenue!",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 744,
+              "current_text": "<a href=\"/contact/\" class=\"btn btn--white\" data-i18n=\"home.cta.button\">Bonjour!</a>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 34,
+              "current_text": "<h2 data-i18n=\"contact.form.heading\">Bonjour!</h2>"
+            },
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 414,
+              "current_text": "<button data-i18n=\"compound.form.submit\">Bonjour!</button>"
+            },
+            {
+              "file": "src/pages/explore/index.astro",
+              "line": 292,
+              "current_text": "<a data-i18n=\"explore.cta.button\">Bonjour!</a>"
+            }
+          ],
+          "i18n_keys": [
+            "compound.form.submit",
+            "contact.form.heading",
+            "explore.cta.button",
+            "home.cta.button"
+          ],
+          "search_log": "matched phrase 'bonjour' → 4 hits",
+          "tag": "⚠️",
+          "tag_rationale": "Cross-round conflict: April 30 round asked plan-your-stay box 'bonjour' → 'Bienvenue!'. Earlier commit e50f118 (#38) had moved an unrelated CTA TO 'Bonjour!'. Newest round (April 30 — though this is the OLDEST round in the layered PDF) still wants Bienvenue. Per CONTEXT.md the *PDF is layered newest-on-top* so May 5 wins, but May 5 doesn't address bonjour/bienvenue, leaving April 30's wish active.",
+          "commit_hash": null,
+          "requirement_id": "COPY-10",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Replace 'Bonjour!' → 'Bienvenue!' in src/pages/index.astro:744 (home.cta.button), src/pages/contact.astro:34 (contact.form.heading), src/pages/the-compound.astro:414 (compound.form.submit), src/pages/explore/index.astro:292 (explore.cta.button)"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Update public/i18n/translations.json keys home.cta.button / contact.form.heading / compound.form.submit / explore.cta.button: en 'Bienvenue !', fr 'Bienvenue !'"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": "April 30 round: 'replace bonjour with Bienvenue!'. Earlier commit e50f118 (#38) had set CTA to 'Bonjour!'. Resolution: April 30 wins; rename to 'Bienvenue!'. Flag for client confirmation in CLIENT-CLARIFICATION.md.",
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-024",
+          "page": 4,
+          "page_section": "Unclassified",
+          "verbatim": "Change when can you stay to When would you like to visit?",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1908,
+              "current_text": "\"le-moulin.availability.heading\": \"When You Can Stay\""
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'stay / rename when you can stay / replace' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from May 1 round is ambiguous: \"Change when can you stay to When would you like to visit?\" — current code state: \"le-moulin.availability.heading\": \"When You Can Stay\". Could you clarify what specific action you want? (file: public/i18n/translations.json)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-025",
+          "page": 4,
+          "page_section": "Get in Touch",
+          "verbatim": "Maybe this looks better than Join Us!",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/contact.astro",
+              "line": 15,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 23,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 752,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 333,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 294,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 267,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.heading",
+            "contact.hero.title",
+            "home.availability.heading"
+          ],
+          "search_log": "matched phrase 'join us' → 6 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from May 1 round is ambiguous: \"Maybe this looks better than Join Us!\" — current code state: <h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>. Could you clarify what specific action you want? (file: src/pages/contact.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-026",
+          "page": 4,
+          "page_section": "Get in Touch",
+          "verbatim": "On the contact us page - please put the request for info above the calendar.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (line 20 — BEFORE form)>  /* form at line 27 — needs swap */"
+            },
+            {
+              "file": "src/components/AvailabilityCalendar.astro",
+              "line": 1,
+              "current_text": "<!-- AvailabilityCalendar monthsToShow prop — STRUCT-02 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'request for info above the calendar / contact us page' → 1 hits; extended phrase 'calendar / scroll to 12 months / 4 months / arrows' → 1 hits; extended phrase 'calander / calendar / scroll' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from May 1 round is ambiguous: \"On the contact us page - please put the request for info above the calendar.\" — current code state: <AvailabilityCalendar (line 20 — BEFORE form)>  /* form at line 27 — needs swap */. Could you clarify what specific action you want? (file: src/pages/contact.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-027",
+          "page": 4,
+          "page_section": "La Grange",
+          "verbatim": "Remove under hero Change hollywood Make holly wood full For the le grange photos: replace the black backgrounds with white Don’t have two fonts Change When yOu can stay to join us Remove: Tell us your dates subheader for hero Getting Here: One hour form paris by car, train, or Dyanmically resize popup epending on size.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 183,
+              "current_text": "\"home.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1908,
+              "current_text": "\"le-moulin.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2100,
+              "current_text": "\"hideaway.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2280,
+              "current_text": "\"riviere.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 15,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 23,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 752,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 333,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 294,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 267,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 642,
+              "current_text": "'contact.hero.tagline': { en: \"Tell us your dates, your group size, your dreams. We'll take it from there.\" }"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1483,
+              "current_text": "\"contact.hero.tagline\": \"Tell us your dates, your group, your dreams. We'll take it from there.\""
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (rendered BEFORE the form section) />"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 27,
+              "current_text": "<!-- Form + Contact Info --> (rendered AFTER calendar)"
+            },
+            {
+              "file": "src/styles/global.css",
+              "line": 1,
+              "current_text": "@import url('https://fonts.googleapis.com/css2?...'); /* Google Fonts imports */"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.heading",
+            "contact.hero.tagline",
+            "contact.hero.title",
+            "grange.cta.text",
+            "hideaway.availability.heading",
+            "home.availability.heading",
+            "home.cta.text",
+            "jardin.cta.text",
+            "le-moulin.availability.heading",
+            "moulin.cta.text",
+            "riviere.availability.heading"
+          ],
+          "search_log": "matched phrase 'when you can stay' → 4 hits; matched phrase 'join us' → 6 hits; matched phrase 'tell us your dates' → 2 hits; matched phrase 'form/calendar order on contact' → 2 hits; matched phrase 'fonts' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Replaced on home page hero CTA (commit 0ef4dc8) but translations.json still has 'When You Can Stay' under home/le-moulin/hideaway/riviere availability keys; per-house pages still show old text via runtime overlay.",
+          "commit_hash": null,
+          "requirement_id": "COPY-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "json-copy",
+              "description": "Update public/i18n/translations.json keys home.availability.heading, le-moulin.availability.heading, hideaway.availability.heading, riviere.availability.heading: en → 'Join us', fr → 'Rejoignez-nous' (no italic span on final word per TYPOG-01)"
+            },
+            {
+              "kind": "ts-copy",
+              "description": "Update src/i18n/translations.ts entries for the same keys to match"
+            },
+            {
+              "kind": "verify",
+              "description": "grep src/ public/i18n/ for 'When You Can Stay' returns 0 matches"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-028",
+          "page": 5,
+          "page_section": "Universal",
+          "verbatim": "Change bring your group together: Host the retreat of your dreams. may 1 notes 1. without the dark filter in hero image, we lose the text in the bar- can you put a shadow around those links or a color behind the bar itself? remove the italics line “a private compound one hour from paris” inside hero image and all hero images on all pages.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/layouts/BaseLayout.astro",
+              "line": 12,
+              "current_text": "description = \"...one hour from Paris...\""
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 226,
+              "current_text": "<p class=\"stats-bar__intro\" data-i18n=\"home.stats.intro\">A private compound one hour from Paris.</p>"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 117,
+              "current_text": "groupTypes = [{ title: 'Family reunions' }, { title: 'Yoga retreats' }, { title: 'Friends trips' }]"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 3169,
+              "current_text": "\"home.groups.heading\": \"Host the group retreat of your dreams!\""
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 703,
+              "current_text": "<h2 data-i18n-html=\"home.area.heading\">Discover the <span class=\"serif-italic\">Area</span></h2>"
+            },
+            {
+              "file": "src/pages/explore/index.astro",
+              "line": 1,
+              "current_text": "<!-- Discover the Area destination page; STRUCT-03 split deferred -->"
+            },
+            {
+              "file": "src/styles/global.css",
+              "line": 957,
+              "current_text": ".hero__overlay { /* dark filter overlay */ }"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1483,
+              "current_text": "\"contact.hero.tagline\": \"Tell us your dates, your group, your dreams. We'll take it from there.\""
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 274,
+              "current_text": "<!-- \"Interested in {cms.title}?\" CTA section -->"
+            },
+            {
+              "file": "src/",
+              "line": 1,
+              "current_text": "<!-- Header / framing line — no code action -->"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 213,
+              "current_text": "<h1 data-i18n-html=\"home.title\">Your Dream French Vacation Come True</h1>"
+            }
+          ],
+          "i18n_keys": [
+            "compound.madefor.yoga.title",
+            "contact.hero.tagline",
+            "home.groups.heading",
+            "home.area.heading"
+          ],
+          "search_log": "extended phrase 'ladies hour from paris / one hour from paris' → 2 hits; extended phrase 'host the retreat of your dreams / yoga retreats / friends celebrations' → 2 hits; extended phrase 'discover the area / paris / nearby towns / loire valley' → 2 hits; extended phrase 'ducker filter / dark filter / shadow around bar' → 1 hits; extended phrase 'tell us your dates / your group size / your dreams / contact microcopy' → 1 hits; extended phrase 'interested in la maison / dark filter / black filter / image too dark' → 2 hits; extended phrase 'monty / good morning / notes' → 1 hits; extended phrase 'italics line / a private compound one hour from paris / inside hero' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Hero h1/tagline blocks across home, contact, and house pages contain italic styling. Specific cases the client called out: 'Get in Touch' page hero (contact.astro line 23 still has 'Join <span class=\\\"serif-italic\\\">us</span>') and Hollywood hero italic.",
+          "commit_hash": null,
+          "requirement_id": "TYPOG-02",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove serif-italic span from contact.astro:23 hero heading"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Remove italic styling on Hollywood hero text per HH page"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        },
+        {
+          "id": "may1-029",
+          "page": 5,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "I asked you to simplify the fonts - they still are italicizing the final word on headers for example: where you can stay Les Autre Maisons moulin a reves i still cant x out on my laptop from photos- i can from cell the white text is duplicative - we say same info 3 ways I asked you to change the name of house to le moulin instead of moulin a reves the grounds - each of the 3 images should be a clickable gallery footer of moulin page this house sleeps 10 not 12 — replace when you can stay at the footer with “join us!” also - i gave the note before to have one font - no italics on the word stay Hollywood hideaway - thru the looking glass- this formatting works well! the text is duplicate in triple other rooms dont work the garden should be a gallery get in touch remove italics text on hero photo change when you can stay to “Join us!” (I gave you this note before) getting here: please improve directions - this wasnt addressed",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 183,
+              "current_text": "\"home.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1908,
+              "current_text": "\"le-moulin.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2100,
+              "current_text": "\"hideaway.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2280,
+              "current_text": "\"riviere.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 15,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 23,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 752,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 333,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 294,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 267,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (rendered BEFORE the form section) />"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 27,
+              "current_text": "<!-- Form + Contact Info --> (rendered AFTER calendar)"
+            },
+            {
+              "file": "src/styles/global.css",
+              "line": 1,
+              "current_text": "@import url('https://fonts.googleapis.com/css2?...'); /* Google Fonts imports */"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.heading",
+            "contact.hero.title",
+            "hideaway.availability.heading",
+            "home.availability.heading",
+            "le-moulin.availability.heading",
+            "riviere.availability.heading"
+          ],
+          "search_log": "matched phrase 'when you can stay' → 4 hits; matched phrase 'join us' → 6 hits; matched phrase 'form/calendar order on contact' → 2 hits; matched phrase 'fonts' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Replaced on home page hero CTA (commit 0ef4dc8) but translations.json still has 'When You Can Stay' under home/le-moulin/hideaway/riviere availability keys; per-house pages still show old text via runtime overlay.",
+          "commit_hash": null,
+          "requirement_id": "COPY-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "json-copy",
+              "description": "Update public/i18n/translations.json keys home.availability.heading, le-moulin.availability.heading, hideaway.availability.heading, riviere.availability.heading: en → 'Join us', fr → 'Rejoignez-nous' (no italic span on final word per TYPOG-01)"
+            },
+            {
+              "kind": "ts-copy",
+              "description": "Update src/i18n/translations.ts entries for the same keys to match"
+            },
+            {
+              "kind": "verify",
+              "description": "grep src/ public/i18n/ for 'When You Can Stay' returns 0 matches"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "May 1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "April 30",
+      "page_range": [
+        6,
+        12
+      ],
+      "bullets": [
+        {
+          "id": "april30-001",
+          "page": 6,
+          "page_section": "Home",
+          "verbatim": "HOME PAGE Good job reducing white space I will need to improve and embellish all the text everywhere- these notes are to polish the architecture of the site Universal notes: Fonts: My favorite font is on your french vacation come true header.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/styles/global.css",
+              "line": 1,
+              "current_text": "@import url('https://fonts.googleapis.com/css2?...'); /* Google Fonts imports */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'fonts' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/styles/global.css imports multiple Google Font families (script + serif + display); src/pages/index.astro:213 uses the 'Your Dream French Vacation Come True' header which the client identifies as her favorite font. Standardization requires CSS audit + token consolidation.",
+          "commit_hash": null,
+          "requirement_id": "TYPOG-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Audit src/styles/global.css :root font tokens (--font-serif, --font-display, --font-body) and Google Fonts @import block; reduce to 2-3 families with the favorite-font preserved as elegant-accent variant"
+            },
+            {
+              "kind": "verify",
+              "description": "Browser-test home/about/contact/houses for visual consistency before pushing to main"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-002",
+          "page": 6,
+          "page_section": "Universal",
+          "verbatim": "Can you use this one more? Please use only 2 or 3 fonts so that the website feels more elegant and soothing Remove the dark filter: on photos at the header and footer of every page.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/styles/global.css",
+              "line": 1,
+              "current_text": "@import url('https://fonts.googleapis.com/css2?...'); /* Google Fonts imports */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'fonts' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/styles/global.css imports multiple Google Font families (script + serif + display); src/pages/index.astro:213 uses the 'Your Dream French Vacation Come True' header which the client identifies as her favorite font. Standardization requires CSS audit + token consolidation.",
+          "commit_hash": null,
+          "requirement_id": "TYPOG-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Audit src/styles/global.css :root font tokens (--font-serif, --font-display, --font-body) and Google Fonts @import block; reduce to 2-3 families with the favorite-font preserved as elegant-accent variant"
+            },
+            {
+              "kind": "verify",
+              "description": "Browser-test home/about/contact/houses for visual consistency before pushing to main"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-003",
+          "page": 7,
+          "page_section": "Le Moulin",
+          "verbatim": "Size of photos in listings - my favorite are the layouts in wellness and catering https://www.moulinareves.com/the-compound/ Would it work to change the 3 maison pictures to this size and then make the “discover the compound” photos the size that the maisons photos currently are? __________ Room boxes - perhaps change them all to the format in Discover the compound section I like that these boxes go to full size photos that are easy to click back to the main menu.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (rendered BEFORE the form section) />"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 27,
+              "current_text": "<!-- Form + Contact Info --> (rendered AFTER calendar)"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'form/calendar order on contact' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "Client wants the 3-maison cards on home page to use the wellness/catering page photo-row layout (larger images), and the 'Discover the Compound' tiles to take the smaller layout currently used by maison cards. CSS layout swap.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "STRUCT-05",
+          "atomic_subactions": [
+            {
+              "kind": "v2-defer",
+              "description": "Standardize photo gallery layouts to wellness/catering style across home maison cards — STRUCT-05 (deferred)."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-004",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "This is an issue in all the other room/gathering spaces galleries in all the homes, so perhaps you should use this formatting everywhere.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (rendered BEFORE the form section) />"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 27,
+              "current_text": "<!-- Form + Contact Info --> (rendered AFTER calendar)"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'form/calendar order on contact' → 2 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"This is an issue in all the other room/gathering spaces galleries in all the homes, so perhaps you should use this formatting everywhere.\" — current code state: <AvailabilityCalendar (rendered BEFORE the form section) />. Could you clarify what specific action you want? (file: src/pages/contact.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-005",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "Please change the photo gallery backdrop color in each of the rooms from black to a sky blue or white.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 14,
+              "current_text": "{ id: 'looking-glass', title: 'Through the Looking Glass', /* one of the rooms */ }"
+            },
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- shared room-modal component — Le Loft Suite is the only currently-correct one -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'rooms / through the looking glass / le loft suite / formatting works well' → 2 hits; extended phrase 'looking glass / american in paris / rooms' → 1 hits",
+          "tag": "✅",
+          "tag_rationale": "Cream lightbox background landed in commit f5579e8 (#40) 'fix(home): cream lightbox background for Discover the Compound photos'. Earlier commit 73fcd9e also dropped Discover the Area to white. Le Grange-specific black→white may need verification per page.",
+          "commit_hash": "f5579e8",
+          "requirement_id": "SECT-04",
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-006",
+          "page": 7,
+          "page_section": "La Grange",
+          "verbatim": "Black feels too heavy. In the grange photos library - remove the toilet and laundry pictures Solarium photos should all be of the jacuzzi - now there is a sink and garden.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- modal/gallery background color — global.css -->"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 1,
+              "current_text": "<!-- grange photo gallery references — la-grange-toilet/laundry hopefully removed in 1a658c2 -->"
+            },
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 1,
+              "current_text": "<!-- solarium gallery — assets pending from client; clarification -->"
+            },
+            {
+              "file": "scripts/photo-mapping.json",
+              "line": 1,
+              "current_text": "/* solarium / jacuzzi photo mapping */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'background backdrop color / black to sky blue or white / black feels too heavy' → 1 hits; extended phrase 'toilet and laundry / grange photos library' → 1 hits; extended phrase 'solarium / jacuzzi photos / google drive' → 2 hits",
+          "tag": "✅",
+          "tag_rationale": "Drop HH/LG laundry photos was shipped in commit 1a658c2 (#46) 'fix(rooms): cream stage + trimmed modal text + drop HH laundry'. Verify no la-grange-toilet/laundry images remain referenced.",
+          "commit_hash": "1a658c2",
+          "requirement_id": "SECT-04",
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-007",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "I uploaded 3 jacuzi photos to google drive - do you have them?",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 1,
+              "current_text": "<!-- solarium gallery — assets pending from client; clarification -->"
+            },
+            {
+              "file": "scripts/photo-mapping.json",
+              "line": 1,
+              "current_text": "/* solarium / jacuzzi photo mapping */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'solarium / jacuzzi photos / google drive' → 2 hits; extended phrase 'biking photos / countryside on bike / upload' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Client asks about jacuzzi photos uploaded to Google Drive; need to confirm whether they arrived and which photos to use for solarium gallery (currently has sink + garden photos that should be replaced).",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "You mentioned uploading 3 jacuzzi photos to Google Drive — could you share the folder link? The current solarium gallery in src/pages/the-compound.astro shows a sink and garden, which you said should all be jacuzzi photos. Once we have the assets we can run scripts/process-photos.mjs to wire them in.",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-008",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "In Gym and Bikes section: remove the carriage photo.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 50,
+              "current_text": "title: 'Bikes & The Carriage'"
+            },
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 55,
+              "current_text": "{ src: '/images/homes/la-grange-carriage.webp', alt: 'Antique red horse-drawn carriage on display in La Grange' },"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 48,
+              "current_text": "{ src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse-drawn carriage on display in La Grange' },"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'carriage' → 3 hits",
+          "tag": "🔧",
+          "tag_rationale": "Carriage photo still present at src/pages/the-compound.astro:50,55 and src/pages/index.astro:48 (alt='Antique horse-drawn carriage on display in La Grange').",
+          "commit_hash": null,
+          "requirement_id": "SECT-05",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove la-grange-carriage.webp references from gym-and-bikes section in src/pages/the-compound.astro and src/pages/index.astro"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Update tile title 'Bikes & The Carriage' → 'Bikes & The Gym' or similar"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-009",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "Later I will upload biking photos of me in the countryside on bike.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 1,
+              "current_text": "<!-- biking photos awaiting upload — clarification -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'biking photos / countryside on bike / upload' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Client said 'Later I will upload biking photos of me in the countryside on bike' — assets pending.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "You mentioned uploading biking photos of yourself in the countryside — have those arrived in Google Drive? If yes, which photos should replace the antique-carriage shot on the Gym & Bikes section?",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-010",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "Screening room: can you add the NETFLIX logo on the TV?",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "public/images",
+              "line": 1,
+              "current_text": "<!-- Screening room photo edit decision pending — clarification -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'netflix logo' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Adding the Netflix logo on the screening-room TV is a question of photo-edit (compositing the logo) vs. a new photo, plus brand/legal considerations around using the Netflix mark.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "Adding the Netflix logo to the TV in the screening-room photo is technically a photo composite. There's a brand-usage question: Netflix's brand guidelines restrict commercial use of their logo. Two safer options: (a) leave the TV blank, (b) show a generic 'streaming services' card. Which do you prefer? If you really want the Netflix logo, we'd need a license check first.",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-011",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "That would be cool. Make all 6 of these buttons larger so it’s more inviting.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "🔧",
+          "tag_rationale": "Discover the Compound 6-tile grid at src/pages/index.astro:421+ — visual sizing change (CSS only).",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Increase tile/button size in Discover-the-Compound grid (CSS spacing + min-height) for more inviting touch targets"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-012",
+          "page": 7,
+          "page_section": "Home",
+          "verbatim": "Move “Mereville France” from above “Your dream french vacation come true” to under it to replace “ A private historic compound in Méréville, France.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 213,
+              "current_text": "<h1 class=\"hero__title\" data-i18n-html=\"home.title\">Your Dream French Vacation Come True</h1>"
+            }
+          ],
+          "i18n_keys": [
+            "home.title"
+          ],
+          "search_log": "matched phrase 'your dream french vacation' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Client wants 'Méréville France' relocated from above 'Your dream french vacation come true' to below it, replacing the longer 'A private historic compound in Méréville, France. One hour from Paris' tagline.",
+          "commit_hash": null,
+          "requirement_id": "COPY-06",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Move Méréville · France label below the home hero h1; remove the longer 'A private historic compound...' tagline since it's redundant with what's said below the photo"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-013",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "One hour from Paris” as we say that right below the photo.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/layouts/BaseLayout.astro",
+              "line": 12,
+              "current_text": "description = \"...one hour from Paris...\""
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 226,
+              "current_text": "<p class=\"stats-bar__intro\" data-i18n=\"home.stats.intro\">A private compound one hour from Paris.</p>"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 703,
+              "current_text": "<h2 data-i18n-html=\"home.area.heading\">Discover the <span class=\"serif-italic\">Area</span></h2>"
+            },
+            {
+              "file": "src/pages/explore/index.astro",
+              "line": 1,
+              "current_text": "<!-- Discover the Area destination page; STRUCT-03 split deferred -->"
+            },
+            {
+              "file": "src/pages/homes/index.astro",
+              "line": 14,
+              "current_text": "<p class=\"hero__tagline\">Three maisons. Sleeps 20 across 10 bedrooms.</p>"
+            }
+          ],
+          "i18n_keys": [
+            "home.area.heading"
+          ],
+          "search_log": "extended phrase 'ladies hour from paris / one hour from paris' → 2 hits; extended phrase 'discover the area / paris / nearby towns / loire valley' → 2 hits; extended phrase 'below the photo / below it write / smaller text' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"One hour from Paris” as we say that right below the photo.\" — current code state: description = \"...one hour from Paris...\". Could you clarify what specific action you want? (file: src/layouts/BaseLayout.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-014",
+          "page": 7,
+          "page_section": "Les Maisons",
+          "verbatim": "Les Maisons header should be the same size as the header above it.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/index.astro",
+              "line": 13,
+              "current_text": "<h1 class=\"hero__title\" data-i18n-html=\"homes.hero.title\">Les <span class=\"serif-italic\">Maisons</span></h1>"
+            },
+            {
+              "file": "src/pages/homes/index.astro",
+              "line": 14,
+              "current_text": "<p class=\"hero__tagline\">Three maisons. Sleeps 20 across 10 bedrooms.</p>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'bienvenue chez vous / les maisons header' → 2 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"Les Maisons header should be the same size as the header above it.\" — current code state: <h1 class=\"hero__title\" data-i18n-html=\"homes.hero.title\">Les <span class=\"serif-italic\">Maisons</span></h1>. Could you clarify what specific action you want? (file: src/pages/homes/index.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-015",
+          "page": 7,
+          "page_section": "Unclassified",
+          "verbatim": "Delete this description below it: “Three stone houses around shared gardens.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 230,
+              "current_text": "<div class=\"stats-bar__label\" data-i18n=\"compound.stats.houses\">Houses</div>"
+            },
+            {
+              "file": "src/layouts/BaseLayout.astro",
+              "line": 12,
+              "current_text": "description = \"Moulin à Rêves — A compound of three stone houses...\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 131,
+              "current_text": "\"...\": \"Three stone houses around shared gardens. Each its own world; together, the compound.\""
+            }
+          ],
+          "i18n_keys": [
+            "compound.stats.houses"
+          ],
+          "search_log": "matched phrase 'houses' → 1 hits; matched phrase 'three stone houses' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "The exact phrase 'Three stone houses around shared gardens. Each its own world; together, the compound.' appears in public/i18n/translations.json:131. Needs deletion (set to empty or remove the key+anchor).",
+          "commit_hash": null,
+          "requirement_id": "COPY-14",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "json-copy",
+              "description": "Delete or empty public/i18n/translations.json key whose value contains 'Three stone houses around shared gardens'"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Remove the corresponding rendered text from src/pages/the-compound.astro and any homepage description mirror"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-016",
+          "page": 7,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "Each its own world; together, the compound.” Replace “The sanctuary” above the Hollywood Hideaway with “The Refuge” Above the “Bring your group together” section, please create a new section that says “We Make It Easy” It should feature Catering - photo that links to catering tab.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 303,
+              "current_text": "<span class=\"split__eyebrow\">The Refuge</span>"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 392,
+              "current_text": "<span class=\"split__eyebrow\">The Refuge</span>"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 468,
+              "current_text": "<h2>We Make It <span class=\"serif-italic\">Easy</span></h2>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'the refuge' → 2 hits; matched phrase 'we make it easy' → 1 hits",
+          "tag": "✅",
+          "tag_rationale": "'The Sanctuary' eyebrow above Hollywood Hideaway already replaced with 'The Refuge'. Found at src/pages/index.astro:392, src/pages/the-compound.astro:303, src/pages/homes/index.astro:41, src/pages/homes/le-moulin.astro:366, src/pages/homes/maison-de-la-riviere.astro:311. ALSO: Pâtisseries section + food gallery with new May 5 photos shipped in commit 8bd51b9 (#feat(catering): add Pâtisseries section). Client may not have noticed.",
+          "commit_hash": "d120aed",
+          "requirement_id": "COPY-12",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "already-done-catering",
+              "description": "Catering Pâtisseries section: ✅ landed in 8bd51b9 — surface in clarification doc as 'already done — please re-review'."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-017",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "Wellness - photo that links to massages tab Nearby Adventures -Link to things to do.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 468,
+              "current_text": "<h2>We Make It <span class=\"serif-italic\">Easy</span></h2>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'we make it easy / nearby adventures / catering / wellness' → 1 hits",
+          "tag": "✅",
+          "tag_rationale": "Wellness page massage galleries with new May 5 photos shipped in commit fd8e979 (#feat(wellness): add yoga + massage galleries with new May 5 photos). The 'Wellness - photo that links to massages tab' tile lives in src/pages/index.astro 'We Make It Easy' block; massage tab is at /wellness/.",
+          "commit_hash": "fd8e979",
+          "requirement_id": null,
+          "v2_deferred": "NEW-01",
+          "atomic_subactions": [],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-018",
+          "page": 8,
+          "page_section": "Home",
+          "verbatim": "Bottom of home page: Remove from the journal section.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 559,
+              "current_text": "<h2 data-i18n=\"home.journal.heading\">From the Journal</h2>"
+            }
+          ],
+          "i18n_keys": [
+            "home.journal.heading"
+          ],
+          "search_log": "matched phrase 'from the journal' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/index.astro:559 still renders <h2 data-i18n=\"home.journal.heading\">From the Journal</h2> and the surrounding writings__card grid.",
+          "commit_hash": null,
+          "requirement_id": "SECT-07",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Wrap or remove the From-the-Journal section in src/pages/index.astro starting around line 555 (preserve the data so it can be restored)"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-019",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "Just hide that whole section for now.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/index.astro:559 still renders <h2 data-i18n=\"home.journal.heading\">From the Journal</h2> and the surrounding writings__card grid.",
+          "commit_hash": null,
+          "requirement_id": "SECT-07",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Wrap or remove the From-the-Journal section in src/pages/index.astro starting around line 555 (preserve the data so it can be restored)"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-020",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "From room carousels: remove subheader above colon. 2.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- room title rendering: 'Room Name : subheader' format -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'subheader above colon / room carousels' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "RoomShowcase component renders room title + colon + subheader; client wants the bit above the colon (subheader) removed across all room carousels.",
+          "commit_hash": null,
+          "requirement_id": "SECT-08",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Audit src/components/RoomShowcase.astro and remove or hide the subheader-above-colon rendering"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-021",
+          "page": 8,
+          "page_section": "Get in Touch",
+          "verbatim": "Buttons on home page: “Speak with a concierge” brings us to this page. https://www.moulinareves.com/contact/ Replace Get in touch with the words “Join us!” Add the word size here: Tell us your dates, your group size, your dreams.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/contact.astro",
+              "line": 15,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 23,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 752,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 333,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 294,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 267,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 642,
+              "current_text": "'contact.hero.tagline': { en: \"Tell us your dates, your group size, your dreams. We'll take it from there.\" }"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1483,
+              "current_text": "\"contact.hero.tagline\": \"Tell us your dates, your group, your dreams. We'll take it from there.\""
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 217,
+              "current_text": "<a href=\"/contact/\" class=\"btn btn--ghost\">Speak with the Concierge</a>"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.heading",
+            "contact.hero.tagline",
+            "contact.hero.title",
+            "grange.cta.text",
+            "home.availability.heading",
+            "home.cta.text",
+            "jardin.cta.text",
+            "moulin.cta.text"
+          ],
+          "search_log": "matched phrase 'join us' → 6 hits; matched phrase 'tell us your dates' → 2 hits; matched phrase 'speak with the concierge / speak with a concierge' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/index.astro:217 still has '<a>Speak with the Concierge</a>' as the second hero CTA; client wants the page-2 button labelled 'Join us!' per the universal pattern (COPY-09 + page-2 instruction).",
+          "commit_hash": null,
+          "requirement_id": "COPY-09",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Replace 'Speak with the Concierge' on src/pages/index.astro:217 with 'Join us!' (or move to dedicated CTA section)"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "If a translation key wraps this CTA, update both en/fr in translations.json"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-022",
+          "page": 8,
+          "page_section": "Get in Touch",
+          "verbatim": "We'll take it from there. Change the address to: 14, 16, 18 Rue des Crocs au Renard, 91660 Le Mérévillois (Remove the X at the end of the word “au” before Renard.) Getting here section Is that an active google map?",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/layouts/BaseLayout.astro",
+              "line": 137,
+              "current_text": "<p data-i18n-html=\"footer.tagline\">14, 16, 18 Rue des Crocs au Renard<br/>91660 Le Mérévillois</p>"
+            },
+            {
+              "file": "src/pages/about.astro",
+              "line": 119,
+              "current_text": "<p data-i18n=\"about.faq.address.a\">14, 16, 18 Rue des Crocs au Renard, 91660 Le Mérévillois.</p>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 129,
+              "current_text": "<p>14, 16, 18 Rue des Crocs au Renard<br />91660 Le Mérévillois</p>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'rue des crocs au renard' → 3 hits; matched phrase 'address 14, 16, 18' → 1 hits",
+          "tag": "✅",
+          "tag_rationale": "Address already canonicalized site-wide in commit 111cf9b (#32). Footer (BaseLayout.astro:137), about (about.astro:119), contact (contact.astro:129) all show '14, 16, 18 Rue des Crocs au Renard, 91660 Le Mérévillois'.",
+          "commit_hash": "111cf9b",
+          "requirement_id": "COPY-05",
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-023",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "That would be great. Please use the specific directions from orly airport 55 min.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"That would be great. Please use the specific directions from orly airport 55 min.\" — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-024",
+          "page": 8,
+          "page_section": "Unclassified",
+          "verbatim": "Charles de gaul 75 min. Currently the formatting is wonky here.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/contact.astro",
+              "line": 20,
+              "current_text": "<AvailabilityCalendar (rendered BEFORE the form section) />"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 27,
+              "current_text": "<!-- Form + Contact Info --> (rendered AFTER calendar)"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'form/calendar order on contact' → 2 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"Charles de gaul 75 min. Currently the formatting is wonky here.\" — current code state: <AvailabilityCalendar (rendered BEFORE the form section) />. Could you clarify what specific action you want? (file: src/pages/contact.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-025",
+          "page": 8,
+          "page_section": "Home",
+          "verbatim": "I like your faqs instructions. We bury bring your dog in FAQs Create a new section towards the bottom of the home page that says Dogs welcome.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 1,
+              "current_text": "<!-- 'Dogs Welcome' section not present — NEW-02 -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'dogs welcome' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "No dedicated 'Dogs Welcome' section on home; current 'bring your dog!' lives in FAQ. Client wants a new section with Jetson photo replacing 'Nearby Adventures' in the We Make It Easy block.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "NEW-02",
+          "atomic_subactions": [
+            {
+              "kind": "v2-defer",
+              "description": "Add Dogs Welcome section + Jetson photo on home page — NEW-02 (deferred to Milestone 2)."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-026",
+          "page": 8,
+          "page_section": "Le Moulin",
+          "verbatim": "Use a jetson photo. Create a new section that says: Make your life a masterpiece - life is a work of art at Moulin a Reves.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 191,
+              "current_text": "<BaseLayout title=\"Le Moulin — Historic Mill Rental in Méréville, France\" />"
+            },
+            {
+              "file": "src/content/pages/le-moulin.md",
+              "line": 4,
+              "current_text": "title: \"Le Moulin\"  /* renamed from \"Moulin à Rêves\" */"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 1,
+              "current_text": "<!-- 'Make your life a masterpiece' Monet pairing — NEW-03 deferred to v2 -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'rename house / le moulin / moulin a reves' → 2 hits; extended phrase 'monet / giverny / make your life a masterpiece' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "No dedicated 'Dogs Welcome' section on home; current 'bring your dog!' lives in FAQ. Client wants a new section with Jetson photo replacing 'Nearby Adventures' in the We Make It Easy block.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "NEW-02",
+          "atomic_subactions": [
+            {
+              "kind": "v2-defer",
+              "description": "Add Dogs Welcome section + Jetson photo on home page — NEW-02 (deferred to Milestone 2)."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-027",
+          "page": 9,
+          "page_section": "Unclassified",
+          "verbatim": "Use this monet giverny painting next to the bridge at moulin a reve.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 1,
+              "current_text": "<!-- 'Make your life a masterpiece' Monet pairing not present — NEW-03 -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'monet giverny' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "New section described requires Monet 'Giverny' painting image which client has not yet provided. To be paired with the Moulin bridge photo.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "NEW-03",
+          "atomic_subactions": [],
+          "clarification_question": "For the new 'Make your life a masterpiece' section pairing a Monet Giverny painting with the Moulin bridge photo: which specific Monet image should we use? (We need a PD/CC0 source — many of his Giverny series are public domain via Met / WikiArt — please confirm the one you have in mind, OR upload it to Google Drive so we can downscale + convert to .webp.)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-028",
+          "page": 9,
+          "page_section": "Unclassified",
+          "verbatim": "Then we will include pictures of the beautiful paintings here. 3.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"Then we will include pictures of the beautiful paintings here. 3.\" — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-029",
+          "page": 9,
+          "page_section": "Home",
+          "verbatim": "The Compound Button Change: Three houses.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 230,
+              "current_text": "<div class=\"stats-bar__label\" data-i18n=\"compound.stats.houses\">Houses</div>"
+            },
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 299,
+              "current_text": "'compound.hero.tagline': { en: 'This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility.' }"
+            },
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 171,
+              "current_text": "<p class=\"hero__tagline\" data-i18n=\"compound.hero.tagline\">This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility.</p>"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 839,
+              "current_text": "\"compound.hero.tagline\": \"This is a private walled compound...\""
+            }
+          ],
+          "i18n_keys": [
+            "compound.hero.tagline",
+            "compound.stats.houses"
+          ],
+          "search_log": "matched phrase 'houses' → 1 hits; matched phrase 'compound button / private walled compound' → 3 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"The Compound Button Change: Three houses.\" — current code state: <div class=\"stats-bar__label\" data-i18n=\"compound.stats.houses\">Houses</div>. Could you clarify what specific action you want? (file: src/pages/index.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-030",
+          "page": 9,
+          "page_section": "Home",
+          "verbatim": "Shared grounds. The whole place, exclusively yours Make it: This is a private walled compound where you are master of your own domaine.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/i18n/translations.ts",
+              "line": 299,
+              "current_text": "'compound.hero.tagline': { en: 'This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility.' }"
+            },
+            {
+              "file": "src/pages/the-compound.astro",
+              "line": 171,
+              "current_text": "<p class=\"hero__tagline\" data-i18n=\"compound.hero.tagline\">This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility.</p>"
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 839,
+              "current_text": "\"compound.hero.tagline\": \"This is a private walled compound...\""
+            }
+          ],
+          "i18n_keys": [
+            "compound.hero.tagline"
+          ],
+          "search_log": "matched phrase 'compound button / private walled compound' → 3 hits",
+          "tag": "✅",
+          "tag_rationale": "compound.hero.tagline already reads 'This is a private walled compound where you are master of your own domaine. Peace, privacy. Tranquility.' in src/i18n/translations.ts:299, src/pages/the-compound.astro:171, and public/i18n/translations.json:839. Likely landed in editorial pass d120aed (#30).",
+          "commit_hash": "d120aed",
+          "requirement_id": "COPY-08",
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-031",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "Peace, privacy. Tranquility. Calander I like that you only display 2 months at a time but the arrows should let you scroll to 12 months Currently it only lets you search for 4 months.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/components/AvailabilityCalendar.astro",
+              "line": 1,
+              "current_text": "<!-- AvailabilityCalendar component, default monthsToShow varies by page -->"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 327,
+              "current_text": "<AvailabilityCalendar monthsToShow={12} />"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'calendar 12 months / 4 months' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "AvailabilityCalendar currently displays 4-6 months depending on page. Some pages already pass monthsToShow={12} (e.g., src/pages/homes/le-moulin.astro:327) but home page uses {6} (line 749). Underlying ICS feed depth needs verification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "STRUCT-02",
+          "atomic_subactions": [
+            {
+              "kind": "v2-defer",
+              "description": "Extend AvailabilityCalendar scrollable range to 12 months across all pages — STRUCT-02. Investigate Airbnb/VRBO ICS feed depth in src/pages/api/availability.ts."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-032",
+          "page": 10,
+          "page_section": "Get in Touch",
+          "verbatim": "Move the calendar link below the request for contact.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/components/AvailabilityCalendar.astro",
+              "line": 1,
+              "current_text": "<!-- AvailabilityCalendar monthsToShow prop — STRUCT-02 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'calendar / scroll to 12 months / 4 months / arrows' → 1 hits; extended phrase 'calander / calendar / scroll' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Same pattern as form/calendar swap — reorder so request-for-contact is above calendar link on home Plan-Your-Stay block.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Audit src/pages/index.astro Plan-Your-Stay area (line 740+) and reorder so the inquiry CTA appears before calendar link"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-033",
+          "page": 10,
+          "page_section": "Le Moulin",
+          "verbatim": "MOULIN Page of this house Please update the name of this house to Le Moulin.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 191,
+              "current_text": "<BaseLayout title=\"Le Moulin — Historic Mill Rental in Méréville, France\" />"
+            },
+            {
+              "file": "src/content/pages/le-moulin.md",
+              "line": 4,
+              "current_text": "title: \"Le Moulin\"  /* renamed from \"Moulin à Rêves\" */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'rename house / le moulin / moulin a reves' → 2 hits",
+          "tag": "✅",
+          "tag_rationale": "House-page rename from 'Moulin à Rêves' → 'Le Moulin' shipped in commit 333254d (#35). src/pages/homes/le-moulin.astro:191 BaseLayout title='Le Moulin — Historic Mill Rental...' and src/content/pages/le-moulin.md:4 title='Le Moulin'.",
+          "commit_hash": "333254d",
+          "requirement_id": "COPY-07",
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-034",
+          "page": 10,
+          "page_section": "Le Moulin",
+          "verbatim": "The name of the whole estate is Moulin a Reves - the name of just this house is just Le Moulin.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 191,
+              "current_text": "<BaseLayout title=\"Le Moulin — Historic Mill Rental in Méréville, France\" />"
+            },
+            {
+              "file": "src/content/pages/le-moulin.md",
+              "line": 4,
+              "current_text": "title: \"Le Moulin\"  /* renamed from \"Moulin à Rêves\" */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'rename house / le moulin / moulin a reves' → 2 hits",
+          "tag": "✅",
+          "tag_rationale": "House-page rename from 'Moulin à Rêves' → 'Le Moulin' shipped in commit 333254d (#35). src/pages/homes/le-moulin.astro:191 BaseLayout title='Le Moulin — Historic Mill Rental...' and src/content/pages/le-moulin.md:4 title='Le Moulin'.",
+          "commit_hash": "333254d",
+          "requirement_id": "COPY-07",
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-035",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "Please change it on the house listing.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"Please change it on the house listing.\" — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-036",
+          "page": 10,
+          "page_section": "Le Moulin",
+          "verbatim": "Good job changing the photos in the main carousel of le moulin - delete my picture in the pink gown in front of the house (you can keep me in the bike by the gate) Beige box where you’ll sleep section -- ISSUE HERE AND ALL PHOTO BOXES IN HOUSES: WHen you click into the room box - the photos are cut off at the bottom.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/index.astro",
+              "line": 230,
+              "current_text": "<div class=\"stats-bar__label\" data-i18n=\"compound.stats.houses\">Houses</div>"
+            },
+            {
+              "file": "src/content/pages/le-moulin.md",
+              "line": 25,
+              "current_text": "alt: \"Welcome to Le Moulin — your hostess in a rose-pink gown with Jetson the Cavalier\""
+            },
+            {
+              "file": "src/content/pages/le-moulin.md",
+              "line": 24,
+              "current_text": "src: \"/images/homes/le-moulin-welcome-rose.webp\""
+            },
+            {
+              "file": "src/components/PhotoCarousel.astro",
+              "line": 1,
+              "current_text": "<!-- PhotoCarousel modal — STRUCT-01 deferred -->"
+            },
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- RoomShowcase room-modal — STRUCT-01 deferred -->"
+            }
+          ],
+          "i18n_keys": [
+            "compound.stats.houses"
+          ],
+          "search_log": "matched phrase 'houses' → 1 hits; matched phrase 'pink' → 2 hits; matched phrase 'gallery modal x button / forward arrow / cut off' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/content/pages/le-moulin.md:24-25 still has le-moulin-welcome-rose.webp ('hostess in a rose-pink gown with Jetson the Cavalier') in the main carousel.",
+          "commit_hash": null,
+          "requirement_id": "SECT-06",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove le-moulin-welcome-rose.webp lines (24-25) from gallery in src/content/pages/le-moulin.md"
+            },
+            {
+              "kind": "verify",
+              "description": "Confirm le-moulin-gate.webp ('bike by the gate') still in carousel"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-037",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "When you click the arrows it adjusts but it would be better if you saw the bottom of the photos as soon as you click on the room.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/components/AvailabilityCalendar.astro",
+              "line": 1,
+              "current_text": "<!-- AvailabilityCalendar monthsToShow prop — STRUCT-02 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'calendar / scroll to 12 months / 4 months / arrows' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"When you click the arrows it adjusts but it would be better if you saw the bottom of the photos as soon as you click on the room.\" — current code state: <!-- AvailabilityCalendar monthsToShow prop — STRUCT-02 deferred -->. Could you clarify what specific action you want? (file: src/components/AvailabilityCalendar.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-038",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "Once you are inside the photos of each room -- it’s very difficult to get back to the main page of moulin photos again. the page shifts down and you lose the ability to click the x button in upper right corner.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- room modal X-close — STRUCT-01 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'cant x out / x button / corner / navigate back' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Gallery/modal navigation defects (X-button visibility, forward arrow cropping, photo bottom-crop on first open). Partial fixes shipped in d626c4b (#41) 'fix(rooms): room modal adapts to viewport, shows photos fully' but client still reports the issues.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "STRUCT-01",
+          "atomic_subactions": [
+            {
+              "kind": "v2-defer",
+              "description": "Gallery modal close-button + forward-arrow + bottom-crop fixes deferred to STRUCT-01 (Milestone 2 structural). Component-level rework needed in src/components/PhotoCarousel.astro and src/components/RoomShowcase.astro."
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-039",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "The only room where this is not an issue is Le Loft Suite.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 14,
+              "current_text": "{ id: 'looking-glass', title: 'Through the Looking Glass', /* one of the rooms */ }"
+            },
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- shared room-modal component — Le Loft Suite is the only currently-correct one -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'rooms / through the looking glass / le loft suite / formatting works well' → 2 hits",
+          "tag": "✅",
+          "tag_rationale": "Client confirms Le Loft Suite room modal works correctly; same room-modal cropping issue plagues all other rooms. That fix is STRUCT-01 deferred.",
+          "commit_hash": "d626c4b",
+          "requirement_id": null,
+          "v2_deferred": "STRUCT-01",
+          "atomic_subactions": [],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-040",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "This problem is in all the gathering spaces too.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"This problem is in all the gathering spaces too.\" — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-041",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "The courtyard and patio space layout is not working well but you can omit this space entirely because it is covered in the grounds photos.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 142,
+              "current_text": "{ id: 'courtyard', title: 'Courtyard & Patio', ... }"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'courtyard' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Courtyard & Patio room block still present at src/pages/homes/le-moulin.astro:142-150.",
+          "commit_hash": null,
+          "requirement_id": "SECT-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Delete courtyard room block (id: 'courtyard') in src/pages/homes/le-moulin.astro"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Move/keep flower-cart and back-patio photos in main carousel since they are 'covered in gardens below'"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-042",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "The grounds are the biggest selling part of the house.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 1,
+              "current_text": "<!-- grounds gallery clickability — gardens-as-individual-galleries NEW-05 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'grounds / each picture clickable / bigger box' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"The grounds are the biggest selling part of the house.\" — current code state: <!-- grounds gallery clickability — gardens-as-individual-galleries NEW-05 deferred -->. Could you clarify what specific action you want? (file: src/pages/homes/le-moulin.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-043",
+          "page": 10,
+          "page_section": "Unclassified",
+          "verbatim": "CAn each of those pictures become a bigger box?",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 1,
+              "current_text": "<!-- grounds gallery clickability — gardens-as-individual-galleries NEW-05 deferred -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'grounds / each picture clickable / bigger box' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"CAn each of those pictures become a bigger box?\" — current code state: <!-- grounds gallery clickability — gardens-as-individual-galleries NEW-05 deferred -->. Could you clarify what specific action you want? (file: src/pages/homes/le-moulin.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-044",
+          "page": 6,
+          "page_section": "Hollywood Hideaway",
+          "verbatim": "When You Can Stay Replace the words “When you can stay” with “Join Us!” HOLLYWOOD HIDEAWAY PAGE Remove the small letters that say hollywood hideaway above the text of the house on the main photo Change the lead image of the hollywood hideaway to the patio shot with breakfast on the table Remove the secret garden as an individual room and add it as a photo to both the looking glass and american in paris rooms.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 183,
+              "current_text": "\"home.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1908,
+              "current_text": "\"le-moulin.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2100,
+              "current_text": "\"hideaway.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2280,
+              "current_text": "\"riviere.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 15,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 23,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 752,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 333,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 294,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 267,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.heading",
+            "contact.hero.title",
+            "hideaway.availability.heading",
+            "home.availability.heading",
+            "le-moulin.availability.heading",
+            "riviere.availability.heading"
+          ],
+          "search_log": "matched phrase 'when you can stay' → 4 hits; matched phrase 'join us' → 6 hits",
+          "tag": "🔧",
+          "tag_rationale": "Replaced on home page hero CTA (commit 0ef4dc8) but translations.json still has 'When You Can Stay' under home/le-moulin/hideaway/riviere availability keys; per-house pages still show old text via runtime overlay.",
+          "commit_hash": null,
+          "requirement_id": "COPY-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "json-copy",
+              "description": "Update public/i18n/translations.json keys home.availability.heading, le-moulin.availability.heading, hideaway.availability.heading, riviere.availability.heading: en → 'Join us', fr → 'Rejoignez-nous' (no italic span on final word per TYPOG-01)"
+            },
+            {
+              "kind": "ts-copy",
+              "description": "Update src/i18n/translations.ts entries for the same keys to match"
+            },
+            {
+              "kind": "verify",
+              "description": "grep src/ public/i18n/ for 'When You Can Stay' returns 0 matches"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-045",
+          "page": 11,
+          "page_section": "Unclassified",
+          "verbatim": "These rooms and gathering spaces have the same challenge of losing the x in the upper right corner so you can navigate back to the house.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 14,
+              "current_text": "{ id: 'looking-glass', title: 'Through the Looking Glass', /* one of the rooms */ }"
+            },
+            {
+              "file": "src/components/RoomShowcase.astro",
+              "line": 1,
+              "current_text": "<!-- shared room-modal component — Le Loft Suite is the only currently-correct one -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'rooms / through the looking glass / le loft suite / formatting works well' → 2 hits; extended phrase 'looking glass / american in paris / rooms' → 1 hits; extended phrase 'cant x out / x button / corner / navigate back' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"These rooms and gathering spaces have the same challenge of losing the x in the upper right corner so you can navigate back to the house.\" — current code state: { id: 'looking-glass', title: 'Through the Looking Glass', /* one of the rooms */ }. Could you clarify what specific action you want? (file: src/pages/homes/hollywood-hideaway.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-046",
+          "page": 11,
+          "page_section": "Unclassified",
+          "verbatim": "Is the issue having the white space on the right side for text?",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/components/PhotoCarousel.astro",
+              "line": 1,
+              "current_text": "<!-- carousel layout uses padding/margins controlled by global.css -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'white space / decrease white' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"Is the issue having the white space on the right side for text?\" — current code state: <!-- carousel layout uses padding/margins controlled by global.css -->. Could you clarify what specific action you want? (file: src/components/PhotoCarousel.astro)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-047",
+          "page": 11,
+          "page_section": "Unclassified",
+          "verbatim": "We can remove the text and put it under the photos if it’s better Delete The What’s here section Add a section called “Join the stars who stayed here” I will upload those photos tonight.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 1,
+              "current_text": "<!-- 'Stars Who Stayed Here' section not present — NEW-04 deferred to v2 -->"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'stars who stayed here' → 1 hits",
+          "tag": "❓",
+          "tag_rationale": "New section requires client to upload star/celebrity photos. Client said 'I will upload those photos tonight' (April 30 round) — confirm whether photos arrived.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": "NEW-04",
+          "atomic_subactions": [],
+          "clarification_question": "For the 'Join the Stars Who Stayed Here' section on Hollywood Hideaway: have the star photos been uploaded to Google Drive yet? If yes, share the folder link so we can process them through scripts/process-photos.mjs. If no, the section stays deferred until assets arrive.",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-048",
+          "page": 11,
+          "page_section": "Les Maisons",
+          "verbatim": "Les Autre Maisons should be in just one font.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": "src/styles/global.css",
+              "line": 1,
+              "current_text": "@import url('...Google Fonts...'); /* multiple font families */"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 236,
+              "current_text": "heading={`Where you'll <span class=\"serif-italic\">sleep</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 246,
+              "current_text": "heading={`Where you'll <span class=\"serif-italic\">gather</span>`}"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'two fonts / 2 or 3 fonts / one font' → 1 hits; extended phrase 'where you'll gather / where you'll sleep / one font' → 2 hits",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"Les Autre Maisons should be in just one font.\" — current code state: @import url('...Google Fonts...'); /* multiple font families */. Could you clarify what specific action you want? (file: src/styles/global.css)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-049",
+          "page": 11,
+          "page_section": "Unclassified",
+          "verbatim": "Where you’ll gather header: just use one consistent font - now there are 2.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"Where you’ll gather header: just use one consistent font - now there are 2.\" — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-050",
+          "page": 11,
+          "page_section": "Maison de la Rivière",
+          "verbatim": "Maison de la Riviere page https://www.moulinareves.com/homes/maison-de-la-riviere/ Remove the text above the name of the house - it’s duplicative This has the same issue with not being able to get back to main page from the room.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 198,
+              "current_text": "<h1>{cms.title}</h1>  <p>{cms.tagline}</p>  /* hero text overlap */"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'duplicative / duplicate text / triple' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "Maison de la Rivière hero currently shows duplicate text (h1 'La Maison de la Rivière' + tagline that may include redundant phrasing).",
+          "commit_hash": null,
+          "requirement_id": "SECT-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove duplicative tagline rows above/below the house name in src/pages/homes/maison-de-la-riviere.astro hero"
+            },
+            {
+              "kind": "en-copy",
+              "description": "Center the house name (h1) within the hero overlay"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-051",
+          "page": 11,
+          "page_section": "Les Maisons",
+          "verbatim": "Remove exterior and stream and gardens from where you’ll gather Just use one font in where you’ll sleep and where you’ll gather and what’s here and when you can stay and les autre maisons.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 183,
+              "current_text": "\"home.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1908,
+              "current_text": "\"le-moulin.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2100,
+              "current_text": "\"hideaway.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2280,
+              "current_text": "\"riviere.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 80,
+              "current_text": "{ id: 'exterior', title: 'Exterior & Stream', ... }"
+            }
+          ],
+          "i18n_keys": [
+            "hideaway.availability.heading",
+            "home.availability.heading",
+            "le-moulin.availability.heading",
+            "riviere.availability.heading"
+          ],
+          "search_log": "matched phrase 'when you can stay' → 4 hits; matched phrase 'exterior' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/homes/maison-de-la-riviere.astro:80-88 still has gathering-spaces tile { id: 'exterior', title: 'Exterior & Stream' }; client wants it removed since exterior shots already in top carousel.",
+          "commit_hash": null,
+          "requirement_id": "SECT-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove 'exterior' tile block from src/pages/homes/maison-de-la-riviere.astro:80-88"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-052",
+          "page": 11,
+          "page_section": "Get in Touch",
+          "verbatim": "Replace When you can stay with “Join us!” The What’s Here section is really about the gardens and space -- that should link to the beautiful gardens page with more photo galleries.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "public/i18n/translations.json",
+              "line": 183,
+              "current_text": "\"home.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 1908,
+              "current_text": "\"le-moulin.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2100,
+              "current_text": "\"hideaway.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "public/i18n/translations.json",
+              "line": 2280,
+              "current_text": "\"riviere.availability.heading\": \"When You Can <span class=\\\"serif-italic\\\">Stay</span>\""
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 15,
+              "current_text": "<h1 class=\"hero__title\" data-i18n=\"contact.hero.title\">Join us!</h1>"
+            },
+            {
+              "file": "src/pages/contact.astro",
+              "line": 23,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/index.astro",
+              "line": 752,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/le-moulin.astro",
+              "line": 333,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/hollywood-hideaway.astro",
+              "line": 294,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            },
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 267,
+              "current_text": "heading={`Join <span class=\"serif-italic\">us</span>`}"
+            }
+          ],
+          "i18n_keys": [
+            "contact.hero.heading",
+            "contact.hero.title",
+            "hideaway.availability.heading",
+            "home.availability.heading",
+            "le-moulin.availability.heading",
+            "riviere.availability.heading"
+          ],
+          "search_log": "matched phrase 'when you can stay' → 4 hits; matched phrase 'join us' → 6 hits",
+          "tag": "🔧",
+          "tag_rationale": "Replaced on home page hero CTA (commit 0ef4dc8) but translations.json still has 'When You Can Stay' under home/le-moulin/hideaway/riviere availability keys; per-house pages still show old text via runtime overlay.",
+          "commit_hash": null,
+          "requirement_id": "COPY-01",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "json-copy",
+              "description": "Update public/i18n/translations.json keys home.availability.heading, le-moulin.availability.heading, hideaway.availability.heading, riviere.availability.heading: en → 'Join us', fr → 'Rejoignez-nous' (no italic span on final word per TYPOG-01)"
+            },
+            {
+              "kind": "ts-copy",
+              "description": "Update src/i18n/translations.ts entries for the same keys to match"
+            },
+            {
+              "kind": "verify",
+              "description": "grep src/ public/i18n/ for 'When You Can Stay' returns 0 matches"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-053",
+          "page": 12,
+          "page_section": "Maison de la Rivière",
+          "verbatim": "The photo is too dark in “Interested in La Maison de la Riviere” and on all the maison pages.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 274,
+              "current_text": "<!-- \"Interested in {cms.title}?\" CTA section -->"
+            },
+            {
+              "file": "src/styles/global.css",
+              "line": 957,
+              "current_text": ".hero__overlay { /* dark filter on image */ }"
+            }
+          ],
+          "i18n_keys": [
+            "riviere.cta.heading"
+          ],
+          "search_log": "extended phrase 'interested in la maison / dark filter / black filter / image too dark' → 2 hits; extended phrase 'interested in / cta hero / dark image too dark' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/homes/maison-de-la-riviere.astro:274 'Interested in...' CTA hero has dark filter; client wants it reduced. Same on other house pages.",
+          "commit_hash": null,
+          "requirement_id": "PHOTO-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Reduce black filter on .hero__overlay specifically for the 'Interested in...' CTA section across all home pages (or scoped class .hero--cta)"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-054",
+          "page": 12,
+          "page_section": "Unclassified",
+          "verbatim": "Can you reduce the black filter on the image on this page and all the house listings.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/maison-de-la-riviere.astro",
+              "line": 274,
+              "current_text": "<!-- \"Interested in {cms.title}?\" CTA section -->"
+            },
+            {
+              "file": "src/styles/global.css",
+              "line": 957,
+              "current_text": ".hero__overlay { /* dark filter on image */ }"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'interested in la maison / dark filter / black filter / image too dark' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/homes/maison-de-la-riviere.astro:274 'Interested in...' CTA hero has dark filter; client wants it reduced. Same on other house pages.",
+          "commit_hash": null,
+          "requirement_id": "PHOTO-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Reduce black filter on .hero__overlay specifically for the 'Interested in...' CTA section across all home pages (or scoped class .hero--cta)"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-055",
+          "page": 12,
+          "page_section": "Les Maisons",
+          "verbatim": "Les Maisons Page Remove: Three maisons.",
+          "is_compound": false,
+          "code_state": [
+            {
+              "file": null,
+              "line": null,
+              "current_text": "<NOT FOUND — see search_log>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "no curated phrase match — verbatim does not align with code-deep intel",
+          "tag": "❓",
+          "tag_rationale": "Generic ❓ — bullet did not match a specific tagging rule; routes to Phase 3 for client clarification.",
+          "commit_hash": null,
+          "requirement_id": null,
+          "v2_deferred": null,
+          "atomic_subactions": [],
+          "clarification_question": "This bullet from April 30 round is ambiguous: \"Les Maisons Page Remove: Three maisons.\" — current code state: <NOT FOUND — see search_log>. Could you clarify what specific action you want? (file: unknown)",
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-056",
+          "page": 12,
+          "page_section": "Unclassified",
+          "verbatim": "Sleeps 20 across 10 bedrooms. Below the photo write: Header: Bienvenue Chez Vous Smaller text: All size groups welcome.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/index.astro",
+              "line": 13,
+              "current_text": "<h1 class=\"hero__title\" data-i18n-html=\"homes.hero.title\">Les <span class=\"serif-italic\">Maisons</span></h1>"
+            },
+            {
+              "file": "src/pages/homes/index.astro",
+              "line": 14,
+              "current_text": "<p class=\"hero__tagline\">Three maisons. Sleeps 20 across 10 bedrooms.</p>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "matched phrase 'bienvenue chez vous / les maisons header' → 2 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/homes/index.astro:14 hero__tagline still reads 'Three maisons. Sleeps 20 across 10 bedrooms.'; client wants this replaced with header 'Bienvenue Chez Vous' and smaller text 'All size groups welcome. Rent 1 home or enjoy all 3.'.",
+          "commit_hash": null,
+          "requirement_id": "COPY-13",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Replace src/pages/homes/index.astro:13-14 hero block: H1 'Bienvenue Chez Vous' (large) + tagline 'All size groups welcome. Rent 1 home or enjoy all 3.' (smaller)"
+            },
+            {
+              "kind": "fr-copy",
+              "description": "Update public/i18n/translations.json keys homes.hero.title and homes.hero.tagline (en/fr) — 'Bienvenue Chez Vous' is bilingual-neutral; FR equivalent 'Toutes tailles de groupes bienvenues. Louez 1 maison ou profitez des 3.'"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        },
+        {
+          "id": "april30-057",
+          "page": 12,
+          "page_section": "Home",
+          "verbatim": "Rent 1 home or enjoy all 3. That can have the gardens below it.",
+          "is_compound": true,
+          "code_state": [
+            {
+              "file": "src/pages/homes/index.astro",
+              "line": 75,
+              "current_text": "<a>Book all three houses for up to 20 guests. Family reunions, retreats, celebrations.</a>"
+            }
+          ],
+          "i18n_keys": [],
+          "search_log": "extended phrase 'all size groups welcome / rent 1 home or enjoy all 3' → 1 hits",
+          "tag": "🔧",
+          "tag_rationale": "src/pages/homes/maison-de-la-riviere.astro:89-95 still has 'Gardens' tile; client wants it removed since gardens are covered below.",
+          "commit_hash": null,
+          "requirement_id": "SECT-03",
+          "v2_deferred": null,
+          "atomic_subactions": [
+            {
+              "kind": "en-copy",
+              "description": "Remove 'gardens' tile block from src/pages/homes/maison-de-la-riviere.astro:89-95"
+            }
+          ],
+          "clarification_question": null,
+          "conflict_note": null,
+          "rounds_appeared": [
+            "April 30"
+          ]
+        }
+      ]
+    }
+  ]
+}

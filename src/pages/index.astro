@@ -45,7 +45,6 @@ const compoundFeatures = [
       { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
       { src: '/images/homes/la-grange-fire.webp', alt: 'Fire crackling in the stone hearth of La Grange' },
       { src: '/images/group-dinner.webp', alt: 'Dinner laid on the long table under La Grange\'s pavilion' },
-      { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse-drawn carriage on display in La Grange' },
     ],
   },
   {
@@ -115,8 +114,8 @@ const compoundFeatures = [
 
 const groupTypes = [
   { title: 'Family reunions', summary: 'Three houses, one garden — together by day, separate when needed.', image: '/images/outdoor-dining.webp', alt: 'Family dinner outdoors at Moulin à Rêves' },
-  { title: 'Yoga retreats', summary: 'Lawn, La Grange, and the spa — set up for retreat hosts.', image: '/images/yoga-lawn.webp', alt: 'Morning yoga on the lawn at Moulin à Rêves' },
-  { title: 'Friends trips', summary: 'Twenty beds, long dinners, the millstream, and Paris an hour away.', image: '/images/gazebo-dining.webp', alt: 'Friends gathered for evening dining at Moulin à Rêves' },
+  { title: 'Yoga, painting, writing retreats', summary: 'Lawn, La Grange, and the spa — set up for retreat hosts.', image: '/images/yoga-lawn.webp', alt: 'Morning yoga on the lawn at Moulin à Rêves' },
+  { title: 'Friends celebrations', summary: 'Twenty beds, long dinners, the millstream, and Paris an hour away.', image: '/images/gazebo-dining.webp', alt: 'Friends gathered for evening dining at Moulin à Rêves' },
 ];
 ---
 
@@ -212,9 +211,11 @@ const groupTypes = [
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <h1 class="hero__title" data-i18n-html="home.title">Your Dream French Vacation Come True</h1>
+      <p class="hero__tagline" data-i18n="home.hero.tagline">A Private Luxurious Compound, One Hour From Paris</p>
+      <p class="hero__location" data-i18n="home.hero.location">Méréville, France</p>
       <div class="hero__actions">
         <a href="/homes/" class="btn btn--white" data-i18n="home.cta">Discover the Maisons</a>
-        <a href="/contact/" class="btn btn--ghost">Speak with the Concierge</a>
+        <a href="/contact/" class="btn btn--ghost" data-i18n="home.cta.secondary">Join us!</a>
       </div>
     </div>
     <span class="hero__scroll" aria-hidden="true">découvrir</span>
@@ -223,11 +224,10 @@ const groupTypes = [
   <!-- Stats Bar -->
   <section class="section" style="padding-top: 40px; padding-bottom: 32px;">
     <div class="container">
-      <p class="stats-bar__intro text-center" data-i18n="home.stats.intro">A private compound one hour from Paris.</p>
       <div class="stats-bar">
         <div class="stats-bar__item">
           <div class="stats-bar__number">3</div>
-          <div class="stats-bar__label" data-i18n="compound.stats.houses">Houses</div>
+          <div class="stats-bar__label" data-i18n="compound.stats.houses">Homes</div>
         </div>
         <div class="stats-bar__item">
           <div class="stats-bar__number">10</div>
@@ -258,6 +258,28 @@ const groupTypes = [
     }
     .hero--lc { height: 88vh; min-height: 580px; align-items: center; padding-bottom: 0; }
     .hero--lc .hero__content { display: flex; flex-direction: column; align-items: center; }
+    .hero--lc .hero__tagline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.125rem, 1.8vw, 1.625rem);
+      font-weight: 400;
+      line-height: 1.3;
+      color: rgba(255, 255, 255, 0.96);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+      max-width: 720px;
+      margin: 16px auto 4px;
+      text-align: center;
+    }
+    .hero--lc .hero__location {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+      margin: 0 auto 28px;
+      text-align: center;
+    }
     .hero__eyebrow {
       display: block;
       font-family: var(--font-body);
@@ -367,7 +389,7 @@ const groupTypes = [
   <!-- Les Maisons -->
   <section class="section maisons-section" style="padding-top: 24px;">
     <div class="container text-center fade-in" style="margin-bottom: 28px;">
-      <h2 data-i18n-html="home.homes.heading">Les <span class="serif-italic">Maisons</span></h2>
+      <h2 data-i18n="home.homes.heading">Les Maisons</h2>
     </div>
     <div class="maisons-stack">
       <a href="/homes/le-moulin/" class="split split--maison fade-in">
@@ -418,7 +440,7 @@ const groupTypes = [
   <!-- Discover the Compound -->
   <section class="section--tighter section--soft">
     <div class="container text-center fade-in" style="margin-bottom: 24px;">
-      <h2 data-i18n-html="home.compound.heading">Discover the <span class="serif-italic">Compound</span></h2>
+      <h2 data-i18n="home.compound.heading">Discover the Compound</h2>
     </div>
     <div class="container">
       <div class="compound-grid compound-grid--3">
@@ -465,7 +487,7 @@ const groupTypes = [
   <!-- We Make It Easy -->
   <section class="section--tighter">
     <div class="container text-center fade-in" style="margin-bottom: 24px;">
-      <h2>We Make It <span class="serif-italic">Easy</span></h2>
+      <h2>We Make It Easy</h2>
     </div>
     <div class="container">
       <div class="showcase showcase--triple">
@@ -700,7 +722,7 @@ const groupTypes = [
   <!-- Discover the Area (moved to bottom) -->
   <section class="section--tighter">
     <div class="container text-center fade-in" style="margin-bottom: 32px;">
-      <h2 data-i18n-html="home.area.heading">Discover the <span class="serif-italic">Area</span></h2>
+      <h2 data-i18n="home.area.heading">Discover the Area</h2>
       <p data-i18n="home.area.intro" style="margin-top: 12px;">Forests, châteaux, painters' villages, and Paris — all within reach.</p>
     </div>
     <div class="container">
@@ -741,7 +763,7 @@ const groupTypes = [
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <h2 class="hero__title" data-i18n="home.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Plan Your Stay</h2>
-      <a href="/contact/" class="btn btn--white" data-i18n="home.cta.button">Bonjour!</a>
+      <a href="/contact/" class="btn btn--white" data-i18n="home.cta.button">Bienvenue!</a>
     </div>
   </section>
 
@@ -749,7 +771,7 @@ const groupTypes = [
   <AvailabilityCalendar
     monthsToShow={6}
     eyebrow=""
-    heading={`Join <span class="serif-italic">us</span>`}
+    heading="Join us"
     intro="Live calendar synced from Airbnb and VRBO. Greyed dates are booked."
     compact
     i18nKey="home.availability"

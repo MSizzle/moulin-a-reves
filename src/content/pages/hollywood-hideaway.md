@@ -52,6 +52,4 @@ gallery:
     alt: "Entry gate at the Hollywood Hideaway"
   - src: "/images/homes/hh-roses.webp"
     alt: "Climbing roses against the Hollywood Hideaway exterior"
-  - src: "/images/homes/la-grange-pavilion-wide.webp"
-    alt: "La Grange's open pavilion with ping-pong table and dining table"
 ---

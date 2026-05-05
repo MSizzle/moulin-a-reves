@@ -21,8 +21,6 @@ summary: "An historic mill on the Juine River in Méréville, France. The river 
 gallery:
   - src: "/images/homes/le-moulin-hero.webp"
     alt: "Le Moulin — stone facade with blue shutters and antique flower cart"
-  - src: "/images/homes/le-moulin-welcome-rose.webp"
-    alt: "Welcome to Le Moulin — your hostess in a rose-pink gown with Jetson the Cavalier"
   - src: "/images/homes/le-moulin-estate-river.webp"
     alt: "The estate with the Juine River running through the property"
   - src: "/images/homes/le-moulin-living.webp"
