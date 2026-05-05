@@ -55,17 +55,68 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Private Chef -->
+  <!-- Pâtisseries -->
   <section class="fade-in">
     <div class="split">
       <div class="split__image">
-        <img src="/images/outdoor-dining.webp" alt="Long outdoor dinner table set in the garden at Moulin à Rêves" loading="lazy" />
+        <img src="/images/catering-patisserie.webp" alt="French patisserie pastry display at Moulin à Rêves" loading="lazy" />
       </div>
+      <div class="split__body">
+        <h2 data-i18n="catering.patisserie.heading">Pâtisseries & Sweets</h2>
+        <p data-i18n="catering.patisserie.p1">
+          Macarons, tarts, layered cakes, and seasonal fruit from the village pâtissiers — a tray waiting on the table when guests arrive, or a celebration cake delivered to mark the occasion.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Private Chef -->
+  <section class="fade-in">
+    <div class="split split--reverse">
       <div class="split__body">
         <h2 data-i18n="catering.chef.heading">Private Chef</h2>
         <p data-i18n="catering.chef.p1">
           For groups who want a chef on site for the whole stay, we can share contacts for chefs in the region. They handle shopping, cooking, and dietary needs directly with you.
         </p>
+      </div>
+      <div class="split__image">
+        <img src="/images/catering-group-table.webp" alt="Long catering table set for a group dinner at Moulin à Rêves" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Food gallery -->
+  <section class="section--tight fade-in">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <h2 data-i18n="catering.gallery.heading">On the <span class="serif-italic">table</span></h2>
+      </div>
+      <div class="catering-grid">
+        <div class="catering-grid__tile" data-gallery={JSON.stringify([
+          { src: '/images/catering-cake.webp', alt: 'Layered celebration cake on the catering table at Moulin à Rêves' },
+          { src: '/images/catering-macaroons.webp', alt: 'Pastel French macarons arranged on a serving plate' },
+          { src: '/images/catering-strawberries.webp', alt: 'Bowl of fresh strawberries served at Moulin à Rêves' },
+          { src: '/images/catering-patisserie.webp', alt: 'French patisserie pastry display at Moulin à Rêves' },
+        ])}>
+          <img src="/images/catering-cake.webp" alt="Layered celebration cake on the catering table at Moulin à Rêves" loading="lazy" />
+          <span class="catering-grid__label">Sweet</span>
+        </div>
+        <div class="catering-grid__tile" data-gallery={JSON.stringify([
+          { src: '/images/catering-meat.webp', alt: 'Carved meat platter from the catering kitchen at Moulin à Rêves' },
+          { src: '/images/catering-salad.webp', alt: 'Fresh garden salad on the catering table at Moulin à Rêves' },
+          { src: '/images/catering-group-table.webp', alt: 'Long catering table set for a group dinner at Moulin à Rêves' },
+        ])}>
+          <img src="/images/catering-meat.webp" alt="Carved meat platter from the catering kitchen at Moulin à Rêves" loading="lazy" />
+          <span class="catering-grid__label">Savory</span>
+        </div>
+        <div class="catering-grid__tile" data-gallery={JSON.stringify([
+          { src: '/images/catering-friends.webp', alt: 'Friends gathered around a catered meal at Moulin à Rêves' },
+          { src: '/images/catering-group-gathering.webp', alt: 'Group gathered for a catered dinner at Moulin à Rêves' },
+          { src: '/images/group-tuscan-sun.webp', alt: 'Open-air family dinner under string lights at Moulin à Rêves' },
+        ])}>
+          <img src="/images/catering-friends.webp" alt="Friends gathered around a catered meal at Moulin à Rêves" loading="lazy" />
+          <span class="catering-grid__label">Together</span>
+        </div>
       </div>
     </div>
   </section>
@@ -84,6 +135,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <style>
     .section--tight { padding-top: 56px; padding-bottom: 56px; }
+    .catering-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .catering-grid__tile {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      cursor: zoom-in;
+      border-radius: 4px;
+    }
+    .catering-grid__tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .catering-grid__tile:hover img { transform: scale(1.04); }
+    .catering-grid__label {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      color: white;
+      font-family: var(--font-display, serif);
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    }
+    @media (max-width: 720px) {
+      .catering-grid { grid-template-columns: 1fr; }
+      .catering-grid__tile { aspect-ratio: 3 / 2; }
+    }
   </style>
 
 </BaseLayout>

@@ -388,11 +388,6 @@
     "alt": "Garden chaise lounges with Jetson the Cavalier resting in the sun near the willow trees",
     "useFor": "compound / homepage / about"
   },
-  "../photo-source/gardens moulin/breakfast in garden.jpeg": {
-    "target": "public/images/garden-breakfast.webp",
-    "alt": "Breakfast set on the patio outside the stone cottage",
-    "useFor": "compound / homepage / about"
-  },
   "../photo-source/gardens moulin/have a seat in the garden.jpeg": {
     "target": "public/images/garden-chaises.webp",
     "alt": "Garden chaise lounges facing the Giverny-style bridge",
@@ -413,17 +408,6 @@
     "alt": "Garden at dusk with feet propped up looking toward the stone cottage",
     "useFor": "compound / homepage / about",
     "overwrites": "evening-compound.webp"
-  },
-  "../photo-source/gardens moulin/the giverny bridge.jpeg": {
-    "target": "public/images/bridge-garden.webp",
-    "alt": "Giverny-style painted bridge over the stream beneath willow trees",
-    "useFor": "compound / homepage / about, hero candidate",
-    "overwrites": "bridge-garden.webp"
-  },
-  "../photo-source/gardens moulin/well well well.jpeg": {
-    "target": "public/images/garden-stone-well.webp",
-    "alt": "Vine-covered antique stone well sheltered in the garden",
-    "useFor": "compound / homepage / about"
   },
   "../photo-source/the grange new/bikes 1 in grange facing door.jpeg": {
     "target": "public/images/homes/la-grange-bikes-door.webp",
@@ -492,5 +476,358 @@
     "target": "public/images/homes/la-grange-carriage.webp",
     "alt": "Antique red horse-drawn carriage on display in La Grange",
     "useFor": "hollywood-hideaway gallery"
+  },
+
+  "../photo-source/may-5-2026/hollywood hideaway/hollywood hideaway gate.jpeg": {
+    "target": "public/images/homes/hh-gate.webp",
+    "alt": "Wrought-iron entry gate at the Hollywood Hideaway, framed by climbing greenery",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/may-5-2026/hollywood hideaway/hollywood hideway living room for movement.jpeg": {
+    "target": "public/images/homes/hh-living-movement.webp",
+    "alt": "Living room at the Hollywood Hideaway with the rug rolled back, ready for yoga or movement",
+    "useFor": "hollywood-hideaway gallery, wellness"
+  },
+  "../photo-source/may-5-2026/hollywood hideaway/living room - hollywood hideaway.jpeg": {
+    "target": "public/images/homes/hh-living-room.webp",
+    "alt": "Living room at the Hollywood Hideaway with red velvet sofa and gallery-style art",
+    "useFor": "hollywood-hideaway gallery"
+  },
+  "../photo-source/may-5-2026/hollywood hideaway/secret garden couch.jpeg": {
+    "target": "public/images/homes/hh-secret-garden-couch.webp",
+    "alt": "Secret Garden suite at the Hollywood Hideaway with a deep velvet couch",
+    "useFor": "hollywood-hideaway gallery, secret-garden room modal"
+  },
+  "../photo-source/may-5-2026/hollywood hideaway/secret garden suite angle.jpeg": {
+    "target": "public/images/homes/hh-secret-garden-2.webp",
+    "alt": "Secret Garden suite at the Hollywood Hideaway, alternate angle",
+    "useFor": "hollywood-hideaway gallery, secret-garden room modal"
+  },
+  "../photo-source/may-5-2026/hollywood hideaway/sleeping beauty hollywood hideaway  melissa 2 spinning wheels.jpeg": {
+    "target": "public/images/homes/hh-sleeping-beauty-spinning-wheels.webp",
+    "alt": "Sleeping Beauty bedroom at the Hollywood Hideaway with two antique spinning wheels",
+    "useFor": "hollywood-hideaway gallery, sleeping-beauty room modal"
+  },
+
+  "../photo-source/may-5-2026/le moulin new shots/dining room - le moulin.jpeg": {
+    "target": "public/images/homes/le-moulin-dining-3.webp",
+    "alt": "Dining room at Le Moulin set for a meal with seasonal flowers",
+    "useFor": "le-moulin gallery"
+  },
+
+  "../photo-source/may-5-2026/grange new/dog friendly your chariot awaits - melissa and jetson.jpeg": {
+    "target": "public/images/homes/la-grange-jetson-chariot.webp",
+    "alt": "Melissa with Jetson the dog beside the antique red carriage at La Grange",
+    "useFor": "the-compound shared spaces, dog-friendly content"
+  },
+  "../photo-source/may-5-2026/grange new/grange - party set up.jpeg": {
+    "target": "public/images/homes/la-grange-party-setup.webp",
+    "alt": "La Grange pavilion set with banquet tables for a party",
+    "useFor": "the-compound shared spaces, catering"
+  },
+  "../photo-source/may-5-2026/grange new/grange fire 2.jpeg": {
+    "target": "public/images/homes/la-grange-fire-2.webp",
+    "alt": "Roaring fire in the stone fireplace at La Grange",
+    "useFor": "the-compound shared spaces"
+  },
+  "../photo-source/may-5-2026/grange new/grange set up with plates.jpeg": {
+    "target": "public/images/homes/la-grange-plates.webp",
+    "alt": "Long banquet table at La Grange set with china plates and stemware",
+    "useFor": "the-compound shared spaces, catering"
+  },
+
+  "../photo-source/may-5-2026/catering/catering cake.jpeg": {
+    "target": "public/images/catering-cake.webp",
+    "alt": "Layered celebration cake on the catering table at Moulin à Rêves",
+    "useFor": "catering"
+  },
+  "../photo-source/may-5-2026/catering/catering for a group.jpeg": {
+    "target": "public/images/catering-group-table.webp",
+    "alt": "Long catering table set for a group dinner at Moulin à Rêves",
+    "useFor": "catering"
+  },
+  "../photo-source/may-5-2026/catering/catering meat.jpeg": {
+    "target": "public/images/catering-meat.webp",
+    "alt": "Carved meat platter from the catering kitchen at Moulin à Rêves",
+    "useFor": "catering"
+  },
+  "../photo-source/may-5-2026/catering/catering salad.jpeg": {
+    "target": "public/images/catering-salad.webp",
+    "alt": "Fresh garden salad on the catering table at Moulin à Rêves",
+    "useFor": "catering"
+  },
+  "../photo-source/may-5-2026/catering/groups - friends catering.jpeg": {
+    "target": "public/images/catering-friends.webp",
+    "alt": "Friends gathered around a catered meal at Moulin à Rêves",
+    "useFor": "catering, group events"
+  },
+  "../photo-source/may-5-2026/catering/groups at moulin a reves.jpeg": {
+    "target": "public/images/catering-group-gathering.webp",
+    "alt": "Group gathered for a catered dinner at Moulin à Rêves",
+    "useFor": "catering, group events"
+  },
+  "../photo-source/may-5-2026/catering/macaroons.jpeg": {
+    "target": "public/images/catering-macaroons.webp",
+    "alt": "Pastel French macarons arranged on a serving plate",
+    "useFor": "catering"
+  },
+  "../photo-source/may-5-2026/catering/patio - breakfast in the garden.jpeg": {
+    "target": "public/images/garden-breakfast.webp",
+    "alt": "Breakfast set up on the garden patio at Moulin à Rêves",
+    "useFor": "catering, gardens",
+    "overwrites": "garden-breakfast.webp"
+  },
+  "../photo-source/may-5-2026/catering/patiserie.jpeg": {
+    "target": "public/images/catering-patisserie.webp",
+    "alt": "French patisserie pastry display at Moulin à Rêves",
+    "useFor": "catering"
+  },
+  "../photo-source/may-5-2026/catering/strawberries.jpeg": {
+    "target": "public/images/catering-strawberries.webp",
+    "alt": "Bowl of fresh strawberries served at Moulin à Rêves",
+    "useFor": "catering"
+  },
+
+  "../photo-source/may-5-2026/gardens may 5 money/Monet_s bridge at Giverny.jpeg": {
+    "target": "public/images/garden-giverny-bridge.webp",
+    "alt": "Painted Giverny-style bridge over the millstream in the gardens at Moulin à Rêves",
+    "useFor": "gardens, homepage gallery"
+  },
+  "../photo-source/may-5-2026/gardens may 5 money/garden - monet painting 2.jpeg": {
+    "target": "public/images/garden-monet-painting.webp",
+    "alt": "Monet-inspired painting set among the gardens at Moulin à Rêves",
+    "useFor": "gardens, history"
+  },
+  "../photo-source/may-5-2026/gardens may 5 money/garden - the giverny bridge - you have this.jpeg": {
+    "target": "public/images/bridge-garden.webp",
+    "alt": "Giverny-style painted bridge over the lily-laced millstream at Moulin à Rêves",
+    "useFor": "gardens, hero candidate",
+    "overwrites": "bridge-garden.webp"
+  },
+  "../photo-source/may-5-2026/gardens may 5 money/garden and well.jpeg": {
+    "target": "public/images/garden-stone-well.webp",
+    "alt": "Stone well in the gardens at Moulin à Rêves",
+    "useFor": "gardens",
+    "overwrites": "garden-stone-well.webp"
+  },
+  "../photo-source/may-5-2026/gardens may 5 money/garden steps moulin.jpeg": {
+    "target": "public/images/garden-steps.webp",
+    "alt": "Stone steps descending through the gardens at Le Moulin",
+    "useFor": "gardens"
+  },
+  "../photo-source/may-5-2026/gardens may 5 money/giverny bridge (1).jpeg": {
+    "target": "public/images/garden-giverny-bridge-2.webp",
+    "alt": "Giverny-style bridge in the gardens at Moulin à Rêves, alternate view",
+    "useFor": "gardens"
+  },
+  "../photo-source/may-5-2026/gardens may 5 money/giverny bridge.jpeg": {
+    "target": "public/images/garden-giverny-bridge-3.webp",
+    "alt": "Giverny-style bridge in the gardens at Moulin à Rêves, third angle",
+    "useFor": "gardens"
+  },
+  "../photo-source/may-5-2026/gardens may 5 money/melissa make your life a masterpiece toasting at the bridge.jpeg": {
+    "target": "public/images/melissa-toast-bridge.webp",
+    "alt": "Melissa raising a champagne toast on the painted bridge in the gardens at Moulin à Rêves",
+    "useFor": "about, hero candidate"
+  },
+  "../photo-source/may-5-2026/gardens may 5 money/roses hollywood hideway.jpeg": {
+    "target": "public/images/homes/hh-roses.webp",
+    "alt": "Climbing roses against the Hollywood Hideaway exterior",
+    "useFor": "hollywood-hideaway gallery, gardens"
+  },
+
+  "../photo-source/may-5-2026/groups/dog grill with friends.jpeg": {
+    "target": "public/images/group-dog-grill.webp",
+    "alt": "Friends gathered around a backyard grill with a dog joining the group at Moulin à Rêves",
+    "useFor": "groups, dog-friendly content"
+  },
+  "../photo-source/may-5-2026/groups/family reunions - father and friends.jpeg": {
+    "target": "public/images/group-father-friends.webp",
+    "alt": "Father and friends gathered together at Moulin à Rêves",
+    "useFor": "groups, family reunions"
+  },
+  "../photo-source/may-5-2026/groups/family reunions - kids on bridge.jpeg": {
+    "target": "public/images/group-kids-bridge.webp",
+    "alt": "Children gathered on the painted bridge at Moulin à Rêves",
+    "useFor": "groups, family reunions"
+  },
+  "../photo-source/may-5-2026/groups/family reunions - under the tuscan sun.jpeg": {
+    "target": "public/images/group-tuscan-sun.webp",
+    "alt": "Open-air family dinner under string lights at Moulin à Rêves",
+    "useFor": "groups, family reunions, catering"
+  },
+  "../photo-source/may-5-2026/groups/family reunnion mother daghter steps.jpeg": {
+    "target": "public/images/group-mother-daughter-steps.webp",
+    "alt": "Mother and daughter sitting together on the garden steps at Moulin à Rêves",
+    "useFor": "groups, family reunions"
+  },
+  "../photo-source/may-5-2026/groups/groups - friends reunion beer bbq.jpeg": {
+    "target": "public/images/group-bbq.webp",
+    "alt": "Friends reunited around an outdoor BBQ at Moulin à Rêves",
+    "useFor": "groups"
+  },
+  "../photo-source/may-5-2026/groups/ping pong on the lawn.jpeg": {
+    "target": "public/images/group-ping-pong.webp",
+    "alt": "Ping pong table set up on the lawn at Moulin à Rêves",
+    "useFor": "groups, activities"
+  },
+  "../photo-source/may-5-2026/groups/yoga goddess retreats.jpeg": {
+    "target": "public/images/group-yoga-goddess.webp",
+    "alt": "Goddess yoga retreat group at Moulin à Rêves",
+    "useFor": "groups, retreats, wellness"
+  },
+
+  "../photo-source/may-5-2026/yoga/bridge garden yoga inncredible.jpeg": {
+    "target": "public/images/wellness-yoga-bridge.webp",
+    "alt": "Yoga session on the painted bridge over the millstream in the gardens",
+    "useFor": "wellness, yoga retreats"
+  },
+  "../photo-source/may-5-2026/yoga/stretch.jpeg": {
+    "target": "public/images/wellness-yoga-stretch.webp",
+    "alt": "Standing stretch on the lawn during a yoga retreat at Moulin à Rêves",
+    "useFor": "wellness, yoga retreats"
+  },
+  "../photo-source/may-5-2026/yoga/yoga - seated sun salutations - hollywood hideawy.jpeg": {
+    "target": "public/images/wellness-yoga-sun-salutations.webp",
+    "alt": "Seated sun salutations on the lawn beside the Hollywood Hideaway",
+    "useFor": "wellness, yoga retreats"
+  },
+  "../photo-source/may-5-2026/yoga/yoga adjustments.jpeg": {
+    "target": "public/images/wellness-yoga-adjustments.webp",
+    "alt": "Yoga instructor offering hands-on adjustments at Moulin à Rêves",
+    "useFor": "wellness, yoga retreats"
+  },
+  "../photo-source/may-5-2026/yoga/yoga by hollywood hideaway.jpeg": {
+    "target": "public/images/wellness-yoga-hideaway.webp",
+    "alt": "Yoga practice on the lawn beside the Hollywood Hideaway",
+    "useFor": "wellness, yoga retreats"
+  },
+  "../photo-source/may-5-2026/yoga/yoga mats mouin mill facade.jpeg": {
+    "target": "public/images/wellness-yoga-mill-facade.webp",
+    "alt": "Yoga mats laid out before the mill facade at Le Moulin",
+    "useFor": "wellness, yoga retreats"
+  },
+  "../photo-source/may-5-2026/yoga/yoga tree pose.jpeg": {
+    "target": "public/images/wellness-yoga-tree.webp",
+    "alt": "Tree pose during a yoga session on the lawn at Moulin à Rêves",
+    "useFor": "wellness, yoga retreats"
+  },
+  "../photo-source/may-5-2026/yoga/yoga well bridge.jpeg": {
+    "target": "public/images/wellness-yoga-well.webp",
+    "alt": "Yoga beside the stone well and painted bridge in the gardens",
+    "useFor": "wellness, yoga retreats"
+  },
+
+  "../photo-source/may-5-2026/massage 2 /massage facing bridge.jpeg": {
+    "target": "public/images/wellness-massage-bridge-2.webp",
+    "alt": "Massage table set up facing the painted bridge in the gardens",
+    "useFor": "wellness"
+  },
+  "../photo-source/may-5-2026/massage 2 /massage rby the river.jpeg": {
+    "target": "public/images/wellness-massage-river.webp",
+    "alt": "Massage table set up beside the river at Moulin à Rêves",
+    "useFor": "wellness"
+  },
+
+  "../photo-source/may-5-2026/local things to do/barbizon mural The Gleaners in Barbizon.jpeg": {
+    "target": "public/images/explore/barbizon-gleaners-mural.webp",
+    "alt": "Mural of Millet's painting The Gleaners in the village of Barbizon",
+    "useFor": "explore"
+  },
+  "../photo-source/may-5-2026/local things to do/chartre cathedral.jpeg": {
+    "target": "public/images/explore/chartres.webp",
+    "alt": "Gothic façade of Chartres Cathedral, an hour from Moulin à Rêves",
+    "useFor": "explore",
+    "overwrites": "explore/chartres.webp"
+  },
+  "../photo-source/may-5-2026/local things to do/orleons.jpeg": {
+    "target": "public/images/explore/orleans.webp",
+    "alt": "Historic city of Orléans, an hour from Moulin à Rêves",
+    "useFor": "explore",
+    "overwrites": "explore/orleans.webp"
+  },
+  "../photo-source/may-5-2026/local things to do/the cyclops - milly la foret.jpeg": {
+    "target": "public/images/explore/cyclops.webp",
+    "alt": "Le Cyclop sculpture by Tinguely in the forest near Milly-la-Forêt",
+    "useFor": "explore"
+  },
+  "../photo-source/may-5-2026/local things to do/vaux le compte.jpeg": {
+    "target": "public/images/explore/vaux.webp",
+    "alt": "Château de Vaux-le-Vicomte and its formal gardens, near Moulin à Rêves",
+    "useFor": "explore",
+    "overwrites": "explore/vaux.webp"
+  },
+
+  "../photo-source/may-5-2026/mereville things to do/biking in mereville.jpeg": {
+    "target": "public/images/explore/mereville-biking.webp",
+    "alt": "Cyclists riding through the village of Méréville near Moulin à Rêves",
+    "useFor": "explore"
+  },
+  "../photo-source/may-5-2026/mereville things to do/mereville market place.jpeg": {
+    "target": "public/images/explore/mereville-market-square.webp",
+    "alt": "Market square in the village of Méréville",
+    "useFor": "explore"
+  },
+  "../photo-source/may-5-2026/mereville things to do/mereville market.jpeg": {
+    "target": "public/images/explore/mereville-market.webp",
+    "alt": "Open-air market in Méréville",
+    "useFor": "explore"
+  },
+  "../photo-source/may-5-2026/mereville things to do/watercress beds.jpeg": {
+    "target": "public/images/explore/mereville-watercress-beds.webp",
+    "alt": "Watercress beds in the valley near Méréville",
+    "useFor": "explore"
+  },
+  "../photo-source/may-5-2026/mereville things to do/watercress fields (1).jpeg": {
+    "target": "public/images/explore/mereville-watercress-fields-2.webp",
+    "alt": "Watercress fields stretching into the distance near Méréville",
+    "useFor": "explore"
+  },
+  "../photo-source/may-5-2026/mereville things to do/watercress fields.jpeg": {
+    "target": "public/images/explore/mereville-watercress-fields.webp",
+    "alt": "Bright green watercress fields near Méréville",
+    "useFor": "explore"
+  },
+  "../photo-source/may-5-2026/mereville things to do/yellow brick road fields mereville.jpeg": {
+    "target": "public/images/explore/mereville-rapeseed-fields.webp",
+    "alt": "Golden rapeseed fields lining a country road near Méréville",
+    "useFor": "explore"
+  },
+
+  "../photo-source/may-5-2026/writer retreats/write your best seller.jpeg": {
+    "target": "public/images/retreat-writers.webp",
+    "alt": "Writers' retreat workspace set up beside the gardens at Moulin à Rêves",
+    "useFor": "retreats, wellness"
+  },
+
+  "../photo-source/may-5-2026/IMG_0027.jpeg": {
+    "target": "public/images/history/borrah-archive-1.webp",
+    "alt": "Archival photograph from the Minevitch family collection",
+    "useFor": "about, history"
+  },
+  "../photo-source/may-5-2026/borrah metal sculpture leading the band.jpeg": {
+    "target": "public/images/history/borrah-metal-sculpture.webp",
+    "alt": "Metal sculpture of Borrah Minevitch leading the harmonica band",
+    "useFor": "about, history"
+  },
+  "../photo-source/may-5-2026/charlie chaplin and borrah.jpeg": {
+    "target": "public/images/history/borrah-chaplin.webp",
+    "alt": "Charlie Chaplin photographed with Borrah Minevitch",
+    "useFor": "about, history"
+  },
+  "../photo-source/may-5-2026/history - albums borrah books bert barbara.jpeg": {
+    "target": "public/images/history/borrah-albums.webp",
+    "alt": "Borrah Minevitch's record albums and books, alongside Bert and Barbara memorabilia",
+    "useFor": "about, history"
+  },
+  "../photo-source/may-5-2026/history - borrah why I love the harmonica.jpeg": {
+    "target": "public/images/history/borrah-why-i-love-the-harmonica.webp",
+    "alt": "Cover of Borrah Minevitch's book Why I Love the Harmonica",
+    "useFor": "about, history"
+  },
+  "../photo-source/may-5-2026/history - harmonica seccrets Looking for titles….jpeg": {
+    "target": "public/images/history/borrah-harmonica-secrets.webp",
+    "alt": "Vintage harmonica memorabilia from Borrah Minevitch's career",
+    "useFor": "about, history"
   }
 }

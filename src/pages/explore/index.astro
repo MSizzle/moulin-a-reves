@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// Méréville gallery — placeholders. Photos to be supplied.
+// Méréville gallery
 const merevilleGallery = [
-  { caption: 'Watercress beds at the gates' },
-  { caption: 'Le Mérévillois village square' },
-  { caption: 'The mill and the millstream' },
-  { caption: 'Sunday cycling on the country lanes' },
+  { src: '/images/explore/mereville-watercress-fields.webp', alt: 'Bright green watercress fields near Méréville', caption: 'Watercress fields at the gates' },
+  { src: '/images/explore/mereville-market-square.webp', alt: 'Market square in the village of Méréville', caption: 'Le Mérévillois village square' },
+  { src: '/images/explore/mereville-watercress-beds.webp', alt: 'Watercress beds in the valley near Méréville', caption: 'Watercress beds along the millstream' },
+  { src: '/images/explore/mereville-biking.webp', alt: 'Cyclists riding through the village of Méréville', caption: 'Sunday cycling on the country lanes' },
+  { src: '/images/explore/mereville-rapeseed-fields.webp', alt: 'Golden rapeseed fields lining a country road near Méréville', caption: 'Yellow rapeseed fields in spring' },
+  { src: '/images/explore/mereville-market.webp', alt: 'Open-air market in Méréville', caption: 'Open-air market in the village' },
 ];
 
 // "Nearby" — within ~30 minutes of the compound.
@@ -53,11 +55,19 @@ const nearby = [
   },
   {
     href: 'https://en.wikipedia.org/wiki/Le_Cyclop',
-    image: '/images/explore/horseback.webp',
-    alt: 'Forest near Milly-la-Forêt where Niki de Saint Phalle and Jean Tinguely built Le Cyclop',
+    image: '/images/explore/cyclops.webp',
+    alt: 'Le Cyclop sculpture by Niki de Saint Phalle and Jean Tinguely in the forest near Milly-la-Forêt',
     title: 'Le Cyclop',
     drive: '20 min',
     desc: 'The 22-metre mirror-clad sculpture Niki de Saint Phalle and Jean Tinguely built in secret in the woods near Milly-la-Forêt. Open to the public; book ahead.',
+  },
+  {
+    href: 'https://en.wikipedia.org/wiki/Barbizon,_Seine-et-Marne',
+    image: '/images/explore/barbizon-gleaners-mural.webp',
+    alt: "Mural of Millet's painting The Gleaners in the village of Barbizon",
+    title: 'Barbizon — The Gleaners Mural',
+    drive: '10 min',
+    desc: "A wall-sized mural of Millet's The Gleaners — painted on the side of a barn in the village where he lived and worked. The original hangs in the Musée d'Orsay, but here you walk past her every morning.",
   },
   {
     href: 'https://en.wikipedia.org/wiki/Moret-Loing-et-Orvanne',
@@ -167,8 +177,8 @@ const dayTrips = [
       <div class="mereville-gallery">
         {merevilleGallery.map((item) => (
           <figure class="mereville-gallery__item">
-            <div class="mereville-gallery__placeholder" aria-label={item.caption}>
-              <span>Photo to come</span>
+            <div class="mereville-gallery__photo">
+              <img src={item.src} alt={item.alt} loading="lazy" />
             </div>
             <figcaption>{item.caption}</figcaption>
           </figure>
@@ -290,19 +300,18 @@ const dayTrips = [
       gap: 24px;
     }
     .mereville-gallery__item { margin: 0; }
-    .mereville-gallery__placeholder {
+    .mereville-gallery__photo {
       aspect-ratio: 4 / 3;
-      background: linear-gradient(135deg, #efeae0 0%, #e6dfd2 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
       border-radius: 2px;
-      color: rgba(60, 50, 40, 0.55);
-      font-family: var(--font-body);
-      font-size: 0.8125rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
     }
+    .mereville-gallery__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .mereville-gallery__photo:hover img { transform: scale(1.04); }
     .mereville-gallery__item figcaption {
       margin-top: 10px;
       font-family: var(--font-serif);
