@@ -635,7 +635,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "The wifi is excellent. The Viking professional ovens and Ritz Paris terry robes — every detail has been chosen with care.",
     fr: "Le wifi est excellent. Les fours professionnels Viking et les peignoirs en éponge du Ritz Paris — chaque détail a été choisi avec soin."
   },
-  'about.cta.heading': { en: 'Come and See', fr: 'Venez Voir' },
+  'about.cta.heading': { en: 'come and visit!', fr: 'venez nous voir !' },
   'about.cta.text': { en: "We'd love to welcome you. Tell us your dates and we'll take it from there.", fr: "Nous serions ravis de vous accueillir. Dites-nous vos dates et nous nous occupons du reste." },
   'about.cta.button': { en: 'Plan Your Stay', fr: 'Planifiez Votre Séjour' },
 
