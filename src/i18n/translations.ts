@@ -57,7 +57,10 @@ export const translations: Record<string, Record<string, string>> = {
   'home.jardin.description': { en: 'The quietest of the three. A garden cottage wrapped in wisteria, with a terrace made for long afternoons.', fr: "La plus paisible des trois. Un cottage de jardin habillé de glycine, avec une terrasse faite pour les longues après-midi." },
   'home.jardin.beds': { en: '3 Bedrooms', fr: '3 Chambres' },
   'home.jardin.sleeps': { en: 'Sleeps 6', fr: '6 Couchages' },
-  'home.availability.heading': { en: 'Join <span class="serif-italic">us</span>', fr: 'Rejoignez-<span class="serif-italic">nous</span>' },
+  'home.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'le-moulin.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'hideaway.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
+  'riviere.availability.heading': { en: 'Join us', fr: 'Rejoignez-nous' },
   'home.availability.intro': { en: 'Live calendar synced from Airbnb and VRBO. Greyed dates are booked.', fr: 'Calendrier en direct synchronisé depuis Airbnb et VRBO. Les dates grisées sont réservées.' },
   'home.senseof.quote': {
     en: '"At the edge of Fontainebleau Forest, in the land that inspired the Barbizon painters, where the light still falls the way it did two centuries ago."',
