@@ -76,25 +76,6 @@ const livingSpaces = [
       { src: '/images/homes/maison-eat-in-kitchen.webp', alt: 'Eat-in kitchen with wooden staircase and dining nook' },
     ],
   },
-  {
-    id: 'exterior',
-    title: 'Exterior & Stream',
-    summary: 'Front facade with dormers and ivy, the stream alongside the garden.',
-    photos: [
-      { src: '/images/homes/maison-ext.webp', alt: 'Front facade of Maison sur la Rivière with dormers and ivy' },
-      { src: '/images/homes/le-jardin-hero.webp', alt: 'Maison sur la Rivière with the stream running alongside the garden' },
-    ],
-  },
-  {
-    id: 'gardens',
-    title: 'Gardens',
-    summary: 'Stream, apple trees, and shared compound gardens.',
-    photos: [
-      { src: '/images/bridge-garden.webp', alt: 'Compound gardens with the Giverny-style bridge' },
-      { src: '/images/garden-chaises.webp', alt: 'Garden chaise lounges facing the painted bridge' },
-      { src: '/images/garden-stone-well.webp', alt: 'Vine-covered antique stone well sheltered in the garden' },
-    ],
-  },
 ];
 
 const amenityFeatures = [
@@ -170,26 +151,9 @@ const amenities = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__eyebrow" data-i18n="riviere.hero.eyebrow">{cms.eyebrow}</span>
       <h1 class="hero__title" data-i18n="riviere.hero.title">{cms.title}</h1>
-      <p class="hero__tagline" data-i18n="riviere.hero.tagline">{cms.tagline}</p>
     </div>
   </section>
-
-  <style>
-    .hero__eyebrow {
-      display: block;
-      font-family: var(--font-body);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.96);
-      margin-bottom: 24px;
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
-      padding-left: 0.28em;
-    }
-  </style>
 
   <!-- Stats Bar -->
   <section class="section" style="padding-top: 32px; padding-bottom: 24px;">
