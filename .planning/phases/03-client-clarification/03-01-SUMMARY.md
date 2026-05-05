@@ -159,11 +159,19 @@ All Task-5 final-pass gates passed on the file as committed at `cf32a32`:
 ## Self-Check: PASSED
 
 - ✓ FOUND: /workspace/CLIENT-CLARIFICATION.md (412 lines)
+- ✓ FOUND: /workspace/.planning/phases/03-client-clarification/03-01-SUMMARY.md
 - ✓ FOUND commit: `4848518` (Task 1 — intro + Universal)
 - ✓ FOUND commit: `9a45cc2` (Task 2 — Home + Le Moulin)
 - ✓ FOUND commit: `ac020d5` (Task 3 — Hollywood Hideaway + Maison de la Rivière)
 - ✓ FOUND commit: `344f5fa` (Task 4 — Les Maisons + Get in Touch)
 - ✓ FOUND commit: `cf32a32` (Task 5 — Already Done + Groups)
+- ✓ FOUND commit: `48646b4` (final rollup — SUMMARY + STATE + ROADMAP + REQUIREMENTS)
+- ✓ Git log confirms 5 atomic commits touching `CLIENT-CLARIFICATION.md` (`git log --oneline -- CLIENT-CLARIFICATION.md | wc -l` → 5).
+- ✓ All 7 required H2 page sections present in TOC order (Home → Le Moulin → Hollywood Hideaway → Maison de la Rivière → Les Maisons → Get in Touch → Universal), plus Already Done and Groups.
+- ✓ Zero `src/(pages|components|layouts|styles|content)/` paths in client-facing body (style-guide gate).
+- ✓ PDF (`MMM may.5.pdf`) remains untracked per project constraint.
+- ✓ All 29 ❓ ids traceable in the doc (verified via 29-pattern grep).
+- ✓ 13 commit-hash citations in Already Done section (≥10 required).
 
 ## Items the client must answer for Milestone 2 to proceed
 
