@@ -10,7 +10,7 @@ Three parallel deliverables due 2026-05-06: a code-deep audit of the client's `M
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases: Urgent insertions (none anticipated for this milestone)
 
-- [ ] **Phase 1: Audit & Inventory** - Cross-reference every item in `MMM may.5.pdf` against current codebase; tag each as Already Done / Clear-to-Ship / Needs Clarification / Cross-round Conflict
+- [x] **Phase 1: Audit & Inventory** - Cross-reference every item in `MMM may.5.pdf` against current codebase; tag each as Already Done / Clear-to-Ship / Needs Clarification / Cross-round Conflict
 - [ ] **Phase 2: Ship-the-Clear Edits** - Execute all Clear-to-Ship and resolved Cross-round Conflict items as atomic commits grouped by category (copy, typography, sections, photos)
 - [ ] **Phase 3: CLIENT-CLARIFICATION.md** - Compile all Needs Clarification items into a client-facing Markdown document grouped by page, with verbatim requests, current code state, and specific questions
 
@@ -27,7 +27,7 @@ Three parallel deliverables due 2026-05-06: a code-deep audit of the client's `M
   4. Cross-round conflicts (e.g., "Join us!" vs "When would you like to visit?", italics universal policy, commune naming) are identified and the "newest round wins" resolution is recorded, with the contradiction noted for the clarification doc.
 **Plans:** 1 plan
 Plans:
-- [ ] 01-01-audit-inventory-PLAN.md — Parse MMM may.5.pdf, cross-reference current HEAD code, tag every bullet (✅/🔧/❓/⚠️), and write AUDIT.md as the contract for Phase 2 and Phase 3
+- [x] 01-01-audit-inventory-PLAN.md — Parse MMM may.5.pdf, cross-reference current HEAD code, tag every bullet (✅/🔧/❓/⚠️), and write AUDIT.md as the contract for Phase 2 and Phase 3 — **completed 2026-05-05** (92 bullets: ✅10/🔧52/❓29/⚠️1)
 **UI hint**: no
 
 ### Phase 2: Ship-the-Clear Edits
@@ -61,6 +61,6 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Audit & Inventory | 0/1 | Planned | - |
-| 2. Ship-the-Clear Edits | 0/TBD | Not started | - |
-| 3. CLIENT-CLARIFICATION.md | 0/TBD | Not started | - |
+| 1. Audit & Inventory | 1/1 | **Complete** | 2026-05-05 |
+| 2. Ship-the-Clear Edits | 0/TBD | Ready to plan | - |
+| 3. CLIENT-CLARIFICATION.md | 0/TBD | Ready to plan (parallel) | - |

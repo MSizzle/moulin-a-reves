@@ -11,9 +11,9 @@ Coarse-grained category-level requirements. The phase plan + audit phase will it
 
 ### Audit
 
-- [ ] **AUDIT-01**: Every item in `MMM may.5.pdf` (all 3 rounds) is categorized into one of: ✅ Already Done / 🔧 Clear-to-Ship / ❓ Needs Clarification / ⚠️ Cross-round Conflict.
-- [ ] **AUDIT-02**: Items addressed by recent commits (`742fb89` and forward — May 5 photos work) are explicitly flagged DONE with file/commit references so the client stops re-asking.
-- [ ] **AUDIT-03**: Each "Needs Clarification" item has at least one specific question with current code-state context (file:line where applicable).
+- [x] **AUDIT-01**: Every item in `MMM may.5.pdf` (all 3 rounds) is categorized into one of: ✅ Already Done / 🔧 Clear-to-Ship / ❓ Needs Clarification / ⚠️ Cross-round Conflict. _Completed 2026-05-05 in 01-01 (92 bullets tagged: ✅10/🔧52/❓29/⚠️1)._
+- [x] **AUDIT-02**: Items addressed by recent commits (`742fb89` and forward — May 5 photos work) are explicitly flagged DONE with file/commit references so the client stops re-asking. _Completed 2026-05-05 — 8 distinct ✅ commit hashes cited inline plus 10+ secondary acknowledgements._
+- [x] **AUDIT-03**: Each "Needs Clarification" item has at least one specific question with current code-state context (file:line where applicable). _Completed 2026-05-05 — all 29 ❓ rows have file-anchored questions._
 
 ### Copy edits
 
@@ -106,9 +106,9 @@ Items the client has requested but that need foundational work, structural rewor
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUDIT-01 | Phase 1 | Pending |
-| AUDIT-02 | Phase 1 | Pending |
-| AUDIT-03 | Phase 1 | Pending |
+| AUDIT-01 | Phase 1 | Complete (01-01) |
+| AUDIT-02 | Phase 1 | Complete (01-01) |
+| AUDIT-03 | Phase 1 | Complete (01-01) |
 | COPY-01 | Phase 2 | Pending |
 | COPY-02 | Phase 2 | Pending |
 | COPY-03 | Phase 2 | Pending |
