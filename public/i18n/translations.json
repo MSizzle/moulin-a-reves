@@ -11,6 +11,10 @@
     "en": "Explore",
     "fr": "Explorer"
   },
+  "nav.groups": {
+    "en": "Groups",
+    "fr": "Groupes"
+  },
   "nav.catering": {
     "en": "Catering",
     "fr": "Restauration"
@@ -50,6 +54,10 @@
   "footer.thingstodo": {
     "en": "Things to Do",
     "fr": "À Découvrir"
+  },
+  "footer.groups": {
+    "en": "Groups",
+    "fr": "Groupes"
   },
   "footer.catering": {
     "en": "Catering",
@@ -3192,5 +3200,121 @@
   "home.groups.type.2.title": {
     "en": "Friends celebrations",
     "fr": "Célébrations entre amis"
+  },
+  "groups.hero.title": {
+    "en": "Groups",
+    "fr": "Groupes"
+  },
+  "groups.hero.tagline": {
+    "en": "Three maisons, shared grounds, room for twenty — your group, your week, our compound.",
+    "fr": "Trois maisons, un domaine partagé, de la place pour vingt — votre groupe, votre semaine, notre domaine."
+  },
+  "groups.intro.heading": {
+    "en": "Built for gathering",
+    "fr": "Conçu pour se retrouver"
+  },
+  "groups.intro.text": {
+    "en": "Three stone houses, a walled garden, the millstream, La Grange for long dinners, a gym, a screening room, a jacuzzi, and the lawn for sun salutations. Booked together, the compound becomes whatever your group needs it to be — a retreat, a reunion, a workshop, a celebration.",
+    "fr": "Trois maisons en pierre, un jardin clos, le bief du moulin, La Grange pour les longs dîners, une salle de sport, une salle de cinéma, un jacuzzi et la pelouse pour les salutations au soleil. Loué dans son ensemble, le domaine devient ce dont votre groupe a besoin — une retraite, une réunion, un atelier, une célébration."
+  },
+  "groups.yoga.eyebrow": {
+    "en": "Yoga & Wellness Retreats",
+    "fr": "Retraites Yoga & Bien-être"
+  },
+  "groups.yoga.heading": {
+    "en": "Yoga retreats",
+    "fr": "Retraites de yoga"
+  },
+  "groups.yoga.p1": {
+    "en": "The lawn at sunrise, the millstream in earshot, La Grange when the rain comes. Practice on the grass, by the bridge, or in the pavilion — and bring your own teacher or ours. Massages and beauty treatments by trusted local practitioners are easy to arrange on site.",
+    "fr": "La pelouse au lever du soleil, le bief du moulin tout près, La Grange quand vient la pluie. Pratiquez sur l'herbe, près du pont, ou sous la pavillon — avec votre enseignant ou le nôtre. Massages et soins beauté avec des praticiens locaux de confiance sont faciles à organiser sur place."
+  },
+  "groups.yoga.p2": {
+    "en": "Up to twenty practitioners across three houses — single rooms when guests want quiet, shared meals when they don't.",
+    "fr": "Jusqu'à vingt pratiquants répartis dans trois maisons — chambres individuelles pour le calme, repas partagés pour la convivialité."
+  },
+  "groups.yoga.cta": {
+    "en": "Plan a yoga retreat →",
+    "fr": "Organiser une retraite de yoga →"
+  },
+  "groups.family.eyebrow": {
+    "en": "Family Reunions",
+    "fr": "Réunions de famille"
+  },
+  "groups.family.heading": {
+    "en": "Family reunions",
+    "fr": "Réunions de famille"
+  },
+  "groups.family.p1": {
+    "en": "Three generations, three houses, one garden — together by day, separate when needed. Grandparents settle into Le Moulin, the cousins claim the Hideaway, the new parents take the cottage. The kids run the bridge between them.",
+    "fr": "Trois générations, trois maisons, un jardin — ensemble le jour, séparés quand il faut. Les grands-parents s'installent au Moulin, les cousins prennent le Hideaway, les jeunes parents le cottage. Les enfants courent sur le pont entre les maisons."
+  },
+  "groups.family.p2": {
+    "en": "A long table under La Grange for the whole-family dinner, a screening room for the rainy afternoon, electric bikes for the village run. Catering, breakfast delivery, and private chefs are easy to arrange.",
+    "fr": "Une grande table sous La Grange pour le dîner familial, une salle de cinéma pour les après-midi de pluie, des vélos électriques pour aller au village. Restauration, livraison de petits-déjeuners et chefs privés sont faciles à organiser."
+  },
+  "groups.family.cta": {
+    "en": "Plan a family reunion →",
+    "fr": "Organiser une réunion de famille →"
+  },
+  "groups.creative.eyebrow": {
+    "en": "Creative Retreats",
+    "fr": "Retraites créatives"
+  },
+  "groups.creative.heading": {
+    "en": "Creative retreats",
+    "fr": "Retraites créatives"
+  },
+  "groups.creative.p1": {
+    "en": "Writing weeks, painting workshops, photography intensives, songwriting sessions — the compound has room for the practice and the quiet. La Grange holds workshops of twenty under the beams. The library, the gardens, and the rooms hold the long, slow work in between.",
+    "fr": "Semaines d'écriture, ateliers de peinture, stages de photographie, sessions d'auteurs-compositeurs — le domaine a la place pour la pratique et le calme. La Grange accueille des ateliers de vingt sous les poutres. La bibliothèque, les jardins et les chambres accueillent le travail lent et long qui se fait entre les sessions."
+  },
+  "groups.creative.p2": {
+    "en": "Same setting that drew the painters of Barbizon, fifteen minutes away. Bring your group, your facilitator, and your medium — we'll make the rooms ready.",
+    "fr": "Le même cadre qui a attiré les peintres de Barbizon, à quinze minutes. Amenez votre groupe, votre animateur et votre médium — nous préparerons les pièces."
+  },
+  "groups.creative.cta": {
+    "en": "Plan a creative retreat →",
+    "fr": "Organiser une retraite créative →"
+  },
+  "groups.testimonials.heading": {
+    "en": "From past groups",
+    "fr": "Paroles de groupes"
+  },
+  "groups.testimonials.q1": {
+    "en": "\"We came for a family reunion and left as a closer family. The kids still talk about the river.\"",
+    "fr": "« Nous sommes venus pour une réunion de famille et nous en sommes repartis plus proches. Les enfants parlent encore de la rivière. »"
+  },
+  "groups.testimonials.a1": {
+    "en": "— Sophie & Laurent · Family Reunion, August 2025",
+    "fr": "— Sophie & Laurent · Réunion de famille, août 2025"
+  },
+  "groups.testimonials.q2": {
+    "en": "\"Twelve students, seven days, three meals on the lawn. The setting did half the teaching for me.\"",
+    "fr": "« Douze élèves, sept jours, trois repas sur la pelouse. Le cadre a fait la moitié de l'enseignement à ma place. »"
+  },
+  "groups.testimonials.a2": {
+    "en": "— Anika · Yoga Retreat Host, June 2025",
+    "fr": "— Anika · Hôte de retraite de yoga, juin 2025"
+  },
+  "groups.testimonials.q3": {
+    "en": "\"Our writers' week. Quiet rooms, long dinners, the millstream outside the window. Nobody wanted to leave.\"",
+    "fr": "« Notre semaine d'écriture. Chambres calmes, longs dîners, le bief du moulin sous la fenêtre. Personne ne voulait partir. »"
+  },
+  "groups.testimonials.a3": {
+    "en": "— David · Writing Retreat, May 2025",
+    "fr": "— David · Retraite d'écriture, mai 2025"
+  },
+  "groups.cta.heading": {
+    "en": "Plan your group stay",
+    "fr": "Organisez votre séjour en groupe"
+  },
+  "groups.cta.tagline": {
+    "en": "Tell us your dates and your group — we'll take it from there.",
+    "fr": "Dites-nous vos dates et votre groupe — nous nous occupons du reste."
+  },
+  "groups.cta.button": {
+    "en": "Inquire",
+    "fr": "Réserver"
   }
 }
