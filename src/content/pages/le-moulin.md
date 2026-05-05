@@ -29,6 +29,8 @@ gallery:
     alt: "Le Salon — leather club chairs, exposed beams, and the antique mill wheel"
   - src: "/images/homes/le-moulin-dining.webp"
     alt: "Formal dining room set for a meal under beamed ceilings"
+  - src: "/images/homes/le-moulin-dining-3.webp"
+    alt: "Dining room at Le Moulin set for a meal with seasonal flowers"
   - src: "/images/homes/le-moulin-kitchen.webp"
     alt: "Eat-in kitchen with cast-iron stove and country paintings"
   - src: "/images/homes/le-moulin-suite-romantique.webp"
