@@ -40,7 +40,12 @@ Plans:
   3. All italic styling removed from header final words for the listed cases ("stay", "Maisons", "Rêves") verified by grep for the relevant CSS class or `<em>` tag (TYPOG-01, TYPOG-02).
   4. Removed sections (Le Moulin office block, Hollywood "What's Here" 3-photo section, Maison Exterior section, La Grange toilet/laundry photos, home Journal section, carriage gym photo, pink-gown carousel photo) are absent from the built pages — verifiable by searching the relevant `.astro`/content files.
   5. Hollywood Hideaway lead image and Maison de la Rivière dining lead are updated to the requested photos, and Hollywood hero text is vertically centered with the dark filter adjusted per the audit finding (PHOTO-01, PHOTO-02, PHOTO-03).
-**Plans**: TBD
+**Plans**: 4 plans
+Plans:
+- [ ] 02-01-copy-edits-PLAN.md — Execute COPY-01..COPY-15 across translations.json + .astro files (Wave 1)
+- [ ] 02-02-typography-edits-PLAN.md — Execute TYPOG-01..TYPOG-03 italic removal + font consolidation (Wave 2)
+- [ ] 02-03-section-edits-PLAN.md — Execute SECT-01..SECT-08 structural removals (Wave 3)
+- [ ] 02-04-photo-edits-PLAN.md — Execute PHOTO-01..PHOTO-03 photo swaps + hero CSS (Wave 4)
 **UI hint**: yes
 
 ### Phase 3: CLIENT-CLARIFICATION.md
@@ -62,5 +67,5 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Audit & Inventory | 1/1 | **Complete** | 2026-05-05 |
-| 2. Ship-the-Clear Edits | 0/TBD | Ready to plan | - |
+| 2. Ship-the-Clear Edits | 0/4 | Ready to execute | - |
 | 3. CLIENT-CLARIFICATION.md | 0/TBD | Ready to plan (parallel) | - |
