@@ -4,8 +4,8 @@ milestone: v1.0
 milestone_name: milestone
 status: complete
 stopped_at: Milestone 1 complete — Phase 3 plan 01 shipped (CLIENT-CLARIFICATION.md, 412 lines, 5 commits); all 6 CLAR requirements done; doc ready to send to Melissa
-last_updated: "2026-05-05T22:00:00.000Z"
-last_activity: 2026-05-05 -- Phase 3 plan 01 complete — CLIENT-CLARIFICATION.md compiled (29 ❓ + 1 ⚠️ + 14 ✅ acks); 5 atomic commits; Milestone 1 100% shipped
+last_updated: "2026-05-06T14:40:03.000Z"
+last_activity: 2026-05-06 -- Completed quick task 260506-kao: fix catering hero crop — bias upward so faces stay visible
 progress:
   total_phases: 3
   completed_phases: 3
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-05-05)
 Phase: 3 of 3 (CLIENT-CLARIFICATION.md) — **COMPLETE**
 Plan: 1 of 1 in current phase — COMPLETE (03-01 client-clarification)
 Status: Plan 03-01 complete — 5 atomic commits landed (`4848518` intro + Universal, `9a45cc2` Home + Le Moulin, `ac020d5` HH + Maison, `344f5fa` Les Maisons + Get in Touch, `cf32a32` Already Done + Groups); CLIENT-CLARIFICATION.md is 412 lines covering all 29 ❓ + 1 ⚠️ + 14 ✅ acks. Milestone 1 100% shipped: 24 commits across Phase 2 + 5 commits in Phase 3 against the 2026-05-06 deadline.
-Last activity: 2026-05-05 -- Phase 3 plan 01 complete — CLIENT-CLARIFICATION.md compiled and committed; Milestone 1 100% shipped
+Last activity: 2026-05-06 -- Completed quick task 260506-kao: fix catering hero crop — bias upward so faces stay visible
 
 Progress: [██████████] 100%
 
@@ -101,6 +101,12 @@ Recent decisions affecting current work:
 - i18n dual-update: Every copy change must land in both the `.astro`/`.md` inline strings AND `public/i18n/translations.json` (runtime overlay); forgetting one leaves the FR toggle broken. Several existing partial-shipments (e.g., COPY-01) were caused by exactly this oversight.
 - TYPOG-01 universal policy: client wants italic-on-final-word removed for listed cases (stay, Maisons, Rêves, Where you'll sleep/gather, etc.) but hasn't confirmed whether to apply globally. Phase 2 plan 02 shipped the listed cases (8 body-prose heads remain italic — about/getting/catering/the-compound/explore); Phase 3 asks the global policy question.
 - Hero tagline italic policy: TYPOG-02 fixed Hollywood Hideaway only via scoped override; the global `.hero__tagline { font-style: italic }` rule still applies to 15+ other surfaces. Phase 3 asks whether the global rule should be removed.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260506-kao | fix catering hero crop — bias upward so faces stay visible | 2026-05-06 | a6342c2 | [260506-kao-catering-hero-object-position-fix](./quick/260506-kao-catering-hero-object-position-fix/) |
 
 ## Deferred Items
 
