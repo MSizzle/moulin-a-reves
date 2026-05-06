@@ -127,6 +127,10 @@
     "en": "Dogs welcome",
     "fr": "Chiens bienvenus"
   },
+  "home.dogs.fee": {
+    "en": "€100 fee per dog for the length of your stay.",
+    "fr": "100 € par chien pour la durée du séjour."
+  },
   "home.cta.secondary": {
     "en": "Join us",
     "fr": "Rejoignez-nous"
