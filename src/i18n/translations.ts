@@ -46,8 +46,8 @@ export const translations: Record<string, Record<string, string>> = {
   'home.stats.intro': { en: '', fr: '' },
   'home.intro.heading': { en: 'Where the millstream meets your morning coffee', fr: 'Là où le bief rencontre votre café du matin' },
   'home.intro.text': {
-    en: 'Moulin à Rêves is a compound of three stone houses gathered around a millstream in the French countryside, one hour south of Paris. Each home has its own character — blue shutters, garden views, and the quiet hum of water over stone — but together, they become something greater: a place where families reconnect, friends gather, and mornings stretch long.',
-    fr: "Moulin à Rêves est un ensemble de trois maisons en pierre réunies autour d'un bief dans la campagne française, à une heure au sud de Paris. Chaque maison a son caractère propre — volets bleus, vue sur le jardin et le murmure de l'eau sur la pierre — mais ensemble, elles deviennent quelque chose de plus grand : un lieu où les familles se retrouvent, les amis se rassemblent et les matins s'étirent en douceur."
+    en: 'Moulin à Rêves means the Mill of Dreams. It is an enchanting private estate with 3 homes, 10 bedrooms, and a versatile grange with a gym, screening room and covered dining and entertaining space for 20 guests.',
+    fr: "Moulin à Rêves signifie le Moulin des Rêves. C'est un domaine privé enchanteur avec 3 maisons, 10 chambres et une grange polyvalente comprenant une salle de sport, une salle de cinéma et un espace couvert pour dîner et recevoir jusqu'à 20 convives."
   },
   'home.homes.heading': { en: 'Three stone maisons. One story.', fr: 'Trois maisons de pierre. Une histoire.' },
   'home.homes.subheading': { en: '', fr: '' },
@@ -69,6 +69,9 @@ export const translations: Record<string, Record<string, string>> = {
   'hideaway.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'riviere.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'home.availability.intro': { en: 'Live calendar synced from Airbnb and VRBO. Greyed dates are booked.', fr: 'Calendrier en direct synchronisé depuis Airbnb et VRBO. Les dates grisées sont réservées.' },
+  'availability.note': { en: "Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm.", fr: "Calendrier en direct synchronisé depuis nos annonces Airbnb et VRBO — couvre tout le domaine. Les dates grisées sont déjà réservées. Vous avez trouvé une fenêtre ? Dites-nous vos dates et nous confirmerons." },
+  'home.area.heading': { en: 'Discover the Area', fr: 'Découvrez la région' },
+  'home.area.intro': { en: 'Just one hour from Paris, discover the charm, beauty and history of nearby châteaux and villages.', fr: "À seulement une heure de Paris, découvrez le charme, la beauté et l'histoire des châteaux et villages voisins." },
   'home.senseof.quote': {
     en: '"At the edge of Fontainebleau Forest, in the land that inspired the Barbizon painters, where the light still falls the way it did two centuries ago."',
     fr: "\"En lisière de la forêt de Fontainebleau, sur la terre qui inspira les peintres de Barbizon, où la lumière tombe encore comme il y a deux siècles.\""
@@ -536,6 +539,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "The countryside does most of the work. The air, the silence, the rhythm of days that have nowhere urgent to go. But sometimes your shoulders need more than fresh air, and your mind needs more than a good view. That's where our wellness partners come in \u2014 local practitioners who come to the compound so you don't have to go anywhere at all.",
     fr: "La campagne fait l'essentiel du travail. L'air, le silence, le rythme de journées qui n'ont rien d'urgent. Mais parfois vos épaules ont besoin de plus que l'air frais, et votre esprit de plus qu'une belle vue. C'est là qu'interviennent nos partenaires bien-être \u2014 des praticiens locaux qui viennent au domaine pour que vous n'ayez à aller nulle part."
   },
+  'wellness.intro.text2': { en: 'Book a private instructor to lead classes on the lawn or in the grange. 8 yoga mats are available at the property for your use.', fr: 'Réservez un instructeur privé pour des cours sur la pelouse ou dans la grange. 8 tapis de yoga sont à votre disposition sur place.' },
   'wellness.yoga.heading': { en: 'Yoga on the Lawn', fr: 'Yoga sur la Pelouse' },
   'wellness.yoga.p1': {
     en: "The lawn between the houses catches the morning sun from the east, and by eight o'clock, it's warm enough for bare feet on grass. Your instructor arrives with mats and props, and for the next hour, the only sounds are breath, birdsong, and the millstream.",
