@@ -43,27 +43,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Yoga gallery -->
-  <section class="section--tight fade-in">
-    <div class="container">
-      <div class="wellness-gallery" data-gallery={JSON.stringify([
-        { src: '/images/wellness-yoga-bridge.webp', alt: 'Yoga session on the painted bridge over the millstream in the gardens' },
-        { src: '/images/wellness-yoga-sun-salutations.webp', alt: 'Seated sun salutations on the lawn beside the Hollywood Hideaway' },
-        { src: '/images/wellness-yoga-tree.webp', alt: 'Tree pose during a yoga session on the lawn at Moulin à Rêves' },
-        { src: '/images/wellness-yoga-stretch.webp', alt: 'Standing stretch on the lawn during a yoga retreat at Moulin à Rêves' },
-        { src: '/images/wellness-yoga-adjustments.webp', alt: 'Yoga instructor offering hands-on adjustments at Moulin à Rêves' },
-        { src: '/images/wellness-yoga-hideaway.webp', alt: 'Yoga practice on the lawn beside the Hollywood Hideaway' },
-        { src: '/images/wellness-yoga-well.webp', alt: 'Yoga beside the stone well and painted bridge in the gardens' },
-        { src: '/images/wellness-yoga-mill-facade.webp', alt: 'Yoga mats laid out before the mill facade at Le Moulin' },
-      ])}>
-        <div class="wellness-gallery__tile"><img src="/images/wellness-yoga-bridge.webp" alt="Yoga session on the painted bridge" loading="lazy" /></div>
-        <div class="wellness-gallery__tile"><img src="/images/wellness-yoga-sun-salutations.webp" alt="Seated sun salutations on the lawn" loading="lazy" /></div>
-        <div class="wellness-gallery__tile"><img src="/images/wellness-yoga-tree.webp" alt="Tree pose during a yoga session" loading="lazy" /></div>
-        <div class="wellness-gallery__tile"><img src="/images/wellness-yoga-stretch.webp" alt="Standing stretch on the lawn" loading="lazy" /></div>
-      </div>
-    </div>
-  </section>
-
   <!-- Massage -->
   <section id="massage" class="fade-in" style="scroll-margin-top: 96px;">
     <div class="split split--reverse">
@@ -109,27 +88,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <style>
     .section--tight { padding-top: 56px; padding-bottom: 56px; }
-    .wellness-gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      cursor: zoom-in;
-    }
-    .wellness-gallery__tile {
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-    .wellness-gallery__tile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .wellness-gallery:hover .wellness-gallery__tile img { transform: scale(1.02); }
-    @media (max-width: 720px) {
-      .wellness-gallery { grid-template-columns: repeat(2, 1fr); }
-    }
   </style>
 
 </BaseLayout>
