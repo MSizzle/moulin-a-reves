@@ -41,9 +41,16 @@ const compoundFeatures = [
     image: '/images/homes/la-grange-pavilion-wide.webp',
     alt: 'La Grange covered entertaining barn at Moulin à Rêves',
     gallery: [
+      { src: '/images/homes/la-grange-hero.webp', alt: 'La Grange exterior — covered pavilion at the heart of the compound' },
       { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange — wide view of the open pavilion' },
       { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
+      { src: '/images/homes/la-grange-living.webp', alt: 'La Grange living area beside the stone hearth' },
       { src: '/images/homes/la-grange-fire.webp', alt: 'Fire crackling in the stone hearth of La Grange' },
+      { src: '/images/homes/la-grange-fire-2.webp', alt: 'Roaring fire in the stone fireplace at La Grange' },
+      { src: '/images/homes/la-grange-party-setup.webp', alt: 'La Grange pavilion set with banquet tables for a party' },
+      { src: '/images/homes/la-grange-plates.webp', alt: 'Long banquet table at La Grange set with china plates and stemware' },
+      { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse carriage on display inside La Grange' },
+      { src: '/images/homes/la-grange-jetson-chariot.webp', alt: 'Jetson the Cavalier in a small chariot inside La Grange' },
       { src: '/images/group-dinner.webp', alt: 'Dinner laid on the long table under La Grange\'s pavilion' },
     ],
   },
@@ -209,11 +216,10 @@ const groupTypes = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title" data-i18n-html="home.title">Your Dream French Vacation Come True</h1>
+      <h1 class="hero__title" data-i18n-html="home.title">Your Dream French Vacation</h1>
       <p class="hero__location" data-i18n="home.hero.location">Méréville, France</p>
       <div class="hero__actions">
-        <a href="/homes/" class="btn btn--white" data-i18n="home.cta">Discover the Maisons</a>
-        <a href="/contact/" class="btn btn--ghost" data-i18n="home.cta.secondary">Join us!</a>
+        <a href="/contact/" class="btn btn--white" data-i18n="home.cta">Join us</a>
       </div>
     </div>
     <span class="hero__scroll" aria-hidden="true">découvrir</span>
@@ -256,7 +262,19 @@ const groupTypes = [
       margin: 0 auto 32px;
     }
     .hero--lc { height: 88vh; min-height: 580px; align-items: center; padding-bottom: 0; }
-    .hero--lc .hero__content { display: flex; flex-direction: column; align-items: center; }
+    .hero--lc .hero__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: min(1280px, 94vw);
+    }
+    .hero--lc .hero__title {
+      font-size: clamp(2.25rem, 5vw, 6rem);
+      max-width: none;
+    }
+    @media (min-width: 900px) {
+      .hero--lc .hero__title { white-space: nowrap; }
+    }
     .hero--lc .hero__tagline {
       font-family: var(--font-serif);
       font-size: clamp(1.125rem, 1.8vw, 1.625rem);
@@ -753,6 +771,117 @@ const groupTypes = [
       </div>
     </div>
   </section>
+
+  <!-- Make Your Life a Masterpiece -->
+  <section class="section--tighter">
+    <div class="container fade-in">
+      <div class="masterpiece">
+        <div class="masterpiece__pair">
+          <figure class="masterpiece__figure">
+            <img src="/images/monet-water-lilies-japanese-bridge.jpg" alt="Claude Monet — Water Lilies and Japanese Bridge, Giverny" loading="lazy" />
+            <figcaption class="masterpiece__caption">Monet · The Japanese Bridge, Giverny</figcaption>
+          </figure>
+          <figure class="masterpiece__figure">
+            <img src="/images/garden-giverny-bridge.webp" alt="The Giverny-style bridge over the millstream at Moulin à Rêves" loading="lazy" />
+            <figcaption class="masterpiece__caption">Moulin à Rêves · The bridge</figcaption>
+          </figure>
+        </div>
+        <h2 class="masterpiece__heading" data-i18n="home.masterpiece.heading">Make your life a masterpiece</h2>
+        <p class="masterpiece__sub" data-i18n="home.masterpiece.sub">Life is a work of art at Moulin à Rêves.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .masterpiece {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .masterpiece__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .masterpiece__figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .masterpiece__figure img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    .masterpiece__caption {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+    .masterpiece__heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin: 0 0 10px;
+    }
+    .masterpiece__sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+      color: var(--ink-soft);
+      margin: 0;
+    }
+    @media (max-width: 700px) {
+      .masterpiece__pair { grid-template-columns: 1fr; gap: 16px; }
+    }
+  </style>
+
+  <!-- Dogs Welcome -->
+  <section class="section--tighter">
+    <div class="container fade-in">
+      <div class="dogs-welcome">
+        <div class="dogs-welcome__photo">
+          <img src="/images/garden-chaise-jetson.webp" alt="Jetson the Cavalier sunning on a garden chaise at Moulin à Rêves" loading="lazy" />
+        </div>
+        <h2 class="dogs-welcome__heading" data-i18n="home.dogs.heading">Dogs welcome</h2>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .dogs-welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .dogs-welcome__photo {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .dogs-welcome__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .dogs-welcome__heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+  </style>
 
   <!-- CTA -->
   <section class="hero" style="height: 42vh; min-height: 320px;">

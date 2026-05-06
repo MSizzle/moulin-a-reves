@@ -120,12 +120,16 @@
     "fr": "Méréville, France"
   },
   "home.cta": {
-    "en": "Discover the Compound",
-    "fr": "Découvrir les Maisons"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
+  },
+  "home.dogs.heading": {
+    "en": "Dogs welcome",
+    "fr": "Chiens bienvenus"
   },
   "home.cta.secondary": {
-    "en": "Join us!",
-    "fr": "Rejoignez-nous !"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "home.stats.intro": {
     "en": "",
