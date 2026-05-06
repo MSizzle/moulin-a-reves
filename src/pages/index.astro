@@ -744,7 +744,7 @@ const groupTypes = [
             <figcaption class="masterpiece__caption">Monet · The Japanese Bridge, Giverny</figcaption>
           </figure>
           <figure class="masterpiece__figure">
-            <img src="/images/garden-giverny-bridge.webp" alt="The Giverny-style bridge over the millstream at Moulin à Rêves" loading="lazy" />
+            <img src="/images/bridge-garden.webp" alt="Giverny-style painted bridge over the millstream beneath willow trees at Moulin à Rêves" loading="lazy" />
             <figcaption class="masterpiece__caption">Moulin à Rêves · The bridge</figcaption>
           </figure>
         </div>
@@ -808,10 +808,8 @@ const groupTypes = [
   <section id="dogs-welcome" class="section--tighter">
     <div class="container fade-in">
       <div class="dogs-welcome">
-        <div class="dogs-welcome__photo">
-          <img src="/images/garden-chaise-jetson.webp" alt="Jetson the Cavalier sunning on a garden chaise at Moulin à Rêves" loading="lazy" />
-        </div>
         <h2 class="dogs-welcome__heading" data-i18n="home.dogs.heading">Dogs welcome</h2>
+        <p class="dogs-welcome__fee" data-i18n="home.dogs.fee">€100 fee per dog for the length of your stay.</p>
       </div>
     </div>
   </section>
@@ -821,26 +819,22 @@ const groupTypes = [
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 28px;
+      gap: 12px;
       max-width: 760px;
       margin: 0 auto;
       text-align: center;
-    }
-    .dogs-welcome__photo {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-    }
-    .dogs-welcome__photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
     .dogs-welcome__heading {
       font-family: var(--font-serif);
       font-size: clamp(2rem, 3.6vw, 3rem);
       font-weight: 400;
       letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .dogs-welcome__fee {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--ink-soft);
       margin: 0;
     }
   </style>
