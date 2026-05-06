@@ -1272,8 +1272,8 @@
     "fr": "Du petit-déjeuner à votre porte au chef privé pour le week-end."
   },
   "catering.intro.heading": {
-    "en": "Let Someone Else Cook",
-    "fr": "Laissez-vous Servir"
+    "en": "Bon Appétit!",
+    "fr": "Bon appétit !"
   },
   "catering.intro.text": {
     "en": "The kitchen is stocked, the markets are close, and cooking with fresh ingredients is part of the joy. But some mornings, you'd rather find a basket of warm croissants at the door. And some evenings, you'd rather sit down to a table already set, a meal already made, a bottle already opened. That's what this is for",
@@ -1292,8 +1292,8 @@
     "fr": "Vous l'emporterez sur la terrasse, à la table de la cuisine ou au jardin — où que votre matinée vous mène. C'est la chose la plus simple, et elle change tout le rythme de la journée."
   },
   "catering.dinner.heading": {
-    "en": "Dinner Service",
-    "fr": "Service de Dîner"
+    "en": "Fully Catered, Staffed Meals",
+    "fr": "Service traiteur complet avec personnel"
   },
   "catering.dinner.p1": {
     "en": "On the evenings you'd rather not cook, our local chef prepares a three-course meal and delivers it to your kitchen — still warm, beautifully presented, ready to plate. The menus change with the season: a cold cucumber soup in July, a duck confit with roasted figs in October, a tarte tatin made with apples from the garden's own tree.",
@@ -1316,8 +1316,8 @@
     "fr": "Dites-nous l'occasion, le nombre d'invités et les éventuelles restrictions alimentaires, et nous préparerons une proposition."
   },
   "catering.chef.heading": {
-    "en": "Private Chef Weekends",
-    "fr": "Week-ends avec Chef Privé"
+    "en": "Nourishing Drop off Meals prepared by local chefs",
+    "fr": "Repas nourrissants livrés, préparés par des chefs locaux"
   },
   "catering.chef.p1": {
     "en": "For groups who want to hand over the kitchen entirely, we arrange a private chef for the duration of your stay. They'll shop at the morning markets, cook breakfast and dinner each day, and adapt the menus to your group — vegan guests, children's meals, a birthday cake at the end.",
@@ -1892,7 +1892,8 @@
     "en": ""
   },
   "le-moulin.amenities.heading": {
-    "en": "The Grounds"
+    "en": "Explore the Estate",
+    "fr": "Explorez le domaine"
   },
   "le-moulin.amenities.includedHeading": {
     "en": "Also included"
@@ -2086,7 +2087,8 @@
     "en": ""
   },
   "hideaway.amenities.heading": {
-    "en": "What's here"
+    "en": "Explore the Estate",
+    "fr": "Explorez le domaine"
   },
   "hideaway.amenities.includedHeading": {
     "en": "Also included"
@@ -2258,7 +2260,8 @@
     "en": ""
   },
   "riviere.amenities.heading": {
-    "en": "What's here"
+    "en": "Explore the Estate",
+    "fr": "Explorez le domaine"
   },
   "riviere.amenities.includedHeading": {
     "en": "Also included"

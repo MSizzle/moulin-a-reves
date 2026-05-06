@@ -476,7 +476,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   'catering.hero.title': { en: 'Catering', fr: 'Restauration' },
   'catering.hero.tagline': { en: 'From breakfast at your door to a private chef for the weekend.', fr: 'Du petit-déjeuner à votre porte au chef privé pour le week-end.' },
-  'catering.intro.heading': { en: 'Let Someone Else Cook', fr: 'Laissez-vous Servir' },
+  'catering.intro.heading': { en: 'Bon Appétit!', fr: 'Bon appétit !' },
   'catering.intro.text': {
     en: "You're on holiday. The kitchen is stocked, the markets are close, and cooking with fresh ingredients is part of the joy. But some mornings, you'd rather find a basket of warm croissants at the door. And some evenings, you'd rather sit down to a table already set, a meal already made, a bottle already opened. That's what this is for.",
     fr: "Vous êtes en vacances. La cuisine est équipée, les marchés sont proches, et cuisiner avec des produits frais fait partie du plaisir. Mais certains matins, on préfère trouver un panier de croissants chauds à la porte. Et certains soirs, s'asseoir à une table déjà dressée, devant un repas déjà prêt, une bouteille déjà ouverte. C'est à cela que ce service est destiné."
@@ -490,7 +490,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "You'll take it to the terrace, or the kitchen table, or the garden \u2014 wherever your morning happens to lead. It's the simplest thing, and it changes the whole rhythm of the day.",
     fr: "Vous l'emporterez sur la terrasse, à la table de la cuisine ou au jardin \u2014 où que votre matinée vous mène. C'est la chose la plus simple, et elle change tout le rythme de la journée."
   },
-  'catering.dinner.heading': { en: 'Dinner Service', fr: 'Service de Dîner' },
+  'catering.dinner.heading': { en: 'Fully Catered, Staffed Meals', fr: 'Service traiteur complet avec personnel' },
   'catering.dinner.p1': {
     en: "On the evenings you'd rather not cook, our local chef prepares a three-course meal and delivers it to your kitchen \u2014 still warm, beautifully presented, ready to plate. The menus change with the season: a cold cucumber soup in July, a duck confit with roasted figs in October, a tarte tatin made with apples from the garden's own tree.",
     fr: "Les soirs où vous préférez ne pas cuisiner, notre chef local prépare un repas de trois plats et le livre dans votre cuisine \u2014 encore chaud, joliment présenté, prêt à être servi. Les menus changent avec les saisons : une soupe froide de concombre en juillet, un confit de canard aux figues rôties en octobre, une tarte tatin aux pommes du jardin."
@@ -508,7 +508,7 @@ export const translations: Record<string, Record<string, string>> = {
     en: "Tell us the occasion, the number of guests, and any dietary requirements, and we'll put together a proposal.",
     fr: "Dites-nous l'occasion, le nombre d'invités et les éventuelles restrictions alimentaires, et nous préparerons une proposition."
   },
-  'catering.chef.heading': { en: 'Private Chef Weekends', fr: 'Week-ends avec Chef Privé' },
+  'catering.chef.heading': { en: 'Nourishing Drop off Meals prepared by local chefs', fr: 'Repas nourrissants livrés, préparés par des chefs locaux' },
   'catering.chef.p1': {
     en: "For groups who want to hand over the kitchen entirely, we arrange a private chef for the duration of your stay. They'll shop at the morning markets, cook breakfast and dinner each day, and adapt the menus to your group \u2014 vegan guests, children's meals, a birthday cake at the end.",
     fr: "Pour les groupes qui souhaitent confier entièrement la cuisine, nous mettons à disposition un chef privé pour la durée de votre séjour. Il fait ses courses aux marchés du matin, prépare petit-déjeuner et dîner chaque jour, et adapte les menus à votre groupe \u2014 convives végétaliens, repas pour enfants, gâteau d'anniversaire pour finir."
