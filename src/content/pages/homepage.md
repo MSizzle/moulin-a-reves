@@ -2,7 +2,7 @@
 heroTagline: "Méréville · France"
 heroImage: "/images/hero-compound.webp"
 introHeading: "A private compound, one hour from Paris."
-introText: "Three stone maisons, a walled garden, a millstream, and the buildings around them — gym, spa with jacuzzi, screening room, La Grange — all on one private property in Méréville, France. Sleeps 20 across 10 bedrooms."
+introText: "Moulin à Rêves means the Mill of Dreams. It is an enchanting private estate with 3 homes, 10 bedrooms, and a versatile grange with a gym, screening room and covered dining and entertaining space for 20 guests."
 groupsHeading: "Ideal for groups with up to 20 guests"
 groupsDescription: "Three maisons, shared grounds, room for 20 — book the whole compound for your group."
 groupsCta: "Plan a Group Stay"

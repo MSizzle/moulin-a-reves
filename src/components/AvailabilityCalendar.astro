@@ -54,7 +54,7 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
       </div>
 
       <div class="availability__footer">
-        <span class="availability__sync" id="availability-sync">Syncing live from Airbnb + VRBO…</span>
+        <span class="availability__sync" id="availability-sync" data-i18n="availability.note">Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm.</span>
         <a href="/contact/" class="link-arrow">Inquire About Dates →</a>
       </div>
     </div>
@@ -455,7 +455,6 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
       .then(function (data) {
         state.blocked = new Set(data.blocked || []);
         renderMonths();
-        updateSyncLabel(data.lastSynced);
       })
       .catch(showError);
   })();

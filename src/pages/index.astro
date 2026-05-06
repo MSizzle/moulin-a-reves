@@ -116,9 +116,9 @@ const compoundFeatures = [
 ];
 
 const groupTypes = [
-  { title: 'Family reunions', summary: 'Three houses, one garden — together by day, separate when needed.', image: '/images/catering-group-gathering.webp', alt: 'Family gathered for a meal at Moulin à Rêves' },
-  { title: 'Yoga Retreats', summary: 'Lawn, La Grange, and the spa — set up for retreat hosts.', image: '/images/wellness-yoga-hideaway.webp', alt: 'Yoga practice on the lawn beside the Hollywood Hideaway at Moulin à Rêves' },
-  { title: 'Celebrate with Friends', summary: 'Twenty beds, long dinners, the millstream, and Paris an hour away.', image: '/images/group-bbq.webp', alt: 'Friends raising a toast outside Hollywood Hideaway at Moulin à Rêves' },
+  { title: 'Family reunions', image: '/images/catering-group-gathering.webp', alt: 'Family gathered for a meal at Moulin à Rêves' },
+  { title: 'Yoga Retreats', image: '/images/wellness-yoga-hideaway.webp', alt: 'Yoga practice on the lawn beside the Hollywood Hideaway at Moulin à Rêves' },
+  { title: 'Celebrate with Friends', image: '/images/group-bbq.webp', alt: 'Friends raising a toast outside Hollywood Hideaway at Moulin à Rêves' },
 ];
 ---
 
@@ -512,7 +512,6 @@ const groupTypes = [
             </div>
             <div class="card__body">
               <h3 class="card__title" data-i18n={`home.groups.type.${i}.title`}>{g.title}</h3>
-              <p class="card__description" data-i18n={`home.groups.type.${i}.summary`}>{g.summary}</p>
             </div>
           </div>
         ))}
@@ -689,7 +688,7 @@ const groupTypes = [
   <section class="section--tighter text-center">
     <div class="container fade-in">
       <h2 data-i18n="home.area.heading">Discover the Area</h2>
-      <p data-i18n="home.area.intro" style="margin-top: 12px;">Forests, châteaux, painters' villages, and Paris — all within reach.</p>
+      <p data-i18n="home.area.intro" style="margin-top: 12px;">Just one hour from Paris, discover the charm, beauty and history of nearby châteaux and villages.</p>
       <a href="/explore/" class="link-arrow" style="margin-top: 20px; display: inline-block;">Explore the area →</a>
     </div>
   </section>
