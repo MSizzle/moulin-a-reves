@@ -957,7 +957,7 @@ img,
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.28) 0%, rgba(15, 15, 15, 0.18) 40%, rgba(15, 15, 15, 0.42) 100%);
+  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.36) 0%, rgba(15, 15, 15, 0.24) 40%, rgba(15, 15, 15, 0.50) 100%);
   z-index: 1;
 }
 
@@ -968,7 +968,7 @@ img,
    Bumped May 5–6 so white CTA text reads on bright photos — still
    meaningfully lighter than the default top-hero overlay. */
 .hero--cta .hero__overlay {
-  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.20) 0%, rgba(15, 15, 15, 0.13) 40%, rgba(15, 15, 15, 0.30) 100%);
+  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.26) 0%, rgba(15, 15, 15, 0.18) 40%, rgba(15, 15, 15, 0.36) 100%);
 }
 
 .hero__content {
