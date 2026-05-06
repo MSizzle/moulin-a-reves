@@ -2082,15 +2082,9 @@
     "en": "Covered gazebo with a dining table for eight — al fresco meals, sheltered from the afternoon sun."
   },
   "hideaway.amenities.feature.1.title": {
-    "en": "The Compound Gardens"
-  },
-  "hideaway.amenities.feature.1.summary": {
-    "en": "Shared with the rest of the compound — flower beds, lawns, and a Giverny-style bridge over the millstream."
-  },
-  "hideaway.amenities.feature.2.title": {
     "en": "Yoga on the Lawn"
   },
-  "hideaway.amenities.feature.2.summary": {
+  "hideaway.amenities.feature.1.summary": {
     "en": "Wide stretch of lawn beside the gazebo — used for morning yoga, lawn games, or simply doing nothing."
   },
   "hideaway.amenities.amenity.0": {
@@ -2112,12 +2106,9 @@
     "en": "Washing machine"
   },
   "hideaway.amenities.amenity.6": {
-    "en": "Compound gardens"
-  },
-  "hideaway.amenities.amenity.7": {
     "en": "Covered gazebo dining"
   },
-  "hideaway.amenities.amenity.8": {
+  "hideaway.amenities.amenity.7": {
     "en": "Sleeps 8 across 5 beds"
   },
   "hideaway.availability.eyebrow": {
