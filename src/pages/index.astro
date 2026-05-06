@@ -121,7 +121,7 @@ const compoundFeatures = [
 const groupTypes = [
   { title: 'Family reunions', summary: 'Three houses, one garden — together by day, separate when needed.', image: '/images/outdoor-dining.webp', alt: 'Family dinner outdoors at Moulin à Rêves' },
   { title: 'Yoga, painting, writing retreats', summary: 'Lawn, La Grange, and the spa — set up for retreat hosts.', image: '/images/yoga-lawn.webp', alt: 'Morning yoga on the lawn at Moulin à Rêves' },
-  { title: 'Friends celebrations', summary: 'Twenty beds, long dinners, the millstream, and Paris an hour away.', image: '/images/gazebo-dining.webp', alt: 'Friends gathered for evening dining at Moulin à Rêves' },
+  { title: 'Celebrate with Friends', summary: 'Twenty beds, long dinners, the millstream, and Paris an hour away.', image: '/images/catering-friends.webp', alt: 'Friends gathered for a celebration in La Grange at Moulin à Rêves' },
 ];
 ---
 
@@ -501,6 +501,16 @@ const groupTypes = [
     </div>
   </section>
 
+  <!-- Dogs Welcome -->
+  <section id="dogs-welcome" class="section--tighter">
+    <div class="container fade-in">
+      <div class="dogs-welcome">
+        <h2 class="dogs-welcome__heading" data-i18n="home.dogs.heading">Dogs welcome</h2>
+        <p class="dogs-welcome__fee" data-i18n="home.dogs.fee">€100 fee per dog for the length of your stay.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Groups -->
   <section class="section--tighter">
     <div class="container text-center fade-in" style="margin-bottom: 24px;">
@@ -542,16 +552,6 @@ const groupTypes = [
       </div>
     </section>
   )}
-
-  <!-- Testimonial -->
-  <section class="section--tighter section--stone">
-    <div class="container text-center fade-in">
-      <blockquote class="testimonial" data-i18n="home.testimonial">
-        "{cms.testimonialQuote}"
-      </blockquote>
-      <p class="testimonial__attribution" data-i18n="home.testimonial.attribution">— {cms.testimonialAttribution}</p>
-    </div>
-  </section>
 
   {/* Writings Carousel — hidden for now per Melissa */}
   {false && (
@@ -699,38 +699,11 @@ const groupTypes = [
   </script>
 
   <!-- Discover the Area (moved to bottom) -->
-  <section class="section--tighter">
-    <div class="container text-center fade-in" style="margin-bottom: 32px;">
+  <section class="section--tighter text-center">
+    <div class="container fade-in">
       <h2 data-i18n="home.area.heading">Discover the Area</h2>
       <p data-i18n="home.area.intro" style="margin-top: 12px;">Forests, châteaux, painters' villages, and Paris — all within reach.</p>
-    </div>
-    <div class="container">
-      <div class="showcase showcase--triple">
-        <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/barbizon-village.webp" alt="Barbizon village street near Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title" data-i18n="home.area.barbizon">Barbizon</h3>
-          </div>
-        </a>
-        <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/explore/forest.webp" alt="Fontainebleau Forest near Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title" data-i18n="home.area.forest">Fontainebleau Forest</h3>
-          </div>
-        </a>
-        <a href="/explore/" class="card fade-in" style="text-decoration:none;color:inherit;">
-          <div class="card__image">
-            <img src="/images/explore/paris.webp" alt="Paris an hour from Moulin à Rêves" loading="lazy" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__title" data-i18n="home.area.paris">Paris (1 hr)</h3>
-          </div>
-        </a>
-      </div>
+      <a href="/explore/" class="link-arrow" style="margin-top: 20px; display: inline-block;">Explore the area →</a>
     </div>
   </section>
 
@@ -803,16 +776,6 @@ const groupTypes = [
       .masterpiece__pair { grid-template-columns: 1fr; gap: 16px; }
     }
   </style>
-
-  <!-- Dogs Welcome -->
-  <section id="dogs-welcome" class="section--tighter">
-    <div class="container fade-in">
-      <div class="dogs-welcome">
-        <h2 class="dogs-welcome__heading" data-i18n="home.dogs.heading">Dogs welcome</h2>
-        <p class="dogs-welcome__fee" data-i18n="home.dogs.fee">€100 fee per dog for the length of your stay.</p>
-      </div>
-    </div>
-  </section>
 
   <style>
     .dogs-welcome {
