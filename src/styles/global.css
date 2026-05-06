@@ -957,7 +957,7 @@ img,
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.18) 0%, rgba(15, 15, 15, 0.10) 40%, rgba(15, 15, 15, 0.32) 100%);
+  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.36) 0%, rgba(15, 15, 15, 0.24) 40%, rgba(15, 15, 15, 0.50) 100%);
   z-index: 1;
 }
 
@@ -965,10 +965,10 @@ img,
    Client (Apr 30 p.12): "Can you reduce the black filter on the image on this page
    and all the house listings" — applies to the CTA section, not the top-of-page hero
    where the overlay is needed for white-text legibility.
-   Bumped slightly (May 5) so white CTA text reads on bright photos — still
+   Bumped May 5–6 so white CTA text reads on bright photos — still
    meaningfully lighter than the default top-hero overlay. */
 .hero--cta .hero__overlay {
-  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.14) 0%, rgba(15, 15, 15, 0.09) 40%, rgba(15, 15, 15, 0.22) 100%);
+  background: linear-gradient(to bottom, rgba(15, 15, 15, 0.26) 0%, rgba(15, 15, 15, 0.18) 40%, rgba(15, 15, 15, 0.36) 100%);
 }
 
 .hero__content {
