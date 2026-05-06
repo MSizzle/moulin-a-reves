@@ -556,6 +556,52 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .lightbox--cream .lightbox__nav:hover {
         background: rgba(0, 0, 0, 0.08);
       }
+      .lightbox--blur {
+        background: rgba(10, 10, 10, 0.55);
+        backdrop-filter: blur(28px) saturate(120%);
+        -webkit-backdrop-filter: blur(28px) saturate(120%);
+      }
+      .lightbox--full .lightbox__stage {
+        width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+        gap: 0;
+      }
+      .lightbox--full .lightbox__image {
+        max-width: 100vw;
+        max-height: 100vh;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        box-shadow: none;
+      }
+      .lightbox--full .lightbox__caption,
+      .lightbox--full .lightbox__counter {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.65);
+      }
+      .lightbox--full .lightbox__caption { bottom: 56px; }
+      .lightbox--full .lightbox__counter { bottom: 28px; }
+      .lightbox--full .lightbox__close,
+      .lightbox--full .lightbox__nav {
+        background: rgba(20, 20, 20, 0.55);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.28);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      .lightbox--full .lightbox__close:hover,
+      .lightbox--full .lightbox__nav:hover {
+        background: rgba(20, 20, 20, 0.78);
+      }
+      .lightbox--full .lightbox__nav {
+        width: 60px;
+        height: 60px;
+        font-size: 1.9rem;
+      }
       .lightbox__stage {
         position: relative;
         width: min(92vw, 1400px);
@@ -726,10 +772,12 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           current = items;
           index = startIndex || 0;
           render();
-          if (opts && opts.cream) {
+          lb.classList.remove('lightbox--cream', 'lightbox--blur', 'lightbox--full');
+          if (opts && opts.full) {
+            lb.classList.add('lightbox--blur');
+            lb.classList.add('lightbox--full');
+          } else if (opts && opts.cream) {
             lb.classList.add('lightbox--cream');
-          } else {
-            lb.classList.remove('lightbox--cream');
           }
           lb.classList.add('is-open');
           lb.setAttribute('aria-hidden', 'false');
@@ -737,7 +785,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         }
         function close() {
           lb.classList.remove('is-open');
-          lb.classList.remove('lightbox--cream');
+          lb.classList.remove('lightbox--cream', 'lightbox--blur', 'lightbox--full');
           lb.setAttribute('aria-hidden', 'true');
           document.body.style.overflow = '';
         }
@@ -758,8 +806,8 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
                   if (typeof it === 'string') return { src: it, alt: '', caption: '' };
                   return it;
                 });
-                var cream = target.classList && target.classList.contains('compound-tile--clickable');
-                open(items, 0, { cream: cream });
+                var fullbleed = target.classList && target.classList.contains('compound-tile--clickable');
+                open(items, 0, { full: fullbleed });
               } catch (_) {}
               return;
             }
