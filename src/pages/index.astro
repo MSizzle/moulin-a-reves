@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AvailabilityCalendar from '../components/AvailabilityCalendar.astro';
 import matter from 'gray-matter';
 import fs from 'node:fs';
 
@@ -776,14 +775,5 @@ const groupTypes = [
     </div>
   </section>
 
-  <!-- Availability Calendar (moved to the bottom, under Plan Your Stay) -->
-  <AvailabilityCalendar
-    monthsToShow={6}
-    eyebrow=""
-    heading="Join us!"
-    intro=""
-    compact
-    i18nKey="home.availability"
-  />
 
 </BaseLayout>
