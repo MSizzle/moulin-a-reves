@@ -406,7 +406,6 @@
       bd.appendChild(ok);
     } else if (intent === 'replace-photo') {
       bd.appendChild(el('div', { class: 'lbl' }, 'Choose the new photo (required, image, max 12 MB)'));
-      var file = el('input', { type: 'text' }); // placeholder; replaced below
       var realFile = document.createElement('input');
       realFile.type = 'file';
       realFile.accept = 'image/*';
