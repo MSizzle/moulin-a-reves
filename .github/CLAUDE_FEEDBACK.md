@@ -158,6 +158,10 @@ worse than a slightly slower human review.
 - Plain English, no jargon (no "i18n key", "PR", "branch", "CSS token").
 - One question, answerable by a non-technical person in a sentence.
 - Restate what you understood + the specific ambiguity.
+- **The comment MUST start with the exact marker line `**Question for you:**`**
+  (on its own line, then the question). `/feedback/inbox` keys off this
+  marker to surface the right comment to the client — no marker, no question
+  shown. Do not use that marker on any other comment.
 - Good: *"You asked to make the welcome heading bigger — should it be
   slightly larger (about 10%) or much larger and bold? It currently reads
   'A private compound, one hour from Paris.'"*
