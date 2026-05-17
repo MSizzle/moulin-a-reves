@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { FEEDBACK_INJECT_VER } from '../lib/feedback-version';
 
 interface Props {
   title: string;
@@ -1014,6 +1015,21 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           if (window.parent === window) return;
           var s = document.createElement('script');
           s.src = '/editor-inject.js';
+          s.defer = true;
+          document.body.appendChild(s);
+        } catch (_) {}
+      })();
+    </script>
+
+    <!-- Client-feedback overlay (only loads inside the feedback iframe with ?feedback=1) -->
+    <script is:inline define:vars={{ feedbackVer: FEEDBACK_INJECT_VER }}>
+      (function () {
+        try {
+          var qs = new URLSearchParams(location.search);
+          if (qs.get('feedback') !== '1') return;
+          if (window.parent === window) return;
+          var s = document.createElement('script');
+          s.src = '/feedback-inject.js?v=' + feedbackVer;
           s.defer = true;
           document.body.appendChild(s);
         } catch (_) {}
