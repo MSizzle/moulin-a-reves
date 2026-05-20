@@ -1,0 +1,172 @@
+---
+export const prerender = false;
+
+import { checkAuth } from '../../lib/auth';
+
+// Auth-gated (SSR). Same self-contained login card as /feedback — we reuse
+// /api/auth/login as-is and never touch it.
+const authed = await checkAuth(Astro.request);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Moulin à Rêves — Feedback Inbox</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root { --bg:#0f172a; --panel:#1e293b; --line:#334155; --ink:#e2e8f0; --muted:#94a3b8; --accent:#FF6B2B; --accent-2:#6366f1; }
+      html, body { min-height: 100%; }
+      body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+      .login-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; }
+      .login-card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:2.5rem; width:100%; max-width:400px; }
+      .login-card h1 { font-size:1.4rem; margin-bottom:.4rem; }
+      .login-card p { color:var(--muted); font-size:.85rem; margin-bottom:1.4rem; }
+      .login-card label { display:block; font-size:.85rem; color:var(--muted); margin-bottom:.5rem; }
+      .login-card input { width:100%; padding:.75rem 1rem; background:var(--bg); border:1px solid var(--line); border-radius:8px; color:#f8fafc; font-size:1rem; margin-bottom:1.2rem; outline:none; }
+      .login-card button { width:100%; padding:.75rem; background:var(--accent-2); color:#fff; border:none; border-radius:8px; font-size:1rem; cursor:pointer; }
+      .login-card .err { background:#7f1d1d; border:1px solid #dc2626; color:#fca5a5; padding:.6rem .75rem; border-radius:8px; font-size:.8rem; margin-bottom:1rem; display:none; }
+      .wrap { max-width:760px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+      header { display:flex; align-items:center; gap:1rem; margin-bottom:.4rem; flex-wrap:wrap; }
+      header h1 { font-size:1.4rem; flex:1; }
+      header a { color:var(--accent); text-decoration:none; font-size:.9rem; border:1px solid var(--line); padding:.45rem .7rem; border-radius:8px; }
+      .lede { color:var(--muted); font-size:.9rem; margin-bottom:1.6rem; }
+      .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1.2rem; margin-bottom:1.1rem; }
+      .card .meta { font-size:.78rem; color:var(--muted); margin-bottom:.5rem; }
+      .card .q { font-size:1rem; line-height:1.5; margin-bottom:.5rem; white-space:pre-wrap; }
+      .card .ctx { font-size:.85rem; color:#cbd5e1; background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:.6rem .75rem; margin:.5rem 0; }
+      .card img { max-width:220px; max-height:150px; border-radius:8px; display:block; margin:.5rem 0; }
+      .card textarea { width:100%; min-height:90px; background:var(--bg); color:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:.7rem; font:inherit; resize:vertical; outline:none; }
+      .card .row { display:flex; gap:.7rem; align-items:center; margin-top:.7rem; }
+      .card button { background:var(--accent-2); color:#fff; border:0; border-radius:8px; padding:.6rem 1rem; font:600 .9rem/1 inherit; cursor:pointer; }
+      .card button[disabled] { opacity:.5; cursor:not-allowed; }
+      .card .status { font-size:.85rem; color:var(--muted); }
+      .card.sent { border-color:#15803d; }
+      .empty, .loading { color:var(--muted); padding:2rem 0; text-align:center; }
+      a.viewlink { color:var(--accent); font-size:.8rem; }
+    </style>
+  </head>
+  <body>
+    {!authed && (
+      <div class="login-wrap">
+        <form class="login-card" id="loginForm">
+          <h1>Feedback Inbox</h1>
+          <p>Please sign in to continue.</p>
+          <div class="err" id="loginErr">That password didn’t work. Try again.</div>
+          <label for="pw">Password</label>
+          <input type="password" id="pw" autocomplete="current-password" autofocus required />
+          <button type="submit">Sign In</button>
+        </form>
+      </div>
+      <script is:inline>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ password: document.getElementById('pw').value }),
+          });
+          if (res.ok) location.href = '/feedback/inbox';
+          else document.getElementById('loginErr').style.display = 'block';
+        });
+      </script>
+    )}
+
+    {authed && (
+      <div class="wrap">
+        <header>
+          <h1>Open questions</h1>
+          <a href="/feedback">← Back to feedback</a>
+        </header>
+        <p class="lede">When a request needs a quick clarification, it shows up here. Answer in plain English — your reply goes straight back to the change.</p>
+        <div id="list"><div class="loading">Loading…</div></div>
+
+        <script is:inline>
+          (function () {
+            var list = document.getElementById('list');
+
+            function esc(s) {
+              return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+                return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+              });
+            }
+
+            function render(items) {
+              if (!items.length) {
+                list.innerHTML = '<div class="empty">Nothing waiting on you right now. 🎉</div>';
+                return;
+              }
+              list.innerHTML = '';
+              items.forEach(function (it) {
+                var card = document.createElement('div');
+                card.className = 'card';
+                var img = it.imageRef
+                  ? '<img src="' + esc(it.imageRef) + '" alt="" />'
+                  : '';
+                var ctx = it.desc
+                  ? '<div class="ctx">' + esc(it.desc) + '</div>'
+                  : '';
+                card.innerHTML =
+                  '<div class="meta">On ' + esc(it.pageRoute || 'the site') +
+                  (it.nearestHeading ? ' · under “' + esc(it.nearestHeading) + '”' : '') +
+                  ' · ' + esc(String(it.intent).replace(/-/g, ' ')) +
+                  ' · <a class="viewlink" target="_blank" rel="noopener" href="' + esc(it.url) + '">#' + esc(it.issueNumber) + '</a></div>' +
+                  '<div class="q">' + esc(it.question) + '</div>' +
+                  img + ctx +
+                  '<textarea placeholder="Type your answer here…"></textarea>' +
+                  '<div class="row"><button>Send answer</button><span class="status"></span></div>';
+
+                var ta = card.querySelector('textarea');
+                var btn = card.querySelector('button');
+                var st = card.querySelector('.status');
+                btn.addEventListener('click', async function () {
+                  var answer = ta.value.trim();
+                  if (answer.length < 2) { st.textContent = 'Please type your answer first.'; return; }
+                  btn.disabled = true; st.textContent = 'Sending…';
+                  try {
+                    var res = await fetch('/api/feedback/clarify', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      credentials: 'include',
+                      body: JSON.stringify({ issueNumber: it.issueNumber, answer: answer }),
+                    });
+                    if (res.status === 401) { location.href = '/feedback/inbox'; return; }
+                    var data = await res.json().catch(function () { return {}; });
+                    if (res.ok && data.ok) {
+                      card.className = 'card sent';
+                      card.innerHTML = '<div class="meta">#' + esc(it.issueNumber) + '</div><div class="q">Thanks — your answer was sent. We’ll take it from here.</div>';
+                    } else {
+                      btn.disabled = false;
+                      st.textContent = (data && data.error) || 'Something went wrong. Try again.';
+                    }
+                  } catch (e) {
+                    btn.disabled = false;
+                    st.textContent = 'Network problem — try again in a moment.';
+                  }
+                });
+                list.appendChild(card);
+              });
+            }
+
+            fetch('/api/feedback/clarify', { credentials: 'include' })
+              .then(function (r) {
+                if (r.status === 401) { location.href = '/feedback/inbox'; return null; }
+                return r.json();
+              })
+              .then(function (data) {
+                if (!data) return;
+                if (data.ok) render(data.items || []);
+                else list.innerHTML = '<div class="empty">Could not load questions: ' + esc(data.error || 'unknown error') + '</div>';
+              })
+              .catch(function () {
+                list.innerHTML = '<div class="empty">Could not reach the server. Refresh to try again.</div>';
+              });
+          })();
+        </script>
+      </div>
+    )}
+  </body>
+</html>

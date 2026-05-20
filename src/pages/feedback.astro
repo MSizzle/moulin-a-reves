@@ -1,0 +1,223 @@
+---
+export const prerender = false;
+
+import { checkAuth } from '../lib/auth';
+import { FEEDBACK_INJECT_VER as VER } from '../lib/feedback-version';
+
+// Auth gate in the frontmatter (SSR — prerender=false). On failure we render a
+// self-contained login card styled like the dashboard login; it POSTs to the
+// existing /api/auth/login and reloads back here. (We deliberately do NOT
+// touch src/pages/api/auth/login.ts — REUSE as-is.)
+const authed = await checkAuth(Astro.request);
+
+// Public routes the client can leave feedback on, in nav-ish order.
+const PAGES: { label: string; route: string }[] = [
+  { label: 'Home', route: '/' },
+  { label: 'The Compound', route: '/the-compound/' },
+  { label: 'Homes — overview', route: '/homes/' },
+  { label: 'Le Moulin', route: '/homes/le-moulin/' },
+  { label: 'Hollywood Hideaway', route: '/homes/hollywood-hideaway/' },
+  { label: 'Maison de la Rivière', route: '/homes/maison-de-la-riviere/' },
+  { label: 'Groups', route: '/groups/' },
+  { label: 'Catering', route: '/catering/' },
+  { label: 'Wellness', route: '/wellness/' },
+  { label: 'Gallery', route: '/gallery/' },
+  { label: 'Explore', route: '/explore/' },
+  { label: 'About', route: '/about/' },
+  { label: 'Contact', route: '/contact/' },
+];
+const firstSrc = `/?feedback=1&v=${VER}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Moulin à Rêves — Leave Feedback</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root { --bg:#0f172a; --panel:#1e293b; --line:#334155; --ink:#e2e8f0; --muted:#94a3b8; --accent:#FF6B2B; --accent-2:#6366f1; }
+      html, body { height: 100%; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: var(--bg); color: var(--ink); display: flex; flex-direction: column;
+      }
+      /* ---- login fallback ---- */
+      .login-wrap { flex: 1; display: flex; align-items: center; justify-content: center; }
+      .login-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 2.5rem; width: 100%; max-width: 400px; box-shadow: 0 25px 50px rgba(0,0,0,0.25); }
+      .login-card h1 { font-size: 1.4rem; margin-bottom: .4rem; }
+      .login-card p { color: var(--muted); font-size: .85rem; margin-bottom: 1.4rem; }
+      .login-card label { display:block; font-size:.85rem; color:var(--muted); margin-bottom:.5rem; }
+      .login-card input { width:100%; padding:.75rem 1rem; background:var(--bg); border:1px solid var(--line); border-radius:8px; color:#f8fafc; font-size:1rem; margin-bottom:1.2rem; outline:none; }
+      .login-card input:focus { border-color: var(--accent-2); }
+      .login-card button { width:100%; padding:.75rem; background:var(--accent-2); color:#fff; border:none; border-radius:8px; font-size:1rem; cursor:pointer; }
+      .login-card .err { background:#7f1d1d; border:1px solid #dc2626; color:#fca5a5; padding:.6rem .75rem; border-radius:8px; font-size:.8rem; margin-bottom:1rem; display:none; }
+      /* ---- app chrome ---- */
+      .bar { display:flex; align-items:center; gap:1rem; padding:.6rem 1rem; background:var(--panel); border-bottom:1px solid var(--line); flex-wrap:wrap; }
+      .bar .brand { font-weight:600; font-size:.95rem; }
+      .bar .brand small { color:var(--muted); font-weight:400; }
+      .bar select { background:var(--bg); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:.45rem .6rem; font-size:.85rem; }
+      .bar .spacer { flex:1; }
+      .bar a.inbox { color:var(--accent); text-decoration:none; font-size:.85rem; border:1px solid var(--line); padding:.45rem .7rem; border-radius:8px; }
+      .bar a.inbox:hover { border-color: var(--accent); }
+      .hint { color:var(--muted); font-size:.78rem; }
+      .frame-wrap { flex:1; position:relative; background:#000; }
+      iframe { width:100%; height:100%; border:0; display:block; }
+      /* ---- toast / status ---- */
+      .toast { position:fixed; left:50%; bottom:24px; transform:translateX(-50%); max-width:560px; width:calc(100% - 32px); background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1rem 1.2rem; box-shadow:0 20px 50px rgba(0,0,0,.4); display:none; z-index:50; }
+      .toast.show { display:block; }
+      .toast.ok { border-color:#15803d; }
+      .toast.err { border-color:#dc2626; }
+      .toast h3 { font-size:.95rem; margin-bottom:.3rem; }
+      .toast p { font-size:.85rem; color:var(--muted); }
+      .toast a { color:var(--accent); }
+      .toast .row { margin-top:.7rem; display:flex; gap:.6rem; }
+      .toast button { background:var(--accent-2); color:#fff; border:none; border-radius:8px; padding:.5rem .9rem; font-size:.85rem; cursor:pointer; }
+      .toast button.ghost { background:transparent; border:1px solid var(--line); color:var(--ink); }
+      .working { position:fixed; inset:0; background:rgba(15,23,42,.55); display:none; align-items:center; justify-content:center; z-index:60; font-size:.95rem; }
+      .working.show { display:flex; }
+    </style>
+  </head>
+  <body>
+    {!authed && (
+      <div class="login-wrap">
+        <form class="login-card" id="loginForm">
+          <h1>Leave Feedback</h1>
+          <p>Please sign in to continue.</p>
+          <div class="err" id="loginErr">That password didn’t work. Try again.</div>
+          <label for="pw">Password</label>
+          <input type="password" id="pw" autocomplete="current-password" autofocus required />
+          <button type="submit">Sign In</button>
+        </form>
+      </div>
+      <script is:inline>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const password = document.getElementById('pw').value;
+          const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ password }),
+          });
+          if (res.ok) location.href = '/feedback';
+          else document.getElementById('loginErr').style.display = 'block';
+        });
+      </script>
+    )}
+
+    {authed && (
+      <>
+        <div class="bar">
+          <div class="brand">Moulin à Rêves <small>· Feedback mode</small></div>
+          <label class="hint" for="pagePick">Page:</label>
+          <select id="pagePick">
+            {PAGES.map((pg) => <option value={pg.route}>{pg.label}</option>)}
+          </select>
+          <span class="hint">Hover anything, click it, tell us what to change.</span>
+          <span class="spacer"></span>
+          <a class="inbox" href="/feedback/inbox">Open questions ↗</a>
+        </div>
+        <div class="frame-wrap">
+          <iframe id="site" src={firstSrc} title="Moulin à Rêves preview"></iframe>
+        </div>
+
+        <div class="working" id="working">Sending your feedback…</div>
+        <div class="toast" id="toast">
+          <h3 id="toastTitle"></h3>
+          <p id="toastBody"></p>
+          <div class="row" id="toastRow"></div>
+        </div>
+
+        <script is:inline define:vars={{ VER }}>
+          (function () {
+            var iframe = document.getElementById('site');
+            var picker = document.getElementById('pagePick');
+            var working = document.getElementById('working');
+            var toast = document.getElementById('toast');
+            var tTitle = document.getElementById('toastTitle');
+            var tBody = document.getElementById('toastBody');
+            var tRow = document.getElementById('toastRow');
+
+            picker.addEventListener('change', function () {
+              iframe.src = picker.value + '?feedback=1&v=' + VER;
+              hideToast();
+            });
+
+            function hideToast() { toast.className = 'toast'; tRow.innerHTML = ''; }
+            function showToast(kind, title, bodyHtml, buttons) {
+              toast.className = 'toast show ' + kind;
+              tTitle.textContent = title;
+              tBody.innerHTML = bodyHtml;
+              tRow.innerHTML = '';
+              (buttons || []).forEach(function (b) {
+                var el = document.createElement('button');
+                el.textContent = b.label;
+                if (b.ghost) el.className = 'ghost';
+                el.addEventListener('click', b.onClick);
+                tRow.appendChild(el);
+              });
+            }
+
+            window.addEventListener('message', async function (ev) {
+              if (ev.origin !== location.origin) return;
+              var msg = ev.data;
+              if (!msg || msg.type !== 'mar-feedback-submit') return;
+
+              working.classList.add('show');
+              try {
+                var res = await fetch('/api/feedback/submit', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  credentials: 'include',
+                  body: JSON.stringify(msg.payload),
+                });
+                working.classList.remove('show');
+
+                if (res.status === 401) {
+                  // Draft is safe in the iframe's localStorage (the inject keeps
+                  // it). Tell the client to sign in again without losing it.
+                  iframe.contentWindow &&
+                    iframe.contentWindow.postMessage({ type: 'mar-feedback-result', ok: false, auth: true }, location.origin);
+                  showToast('err', 'Please sign in again', 'Your session expired. Your note is saved — sign in and resend.', [
+                    { label: 'Sign in', onClick: function () { location.href = '/feedback'; } },
+                  ]);
+                  return;
+                }
+
+                var data = await res.json().catch(function () { return {}; });
+                if (res.ok && data.ok) {
+                  iframe.contentWindow &&
+                    iframe.contentWindow.postMessage({ type: 'mar-feedback-result', ok: true }, location.origin);
+                  showToast(
+                    'ok',
+                    'Thank you — it’s on its way',
+                    'We’ve logged your request' +
+                      (data.issueUrl ? ' (<a target="_blank" rel="noopener" href="' + data.issueUrl + '">#' + data.issueNumber + '</a>)' : '') +
+                      '. Simple changes go live automatically; anything tricky comes back to you as a question.',
+                    [{ label: 'Done', onClick: hideToast }]
+                  );
+                } else {
+                  iframe.contentWindow &&
+                    iframe.contentWindow.postMessage({ type: 'mar-feedback-result', ok: false }, location.origin);
+                  showToast('err', 'That didn’t go through', (data && data.error) || 'Something went wrong. Please try again.', [
+                    { label: 'OK', ghost: true, onClick: hideToast },
+                  ]);
+                }
+              } catch (e) {
+                working.classList.remove('show');
+                iframe.contentWindow &&
+                  iframe.contentWindow.postMessage({ type: 'mar-feedback-result', ok: false }, location.origin);
+                showToast('err', 'Network problem', 'We couldn’t reach the server. Your note is saved — try again in a moment.', [
+                  { label: 'OK', ghost: true, onClick: hideToast },
+                ]);
+              }
+            });
+          })();
+        </script>
+      </>
+    )}
+  </body>
+</html>
