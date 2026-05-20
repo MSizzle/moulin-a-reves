@@ -73,6 +73,18 @@ jobs:
           # Owner's Claude MAX-plan OAuth token — NOT an API key.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Surgical allowlist: bash + local file ops only. Forbids
+          # WebFetch/WebSearch/MCP/agent spawning by omission. Claude
+          # Code's default permission model is interactive — every Bash
+          # call requires approval — which is a no-op in CI and burns
+          # every turn on rejected tool calls. This narrows the perimeter
+          # to exactly what the feedback agent needs.
+          settings: |
+            {
+              "permissions": {
+                "allow": ["Bash", "Read", "Write", "Edit", "Glob", "Grep"]
+              }
+            }
           # Only the integer issue number is interpolated (injection-safe).
           # Claude fetches the client-controlled body/comments itself with gh,
           # rather than us inlining untrusted text into the prompt/YAML.
