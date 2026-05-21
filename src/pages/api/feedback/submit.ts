@@ -497,10 +497,67 @@ async function handleV2Batch(p: any): Promise<Response> {
     const issueNumber: number = issue.number;
     const issueUrl: string = issue.html_url;
 
-    // Task 3 inserts the photo loop + final patchIssueBody call HERE,
-    // between createIssue() and the return below. For now (Task 2), return
-    // 200 with the issue number; the body keeps placeholder null image
-    // paths until Task 3 rebuilds it.
+    // 9. Photo commits — SEQUENTIAL await loop (not concurrent) per
+    //    PATTERNS.md "GitHub Contents API: get-SHA-then-PUT". Concurrent
+    //    PUTs against the same `feedback-incoming/issue-<N>/` tree race on
+    //    parent SHA.
+    //    Each photo lands at `feedback-incoming/issue-<N>/edit-<i+1>-<safeName>`
+    //    — the per-edit-index prefix prevents same-filename collisions
+    //    across edits (T-04-15). Photo-less edits skip the commit; their
+    //    machineEdit keeps committedPath:null. Commit failures are
+    //    best-effort: a `commitError` field is recorded and the handler
+    //    still returns 200 (mirrors v1's graceful fallback).
+    const finalMachineEdits: Array<Record<string, any>> = [];
+    for (let i = 0; i < p.edits.length; i++) {
+      const e = p.edits[i];
+      const img = e?.image || { present: false };
+      let committedPath: string | null = null;
+      let sha256: string | null = null;
+      let commitError: string | null = null;
+
+      if (img.present && img.dataBase64) {
+        const b64: string = String(img.dataBase64).includes(',')
+          ? String(img.dataBase64).split(',').pop()!
+          : String(img.dataBase64);
+
+        try {
+          const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+          const digest = await crypto.subtle.digest('SHA-256', bytes);
+          sha256 = Array.from(new Uint8Array(digest))
+            .map((x) => x.toString(16).padStart(2, '0'))
+            .join('');
+        } catch {
+          /* hashing is best-effort */
+        }
+
+        const safeName =
+          (clamp(img.originalFilename, 120) || 'upload')
+            .replace(/[^a-zA-Z0-9._-]+/g, '-')
+            .replace(/^-+|-+$/g, '') || 'upload';
+        const candidatePath = `feedback-incoming/issue-${issueNumber}/edit-${i + 1}-${safeName}`;
+
+        const ok = await commitBase64File(
+          candidatePath,
+          b64,
+          `feedback: raw upload for issue #${issueNumber} edit ${i + 1}`,
+        );
+        if (ok) committedPath = candidatePath;
+        else commitError = 'photo commit failed';
+      }
+
+      finalMachineEdits.push({
+        ...placeholderMachineEdits[i],
+        image: imageMeta(committedPath, sha256, e),
+        ...(commitError ? { commitError } : {}),
+      });
+    }
+
+    // 10. EXACTLY ONE patchIssueBody call after all photos are committed
+    //     (API-05 — "NOT N PATCH calls" per PATTERNS.md item 14). The final
+    //     body carries the populated committedPath + sha256 for every
+    //     photo-bearing edit; photo-less edits keep committedPath:null.
+    await patchIssueBody(issueNumber, buildBatchBody(finalMachineEdits));
+
     return new Response(
       JSON.stringify({ ok: true, issueNumber, issueUrl }),
       { status: 200, headers: { 'Content-Type': 'application/json' } },
