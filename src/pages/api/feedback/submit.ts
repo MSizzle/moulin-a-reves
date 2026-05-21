@@ -2,49 +2,35 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { checkAuth } from '../../../lib/auth';
+import { validateEdit, signalCount, clamp, isVague, INTENTS, MAX_IMAGE_BYTES, MIN_VAGUE_LEN, MOVE_RESIZE_OPTIONS, VAGUE_STOPLIST, VAGUE_MESSAGE } from './validate';
+import type { Intent } from './validate';
+
+// Touch unused helper-imports so a future maintainer who removes one of these
+// from the import list deliberately must do so on purpose. The shared module
+// is the source of truth for the v1 path AND the upcoming v2 batch path; we
+// pin all of its named exports here so the contract surface stays visible at
+// the top of this file even when a given helper is currently only used inside
+// validateEdit() (e.g. isVague, MIN_VAGUE_LEN, VAGUE_STOPLIST, MOVE_RESIZE_OPTIONS,
+// VAGUE_MESSAGE). DO NOT remove this — it makes the KEEP-IN-SYNC contract
+// (D-15 / API-04) grep-able from one place.
+void isVague;
+void MIN_VAGUE_LEN;
+void VAGUE_STOPLIST;
+void VAGUE_MESSAGE;
+void MOVE_RESIZE_OPTIONS;
+void INTENTS;
 
 // GitHub Contents/Issues API plumbing — same pattern as src/pages/api/site/save.ts.
 const GITHUB_TOKEN = import.meta.env.GITHUB_TOKEN;
 const GITHUB_REPO = import.meta.env.GITHUB_REPO;
 
 // ---------------------------------------------------------------------------
-// Shared contract — KEEP IN SYNC with public/feedback-inject.js (the client
-// validates first, this re-validates server-side; the client cannot be
-// trusted). If you change a rule here, change it there too.
+// Re-exported from ./validate.ts where the per-edit validation rules live
+// (D-15 / API-04). SCHEMA_VERSION and SCHEMA_VERSION_V2 are dispatch keys,
+// not validation rules, and stay here.
 // ---------------------------------------------------------------------------
 const SCHEMA_VERSION = 1;
-const INTENTS = ['change-wording', 'replace-photo', 'move-resize', 'remove', 'something-else'] as const;
-type Intent = (typeof INTENTS)[number];
-
-const MAX_IMAGE_BYTES = 12 * 1024 * 1024; // 12 MB
-const MIN_VAGUE_LEN = 25; // free-text change-descriptions must clear this
-const MOVE_RESIZE_OPTIONS = [
-  'move-up', 'move-down', 'move-left', 'move-right',
-  'make-bigger', 'make-smaller', 'more-space-around', 'less-space-around',
-] as const;
-
-// Phrases that signal a non-actionable request. Mirrored in feedback-inject.js.
-const VAGUE_STOPLIST = [
-  'fix this', 'fix it', 'better', 'make it better', 'make it pop', 'make it nice',
-  'make it nicer', 'nicer', 'cleaner', 'improve', 'improve this', 'looks off',
-  'looks weird', 'looks bad', 'more modern', 'modernize', 'update this',
-  'change this', 'do something', 'something else', 'idk', 'dunno',
-];
-
-const VAGUE_MESSAGE =
-  'Can you be more specific? What exactly should change, and what should it look like afterward?';
-
-function isVague(raw: unknown): boolean {
-  const t = String(raw ?? '').trim();
-  if (t.length < MIN_VAGUE_LEN) return true;
-  const norm = t.toLowerCase().replace(/[^\p{L}\p{N} ]/gu, ' ').replace(/\s+/g, ' ').trim();
-  // Block when the text is essentially nothing more than a stoplist phrase.
-  for (const phrase of VAGUE_STOPLIST) {
-    if (norm === phrase) return true;
-    if (norm.includes(phrase) && norm.length < phrase.length + 25) return true;
-  }
-  return false;
-}
+const SCHEMA_VERSION_V2 = 2;
 
 // ---------------------------------------------------------------------------
 // GitHub helpers
@@ -105,7 +91,7 @@ async function patchIssueBody(issueNumber: number, bodyText: string): Promise<bo
 }
 
 // ---------------------------------------------------------------------------
-// Validation
+// Response helper
 // ---------------------------------------------------------------------------
 function fail(message: string, status = 422) {
   return new Response(JSON.stringify({ ok: false, error: message }), {
@@ -114,72 +100,24 @@ function fail(message: string, status = 422) {
   });
 }
 
-function clamp(s: unknown, max: number): string {
-  return String(s ?? '').slice(0, max);
-}
+// ---------------------------------------------------------------------------
+// v1 single-edit handler — extracted verbatim from the pre-refactor POST body.
+// The inline ~30-line validation block is replaced with one call to
+// validateEdit() from ./validate.ts (D-15 / API-04). Everything else
+// (locator normalisation, signalCount usage, title construction, issue
+// creation, photo commit, body PATCH, top-level try/catch) is byte-equivalent
+// in observable behavior to before this plan (API-02 / D-16: cached browsers
+// keep working indefinitely).
+// ---------------------------------------------------------------------------
+async function handleV1(p: any): Promise<Response> {
+  // --- structural + intent-specific validation via the shared validator ----
+  const err = validateEdit(p);
+  if (err) return fail(err);
 
-// Count independent locator signals that agree. domPath NEVER counts. Mirrors
-// the ladder in .github/CLAUDE_FEEDBACK.md.
-function signalCount(p: any): number {
-  let n = 0;
-  if (p.i18nKey && p.i18nAttr) n += 1;
-  if (p.imageRef) n += 1;
-  if (p.galleryAttrRaw && Number.isInteger(p.galleryIndex) && p.galleryIndex >= 0) n += 1;
-  if (String(p.nearbyText || '').trim().length >= MIN_VAGUE_LEN && p.nearestHeading) n += 1;
-  return n;
-}
-
-export const POST: APIRoute = async ({ request }) => {
-  if (!(await checkAuth(request))) {
-    return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), {
-      status: 401,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
-  let p: any;
-  try {
-    p = await request.json();
-  } catch {
-    return fail('Invalid request body', 400);
-  }
-
-  // --- structural validation -------------------------------------------------
-  if (p?.schemaVersion !== SCHEMA_VERSION) return fail('Unsupported schema version');
+  // After validateEdit() passes, p.intent is one of INTENTS by construction.
   const intent: Intent = p.intent;
-  if (!INTENTS.includes(intent)) return fail('Unknown intent');
-  if (!p.pageRoute || typeof p.pageRoute !== 'string') return fail('Missing page route');
-  if (p.confirmationAccepted !== true) return fail('Confirmation was not accepted');
-
   const detail = p.intentDetail || {};
   const img = p.image || { present: false };
-
-  // --- intent-specific re-validation (mirrors State-C in the inject) --------
-  if (intent === 'change-wording') {
-    const en = String(detail.newTextEn ?? '').trim();
-    if (!en) return fail('New wording (English) is required');
-    if (detail.okToTranslate !== true) {
-      const fr = String(detail.newTextFr ?? '').trim();
-      if (!fr) {
-        return fail(
-          'This site is bilingual. Provide the French wording too, or tick "OK to translate" so it can be translated for you.'
-        );
-      }
-    }
-  } else if (intent === 'replace-photo') {
-    if (!img.present) return fail('A replacement photo is required');
-    if (!String(img.mime || '').startsWith('image/')) return fail('Replacement file must be an image');
-    if (!img.dataBase64) return fail('Replacement photo data missing');
-    if (typeof img.bytes !== 'number' || img.bytes <= 0) return fail('Replacement photo is empty');
-    if (img.bytes > MAX_IMAGE_BYTES) return fail('Replacement photo must be 12 MB or smaller');
-  } else if (intent === 'move-resize') {
-    if (!MOVE_RESIZE_OPTIONS.includes(detail.change)) return fail('Pick a layout change from the list');
-    if (isVague(detail.detail)) return fail(VAGUE_MESSAGE);
-  } else if (intent === 'remove') {
-    if (detail.confirmed !== true) return fail('Tick the confirmation box to remove this element');
-  } else if (intent === 'something-else') {
-    if (isVague(detail.detail)) return fail(VAGUE_MESSAGE);
-  }
 
   // --- normalize + size-bound the locator -----------------------------------
   const sigCount = signalCount(p);
@@ -324,6 +262,46 @@ export const POST: APIRoute = async ({ request }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   }
+}
+
+// ---------------------------------------------------------------------------
+// v2 batch handler — STUB. Plan 04-03 replaces the body of this function
+// with the real batch dispatch (per-edit validation via validateEdit() from
+// ./validate.ts, sequential photo commits to feedback-incoming/issue-<n>/,
+// one PATCH for the final issue body — see PATTERNS.md §"submit.ts" items
+// 11-17 and CONTEXT.md decisions D-01..D-12 for the design).
+// ---------------------------------------------------------------------------
+async function handleV2Batch(_p: any): Promise<Response> {
+  return new Response(
+    JSON.stringify({ ok: false, error: 'v2 batch handler not yet implemented' }),
+    { status: 501, headers: { 'Content-Type': 'application/json' } }
+  );
+}
+
+// ---------------------------------------------------------------------------
+// POST — auth gate → JSON parse → schemaVersion dispatch. The v1 check comes
+// first because cached browsers (the API-02 / D-16 reason this dispatch
+// exists at all) only ever send v1 payloads; we want the most common case
+// on the fast path. NEVER remove the v1 branch.
+// ---------------------------------------------------------------------------
+export const POST: APIRoute = async ({ request }) => {
+  if (!(await checkAuth(request))) {
+    return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  let p: any;
+  try {
+    p = await request.json();
+  } catch {
+    return fail('Invalid request body', 400);
+  }
+
+  if (p?.schemaVersion === SCHEMA_VERSION) return handleV1(p);
+  if (p?.schemaVersion === SCHEMA_VERSION_V2 && p?.batch === true) return handleV2Batch(p);
+  return fail('Unsupported schema version');
 };
 
 // Plain-language summary humans (and Claude) read first, before the JSON block.
