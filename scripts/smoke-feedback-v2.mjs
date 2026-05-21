@@ -681,35 +681,383 @@ if (!TARGET_URL) {
 
   // ---------------------------------------------------------------------------
   // runCanaryV2: OPS-05 — v2 batch canary against the live endpoint.
-  // STUB: full assertion body (batch issue, Claude PR, cache-bust proof, cleanup)
-  // lands in Plan 05-03. This stub performs a minimal POST to confirm the seam.
+  // Plan 05-03: full assertion body — DRY_RUN pre-check, batch POST, issue
+  // shape assertions, PR poll (with result-comment proof), cache-bust proof,
+  // asset HEAD probe, full cleanup via try/finally per CONTEXT D-05/D-06/D-07.
   // ---------------------------------------------------------------------------
   const runCanaryV2 = async () => {
-    // Minimal v2 payload — same shape as unit-mode scenario 2 (2 edits, i18nAttr set).
+    const { execFileSync } = await import('node:child_process');
+
+    // Build a sanitized env for gh CLI sub-processes: remove GITHUB_TOKEN so
+    // that gh falls back to its keyring auth (the smoke harness sets
+    // process.env.GITHUB_TOKEN = 'smoke-token' which would override gh's own
+    // credential store and cause HTTP 401 on real GitHub API calls).
+    // eslint-disable-next-line no-unused-vars
+    const { GITHUB_TOKEN: _discarded, ...ghEnv } = { ...process.env };
+    const ghOpts = { encoding: 'utf8', env: ghEnv };
+
+    // =========================================================================
+    // Phase A — Pre-flight gates (non-state-mutating, run BEFORE any mutation)
+    // =========================================================================
+
+    // A1: TARGET_URL must be set (checked implicitly by the outer else branch,
+    //     but guard here for clarity in runCanaryV2-only invocations).
+    if (!TARGET_URL) {
+      console.error('FAIL: TARGET_URL not set — cannot run v2 canary');
+      process.exit(2);
+    }
+
+    // A2: gh CLI must be available.
+    try {
+      execFileSync('gh', ['--version'], ghOpts);
+    } catch (e) {
+      console.error('FAIL: gh CLI not available — ' + String(e && e.message ? e.message : e));
+      process.exit(2);
+    }
+
+    // A3: DRY_RUN repo variable must be exactly the literal string 'true'.
+    //     Per CONTEXT D-06: do NOT auto-set DRY_RUN — it is an operator-owned
+    //     safety toggle. Without DRY_RUN=true the Action would squash-merge the
+    //     canary's test PR into main, polluting the codebase with canary text.
+    let dryRunValue = '';
+    try {
+      dryRunValue = execFileSync('gh', ['variable', 'get', 'DRY_RUN'], ghOpts).trim();
+    } catch (e) {
+      console.error('FAIL: could not read DRY_RUN repo variable — ' + String(e && e.message ? e.message : e));
+      process.exit(2);
+    }
+    if (dryRunValue !== 'true') {
+      console.error(
+        'FAIL: DRY_RUN repo variable is "' + dryRunValue + '" but must be "true" for the v2 canary. ' +
+        'Run: gh variable set DRY_RUN -b true (then re-run this canary). ' +
+        'Do NOT remove this safety check — without DRY_RUN=true the Action will squash-merge the canary\'s test PR into main.'
+      );
+      process.exit(2);
+    }
+
+    // Resolve owner/repo dynamically so cleanup is never hardcoded.
+    // Per plan-checker concern #8: derive from gh repo view, do not hardcode.
+    let ownerRepo = 'MSizzle/moulin-a-reves';
+    try {
+      ownerRepo = execFileSync('gh', ['repo', 'view', '--json', 'nameWithOwner', '--jq', '.nameWithOwner'], ghOpts).trim();
+    } catch (e) {
+      // Non-fatal — fall back to the known value; log a warning.
+      console.warn('WARN: could not resolve nameWithOwner dynamically, using default: ' + ownerRepo);
+    }
+
+    // =========================================================================
+    // Phase B — Payload POST (state mutation begins here)
+    // Everything from here through Phase F runs inside try/finally.
+    // =========================================================================
+
+    const tsSuffix = new Date().toISOString();
+
+    // Fake i18nKey values are intentional — the canary verifies the pipeline
+    // mechanics (issue creation, Action fire, PR open, result comment, autonomy
+    // hint, cache-bust proof), not edit application. The Action may label the
+    // issue needs-review after locator resolution; that is an acceptable OPS-05
+    // outcome. The autonomy hint at issue creation time still says AUTO-ELIGIBLE
+    // because the per-edit signal-count gate uses presence-of-i18nKey, not
+    // validity-of-i18nKey.
     const edits = [
       {
-        intent: 'change-wording', pageRoute: '/', confirmationAccepted: true,
-        intentDetail: { newTextEn: 'Canary v2 edit A', okToTranslate: true },
-        i18nKey: 'home.hero.title', i18nAttr: 'data-i18n',
-        nearbyText: 'Canary smoke test — v2 batch check',
+        intent: 'change-wording',
+        pageRoute: '/',
+        confirmationAccepted: true,
+        intentDetail: {
+          newTextEn: 'Canary v2 edit 1 — Phase 5 verification ' + tsSuffix,
+          okToTranslate: true,
+        },
+        i18nKey: 'home.canary.test1',
+        i18nAttr: 'data-i18n',
+        nearbyText: 'long enough nearby text for at least one locator signal for canary v2 testing',
+        nearestHeading: 'Welcome',
       },
       {
-        intent: 'change-wording', pageRoute: '/the-compound/', confirmationAccepted: true,
-        intentDetail: { newTextEn: 'Canary v2 edit B', okToTranslate: true },
-        i18nKey: 'compound.hero.heading', i18nAttr: 'data-i18n',
-        nearbyText: 'Canary smoke test — v2 batch check',
+        intent: 'change-wording',
+        pageRoute: '/the-compound/',
+        confirmationAccepted: true,
+        intentDetail: {
+          newTextEn: 'Canary v2 edit 2 — Phase 5 verification ' + tsSuffix,
+          okToTranslate: true,
+        },
+        i18nKey: 'compound.canary.test2',
+        i18nAttr: 'data-i18n',
+        nearbyText: 'long enough nearby text for at least one locator signal for canary v2 testing',
+        nearestHeading: 'The Compound',
       },
     ];
-    const res = await canaryPost({ schemaVersion: 2, batch: true, edits });
-    if (res.status !== 200) {
-      throw new Error('canary v2 stub: expected 200, got ' + res.status);
+
+    // Outer-scope state — needed by Phase D (assertions), Phase F (cleanup),
+    // and Task 2 (evidence file).
+    let issueNumber = null;
+    let prNumber = null;
+    let prBranch = null;
+    let assertionsPassed = false;
+
+    try {
+      // B3: POST the payload via the canaryPost helper.
+      const response = await canaryPost({ schemaVersion: 2, batch: true, edits });
+      if (response.status !== 200) {
+        const bodyText = await response.text();
+        console.error('FAIL: v2 canary expected HTTP 200, got ' + response.status + ' — ' + bodyText);
+        throw new Error('HTTP ' + response.status);
+      }
+
+      // B4: Parse response body and assert shape.
+      const body = await response.json();
+      if (body.ok !== true || typeof body.issueNumber !== 'number' || typeof body.issueUrl !== 'string') {
+        console.error('FAIL: v2 canary response shape invalid — ' + JSON.stringify(body));
+        throw new Error('bad response shape');
+      }
+
+      // B5: Capture issueNumber to outer scope.
+      issueNumber = body.issueNumber;
+      console.log('PASS: v2 canary HTTP 200 with issueNumber=' + issueNumber);
+
+      // =========================================================================
+      // Phase C — Issue shape assertions
+      // =========================================================================
+
+      // C1: Fetch issue JSON via gh CLI.
+      const ghJson = execFileSync('gh', [
+        'issue', 'view', String(issueNumber),
+        '--json', 'title,labels,body',
+        '--repo', ownerRepo,
+      ], ghOpts);
+      const issue = JSON.parse(ghJson);
+
+      // C2: Assert title matches batch shape (NOT [TEST] prefix, NOT single-edit shape).
+      if (!/^\[Feedback\] batch of \d+ edits — /.test(issue.title)) {
+        console.error('FAIL: v2 canary issue title does not match batch shape — got: ' + issue.title);
+        throw new Error('title mismatch');
+      }
+
+      // C3: Assert label is 'client-feedback' (NOT 'client-feedback-test').
+      const labelNames = Array.isArray(issue.labels)
+        ? issue.labels.map((l) => (typeof l === 'string' ? l : l.name))
+        : [];
+      if (!labelNames.includes('client-feedback')) {
+        console.error('FAIL: v2 canary issue missing client-feedback label — got: ' + JSON.stringify(labelNames));
+        throw new Error('label mismatch');
+      }
+
+      // C4: Assert exactly ONE fenced JSON block in issue body.
+      const jsonFenceRegex = new RegExp(String.fromCharCode(96).repeat(3) + 'json', 'g');
+      const fenceMatches = issue.body.match(jsonFenceRegex) || [];
+      if (fenceMatches.length !== 1) {
+        console.error('FAIL: v2 canary issue body has ' + fenceMatches.length + ' json fences, expected exactly 1');
+        throw new Error('json fence count mismatch');
+      }
+
+      // C5: Assert AUTO-ELIGIBLE autonomy hint.
+      if (!issue.body.includes('Autonomy hint: AUTO-ELIGIBLE')) {
+        console.error('FAIL: expected AUTO-ELIGIBLE autonomy hint, got: ' + String(issue.body).slice(0, 300));
+        throw new Error('autonomy hint mismatch');
+      }
+
+      // C6: Log PASS for issue shape.
+      console.log('PASS: v2 canary issue body matches batch shape (title + single json fence + AUTO-ELIGIBLE hint)');
+
+      // =========================================================================
+      // Phase D — PR poll + result-comment poll
+      // =========================================================================
+
+      const N = issueNumber;
+      const M = edits.length; // 2
+      const expectedBranchPrefix = 'feedback/issue-' + N + '-batch-' + M;
+      const POLL_INTERVAL_MS = 10000;
+      const POLL_CAP_MS = 5 * 60000;
+      const pollStart = Date.now();
+
+      // Poll for PR creation (10s intervals, 5min cap).
+      while (Date.now() - pollStart < POLL_CAP_MS) {
+        try {
+          const prListJson = execFileSync('gh', [
+            'pr', 'list',
+            '--state', 'open',
+            '--json', 'number,headRefName',
+            '--search', 'head:' + expectedBranchPrefix,
+          ], ghOpts);
+          const prs = JSON.parse(prListJson);
+          // Accept exact prefix match OR any branch that starts with feedback/issue-<N>-
+          const found = prs.find(
+            (pr) => pr.headRefName === expectedBranchPrefix ||
+                    pr.headRefName.startsWith('feedback/issue-' + N + '-')
+          );
+          if (found) {
+            prNumber = found.number;
+            prBranch = found.headRefName;
+            break;
+          }
+        } catch (_e) {
+          // gh pr list can transiently fail — keep polling.
+        }
+        await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
+      }
+
+      if (prNumber === null) {
+        console.error(
+          'FAIL: v2 canary timed out waiting for PR creation (5min). ' +
+          'Check Action logs at https://github.com/' + ownerRepo + '/actions for issue ' + N + '.'
+        );
+        throw new Error('PR poll timeout');
+      }
+
+      console.log('PASS: PR opened at branch ' + prBranch + ', PR #' + prNumber);
+
+      // Poll for result comment (up to 120s after PR found — the Always-post step
+      // fires after the Claude step completes, which can take up to 90s more).
+      // Accept any of the four possible phrasings from claude.yml:143-152:
+      //   - "Dry run" (auto-approved + DRY_RUN=true, claude.yml:145)
+      //   - "needs a person to look at it" (needs-review path, claude.yml:150)
+      //   - "needs-client-reply" (clarification path, claude.yml:148)
+      //   - "This feedback was processed" (fallback when Claude step errors AFTER
+      //     creating the PR and labeling — proves the Always-post mechanic fires)
+      // All four phrasings prove the result-comment mechanic works.
+      const commentPollStart = Date.now();
+      const COMMENT_POLL_CAP_MS = 3 * 60000; // 3 min — Action takes 90-150s to process
+      let resultCommentFound = false;
+      let resultCommentBody = '';
+
+      while (Date.now() - commentPollStart < COMMENT_POLL_CAP_MS) {
+        try {
+          const commentBodies = execFileSync('gh', [
+            'issue', 'view', String(N),
+            '--json', 'comments',
+            '--jq', '.comments[].body',
+          ], ghOpts);
+          if (
+            commentBodies.includes('Dry run') ||
+            commentBodies.includes('needs a person to look at it') ||
+            commentBodies.includes('needs one quick clarification') ||
+            commentBodies.includes('This feedback was processed')
+          ) {
+            resultCommentFound = true;
+            resultCommentBody = commentBodies;
+            break;
+          }
+        } catch (_e) {
+          // Transient — keep polling.
+        }
+        await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
+      }
+
+      if (!resultCommentFound) {
+        console.error('FAIL: no result comment on issue ' + N + ' within 3min of PR creation.');
+        throw new Error('result comment poll timeout');
+      }
+
+      console.log('PASS: result comment posted on issue ' + N);
+
+      // =========================================================================
+      // Phase E — Cache-bust proof + asset HEAD probe
+      // =========================================================================
+
+      // E1: curl -sL the deployed root URL and assert feedbackVer = "3" in HTML.
+      const html = execFileSync('curl', ['-sL', TARGET_URL + '/'], ghOpts);
+      if (!html.includes('const feedbackVer = "3"')) {
+        console.error(
+          'FAIL: cache-bust grep — expected \'const feedbackVer = "3"\' in deployed HTML; got: ' +
+          String(html).slice(0, 1000)
+        );
+        throw new Error('cache-bust grep failed');
+      }
+      console.log('PASS: cache-bust grep — const feedbackVer = "3" present in deployed HTML');
+
+      // E2: curl -sI the asset URL and assert HTTP 200.
+      const headResp = execFileSync('curl', ['-sI', TARGET_URL + '/feedback-inject.js?v=3'], ghOpts);
+      const firstLine = String(headResp).split('\n')[0].trim();
+      if (!/^HTTP\/[12](\.[01])?\s+200/.test(firstLine)) {
+        console.error('FAIL: asset HEAD — expected 200, got: ' + firstLine);
+        throw new Error('asset HEAD probe failed');
+      }
+      console.log('PASS: asset HEAD — /feedback-inject.js?v=3 returned 200');
+
+      assertionsPassed = true;
+
+    } finally {
+      // =======================================================================
+      // Phase F — Cleanup (MANDATORY per CONTEXT D-07, runs even on failure)
+      // Order: close PR FIRST (GitHub rejects branch delete if PR open).
+      // =======================================================================
+      const errs = [];
+
+      // F1: Close the PR (must happen before branch delete).
+      if (prNumber !== null) {
+        try {
+          execFileSync('gh', [
+            'pr', 'close', String(prNumber),
+            '--comment', 'Closed by canary — Phase 5 OPS-05 verification (' + new Date().toISOString() + ')',
+          ], ghOpts);
+        } catch (e) {
+          errs.push('PR close failed (pr #' + prNumber + '): ' + String(e && e.message ? e.message : e));
+        }
+      }
+
+      // F2: Wait 2s for GitHub to process the PR close before branch delete.
+      if (prBranch !== null) {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        // F3: Delete the remote branch (primary: git push --delete; fallback: gh api).
+        try {
+          execFileSync('git', ['push', '--delete', 'origin', prBranch], ghOpts);
+        } catch (_gitErr) {
+          // Fallback: gh api DELETE refs/heads/<branch>
+          try {
+            execFileSync('gh', [
+              'api',
+              'repos/' + ownerRepo + '/git/refs/heads/' + prBranch,
+              '-X', 'DELETE',
+            ], ghOpts);
+          } catch (e) {
+            errs.push('branch delete failed (' + prBranch + '): ' + String(e && e.message ? e.message : e));
+          }
+        }
+      }
+
+      // F4: Close the issue with a cleanup comment.
+      if (issueNumber !== null) {
+        try {
+          execFileSync('gh', [
+            'issue', 'comment', String(issueNumber),
+            '--body', 'Closed by canary — Phase 5 OPS-05 verification (' + new Date().toISOString() + ')',
+            '--repo', ownerRepo,
+          ], ghOpts);
+        } catch (e) {
+          errs.push('issue comment failed (issue #' + issueNumber + '): ' + String(e && e.message ? e.message : e));
+        }
+        try {
+          execFileSync('gh', [
+            'issue', 'close', String(issueNumber),
+            '--repo', ownerRepo,
+          ], ghOpts);
+        } catch (e) {
+          errs.push('issue close failed (issue #' + issueNumber + '): ' + String(e && e.message ? e.message : e));
+        }
+      }
+
+      // Exit semantics:
+      //   exit 0 — assertions PASS + cleanup PASS
+      //   exit 1 — assertion failed (thrown from try block)
+      //   exit 2 — pre-flight gate failed (gh not on PATH, DRY_RUN not true, etc.)
+      //   exit 3 — assertions PASS but cleanup partial (operator must verify)
+      if (assertionsPassed) {
+        if (errs.length === 0) {
+          console.log('PASS: cleanup — PR #' + prNumber + ' closed, branch ' + prBranch + ' deleted, issue #' + issueNumber + ' closed');
+          console.log('=== v2 canary: PASS ===');
+          process.exit(0);
+        } else {
+          console.warn('WARN: cleanup partial — manual action required:');
+          for (const err of errs) console.warn('  ' + err);
+          console.log('=== v2 canary: PASS (cleanup partial) ===');
+          process.exit(3);
+        }
+      } else {
+        console.error('=== v2 canary: FAIL ===');
+        process.exit(1);
+      }
     }
-    const body = await res.json();
-    if (!body.ok) {
-      throw new Error('canary v2 stub: response ok:false — ' + JSON.stringify(body));
-    }
-    // Full OPS-05 assertions (batch issue, Claude PR, cache-bust proof, cleanup) land in Plan 05-03.
-    console.log('PASS: canary v2 stub reached live endpoint (05-03 will add full assertions)');
   };
 
   // --- Dispatch based on CANARY_KIND ----------------------------------------
