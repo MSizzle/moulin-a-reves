@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Batch Feedback Pipeline
 status: executing
-stopped_at: Phase 4 context gathered
-last_updated: "2026-05-21T03:11:42.306Z"
-last_activity: 2026-05-21 -- Phase 04 execution started
+stopped_at: Phase 4 wave 3 complete (04-01..04-03 merged on main; 04-04..04-08 pending)
+last_updated: "2026-05-21T03:55:00.000Z"
+last_activity: 2026-05-21 -- Plan 04-03 completed via /gsd-resume-work (orphan recovered, Task 3 redone)
 progress:
   total_phases: 2
   completed_phases: 0
   total_plans: 8
-  completed_plans: 0
-  percent: 0
+  completed_plans: 3
+  percent: 37
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-05-20)
 
 ## Current Position
 
-Phase: 04 (batch-pipeline-implementation) — EXECUTING
-Plan: 1 of 8
-Status: Executing Phase 04
-Last activity: 2026-05-21 -- Phase 04 execution started
+Phase: 04 (batch-pipeline-implementation) — EXECUTING (wave 3 complete)
+Plan: 3 of 8 done (04-01, 04-02, 04-03); next = 04-04 + 04-05 (wave 4, parallel)
+Status: Ready to resume `/gsd-execute-phase 4 --auto` from wave 4
+Last activity: 2026-05-21 -- Plan 04-03 completed via /gsd-resume-work
 
 ## Performance Metrics
 
@@ -113,13 +113,19 @@ Three open artifacts surfaced by `audit-open` were acknowledged at the v1.0 mile
 
 ## Session Continuity
 
-Last session: 2026-05-21T02:05:18.276Z
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-batch-pipeline-implementation/04-CONTEXT.md
+Last session: 2026-05-21T03:55:00.000Z
+Stopped at: Plan 04-03 done; orphan worktree resolved; ready for wave 4
+Resume file: none — handoff artifacts cleared
+
+**Resume recovery summary (2026-05-21):** Plan 04-03 was paused mid-Task-3 in a prior session with two tasks committed only on an orphan worktree branch the resume sandbox could not operate on (Mac-bound `.git` pointer inside a Linux container). Recovery via /gsd-resume-work: cherry-picked the two orphan commits onto main (`400e85d`, `26b9bcd`), redid Task 3 fresh on main (`ab730ef`), wrote 04-03-SUMMARY (`322814d`), removed the stale worktree directory + orphan branch + HANDOFF.json + .continue-here.md.
+
+**Operator follow-ups for Phase 04 merge** (carried in 04-03-SUMMARY):
+1. Confirm Vercel project tier; if Pro+ with body-size override, lift `MAX_BATCH_BYTES` from 3 MB to 30 MB and update the client mirror in 04-04 in the same PR.
+2. Re-run `npx astro check` on the primary machine — could not run in the resume sandbox due to a corrupted `property-information` dep in node_modules.
 
 ## Operator Next Steps
 
-1. (Recommended) Run `/gsd-discuss-phase 4` to settle the 5 open design questions before planning. Resolutions become additional REQ-IDs.
-2. Run `/gsd-plan-phase 4` to decompose Phase 4 into plans.
-3. Execute Phase 4 (single PR; ~450 LOC across `feedback-inject.js`, `submit.ts`, `feedback-version.ts`, `.github/CLAUDE_FEEDBACK.md`, `CLAUDE.md`).
-4. After PR merges + Vercel deploys, run `/gsd-plan-phase 5` + execute Phase 5 canaries.
+1. Run `/gsd-execute-phase 4 --auto` to resume from wave 4 (parallel: 04-04 client v2 batch state machine + 04-05 batch submissions section in CLAUDE_FEEDBACK.md). The safe_resume_gate will now see 04-01/02/03 SUMMARY.md files on main and start at wave 4 cleanly.
+2. AUTO chain carries through waves 5 (04-06 cache-bust + 04-07 docs) and 6 (04-08 OPS-02 gate + smoke harness), then `/gsd-code-review 04` → verifier → roadmap update → transition to phase 05.
+3. Before merging the v1.1 PR, complete the two operator follow-ups above.
+4. After PR merges + Vercel deploys, run `/gsd-plan-phase 5` + execute Phase 5 canaries (OPS-04, OPS-05).
