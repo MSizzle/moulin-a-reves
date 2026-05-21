@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-05-21T03:37:13.277Z",
+  "phase": "04",
+  "phase_name": "batch-pipeline-implementation",
+  "phase_dir": ".planning/phases/04-batch-pipeline-implementation",
+  "plan": "04-03",
+  "task": 3,
+  "total_tasks": 3,
+  "status": "paused",
+  "command": "/gsd-execute-phase 4 --auto",
+  "completed_tasks": [
+    { "id": "04-01", "name": "Extract shared per-edit validator (validate.ts)", "status": "done", "commit": "f88a3f0", "merge": "af0a9c1", "tracking": "b5bef26" },
+    { "id": "04-02", "name": "Wire v1 + stub v2 in submit.ts", "status": "done", "commit": "0d82e9a", "merge": "8c1af6e", "tracking": "4d704de", "recovery_note": "Was orphaned by premature `git branch -D` after a failed cleanup-wave helper call; recovered via `git merge 0d82e9a --no-ff` from the git object store." }
+  ],
+  "in_flight_tasks": [
+    {
+      "id": "04-03",
+      "name": "Implement v2 batch handler (API-01/03/05/06, ISSUE-01..04, D-03, D-05)",
+      "status": "in_progress",
+      "task_progress": "2 of 3 tasks committed; task 3 dirty/uncommitted in worktree",
+      "worktree_path": ".claude/worktrees/agent-a8bd25cd031b6a9e7",
+      "worktree_branch": "worktree-agent-a8bd25cd031b6a9e7",
+      "worktree_locked": true,
+      "expected_base": "4d704de3c97da8b1176eea3ff38da0496d0beb9c",
+      "committed": [
+        { "commit": "f835a74", "subject": "feat(04-03): lock MAX_BATCH_BYTES to 3 MB per D-03 reconciliation" },
+        { "commit": "5535b8f", "subject": "feat(04-03): v2 batch handler — input gates + issue construction" }
+      ],
+      "dirty_file": "src/pages/api/feedback/submit.ts",
+      "dirty_description": "Task 3 in progress — photo commit loop (sequential PUTs against feedback-incoming/issue-<N>/) plus SHA-256 hashing and final patchIssueBody. ~70% written; not yet committed and no SUMMARY.md.",
+      "no_summary_yet": true
+    }
+  ],
+  "remaining_tasks": [
+    { "id": "04-03-task3", "name": "Finish & commit photo commit loop + final patchIssueBody + write 04-03-SUMMARY.md", "status": "in_progress" },
+    { "id": "04-04", "name": "Client v2 batch state machine in public/feedback-inject.js", "status": "not_started", "wave": 4 },
+    { "id": "04-05", "name": "Batch submissions section in .github/CLAUDE_FEEDBACK.md", "status": "not_started", "wave": 4 },
+    { "id": "04-06", "name": "Bump FEEDBACK_INJECT_VER to '2' (OPS-01)", "status": "not_started", "wave": 5 },
+    { "id": "04-07", "name": "Add v2 note in CLAUDE.md feedback-mode section (OPS-03)", "status": "not_started", "wave": 5 },
+    { "id": "04-08", "name": "OPS-02 additive-only diff gate + smoke harness + PR inventory", "status": "not_started", "wave": 6 }
+  ],
+  "blockers": [
+    {
+      "description": "Plan 04-03 is partially executed in an isolated worktree branch that is NOT merged to main. `/gsd-execute-phase 4 --auto`'s safe_resume_gate only inspects `git log` on main (not `--all`), so it WILL miss the orphan-branch commits and re-dispatch 04-03 from scratch, causing duplicate work + merge conflicts.",
+      "type": "technical",
+      "workaround": "BEFORE re-invoking the orchestrator, inspect `git branch -a | grep worktree-agent-a8bd25cd031b6a9e7` and either (A) finish task 3 manually in that worktree and merge, or (B) explicitly clean it up before re-execution."
+    }
+  ],
+  "human_actions_pending": [],
+  "decisions": [
+    { "decision": "validate.ts deliberately lives at src/pages/api/feedback/validate.ts (a routable Astro path) per PATTERNS.md D-15.", "rationale": "Co-located with submit.ts under the same trust boundary; PATTERNS.md mandates this placement.", "consequence": "Astro emits `[WARN] [router] No API Route handler exists for the method 'GET' for the route '/api/feedback/validate'. Found handlers: INTENTS, MAX_IMAGE_BYTES, ...` at every build. Build still succeeds. Non-fatal; flag for code review." },
+    { "decision": "When the SDK `worktree.cleanup-wave` helper reports failure but git shows the merge already happened, manually unlock + `git worktree remove --force` + `git branch -D <branch>` is the recovery path. NEVER run `git branch -D` until merge is confirmed on the orchestrator HEAD.", "rationale": "Wave 2 helper hit a mktemp `XXXXXX.json` template collision and reported `ok:false`, but the merge had ALREADY succeeded inside the helper; the orchestrator then ran `git branch -D` thinking nothing was merged → orphan commits. Recovered via `git merge <commit-hash>` from object store.", "phase": "04" }
+  ],
+  "uncommitted_files": [
+    ".planning/config.json (pre-existing — modified before this session started; unrelated to phase 04 work)",
+    ".claude/worktrees/agent-a8bd25cd031b6a9e7/src/pages/api/feedback/submit.ts (Task 3 dirty WIP — photo commit loop)"
+  ],
+  "next_action": "READ this handoff fully. Then `git branch -a | grep worktree-agent` to confirm the 04-03 orphan branch still exists. Then `cd .claude/worktrees/agent-a8bd25cd031b6a9e7 && git status && git diff` to see the dirty Task 3 state. Then either FINISH task 3 there (faster) or DISCARD + re-dispatch 04-03 (cleaner). Do NOT just rerun `/gsd-execute-phase 4 --auto` without addressing the orphan branch first — see blockers[0].",
+  "context_notes": "Phase 04 is a 6-wave / 8-plan implementation phase for the v1.1 Batch Feedback Pipeline milestone. Waves 1-2 are merged cleanly to main. Wave 3 (plan 04-03) was 67% done when the executor's parent tool-result vanished mid-flight. Waves 4-6 untouched. AUTO_MODE is true (chain flag was active). After plan 04-03 finishes and merges, the orchestrator should continue waves 4→5→6, then code-review → verifier → roadmap update → transition. Branching strategy is `none` so all work lands on main. Worktree isolation is enabled (per-plan)."
+}
