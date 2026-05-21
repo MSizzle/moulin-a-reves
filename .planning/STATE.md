@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Batch Feedback Pipeline
-status: executing
-stopped_at: Phase 4 wave 3 complete (04-01..04-03 merged on main; 04-04..04-08 pending)
-last_updated: "2026-05-21T03:55:00.000Z"
-last_activity: 2026-05-21 -- Plan 04-03 completed via /gsd-resume-work (orphan recovered, Task 3 redone)
+status: Ready to resume `/gsd-execute-phase 4 --auto` from wave 4
+stopped_at: Plan 04-03 done; orphan worktree resolved; ready for wave 4
+last_updated: "2026-05-21T08:57:19.673Z"
+last_activity: 2026-05-21 -- Plan 04-03 completed via /gsd-resume-work
 progress:
   total_phases: 2
   completed_phases: 0
@@ -120,6 +120,7 @@ Resume file: none — handoff artifacts cleared
 **Resume recovery summary (2026-05-21):** Plan 04-03 was paused mid-Task-3 in a prior session with two tasks committed only on an orphan worktree branch the resume sandbox could not operate on (Mac-bound `.git` pointer inside a Linux container). Recovery via /gsd-resume-work: cherry-picked the two orphan commits onto main (`400e85d`, `26b9bcd`), redid Task 3 fresh on main (`ab730ef`), wrote 04-03-SUMMARY (`322814d`), removed the stale worktree directory + orphan branch + HANDOFF.json + .continue-here.md.
 
 **Operator follow-ups for Phase 04 merge** (carried in 04-03-SUMMARY):
+
 1. Confirm Vercel project tier; if Pro+ with body-size override, lift `MAX_BATCH_BYTES` from 3 MB to 30 MB and update the client mirror in 04-04 in the same PR.
 2. Re-run `npx astro check` on the primary machine — could not run in the resume sandbox due to a corrupted `property-information` dep in node_modules.
 
