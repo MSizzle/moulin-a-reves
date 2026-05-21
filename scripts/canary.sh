@@ -47,12 +47,17 @@ case "$ARG" in
     # OPS-05: Run the v2 batch canary only.
     TARGET_URL="$DEPLOY_URL" npx tsx scripts/smoke-feedback-v2.mjs --canary v2
     ;;
+  status)
+    # v1.2 STATUS-10: status endpoint canary (submit + poll-until-terminal).
+    TARGET_URL="$DEPLOY_URL" npx tsx scripts/smoke-feedback-status.mjs
+    ;;
   "")
-    # No arg: run both v1 and v2 sequentially (D-02 default behaviour).
-    TARGET_URL="$DEPLOY_URL" npx tsx scripts/smoke-feedback-v2.mjs
+    # No arg: run v1 + v2 + status sequentially (full regression sweep).
+    TARGET_URL="$DEPLOY_URL" npx tsx scripts/smoke-feedback-v2.mjs && \
+      TARGET_URL="$DEPLOY_URL" npx tsx scripts/smoke-feedback-status.mjs
     ;;
   *)
-    echo "usage: scripts/canary.sh [v1|v2]" >&2
+    echo "usage: scripts/canary.sh [v1|v2|status]" >&2
     exit 2
     ;;
 esac
