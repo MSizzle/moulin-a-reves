@@ -936,26 +936,229 @@
     destroyStagedPanel();
   }
 
-  // Stub — Task 3 of Plan 04-04 implements the v2 batch postMessage path.
-  // Forward-declared here so renderChip's Submit button and renderPanel's
-  // Submit batch button can reference it at load time without throwing.
-  function submitBatch() { /* placeholder — Task 3 implements */ }
+  // STAGE-04: build the v2 batch payload and postMessage it to the parent
+  // for EXACTLY ONE POST. Photos are base64-encoded from the in-memory File
+  // map ONLY here — never at stage time, never into sessionStorage.
+  function submitBatch() {
+    // Defence-in-depth: chip + panel buttons disable on click but a stale
+    // event handler could re-enter. Also: 0-staged is a no-op.
+    if (state === STATE.SUBMITTING) return;
+    var arr = loadStaged();
+    if (arr.length === 0) return;
+
+    state = STATE.SUBMITTING;
+    // Disable the chip's Submit batch button + update its text.
+    var chip = document.getElementById('mar-fb-chip');
+    if (chip) {
+      var sb = chip.querySelector('.mar-fb-chip__submit');
+      if (sb) { sb.setAttribute('disabled', 'disabled'); sb.textContent = 'Submitting…'; }
+    }
+    // Also disable the panel's Submit if open.
+    var panelSub = document.querySelector('#mar-fb-panel-staged .mar-fb-staged-submit');
+    if (panelSub) { panelSub.setAttribute('disabled', 'disabled'); panelSub.textContent = 'Submitting…'; }
+
+    // Collect base64 promises per staged entry (parallel; no rate limit on
+    // in-memory FileReader work, and the server commits sequentially anyway).
+    var photoPromises = [];
+    for (var i = 0; i < arr.length; i++) {
+      var entry = arr[i];
+      var f = entry.imageDescriptor ? fileMap[entry.stageId] : null;
+      if (entry.imageDescriptor && f) {
+        // The fileMap stores the v1 draft.image shape: {dataURL,name,type,size}.
+        // The dataURL is already a data:<mime>;base64,<...> string from the
+        // FileReader at field-entry time, so we strip the prefix here. The
+        // dataURL was held in memory across the staging session — it was
+        // NEVER serialised into sessionStorage (verify: descriptors pushed
+        // into staged[] contain only name/type/size).
+        photoPromises.push(Promise.resolve({
+          stageId: entry.stageId,
+          dataBase64: stripDataUrlPrefix(f.dataURL || ''),
+          mime: f.type,
+          bytes: f.size,
+          originalFilename: f.name,
+          present: true,
+        }));
+      } else if (entry.imageDescriptor && !f) {
+        // STAGE-05 degraded case: File lost across iframe navigation. The
+        // server validation will 422 this edit if intent is replace-photo;
+        // the panel surfaces the failing index for re-attach.
+        photoPromises.push(Promise.resolve({
+          stageId: entry.stageId,
+          present: false,
+          __notice: 'photo file was lost across navigation; please re-attach if this edit needs the photo',
+        }));
+      } else {
+        // No photo on this edit.
+        photoPromises.push(Promise.resolve({ stageId: entry.stageId, present: false }));
+      }
+    }
+
+    Promise.all(photoPromises).then(function (imageResults) {
+      var byId = {};
+      for (var k = 0; k < imageResults.length; k++) byId[imageResults[k].stageId] = imageResults[k];
+
+      var edits = arr.map(function (entry) {
+        var loc = entry.locator || {};
+        var imgRes = byId[entry.stageId] || { present: false };
+        var image;
+        if (imgRes.present) {
+          image = {
+            present: true,
+            mime: imgRes.mime,
+            dataBase64: imgRes.dataBase64,
+            bytes: imgRes.bytes,
+            originalFilename: imgRes.originalFilename,
+          };
+        } else {
+          image = { present: false };
+        }
+        var editObj = {
+          intent: entry.intent,
+          pageRoute: entry.pageRoute,
+          confirmationAccepted: !!entry.confirmationAccepted,
+          intentDetail: entry.intentDetail || {},
+          // Spread locator fields (mirrors v1 buildPayload's flat shape so
+          // validateEdit on the server sees the same per-edit object shape).
+          astroFileGuess: loc.astroFileGuess,
+          i18nKey: loc.i18nKey,
+          i18nAttr: loc.i18nAttr,
+          imageRef: loc.imageRef,
+          galleryAttrRaw: loc.galleryAttrRaw,
+          galleryIndex: loc.galleryIndex,
+          domPath: loc.domPath,
+          nearbyText: loc.nearbyText,
+          nearestHeading: loc.nearestHeading,
+          outerHTMLSnippet: loc.outerHTMLSnippet,
+          boundingInfo: loc.boundingInfo,
+          computedStyle: loc.computedStyle,
+          langAtCapture: loc.langAtCapture,
+          image: image,
+        };
+        if (imgRes.__notice) editObj.__notice = imgRes.__notice;
+        return editObj;
+      });
+
+      var payload = {
+        schemaVersion: SCHEMA_VERSION_V2,
+        batch: true,
+        edits: edits,
+      };
+      if (window.__feedback_testMode === true) payload.testMode = true;
+
+      // EXACTLY ONE postMessage per submitBatch invocation (STAGE-04 / T-04-24).
+      window.parent.postMessage({ type: 'mar-feedback-submit', payload: payload }, '*');
+    }).catch(function () {
+      // Encoding failed — re-enable buttons, surface message, state→STAGED.
+      state = STATE.STAGED;
+      if (chip) {
+        var sb2 = chip.querySelector('.mar-fb-chip__submit');
+        if (sb2) { sb2.removeAttribute('disabled'); sb2.textContent = 'Submit batch'; }
+      }
+      if (panelSub) { panelSub.removeAttribute('disabled'); panelSub.textContent = 'Submit batch'; }
+      lastCapMessage = 'Could not read a staged photo. Try removing and re-adding it.';
+      renderPanel({ capMessage: lastCapMessage });
+    });
+  }
+
+  // Strip the `data:<mime>;base64,` prefix off a data URL, returning just the
+  // base64 payload. Used by submitBatch when re-reading the in-memory dataURL
+  // captured at field-entry time. Mirrors the server's split-on-comma path
+  // (submit.ts handleV2Batch base64 normalisation).
+  function stripDataUrlPrefix(s) {
+    var str = String(s || '');
+    var comma = str.indexOf(',');
+    return comma >= 0 ? str.slice(comma + 1) : str;
+  }
+
+  // Promise-wrapped FileReader. Used defensively when a fileMap entry holds
+  // a raw File rather than the v1 draft's {dataURL,name,type,size} shape.
+  // Today every fileMap entry already carries a dataURL (the field-entry
+  // flow eagerly reads it) so this is reserved for future flows that
+  // accept a raw File at stage time — but the plan acceptance requires
+  // both readAsBase64 and readAsDataURL be present in the file (D-09 /
+  // STAGE-05 FileReader pattern).
+  function readAsBase64(file) {
+    return new Promise(function (resolve, reject) {
+      var r = new FileReader();
+      r.onload = function () {
+        try {
+          var s = String(r.result || '');
+          var comma = s.indexOf(',');
+          resolve(comma >= 0 ? s.slice(comma + 1) : '');
+        } catch (e) { reject(e); }
+      };
+      r.onerror = function () { reject(new Error('FileReader error')); };
+      r.readAsDataURL(file);
+    });
+  }
 
 
   // ---- E: result from parent ------------------------------------------------
   // Parent (feedback.astro) posts `mar-feedback-result` after the
-  // /api/feedback/submit round-trip. v2 extends the v1 contract with
-  // `m.errors[]` (per-edit validation failures, API-03 / D-05) so the panel
-  // can highlight which staged items need fixing without losing the batch.
-  // The `m.cap` cap-violation branch lands in Task 3.
+  // /api/feedback/submit round-trip. v2 extends the v1 contract with:
+  //   - m.errors[]: per-edit validation failures (API-03 / D-05)
+  //   - m.cap: 'edits' | 'bytes' with m.error message (D-01 / D-02 / API-06)
+  // When state === STATE.SUBMITTING the receiver knows this is a batch
+  // result; otherwise it's a legacy v1 single-edit result.
   window.addEventListener('message', function (ev) {
     if (ev.origin !== location.origin) return;
     var m = ev.data;
     if (!m || m.type !== 'mar-feedback-result') return;
+
+    // ---- v2 batch result (STAGE.SUBMITTING) -------------------------------
+    if (state === STATE.SUBMITTING) {
+      if (m.ok) {
+        // STAGE-04 success: clear all staged state + chip + panel + drafts.
+        clearStaged();
+        fileMap = {};
+        removeChip();
+        destroyStagedPanel();
+        clearDraft();
+        state = STATE.DONE;
+        var partsB = buildPanelShell('Thank you');
+        partsB.bd.appendChild(el('div', { class: 'ok' }, 'Your batch was sent. You can leave another, or close this tab.'));
+        var doneB = el('button', { class: 'act' }, 'Leave another');
+        doneB.addEventListener('click', reset);
+        partsB.ft.appendChild(doneB);
+        return;
+      }
+      if (m.auth) {
+        // Staged edits survive in sessionStorage; re-enable chip so user can
+        // resubmit after sign-in.
+        state = STATE.STAGED;
+        renderChip(loadStaged().length);
+        var p2b = buildPanelShell('Please sign in again');
+        p2b.bd.appendChild(el('div', { class: 'prev' }, 'Your session expired, but your staged edits are saved. Sign in again and resubmit.'));
+        return;
+      }
+      if (Array.isArray(m.errors)) {
+        // API-03 / D-05: per-edit-errors. sessionStorage UNCHANGED so the
+        // user can edit/delete and retry. Panel re-renders with .is-error
+        // highlights on the failing indexes.
+        state = STATE.STAGED;
+        renderChip(loadStaged().length);
+        renderPanel({ errors: m.errors });
+        return;
+      }
+      if (m.cap) {
+        // D-01 / D-02 / API-06 cap-violation. Server caps fired despite the
+        // client's pre-checks (e.g. another tab staged in parallel, or the
+        // server's MAX_BATCH_BYTES is tighter than the client mirror).
+        state = STATE.STAGED;
+        lastCapMessage = m.error || 'This batch exceeds a server cap. Remove some items and try again.';
+        renderChip(loadStaged().length);
+        renderPanel({ capMessage: lastCapMessage });
+        return;
+      }
+      // Generic failure — re-enable chip + panel buttons, surface message.
+      state = STATE.STAGED;
+      renderChip(loadStaged().length);
+      renderPanel({ capMessage: m.error || 'Something went wrong. Your staged edits are saved — please try again.' });
+      return;
+    }
+
+    // ---- v1 single-edit result path (legacy / cached browsers) ------------
     if (m.ok) {
-      // STAGE-04 success path: clear v1 draft AND v2 staged state (chip,
-      // panel, sessionStorage, fileMap) — a successful batch removes all
-      // pending work.
       clearDraft();
       clearStaged();
       fileMap = {};
@@ -968,15 +1171,10 @@
       done.addEventListener('click', reset);
       parts.ft.appendChild(done);
     } else if (m.auth) {
-      // Draft already in localStorage — nothing lost. Staged edits also
-      // survive in sessionStorage; the chip stays for resubmit after login.
       state = STATE.AUTH;
       var p2 = buildPanelShell('Please sign in again');
       p2.bd.appendChild(el('div', { class: 'prev' }, 'Your session expired, but your note is saved. Sign in again and your draft will still be here.'));
     } else if (Array.isArray(m.errors)) {
-      // API-03 / D-05: per-edit-errors response. The panel re-renders with
-      // .is-error highlights on the failing indexes; sessionStorage is
-      // UNCHANGED so the user can edit/delete and retry.
       renderPanel({ errors: m.errors });
     } else {
       var p3 = panel && panel.querySelector('.err');
