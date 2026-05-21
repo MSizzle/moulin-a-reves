@@ -52,6 +52,10 @@ const SCHEMA_VERSION_V2 = 2;
 // client mirror).
 const MAX_BATCH_BYTES = 3 * 1024 * 1024;
 
+// Batch edit-count cap (D-01 / API-06). Mirror this EXACTLY in
+// public/feedback-inject.js (STAGE-06).
+const MAX_BATCH_EDITS = 10;            // D-01
+
 // ---------------------------------------------------------------------------
 // GitHub helpers
 // ---------------------------------------------------------------------------
@@ -111,13 +115,41 @@ async function patchIssueBody(issueNumber: number, bodyText: string): Promise<bo
 }
 
 // ---------------------------------------------------------------------------
-// Response helper
+// Response helpers
 // ---------------------------------------------------------------------------
 function fail(message: string, status = 422) {
   return new Response(JSON.stringify({ ok: false, error: message }), {
     status,
     headers: { 'Content-Type': 'application/json' },
   });
+}
+
+// Per-edit validation-failure response (API-03 / D-05). Used by handleV2Batch
+// when one or more edits in the batch fail validateEdit(); the UI can read
+// `errors[]` and highlight which staged items need fixing without losing the
+// rest of the batch.
+function failBatch(errors: Array<{ index: number; error: string }>, status = 422): Response {
+  return new Response(
+    JSON.stringify({ ok: false, error: 'One or more edits failed validation', errors }),
+    { status, headers: { 'Content-Type': 'application/json' } }
+  );
+}
+
+// Cap-violation response (D-01 / D-02 / API-06). Used by handleV2Batch when
+// the batch exceeds the edit-count or total-photo-byte cap. The structured
+// shape lets the UI tell the client which cap was hit (D-04 "batch is full"
+// UX) and by how much.
+function failCap(
+  cap: 'edits' | 'bytes',
+  limit: number,
+  actual: number,
+  message: string,
+  status = 422,
+): Response {
+  return new Response(
+    JSON.stringify({ ok: false, error: message, cap, limit, actual }),
+    { status, headers: { 'Content-Type': 'application/json' } }
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -285,17 +317,200 @@ async function handleV1(p: any): Promise<Response> {
 }
 
 // ---------------------------------------------------------------------------
-// v2 batch handler — STUB. Plan 04-03 replaces the body of this function
-// with the real batch dispatch (per-edit validation via validateEdit() from
-// ./validate.ts, sequential photo commits to feedback-incoming/issue-<n>/,
-// one PATCH for the final issue body — see PATTERNS.md §"submit.ts" items
-// 11-17 and CONTEXT.md decisions D-01..D-12 for the design).
+// v2 batch handler — input gates + issue construction (Task 2 of Plan 04-03).
+// Photo commit + final patchIssueBody land in Task 3. Sequencing is:
+//   1. Shape gate (edits is a non-empty array).
+//   2. Cap gates (edit-count then total-photo-bytes; fast-fail BEFORE the
+//      per-edit loop so an oversize batch doesn't enumerate every edit error).
+//   3. Per-edit validateEdit() loop — accumulate errors[] for failBatch().
+//   4. Normalise each edit's locator + intentDetail (same clamps as v1).
+//   5. Compute per-edit autonomy roll-up: batchAutoEligible iff every edit
+//      passes the signalCount-based gate (D-10).
+//   6. Build title (ISSUE-01) + labels (testMode routing).
+//   7. Build placeholder body via buildBatchBody (image paths null).
+//   8. createIssue() → return 200 with {ok, issueNumber, issueUrl}.
+// Photos commit + final body PATCH land in Task 3 between steps 7 and 8.
 // ---------------------------------------------------------------------------
-async function handleV2Batch(_p: any): Promise<Response> {
-  return new Response(
-    JSON.stringify({ ok: false, error: 'v2 batch handler not yet implemented' }),
-    { status: 501, headers: { 'Content-Type': 'application/json' } }
+async function handleV2Batch(p: any): Promise<Response> {
+  // 1. Shape gate.
+  if (!Array.isArray(p.edits) || p.edits.length === 0) {
+    return fail('edits must be a non-empty array');
+  }
+
+  // 2. Cap gates — D-01 / D-02 / API-06. Cap checks run BEFORE per-edit
+  //    validation (D-04: "this batch is full" is a fast signal; we do NOT
+  //    enumerate per-edit errors for a batch that would be rejected anyway).
+  if (p.edits.length > MAX_BATCH_EDITS) {
+    return failCap('edits', MAX_BATCH_EDITS, p.edits.length, 'Batch exceeds 10-edit limit');
+  }
+  const totalBytes: number = p.edits.reduce(
+    (sum: number, e: any) => sum + (typeof e?.image?.bytes === 'number' ? e.image.bytes : 0),
+    0,
   );
+  if (totalBytes > MAX_BATCH_BYTES) {
+    return failCap(
+      'bytes',
+      MAX_BATCH_BYTES,
+      totalBytes,
+      'Batch exceeds ' + (MAX_BATCH_BYTES / (1024 * 1024)) + ' MB total photo size',
+    );
+  }
+
+  // 3. Per-edit validation — accumulate, do NOT short-circuit. API-03 / D-05
+  //    requires the response to enumerate EVERY failing edit so the UI can
+  //    highlight all of them at once.
+  const errors: Array<{ index: number; error: string }> = [];
+  p.edits.forEach((e: any, index: number) => {
+    const err = validateEdit(e);
+    if (err) errors.push({ index, error: err });
+  });
+  if (errors.length > 0) return failBatch(errors);
+
+  // 4. Per-edit autonomy roll-up — D-10. The batch is AUTO-ELIGIBLE iff
+  //    EVERY edit individually passes the per-edit autonomy gate (intent
+  //    change-wording/replace-photo AND ≥ 2 locator signals). signalCount()
+  //    is the same helper v1 uses, imported from ./validate.
+  const perEdit = p.edits.map((e: any) => {
+    const sigs = signalCount(e);
+    const auto = (e.intent === 'change-wording' || e.intent === 'replace-photo') && sigs >= 2;
+    return { sigs, auto };
+  });
+  const batchAuto: boolean = perEdit.every((x: { auto: boolean }) => x.auto);
+  // failedIndexes uses 1-based edit numbering for the issue-body hint string
+  // (the body says "edit #3 failed", not "edit #2 failed" — humans count from 1).
+  const failedIndexes: number[] = perEdit
+    .map((x: { auto: boolean }, i: number) => (x.auto ? null : i + 1))
+    .filter((x: number | null): x is number => x !== null);
+
+  const testMode = p.testMode === true;
+  const N = p.edits.length;
+
+  // 5. Per-edit locator normalisation. Mirror the v1 path's clamp() set so
+  //    the JSON-block shape inside each issue stays identical across v1 and
+  //    v2 edits — the Action consumes both via the same schema.
+  const normaliseEdit = (e: any) => {
+    const detail = e.intentDetail || {};
+    const intent: Intent = e.intent;
+    return {
+      schemaVersion: SCHEMA_VERSION_V2,
+      pageRoute: clamp(e.pageRoute, 200),
+      astroFileGuess: clamp(e.astroFileGuess, 200),
+      intent,
+      i18nKey: e.i18nKey ? clamp(e.i18nKey, 200) : null,
+      i18nAttr: e.i18nAttr ? clamp(e.i18nAttr, 40) : null,
+      imageRef: e.imageRef ? clamp(e.imageRef, 300) : null,
+      galleryAttrRaw: e.galleryAttrRaw ? clamp(e.galleryAttrRaw, 4000) : null,
+      galleryIndex: Number.isInteger(e.galleryIndex) ? e.galleryIndex : null,
+      domPath: clamp(e.domPath, 600),
+      nearbyText: clamp(e.nearbyText, 200),
+      nearestHeading: e.nearestHeading ? clamp(e.nearestHeading, 200) : null,
+      outerHTMLSnippet: clamp(e.outerHTMLSnippet, 1500),
+      boundingInfo: e.boundingInfo || null,
+      computedStyle: e.computedStyle || null,
+      langAtCapture: e.langAtCapture === 'fr' ? 'fr' : 'en',
+      intentDetail: {
+        currentText: clamp(detail.currentText, 600),
+        newTextEn: clamp(detail.newTextEn, 2000),
+        newTextFr: clamp(detail.newTextFr, 2000),
+        okToTranslate: detail.okToTranslate === true,
+        change: detail.change || null,
+        detail: clamp(detail.detail, 2000),
+        confirmed: detail.confirmed === true,
+      },
+    };
+  };
+
+  const normalisedEdits = p.edits.map(normaliseEdit);
+
+  // Per-edit imageMeta — same shape v1 uses. committedPath / sha256 are null
+  // until Task 3's photo-commit loop populates them; the placeholder body
+  // created below carries null for both.
+  const imageMeta = (
+    committedPath: string | null,
+    sha256: string | null,
+    sourceEdit: any,
+  ) => {
+    const img = sourceEdit?.image || { present: false };
+    return {
+      present: !!img.present,
+      committedPath,
+      originalFilename: img.present ? clamp(img.originalFilename, 260) : null,
+      mime: img.present ? clamp(img.mime, 100) : null,
+      bytes: img.present ? img.bytes : null,
+      sha256,
+    };
+  };
+
+  // 6. Body factory. Closure over batchAuto / failedIndexes / N so Task 3 can
+  //    re-call it after the photo loop without rebuilding the autonomy hint.
+  //    The factory takes the array of FINAL machineEdits (with image paths
+  //    populated, or all-null on first call before any photo is committed).
+  const buildBatchBody = (machineEdits: Array<Record<string, any>>): string => {
+    const humanSections = p.edits.map((e: any, i: number) => {
+      // renderHuman expects the v1-shape locator; pass the normalised edit
+      // (which has the same shape) so the per-edit summary matches v1.
+      return '### Edit ' + (i + 1) + ' of ' + N + '\n\n' + renderHuman(normalisedEdits[i], e.intent);
+    });
+
+    const hint = batchAuto
+      ? 'Autonomy hint: AUTO-ELIGIBLE (all ' + N + ' edits pass per-edit gate). Verify against the autonomy gate in .github/CLAUDE_FEEDBACK.md before labelling `auto-approved`.'
+      : 'Autonomy hint: NEEDS-REVIEW (' + failedIndexes.length + ' of ' + N + ' edits failed the per-edit gate: ' + failedIndexes.map((i) => '#' + i).join(', ') + '). Open a PR, do not auto-merge.';
+
+    return [
+      '**A client left feedback on the live site (' + N + ' edits).**',
+      '',
+      '---',
+      '',
+      humanSections.join('\n\n---\n\n'),
+      '',
+      '---',
+      '',
+      '<!-- machine-readable feedback payload — do not edit by hand -->',
+      '```json',
+      JSON.stringify({ schemaVersion: SCHEMA_VERSION_V2, batch: true, edits: machineEdits }, null, 2),
+      '```',
+      '',
+      hint,
+    ].join('\n');
+  };
+
+  // 7. Title (ISSUE-01) + labels. The uniqueRoutes list is comma-separated
+  //    and capped at 60 chars per ISSUE-01; the OVERALL title then respects
+  //    the 80-char cap with a '…' truncation (matches v1).
+  const uniqueRoutes = Array.from(new Set(p.edits.map((e: any) => String(e.pageRoute))));
+  const routeList = uniqueRoutes.join(', ').slice(0, 60);
+  let title = (testMode ? '[TEST] ' : '') + '[Feedback] batch of ' + N + ' edits — ' + routeList;
+  if (title.length > 80) title = title.slice(0, 79) + '…';
+  const labels = testMode ? ['client-feedback-test'] : ['client-feedback'];
+
+  try {
+    // 8. Build the placeholder body — every edit's image meta has null path
+    //    and null sha256. Task 3 commits the photos and rebuilds the body
+    //    with populated paths via ONE patchIssueBody call (API-05).
+    const placeholderMachineEdits = normalisedEdits.map((m: Record<string, any>, i: number) => ({
+      ...m,
+      image: imageMeta(null, null, p.edits[i]),
+    }));
+    const initialBody = buildBatchBody(placeholderMachineEdits);
+
+    const issue = await createIssue(title, initialBody, labels);
+    const issueNumber: number = issue.number;
+    const issueUrl: string = issue.html_url;
+
+    // Task 3 inserts the photo loop + final patchIssueBody call HERE,
+    // between createIssue() and the return below. For now (Task 2), return
+    // 200 with the issue number; the body keeps placeholder null image
+    // paths until Task 3 rebuilds it.
+    return new Response(
+      JSON.stringify({ ok: true, issueNumber, issueUrl }),
+      { status: 200, headers: { 'Content-Type': 'application/json' } },
+    );
+  } catch (err: any) {
+    return new Response(
+      JSON.stringify({ ok: false, error: err?.message || 'Server error' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------
