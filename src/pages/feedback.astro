@@ -78,6 +78,23 @@ const firstSrc = `/?feedback=1&v=${VER}`;
       .toast button.ghost { background:transparent; border:1px solid var(--line); color:var(--ink); }
       .working { position:fixed; inset:0; background:rgba(15,23,42,.55); display:none; align-items:center; justify-content:center; z-index:60; font-size:.95rem; }
       .working.show { display:flex; }
+      /* ---- recent submissions rail (v1.2) ---- */
+      .rail { background:var(--panel); border-top:1px solid var(--line); padding:.9rem 1.1rem; max-height:40vh; overflow-y:auto; }
+      .rail__title { font-size:.85rem; color:var(--muted); margin-bottom:.55rem; }
+      .rail__list { list-style:none; display:flex; flex-direction:column; gap:.55rem; padding:0; }
+      .rail__row { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:.65rem .8rem; font-size:.82rem; }
+      .rail__row__head { display:flex; align-items:baseline; justify-content:space-between; gap:.8rem; margin-bottom:.45rem; }
+      .rail__row__head a { color:var(--accent); text-decoration:none; font-weight:600; }
+      .rail__row__head .when { color:var(--muted); font-size:.75rem; }
+      .rail__row__summary { color:var(--ink); margin-bottom:.45rem; }
+      .rail__bar { display:grid; grid-template-columns:repeat(5,1fr); gap:3px; }
+      .rail__bar__seg { height:6px; border-radius:3px; background:var(--line); transition:background .2s ease; }
+      .rail__bar__seg.is-done { background:var(--accent); }
+      .rail__bar__seg.is-current { background:var(--accent-2); }
+      .rail__row__sub { margin-top:.4rem; color:var(--muted); font-size:.76rem; }
+      .rail__row__sub a { color:var(--accent); }
+      .rail__row.is-live .rail__row__summary { color:var(--muted); }
+      .rail__row.is-live .rail__row__sub { color:#86efac; }
     </style>
   </head>
   <body>
@@ -124,6 +141,11 @@ const firstSrc = `/?feedback=1&v=${VER}`;
           <iframe id="site" src={firstSrc} title="Moulin à Rêves preview"></iframe>
         </div>
 
+        <aside class="rail" id="rail" hidden>
+          <h3 class="rail__title">Recent submissions</h3>
+          <ul class="rail__list" id="railList"></ul>
+        </aside>
+
         <div class="working" id="working">Sending your feedback…</div>
         <div class="toast" id="toast">
           <h3 id="toastTitle"></h3>
@@ -140,6 +162,138 @@ const firstSrc = `/?feedback=1&v=${VER}`;
             var tTitle = document.getElementById('toastTitle');
             var tBody = document.getElementById('toastBody');
             var tRow = document.getElementById('toastRow');
+
+            // ---- Recent submissions rail (v1.2 STATUS-06..09) ------------------
+            var RAIL_KEY = 'mar_feedback_recent_v1';
+            var rail = document.getElementById('rail');
+            var railList = document.getElementById('railList');
+            var pollers = {};        // issueNumber → setInterval handle
+            var POLL_MS = 8000;
+
+            function loadRecent() {
+              try {
+                var v = JSON.parse(localStorage.getItem(RAIL_KEY) || '[]');
+                return Array.isArray(v) ? v : [];
+              } catch (_) { return []; }
+            }
+            function saveRecent(list) {
+              try { localStorage.setItem(RAIL_KEY, JSON.stringify(list.slice(0, 20))); } catch (_) {}
+            }
+            function relTime(iso) {
+              var ms = Date.now() - new Date(iso).getTime();
+              if (ms < 60000) return 'just now';
+              if (ms < 3600000) return Math.floor(ms / 60000) + 'm ago';
+              if (ms < 86400000) return Math.floor(ms / 3600000) + 'h ago';
+              return Math.floor(ms / 86400000) + 'd ago';
+            }
+            function stageLabel(stage) {
+              return ['', 'Submitted', 'Reviewing', 'PR opened', 'Merged', 'Live'][stage] || '';
+            }
+            function subBlock(item) {
+              if (item.lastStage === 5) {
+                var liveExtra = item.deployUrl
+                  ? ' · <a target="_blank" rel="noopener" href="' + item.deployUrl + '">view deploy</a>'
+                  : '';
+                return '✓ Live on the site' + liveExtra;
+              }
+              if (item.lastSub === 'needs-client-reply') {
+                return 'Question for you → <a target="_blank" rel="noopener" href="' + item.issueUrl + '">open issue</a>';
+              }
+              if (item.lastSub === 'needs-review') return 'Needs Monty’s review';
+              if (item.lastSub === 'auto-merged' || item.lastSub === 'merged') return 'Merged · waiting for deploy…';
+              return stageLabel(item.lastStage) + '…';
+            }
+            function escapeHtml(s) {
+              return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+                return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+              });
+            }
+            function renderRail() {
+              var list = loadRecent();
+              if (!list.length) { rail.hidden = true; return; }
+              rail.hidden = false;
+              railList.innerHTML = '';
+              list.forEach(function (item) {
+                var li = document.createElement('li');
+                li.className = 'rail__row' + (item.lastStage === 5 ? ' is-live' : '');
+                var bar = '';
+                for (var i = 1; i <= 5; i++) {
+                  var cls = 'rail__bar__seg';
+                  if (i < item.lastStage) cls += ' is-done';
+                  else if (i === item.lastStage) cls += ' is-current';
+                  bar += '<div class="' + cls + '" title="' + stageLabel(i) + '"></div>';
+                }
+                li.innerHTML =
+                  '<div class="rail__row__head">' +
+                    '<a target="_blank" rel="noopener" href="' + escapeHtml(item.issueUrl) + '">#' + escapeHtml(item.issueNumber) + '</a>' +
+                    '<span class="when">' + relTime(item.submittedAt) + '</span>' +
+                  '</div>' +
+                  '<div class="rail__row__summary">' + escapeHtml(item.summary) + '</div>' +
+                  '<div class="rail__bar">' + bar + '</div>' +
+                  '<div class="rail__row__sub">' + subBlock(item) + '</div>';
+                railList.appendChild(li);
+              });
+            }
+            function isTerminal(item) {
+              if (item.lastStage === 5) return true;
+              if (item.lastStage === 4 && (item.lastSub === 'needs-review' || item.lastSub === 'needs-client-reply')) return true;
+              return false;
+            }
+            function pollOne(num) {
+              if (pollers[num]) return;
+              var loop = function () {
+                fetch('/api/feedback/status/' + encodeURIComponent(num), { credentials: 'include' })
+                  .then(function (r) { return r.ok ? r.json() : null; })
+                  .then(function (data) {
+                    if (!data) return;
+                    var list = loadRecent();
+                    var idx = -1;
+                    for (var i = 0; i < list.length; i++) { if (String(list[i].issueNumber) === String(num)) { idx = i; break; } }
+                    if (idx === -1) { clearInterval(pollers[num]); delete pollers[num]; return; }
+                    list[idx].lastStage = data.stage;
+                    list[idx].lastSub = data.sub;
+                    list[idx].deployUrl = data.deployUrl || null;
+                    saveRecent(list);
+                    renderRail();
+                    if (isTerminal(list[idx])) { clearInterval(pollers[num]); delete pollers[num]; }
+                  })
+                  .catch(function () { /* network blip: next tick will retry */ });
+              };
+              loop();
+              pollers[num] = setInterval(loop, POLL_MS);
+            }
+            function persistSubmission(data, payload) {
+              try {
+                var list = loadRecent();
+                var routes = [];
+                var editCount = 0;
+                if (payload && Array.isArray(payload.edits)) {
+                  editCount = payload.edits.length;
+                  payload.edits.forEach(function (e) {
+                    var r = e && e.locator && e.locator.pageRoute;
+                    if (r && routes.indexOf(r) === -1) routes.push(r);
+                  });
+                } else if (payload && payload.locator && payload.locator.pageRoute) {
+                  editCount = 1;
+                  routes.push(payload.locator.pageRoute);
+                }
+                list.unshift({
+                  issueNumber: data.issueNumber,
+                  issueUrl: data.issueUrl,
+                  summary: editCount + ' edit' + (editCount === 1 ? '' : 's') + (routes.length ? ' · ' + routes.join(', ') : ''),
+                  submittedAt: new Date().toISOString(),
+                  lastStage: 1,
+                  lastSub: null,
+                  deployUrl: null,
+                });
+                saveRecent(list);
+              } catch (_) { /* localStorage unavailable: skip silently */ }
+            }
+            function startAllPollers() {
+              loadRecent().forEach(function (item) { if (!isTerminal(item)) pollOne(item.issueNumber); });
+            }
+            renderRail();
+            startAllPollers();
 
             picker.addEventListener('change', function () {
               iframe.src = picker.value + '?feedback=1&v=' + VER;
@@ -193,35 +347,38 @@ const firstSrc = `/?feedback=1&v=${VER}`;
                   // surface partial photo-commit failures without clearing staged state.
                   iframe.contentWindow &&
                     iframe.contentWindow.postMessage({
-                      type: ‘mar-feedback-result’,
+                      type: 'mar-feedback-result',
                       ok: true,
                       ...(data.warning ? { warning: data.warning } : {}),
                       ...(Array.isArray(data.commitErrors) ? { commitErrors: data.commitErrors } : {}),
                     }, location.origin);
+                  persistSubmission(data, msg.payload);
+                  renderRail();
+                  if (data.issueNumber) pollOne(data.issueNumber);
                   showToast(
-                    ‘ok’,
-                    ‘Thank you — it’s on its way’,
-                    (data.warning ? data.warning + ‘ Re-attach the affected photos and resubmit.’ :
-                      ‘We’ve logged your request’ +
-                      (data.issueUrl ? ‘ (<a target="_blank" rel="noopener" href="’ + data.issueUrl + ‘">#’ + data.issueNumber + ‘</a>)’ : ‘’) +
-                      ‘. Simple changes go live automatically; anything tricky comes back to you as a question.’),
-                    [{ label: ‘Done’, onClick: hideToast }]
+                    'ok',
+                    'Thank you — it’s on its way',
+                    (data.warning ? data.warning + ' Re-attach the affected photos and resubmit.' :
+                      'We’ve logged your request' +
+                      (data.issueUrl ? ' (<a target="_blank" rel="noopener" href="' + data.issueUrl + '">#' + data.issueNumber + '</a>)' : '') +
+                      '. Watch the Recent submissions panel below to follow it from review to live.'),
+                    [{ label: 'Done', onClick: hideToast }]
                   );
                 } else {
-                  // CR-01 (failure path): spread structured cap/error fields so the inject’s
+                  // CR-01 (failure path): spread structured cap/error fields so the inject's
                   // m.cap and m.errors branches become reachable.
                   iframe.contentWindow &&
                     iframe.contentWindow.postMessage({
-                      type: ‘mar-feedback-result’,
+                      type: 'mar-feedback-result',
                       ok: false,
                       ...(Array.isArray(data && data.errors) ? { errors: data.errors } : {}),
                       ...(data && data.cap ? { cap: data.cap } : {}),
-                      ...(data && typeof data.limit === ‘number’ ? { limit: data.limit } : {}),
-                      ...(data && typeof data.actual === ‘number’ ? { actual: data.actual } : {}),
+                      ...(data && typeof data.limit === 'number' ? { limit: data.limit } : {}),
+                      ...(data && typeof data.actual === 'number' ? { actual: data.actual } : {}),
                       ...(data && data.error ? { error: data.error } : {}),
                     }, location.origin);
-                  showToast(‘err’, ‘That didn’t go through’, (data && data.error) || ‘Something went wrong. Please try again.’, [
-                    { label: ‘OK’, ghost: true, onClick: hideToast },
+                  showToast('err', 'That didn’t go through', (data && data.error) || 'Something went wrong. Please try again.', [
+                    { label: 'OK', ghost: true, onClick: hideToast },
                   ]);
                 }
               } catch (e) {

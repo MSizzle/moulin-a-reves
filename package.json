@@ -13,6 +13,7 @@
     "astro": "astro",
     "canary:v1": "scripts/canary.sh v1",
     "canary:v2": "scripts/canary.sh v2",
+    "canary:status": "scripts/canary.sh status",
     "canary": "scripts/canary.sh"
   },
   "dependencies": {

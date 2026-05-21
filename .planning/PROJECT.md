@@ -14,9 +14,25 @@ v1.1 replaced the 1-edit-per-deploy feedback flow with a batched submission mode
 
 Full detail: [`MILESTONES.md` § v1.1](./MILESTONES.md) · [`milestones/v1.1-ROADMAP.md`](./milestones/v1.1-ROADMAP.md) · [`milestones/v1.1-MILESTONE-AUDIT.md`](./milestones/v1.1-MILESTONE-AUDIT.md) · [`RETROSPECTIVE.md`](./RETROSPECTIVE.md)
 
-## Next Milestone: v1.2 (planning pending)
+## Current Milestone: v1.2 Status Visibility (Planning — 2026-05-21)
 
-To kick off v1.2, run `/gsd-new-milestone`. Candidate scope lives in the "Carried forward to v1.2" subsection under Requirements below.
+**Goal:** Make the v1.1 batch-feedback pipeline observable to the client. Once they click Submit, they get a per-batch progress bar that lights up through 5 stages (Submitted → Reviewing → PR opened → Merged/Needs-review/Question → Live) so they can see their work landing without watching the live site or guessing.
+
+**Target features:**
+
+- Auth-gated server endpoint `/api/feedback/status/[issueNumber]` that rolls up GitHub issue + PR + commit + Vercel deploy state into a single stage code, with ~5 s server-side memo cache to absorb client poll.
+- "Recent submissions" rail on `/feedback` showing one row per in-flight batch with a 5-segment progress bar, persisted in `localStorage` on submit-success.
+- Background polling every ~8 s for batches not yet at terminal state (Live / Needs-review / Question); auto-stop on terminal stages to bound API cost.
+- Sub-label disambiguation at stage 4 — "Merged" vs "Needs review" vs "Question for you" with a deep-link into the issue thread.
+
+**Plan reference:** `/Users/Montster/.claude/plans/a-couple-ideas-this-melodic-nebula.md` (Feature 1 section). v1.3 (file-driven per-page edit flow, Feature 2) is the follow-on milestone — out of scope for v1.2 except as a downstream consumer of the same submit pipeline.
+
+**Constraints carried into v1.2:**
+
+- No changes to `.github/CLAUDE_FEEDBACK.md`, the GitHub issue/PR schema, or the `/api/feedback/submit` server contract. v1.2 is purely additive on top of v1.1.
+- Reuse existing HMAC auth gate (`src/lib/auth.ts`, `checkAuth()`); no new auth surface.
+- Vercel deployment lookup via the existing project token (Vercel REST API) — server-only, never exposed to the client.
+- Feedback-inject script and the chip / staged-panel UI are not touched in v1.2 (cache-bust version `FEEDBACK_INJECT_VER='4'` stays put unless something else forces a bump).
 
 ## Requirements
 

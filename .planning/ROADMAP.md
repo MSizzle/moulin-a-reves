@@ -4,7 +4,8 @@
 
 - ✅ **v1.0 May 5 Client Edits** — Phases 1–3 (shipped 2026-05-05, archived 2026-05-21)
 - ✅ **v1.1 Batch Feedback Pipeline** — Phases 4–5 (shipped 2026-05-21, archived 2026-05-21)
-- 📋 **v1.2** — TBD (run `/gsd-new-milestone` to plan)
+- 🚧 **v1.2 Status Visibility** — Phase 6 (planning, 2026-05-21)
+- 📋 **v1.3** — File-driven per-page edit flow (queued; see plan at `/Users/Montster/.claude/plans/a-couple-ideas-this-melodic-nebula.md` Feature 2)
 
 ## Phase Details
 
@@ -29,17 +30,25 @@ Full milestone detail: [`milestones/v1.1-ROADMAP.md`](./milestones/v1.1-ROADMAP.
 
 </details>
 
-### 📋 v1.2 (Planning pending)
+### 🚧 v1.2 Status Visibility (Planning — Phase 6)
 
-To start the next milestone, run `/gsd-new-milestone` — the questioning flow gathers context, picks a focus, generates a fresh REQUIREMENTS.md, and writes a new roadmap.
+**Goal:** Make the v1.1 batch-feedback pipeline observable to the client. After Submit, a per-batch progress bar lights up through 5 stages (Submitted → Reviewing → PR opened → Merged/Needs-review/Question → Live) on `/feedback`.
 
-**Carried-forward candidates** (from PROJECT.md → "Carried forward to v1.2"):
+- [ ] **Phase 6: Status Visibility** (planned plans TBD by `/gsd-plan-phase 6`) — Auth-gated `/api/feedback/status/[issueNumber]` rolling GitHub + Vercel state into a 5-stage code with 5 s memo cache; "Recent submissions" rail under the iframe with 8 s poll, terminal-state stop, and sub-label disambiguation; new `VERCEL_TOKEN` env var (server-only); canary `scripts/smoke-feedback-status.mjs` wired into `npm run canary`. **UI hint:** yes (frontend phase). **Requirements:** STATUS-01..10.
+
+Requirements archive (when shipped): `milestones/v1.2-REQUIREMENTS.md` · `milestones/v1.2-ROADMAP.md`.
+
+### 📋 v1.3 (Queued — File-Driven Per-Page Edit Flow)
+
+Feature 2 of `/Users/Montster/.claude/plans/a-couple-ideas-this-melodic-nebula.md`. Build-time edit catalogs per route, Claude-Haiku matcher endpoint, `feedback-match-inject.js` overlay, side panel approve/reject; reuses the v1.1 batch submit pipeline unchanged. Start with `/gsd-new-milestone` after v1.2 ships.
+
+**Other v1.2 candidates deferred until status-visibility ships** (originally carried from v1.1):
 
 - Photo gallery modal rewrite (X-button, forward arrow, bottom crop across all houses)
 - Calendar 12-month scrollable range
 - Editor / publishing flow deep audit (fragility, error paths, HMAC session edge cases)
 - Apply Melissa's `CLIENT-CLARIFICATION.md` answers (gated on her reply)
-- Possible v1.2 follow-on canary work: auto-canary-on-deploy GitHub workflow, Playwright-based browser net-tab fidelity, cron'd weekly regression sweep
+- Auto-canary-on-deploy GitHub workflow, Playwright net-tab fidelity, cron'd weekly regression sweep
 
 ## Progress
 
@@ -50,5 +59,6 @@ To start the next milestone, run `/gsd-new-milestone` — the questioning flow g
 | 3. CLIENT-CLARIFICATION.md | v1.0 | 1/1 | Complete | 2026-05-05 |
 | 4. Batch Pipeline Implementation | v1.1 | 11/11 | Complete | 2026-05-21 |
 | 5. Post-Deploy Verification | v1.1 | 3/3 | Complete | 2026-05-21 |
+| 6. Status Visibility | v1.2 | 0/? | Planning | — |
 
-**v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — COMPLETE 2026-05-21** (25/25 requirements; live canaries verified end-to-end on deployed `www.moulinareves.com`).
+**v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — COMPLETE 2026-05-21** (25/25 requirements; live canaries verified end-to-end on deployed `www.moulinareves.com`). **v1.2 — PLANNING 2026-05-21** (0/10 requirements; awaiting `/gsd-plan-phase 6`).

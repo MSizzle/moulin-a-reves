@@ -1,144 +1,48 @@
-# Milestone v1.1 — Batch Feedback Pipeline
+# Milestone v1.2 Requirements — Status Visibility
 
-**Goal:** Let the client stage multiple feedback edits in a session and submit them as a single batch — one batch → one issue → one Claude PR → one merge → one deploy — replacing the current one-edit-per-deploy pattern that creates 8–10 deploys per client review pass.
-
-**Source-of-truth spec:** user memory `moulin-batch-feedback-spec.md` (design decisions already made; 5 open UX questions explicitly deferred to `/gsd-discuss-phase`).
-
-**Scope mode:** v1.1 = batch-feedback only. All structural deferrals (gallery modal, calendar 12-month, editor flow audit, Melissa's clarification answers) carry forward to v1.2 — see PROJECT.md → "Carried forward to v1.2".
-
----
-
-## v1 Requirements
-
-### STAGE — Client-side staging UI (`public/feedback-inject.js`)
-
-- [ ] **STAGE-01**: Client can stage a confirmed edit instead of immediately submitting it; staged edits persist in `sessionStorage` and survive iframe navigation and reload (clear on browser close)
-- [ ] **STAGE-02**: A corner chip appears after the first stage showing `N edits staged · Submit batch · View list`; click opens the panel
-- [ ] **STAGE-03**: The panel shows each staged edit in plain language with a per-item ❌ delete button and a "Clear all" button at the bottom that requires a confirm before clearing
-- [ ] **STAGE-04**: Client can submit the whole staged batch in one `POST /api/feedback/submit` call, which closes the panel and clears `sessionStorage` on success
-- [ ] **STAGE-05**: Photo files are stored as File references in `sessionStorage` and encoded to base64 only at batch-submit time (avoids the ~5 MB `sessionStorage` cap that 12 MB photos would blow through)
-- [ ] **STAGE-06**: Client enforces edit-count cap (10 edits per batch) and total-photo-MB cap (30 MB per batch); when next stage would breach a cap, the Confirm button is disabled and an inline message reads 'This batch is full — submit it before staging more' (emergent from D-05 / mirrors D-01 + D-02 client-side)
-- [ ] **STAGE-07**: Chip displays a 'limit reached' UX state distinct from the normal 'N edits staged · Submit batch · View list' label when either cap is hit (emergent from D-05; supports STAGE-06)
-
-### API — Server endpoint (`src/pages/api/feedback/submit.ts`)
-
-- [ ] **API-01**: `POST /api/feedback/submit` accepts `schemaVersion: 2` batch payloads of shape `{ schemaVersion: 2, batch: true, edits: [...] }`
-- [ ] **API-02**: `POST /api/feedback/submit` continues to accept `schemaVersion: 1` single-edit payloads indefinitely (back-compat — cached `feedback-inject.js` clients may stay in browser caches for days)
-- [ ] **API-03**: Per-edit validation (vagueness check, photo size, locator quality, intent enum, EN/FR rule) runs on every edit in `edits[]`; if any edit fails, the entire batch is rejected with a structured per-edit-errors response so the UI can highlight which edits to fix or drop
-- [ ] **API-04**: Per-edit validation logic is extracted into a shared helper consumed by both the v1 single-edit and v2 batch code paths (so the two paths can never drift)
-- [ ] **API-05**: All photos in a batch commit to the same `feedback-incoming/issue-<n>/` directory and get patched into the issue body in a single PATCH call (not N PATCH calls)
-- [ ] **API-06**: Server re-validates both batch caps (edit-count and total-photo-MB) and rejects oversize batches with a structured per-cap error so the UI can highlight which cap was breached (emergent from D-05; server-side mirror of STAGE-06)
-
-### ISSUE — GitHub issue construction for batches
-
-- [ ] **ISSUE-01**: One GitHub issue is created per batch, titled `[Feedback] batch of {N} edits — {comma-separated unique pageRoutes, truncated to 60 chars}`
-- [ ] **ISSUE-02**: The issue body contains a per-edit human-readable summary section using the existing `renderHuman()` (one per edit, separated by `---`)
-- [ ] **ISSUE-03**: The issue body contains a single fenced ```` ```json ```` block holding the entire `edits[]` array (the Action reads this via `gh issue view`, not via YAML interpolation, to preserve prompt-injection safety)
-- [ ] **ISSUE-04**: The autonomy hint embedded in the issue body passes only if every edit individually passes the autonomy gate; failure-reason string lists which edits failed and why
-
-### ACTION — Claude Code Action behavior (`.github/CLAUDE_FEEDBACK.md`)
-
-- [ ] **ACTION-01**: `.github/CLAUDE_FEEDBACK.md` has a new `## 8. Batch submissions` section documenting v2 schema detection (`schemaVersion=2 && batch=true`), the per-edit-passes-required autonomy rule, and explicit inheritance of EN/FR + disallowed-paths rules per edit
-- [ ] **ACTION-02**: A batched issue produces a single branch (e.g. `feedback/issue-<n>-batch-<N>`), a single commit, and a single PR with all edits applied (no per-edit branch fan-out)
-- [ ] **ACTION-03**: The Action posts ONE result comment per batch summarizing how many edits applied and which (if any) failed (e.g., "Applied 3 of 4 edits; edit #4 had only 1 locator signal so the whole set is in review")
-
-### OPS — Cache-bust, additive guarantee, docs, verification
-
-- [ ] **OPS-01**: `FEEDBACK_INJECT_VER` in `src/lib/feedback-version.ts` is bumped before merge (without it browsers serve the cached v1 inject script and the new state machine never loads)
-- [ ] **OPS-02**: Editor flow (`?edit=1`, `editor-inject.js`, `editor/`, `site/save.ts`, `site/publish.ts`, `guardrails.js`) is byte-for-byte unchanged in the v1.1 PR diff (additive-only constraint — verifiable via `git diff main -- public/editor-inject.js public/editor public/guardrails.js src/pages/api/site middleware.ts`)
-- [ ] **OPS-03**: `CLAUDE.md` "Feedback mode" section gains a one-line note about batching so future devs / AI know the v2 schema exists
-- [ ] **OPS-04**: After deploy, a regression canary verifies a `schemaVersion: 1` single-edit payload still works (curl with old-shape JSON → existing single-edit issue path)
-- [ ] **OPS-05**: After deploy, a batched canary submission (using the `client-feedback-test` label OR with `DRY_RUN=true` first) produces ONE issue with all edits in the JSON block, ONE Claude PR, and the correct autonomy verdict; cache-bust is verified by checking the network tab for `feedback-inject.js?v=<NEW_VER>`
+**Milestone:** v1.2 Status Visibility
+**Goal:** Make the v1.1 batch-feedback pipeline observable to the client via a per-batch deployment progress bar on `/feedback`.
+**Plan reference:** `/Users/Montster/.claude/plans/a-couple-ideas-this-melodic-nebula.md` (Feature 1).
+**Defined:** 2026-05-21
 
 ---
 
-## Future Requirements
+## v1.2 Requirements (10)
 
-Items deferred from this milestone:
+### Server — Status Endpoint (5)
 
-- *(none — see "Open design questions" below; those are scoped to discuss-phase, not deferred features)*
+- [ ] **STATUS-01**: New route `src/pages/api/feedback/status/[issueNumber].ts` exists, declares `export const prerender = false;`, and rejects unauthenticated requests with `401` via the existing `checkAuth()` helper from `src/lib/auth.ts`.
+- [ ] **STATUS-02**: Endpoint resolves a numeric issue → a stage code in `{1,2,3,4,5}` corresponding to: 1 Submitted, 2 Reviewing, 3 PR opened, 4 Merged/Needs-review/Question, 5 Live. Resolution combines: GitHub issue labels, GitHub issue's linked `pull_request`, the merge commit SHA on `main`, and the Vercel deployment state for that SHA.
+- [ ] **STATUS-03**: Stage 4 returns a `sub` field disambiguating which terminal-review state was reached: `'auto-merged'`, `'needs-review'`, `'needs-client-reply'`, `'merged'`, or `'open'`. `null` at stages 1–3 and 5.
+- [ ] **STATUS-04**: Endpoint memoizes responses server-side keyed by `<issueNumber>` with a ~5 s TTL so 10 sequential client polls produce ≤ 1 GitHub API call sequence per issue per 5 s window.
+- [ ] **STATUS-05**: Vercel deployment state is fetched via the Vercel REST API using a server-only token sourced from a new `VERCEL_TOKEN` env var; the token is never reachable from the browser. If the token is missing, the endpoint still returns valid stage 1–4 data and degrades stage 5 detection to `null` rather than crashing.
+
+### Client — Recent Submissions Rail (4)
+
+- [ ] **STATUS-06**: On successful POST to `/api/feedback/submit` from `src/pages/feedback.astro`, the returned `{ issueNumber, issueUrl }` plus a derived `summary` (route list + edit count) is appended to a `localStorage` entry under key `mar_feedback_recent_v1` (max 20 most-recent retained).
+- [ ] **STATUS-07**: A new "Recent submissions" rail renders below the feedback iframe on `/feedback`, showing one row per persisted submission with: issue number link, summary, submitted timestamp (relative), and a 5-segment progress bar with the current stage lit and prior stages filled.
+- [ ] **STATUS-08**: The rail polls `/api/feedback/status/<N>` every 8 s for any row whose stage is `< 5` AND whose `sub` is not in `{'needs-review','needs-client-reply'}`. Polling stops once the row reaches stage 5 OR enters a human-wait sub-state.
+- [ ] **STATUS-09**: Stage-4 rows render their `sub` as a human label: `auto-merged` → "Merged", `needs-review` → "Needs Monty's review", `needs-client-reply` → "Question for you →" (with deep-link to the issue comment). Stage-5 rows collapse to a single "✓ Live · <relative time>" line with a "view changes" link to the merge commit.
+
+### Verification (1)
+
+- [ ] **STATUS-10**: A canary script `scripts/smoke-feedback-status.mjs` (dual-mode like `smoke-feedback-v2.mjs`) submits a small dry-run batch through `submit.ts`, then polls `/api/feedback/status/<N>` until the response stabilizes at stage 5 OR a terminal review sub-state, with a 5-minute timeout. Exits non-zero on timeout or unexpected stage regression. Wired into `npm run canary` alongside the existing v1 / v2 canaries.
 
 ---
+
+## Future Requirements (deferred to v1.3+)
+
+- File-driven per-page edit flow (catalog generator, Claude-Haiku matcher endpoint, `feedback-match-inject.js`, side panel with Approve/Reject/Pick-manually). Tracked as Feature 2 in the plan; landing as Milestone v1.3.
+- Webhook-driven status push (replace polling with Vercel + GitHub webhooks → server-sent events). Defer until polling cost is shown to be a problem.
+- Per-edit drill-down within a batch (show which edits inside the batch failed validation, which images uploaded). Today the API only exposes batch-level outcomes; deferred until v1.3 needs it.
 
 ## Out of Scope
 
-Explicit exclusions for v1.1, with reasoning:
-
-- **Editor-flow changes** — the feedback flow shipped as a sibling system to the editor flow and the editor was left byte-for-byte unchanged. Batch-feedback maintains the same property. Editor-flow audit is a v1.2 candidate (`AUDIT-DEEP-01`).
-- **Autonomy-gate redesign** — the gate works; batch-feedback lives one layer above it (per-edit invocation). Don't redesign.
-- **Auto-batching heuristics** — no "client submitted 3 things in 30 seconds → batch them" detection. Explicit "Stage / Submit Batch" UI is clearer; implicit batching breaks user intent.
-- **New endpoint** — extend `submit.ts` to accept two payload shapes. Do not add `POST /api/feedback/submit-batch`.
-- **Server-side draft persistence** — the spec memory's option (c) (`client-feedback-draft`-labelled draft issues) is rejected for v1.1; `sessionStorage` is sufficient. Lift to v1.2 only if real demand emerges.
-- **`localStorage` draft persistence** — same rationale; `sessionStorage` (clears on browser close) is the chosen lifetime.
-- **Per-batch hard caps on edit count or total photo MB** — RESOLVED during discuss-phase (D-01, D-02) and emergent during planning as STAGE-06 / API-06 (per D-05). No longer out-of-scope; tracked above.
-- **Cross-page batching confirmation** — RESOLVED during discuss-phase (D-06); no longer out-of-scope.
-- **More-conservative batch autonomy thresholds** — RESOLVED during discuss-phase (D-10: keep per-edit thresholds, no batch redesign); no longer out-of-scope.
-- **All v1.2-carried items from PROJECT.md** — gallery modal rewrite, calendar 12-month range, editor flow audit, Melissa's clarification answers.
-
----
-
-## Open Design Questions (deferred to `/gsd-discuss-phase`)
-
-These five items live in the spec memory and intentionally are NOT v1.1 requirements — they should be settled during discussion, not pre-decided here:
-
-1. **Per-batch size caps** — hard limit on edit count (e.g., 10)? Hard limit on total photo MB (e.g., 30)?
-2. **Cross-page batching** — confirm clients want to stage across home → /homes/le-moulin/ → submit? Current sessionStorage design supports it trivially.
-3. **Draft persistence beyond browser close** — sessionStorage (default) vs localStorage vs server-side draft issues?
-4. **Autonomy threshold inheritance** — keep per-edit thresholds, or require ≥3 locator signals across the batch?
-5. **Mid-batch cancel UX** — confirm dialog vs toast vs irrevocable click for "Clear all"?
-
-Resolutions become additional STAGE-* / API-* / ACTION-* requirements during planning. (Resolved 2026-05-21 in `04-CONTEXT.md` decisions D-01..D-19; emergent requirements STAGE-06, STAGE-07, API-06 added during planning iteration 1 per D-05.)
-
----
-
-## Architectural Constraints (must be respected)
-
-From `CLAUDE.md` and prior project conventions — these are not requirements but they bound every requirement above:
-
-- **Additive-only pattern** — the editor flow stays untouched (OPS-02 enforces).
-- **Client↔server validation mirror** — whatever client validates, server re-validates (API-03 enforces).
-- **Prompt-injection safety** — workflow only interpolates the integer issue number; JSON block read via `gh issue view`, not YAML inlining (ISSUE-03 enforces).
-- **HTML translation keys** — if batch UI introduces translatable strings into the inject chip, use `data-i18n-html` (not `data-i18n`); admin-facing chip text may skip i18n entirely.
-- **Bilingual or nothing** — every copy edit in a batch must update EN and FR (or carry `okToTranslate=true`); the autonomy gate evaluates this per-edit (ISSUE-04 enforces).
-
----
+- Changes to `.github/CLAUDE_FEEDBACK.md`, the Action's prompt, the issue body schema, or the `submit.ts` server contract. v1.2 must be net-additive.
+- New auth surface (no API keys, no rotated tokens beyond the new `VERCEL_TOKEN`). The existing `maison_session` HMAC cookie protects all new endpoints.
+- Mobile-specific UI for the rail. The rail uses the existing responsive layout patterns from `/feedback`; no dedicated mobile flow.
+- Push notifications, email, or Slack alerts when a batch goes live. The rail is the surface; out-of-band notification is out of scope.
 
 ## Traceability
 
-| REQ-ID | Phase | Plan | Status |
-|--------|-------|------|--------|
-| STAGE-01 | 4 | 04-04 | satisfied |
-| STAGE-02 | 4 | 04-04 | satisfied |
-| STAGE-03 | 4 | 04-04 | satisfied |
-| STAGE-04 | 4 | 04-04 | satisfied |
-| STAGE-05 | 4 | 04-04 | satisfied |
-| STAGE-06 | 4 | 04-04 | satisfied |
-| STAGE-07 | 4 | 04-04 | satisfied |
-| API-01 | 4 | 04-03 | satisfied |
-| API-02 | 4 | 04-02 | satisfied |
-| API-03 | 4 | 04-03 | satisfied |
-| API-04 | 4 | 04-01 | satisfied |
-| API-05 | 4 | 04-03 | satisfied |
-| API-06 | 4 | 04-03 | satisfied |
-| ISSUE-01 | 4 | 04-03 | satisfied |
-| ISSUE-02 | 4 | 04-03 | satisfied |
-| ISSUE-03 | 4 | 04-03 | satisfied |
-| ISSUE-04 | 4 | 04-03 | satisfied |
-| ACTION-01 | 4 | 04-05 | satisfied |
-| ACTION-02 | 4 | 04-05 | satisfied |
-| ACTION-03 | 4 | 04-05 | satisfied |
-| OPS-01 | 4 | 04-06 | satisfied |
-| OPS-02 | 4 | 04-08 | satisfied |
-| OPS-03 | 4 | 04-07 | satisfied |
-| OPS-04 | 5 | TBD | satisfied |
-| OPS-05 | 5 | TBD | satisfied |
-
-**Coverage:** 25/25 v1 requirements mapped across 2 phases (Phase 4: 23 reqs, Phase 5: 2 reqs). No orphans, no duplicates.
-
-*Phase / Plan / Status columns are populated by the roadmapper and updated during execution.*
-
----
-
-*Created 2026-05-20 during `/gsd-new-milestone v1.1` — Batch Feedback Pipeline*
-*Traceability populated 2026-05-21 during roadmap creation — Phases 4 and 5*
-*Emergent requirements STAGE-06, STAGE-07, API-06 added 2026-05-20 during plan-phase iteration 1 per D-05 (CONTEXT.md)*
+To be filled in by the roadmapper / phase plan: maps REQ-IDs above to phase numbers and verifying plan IDs.
