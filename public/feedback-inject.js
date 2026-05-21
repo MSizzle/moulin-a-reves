@@ -1207,7 +1207,7 @@
   }
 
   function inUi(node) {
-    return !!(node && node.closest && node.closest('#mar-fb-panel,#mar-fb-banner'));
+    return !!(node && node.closest && node.closest('#mar-fb-panel,#mar-fb-banner,#mar-fb-chip,#mar-fb-panel-staged'));
   }
 
   function clearHover() {
