@@ -57,6 +57,57 @@
 
 ---
 
+## Milestone: v1.2 — Status Visibility
+
+**Shipped:** 2026-05-21
+**Phases:** 1 (Phase 6) | **Plans:** 3 + 1 quick-task gap closure (`260521-ou9`)
+**Requirements:** 10 / 10 v1.2 (STATUS-01..10, all satisfied)
+**Git:** `7811cf5` (PR #99 merge) → `7ad7177` (final docs commit). Companion fix `fe37cef` (PR #98 cache-bust v4) landed just before. STATUS-06 closure `1495a10` landed retroactively after the first audit pass.
+
+### What Was Built
+
+- **Auth-gated `/api/feedback/status/[issueNumber]` endpoint** + pure resolver `src/lib/feedback-status.ts` rolling 4 API signals (GitHub issue, comments, PR, Vercel deployment by commit SHA) into a 5-stage code with 5s in-memory Map cache and graceful VERCEL_TOKEN degrade.
+- **"Recent submissions" rail on `/feedback`** with localStorage persistence (cap 20), 5-segment progress bar, 8s client poll auto-stopping on terminal state, and stage-4 human disambiguation.
+- **`scripts/smoke-feedback-status.mjs`** dual-mode canary (unit + canary) wired into `npm run canary:status` and the no-arg `scripts/canary.sh` default (now runs v1 → v2 → status sequentially).
+- **Smart-quote pitfall fix in `feedback.astro`** as collateral inside 06-02 — replaced 14 U+2018/U+2019 JS string delimiters with ASCII `'` in lines 196-225 of the `<script is:inline>` block. The script had been parse-failing in browsers for 16 days; v1.1 canaries never exercised the iframe parent so the bug stayed latent.
+
+### What Worked
+
+- **Milestone audit caught a real defect that local verification missed.** The first audit pass surfaced STATUS-06 (rail summary reading `.locator.pageRoute` paths that never existed on the wire). The integration checker cross-referenced `persistSubmission()` against the actual `feedback-inject.js` payload shape — verification by reading both files in tension, not just inspecting the handler in isolation. Phase VERIFICATION.md had marked STATUS-06 passed based on code inspection of `persistSubmission()` alone. This is now the canonical "code-inspection verification alone is insufficient for client-side handlers consuming server-emitted shapes" lesson.
+- **Inline closure via `/gsd-quick` worked cleanly.** The STATUS-06 fix was 3 line replacements; spinning up `discuss-phase → plan-phase → execute-phase` would have been overkill. `/gsd-quick` produced a worktree-isolated atomic commit (`1495a10`) and a SUMMARY in ~5 minutes. The "audit → quick-task closure → re-audit → complete-milestone" loop is a viable single-day close pattern for plumbing-scale gaps.
+- **Graceful VERCEL_TOKEN degrade** kept the endpoint shippable without operator setup. The runbook in user memory `moulin-feedback-status-rail.md` walks the operator through token creation (scoped Production-only) and validation via the status canary. Without it, the rail tops out at stage 4 but doesn't crash.
+- **Single-resolver design over per-stage endpoints.** `resolveStage()` as a pure function means the endpoint, unit tests, and canary mode all consume the exact same logic — cache coherence is guaranteed because there's only one path.
+- **`FEEDBACK_INJECT_VER` discipline.** Bumping `'3'` → `'4'` in PR #98 (chip + staged-panel click fix) was necessary because the inject script changed; the rail (server endpoint + new client code in `feedback.astro`, not in `feedback-inject.js`) did NOT require a bump. The decision to bump or not is now a reflex: "did `feedback-inject.js` change? If yes, bump."
+
+### What Was Inefficient
+
+- **Phase VERIFICATION.md code-inspection pass missed the STATUS-06 wiring gap.** The verifier read `persistSubmission()` and concluded "the rail handler reads `msg.payload.edits[]` correctly per persistSubmission" — true in isolation, but the `.locator.pageRoute` read inside that function didn't match `feedback-inject.js`'s flat-payload shape. **Lesson:** for handlers that consume external payload shapes, verification must include reading the source-of-truth emitter, not just the consumer.
+- **No E2E smoke test for the v2-batch-via-rail flow.** Captured as carry-forward tech debt. An actual submission round-tripped through the rail (rather than just the unit-table for `resolveStage`) would have caught STATUS-06 in Phase 6 itself.
+- **Stale STATE.md and ROADMAP.md surfaced by the audit but not by the phase verification.** STATE.md was still claiming "Phase 04" focus, ROADMAP.md still showed v1.2 as 🚧 Planning with 0/? plans. These are bookkeeping debt that `/gsd-complete-milestone` reconciles, but ideally the phase-completion step itself would update them.
+- **CLI's `summary-extract` couldn't pull one-liners.** The Phase 6 SUMMARY files don't include a `one_liner` frontmatter field, so `gsd-sdk query milestone.complete` reported "(none recorded)" for accomplishments. Manually backfilled in MILESTONES.md post-archival. Tooling gap.
+
+### Patterns Established
+
+- **Audit → quick-task closure → re-audit → complete-milestone** as a single-day close loop for plumbing-scale gaps (vs. a closure phase via `/gsd-phase --insert`).
+- **Pure resolver + thin endpoint** for API routes that combine multiple upstream calls. The pure function is unit-testable; the endpoint adds auth + cache + I/O. Same pattern can apply to future endpoints like `/api/feedback/health` or `/api/deploy/state`.
+- **Memory-driven operational runbooks.** `moulin-feedback-status-rail.md` captures the VERCEL_TOKEN setup steps with team ID, project ID, env scope, and validation command — once. Future maintainers (including future-me) don't have to re-derive it.
+- **Quick-task SUMMARY filename convention is `<id>-SUMMARY.md`, not `<id>-01-SUMMARY.md`** for single-task work. The `audit-open` query's strict naming check flagged the v1.2 quick tasks as "missing" — false positive. Acknowledged in STATE.md "Deferred Items" under "Acknowledged at v1.2 close". Tooling should be relaxed.
+
+### Key Lessons
+
+1. **Code inspection of a consumer is insufficient verification for cross-file shape contracts.** Whenever you verify a handler that reads `payload.X.Y`, you must also read the emitter to confirm `payload.X.Y` is actually emitted with that shape. The first v1.2 audit demonstrated this concretely.
+2. **Milestone audits should run integration checks against actual code, not just summarize per-phase verification claims.** The integration checker subagent's value is highest when it cross-references files the phase verification didn't.
+3. **The 16-day-latent smart-quote bug** is a cautionary tale: any inline `<script>` block that doesn't have a parser smoke-test in CI can quietly break on copy-paste from rich-text sources. Memory note captures the gotcha. Future inline-script-heavy work should include the `new Function(scriptBody)` smoke as a habit.
+4. **Bookkeeping debt** (stale STATE.md, ROADMAP.md, REQUIREMENTS.md checkboxes) is invisible to phase verification but visible to milestone audit. `/gsd-complete-milestone` reconciles it — running the audit then the close is now the canonical "is this milestone really done?" sequence.
+
+### Cost Observations
+
+- **Model mix:** opus for planning (1 plan), sonnet for execution + integration check + quick-task + audit re-run.
+- **Sessions:** 1 (single-evening close after the in-progress PR #99 merged earlier the same day).
+- **Notable:** The 3-line STATUS-06 fix took longer to plan-orchestrate than to write. `/gsd-quick` overhead (planner agent + worktree creation + executor agent + worktree cleanup + STATE update + final commit) is ~5 minutes wall-clock for a literal 3-line edit. For multi-line refactors this overhead is amortized; for trivial fixes it dominates. The trade-off bought atomic-commit + GSD bookkeeping + isolated execution; the alternative (raw `sed -i`) would have been 30 seconds but with zero traceability.
+
+---
+
 ## Cross-Milestone Trends
 
 ### Process Evolution
@@ -64,6 +115,8 @@
 | Milestone | Sessions | Phases | Key Change |
 |-----------|----------|--------|------------|
 | v1.0 | ~2 (1 evening + 1 follow-on day) | 3 | First GSD-managed milestone on this project. Established audit-first pattern for PDF feedback, atomic-per-requirement commit convention, i18n dual-store rule. |
+| v1.1 | 1 (~16 hours focused) + gap-closure cycle | 2 | First milestone with retrospective gap-closure inside the same phase (`/gsd-plan-phase 4 --gaps --auto` → 04-09..04-11). Live canaries against deployed `www.moulinareves.com` proved cache-bust + DRY_RUN gate. OPS-02 fence pattern formalized. |
+| v1.2 | 1 (single-day) + audit-driven gap closure | 1 | First milestone where a milestone audit caught a real wiring defect that phase VERIFICATION.md (code inspection) had marked passed. Closed inline via `/gsd-quick` rather than a closure phase. Established the "audit → quick-task → re-audit → complete-milestone" loop. |
 
 ### Cumulative Quality
 

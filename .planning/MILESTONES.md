@@ -1,5 +1,28 @@
 # Milestones
 
+## v1.2 Status Visibility (Shipped: 2026-05-21)
+
+**Phases completed:** 1 phase, 3 plans + 1 quick-task gap closure
+**Requirements:** 10 / 10 v1.2 (STATUS-01..10, all `satisfied`)
+**Timeline:** 2026-05-21 (single-day milestone — PR #99 squash-merged the same day, retrospective wiring-gap closure landed the same evening via quick task `260521-ou9`)
+**Git range:** `7811cf5` (PR #99 merge) → `7ad7177` (final docs commit). Companion fix `fe37cef` (PR #98 chip/staged-panel click fix, cache-bust v4) landed just before PR #99.
+**Live verification:** Phase 6 verified locally via `npx tsx scripts/smoke-feedback-status.mjs` (9/9 unit table pass) + inline-script parser smoke (`new Function(scriptBody)` → OK) + VERCEL_TOKEN-absent degrade case. Post-deploy canary against `www.moulinareves.com` pending operator setting `VERCEL_TOKEN` (graceful degrade verified — endpoint stays valid at stage 4 without it).
+**Known deferred items at close:** 2 tooling-metadata false-positives (see STATE.md → ## Deferred Items → "Acknowledged at v1.2 close"). 4 tech-debt items captured in `milestones/v1.2-MILESTONE-AUDIT.md` (canary.sh doc drift, v2-batch-via-rail E2E smoke, Vercel `meta.githubCommitSha` implicit contract, webhook-driven push deferred to v1.3+). 1 operational-debt item: `VERCEL_TOKEN` env var setup.
+
+**Key accomplishments:**
+
+- **Per-batch deployment progress bar shipped on `/feedback`.** Auth-gated `src/pages/api/feedback/status/[issueNumber].ts` route + pure stage resolver `src/lib/feedback-status.ts` rolls 4 API signals (GitHub issue, issue comments, PR, Vercel deployment by commit SHA) into a 5-stage code (Submitted → Reviewing → PR opened → Merged/Needs-review/Question → Live). 5-second in-memory Map cache keyed by issue number bounds GitHub API cost to ≤ 1 sequence per issue per 5s under sustained polling.
+- **"Recent submissions" rail rendered on `src/pages/feedback.astro`** below the iframe — `localStorage` (`mar_feedback_recent_v1`, cap 20), 5-segment per-row progress bar, 8-second client poll with `isTerminal()` auto-stop (stage 5 OR sub `needs-review`/`needs-client-reply`), stage-4 human disambiguation ("Merged" / "Needs Monty's review" / "Question for you →"). Stage-5 collapses to "✓ Live · <relative time>" with a view-changes link to the merge commit.
+- **Graceful VERCEL_TOKEN degrade.** Endpoint reads `import.meta.env.VERCEL_TOKEN`; if absent or the Vercel call fails, the response stays valid at stage 4 with `deployUrl: null` and sub `auto-merged`/`merged`. STATUS-05 unit case confirms no crash. Setup runbook captured in user memory `moulin-feedback-status-rail.md`.
+- **OPS-02 fence held byte-for-byte across all of v1.2.** `git diff main~6..main -- public/editor-inject.js public/editor public/guardrails.js src/pages/api/site middleware.ts | wc -l` returns 0 — the editor / publishing flow is untouched per the additive-only contract that has held since v1.1.
+- **Smart-quote pitfall in `feedback.astro` fixed as collateral work in 06-02.** A 2026-05-05 edit had replaced ASCII `'` with U+2018/U+2019 as JS string delimiters in 14 occurrences inside the `<script is:inline>` block (lines 196-225) — the entire script body had been parse-failing in every browser since then. v1.1 canaries hit `/api/feedback/submit` directly and never exercised the iframe parent, so it stayed latent for 16 days. Fixed by replacing the delimiters with ASCII `'`; literal apostrophes inside ASCII-delimited strings kept as U+2019.
+- **STATUS-06 wiring gap caught by milestone audit, closed inline.** First audit pass found `persistSubmission()` in `feedback.astro:272-278` read `e.locator.pageRoute` / `payload.locator.pageRoute` paths that never existed on the wire (`feedback-inject.js` emits a flat payload on both v1 `buildPayload` and v2 `editObj` spread paths). v1 rows would have shown "0 edits"; v2 rows had a correct count but no route list. Closed via quick task `260521-ou9` (3-line edit, commit `1495a10`) before milestone archive. Re-audit confirmed `passed` (10/10).
+- **Reusable status canary tooling.** `scripts/smoke-feedback-status.mjs` runs in dual modes via `TARGET_URL` (unit mode: imports `resolveStage` directly, runs 9 table-driven assertions; canary mode: mints `maison_session`, posts `isTest:true` v1 edit, polls `/api/feedback/status/<N>` with 5-minute timeout). Wired into `npm run canary:status` and the no-arg `scripts/canary.sh` default (now runs v1 → v2 → status sequentially).
+
+**Process note:** v1.2 is the first milestone where a post-execution milestone audit caught a real wiring defect that the phase's own VERIFICATION.md (relying on code inspection) had marked passed. The integration checker traced `persistSubmission()` against the actual `feedback-inject.js` payload shape and surfaced the `.locator.pageRoute` mismatch in a way that pure file-by-file inspection didn't. The fix landed via `/gsd-quick` (worktree-isolated, 3-line atomic commit) before milestone archive, demonstrating that the "audit → quick-task closure → re-audit → complete-milestone" loop is a viable single-day close pattern when the gap is plumbing-scale rather than architectural.
+
+---
+
 ## v1.1 Batch Feedback Pipeline (Shipped: 2026-05-21)
 
 **Phases completed:** 2 phases, 14 plans (8 + 3 gap-closure + 3 canary), 15 tasks

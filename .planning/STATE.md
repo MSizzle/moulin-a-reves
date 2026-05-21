@@ -2,32 +2,33 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Status Visibility
-status: planning
-last_updated: "2026-05-21T18:59:58.370Z"
-last_activity: 2026-05-21
+status: Awaiting next milestone
+stopped_at: Phase 5 context gathered (auto)
+last_updated: "2026-05-21T22:09:49.937Z"
+last_activity: 2026-05-21 — Milestone v1.2 completed and archived
 progress:
-  total_phases: 0
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_phases: 1
+  completed_phases: 1
+  total_plans: 3
+  completed_plans: 3
+  percent: 100
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-05-20)
+See: .planning/PROJECT.md (updated 2026-05-21)
 
 **Core value:** Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.
-**Current focus:** Phase 04 — batch-pipeline-implementation
+**Current focus:** Between milestones — v1.2 Status Visibility archived 2026-05-21; awaiting `/gsd-new-milestone` to pick the next milestone (v1.3 file-driven per-page edit flow is the queued candidate).
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: Milestone v1.2 complete
 Plan: —
-Status: Defining requirements
-Last activity: 2026-05-21 — Completed quick task 260521-ou9: persistSubmission flat pageRoute fix (STATUS-06)
+Status: Awaiting next milestone
+Last activity: 2026-05-21 — Milestone v1.2 completed and archived
 
 ## Performance Metrics
 
@@ -53,30 +54,20 @@ Last activity: 2026-05-21 — Completed quick task 260521-ou9: persistSubmission
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent v1.1 decisions:
-
-- **v1.1 scope = batch-feedback only** (2026-05-20). All carry-forward items (gallery modal, calendar 12-month, editor flow audit, Melissa's clarification answers) deferred to v1.2 to keep v1.1 single-focus / single-PR.
-- **Phase numbering continues** (2026-05-21). v1.0 ended at Phase 3; v1.1 starts at Phase 4 (no `--reset-phase-numbers` flag).
-- **Two-phase split** (2026-05-21). Phase 4 = implementation (everything that lands in the one PR: STAGE+API+ISSUE+ACTION+OPS-01/02/03 = 20 reqs). Phase 5 = post-deploy verification (OPS-04+OPS-05 = 2 reqs; canary work that can only run after Vercel deploys the merged code). Avoided over-fragmentation into 4+ phases for what is fundamentally one PR.
-- **OPS-01 (cache-bust) and OPS-02 (additive-only diff) live in Phase 4**, not a separate "gates" phase — they are merge-time guarantees that the implementation PR must satisfy.
-- **OPS-03 (CLAUDE.md doc note) lives in Phase 4**, not a separate docs phase — it's a single-line update that ships in the same PR.
-
-v1.0 decisions remain in PROJECT.md and remain in force (i18n dual-store rule, atomic per-requirement commits, "newest round wins", `?feedback=1` flow as sibling to editor flow).
+Decisions are logged in PROJECT.md Key Decisions table. All v1.0, v1.1, and v1.2 decisions remain in force (i18n dual-store rule, atomic per-requirement commits, "newest round wins", `?feedback=1` flow as sibling to editor flow, OPS-02 fence, `FEEDBACK_INJECT_VER` single-source-of-truth bump, VERCEL_TOKEN Production-only scoping, 5s server cache + 8s client poll over webhook push).
 
 ### Pending Todos
 
-- **`/gsd-discuss-phase 4`** (recommended first) — settle the 5 open design questions in REQUIREMENTS.md "Open Design Questions" section (per-batch caps, cross-page batching confirmation, draft persistence beyond browser close, autonomy threshold inheritance, mid-batch cancel UX). Resolutions become additional STAGE-* / API-* / ACTION-* requirements before planning.
-- **`/gsd-plan-phase 4`** — decompose Phase 4 into plans (likely 1–2 plans given ~450 LOC single-PR scope; possibilities: implementation plan + verification-prep plan, OR a single all-in-one plan).
-- **`/gsd-plan-phase 5`** — likely deferred until after Phase 4 ships; canary scripts and labels needed.
-- **Wait on Melissa's reply** (carries over from v1.0) — gates the START of v1.2, not v1.1. v1.1 is independent of her reply.
+- **Set `VERCEL_TOKEN` in Vercel production env** — operator step, blocking stage-5 "Live" detection end-to-end. Runbook in user memory `moulin-feedback-status-rail.md`. Validate with `DASHBOARD_PASSWORD=<env> npm run canary:status`.
+- **Push v1.2 close commits to `origin/main`** — 4 local commits (`b648796 → 7ad7177`) ahead of remote. Per project PR-only convention, open a PR; or use direct push if owner chooses. The push triggers Vercel auto-deploy of the STATUS-06 fix.
+- **`/gsd-new-milestone`** — define v1.3 scope (queued: file-driven per-page edit flow Feature 2). Several other items also in the "Carried forward" pool — see PROJECT.md.
+- **Wait on Melissa's reply** (carry-over from v1.0+) — gates the items in `CLIENT-CLARIFICATION.md`. Not blocking v1.3 / v1.4.
 
 ### Blockers/Concerns
 
-- **None v1.1-specific.** Batch-feedback is independent of Melissa's reply and reuses existing infrastructure (`?feedback=1` flow, `submit.ts`, `CLAUDE_FEEDBACK.md`, autonomy gate, `feedback-incoming/` repo-root convention, `.vercelignore` rule). The 5 open design questions are scoped to `/gsd-discuss-phase` and intentionally not pre-decided.
-- **Risk to be mitigated during Phase 4:** OPS-02 (additive-only) must be verified via `git diff main -- public/editor-inject.js public/editor public/guardrails.js src/pages/api/site middleware.ts` returning zero lines in the PR diff. Any drift here is a release blocker — the client uses the editor flow daily and it is fragile.
-- **Risk to be mitigated during Phase 4:** OPS-01 (cache-bust) — forgetting to bump `FEEDBACK_INJECT_VER` ships the PR but cached browsers continue running v1 inject indefinitely; the new state machine never loads. This is invisible until a canary catches it.
-- **v1.0 deferred verification work (3 items in `## Deferred Items → Acknowledged at v1.0 close`)** remains open but does not block v1.1.
+- **None new.** All v1.2 implementation work is complete and verified locally. v1.2 deferred-item buckets carry forward as candidates, not blockers.
+- **Operational debt (v1.2):** stage 5 "Live" detection requires `VERCEL_TOKEN` in production env; without it the rail correctly degrades to stage 4 with `auto-merged`/`merged` sub. UX dead-end only — no crash, no data loss.
+- **Carry-forward from v1.0:** the 3 deferred verification items at `## Deferred Items → Acknowledged at v1.0 close` (Phase 2 UAT eye-only items) remain open.
 
 ### Quick Tasks Completed
 
@@ -111,19 +102,23 @@ Three open artifacts surfaced by `audit-open` were acknowledged at the v1.0 mile
 
 **Resolution path:** Run `/gsd-verify-work 2` against the deployed preview to retire all 6 visual UAT items and close the verification gap in one pass. The quick-task status will reconcile on the next `audit-open` run. (Not blocking v1.1.)
 
+### Acknowledged at v1.2 close (2026-05-21)
+
+Two quick tasks were flagged by `audit-open` as "missing status" — both have `SUMMARY.md` files with `status: complete` frontmatter; the audit query uses a stricter filename convention (`<id>-01-SUMMARY.md`) than the quick-task tooling actually writes (`<id>-SUMMARY.md` for single-task quick work). Tooling false-positive only; no missing work.
+
+| Category | Item | Status | Note |
+|----------|------|--------|------|
+| Quick task | `quick/260506-kao-catering-hero-object-position-fix` | tooling metadata false-positive | Substantively complete 2026-05-06 (commits `a6342c2`, `98e6dd9`); audit-tool naming-convention check, not a real gap |
+| Quick task | `quick/260521-ou9-fix-persistsubmission-summary-derivation` | tooling metadata false-positive | Substantively complete 2026-05-21 (commit `1495a10`, SUMMARY at `260521-ou9-SUMMARY.md` with `status: complete`); same audit-tool naming-convention check |
+
 ## Session Continuity
 
-Last session: 2026-05-21T14:31:49.060Z
-Stopped at: Phase 5 context gathered (auto)
-Resume file: .planning/phases/05-post-deploy-verification/05-CONTEXT.md
-
-**Resume recovery summary (2026-05-21):** Plan 04-03 was paused mid-Task-3 in a prior session with two tasks committed only on an orphan worktree branch the resume sandbox could not operate on (Mac-bound `.git` pointer inside a Linux container). Recovery via /gsd-resume-work: cherry-picked the two orphan commits onto main (`400e85d`, `26b9bcd`), redid Task 3 fresh on main (`ab730ef`), wrote 04-03-SUMMARY (`322814d`), removed the stale worktree directory + orphan branch + HANDOFF.json + .continue-here.md.
-
-**Operator follow-ups for Phase 04 merge** (carried in 04-03-SUMMARY):
-
-1. Confirm Vercel project tier; if Pro+ with body-size override, lift `MAX_BATCH_BYTES` from 3 MB to 30 MB and update the client mirror in 04-04 in the same PR.
-2. Re-run `npx astro check` on the primary machine — could not run in the resume sandbox due to a corrupted `property-information` dep in node_modules.
+Last session: 2026-05-21 (milestone v1.2 close)
+Stopped at: v1.2 archived; awaiting `/gsd-new-milestone`
+Resume file: — (no active phase)
 
 ## Operator Next Steps
 
-- Start the next milestone with /gsd-new-milestone
+1. **Set `VERCEL_TOKEN`** in the Vercel project env (Production scope only) — `moulin-feedback-status-rail.md` runbook.
+2. **Push v1.2 close commits** (`b648796 → 7ad7177`) to `origin/main` — PR or direct, owner's choice. Vercel auto-deploys on merge.
+3. **`/gsd-new-milestone`** — pick the v1.3 focus (file-driven per-page edit flow is the queued candidate).
