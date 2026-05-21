@@ -8,22 +8,15 @@ Marketing site for **Le Moulin à Rêves** — a private luxury vacation compoun
 
 **Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.** Brand, photography, and copy all serve this. The editor / CMS / i18n stack exists so the client can keep that surface fresh without dev involvement.
 
-## Current Milestone: v1.1 Batch Feedback Pipeline
+## Most Recent Milestone: v1.1 Batch Feedback Pipeline — SHIPPED 2026-05-21
 
-**Goal:** Let the client stage multiple feedback edits in a session and submit them as a single batch — one batch → one issue → one Claude PR → one merge → one deploy — replacing the current one-edit-per-deploy pattern that creates 8–10 deploys per client review pass.
+v1.1 replaced the 1-edit-per-deploy feedback flow with a batched submission model: client stages multiple edits in a corner-chip + panel UI, submits as one POST, server creates ONE GitHub issue per batch, Claude Action produces ONE branch / ONE commit / ONE PR / ONE deploy. Targeted ~10× reduction in deploys per client review pass. 25/25 requirements satisfied; live canaries verified end-to-end on `www.moulinareves.com`. v1 (`schemaVersion:1`) cached clients keep working indefinitely.
 
-**Target features:**
-- Client-side stage/submit state machine in `feedback-inject.js` with corner chip, per-item delete, and "Clear all"
-- `sessionStorage`-backed batch persistence (File references, not base64) so edits survive iframe navigation and reload but clear on browser close
-- Server endpoint accepts `schemaVersion: 2` batch payloads while keeping `schemaVersion: 1` working for cached clients (back-compat required)
-- Batched GitHub issue construction — one issue per batch with per-edit summary + single JSON block + autonomy-passes-only-if-every-edit-passes hint
-- `## 8. Batch submissions` section in `.github/CLAUDE_FEEDBACK.md` so the Action applies all edits in one branch/commit/PR
-- `FEEDBACK_INJECT_VER` bump in `src/lib/feedback-version.ts` (single source of truth for cache-bust)
+Full detail: [`MILESTONES.md` § v1.1](./MILESTONES.md) · [`milestones/v1.1-ROADMAP.md`](./milestones/v1.1-ROADMAP.md) · [`milestones/v1.1-MILESTONE-AUDIT.md`](./milestones/v1.1-MILESTONE-AUDIT.md) · [`RETROSPECTIVE.md`](./RETROSPECTIVE.md)
 
-**Anchors:**
-- Design spec in user memory: `moulin-batch-feedback-spec.md` (5 open questions deferred to `/gsd-discuss-phase`)
-- Additive-only: zero changes to the editor flow (`?edit=1`, `editor-inject.js`, `editor/`, `site/save.ts`, `site/publish.ts`, `guardrails.js`)
-- Back-compat required: cached v1 clients must keep working indefinitely
+## Next Milestone: v1.2 (planning pending)
+
+To kick off v1.2, run `/gsd-new-milestone`. Candidate scope lives in the "Carried forward to v1.2" subsection under Requirements below.
 
 ## Requirements
 
@@ -46,21 +39,29 @@ Marketing site for **Le Moulin à Rêves** — a private luxury vacation compoun
 - ✓ **`CLIENT-CLARIFICATION.md` deliverable workflow** — page-grouped Markdown with verbatim quote + current-state + bold question, plus "Already done — please re-review" section — v1.0 (CLAR-01..06, 412 lines, shipped to Melissa out-of-band)
 - ✓ **`.hero--cta` BEM modifier for reduced-overlay CTA hero band** — v1.0 (PHOTO-03, used across all 3 house pages)
 - ✓ **Feedback flow (`?feedback=1` → auth-gated `/feedback` → GitHub issue → Claude Code Action → PR)** — existing, shipped in moulin-feedback-action setup (pre-v1.0); supports the autonomy hint and locator schema documented in `.github/CLAUDE_FEEDBACK.md`
+- ✓ **v2 batch feedback pipeline** — v1.1 (STAGE-01..07, API-01..06, ISSUE-01..04, ACTION-01..03, OPS-01..05). Client stages N edits via corner chip + sessionStorage panel, submits as one `{schemaVersion:2, batch:true, edits:[...]}` POST; server creates ONE GitHub issue per batch (batch title + per-edit `renderHuman()` + single fenced ```json``` block); Claude Action produces ONE branch / ONE commit / ONE PR; v1 cached clients keep working indefinitely; `FEEDBACK_INJECT_VER='3'` cache-bust live; OPS-02 editor-flow fence intact (0 lines diff).
+- ✓ **Shared per-edit validator (`src/pages/api/feedback/validate.ts`)** — v1.1 (API-04, D-15 mirror). Single source of truth for `validateEdit`, `signalCount`, `clamp`, `INTENTS`, etc. Consumed by both `handleV1` and `handleV2Batch` in `submit.ts`; the two paths can never drift on validation.
+- ✓ **Server-side decoded-bytes cap (`approxDecodedBytes` helper)** — v1.1 (API-06 / CR-02 closure). `MAX_BATCH_BYTES` reducer reads from `e.image.dataBase64` (decoded length), not from the spoofable `e.image.bytes` client descriptor.
+- ✓ **Reusable canary tooling** — v1.1 (OPS-04, OPS-05). `scripts/smoke-feedback-v2.mjs` runs in dual modes (unit-stub vs `TARGET_URL=<live>` real-fetch); `scripts/canary.sh` is the bash wrapper; `npm run canary:v1` / `canary:v2` / `canary` are opt-in regression nets. `DRY_RUN=true` repo variable gates Action squash-merge for safe v2 canaries.
 
 ### Active
 
-<!-- v1.1 focus = batch-feedback only (decided 2026-05-20). Other carry-forward items live in "Carried forward to v1.2" below — not in scope this milestone. Concrete REQ-IDs are tracked in .planning/REQUIREMENTS.md. -->
+<!-- v1.1 shipped 2026-05-21. Active = TBD until /gsd-new-milestone defines v1.2 scope. Concrete REQ-IDs land in a fresh .planning/REQUIREMENTS.md when the next milestone is initialized. -->
 
-- [ ] **Batch-feedback feature** — v1.1 focus. Stage multiple client edits in a session and submit as one batch → one issue → one Claude PR → one merge → one deploy. Replaces the current 1-edit-per-deploy pattern. Spec lives in user memory `moulin-batch-feedback-spec.md`; 5 open design questions (per-batch caps, cross-page batching, draft persistence, autonomy gate inheritance, cancel UX) deferred to `/gsd-discuss-phase`.
+- (none currently — run `/gsd-new-milestone` to pick the v1.2 focus)
 
-### Carried forward to v1.2 (not v1.1)
+### Carried forward to v1.2 (candidates)
 
-<!-- Explicitly deferred at v1.1 kickoff (2026-05-20). Each was a v1.1 candidate; cut to keep v1.1 single-phase / single-PR. Lift back to Active when starting v1.2. -->
+<!-- Carried from v1.1 → v1.2. Lift any of these back into Active when starting v1.2 via /gsd-new-milestone. -->
 
 - [ ] **Apply Melissa's clarification answers** — gated on her reply to the 11 outstanding questions in `CLIENT-CLARIFICATION.md`. Likely items: TYPOG-01 global italic policy, hero tagline italic site-wide policy, Le Mérévillois vs Méréville naming confirmation, asset-pending items (jacuzzi/Stars/biking/Monet photos, Netflix-on-TV decision), Groups-page yes/no/think.
 - [ ] **Photo gallery modal rewrite** (STRUCT-01, deferred from v1) — fix X-button visibility, forward-arrow cropping, photo bottom cropping on first open across all houses (only Le Loft Suite currently works).
 - [ ] **Calendar 12-month scrollable range** (STRUCT-02, deferred from v1) — investigate ICS feed depth implications.
 - [ ] **Editor / publishing flow deep audit** (AUDIT-DEEP-01, deferred from v1) — fragility, error paths, GitHub integration, HMAC session edge cases.
+- [ ] **Per-photo vs per-batch cap UX disambiguation** (v1.1 WR-01) — first photo over 3 MB currently trips "batch full" message instead of "this photo too large". Low UX priority; distinguish messages.
+- [ ] **Auto-canary-on-deploy GitHub workflow** (v1.1 D-12 carry-forward) — Vercel-deploy-success-webhook-triggered `.github/workflows/canary.yml` that runs `npm run canary` post-deploy. Currently opt-in only via `npm run canary`.
+- [ ] **Playwright headless canary fidelity** (v1.1 D-09 carry-forward) — real-browser network-tab interception if curl+grep proof becomes insufficient (e.g., service-worker cache invalidation).
+- [ ] **SUMMARY frontmatter hygiene backfill** (v1.1 tech debt) — 10 of 11 Phase 4 SUMMARY files use non-standard `requirements:` key or omit `requirements-completed:`; truth-of-record is VERIFICATION.md. Cosmetic metadata hygiene.
 
 ### Out of Scope
 
@@ -130,6 +131,15 @@ The site has been live and iteratively maintained. The client (Melissa, property
 | i18n dual-store update on every copy change (runtime overlay JSON + typed TS seed) | After COPY-01 partial-shipment revealed drift between the two stores; forgetting one silently breaks FR toggle | ✓ Good — pattern shipped across all 15 COPY requirements and confirmed during 02-01 reconciliation; now standard practice |
 | Atomic per-requirement commits (one REQ-ID per commit) | Makes the audit trail trivially scannable; each requirement maps to a single commit hash that can be cited back to the client | ✓ Good — Phase 2 produced 21 commits each tied to a specific REQ-ID; cited inline in CLAR "Already Done" section |
 | `CLIENT-CLARIFICATION.md` at project root, not under `.planning/` | The file is a client deliverable sent to Melissa directly out-of-band, not an internal artefact | ✓ Good — file lives at `/CLIENT-CLARIFICATION.md`, ships to production via Vercel auto-deploy on `main`, no special handling needed |
+| **v1.1**: One endpoint, two payload shapes (no `POST /submit-batch`) — `submit.ts` branches on `schemaVersion`/`batch` (D-16) | v1 cached clients must keep working indefinitely; a separate endpoint would have forced a v1 deprecation eventually. Branching on payload shape keeps both paths in one file under one validator. | ✓ Good — smoke harness scenario 1 (v1) and scenarios 2-5 (v2) all pass through one dispatcher; no client-side feature-detection needed |
+| **v1.1**: Shared per-edit validator extracted to `validate.ts` consumed by both v1 and v2 paths (D-15 mirror) | Forces the two paths to never drift on validation rules; a future change to `signalCount` thresholds or `INTENTS` automatically applies to both | ✓ Good — `submit.ts:5` named import; `handleV1` and `handleV2Batch` both call `validateEdit(e)`; smoke scenario 1 and scenario 5 collectively exercise both paths against the same rule set |
+| **v1.1**: Vercel Hobby tier (3 MB cap) over Pro (30 MB cap) — D-03 reconciliation | ROADMAP success criterion #6 originally specified 30 MB; operator-side cost / tier check chose Hobby. Both `MAX_BATCH_BYTES` constants set to 3 MB (server + client mirror) | ✓ Good — Phase 5 OPS-05 canary payload (2 small text-only edits) comfortably fits; smoke scenario 4 exercises the real cap; the 30 MB → 3 MB downgrade is documented as an acceptable caveat on success criterion #6 |
+| **v1.1**: OPS-02 editor-flow fence enforced via PR-diff regex (D-13) | The editor flow is fragile and the client uses it directly; the only way to guarantee zero regression is to make a byte-for-byte unchanged diff a hard merge gate | ✓ Good — `git diff <pre-Phase-4-baseline> -- public/editor-inject.js public/editor public/guardrails.js src/pages/api/site middleware.ts \| wc -l` returns 0 across all 14 v1.1 plans; smoke scenario 5 / Phase 5 OPS-02 final check both assert this |
+| **v1.1**: `FEEDBACK_INJECT_VER` as single-source-of-truth bump on every inject change (D-14, OPS-01) | Cached `feedback-inject.js` lives in browsers for days; without a cache-bust per behavioural change, deployed updates are invisible to existing clients | ✓ Good — bumped `'1'`→`'2'` in 04-06, then `'2'`→`'3'` in 04-11 after gap-closure modified the inject; Phase 5 OPS-05 canary verified `const feedbackVer = "3"` lands in deployed HTML |
+| **v1.1**: Retrospective gap-closure as a within-milestone cycle (not a separate phase) | After Phase 4's initial verification surfaced 3 BLOCKERs (CR-01/CR-02/CR-03), inserting a Phase 4.1 would have re-numbered Phase 5 and complicated the audit trail; running `/gsd-plan-phase 4 --gaps --auto` produced 3 new plans (04-09..04-11) under the same phase | ✓ Good — re-verification flipped Phase 4 from `gaps_found` → `passed` cleanly; gap-closure plans nested inside Phase 4 SUMMARIES; pattern proven viable when gaps are code-plumbing fixes inside the same scope |
+| **v1.1**: `DRY_RUN=true` repo variable as the OPS-05 canary isolation seam (over `client-feedback-test` label-only) (D-05 v2 refinement) | `client-feedback-test` label would skip the Action entirely, failing OPS-05's "ONE Claude PR with all edits applied" success criterion; `DRY_RUN=true` lets the Action fire + open a PR but halts at squash-merge | ✓ Good — Phase 5 OPS-05 canary fired real Action under DRY_RUN, captured PR #97 + result comment, then cleaned up; `claude.yml:122/145` gate confirmed effective |
+| **v1.1**: `TARGET_URL` env-var seam on the smoke harness (over a separate canary script) (D-01) | The smoke harness already encodes "what passing means" in 5 scenarios; splitting that into a second tool creates drift risk. One file with `if (TARGET_URL)` branching keeps unit-mode (stubbed fetch) and canary-mode (real fetch) in lockstep | ✓ Good — harness is 925 LOC across two modes; unit mode still 5/5 in regression; canary mode reused 2 of the 5 scenarios verbatim (scenarios 3-5 SKIP cleanly under TARGET_URL) |
+| **v1.1**: Curl + grep for `const feedbackVer = "3"` over headless-browser cache-bust verification (D-08, D-09) | OPS-05 wording says "browser network tab confirms…" but the spirit is "prove deployed HTML references the new version." Curl on the served HTML proves the same thing without adding a Playwright runtime dep. Real-browser fidelity deferred to v1.2 if needed | ✓ Good — Phase 5 canary asserted both `const feedbackVer = "3"` HTML substring AND HTTP/2 200 HEAD probe on `/feedback-inject.js?v=3`; both passed live |
 
 ## Evolution
 
@@ -150,11 +160,17 @@ This document evolves at phase transitions and milestone boundaries.
 
 ## Current State
 
-**Shipped:** v1.0 May 5 Client Edits (2026-05-05) — 3 phases, 6 plans, 38/38 requirements, 134 files +16,811 LOC, deployed live via Vercel auto-deploy. `CLIENT-CLARIFICATION.md` at project root delivered to Melissa out-of-band.
+**Shipped:**
+- **v1.0 May 5 Client Edits** (2026-05-05) — 3 phases, 6 plans, 38/38 requirements, 134 files +16,811 LOC.
+- **v1.1 Batch Feedback Pipeline** (2026-05-21) — 2 phases, 14 plans (8 + 3 gap-closure + 3 canary), 25/25 requirements; live canaries on `www.moulinareves.com` confirmed OPS-04 v1 regression (issue #89) + OPS-05 v2 batched pipeline (issue #96 → PR #97 → DRY_RUN-halted) + cache-bust + asset-HEAD; OPS-02 editor-flow fence held byte-for-byte across the entire milestone; `FEEDBACK_INJECT_VER='3'` live; `DRY_RUN=true` repo variable set as safety net for autonomous Action runs.
 
-**In progress:** v1.1 Batch Feedback Pipeline started 2026-05-20. Single-phase / single-PR scope: replace the current 1-edit-per-deploy feedback flow with batched submission (one batch → one issue → one Claude PR). Requirements being defined; roadmap pending. Independent of Melissa's reply.
+**Deployed:** `www.moulinareves.com` (Vercel auto-deploy on `main`; production-tier Hobby; client-feedback pipeline self-codes via `client-feedback`-labelled issues → Claude Code Action under `DRY_RUN=true`).
 
-**Carried to v1.2:** Apply Melissa's clarification answers (once she replies), gallery modal rewrite, calendar 12-month range, editor / publishing flow audit.
+**In progress:** None — between milestones. Next milestone (v1.2) pending — run `/gsd-new-milestone` to define scope.
+
+**Carried to v1.2:** Apply Melissa's clarification answers (once she replies), photo gallery modal rewrite, calendar 12-month range, editor / publishing flow audit, plus 4 v1.1 tech-debt items (WR-01 cap-message disambiguation, auto-canary-on-deploy workflow, Playwright headless canary fidelity, SUMMARY frontmatter hygiene backfill).
+
+**Operator pending:** Consider flipping `DRY_RUN=false` on the GitHub repo (`gh variable set DRY_RUN -b false`) after observing 1-2 real `client-feedback` rounds prove the v2 batch path is stable in production. Currently `true` from Phase 5 canary setup.
 
 ---
-*Last updated: 2026-05-20 — v1.1 Batch Feedback Pipeline milestone started*
+*Last updated: 2026-05-21 — v1.1 Batch Feedback Pipeline shipped and archived*

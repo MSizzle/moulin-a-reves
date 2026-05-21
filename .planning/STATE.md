@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Batch Feedback Pipeline
-status: Ready to resume `/gsd-execute-phase 4 --auto` from wave 4
+status: Awaiting next milestone
 stopped_at: Phase 5 context gathered (auto)
-last_updated: "2026-05-21T14:31:49.073Z"
-last_activity: 2026-05-21 -- Plan 04-03 completed via /gsd-resume-work
+last_updated: "2026-05-21T16:38:40.722Z"
+last_activity: 2026-05-21 — Milestone v1.1 completed and archived
 progress:
   total_phases: 2
-  completed_phases: 1
-  total_plans: 11
-  completed_plans: 11
-  percent: 50
+  completed_phases: 2
+  total_plans: 14
+  completed_plans: 14
+  percent: 100
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-05-20)
 
 ## Current Position
 
-Phase: 04 (batch-pipeline-implementation) — EXECUTING (wave 3 complete)
-Plan: 3 of 8 done (04-01, 04-02, 04-03); next = 04-04 + 04-05 (wave 4, parallel)
-Status: Ready to resume `/gsd-execute-phase 4 --auto` from wave 4
-Last activity: 2026-05-21 -- Plan 04-03 completed via /gsd-resume-work
+Phase: Milestone v1.1 complete
+Plan: —
+Status: Awaiting next milestone
+Last activity: 2026-05-21 — Milestone v1.1 completed and archived
 
 ## Performance Metrics
 
@@ -126,7 +126,4 @@ Resume file: .planning/phases/05-post-deploy-verification/05-CONTEXT.md
 
 ## Operator Next Steps
 
-1. Run `/gsd-execute-phase 4 --auto` to resume from wave 4 (parallel: 04-04 client v2 batch state machine + 04-05 batch submissions section in CLAUDE_FEEDBACK.md). The safe_resume_gate will now see 04-01/02/03 SUMMARY.md files on main and start at wave 4 cleanly.
-2. AUTO chain carries through waves 5 (04-06 cache-bust + 04-07 docs) and 6 (04-08 OPS-02 gate + smoke harness), then `/gsd-code-review 04` → verifier → roadmap update → transition to phase 05.
-3. Before merging the v1.1 PR, complete the two operator follow-ups above.
-4. After PR merges + Vercel deploys, run `/gsd-plan-phase 5` + execute Phase 5 canaries (OPS-04, OPS-05).
+- Start the next milestone with /gsd-new-milestone
