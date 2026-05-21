@@ -9,4 +9,4 @@
 // Imported by:
 //   - src/layouts/BaseLayout.astro  (the `?feedback=1` inline loader)
 //   - src/pages/feedback.astro      (the iframe `src` query string)
-export const FEEDBACK_INJECT_VER = '1';
+export const FEEDBACK_INJECT_VER = '2';
