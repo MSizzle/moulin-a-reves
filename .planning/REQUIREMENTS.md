@@ -104,31 +104,34 @@ From `CLAUDE.md` and prior project conventions — these are not requirements bu
 
 | REQ-ID | Phase | Plan | Status |
 |--------|-------|------|--------|
-| STAGE-01 | TBD | TBD | open |
-| STAGE-02 | TBD | TBD | open |
-| STAGE-03 | TBD | TBD | open |
-| STAGE-04 | TBD | TBD | open |
-| STAGE-05 | TBD | TBD | open |
-| API-01 | TBD | TBD | open |
-| API-02 | TBD | TBD | open |
-| API-03 | TBD | TBD | open |
-| API-04 | TBD | TBD | open |
-| API-05 | TBD | TBD | open |
-| ISSUE-01 | TBD | TBD | open |
-| ISSUE-02 | TBD | TBD | open |
-| ISSUE-03 | TBD | TBD | open |
-| ISSUE-04 | TBD | TBD | open |
-| ACTION-01 | TBD | TBD | open |
-| ACTION-02 | TBD | TBD | open |
-| ACTION-03 | TBD | TBD | open |
-| OPS-01 | TBD | TBD | open |
-| OPS-02 | TBD | TBD | open |
-| OPS-03 | TBD | TBD | open |
-| OPS-04 | TBD | TBD | open |
-| OPS-05 | TBD | TBD | open |
+| STAGE-01 | 4 | TBD | open |
+| STAGE-02 | 4 | TBD | open |
+| STAGE-03 | 4 | TBD | open |
+| STAGE-04 | 4 | TBD | open |
+| STAGE-05 | 4 | TBD | open |
+| API-01 | 4 | TBD | open |
+| API-02 | 4 | TBD | open |
+| API-03 | 4 | TBD | open |
+| API-04 | 4 | TBD | open |
+| API-05 | 4 | TBD | open |
+| ISSUE-01 | 4 | TBD | open |
+| ISSUE-02 | 4 | TBD | open |
+| ISSUE-03 | 4 | TBD | open |
+| ISSUE-04 | 4 | TBD | open |
+| ACTION-01 | 4 | TBD | open |
+| ACTION-02 | 4 | TBD | open |
+| ACTION-03 | 4 | TBD | open |
+| OPS-01 | 4 | TBD | open |
+| OPS-02 | 4 | TBD | open |
+| OPS-03 | 4 | TBD | open |
+| OPS-04 | 5 | TBD | open |
+| OPS-05 | 5 | TBD | open |
+
+**Coverage:** 22/22 v1 requirements mapped across 2 phases (Phase 4: 20 reqs, Phase 5: 2 reqs). No orphans, no duplicates.
 
 *Phase / Plan / Status columns are populated by the roadmapper and updated during execution.*
 
 ---
 
 *Created 2026-05-20 during `/gsd-new-milestone v1.1` — Batch Feedback Pipeline*
+*Traceability populated 2026-05-21 during roadmap creation — Phases 4 and 5*
