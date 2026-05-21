@@ -96,7 +96,30 @@
     '#mar-fb-panel button.ghost{flex:1;background:transparent;color:#e2e8f0;border:1px solid #334155;border-radius:8px;padding:.65rem;cursor:pointer;}' +
     '#mar-fb-panel button[disabled]{opacity:.5;cursor:not-allowed;}' +
     '#mar-fb-panel .sum li{margin:.2rem 0;}' +
-    '#mar-fb-panel .ok{background:#052e16;border:1px solid #15803d;color:#bbf7d0;padding:.7rem;border-radius:8px;}';
+    '#mar-fb-panel .ok{background:#052e16;border:1px solid #15803d;color:#bbf7d0;padding:.7rem;border-radius:8px;}' +
+    /* ---- v2 corner chip (STAGE-02) + staged-edits panel (STAGE-03) ---- */
+    '#mar-fb-chip{position:fixed;right:16px;bottom:16px;z-index:2147483645;padding:8px 12px;border-radius:999px;background:#0f172a;color:#e2e8f0;font-family:system-ui,sans-serif;font-size:13px;line-height:1.2;cursor:default;box-shadow:0 2px 8px rgba(0,0,0,.25);display:flex;gap:6px;align-items:center;border:1px solid #334155;}' +
+    '#mar-fb-chip .mar-fb-chip__count{background:' + ACCENT + ';color:#fff;border-radius:999px;padding:2px 8px;font-weight:600;}' +
+    '#mar-fb-chip .mar-fb-chip__sep{color:#94a3b8;}' +
+    '#mar-fb-chip button{background:transparent;color:#e2e8f0;border:none;cursor:pointer;text-decoration:underline;font:inherit;padding:0;}' +
+    '#mar-fb-chip button:hover{color:#fff;}' +
+    '#mar-fb-chip button[disabled]{opacity:.5;cursor:not-allowed;text-decoration:none;}' +
+    '#mar-fb-panel-staged{position:fixed;right:16px;bottom:60px;z-index:2147483647;width:360px;max-width:calc(100vw - 32px);max-height:60vh;overflow-y:auto;background:#0f172a;color:#e2e8f0;font-family:system-ui,sans-serif;font-size:13px;padding:12px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.4);border:1px solid #334155;}' +
+    '#mar-fb-panel-staged h4{font-size:.9rem;margin-bottom:.5rem;color:#e2e8f0;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-item{padding:8px;border:1px solid #1e293b;border-radius:6px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;background:#1e293b;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-item.is-error{border-color:' + ACCENT + ';background:#3b1a0d;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-item__body{flex:1;overflow:hidden;word-break:break-word;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-item__meta{color:#94a3b8;font-size:.75rem;margin-bottom:.2rem;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-item__error{color:#fecaca;font-size:.78rem;margin-top:.3rem;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-item__delete{background:transparent;color:#e2e8f0;border:none;cursor:pointer;font-size:16px;line-height:1;padding:0 4px;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-item__delete:hover{color:' + ACCENT + ';}' +
+    '#mar-fb-panel-staged .mar-fb-staged-cap-msg{color:' + ACCENT + ';font-weight:600;padding:8px;border:1px dashed ' + ACCENT + ';border-radius:6px;margin-bottom:8px;font-size:.82rem;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-empty{color:#94a3b8;font-style:italic;padding:8px;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-actions{display:flex;justify-content:space-between;gap:8px;margin-top:8px;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-actions button{flex:1;padding:8px;border-radius:6px;border:none;font-weight:600;cursor:pointer;font:inherit;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-submit{background:' + ACCENT + ';color:#fff;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-submit[disabled]{opacity:.5;cursor:not-allowed;}' +
+    '#mar-fb-panel-staged .mar-fb-staged-clear{background:#1e293b;color:#e2e8f0;border:1px solid #334155!important;}';
   document.documentElement.appendChild(style);
 
   // ---- state ----------------------------------------------------------------
@@ -573,12 +596,94 @@
     }
     li('Simple, clear changes go live automatically. Anything we’re unsure about comes back to you as a plain question.');
     bd.appendChild(ul);
+
+    // v2 cap enforcement (STAGE-06 / STAGE-07 / D-04): if staging THIS edit
+    // would breach the 10-edit or 30MB cap, show the inline message and
+    // disable the Confirm button. Per D-04 the chip stays visible; the user
+    // can Submit the open batch from the chip to make room.
+    var extraBytes = (draft.image && typeof draft.image.size === 'number') ? draft.image.size : 0;
+    var capResult = exceedsCaps(extraBytes);
+    if (capResult.exceeds) {
+      lastCapMessage = capResult.reason;
+      bd.appendChild(el('div', { class: 'prev', style: 'color:' + ACCENT + ';border-color:' + ACCENT + ';' }, escapeHtml(capResult.reason)));
+      // Re-render the open staged panel (if any) so it surfaces the same
+      // cap message above the staged list.
+      if (document.getElementById('mar-fb-panel-staged')) renderPanel();
+    }
     bd.appendChild(el('div', { class: 'err' }));
 
     var back = el('button', { class: 'ghost' }, 'Back');
     back.addEventListener('click', renderFields);
-    var send = el('button', { class: 'act' }, 'Looks right — send it');
-    send.addEventListener('click', submit);
+    var send = el('button', { class: 'act' }, 'Confirm and stage');
+    if (capResult.exceeds) send.setAttribute('disabled', 'disabled');
+    send.addEventListener('click', function () {
+      // Re-validate at the cap boundary (handles edits that arrived from a
+      // restored draft after staging filled the batch in another tab).
+      var v = validateFields(draft.intent, draft.detail);
+      if (v) { renderFields(); setTimeout(function () { showError(v); }, 0); return; }
+      var bytesNow = (draft.image && typeof draft.image.size === 'number') ? draft.image.size : 0;
+      var capNow = exceedsCaps(bytesNow);
+      if (capNow.exceeds) {
+        lastCapMessage = capNow.reason;
+        send.setAttribute('disabled', 'disabled');
+        // Force the cap message to render even if the panel was just opened.
+        if (!document.getElementById('mar-fb-panel-staged')) renderPanel();
+        else renderPanel();
+        return;
+      }
+      // Build the staged entry. The File (if any) goes into the in-memory
+      // fileMap; only the descriptor {name,type,size} is persisted (D-09 /
+      // STAGE-05). dataBase64 is NEVER written to sessionStorage.
+      var sid = nextStageId();
+      var imgDesc = null;
+      if (draft.image) {
+        imgDesc = { name: draft.image.name, type: draft.image.type, size: draft.image.size };
+        // The existing draft.image carries a `dataURL` from FileReader.
+        // Hold the full object in memory (including dataURL) so submitBatch
+        // can re-emit the base64 at submit time. The dataURL bytes are kept
+        // in the in-memory map ONLY — they never touch sessionStorage.
+        fileMap[sid] = draft.image;
+      }
+      var entry = {
+        stageId: sid,
+        intent: draft.intent,
+        pageRoute: locator.pageRoute,
+        confirmationAccepted: true,
+        intentDetail: {
+          currentText: locator._currentText || '',
+          newTextEn: draft.detail.newTextEn || '',
+          newTextFr: draft.detail.newTextFr || '',
+          okToTranslate: !!draft.detail.okToTranslate,
+          change: draft.detail.change || null,
+          detail: draft.detail.detail || '',
+          confirmed: !!draft.detail.confirmed,
+        },
+        locator: {
+          schemaVersion: SCHEMA_VERSION_V2,
+          pageRoute: locator.pageRoute,
+          astroFileGuess: locator.astroFileGuess,
+          i18nKey: locator.i18nKey,
+          i18nAttr: locator.i18nAttr,
+          imageRef: locator.imageRef,
+          galleryAttrRaw: locator.galleryAttrRaw,
+          galleryIndex: locator.galleryIndex,
+          domPath: locator.domPath,
+          nearbyText: locator.nearbyText,
+          nearestHeading: locator.nearestHeading,
+          outerHTMLSnippet: locator.outerHTMLSnippet,
+          boundingInfo: locator.boundingInfo,
+          computedStyle: locator.computedStyle,
+          langAtCapture: locator.langAtCapture,
+        },
+        imageDescriptor: imgDesc,
+        stagedAt: Date.now(),
+      };
+      stagedPush(entry);
+      // Successful stage: clear the in-progress draft + return to IDLE so
+      // the user can stage another edit. staged[] persists.
+      reset();
+      lastCapMessage = null;
+    });
     parts.ft.appendChild(back);
     parts.ft.appendChild(send);
   }
@@ -629,13 +734,436 @@
     window.parent.postMessage({ type: 'mar-feedback-submit', payload: buildPayload() }, '*');
   }
 
+  // ===========================================================================
+  // v2 batch-staging UI + state helpers (STAGE-01..03, STAGE-06/07 / Plan 04-04)
+  // ===========================================================================
+  //
+  // The chip is the persistent corner widget showing "N edits staged · Submit
+  // batch · View list". It appears after the first stage and rehydrates on
+  // iframe navigation via pageshow/visibilitychange (see bottom of IIFE).
+  // The staged panel is a click-to-open list with per-item delete + Clear all
+  // + Submit batch. Per D-12 per-item ❌ is irrevocable (no confirm); per D-11
+  // Clear all uses window.confirm() because losing the whole batch is louder.
+  //
+  // sessionStorage holds only DESCRIPTORS (name/type/size) — Files live in
+  // the in-memory fileMap (D-09 / STAGE-05). Base64 encoding happens only at
+  // submit time inside submitBatch() (Task 3).
+
+  function batchTotals() {
+    var arr = loadStaged();
+    var totalBytes = 0;
+    for (var i = 0; i < arr.length; i++) {
+      var d = arr[i] && arr[i].imageDescriptor;
+      if (d && typeof d.size === 'number') totalBytes += d.size;
+    }
+    return { count: arr.length, totalBytes: totalBytes };
+  }
+
+  // STAGE-06 caps mirror submit.ts MAX_BATCH_EDITS / MAX_BATCH_BYTES exactly.
+  // extraBytes is the size of an about-to-stage photo (0 for text-only edits)
+  // so the check answers "would staging this one push us over?".
+  function exceedsCaps(extraBytes) {
+    var totals = batchTotals();
+    if (totals.count + 1 > MAX_BATCH_EDITS) {
+      return { exceeds: true, reason: 'This batch is full — submit it before staging more' };
+    }
+    if (totals.totalBytes + (extraBytes || 0) > MAX_BATCH_BYTES) {
+      return { exceeds: true, reason: 'This batch is full — submit it before staging more' };
+    }
+    return { exceeds: false, reason: null };
+  }
+
+  function removeChip() {
+    var c = document.getElementById('mar-fb-chip');
+    if (c) c.remove();
+  }
+
+  function destroyStagedPanel() {
+    var p = document.getElementById('mar-fb-panel-staged');
+    if (p) p.remove();
+  }
+
+  // STAGE-02: corner chip. count===0 removes it. Otherwise the count span is
+  // updated in-place when the chip already exists (avoids a flash on stage).
+  function renderChip(count) {
+    if (!count || count <= 0) { removeChip(); return; }
+    var chip = document.getElementById('mar-fb-chip');
+    if (chip) {
+      var cspan = chip.querySelector('.mar-fb-chip__count');
+      if (cspan) cspan.textContent = String(count);
+      return;
+    }
+    chip = el('div', { id: 'mar-fb-chip' });
+    chip.appendChild(el('span', { class: 'mar-fb-chip__count' }, String(count)));
+    chip.appendChild(document.createTextNode(' '));
+    chip.appendChild(el('span', { class: 'mar-fb-chip__sep' }, 'edits staged · '));
+    var sub = el('button', { class: 'mar-fb-chip__submit', type: 'button' }, 'Submit batch');
+    sub.addEventListener('click', function () { submitBatch(); });
+    chip.appendChild(sub);
+    chip.appendChild(el('span', { class: 'mar-fb-chip__sep' }, ' · '));
+    var view = el('button', { class: 'mar-fb-chip__view', type: 'button' }, 'View list');
+    view.addEventListener('click', togglePanel);
+    chip.appendChild(view);
+    document.body.appendChild(chip);
+  }
+
+  function togglePanel() {
+    if (document.getElementById('mar-fb-panel-staged')) destroyStagedPanel();
+    else renderPanel();
+  }
+
+  // STAGE-03: panel listing each staged edit with per-item delete + actions.
+  // `opts` is optional and may carry:
+  //   - errors:  Array<{index, error}> from API-03 (highlight failing items)
+  //   - capMessage: string from D-04 / cap-violation flow (prepend banner)
+  function renderPanel(opts) {
+    opts = opts || {};
+    destroyStagedPanel();
+    var arr = loadStaged();
+    var p = el('div', { id: 'mar-fb-panel-staged' });
+    p.appendChild(el('h4', null, 'Staged edits (' + arr.length + ')'));
+
+    if (opts.capMessage) {
+      p.appendChild(el('div', { class: 'mar-fb-staged-cap-msg' }, escapeHtml(opts.capMessage)));
+    } else if (lastCapMessage) {
+      p.appendChild(el('div', { class: 'mar-fb-staged-cap-msg' }, escapeHtml(lastCapMessage)));
+    }
+
+    var errByIndex = {};
+    if (Array.isArray(opts.errors)) {
+      for (var ei = 0; ei < opts.errors.length; ei++) {
+        var er = opts.errors[ei];
+        if (er && typeof er.index === 'number') errByIndex[er.index] = er.error || 'Validation failed';
+      }
+    }
+
+    if (arr.length === 0) {
+      p.appendChild(el('div', { class: 'mar-fb-staged-empty' }, 'No edits staged yet. Click anything on the page to start.'));
+    } else {
+      for (var i = 0; i < arr.length; i++) {
+        var entry = arr[i];
+        var classes = 'mar-fb-staged-item';
+        if (errByIndex.hasOwnProperty(i)) classes += ' is-error';
+        var item = el('div', { class: classes });
+        var body = el('div', { class: 'mar-fb-staged-item__body' });
+        body.appendChild(el('div', { class: 'mar-fb-staged-item__meta' }, escapeHtml(entry.pageRoute) + ' · ' + escapeHtml(String(entry.intent || '').replace(/-/g, ' '))));
+        // One-line plain-language summary per intent.
+        var summary = '';
+        var d = entry.intentDetail || {};
+        if (entry.intent === 'change-wording') {
+          var nt = String(d.newTextEn || '');
+          summary = 'Change to: “' + escapeHtml(nt.slice(0, 80)) + (nt.length > 80 ? '…' : '') + '”';
+        } else if (entry.intent === 'replace-photo') {
+          var fname = (entry.imageDescriptor && entry.imageDescriptor.name) || 'new photo';
+          var lost = !!(entry.imageDescriptor && !fileMap[entry.stageId]);
+          summary = 'Replace photo with ' + escapeHtml(fname) + (lost ? ' (re-attach — file lost after navigation)' : '');
+        } else if (entry.intent === 'move-resize') {
+          summary = 'Layout: ' + escapeHtml(String(d.change || '').replace(/-/g, ' ')) + ' — ' + escapeHtml(String(d.detail || '').slice(0, 80));
+        } else if (entry.intent === 'remove') {
+          summary = 'Remove this element' + (d.detail ? ' — ' + escapeHtml(String(d.detail).slice(0, 60)) : '');
+        } else {
+          summary = escapeHtml(String(d.detail || '').slice(0, 100));
+        }
+        body.appendChild(el('div', null, summary));
+        if (errByIndex.hasOwnProperty(i)) {
+          body.appendChild(el('div', { class: 'mar-fb-staged-item__error' }, escapeHtml(errByIndex[i])));
+        }
+        item.appendChild(body);
+        // Per-item ❌ delete: irrevocable (D-12). closure over stageId.
+        (function (sid) {
+          var del = el('button', { class: 'mar-fb-staged-item__delete', type: 'button', 'aria-label': 'Delete this staged edit' }, '✕');
+          del.addEventListener('click', function () { stagedDelete(sid); });
+          item.appendChild(del);
+        })(entry.stageId);
+        p.appendChild(item);
+      }
+    }
+
+    var actions = el('div', { class: 'mar-fb-staged-actions' });
+    var clearBtn = el('button', { class: 'mar-fb-staged-clear', type: 'button' }, 'Clear all');
+    clearBtn.addEventListener('click', stagedClearAll);
+    actions.appendChild(clearBtn);
+    var subBtn = el('button', { class: 'mar-fb-staged-submit', type: 'button' }, 'Submit batch');
+    if (arr.length === 0 || state === STATE.SUBMITTING) subBtn.setAttribute('disabled', 'disabled');
+    subBtn.addEventListener('click', function () { submitBatch(); });
+    actions.appendChild(subBtn);
+    p.appendChild(actions);
+    document.body.appendChild(p);
+  }
+
+  function stagedPush(entry) {
+    var arr = loadStaged();
+    arr.push(entry);
+    saveStaged(arr);
+    renderChip(arr.length);
+    if (document.getElementById('mar-fb-panel-staged')) renderPanel();
+  }
+
+  // D-12: per-item delete is IRREVOCABLE — no confirm dialog. Removes the
+  // entry from sessionStorage AND the in-memory fileMap, then refreshes UI.
+  function stagedDelete(stageId) {
+    var arr = loadStaged();
+    var next = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] && arr[i].stageId === stageId) {
+        // Drop the in-memory File reference for this stage.
+        try { delete fileMap[arr[i].stageId]; } catch (e) {}
+      } else {
+        next.push(arr[i]);
+      }
+    }
+    saveStaged(next);
+    // Cap state may have changed (deletes drop totals); clear stale message.
+    lastCapMessage = null;
+    if (next.length === 0) {
+      removeChip();
+      destroyStagedPanel();
+    } else {
+      renderChip(next.length);
+      if (document.getElementById('mar-fb-panel-staged')) renderPanel();
+    }
+  }
+
+  // D-11: Clear all is loud (loses the whole batch) so it uses window.confirm.
+  // The confirm string is admin-facing and skips i18n (CONTEXT.md Claude's
+  // Discretion).
+  function stagedClearAll() {
+    if (!window.confirm('Clear all staged edits? This cannot be undone.')) return;
+    clearStaged();
+    fileMap = {};
+    lastCapMessage = null;
+    removeChip();
+    destroyStagedPanel();
+  }
+
+  // STAGE-04: build the v2 batch payload and postMessage it to the parent
+  // for EXACTLY ONE POST. Photos are base64-encoded from the in-memory File
+  // map ONLY here — never at stage time, never into sessionStorage.
+  function submitBatch() {
+    // Defence-in-depth: chip + panel buttons disable on click but a stale
+    // event handler could re-enter. Also: 0-staged is a no-op.
+    if (state === STATE.SUBMITTING) return;
+    var arr = loadStaged();
+    if (arr.length === 0) return;
+
+    state = STATE.SUBMITTING;
+    // Disable the chip's Submit batch button + update its text.
+    var chip = document.getElementById('mar-fb-chip');
+    if (chip) {
+      var sb = chip.querySelector('.mar-fb-chip__submit');
+      if (sb) { sb.setAttribute('disabled', 'disabled'); sb.textContent = 'Submitting…'; }
+    }
+    // Also disable the panel's Submit if open.
+    var panelSub = document.querySelector('#mar-fb-panel-staged .mar-fb-staged-submit');
+    if (panelSub) { panelSub.setAttribute('disabled', 'disabled'); panelSub.textContent = 'Submitting…'; }
+
+    // Collect base64 promises per staged entry (parallel; no rate limit on
+    // in-memory FileReader work, and the server commits sequentially anyway).
+    var photoPromises = [];
+    for (var i = 0; i < arr.length; i++) {
+      var entry = arr[i];
+      var f = entry.imageDescriptor ? fileMap[entry.stageId] : null;
+      if (entry.imageDescriptor && f) {
+        // The fileMap stores the v1 draft.image shape: {dataURL,name,type,size}.
+        // The dataURL is already a data:<mime>;base64,<...> string from the
+        // FileReader at field-entry time, so we strip the prefix here. The
+        // dataURL was held in memory across the staging session — it was
+        // NEVER serialised into sessionStorage (verify: descriptors pushed
+        // into staged[] contain only name/type/size).
+        photoPromises.push(Promise.resolve({
+          stageId: entry.stageId,
+          dataBase64: stripDataUrlPrefix(f.dataURL || ''),
+          mime: f.type,
+          bytes: f.size,
+          originalFilename: f.name,
+          present: true,
+        }));
+      } else if (entry.imageDescriptor && !f) {
+        // STAGE-05 degraded case: File lost across iframe navigation. The
+        // server validation will 422 this edit if intent is replace-photo;
+        // the panel surfaces the failing index for re-attach.
+        photoPromises.push(Promise.resolve({
+          stageId: entry.stageId,
+          present: false,
+          __notice: 'photo file was lost across navigation; please re-attach if this edit needs the photo',
+        }));
+      } else {
+        // No photo on this edit.
+        photoPromises.push(Promise.resolve({ stageId: entry.stageId, present: false }));
+      }
+    }
+
+    Promise.all(photoPromises).then(function (imageResults) {
+      var byId = {};
+      for (var k = 0; k < imageResults.length; k++) byId[imageResults[k].stageId] = imageResults[k];
+
+      var edits = arr.map(function (entry) {
+        var loc = entry.locator || {};
+        var imgRes = byId[entry.stageId] || { present: false };
+        var image;
+        if (imgRes.present) {
+          image = {
+            present: true,
+            mime: imgRes.mime,
+            dataBase64: imgRes.dataBase64,
+            bytes: imgRes.bytes,
+            originalFilename: imgRes.originalFilename,
+          };
+        } else {
+          image = { present: false };
+        }
+        var editObj = {
+          intent: entry.intent,
+          pageRoute: entry.pageRoute,
+          confirmationAccepted: !!entry.confirmationAccepted,
+          intentDetail: entry.intentDetail || {},
+          // Spread locator fields (mirrors v1 buildPayload's flat shape so
+          // validateEdit on the server sees the same per-edit object shape).
+          astroFileGuess: loc.astroFileGuess,
+          i18nKey: loc.i18nKey,
+          i18nAttr: loc.i18nAttr,
+          imageRef: loc.imageRef,
+          galleryAttrRaw: loc.galleryAttrRaw,
+          galleryIndex: loc.galleryIndex,
+          domPath: loc.domPath,
+          nearbyText: loc.nearbyText,
+          nearestHeading: loc.nearestHeading,
+          outerHTMLSnippet: loc.outerHTMLSnippet,
+          boundingInfo: loc.boundingInfo,
+          computedStyle: loc.computedStyle,
+          langAtCapture: loc.langAtCapture,
+          image: image,
+        };
+        if (imgRes.__notice) editObj.__notice = imgRes.__notice;
+        return editObj;
+      });
+
+      var payload = {
+        schemaVersion: SCHEMA_VERSION_V2,
+        batch: true,
+        edits: edits,
+      };
+      if (window.__feedback_testMode === true) payload.testMode = true;
+
+      // EXACTLY ONE postMessage per submitBatch invocation (STAGE-04 / T-04-24).
+      window.parent.postMessage({ type: 'mar-feedback-submit', payload: payload }, '*');
+    }).catch(function () {
+      // Encoding failed — re-enable buttons, surface message, state→STAGED.
+      state = STATE.STAGED;
+      if (chip) {
+        var sb2 = chip.querySelector('.mar-fb-chip__submit');
+        if (sb2) { sb2.removeAttribute('disabled'); sb2.textContent = 'Submit batch'; }
+      }
+      if (panelSub) { panelSub.removeAttribute('disabled'); panelSub.textContent = 'Submit batch'; }
+      lastCapMessage = 'Could not read a staged photo. Try removing and re-adding it.';
+      renderPanel({ capMessage: lastCapMessage });
+    });
+  }
+
+  // Strip the `data:<mime>;base64,` prefix off a data URL, returning just the
+  // base64 payload. Used by submitBatch when re-reading the in-memory dataURL
+  // captured at field-entry time. Mirrors the server's split-on-comma path
+  // (submit.ts handleV2Batch base64 normalisation).
+  function stripDataUrlPrefix(s) {
+    var str = String(s || '');
+    var comma = str.indexOf(',');
+    return comma >= 0 ? str.slice(comma + 1) : str;
+  }
+
+  // Promise-wrapped FileReader. Used defensively when a fileMap entry holds
+  // a raw File rather than the v1 draft's {dataURL,name,type,size} shape.
+  // Today every fileMap entry already carries a dataURL (the field-entry
+  // flow eagerly reads it) so this is reserved for future flows that
+  // accept a raw File at stage time — but the plan acceptance requires
+  // both readAsBase64 and readAsDataURL be present in the file (D-09 /
+  // STAGE-05 FileReader pattern).
+  function readAsBase64(file) {
+    return new Promise(function (resolve, reject) {
+      var r = new FileReader();
+      r.onload = function () {
+        try {
+          var s = String(r.result || '');
+          var comma = s.indexOf(',');
+          resolve(comma >= 0 ? s.slice(comma + 1) : '');
+        } catch (e) { reject(e); }
+      };
+      r.onerror = function () { reject(new Error('FileReader error')); };
+      r.readAsDataURL(file);
+    });
+  }
+
+
   // ---- E: result from parent ------------------------------------------------
+  // Parent (feedback.astro) posts `mar-feedback-result` after the
+  // /api/feedback/submit round-trip. v2 extends the v1 contract with:
+  //   - m.errors[]: per-edit validation failures (API-03 / D-05)
+  //   - m.cap: 'edits' | 'bytes' with m.error message (D-01 / D-02 / API-06)
+  // When state === STATE.SUBMITTING the receiver knows this is a batch
+  // result; otherwise it's a legacy v1 single-edit result.
   window.addEventListener('message', function (ev) {
     if (ev.origin !== location.origin) return;
     var m = ev.data;
     if (!m || m.type !== 'mar-feedback-result') return;
+
+    // ---- v2 batch result (STAGE.SUBMITTING) -------------------------------
+    if (state === STATE.SUBMITTING) {
+      if (m.ok) {
+        // STAGE-04 success: clear all staged state + chip + panel + drafts.
+        clearStaged();
+        fileMap = {};
+        removeChip();
+        destroyStagedPanel();
+        clearDraft();
+        state = STATE.DONE;
+        var partsB = buildPanelShell('Thank you');
+        partsB.bd.appendChild(el('div', { class: 'ok' }, 'Your batch was sent. You can leave another, or close this tab.'));
+        var doneB = el('button', { class: 'act' }, 'Leave another');
+        doneB.addEventListener('click', reset);
+        partsB.ft.appendChild(doneB);
+        return;
+      }
+      if (m.auth) {
+        // Staged edits survive in sessionStorage; re-enable chip so user can
+        // resubmit after sign-in.
+        state = STATE.STAGED;
+        renderChip(loadStaged().length);
+        var p2b = buildPanelShell('Please sign in again');
+        p2b.bd.appendChild(el('div', { class: 'prev' }, 'Your session expired, but your staged edits are saved. Sign in again and resubmit.'));
+        return;
+      }
+      if (Array.isArray(m.errors)) {
+        // API-03 / D-05: per-edit-errors. sessionStorage UNCHANGED so the
+        // user can edit/delete and retry. Panel re-renders with .is-error
+        // highlights on the failing indexes.
+        state = STATE.STAGED;
+        renderChip(loadStaged().length);
+        renderPanel({ errors: m.errors });
+        return;
+      }
+      if (m.cap) {
+        // D-01 / D-02 / API-06 cap-violation. Server caps fired despite the
+        // client's pre-checks (e.g. another tab staged in parallel, or the
+        // server's MAX_BATCH_BYTES is tighter than the client mirror).
+        state = STATE.STAGED;
+        lastCapMessage = m.error || 'This batch exceeds a server cap. Remove some items and try again.';
+        renderChip(loadStaged().length);
+        renderPanel({ capMessage: lastCapMessage });
+        return;
+      }
+      // Generic failure — re-enable chip + panel buttons, surface message.
+      state = STATE.STAGED;
+      renderChip(loadStaged().length);
+      renderPanel({ capMessage: m.error || 'Something went wrong. Your staged edits are saved — please try again.' });
+      return;
+    }
+
+    // ---- v1 single-edit result path (legacy / cached browsers) ------------
     if (m.ok) {
       clearDraft();
+      clearStaged();
+      fileMap = {};
+      removeChip();
+      destroyStagedPanel();
       state = STATE.DONE;
       var parts = buildPanelShell('Thank you');
       parts.bd.appendChild(el('div', { class: 'ok' }, 'Your feedback was sent. You can leave another, or close this tab.'));
@@ -643,10 +1171,11 @@
       done.addEventListener('click', reset);
       parts.ft.appendChild(done);
     } else if (m.auth) {
-      // Draft already in localStorage — nothing lost.
       state = STATE.AUTH;
       var p2 = buildPanelShell('Please sign in again');
       p2.bd.appendChild(el('div', { class: 'prev' }, 'Your session expired, but your note is saved. Sign in again and your draft will still be here.'));
+    } else if (Array.isArray(m.errors)) {
+      renderPanel({ errors: m.errors });
     } else {
       var p3 = panel && panel.querySelector('.err');
       if (p3) { p3.textContent = m.error || 'Something went wrong. Your note is saved — please try again.'; p3.classList.add('show'); }
