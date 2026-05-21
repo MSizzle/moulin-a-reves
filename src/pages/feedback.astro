@@ -270,12 +270,12 @@ const firstSrc = `/?feedback=1&v=${VER}`;
                 if (payload && Array.isArray(payload.edits)) {
                   editCount = payload.edits.length;
                   payload.edits.forEach(function (e) {
-                    var r = e && e.locator && e.locator.pageRoute;
+                    var r = e && e.pageRoute;
                     if (r && routes.indexOf(r) === -1) routes.push(r);
                   });
-                } else if (payload && payload.locator && payload.locator.pageRoute) {
+                } else if (payload && payload.pageRoute) {
                   editCount = 1;
-                  routes.push(payload.locator.pageRoute);
+                  routes.push(payload.pageRoute);
                 }
                 list.unshift({
                   issueNumber: data.issueNumber,
