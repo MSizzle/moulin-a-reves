@@ -130,8 +130,8 @@ From `CLAUDE.md` and prior project conventions — these are not requirements bu
 | OPS-01 | 4 | 04-06 | satisfied |
 | OPS-02 | 4 | 04-08 | satisfied |
 | OPS-03 | 4 | 04-07 | satisfied |
-| OPS-04 | 5 | TBD | open |
-| OPS-05 | 5 | TBD | open |
+| OPS-04 | 5 | TBD | satisfied |
+| OPS-05 | 5 | TBD | satisfied |
 
 **Coverage:** 25/25 v1 requirements mapped across 2 phases (Phase 4: 23 reqs, Phase 5: 2 reqs). No orphans, no duplicates.
 
