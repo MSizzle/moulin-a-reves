@@ -76,7 +76,18 @@ const CANARY_KIND = _canaryFlagIdx !== -1 ? (process.argv[_canaryFlagIdx + 1] ||
 // --- 1. Environment setup (BEFORE any dynamic import that touches submit.ts) -
 process.env.GITHUB_TOKEN ||= 'smoke-token';
 process.env.GITHUB_REPO ||= 'MSizzle/moulin-a-reves';
-process.env.DASHBOARD_PASSWORD ||= 'smoke-password';
+// In unit mode, 'smoke-password' is a deterministic test value (checkAuth runs
+// locally against a stub, so any consistent value works).
+// In canary mode, DASHBOARD_PASSWORD MUST match the Vercel project env var.
+// Auth.ts falls back to 'moulin2024' when unset; the canary respects the same
+// fallback so `source .env.local && npm run canary:v1` is optional (not required
+// when the Vercel project uses the default password).
+if (!TARGET_URL) {
+  process.env.DASHBOARD_PASSWORD ||= 'smoke-password';
+} else {
+  // Canary mode: honour the real env var; fall back to the same default as auth.ts
+  process.env.DASHBOARD_PASSWORD ||= 'moulin2024';
+}
 
 // ============================================================================
 // UNIT MODE — install registerHooks + fetch stub, import submit.ts
@@ -531,32 +542,141 @@ if (!TARGET_URL) {
 
   // ---------------------------------------------------------------------------
   // runCanaryV1: OPS-04 — v1 back-compat canary against the live endpoint.
-  // STUB: full assertion body (issue title shape, gh issue view, cleanup) lands
-  // in Plan 05-02. This stub performs a minimal POST to confirm the seam is
-  // wired correctly — the fetch attempt itself proves the code path is reached.
+  // Plan 05-02: full assertion body — HTTP status, response shape, gh issue view
+  // title/label/body checks, cleanup via try/finally per CONTEXT D-05/D-07.
   // ---------------------------------------------------------------------------
   const runCanaryV1 = async () => {
-    // Minimal v1 payload — same shape as unit-mode scenario 1.
-    const res = await canaryPost({
+    const { execFileSync } = await import('node:child_process');
+
+    // --- Pre-checks: TARGET_URL + gh CLI availability -----------------------
+    if (!TARGET_URL) {
+      console.error('FAIL: TARGET_URL not set');
+      process.exit(2);
+    }
+
+    // Build a sanitized env for gh CLI sub-processes: remove GITHUB_TOKEN so
+    // that gh falls back to its keyring auth (the smoke harness sets
+    // process.env.GITHUB_TOKEN = 'smoke-token' which would override gh's own
+    // credential store and cause HTTP 401 on GraphQL calls).
+    // eslint-disable-next-line no-unused-vars
+    const { GITHUB_TOKEN: _discarded, ...ghEnv } = { ...process.env };
+    const ghOpts = { encoding: 'utf8', env: ghEnv };
+
+    try {
+      execFileSync('gh', ['--version'], ghOpts);
+    } catch (e) {
+      console.error('FAIL: gh CLI not available — ' + String(e && e.message ? e.message : e));
+      process.exit(2);
+    }
+
+    // Outer-scope issueNumber so finally block can close regardless of assertion result.
+    let issueNumber = null;
+    let assertionsPassed = false;
+
+    const payload = {
       schemaVersion: 1,
       intent: 'change-wording',
       pageRoute: '/',
       confirmationAccepted: true,
-      intentDetail: { newTextEn: 'Canary v1 test', okToTranslate: true },
+      testMode: true,
+      intentDetail: {
+        newTextEn: 'Canary test edit — Phase 5 verification ' + new Date().toISOString(),
+        okToTranslate: true,
+      },
       i18nKey: 'home.hero.title',
       i18nAttr: 'data-i18n',
-      nearbyText: 'Canary smoke test — v1 back-compat check',
-      nearestHeading: 'Canary',
-    });
-    if (res.status !== 200) {
-      throw new Error('canary v1 stub: expected 200, got ' + res.status);
+      nearbyText: 'long enough nearby text for at least one locator signal',
+      nearestHeading: 'Welcome',
+    };
+
+    try {
+      // Step 1: POST the payload and assert HTTP 200.
+      const response = await canaryPost(payload);
+      if (response.status !== 200) {
+        const bodyText = await response.text();
+        console.error('FAIL: v1 canary expected HTTP 200, got ' + response.status + ' — ' + bodyText);
+        throw new Error('HTTP ' + response.status);
+      }
+
+      // Step 2: Parse body and assert shape.
+      const body = await response.json();
+      if (body.ok !== true || typeof body.issueNumber !== 'number' || typeof body.issueUrl !== 'string') {
+        console.error('FAIL: v1 canary response shape invalid — ' + JSON.stringify(body));
+        throw new Error('bad response shape');
+      }
+
+      // Step 3: Log PASS with issue number.
+      console.log('PASS: v1 canary HTTP 200 with issueNumber=' + body.issueNumber);
+
+      // Step 4: Capture issue number (finally block needs it).
+      issueNumber = body.issueNumber;
+
+      // Step 5: gh issue view to get title, labels, body.
+      const ghJson = execFileSync('gh', [
+        'issue', 'view', String(issueNumber),
+        '--json', 'title,labels,body',
+        '--repo', 'MSizzle/moulin-a-reves',
+      ], ghOpts);
+      const issue = JSON.parse(ghJson);
+
+      // Step 6: Assert title starts with expected v1 prefix.
+      if (!issue.title.startsWith('[TEST] [Feedback] change wording — ')) {
+        console.error('FAIL: v1 canary issue title mismatch — got: ' + issue.title);
+        throw new Error('title mismatch');
+      }
+
+      // Step 7: Assert labels contain client-feedback-test.
+      const labelNames = Array.isArray(issue.labels)
+        ? issue.labels.map((l) => (typeof l === 'string' ? l : l.name))
+        : [];
+      if (!labelNames.includes('client-feedback-test')) {
+        console.error('FAIL: v1 canary issue missing client-feedback-test label — got: ' + JSON.stringify(labelNames));
+        throw new Error('label mismatch');
+      }
+
+      // Step 8: Assert issue body does NOT contain batch-shape prefix.
+      if (issue.body && issue.body.includes('[Feedback] batch of')) {
+        console.error('FAIL: v1 canary issue body contains batch prefix (wrong dispatch arm) — first 200 chars: ' + String(issue.body).slice(0, 200));
+        throw new Error('batch shape detected in v1 issue body');
+      }
+
+      // Step 9: Log PASS for body shape assertion.
+      console.log('PASS: v1 canary issue body matches single-edit shape');
+
+      assertionsPassed = true;
+    } finally {
+      // Cleanup: close the test issue regardless of assertion outcome.
+      if (issueNumber !== null) {
+        try {
+          execFileSync('gh', [
+            'issue', 'comment', String(issueNumber),
+            '--repo', 'MSizzle/moulin-a-reves',
+            '--body', 'Closed by canary — Phase 5 OPS-04 verification (' + new Date().toISOString() + ')',
+          ], ghOpts);
+        } catch (e) {
+          const msg = 'WARN: cleanup partial — issue ' + issueNumber + ' may need manual close (comment failed): ' + String(e && e.message ? e.message : e);
+          console.warn(msg);
+          if (assertionsPassed) process.exitCode = 3;
+        }
+        try {
+          execFileSync('gh', [
+            'issue', 'close', String(issueNumber),
+            '--repo', 'MSizzle/moulin-a-reves',
+          ], ghOpts);
+        } catch (e) {
+          const msg = 'WARN: cleanup partial — issue ' + issueNumber + ' may need manual close (close failed): ' + String(e && e.message ? e.message : e);
+          console.warn(msg);
+          if (assertionsPassed) process.exitCode = 3;
+        }
+      }
     }
-    const body = await res.json();
-    if (!body.ok) {
-      throw new Error('canary v1 stub: response ok:false — ' + JSON.stringify(body));
+
+    if (assertionsPassed) {
+      console.log('=== v1 canary: PASS ===');
+    } else {
+      console.error('=== v1 canary: FAIL ===');
+      throw new Error('v1 canary assertions failed');
     }
-    // Full OPS-04 assertions (issue title, gh issue view, cleanup) land in Plan 05-02.
-    console.log('PASS: canary v1 stub reached live endpoint (05-02 will add full assertions)');
   };
 
   // ---------------------------------------------------------------------------
