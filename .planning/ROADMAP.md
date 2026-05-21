@@ -61,7 +61,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 04-02-PLAN.md — Wire v1 submit.ts through shared validator + add v2 dispatch skeleton (API-02 back-compat preserved)
+- [x] 04-02-PLAN.md — Wire v1 submit.ts through shared validator + add v2 dispatch skeleton (API-02 back-compat preserved)
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
@@ -102,7 +102,7 @@ Plans:
 | 1. Audit & Inventory | v1.0 | 1/1 | Complete | 2026-05-05 |
 | 2. Ship-the-Clear Edits | v1.0 | 4/4 | Complete | 2026-05-05 |
 | 3. CLIENT-CLARIFICATION.md | v1.0 | 1/1 | Complete | 2026-05-05 |
-| 4. Batch Pipeline Implementation | v1.1 | 1/8 | In Progress|  |
+| 4. Batch Pipeline Implementation | v1.1 | 2/8 | In Progress|  |
 | 5. Post-Deploy Verification | v1.1 | 0/TBD | Not started | - |
 
 **v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — Planning** (0/25 requirements mapped across 2 phases; 100% coverage; emergent STAGE-06/STAGE-07/API-06 added during plan-phase iteration 1 per D-05).
