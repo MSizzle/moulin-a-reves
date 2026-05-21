@@ -577,8 +577,28 @@ async function handleV2Batch(p: any): Promise<Response> {
     //     photo-bearing edit; photo-less edits keep committedPath:null.
     await patchIssueBody(issueNumber, buildBatchBody(finalMachineEdits));
 
+    // CR-03: Aggregate per-edit photo commit failures into the response so the
+    // client knows the batch shipped but N photos did not. Mirrors the v1
+    // warning semantics at handleV1 lines 295-303. Status stays 200 because
+    // the issue WAS created — the photo failures are soft warnings, not
+    // rejections. An empty commitErrors array means clean batch → response is
+    // byte-identical to before this change (clean-batch parity guaranteed).
+    const commitErrors = finalMachineEdits
+      .map((m, i) => (m.commitError ? { index: i, error: m.commitError } : null))
+      .filter((x): x is { index: number; error: string } => x !== null);
+
     return new Response(
-      JSON.stringify({ ok: true, issueNumber, issueUrl }),
+      JSON.stringify({
+        ok: true,
+        issueNumber,
+        issueUrl,
+        ...(commitErrors.length > 0
+          ? {
+              warning: `${commitErrors.length} of ${p.edits.length} photo(s) failed to upload`,
+              commitErrors,
+            }
+          : {}),
+      }),
       { status: 200, headers: { 'Content-Type': 'application/json' } },
     );
   } catch (err: any) {
