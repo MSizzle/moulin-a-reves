@@ -17,6 +17,8 @@
 - [ ] **STAGE-03**: The panel shows each staged edit in plain language with a per-item ❌ delete button and a "Clear all" button at the bottom that requires a confirm before clearing
 - [ ] **STAGE-04**: Client can submit the whole staged batch in one `POST /api/feedback/submit` call, which closes the panel and clears `sessionStorage` on success
 - [ ] **STAGE-05**: Photo files are stored as File references in `sessionStorage` and encoded to base64 only at batch-submit time (avoids the ~5 MB `sessionStorage` cap that 12 MB photos would blow through)
+- [ ] **STAGE-06**: Client enforces edit-count cap (10 edits per batch) and total-photo-MB cap (30 MB per batch); when next stage would breach a cap, the Confirm button is disabled and an inline message reads 'This batch is full — submit it before staging more' (emergent from D-05 / mirrors D-01 + D-02 client-side)
+- [ ] **STAGE-07**: Chip displays a 'limit reached' UX state distinct from the normal 'N edits staged · Submit batch · View list' label when either cap is hit (emergent from D-05; supports STAGE-06)
 
 ### API — Server endpoint (`src/pages/api/feedback/submit.ts`)
 
@@ -25,6 +27,7 @@
 - [ ] **API-03**: Per-edit validation (vagueness check, photo size, locator quality, intent enum, EN/FR rule) runs on every edit in `edits[]`; if any edit fails, the entire batch is rejected with a structured per-edit-errors response so the UI can highlight which edits to fix or drop
 - [ ] **API-04**: Per-edit validation logic is extracted into a shared helper consumed by both the v1 single-edit and v2 batch code paths (so the two paths can never drift)
 - [ ] **API-05**: All photos in a batch commit to the same `feedback-incoming/issue-<n>/` directory and get patched into the issue body in a single PATCH call (not N PATCH calls)
+- [ ] **API-06**: Server re-validates both batch caps (edit-count and total-photo-MB) and rejects oversize batches with a structured per-cap error so the UI can highlight which cap was breached (emergent from D-05; server-side mirror of STAGE-06)
 
 ### ISSUE — GitHub issue construction for batches
 
@@ -67,9 +70,9 @@ Explicit exclusions for v1.1, with reasoning:
 - **New endpoint** — extend `submit.ts` to accept two payload shapes. Do not add `POST /api/feedback/submit-batch`.
 - **Server-side draft persistence** — the spec memory's option (c) (`client-feedback-draft`-labelled draft issues) is rejected for v1.1; `sessionStorage` is sufficient. Lift to v1.2 only if real demand emerges.
 - **`localStorage` draft persistence** — same rationale; `sessionStorage` (clears on browser close) is the chosen lifetime.
-- **Per-batch hard caps on edit count or total photo MB** — DEFERRED to `/gsd-discuss-phase` as open design question #1; if caps are needed they get added as STAGE-06 / API-06 during planning.
-- **Cross-page batching confirmation** — DEFERRED to `/gsd-discuss-phase` as open design question #2; default behavior in spec supports it, but UX confirmation needed.
-- **More-conservative batch autonomy thresholds** — DEFERRED to `/gsd-discuss-phase` as open design question #4; current default is per-edit thresholds (inherited from existing gate).
+- **Per-batch hard caps on edit count or total photo MB** — RESOLVED during discuss-phase (D-01, D-02) and emergent during planning as STAGE-06 / API-06 (per D-05). No longer out-of-scope; tracked above.
+- **Cross-page batching confirmation** — RESOLVED during discuss-phase (D-06); no longer out-of-scope.
+- **More-conservative batch autonomy thresholds** — RESOLVED during discuss-phase (D-10: keep per-edit thresholds, no batch redesign); no longer out-of-scope.
 - **All v1.2-carried items from PROJECT.md** — gallery modal rewrite, calendar 12-month range, editor flow audit, Melissa's clarification answers.
 
 ---
@@ -84,7 +87,7 @@ These five items live in the spec memory and intentionally are NOT v1.1 requirem
 4. **Autonomy threshold inheritance** — keep per-edit thresholds, or require ≥3 locator signals across the batch?
 5. **Mid-batch cancel UX** — confirm dialog vs toast vs irrevocable click for "Clear all"?
 
-Resolutions become additional STAGE-* / API-* / ACTION-* requirements during planning.
+Resolutions become additional STAGE-* / API-* / ACTION-* requirements during planning. (Resolved 2026-05-21 in `04-CONTEXT.md` decisions D-01..D-19; emergent requirements STAGE-06, STAGE-07, API-06 added during planning iteration 1 per D-05.)
 
 ---
 
@@ -104,30 +107,33 @@ From `CLAUDE.md` and prior project conventions — these are not requirements bu
 
 | REQ-ID | Phase | Plan | Status |
 |--------|-------|------|--------|
-| STAGE-01 | 4 | TBD | open |
-| STAGE-02 | 4 | TBD | open |
-| STAGE-03 | 4 | TBD | open |
-| STAGE-04 | 4 | TBD | open |
-| STAGE-05 | 4 | TBD | open |
-| API-01 | 4 | TBD | open |
-| API-02 | 4 | TBD | open |
-| API-03 | 4 | TBD | open |
-| API-04 | 4 | TBD | open |
-| API-05 | 4 | TBD | open |
-| ISSUE-01 | 4 | TBD | open |
-| ISSUE-02 | 4 | TBD | open |
-| ISSUE-03 | 4 | TBD | open |
-| ISSUE-04 | 4 | TBD | open |
-| ACTION-01 | 4 | TBD | open |
-| ACTION-02 | 4 | TBD | open |
-| ACTION-03 | 4 | TBD | open |
-| OPS-01 | 4 | TBD | open |
-| OPS-02 | 4 | TBD | open |
-| OPS-03 | 4 | TBD | open |
+| STAGE-01 | 4 | 04-04 | open |
+| STAGE-02 | 4 | 04-04 | open |
+| STAGE-03 | 4 | 04-04 | open |
+| STAGE-04 | 4 | 04-04 | open |
+| STAGE-05 | 4 | 04-04 | open |
+| STAGE-06 | 4 | 04-04 | open |
+| STAGE-07 | 4 | 04-04 | open |
+| API-01 | 4 | 04-03 | open |
+| API-02 | 4 | 04-02 | open |
+| API-03 | 4 | 04-03 | open |
+| API-04 | 4 | 04-01 | open |
+| API-05 | 4 | 04-03 | open |
+| API-06 | 4 | 04-03 | open |
+| ISSUE-01 | 4 | 04-03 | open |
+| ISSUE-02 | 4 | 04-03 | open |
+| ISSUE-03 | 4 | 04-03 | open |
+| ISSUE-04 | 4 | 04-03 | open |
+| ACTION-01 | 4 | 04-05 | open |
+| ACTION-02 | 4 | 04-05 | open |
+| ACTION-03 | 4 | 04-05 | open |
+| OPS-01 | 4 | 04-06 | open |
+| OPS-02 | 4 | 04-08 | open |
+| OPS-03 | 4 | 04-07 | open |
 | OPS-04 | 5 | TBD | open |
 | OPS-05 | 5 | TBD | open |
 
-**Coverage:** 22/22 v1 requirements mapped across 2 phases (Phase 4: 20 reqs, Phase 5: 2 reqs). No orphans, no duplicates.
+**Coverage:** 25/25 v1 requirements mapped across 2 phases (Phase 4: 23 reqs, Phase 5: 2 reqs). No orphans, no duplicates.
 
 *Phase / Plan / Status columns are populated by the roadmapper and updated during execution.*
 
@@ -135,3 +141,4 @@ From `CLAUDE.md` and prior project conventions — these are not requirements bu
 
 *Created 2026-05-20 during `/gsd-new-milestone v1.1` — Batch Feedback Pipeline*
 *Traceability populated 2026-05-21 during roadmap creation — Phases 4 and 5*
+*Emergent requirements STAGE-06, STAGE-07, API-06 added 2026-05-20 during plan-phase iteration 1 per D-05 (CONTEXT.md)*
