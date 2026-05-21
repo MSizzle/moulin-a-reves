@@ -189,21 +189,39 @@ const firstSrc = `/?feedback=1&v=${VER}`;
 
                 var data = await res.json().catch(function () { return {}; });
                 if (res.ok && data.ok) {
+                  // CR-01 (success path): spread warning + commitErrors so inject can
+                  // surface partial photo-commit failures without clearing staged state.
                   iframe.contentWindow &&
-                    iframe.contentWindow.postMessage({ type: 'mar-feedback-result', ok: true }, location.origin);
+                    iframe.contentWindow.postMessage({
+                      type: ‘mar-feedback-result’,
+                      ok: true,
+                      ...(data.warning ? { warning: data.warning } : {}),
+                      ...(Array.isArray(data.commitErrors) ? { commitErrors: data.commitErrors } : {}),
+                    }, location.origin);
                   showToast(
-                    'ok',
-                    'Thank you — it’s on its way',
-                    'We’ve logged your request' +
-                      (data.issueUrl ? ' (<a target="_blank" rel="noopener" href="' + data.issueUrl + '">#' + data.issueNumber + '</a>)' : '') +
-                      '. Simple changes go live automatically; anything tricky comes back to you as a question.',
-                    [{ label: 'Done', onClick: hideToast }]
+                    ‘ok’,
+                    ‘Thank you — it’s on its way’,
+                    (data.warning ? data.warning + ‘ Re-attach the affected photos and resubmit.’ :
+                      ‘We’ve logged your request’ +
+                      (data.issueUrl ? ‘ (<a target="_blank" rel="noopener" href="’ + data.issueUrl + ‘">#’ + data.issueNumber + ‘</a>)’ : ‘’) +
+                      ‘. Simple changes go live automatically; anything tricky comes back to you as a question.’),
+                    [{ label: ‘Done’, onClick: hideToast }]
                   );
                 } else {
+                  // CR-01 (failure path): spread structured cap/error fields so the inject’s
+                  // m.cap and m.errors branches become reachable.
                   iframe.contentWindow &&
-                    iframe.contentWindow.postMessage({ type: 'mar-feedback-result', ok: false }, location.origin);
-                  showToast('err', 'That didn’t go through', (data && data.error) || 'Something went wrong. Please try again.', [
-                    { label: 'OK', ghost: true, onClick: hideToast },
+                    iframe.contentWindow.postMessage({
+                      type: ‘mar-feedback-result’,
+                      ok: false,
+                      ...(Array.isArray(data && data.errors) ? { errors: data.errors } : {}),
+                      ...(data && data.cap ? { cap: data.cap } : {}),
+                      ...(data && typeof data.limit === ‘number’ ? { limit: data.limit } : {}),
+                      ...(data && typeof data.actual === ‘number’ ? { actual: data.actual } : {}),
+                      ...(data && data.error ? { error: data.error } : {}),
+                    }, location.origin);
+                  showToast(‘err’, ‘That didn’t go through’, (data && data.error) || ‘Something went wrong. Please try again.’, [
+                    { label: ‘OK’, ghost: true, onClick: hideToast },
                   ]);
                 }
               } catch (e) {
