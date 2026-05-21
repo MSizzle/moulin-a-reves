@@ -33,6 +33,26 @@ const SCHEMA_VERSION = 1;
 const SCHEMA_VERSION_V2 = 2;
 
 // ---------------------------------------------------------------------------
+// D-03: Vercel Hobby tier request-body limit is ~4.5 MB (the default for the
+// project per `.vercel/project.json` prj_RIo7DcBIYysCuz9zhnI71u1Ifrb4 / team
+// team_mYKN6qZrDebsHJGJaiN7XqrY). MAX_BATCH_BYTES set to 3 MB so the
+// base64-inflated wire size (~4 MB on the wire, since base64 grows ~33%)
+// stays under the limit and the in-app cap-violation error fires BEFORE the
+// edge rejects the request with an opaque 413. This is the conservative
+// Hobby-safe default — the planner's D-03 verification step was unable to
+// run `vercel inspect` from the sandbox; OPERATOR FOLLOW-UP REQUIRED: confirm
+// the project tier at https://vercel.com/MSizzle/moulin-a-reves/settings/general
+// (or the team-scoped equivalent) before merge. If the project is on a Pro+
+// tier with function body-size override enabled, this can lift to 30 MB
+// (the D-02 default) — update both this constant and the matching mirror in
+// public/feedback-inject.js (STAGE-06 client mirror) in the same PR. See
+// https://vercel.com/docs/functions/runtimes#request-body-size for the
+// upstream constraint table.
+// KEEP IN SYNC with MAX_BATCH_BYTES in public/feedback-inject.js (STAGE-06
+// client mirror).
+const MAX_BATCH_BYTES = 3 * 1024 * 1024;
+
+// ---------------------------------------------------------------------------
 // GitHub helpers
 // ---------------------------------------------------------------------------
 const ghHeaders = {
