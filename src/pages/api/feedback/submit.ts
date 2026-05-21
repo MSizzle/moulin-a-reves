@@ -317,6 +317,23 @@ async function handleV1(p: any): Promise<Response> {
 }
 
 // ---------------------------------------------------------------------------
+// CR-02: approxDecodedBytes — compute the decoded byte length of a base64
+// string without actually decoding it. Used in handleV2Batch to sum the TRUE
+// payload size rather than the client-supplied `image.bytes` descriptor, which
+// an authenticated client could spoof to bypass MAX_BATCH_BYTES. Math mirrors
+// the client-side calculation in public/feedback-inject.js:
+//   decoded_bytes = floor((b64_chars * 3) / 4) − padding
+// where padding is 2 if the string ends with '==' and 1 if it ends with '='.
+// ---------------------------------------------------------------------------
+function approxDecodedBytes(b64: string): number {
+  if (!b64) return 0;
+  // Strip data-URL prefix (e.g. "data:image/jpeg;base64,<data>") if present.
+  const s = b64.includes(',') ? b64.split(',').pop()! : b64;
+  const pad = s.endsWith('==') ? 2 : s.endsWith('=') ? 1 : 0;
+  return Math.floor((s.length * 3) / 4) - pad;
+}
+
+// ---------------------------------------------------------------------------
 // v2 batch handler — input gates + issue construction (Task 2 of Plan 04-03).
 // Photo commit + final patchIssueBody land in Task 3. Sequencing is:
 //   1. Shape gate (edits is a non-empty array).
@@ -343,8 +360,10 @@ async function handleV2Batch(p: any): Promise<Response> {
   if (p.edits.length > MAX_BATCH_EDITS) {
     return failCap('edits', MAX_BATCH_EDITS, p.edits.length, 'Batch exceeds 10-edit limit');
   }
+  // CR-02: sum decoded base64 byte length, NOT the client-supplied descriptor.
+  // Using e.image.bytes (the old reducer) was spoofable by any session-holder.
   const totalBytes: number = p.edits.reduce(
-    (sum: number, e: any) => sum + (typeof e?.image?.bytes === 'number' ? e.image.bytes : 0),
+    (sum: number, e: any) => sum + approxDecodedBytes(e?.image?.dataBase64 || ''),
     0,
   );
   if (totalBytes > MAX_BATCH_BYTES) {
@@ -558,8 +577,28 @@ async function handleV2Batch(p: any): Promise<Response> {
     //     photo-bearing edit; photo-less edits keep committedPath:null.
     await patchIssueBody(issueNumber, buildBatchBody(finalMachineEdits));
 
+    // CR-03: Aggregate per-edit photo commit failures into the response so the
+    // client knows the batch shipped but N photos did not. Mirrors the v1
+    // warning semantics at handleV1 lines 295-303. Status stays 200 because
+    // the issue WAS created — the photo failures are soft warnings, not
+    // rejections. An empty commitErrors array means clean batch → response is
+    // byte-identical to before this change (clean-batch parity guaranteed).
+    const commitErrors = finalMachineEdits
+      .map((m, i) => (m.commitError ? { index: i, error: m.commitError } : null))
+      .filter((x): x is { index: number; error: string } => x !== null);
+
     return new Response(
-      JSON.stringify({ ok: true, issueNumber, issueUrl }),
+      JSON.stringify({
+        ok: true,
+        issueNumber,
+        issueUrl,
+        ...(commitErrors.length > 0
+          ? {
+              warning: `${commitErrors.length} of ${p.edits.length} photo(s) failed to upload`,
+              commitErrors,
+            }
+          : {}),
+      }),
       { status: 200, headers: { 'Content-Type': 'application/json' } },
     );
   } catch (err: any) {
