@@ -3334,5 +3334,13 @@
   "groups.cta.button": {
     "en": "Inquire",
     "fr": "Réserver"
+  },
+  "home.canary.test1": {
+    "en": "Canary v2 edit 1 — Phase 5 verification 2026-05-21T15:29:08.567Z",
+    "fr": "Édition canari v2 1 — vérification Phase 5 2026-05-21T15:29:08.567Z"
+  },
+  "compound.canary.test2": {
+    "en": "Canary v2 edit 2 — Phase 5 verification 2026-05-21T15:29:08.567Z",
+    "fr": "Édition canari v2 2 — vérification Phase 5 2026-05-21T15:29:08.567Z"
   }
 }
