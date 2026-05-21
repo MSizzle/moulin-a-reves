@@ -97,15 +97,15 @@ Plans:
 
 **Wave 1**
 
-- [ ] 05-01-PLAN.md — Build canary tooling (smoke harness TARGET_URL + --canary v1|v2 dual-mode seam, scripts/canary.sh bash wrapper, package.json npm scripts)
+- [x] 05-01-PLAN.md — Build canary tooling (smoke harness TARGET_URL + --canary v1|v2 dual-mode seam, scripts/canary.sh bash wrapper, package.json npm scripts)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 05-02-PLAN.md — Run OPS-04 v1 back-compat canary against the live deployment (testMode + client-feedback-test label; Action excluded; captures 05-CANARY-V1-EVIDENCE.md)
+- [x] 05-02-PLAN.md — Run OPS-04 v1 back-compat canary against the live deployment (testMode + client-feedback-test label; Action excluded; captures 05-CANARY-V1-EVIDENCE.md)
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 05-03-PLAN.md — Run OPS-05 v2 batched canary against the live deployment (DRY_RUN-gated; full pipeline issue→Action→PR→result comment + cache-bust proof + asset HEAD probe + cleanup; captures 05-CANARY-V2-EVIDENCE.md)
+- [x] 05-03-PLAN.md — Run OPS-05 v2 batched canary against the live deployment (DRY_RUN-gated; full pipeline issue→Action→PR→result comment + cache-bust proof + asset HEAD probe + cleanup; captures 05-CANARY-V2-EVIDENCE.md)
 
 ## Progress
 
@@ -117,6 +117,6 @@ Plans:
 | 2. Ship-the-Clear Edits | v1.0 | 4/4 | Complete | 2026-05-05 |
 | 3. CLIENT-CLARIFICATION.md | v1.0 | 1/1 | Complete | 2026-05-05 |
 | 4. Batch Pipeline Implementation | v1.1 | 11/11 | Complete   | 2026-05-21 |
-| 5. Post-Deploy Verification | v1.1 | 0/3 | Planned | - |
+| 5. Post-Deploy Verification | v1.1 | 3/3 | Complete   | 2026-05-21 |
 
 **v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — Planning** (0/25 requirements mapped across 2 phases; 100% coverage; emergent STAGE-06/STAGE-07/API-06 added during plan-phase iteration 1 per D-05).
