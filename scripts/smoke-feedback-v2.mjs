@@ -304,7 +304,9 @@ await run('v2 cap violation: 11 edits', async () => {
   }
 });
 
-// Scenario 4: v2 photo-byte cap violation
+// Scenario 4: v2 photo-byte cap violation (CR-02)
+// The cap reads approxDecodedBytes(dataBase64) per edit (CR-02 fix in 04-09).
+// Ship a real oversize base64 string so the sum-of-decoded-bytes reducer trips.
 await run('v2 cap violation: photo bytes', async () => {
   // Read MAX_BATCH_BYTES from the source so the test scales with D-03 reconciliation.
   const { readFileSync } = await import('node:fs');
@@ -313,21 +315,27 @@ await run('v2 cap violation: photo bytes', async () => {
   if (!m) throw new Error('cannot find MAX_BATCH_BYTES in submit.ts');
   const capMB = parseInt(m[1], 10);
   const capBytes = capMB * 1024 * 1024;
-  // Construct 2 edits whose summed image.bytes > capBytes. The server caps by
-  // summing e.image.bytes (the descriptor) — we don't need real base64 of that
-  // size, just truthful-sounding metadata. dataBase64 is a tiny stub.
-  const perEditBytes = Math.ceil((capBytes + 1024) / 2);
+  // CR-02: The cap now reads approxDecodedBytes(dataBase64); ship a real oversize
+  // base64 string so the sum-of-decoded-bytes reducer trips.
+  // Per-edit: length = ceil((capBytes + 1024) * 4/3 / 2) + 4
+  // The '+1024' provides margin above capBytes; the '+4' absorbs '=' padding rounding.
+  // 'A'.repeat(N) decodes as binary \x00\x00\x00... and is the simplest oversize stub.
+  // Two edits are used so the assertion proves the SUM-across-edits reducer works.
+  const perEditB64Len = Math.ceil((capBytes + 1024) * 4 / 3 / 2) + 4;
+  const bigB64 = 'A'.repeat(perEditB64Len);
+  // bytes reflects the actual decoded size for shape-parity with real client payloads.
+  const perEditDecodedBytes = Math.floor(bigB64.length * 3 / 4);
   const edits = [
     {
       intent: 'replace-photo', pageRoute: '/', confirmationAccepted: true,
       intentDetail: {},
-      image: { present: true, mime: 'image/jpeg', dataBase64: 'AAAA', bytes: perEditBytes, originalFilename: 'a.jpg' },
+      image: { present: true, mime: 'image/jpeg', dataBase64: bigB64, bytes: perEditDecodedBytes, originalFilename: 'a.jpg' },
       i18nKey: 'k1', nearbyText: 'long enough description here for signals',
     },
     {
       intent: 'replace-photo', pageRoute: '/', confirmationAccepted: true,
       intentDetail: {},
-      image: { present: true, mime: 'image/jpeg', dataBase64: 'AAAA', bytes: perEditBytes, originalFilename: 'b.jpg' },
+      image: { present: true, mime: 'image/jpeg', dataBase64: bigB64, bytes: perEditDecodedBytes, originalFilename: 'b.jpg' },
       i18nKey: 'k2', nearbyText: 'long enough description here for signals',
     },
   ];

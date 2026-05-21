@@ -1107,6 +1107,22 @@
 
     // ---- v2 batch result (STAGE.SUBMITTING) -------------------------------
     if (state === STATE.SUBMITTING) {
+      // CR-03 (UI half): success with partial photo-commit failure.
+      // The issue WAS created (ok: true) but some photo commits failed.
+      // Preserve staged state so the user can re-attach + resubmit.
+      if (m.ok && m.warning) {
+        // Do NOT call clearStaged(), removeChip(), destroyStagedPanel(), or clearDraft().
+        // The staged list is unchanged — only the photo commits failed.
+        state = STATE.STAGED;
+        renderChip(loadStaged().length);
+        var warnMsg = (m.warning || 'Some photos failed to upload.') +
+          ' Re-attach the photo on the affected edits and resubmit.';
+        renderPanel({
+          capMessage: warnMsg,
+          ...(Array.isArray(m.commitErrors) ? { errors: m.commitErrors } : {}),
+        });
+        return;
+      }
       if (m.ok) {
         // STAGE-04 success: clear all staged state + chip + panel + drafts.
         clearStaged();
