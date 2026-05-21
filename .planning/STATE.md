@@ -1,17 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: Awaiting next milestone
-stopped_at: Milestone 1 complete — Phase 3 plan 01 shipped (CLIENT-CLARIFICATION.md, 412 lines, 5 commits); doc ready to send to Melissa; Milestone 2 gated on her reply.
-last_updated: "2026-05-21T00:37:12.183Z"
-last_activity: 2026-05-21 — Milestone v1.0 completed and archived
+milestone: v1.1
+milestone_name: Batch Feedback Pipeline
+status: planning
+last_updated: "2026-05-21T01:34:44.445Z"
+last_activity: 2026-05-21
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 6
-  completed_plans: 6
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -25,10 +24,10 @@ See: .planning/PROJECT.md (updated 2026-05-05)
 
 ## Current Position
 
-Phase: Milestone v1.0 complete
+Phase: Not started (defining requirements)
 Plan: —
-Status: Awaiting next milestone
-Last activity: 2026-05-21 — Milestone v1.0 completed and archived
+Status: Defining requirements
+Last activity: 2026-05-21 — Milestone v1.1 started
 
 ## Performance Metrics
 

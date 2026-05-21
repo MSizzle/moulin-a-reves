@@ -8,6 +8,23 @@ Marketing site for **Le Moulin à Rêves** — a private luxury vacation compoun
 
 **Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.** Brand, photography, and copy all serve this. The editor / CMS / i18n stack exists so the client can keep that surface fresh without dev involvement.
 
+## Current Milestone: v1.1 Batch Feedback Pipeline
+
+**Goal:** Let the client stage multiple feedback edits in a session and submit them as a single batch — one batch → one issue → one Claude PR → one merge → one deploy — replacing the current one-edit-per-deploy pattern that creates 8–10 deploys per client review pass.
+
+**Target features:**
+- Client-side stage/submit state machine in `feedback-inject.js` with corner chip, per-item delete, and "Clear all"
+- `sessionStorage`-backed batch persistence (File references, not base64) so edits survive iframe navigation and reload but clear on browser close
+- Server endpoint accepts `schemaVersion: 2` batch payloads while keeping `schemaVersion: 1` working for cached clients (back-compat required)
+- Batched GitHub issue construction — one issue per batch with per-edit summary + single JSON block + autonomy-passes-only-if-every-edit-passes hint
+- `## 8. Batch submissions` section in `.github/CLAUDE_FEEDBACK.md` so the Action applies all edits in one branch/commit/PR
+- `FEEDBACK_INJECT_VER` bump in `src/lib/feedback-version.ts` (single source of truth for cache-bust)
+
+**Anchors:**
+- Design spec in user memory: `moulin-batch-feedback-spec.md` (5 open questions deferred to `/gsd-discuss-phase`)
+- Additive-only: zero changes to the editor flow (`?edit=1`, `editor-inject.js`, `editor/`, `site/save.ts`, `site/publish.ts`, `guardrails.js`)
+- Back-compat required: cached v1 clients must keep working indefinitely
+
 ## Requirements
 
 ### Validated
@@ -32,23 +49,28 @@ Marketing site for **Le Moulin à Rêves** — a private luxury vacation compoun
 
 ### Active
 
-<!-- v1.1: gated on Melissa's reply to CLIENT-CLARIFICATION.md. Scope candidates below; concrete milestone defined via /gsd-new-milestone. -->
+<!-- v1.1 focus = batch-feedback only (decided 2026-05-20). Other carry-forward items live in "Carried forward to v1.2" below — not in scope this milestone. Concrete REQ-IDs are tracked in .planning/REQUIREMENTS.md. -->
 
-- [ ] **Batch-feedback feature** — collect multiple staged client edits into a single Claude PR rather than one PR per click (design spec in user memory at `moulin-batch-feedback-spec.md`). Leading candidate for the first v1.1 phase; doesn't require the client reply.
-- [ ] **Apply Melissa's clarification answers** — once she replies to the 11 outstanding questions in `CLIENT-CLARIFICATION.md`, execute the resolved scope. Likely items: TYPOG-01 global italic policy, hero tagline italic site-wide policy, Le Mérévillois vs Méréville naming confirmation, asset-pending items (jacuzzi/Stars/biking/Monet photos, Netflix-on-TV decision), Groups-page yes/no/think.
-- [ ] **Photo gallery modal rewrite** (deferred from v1 — STRUCT-01) — fix X-button visibility, forward-arrow cropping, photo bottom cropping on first open across all houses (only Le Loft Suite currently works).
-- [ ] **Calendar 12-month scrollable range** (deferred from v1 — STRUCT-02) — investigate ICS feed depth implications.
-- [ ] **Editor / publishing flow deep audit** (deferred from v1 — AUDIT-DEEP-01) — fragility, error paths, GitHub integration, HMAC session edge cases.
+- [ ] **Batch-feedback feature** — v1.1 focus. Stage multiple client edits in a session and submit as one batch → one issue → one Claude PR → one merge → one deploy. Replaces the current 1-edit-per-deploy pattern. Spec lives in user memory `moulin-batch-feedback-spec.md`; 5 open design questions (per-batch caps, cross-page batching, draft persistence, autonomy gate inheritance, cancel UX) deferred to `/gsd-discuss-phase`.
+
+### Carried forward to v1.2 (not v1.1)
+
+<!-- Explicitly deferred at v1.1 kickoff (2026-05-20). Each was a v1.1 candidate; cut to keep v1.1 single-phase / single-PR. Lift back to Active when starting v1.2. -->
+
+- [ ] **Apply Melissa's clarification answers** — gated on her reply to the 11 outstanding questions in `CLIENT-CLARIFICATION.md`. Likely items: TYPOG-01 global italic policy, hero tagline italic site-wide policy, Le Mérévillois vs Méréville naming confirmation, asset-pending items (jacuzzi/Stars/biking/Monet photos, Netflix-on-TV decision), Groups-page yes/no/think.
+- [ ] **Photo gallery modal rewrite** (STRUCT-01, deferred from v1) — fix X-button visibility, forward-arrow cropping, photo bottom cropping on first open across all houses (only Le Loft Suite currently works).
+- [ ] **Calendar 12-month scrollable range** (STRUCT-02, deferred from v1) — investigate ICS feed depth implications.
+- [ ] **Editor / publishing flow deep audit** (AUDIT-DEEP-01, deferred from v1) — fragility, error paths, GitHub integration, HMAC session edge cases.
 
 ### Out of Scope
 
-<!-- Explicit boundaries. Items marked → v1.1 carry forward as Active above; items kept here remain firmly out. -->
+<!-- Explicit boundaries. Items marked → v1.2 candidate live in "Carried forward to v1.2" above; items kept here remain firmly out. -->
 
-- **Deep audit of editor / publishing flow** — → v1.1 (Active). Carried forward verbatim from v1.0 deferral.
-- **Mobile / responsive deep audit** — Still out (no v1.1 commitment). Recent overflow hotfixes (PRs #49, #50, plus follow-on May-6 work) appear to have settled the pain; revisit if new reports surface.
+- **Deep audit of editor / publishing flow** — → v1.2 candidate. Carry-forward; not in v1.1.
+- **Mobile / responsive deep audit** — Still out (no v1.1 / v1.2 commitment). Recent overflow hotfixes (PRs #49, #50, plus follow-on May-6 work) appear to have settled the pain; revisit if new reports surface.
 - **Performance / SEO audit** — Still out. Fonts already at 2-family target (v1.0 TYPOG-03 was a no-op confirming this); image pipeline shipping WebP at q=85; sitemap excludes intentionally. Not currently blocking conversion.
-- **Gallery modal navigation rewrite** — → v1.1 (Active). Client raised it in all 3 rounds and TYPOG-01 work confirmed it's still broken; v1.1 needs to ship this.
-- **Calendar scroll to 12 months** — → v1.1 (Active). Surfaced in `CLIENT-CLARIFICATION.md`; client likely confirms when she replies.
+- **Gallery modal navigation rewrite** — → v1.2 candidate. Carry-forward; not in v1.1. Client raised it in all 3 v1.0 rounds and TYPOG-01 work confirmed it's still broken.
+- **Calendar scroll to 12 months** — → v1.2 candidate. Carry-forward; not in v1.1. Surfaced in `CLIENT-CLARIFICATION.md`; client likely confirms when she replies.
 - **Active Google Maps embed in Getting Here** — Still out, pending client confirmation in `CLIENT-CLARIFICATION.md`. Lift to Active if she says yes.
 - **Adding a top-level Groups page** — Still out, pending client yes/no/think in `CLIENT-CLARIFICATION.md`. Lift to Active if she says yes.
 - **Items requiring client-supplied assets** — jacuzzi photos, "stars who stayed here" photos, biking photos, Monet Giverny image — still blocked on Melissa uploading. Asked in clarification doc.
@@ -130,7 +152,9 @@ This document evolves at phase transitions and milestone boundaries.
 
 **Shipped:** v1.0 May 5 Client Edits (2026-05-05) — 3 phases, 6 plans, 38/38 requirements, 134 files +16,811 LOC, deployed live via Vercel auto-deploy. `CLIENT-CLARIFICATION.md` at project root delivered to Melissa out-of-band.
 
-**Next milestone (v1.1):** Gated on Melissa's reply to the 11 questions in CLIENT-CLARIFICATION.md. Batch-feedback feature (user memory seed) is the leading first-phase candidate regardless. Start with `/gsd-new-milestone` when ready.
+**In progress:** v1.1 Batch Feedback Pipeline started 2026-05-20. Single-phase / single-PR scope: replace the current 1-edit-per-deploy feedback flow with batched submission (one batch → one issue → one Claude PR). Requirements being defined; roadmap pending. Independent of Melissa's reply.
+
+**Carried to v1.2:** Apply Melissa's clarification answers (once she replies), gallery modal rewrite, calendar 12-month range, editor / publishing flow audit.
 
 ---
-*Last updated: 2026-05-21 after v1.0 milestone close*
+*Last updated: 2026-05-20 — v1.1 Batch Feedback Pipeline milestone started*
