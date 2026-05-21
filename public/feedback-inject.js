@@ -18,11 +18,24 @@
   if (window.parent === window) return;
   if (new URLSearchParams(location.search).get('feedback') !== '1') return;
 
-  // ---- shared contract (KEEP IN SYNC with src/pages/api/feedback/submit.ts) --
+  // ---- shared contract (KEEP IN SYNC with src/pages/api/feedback/submit.ts + src/pages/api/feedback/validate.ts) --
   var SCHEMA_VERSION = 1;
+  var SCHEMA_VERSION_V2 = 2;
   var MAX_IMAGE_BYTES = 12 * 1024 * 1024;
+  // D-01 / STAGE-06 — mirror submit.ts MAX_BATCH_EDITS exactly.
+  var MAX_BATCH_EDITS = 10;
+  // D-02 / D-03 / STAGE-06 — mirror submit.ts MAX_BATCH_BYTES exactly.
+  // Server is currently locked to 3 MB (Hobby-safe; Vercel default body limit
+  // ~4.5 MB and base64 inflates ~33%). When the operator lifts the server
+  // constant to 30 MB after confirming a Pro+ tier with body-size override,
+  // bump this client mirror in the SAME PR.
+  var MAX_BATCH_BYTES = 3 * 1024 * 1024;
   var MIN_VAGUE_LEN = 25;
   var DRAFT_KEY = 'mar_feedback_draft_v1';
+  // sessionStorage (NOT localStorage) per D-08 — stages survive iframe
+  // navigation + reload, clear on browser close. localStorage and server-side
+  // draft issues are explicitly Out of Scope for v1.1 per REQUIREMENTS.md.
+  var STAGED_KEY = 'mar_feedback_staged_v1';
   var MOVE_RESIZE_OPTIONS = [
     { v: 'move-up', l: 'Move it up' },
     { v: 'move-down', l: 'Move it down' },
@@ -87,12 +100,34 @@
   document.documentElement.appendChild(style);
 
   // ---- state ----------------------------------------------------------------
-  var STATE = { IDLE: 'idle', SELECTED: 'selected', FIELDS: 'fields', CONFIRM: 'confirm', DONE: 'done', AUTH: 'auth' };
+  var STATE = {
+    IDLE: 'idle',
+    SELECTED: 'selected',
+    FIELDS: 'fields',
+    CONFIRM: 'confirm',
+    STAGED: 'staged',
+    SUBMITTING: 'submitting',
+    DONE: 'done',
+    AUTH: 'auth',
+  };
   var state = STATE.IDLE;
   var frozenEl = null;
   var locator = null; // captured at freeze time
   var draft = { intent: null, detail: {}, image: null }; // image: {dataURL,name,type,size}
   var hovered = null;
+  // In-memory File map (stageId → File). Ephemeral; NOT serialised to
+  // sessionStorage (D-09 / STAGE-05) — only descriptors {name,type,size} are
+  // persisted. Files lost across iframe navigation degrade gracefully: the
+  // staged entry's imageDescriptor remains in storage, the panel shows the
+  // file name, and the user can re-attach if the edit needs the photo.
+  var fileMap = {};
+  // Tracks the last reason a cap was hit, so renderConfirm() can surface the
+  // inline cap message above its disabled Confirm button (D-04 / STAGE-07).
+  var lastCapMessage = null;
+
+  function nextStageId() {
+    return 's_' + Date.now() + '_' + Math.floor(Math.random() * 1e9).toString(36);
+  }
 
   var banner = document.createElement('div');
   banner.id = 'mar-fb-banner';
@@ -287,6 +322,16 @@
     } catch (e) {}
   }
   function clearDraft() { try { localStorage.removeItem(DRAFT_KEY); } catch (e) {} }
+
+  // ---- sessionStorage staged-list helpers (D-08 / D-09 / STAGE-05) ----------
+  // The staged list holds COMMITTED edits awaiting batch submit. Distinct from
+  // the in-progress single-edit draft above (which lives in localStorage).
+  function loadStaged() {
+    try { var raw = sessionStorage.getItem(STAGED_KEY); return raw ? JSON.parse(raw) : []; }
+    catch (e) { return []; }
+  }
+  function saveStaged(arr) { try { sessionStorage.setItem(STAGED_KEY, JSON.stringify(arr)); } catch (e) {} }
+  function clearStaged() { try { sessionStorage.removeItem(STAGED_KEY); } catch (e) {} }
 
   // ---- panel rendering ------------------------------------------------------
   function el(tag, attrs, html) {
@@ -704,6 +749,30 @@
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && state !== STATE.IDLE) { e.preventDefault(); reset(); }
+  });
+
+  // ---- v2 staged-batch rehydrate on load + iframe navigation (D-06) --------
+  // sessionStorage survives iframe navigation in the same browsing context,
+  // so the chip can re-appear on the next page automatically. Placed at the
+  // END of the IIFE so renderChip (declared above) is already in scope.
+  (function rehydrateStaged() {
+    var staged = loadStaged();
+    if (staged.length > 0) renderChip(staged.length);
+  })();
+
+  window.addEventListener('pageshow', function () {
+    var staged = loadStaged();
+    if (staged.length > 0 && !document.getElementById('mar-fb-chip')) {
+      renderChip(staged.length);
+    }
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') {
+      var staged = loadStaged();
+      if (staged.length > 0 && !document.getElementById('mar-fb-chip')) {
+        renderChip(staged.length);
+      }
+    }
   });
 
   window.parent.postMessage({ type: 'mar-feedback-ready', lang: document.documentElement.lang || 'en' }, '*');
