@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-05-20)
 Phase: Not started (defining requirements)
 Plan: —
 Status: Defining requirements
-Last activity: 2026-05-21 — Milestone v1.2 started
+Last activity: 2026-05-21 — Completed quick task 260521-ou9: persistSubmission flat pageRoute fix (STATUS-06)
 
 ## Performance Metrics
 
@@ -83,6 +83,7 @@ v1.0 decisions remain in PROJECT.md and remain in force (i18n dual-store rule, a
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260506-kao | fix catering hero crop — bias upward so faces stay visible | 2026-05-06 | a6342c2 | [260506-kao-catering-hero-object-position-fix](./quick/260506-kao-catering-hero-object-position-fix/) |
+| 260521-ou9 | Fix persistSubmission summary derivation in src/pages/feedback.astro — flat `.pageRoute` reads on v1+v2 (closes STATUS-06) | 2026-05-21 | 1495a10 | [260521-ou9-fix-persistsubmission-summary-derivation](./quick/260521-ou9-fix-persistsubmission-summary-derivation/) |
 
 ## Deferred Items
 
