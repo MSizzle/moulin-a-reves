@@ -40,3 +40,6 @@ scripts/previews/
 
 # VS Code workspace files (occasionally land in odd places)
 *.code-workspace
+
+# local-only snapshot log dirs (the git tags are the canonical rollback markers)
+.planning/snapshots/
