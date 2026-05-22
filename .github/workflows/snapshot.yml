@@ -1,0 +1,38 @@
+name: Daily Snapshot Tag
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 07:00 UTC daily
+  workflow_dispatch: {}    # manual fire from Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  tag-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create and push snapshot tag
+        run: |
+          DATE=$(date -u '+%Y-%m-%d')
+          TIME=$(date -u '+%H%M%S')
+          TAG="snapshot/$DATE-$TIME"
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          # Skip if HEAD has not moved since the last snapshot tag
+          LAST_SNAP_SHA=$(git rev-list --tags='snapshot/*' --max-count=1 2>/dev/null || true)
+          if [ -n "$LAST_SNAP_SHA" ] && [ "$LAST_SNAP_SHA" = "$(git rev-parse HEAD)" ]; then
+            echo "No changes since last snapshot — skipping."
+            exit 0
+          fi
+
+          git tag "$TAG"
+          # Scoped push: only snapshot/* tags, never touches other tags
+          git push origin 'refs/tags/snapshot/*'
