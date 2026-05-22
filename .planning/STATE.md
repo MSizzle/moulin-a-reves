@@ -5,7 +5,7 @@ milestone_name: Status Visibility
 status: Awaiting next milestone
 stopped_at: Phase 5 context gathered (auto)
 last_updated: "2026-05-21T22:09:49.937Z"
-last_activity: 2026-05-21 — Milestone v1.2 completed and archived
+last_activity: 2026-05-22 — Quick task 260521-sjf shipped snapshot tooling for agent-paranoia rollback
 progress:
   total_phases: 1
   completed_phases: 1
@@ -75,6 +75,7 @@ Decisions are logged in PROJECT.md Key Decisions table. All v1.0, v1.1, and v1.2
 |---|-------------|------|--------|-----------|
 | 260506-kao | fix catering hero crop — bias upward so faces stay visible | 2026-05-06 | a6342c2 | [260506-kao-catering-hero-object-position-fix](./quick/260506-kao-catering-hero-object-position-fix/) |
 | 260521-ou9 | Fix persistSubmission summary derivation in src/pages/feedback.astro — flat `.pageRoute` reads on v1+v2 (closes STATUS-06) | 2026-05-21 | 1495a10 | [260521-ou9-fix-persistsubmission-summary-derivation](./quick/260521-ou9-fix-persistsubmission-summary-derivation/) |
+| 260521-sjf | Ship snapshot tooling — scripts/snapshot-pre.sh + snapshot-diff.sh + .github/workflows/snapshot.yml daily cron + gitignore .planning/snapshots/ | 2026-05-22 | 6310fe6 | [260521-sjf-ship-snapshot-tooling-for-agent-paranoia](./quick/260521-sjf-ship-snapshot-tooling-for-agent-paranoia/) |
 
 ## Deferred Items
 
