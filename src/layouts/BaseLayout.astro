@@ -1038,6 +1038,23 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       })();
     </script>
 
+    <!-- Client-feedback MATCH overlay (only loads inside the feedback iframe with ?feedback=1 AND ?matchSet=<id>) -->
+    <script is:inline>
+      (function () {
+        try {
+          var qs = new URLSearchParams(location.search);
+          if (qs.get('feedback') !== '1') return;
+          if (!qs.get('matchSet')) return;
+          if (window.parent === window) return;
+          var matchVer = qs.get('matchVer') || '1';
+          var s = document.createElement('script');
+          s.src = '/feedback-match-inject.js?v=' + encodeURIComponent(matchVer);
+          s.defer = true;
+          document.body.appendChild(s);
+        } catch (_) {}
+      })();
+    </script>
+
     <!-- Chocolate welcome popup -->
     <div class="chocolate-popup" id="chocolate-popup" role="dialog" aria-modal="true" aria-labelledby="chocolate-popup-title" aria-hidden="true">
       <div class="chocolate-popup__backdrop" data-popup-close></div>
