@@ -4,8 +4,8 @@ milestone: v1.3
 milestone_name: File-Driven Per-Page Edit Flow
 status: executing
 stopped_at: Phase 8 UI-SPEC approved
-last_updated: "2026-05-26T18:12:11.179Z"
-last_activity: 2026-05-26 -- Phase 08 planning complete
+last_updated: "2026-05-26T18:21:09.029Z"
+last_activity: 2026-05-26 -- Phase 08 execution started
 progress:
   total_phases: 3
   completed_phases: 1
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-21)
 
 **Core value:** Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.
-**Current focus:** Phase 07 — build-time-edit-catalog-generator
+**Current focus:** Phase 08 — matcher-endpoint-match-inject-overlay-side-panel-per-page-mo
 
 ## Current Position
 
-Phase: 07 — COMPLETE
+Phase: 08 (matcher-endpoint-match-inject-overlay-side-panel-per-page-mo) — EXECUTING
 Plan: 1 of 5
-Status: Ready to execute
-Last activity: 2026-05-26 -- Phase 08 planning complete
+Status: Executing Phase 08
+Last activity: 2026-05-26 -- Phase 08 execution started
 
 ## Performance Metrics
 

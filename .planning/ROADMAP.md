@@ -114,8 +114,8 @@ Plans:
 Plans:
 **Wave 1** *(parallel — no dependencies between 08-01 and 08-02)*
 
-- [ ] 08-01-PLAN.md — Wave 1: Add `MATCH_INJECT_VER` cache-bust constant to `src/lib/feedback-version.ts` + one-line per-page-review pointer in `CLAUDE.md` §Feedback mode (OPS-01, OPS-04)
-- [ ] 08-02-PLAN.md — Wave 1: Server endpoint `src/pages/api/feedback/match.ts` (auth-gated POST, Claude Haiku 4.5 via `@anthropic-ai/sdk`, catalog load + server-side ID validation, MATCH-07 caps, graceful `matcher_unavailable` degrade) + add `@anthropic-ai/sdk` as runtime dep + grep-gate `ANTHROPIC_API_KEY` out of `public/` (MATCH-01..07, OPS-03)
+- [x] 08-01-PLAN.md — Wave 1: Add `MATCH_INJECT_VER` cache-bust constant to `src/lib/feedback-version.ts` + one-line per-page-review pointer in `CLAUDE.md` §Feedback mode (OPS-01, OPS-04)
+- [x] 08-02-PLAN.md — Wave 1: Server endpoint `src/pages/api/feedback/match.ts` (auth-gated POST, Claude Haiku 4.5 via `@anthropic-ai/sdk`, catalog load + server-side ID validation, MATCH-07 caps, graceful `matcher_unavailable` degrade) + add `@anthropic-ai/sdk` as runtime dep + grep-gate `ANTHROPIC_API_KEY` out of `public/` (MATCH-01..07, OPS-03)
 
 **Wave 2** *(depends on 08-01)*
 
@@ -160,7 +160,7 @@ Plans:
 | 5. Post-Deploy Verification | v1.1 | 3/3 | Complete | 2026-05-21 |
 | 6. Status Visibility | v1.2 | 3/3 + 1 quick-task closure | Complete | 2026-05-21 |
 | 7. Build-time Edit Catalog Generator | v1.3 | 5/5 | Complete | 2026-05-26 |
-| 8. Matcher Endpoint + Overlay + Panel + Per-Page Mode | v1.3 | 0/5 | Planning | — |
+| 8. Matcher Endpoint + Overlay + Panel + Per-Page Mode | v1.3 | 2/5 | In Progress|  |
 | 9. Post-Deploy Verification | v1.3 | 0/? | Planning | — |
 
 **v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — COMPLETE 2026-05-21** (25/25 requirements). **v1.2 — COMPLETE 2026-05-21** (10/10 STATUS-* requirements). **v1.3 — PLANNING 2026-05-26** (0/32 requirements; 100% coverage across Phases 7–9; Phase 8 plans drafted 2026-05-26).
