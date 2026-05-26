@@ -14,7 +14,8 @@
     "canary:v1": "scripts/canary.sh v1",
     "canary:v2": "scripts/canary.sh v2",
     "canary:status": "scripts/canary.sh status",
-    "canary": "scripts/canary.sh"
+    "canary": "scripts/canary.sh",
+    "test:catalog": "node --test tests/edit-catalog/*.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
@@ -25,6 +26,7 @@
     "gray-matter": "^4.0.3"
   },
   "devDependencies": {
+    "linkedom": "^0.18.12",
     "sharp": "^0.34.5"
   }
 }
