@@ -119,7 +119,7 @@ Plans:
 
 **Wave 2** *(depends on 08-01)*
 
-- [ ] 08-03-PLAN.md — Wave 2: New `public/feedback-match-inject.js` (numbered-pin overlay + buildSha drift detection + manual-pick handoff) + sibling conditional loader in `BaseLayout.astro` (cache-bust via `MATCH_INJECT_VER`) — existing `?feedback=1` loader block byte-for-byte unchanged (OVERLAY-01..05)
+- [x] 08-03-PLAN.md — Wave 2: New `public/feedback-match-inject.js` (numbered-pin overlay + buildSha drift detection + manual-pick handoff) + sibling conditional loader in `BaseLayout.astro` (cache-bust via `MATCH_INJECT_VER`) — existing `?feedback=1` loader block byte-for-byte unchanged (OVERLAY-01..05)
 
 **Wave 3** *(depends on 08-01, 08-02, 08-03)*
 
@@ -160,7 +160,7 @@ Plans:
 | 5. Post-Deploy Verification | v1.1 | 3/3 | Complete | 2026-05-21 |
 | 6. Status Visibility | v1.2 | 3/3 + 1 quick-task closure | Complete | 2026-05-21 |
 | 7. Build-time Edit Catalog Generator | v1.3 | 5/5 | Complete | 2026-05-26 |
-| 8. Matcher Endpoint + Overlay + Panel + Per-Page Mode | v1.3 | 2/5 | In Progress|  |
+| 8. Matcher Endpoint + Overlay + Panel + Per-Page Mode | v1.3 | 3/5 | In Progress|  |
 | 9. Post-Deploy Verification | v1.3 | 0/? | Planning | — |
 
 **v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — COMPLETE 2026-05-21** (25/25 requirements). **v1.2 — COMPLETE 2026-05-21** (10/10 STATUS-* requirements). **v1.3 — PLANNING 2026-05-26** (0/32 requirements; 100% coverage across Phases 7–9; Phase 8 plans drafted 2026-05-26).
