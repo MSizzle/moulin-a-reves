@@ -191,8 +191,38 @@ const firstSrc = `/?feedback=1&v=${VER}`;
               <span class="match-input__char-count" id="matchCharCount" aria-live="polite">0 / 10000</span>
             </div>
           </section>
-          <div class="frame-wrap frame-wrap--match">
-            <iframe id="matchSite" title="Moulin à Rêves preview — per-page matches"></iframe>
+          <div class="match-pane__split">
+            <div class="match-pane__iframe-col">
+              <div class="frame-wrap frame-wrap--match">
+                <iframe id="matchSite" title="Moulin à Rêves preview — per-page matches"></iframe>
+              </div>
+            </div>
+            <aside class="match-panel" id="matchPanel" aria-label="Per-page matches" tabindex="0">
+              <header class="match-panel__header">
+                <h3 class="match-panel__title">Per-page matches</h3>
+                <p class="match-panel__subtitle" id="matchPanelSubtitle" hidden></p>
+              </header>
+              <div class="match-panel__banner-slot" id="matchDriftBanner" hidden>
+                <div class="match-drift-banner" role="alert">
+                  <div class="match-drift-banner__icon" aria-hidden="true">⚠</div>
+                  <div class="match-drift-banner__body">
+                    <p class="match-drift-banner__title">Matches are out of date</p>
+                    <p class="match-drift-banner__msg">The site has been redeployed since these matches were generated. Click "Re-run match" to refresh.</p>
+                  </div>
+                  <button class="match-drift-banner__action" id="matchDriftRerun" type="button">Re-run match</button>
+                </div>
+              </div>
+              <div class="match-panel__empty" id="matchPanelEmpty">
+                <p class="match-panel__empty-title">Tell us what to change on this page</p>
+                <p class="match-panel__empty-body">Type or paste your edits above, then click "Match edits". You'll review each match before anything is sent.</p>
+              </div>
+              <ol class="match-panel__rows" id="matchPanelRows" role="list" hidden></ol>
+              <details class="match-panel__rejected" id="matchPanelRejected" hidden>
+                <summary class="match-panel__rejected-summary">Rejected (<span id="matchRejectedCount">0</span>)</summary>
+                <ol class="match-panel__rejected-list" id="matchPanelRejectedList" role="list"></ol>
+              </details>
+              <p class="match-panel__helper" id="matchPanelHelper" hidden>Approved edits show in the orange chip inside the preview. Submit the full batch from there when you're done.</p>
+            </aside>
           </div>
         </div>
 
