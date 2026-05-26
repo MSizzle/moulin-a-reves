@@ -109,8 +109,25 @@ Plans:
   4. The "Per-page review" mode and the existing per-element click mode coexist via a tab/toggle on `/feedback`: switching between them is a no-op for the other mode's sessionStorage state (`mar_feedback_match_set_v1` vs `mar_feedback_staged_v1` keys are independent), both modes are auth-gated by the same `checkAuth()`, and approving 3 matches in per-page mode + adding 1 click-staged edit in per-element mode results in a 4-edit batch on Submit (one issue, one PR).
   5. `MATCH_INJECT_VER` is declared in `src/lib/feedback-version.ts` alongside `FEEDBACK_INJECT_VER` and is consumed by both `BaseLayout.astro` (the conditional `?feedback=1` match-inject loader's `?v=` query) and `feedback.astro` (the iframe `src` builder); `ANTHROPIC_API_KEY` is read from server env only (grep `public/` returns zero hits) and a missing key produces a structured 500 with `{ error: 'matcher_unavailable' }` without crashing the endpoint; `CLAUDE.md` "Feedback mode" section contains a one-line note pointing future Claude sessions at the per-page review flow + `/api/feedback/match`.
 
-**Plans**: TBD (filled in by `/gsd-plan-phase 8`)
-**UI hint**: yes
+**Plans**: 5 plans across 4 waves
+
+Plans:
+**Wave 1** *(parallel — no dependencies between 08-01 and 08-02)*
+
+- [ ] 08-01-PLAN.md — Wave 1: Add `MATCH_INJECT_VER` cache-bust constant to `src/lib/feedback-version.ts` + one-line per-page-review pointer in `CLAUDE.md` §Feedback mode (OPS-01, OPS-04)
+- [ ] 08-02-PLAN.md — Wave 1: Server endpoint `src/pages/api/feedback/match.ts` (auth-gated POST, Claude Haiku 4.5 via `@anthropic-ai/sdk`, catalog load + server-side ID validation, MATCH-07 caps, graceful `matcher_unavailable` degrade) + add `@anthropic-ai/sdk` as runtime dep + grep-gate `ANTHROPIC_API_KEY` out of `public/` (MATCH-01..07, OPS-03)
+
+**Wave 2** *(depends on 08-01)*
+
+- [ ] 08-03-PLAN.md — Wave 2: New `public/feedback-match-inject.js` (numbered-pin overlay + buildSha drift detection + manual-pick handoff) + sibling conditional loader in `BaseLayout.astro` (cache-bust via `MATCH_INJECT_VER`) — existing `?feedback=1` loader block byte-for-byte unchanged (OVERLAY-01..05)
+
+**Wave 3** *(depends on 08-01, 08-02, 08-03)*
+
+- [ ] 08-04-PLAN.md — Wave 3: `src/pages/feedback.astro` — mode tab strip + per-page input zone (picker + textarea + Match edits button + char counter + HEAD-probe catalog availability) + matcher POST handler + matchSet sessionStorage stash + iframe `?matchSet=` URL builder (MODE-01..04)
+
+**Wave 4** *(depends on 08-04 — same file, sequential)*
+
+- [ ] 08-05-PLAN.md — Wave 4: `src/pages/feedback.astro` — side panel render (rows + confidence pill + alternates + reason truncation + state badges) + Approve/Reject/Pick-manually/Restore/Undo handlers + catalog-drift banner + Re-run match + `mar:feedback:*` postMessage dispatcher + responsive 65/35 split at ≥1024px (PANEL-01..05)
 
 ### Phase 9: Post-Deploy Verification
 
@@ -142,8 +159,8 @@ Plans:
 | 4. Batch Pipeline Implementation | v1.1 | 11/11 | Complete | 2026-05-21 |
 | 5. Post-Deploy Verification | v1.1 | 3/3 | Complete | 2026-05-21 |
 | 6. Status Visibility | v1.2 | 3/3 + 1 quick-task closure | Complete | 2026-05-21 |
-| 7. Build-time Edit Catalog Generator | v1.3 | 0/5 | Planning | — |
-| 8. Matcher Endpoint + Overlay + Panel + Per-Page Mode | v1.3 | 0/? | Planning | — |
+| 7. Build-time Edit Catalog Generator | v1.3 | 5/5 | Complete | 2026-05-26 |
+| 8. Matcher Endpoint + Overlay + Panel + Per-Page Mode | v1.3 | 0/5 | Planning | — |
 | 9. Post-Deploy Verification | v1.3 | 0/? | Planning | — |
 
-**v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — COMPLETE 2026-05-21** (25/25 requirements). **v1.2 — COMPLETE 2026-05-21** (10/10 STATUS-* requirements). **v1.3 — PLANNING 2026-05-26** (0/32 requirements; 100% coverage across Phases 7–9; Phase 7 plans drafted 2026-05-26).
+**v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — COMPLETE 2026-05-21** (25/25 requirements). **v1.2 — COMPLETE 2026-05-21** (10/10 STATUS-* requirements). **v1.3 — PLANNING 2026-05-26** (0/32 requirements; 100% coverage across Phases 7–9; Phase 8 plans drafted 2026-05-26).
