@@ -24,7 +24,7 @@ Three phases: catalog generator (build-time foundation), matcher + overlay + pan
 
 Decimal phases appear between their surrounding integers in numeric order. v1.3 continues numbering from v1.2 (which ended at Phase 6); no `--reset-phase-numbers` flag.
 
-- [ ] **Phase 7: Build-time Edit Catalog Generator** — Astro post-build integration walks `dist/` and emits one `dist/edit-catalogs/<route>.json` per prerendered route, reusing the closestAttr / i18nOf logic from `feedback-inject.js` via a shared Node-side helper so locator signals stay byte-identical
+- [x] **Phase 7: Build-time Edit Catalog Generator** (5/5 plans) — completed 2026-05-26 — Astro post-build integration emits 17 catalogs (1806 entries) to `dist/client/edit-catalogs/` (Vercel adapter path; production HTTP path `/edit-catalogs/<route>.json` unchanged). Shared Node-side helper `src/lib/locator-signals.mjs` byte-pinned to `feedback-inject.js:169-238` via 8-test parity harness; OPS-02 fence held (0 lines diff). `buildSha` + `postbuild` sanity gate (`scripts/check-edit-catalogs.mjs`) hard-fails on schema violations or `buildSha='unknown'`.
 - [ ] **Phase 8: Matcher Endpoint + Match-Inject Overlay + Side Panel + Per-Page Mode** — auth-gated `POST /api/feedback/match` (Claude Haiku), separate `public/feedback-match-inject.js` for numbered-pin overlay, side panel with Approve/Reject/Pick-manually wiring into the v1.1 staged-edits sessionStorage, and a "Per-page review" tab on `/feedback`; `MATCH_INJECT_VER` cache-bust + `ANTHROPIC_API_KEY` env scoping + CLAUDE.md note
 - [ ] **Phase 9: Post-Deploy Verification** — Run the dual-mode `scripts/smoke-feedback-match.mjs` canary against the deployed preview to prove the matcher endpoint, the pin overlay, and the v1.1 staged-edits handoff all work end-to-end; final OPS-02 byte-for-byte fence assertion across the entire milestone PR set
 
@@ -81,17 +81,17 @@ Full milestone detail: [`milestones/v1.2-ROADMAP.md`](./milestones/v1.2-ROADMAP.
 Plans:
 **Wave 1**
 
-- [ ] 07-01-PLAN.md — Wave 1: Extract shared locator helper to `src/lib/locator-signals.mjs` + parity test pinning byte-identity to `public/feedback-inject.js:169-238` (CATALOG-03)
-- [ ] 07-02-PLAN.md — Wave 1: Astro integration scaffold registering `astro:build:done` hook in `astro.config.mjs` + stub catalog emission per prerendered route (CATALOG-01)
-- [ ] 07-04-PLAN.md — Wave 1: Content-collection index module `src/integrations/edit-catalog/content-index.mjs` walking `src/content/**/*.md` frontmatter for hardcoded-text source detection (CATALOG-04)
+- [x] 07-01-PLAN.md — Wave 1: Extract shared locator helper to `src/lib/locator-signals.mjs` + parity test pinning byte-identity to `public/feedback-inject.js:169-238` (CATALOG-03)
+- [x] 07-02-PLAN.md — Wave 1: Astro integration scaffold registering `astro:build:done` hook in `astro.config.mjs` + stub catalog emission per prerendered route (CATALOG-01)
+- [x] 07-04-PLAN.md — Wave 1: Content-collection index module `src/integrations/edit-catalog/content-index.mjs` walking `src/content/**/*.md` frontmatter for hardcoded-text source detection (CATALOG-04)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 07-03-PLAN.md — Wave 2: Catalog walker `src/integrations/edit-catalog/walker.mjs` — element classification + locator-signal population using shared helper + `requiresManualSelection` enforcement (CATALOG-02, CATALOG-03)
+- [x] 07-03-PLAN.md — Wave 2: Catalog walker `src/integrations/edit-catalog/walker.mjs` — element classification + locator-signal population using shared helper + `requiresManualSelection` enforcement (CATALOG-02, CATALOG-03)
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 07-05-PLAN.md — Wave 3: `buildSha` injection from git HEAD + `.vercelignore` ship-to-prod assertion + `scripts/check-edit-catalogs.mjs` post-build sanity script (CATALOG-05, CATALOG-06)
+- [x] 07-05-PLAN.md — Wave 3: `buildSha` injection from git HEAD + `.vercelignore` ship-to-prod assertion + `scripts/check-edit-catalogs.mjs` post-build sanity script (CATALOG-05, CATALOG-06)
 
 ### Phase 8: Matcher Endpoint + Match-Inject Overlay + Side Panel + Per-Page Mode
 
