@@ -16,9 +16,13 @@
  * public/ (kept fenced byte-for-byte in v1.3 per CATALOG-* requirements).
  */
 
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseHTML } from 'linkedom';
+
+import { walkRoute } from './walker.mjs';
+import { buildContentIndex } from './content-index.mjs';
 
 /**
  * Map a route pathname to its catalog file path (POSIX, relative to
@@ -42,6 +46,25 @@ export function routeToCatalogPath(routePath) {
   let cleaned = routePath.replace(/^\/+/, '').replace(/\/+$/, '');
   if (cleaned === '') cleaned = 'index';
   return cleaned + '.json';
+}
+
+/**
+ * Map a route pathname to the relative path of its emitted HTML inside the
+ * Astro `dir` (under the Vercel adapter, that's dist/client/). Astro emits
+ * every prerendered route as <pathname>/index.html, with the root '/' as
+ * just 'index.html' at the top of `dir`.
+ *
+ *   '/'                 -> 'index.html'
+ *   '/about'            -> 'about/index.html'
+ *   '/homes/le-moulin'  -> 'homes/le-moulin/index.html'
+ *
+ * @param {string} routePath
+ * @returns {string}
+ */
+function routeToHtmlPath(routePath) {
+  if (routePath === '/' || routePath === '') return 'index.html';
+  const trimmed = routePath.replace(/^\/+/, '').replace(/\/+$/, '');
+  return trimmed + '/index.html';
 }
 
 /**
@@ -81,6 +104,12 @@ export default function editCatalog() {
         const catalogRoot = path.join(outDir, 'edit-catalogs');
         await mkdir(catalogRoot, { recursive: true });
 
+        // Build the content-collection index ONCE per build, reused for every
+        // route's walker call. Hardcoded-text classification depends on this
+        // to flip requiresManualSelection to false when a string is anchored
+        // in src/content/**/*.md frontmatter (CATALOG-04).
+        const contentIndex = buildContentIndex();
+
         // Prefer `routes` (richer — carries prerender flag); fall back to
         // `pages` (always { pathname }). For static-output sites both work.
         const source = Array.isArray(routes) && routes.length > 0
@@ -95,6 +124,7 @@ export default function editCatalog() {
         const seen = new Set();
         const written = [];
         const skipped = [];
+        let totalEntries = 0;
 
         for (const r of source) {
           let pathname = r.pathname;
@@ -115,14 +145,37 @@ export default function editCatalog() {
             const catalogPath = path.join(catalogRoot, relPath);
             const targetDir = path.dirname(catalogPath);
             await mkdir(targetDir, { recursive: true });
-            const stub = {
+
+            // Read the prerendered HTML for this route. Under the Vercel
+            // adapter `outDir` is dist/client/; the HTML for '/homes/le-moulin'
+            // lives at dist/client/homes/le-moulin/index.html. If the file is
+            // missing (e.g. Astro routed this entry to a Vercel Function and
+            // didn't emit HTML), log a warning and write an empty-entries
+            // stub rather than aborting the whole build.
+            const htmlRelPath = routeToHtmlPath(key);
+            const htmlPath = path.join(outDir, htmlRelPath);
+            /** @type {Array<object>} */
+            let entries = [];
+            try {
+              const html = await readFile(htmlPath, 'utf8');
+              const { document } = parseHTML(html);
+              entries = walkRoute({ document, route: key, contentIndex });
+            } catch (htmlErr) {
+              const hmsg = htmlErr && htmlErr.message ? htmlErr.message : String(htmlErr);
+              if (logger && typeof logger.warn === 'function') {
+                logger.warn('[edit-catalog] no HTML at ' + htmlRelPath + ' for route ' + key + ' (' + hmsg + '); emitting empty-entries catalog');
+              }
+            }
+
+            const catalog = {
               buildSha: null,
               route: key,
               generatedAt: new Date().toISOString(),
-              entries: [],
+              entries,
             };
-            await writeFile(catalogPath, JSON.stringify(stub, null, 2) + '\n', 'utf8');
+            await writeFile(catalogPath, JSON.stringify(catalog, null, 2) + '\n', 'utf8');
             written.push(relPath);
+            totalEntries += entries.length;
           } catch (err) {
             const msg = err && err.message ? err.message : String(err);
             if (logger && typeof logger.warn === 'function') {
@@ -132,7 +185,11 @@ export default function editCatalog() {
         }
 
         if (logger && typeof logger.info === 'function') {
-          logger.info('[edit-catalog] wrote ' + written.length + ' catalog file(s) to dist/edit-catalogs/' + (skipped.length ? ' (skipped ' + skipped.length + ' non-prerendered)' : ''));
+          logger.info(
+            '[edit-catalog] wrote ' + written.length + ' catalog file(s) (' +
+              totalEntries + ' total entries) to edit-catalogs/' +
+              (skipped.length ? ' (skipped ' + skipped.length + ' non-prerendered)' : '')
+          );
         }
       },
     },
