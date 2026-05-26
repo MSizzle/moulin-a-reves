@@ -19,6 +19,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 import { parseHTML } from 'linkedom';
 
 import { walkRoute } from './walker.mjs';
@@ -110,6 +111,27 @@ export default function editCatalog() {
         // in src/content/**/*.md frontmatter (CATALOG-04).
         const contentIndex = buildContentIndex();
 
+        // CATALOG-05: buildSha lets Phase 8 overlay and Phase 9 canary detect catalog
+        // drift vs the deployed <meta name="x-build-sha"> value. The catalog must
+        // carry a REAL short SHA matching /^[0-9a-f]{6,12}$/; the 'unknown' fallback
+        // exists only for non-git local sandboxes and is rejected as a hard failure
+        // by scripts/check-edit-catalogs.mjs so it cannot reach a Vercel deploy.
+        //
+        // CATALOG-06 DECISION (Phase 7, 2026-05-26): dist/edit-catalogs/ SHIPS to
+        // production. The matcher endpoint at src/pages/api/feedback/match.ts
+        // (Phase 8) reads catalogs via the Vercel filesystem at runtime; an entry
+        // in .vercelignore for `dist/edit-catalogs` would break that read path.
+        // DO NOT add such an entry. Sanity-checked by scripts/check-edit-catalogs.mjs.
+        let buildSha;
+        try {
+          buildSha = execSync('git rev-parse --short HEAD', { encoding: 'utf8' }).trim();
+        } catch (gitErr) {
+          buildSha = 'unknown';
+          if (logger && typeof logger.warn === 'function') {
+            logger.warn('[edit-catalog] git rev-parse failed; using unknown as buildSha. Vercel deploys MUST have .git available; this fallback indicates a misconfigured environment.');
+          }
+        }
+
         // Prefer `routes` (richer — carries prerender flag); fall back to
         // `pages` (always { pathname }). For static-output sites both work.
         const source = Array.isArray(routes) && routes.length > 0
@@ -168,7 +190,7 @@ export default function editCatalog() {
             }
 
             const catalog = {
-              buildSha: null,
+              buildSha,
               route: key,
               generatedAt: new Date().toISOString(),
               entries,
