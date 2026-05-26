@@ -1,10 +1,11 @@
 ---
 phase: 8
 slug: matcher-endpoint-match-inject-overlay-side-panel-per-page-mo
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-05-26
+reviewed_at: 2026-05-26
 ---
 
 # Phase 8 — UI Design Contract
@@ -54,9 +55,17 @@ The operator surface (`feedback.astro`) uses rem-flavored mixed values today (`.
 | 2xl | 48px | (reserved — not used in this phase) |
 | 3xl | 64px | (reserved — not used in this phase) |
 
-**Exceptions:**
-- The 360px panel **width** inherited from the v1.1 corner chip pattern is not on the 4-multiple scale but is preserved exactly (panel renders side-by-side with iframe at ≥1024px using a `35%` flex-basis, not a fixed px; the 360px references in `feedback-inject.js` are for the in-iframe chip and do not appear in `feedback.astro`). New panel uses flex-basis 35% / min-width 360px.
-- The numbered badge inside the iframe is a 28×28 px circle (touch target tolerance + readability for two-digit indexes; not a 32px touch target because the badge is non-interactive — clicking it bounces through `postMessage` to highlight the row, but the row in the panel is the actual action surface).
+**Exceptions:** (each off-grid value below is enumerated with the precise justification that prevents executor drift; mirrors the v1.1 / v1.2 chip pattern at `public/feedback-inject.js:102-114`).
+
+| Value | Where used | Justification |
+|-------|------------|---------------|
+| `360px` panel min-width | `match-panel` flex-basis floor (≥1024px viewport) | Inherited from the v1.1 corner-chip pattern; preserved exactly so the v1.3 panel does not need its own min-width audit. Panel uses `flex-basis: 35%; min-width: 360px; max-width: 480px;`. |
+| `28×28 px` pin badge | `[data-fb-match-pin]` inside iframe (§5) | Sized to fit a two-digit index (10–99) with the 13px/600 numeric glyph centered on a 999-px-radius circle. Not on the 4-multiple grid (would be 24 or 32) — 28 is the tightest size that fits "10" through "99" without clipping. Non-interactive (no touch-target floor applies). |
+| `2px` y-padding | `match-panel__row-confidence` pill (line 314) | Pill-grade micro-typography — the pill's vertical rhythm is set by `font-size × line-height` (11×1.2 = 13.2px), not by box padding. 2px keeps the pill from looking pinched without distorting the rhythm. Matches the v1.1 pill convention at `public/feedback-inject.js:102`. |
+| `1px` y-padding + `6px` x-padding | inline `<code>` element in alternates list (line 315) | Tag-style micro-padding for inline code chips inside dense list rows. Going to 4/8 would visually pull `<code>` to button-sized — these are read-only ID tags. Established inline-code convention. |
+| `999px` border-radius | confidence pill, line-num circle, state badges | Sentinel value for "fully rounded" — not a numeric spacing token. Standard CSS convention. |
+
+Every other spacing value in the spec maps to the 4-multiple scale above.
 
 ---
 
@@ -75,6 +84,16 @@ The operator surface inherits the system font stack from `feedback.astro:44`. Al
 **Italic:** Used only for the inline `reason` line below alternates (matches Cormorant-italic editorial cue from the marketing site without importing Cormorant into the operator surface — keep `font-style: italic` on the system sans).
 
 **Tab labels:** Sentence case ("Per-element click", "Per-page review") — matches existing `feedback.astro` chrome ("Feedback mode", "Recent submissions"). **Not** uppercase / tracked — uppercase eyebrow is a marketing-site idiom, not an operator-surface idiom.
+
+**Exceptions:** (the 5 type roles above are the layout-grade scale; the values below are pill / glyph / overlay micro-typography that intentionally fall outside it. Each is enumerated rather than collapsed because flattening would degrade the meaning the variation conveys.)
+
+| Size | Where used | Justification |
+|------|------------|---------------|
+| 11px | `match-panel__row-confidence` pill text; row state badge ("Staged" / "Manual"); inline `<code>` ID tag in alternates list | Pill-grade micro-typography — fits the chip-sized container without crowding. Matches the v1.1 pill convention at `public/feedback-inject.js:102`. Snapping to 12px would burst the pill height beyond the 4px y-padding budget. |
+| 16px | `.working` loading-scrim heading ("Matching your edits…") | Transient full-screen overlay; needs visual weight above the 15px panel Display size so the user reads the scrim before the disabled panel. Falls outside the table because it appears only during the ~3–6s in-flight state. |
+| 18px | Catalog-drift banner warning glyph (`⚠`) | Single Unicode glyph, not body text — sized for icon legibility at the banner's left edge. Could equivalently be a 16×16 inline SVG; the glyph approach keeps the inject-string short. |
+
+**Weight exceptions:** Three weights (400 / 500 / 600) are in use. This matches the existing `feedback.astro` chrome convention (the `.bar` / `.rail` / `.working` blocks at `feedback.astro:130-220` already use this same 400/500/600 set), and is preserved here to keep the v1.3 panel visually consistent with the v1.1 / v1.2 surfaces. Collapsing to 2 weights would require restyling the inherited `.bar` block — out of scope per OPS-02 (additive-only fence).
 
 ---
 
@@ -216,7 +235,7 @@ All copy is **EN-only in v1.3**. This is an operator-facing surface (Monty + Mel
   - Container: `padding: 16px`, `background: var(--panel)`, `border-bottom: 1px solid var(--line)`.
   - Picker re-uses existing `.bar select` styles literally — same dark `--bg` background, same `--line` border, same `.45rem .6rem` padding. **Implementation note for planner:** the new picker is a SECOND `<select>` (id `matchPagePick`), NOT the existing `#pagePick`. Both pickers exist concurrently. The existing one continues to drive the per-element flow's iframe `src` when in that tab; `matchPagePick` drives the per-page mode's matcher endpoint route. Reason: keeping picker state isolated per tab avoids spooky cross-tab side effects (a user picks Le Moulin in per-element, switches to per-page, expects to still see Le Moulin — fine; but the per-page picker's HEAD-probe state needs its own DOM node to attach to).
   - Textarea: `width: 100%`, `min-height: 120px`, `max-height: 320px`, `resize: vertical`, `padding: 12px`, `background: var(--bg)`, `border: 1px solid var(--line)`, `border-radius: 8px`, `color: var(--ink)`, `font-family: ui-monospace, SFMono-Regular, Menlo, monospace` (monospace because users will paste bullet lists and tabular content — monospace keeps it scannable), `font-size: 13px`, `line-height: 1.5`. Focus: `border-color: var(--accent-2)`. Match-input is the **only** monospace surface in the contract — everywhere else uses the system sans.
-  - Submit button: `padding: 10px 24px`, `background: var(--accent-2)`, `color: #fff`, `border: 0`, `border-radius: 8px`, `font-weight: 600`, `font-size: 14px`, `cursor: pointer`. Disabled state: `opacity: 0.5`, `cursor: not-allowed`. Hover (when enabled): `background: #4f46e5` (one shade darker).
+  - Submit button: `padding: 12px 24px`, `background: var(--accent-2)`, `color: #fff`, `border: 0`, `border-radius: 8px`, `font-weight: 600`, `font-size: 14px`, `cursor: pointer`. Disabled state: `opacity: 0.5`, `cursor: not-allowed`. Hover (when enabled): `background: #4f46e5` (one shade darker).
   - Char counter: `font-size: 12px`, `color: var(--muted)`. When count > 9500, color flips to `--accent` (orange = approaching cap warning); when count > 10000, color flips to `#fca5a5` (destructive — the button locks out at exactly 10000 chars per MATCH-07).
 - **Disabled states:**
   - On picker change: button stays disabled if textarea is empty OR `HEAD /edit-catalogs/{route}.json` returned 404 (D-21). When 404, the `match-input__hint` becomes visible (`hidden` attr removed) and replaces nothing — sits beside the picker.
@@ -307,7 +326,7 @@ All copy is **EN-only in v1.3**. This is an operator-facing surface (Monty + Mel
   </li>
   ```
 - **Row style:**
-  - Container: `background: var(--bg)`, `border: 1px solid var(--line)`, `border-radius: 10px`, `padding: 12px`, `margin-bottom: 12px`. The state modifiers tint the LEFT border (4px thick) — pending: `var(--line)`, approved: `#15803d`, rejected: `#dc2626` (only visible inside the Rejected disclosure), manual: `var(--accent-2)`, low-confidence: `var(--accent)`.
+  - Container: `background: var(--bg)`, `border: 1px solid var(--line)`, `border-radius: 12px`, `padding: 12px`, `margin-bottom: 12px`. The state modifiers tint the LEFT border (4px thick) — pending: `var(--line)`, approved: `#15803d`, rejected: `#dc2626` (only visible inside the Rejected disclosure), manual: `var(--accent-2)`, low-confidence: `var(--accent)`.
   - Row head: flex row, line-num is a 24×24 circle, 12px font, 600 weight, `background: var(--accent-2)`, `color: #fff`, `border-radius: 999px`, centered text, flex-shrink 0. Line text fills remaining space. State badge floats right, hidden when status is pending.
   - Line text: 14px / 500 / `--ink`. Truncate at 3 lines with `display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;` — long lines stay visible without blowing out the panel.
   - Primary preview: 13px / 400 / `--ink`. Wrapped in quotes for text matches. For image kinds, render `<img>` thumbnail 40×40 cover + filename code. For null primary (no match), shows: `<span class="match-panel__row-primary-empty">No match found. Use "Pick manually" to choose the element.</span>` and the confidence pill shows `No match` (gray/red tier).
@@ -566,4 +585,4 @@ This phase introduces zero new UI dependencies. The only new runtime dep is `@an
 - [ ] Dimension 5 Spacing: PASS
 - [ ] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** APPROVED (2026-05-26, gsd-ui-checker re-verification pass — 6/6 dimensions PASS after revision)
