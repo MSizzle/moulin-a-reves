@@ -2,7 +2,7 @@
 export const prerender = false;
 
 import { checkAuth } from '../lib/auth';
-import { FEEDBACK_INJECT_VER as VER } from '../lib/feedback-version';
+import { FEEDBACK_INJECT_VER as VER, MATCH_INJECT_VER as MVER } from '../lib/feedback-version';
 
 // Auth gate in the frontmatter (SSR — prerender=false). On failure we render a
 // self-contained login card styled like the dashboard login; it POSTs to the
@@ -208,7 +208,7 @@ const firstSrc = `/?feedback=1&v=${VER}`;
           <div class="row" id="toastRow"></div>
         </div>
 
-        <script is:inline define:vars={{ VER }}>
+        <script is:inline define:vars={{ VER, MVER, PAGES }}>
           (function () {
             var iframe = document.getElementById('site');
             var picker = document.getElementById('pagePick');
@@ -443,6 +443,165 @@ const firstSrc = `/?feedback=1&v=${VER}`;
                 showToast('err', 'Network problem', 'We couldn’t reach the server. Your note is saved — try again in a moment.', [
                   { label: 'OK', ghost: true, onClick: hideToast },
                 ]);
+              }
+            });
+
+            // ---- Per-page review mode (v1.3 Phase 8) -------------------------------
+            // Block A — Element references
+            var modeTabClick = document.getElementById('modeTabClick');
+            var modeTabMatch = document.getElementById('modeTabMatch');
+            var modePaneClick = document.getElementById('mode-pane-per-element');
+            var modePaneMatch = document.getElementById('mode-pane-per-page');
+            var matchPicker = document.getElementById('matchPagePick');
+            var matchPickerHint = document.getElementById('matchPickerHint');
+            var matchTextarea = document.getElementById('matchEditList');
+            var matchSubmitBtn = document.getElementById('matchSubmitBtn');
+            var matchCharCount = document.getElementById('matchCharCount');
+            var matchSiteFrame = document.getElementById('matchSite');
+            var MATCH_SET_KEY = 'mar_feedback_match_set_v1';
+            var MAX_EDIT_LIST_CHARS = 10000;
+
+            // Block B — Mode-tab hash router (D-07, D-08)
+            function activateMode(mode) {
+              var isMatch = mode === 'per-page';
+              modeTabClick.classList.toggle('is-active', !isMatch);
+              modeTabMatch.classList.toggle('is-active', isMatch);
+              modeTabClick.setAttribute('aria-selected', !isMatch);
+              modeTabMatch.setAttribute('aria-selected', isMatch);
+              modeTabClick.setAttribute('tabindex', isMatch ? '-1' : '0');
+              modeTabMatch.setAttribute('tabindex', isMatch ? '0' : '-1');
+              modePaneClick.hidden = isMatch;
+              modePaneMatch.hidden = !isMatch;
+              // Update URL hash without scrolling (D-08): replace, not push
+              var newHash = '#mode=' + (isMatch ? 'per-page' : 'per-element');
+              if (location.hash !== newHash) history.replaceState(null, '', location.pathname + location.search + newHash);
+            }
+            function readModeFromHash() {
+              var m = (location.hash || '').match(/mode=(per-element|per-page)/);
+              return m ? m[1] : 'per-element'; // default per D-07
+            }
+            modeTabClick.addEventListener('click', function () { activateMode('per-element'); });
+            modeTabMatch.addEventListener('click', function () { activateMode('per-page'); });
+            // Arrow-key tab navigation (ARIA tabs pattern, UI-SPEC §1)
+            [modeTabClick, modeTabMatch].forEach(function (tab) {
+              tab.addEventListener('keydown', function (ev) {
+                if (ev.key === 'ArrowLeft' || ev.key === 'ArrowRight') {
+                  ev.preventDefault();
+                  activateMode(tab === modeTabClick ? 'per-page' : 'per-element');
+                  (tab === modeTabClick ? modeTabMatch : modeTabClick).focus();
+                }
+              });
+            });
+            // Initial activation from hash
+            activateMode(readModeFromHash());
+
+            // Block C — Char counter + picker HEAD-probe + textarea wire-up (D-21)
+            var lastCatalogProbeOk = false;
+            function refreshSubmitBtn() {
+              var len = matchTextarea.value.length;
+              var trimmed = matchTextarea.value.trim();
+              matchSubmitBtn.disabled = !(lastCatalogProbeOk && trimmed.length > 0 && len <= MAX_EDIT_LIST_CHARS);
+              matchCharCount.textContent = len + ' / ' + MAX_EDIT_LIST_CHARS;
+              matchCharCount.classList.toggle('is-warn', len > 9500 && len <= MAX_EDIT_LIST_CHARS);
+              matchCharCount.classList.toggle('is-over', len > MAX_EDIT_LIST_CHARS);
+            }
+            // Single source of truth for the catalog URL — matches the matcher endpoint's
+            // routeToSlug() in Plan 02 (loadCatalog) byte-for-byte. Inject (Plan 03)
+            // duplicates this same helper inline since it can't import from src/lib at runtime.
+            function routeToCatalogUrl(route) {
+              var slug = route.replace(/^\/+|\/+$/g, '');
+              if (!slug) slug = 'index';
+              return '/edit-catalogs/' + slug + '.json';
+            }
+            async function probeCatalog(route) {
+              try {
+                var res = await fetch(routeToCatalogUrl(route), { method: 'HEAD', credentials: 'same-origin' });
+                if (res.ok) { lastCatalogProbeOk = true; matchPickerHint.hidden = true; }
+                else { lastCatalogProbeOk = false; matchPickerHint.hidden = false; }
+              } catch (_) {
+                lastCatalogProbeOk = false; matchPickerHint.hidden = false;
+              }
+              refreshSubmitBtn();
+            }
+            matchPicker.addEventListener('change', function () { probeCatalog(matchPicker.value); });
+            matchTextarea.addEventListener('input', refreshSubmitBtn);
+            // Initial probe for the default-selected route
+            probeCatalog(matchPicker.value);
+            // Cmd/Ctrl+Enter submits the form
+            matchTextarea.addEventListener('keydown', function (ev) {
+              if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter' && !matchSubmitBtn.disabled) {
+                ev.preventDefault();
+                matchSubmitBtn.click();
+              }
+            });
+
+            // Block D — Match edits click handler (MODE-02 — the core matcher call)
+            matchSubmitBtn.addEventListener('click', async function () {
+              if (matchSubmitBtn.disabled) return;
+              var route = matchPicker.value;
+              var editList = matchTextarea.value;
+              // Loading state — UI-SPEC §10
+              matchSubmitBtn.disabled = true;
+              var originalLabel = matchSubmitBtn.textContent;
+              matchSubmitBtn.textContent = 'Matching…';
+              working.classList.add('show');
+              working.innerHTML = '<div><strong>Matching your edits…</strong><br><span style="color:var(--muted);font-size:.85rem;">Asking Claude to find each line on the page. This usually takes 3–6 seconds.</span></div>';
+              var controller = new AbortController();
+              var done = function () {
+                working.classList.remove('show');
+                working.innerHTML = 'Sending your feedback…'; // restore default copy used by the v1.1 submit handler
+                matchSubmitBtn.textContent = originalLabel;
+                refreshSubmitBtn();
+              };
+              try {
+                var res = await fetch('/api/feedback/match', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  credentials: 'include',
+                  body: JSON.stringify({ route: route, editList: editList }),
+                  signal: controller.signal,
+                });
+                var data = await res.json().catch(function () { return {}; });
+                if (res.status === 401) {
+                  done();
+                  showToast('err', 'Please sign in again to continue.', 'Your session expired.', [{ label: 'Sign in', onClick: function () { location.href = '/feedback'; } }]);
+                  return;
+                }
+                if (!res.ok || !data.ok) {
+                  done();
+                  var copy = 'Couldn’t match those edits. Try again, or use per-element click mode.';
+                  if (res.status === 404 && data.error === 'no_catalog') copy = "This page isn't catalogued yet. Try a different page.";
+                  else if (res.status === 422 && data.cap === 'edit-list-chars') copy = 'That edit list is too long. Try splitting it into smaller batches.';
+                  else if (res.status === 422 && data.cap === 'catalog-elements') copy = 'This page has too many editable elements for one match. Contact Monty.';
+                  else if (res.status === 422 && data.error === 'empty_edit_list') copy = 'Add at least one edit before matching.';
+                  else if (res.status === 500 && data.error === 'matcher_unavailable') copy = 'The matcher is offline. Use per-element click mode instead.';
+                  showToast('err', 'Match failed', copy, [{ label: 'OK', ghost: true, onClick: hideToast }]);
+                  return;
+                }
+                // Success — stash matchSet (D-03..D-05) and reload the per-page iframe
+                var matchSet = {
+                  id: data.matchSetId,
+                  route: route,
+                  buildSha: data.buildSha,
+                  createdAt: new Date().toISOString(),
+                  editList: editList,
+                  matches: Array.isArray(data.matches) ? data.matches : [],
+                  rowStates: (Array.isArray(data.matches) ? data.matches : []).map(function (_, i) { return { lineIndex: i, status: 'pending', manualLocator: null }; }),
+                };
+                try { sessionStorage.setItem(MATCH_SET_KEY, JSON.stringify(matchSet)); } catch (_) { /* private mode — skip silently */ }
+                // Build per-page iframe src with v, matchSet, AND matchVer query params (D-22 / OVERLAY-01 / ROADMAP SC#5).
+                // matchVer is the MATCH_INJECT_VER cache-bust consumed by BaseLayout.astro's NEW sibling conditional loader
+                // (Plan 03) to cache-bust /feedback-match-inject.js. Including it in the iframe src is what ROADMAP
+                // Success Criterion 5 requires: "MATCH_INJECT_VER is consumed by ... feedback.astro (the iframe src builder)".
+                var sep = route.indexOf('?') >= 0 ? '&' : '?';
+                matchSiteFrame.src = route + sep + 'feedback=1&v=' + VER + '&matchSet=' + encodeURIComponent(data.matchSetId) + '&matchVer=' + encodeURIComponent(MVER);
+                done();
+                // Plan 05 takes over rendering the panel rows from the same sessionStorage entry.
+                // Dispatch a custom event so Plan 05's panel renderer (also inside this IIFE) can re-render.
+                window.dispatchEvent(new CustomEvent('mar:match-set-updated', { detail: { matchSetId: data.matchSetId } }));
+              } catch (e) {
+                done();
+                showToast('err', 'Network problem', 'We couldn’t reach the matcher. Try again in a moment.', [{ label: 'OK', ghost: true, onClick: hideToast }]);
               }
             });
           })();
