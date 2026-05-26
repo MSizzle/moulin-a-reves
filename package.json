@@ -9,6 +9,8 @@
     "dev": "astro dev",
     "prebuild": "node scripts/check-public-clean.mjs",
     "build": "astro build",
+    "postbuild": "node scripts/check-edit-catalogs.mjs",
+    "check:catalogs": "node scripts/check-edit-catalogs.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "canary:v1": "scripts/canary.sh v1",
