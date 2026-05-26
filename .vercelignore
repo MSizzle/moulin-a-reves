@@ -1,3 +1,8 @@
+# CATALOG-06 (v1.3 Phase 7): dist/edit-catalogs/ MUST ship to production —
+# the matcher endpoint at src/pages/api/feedback/match.ts (Phase 8) reads
+# these JSON files via the Vercel filesystem at runtime. Adding a
+# `dist/edit-catalogs` rule here would break the matcher.
+# scripts/check-edit-catalogs.mjs asserts this contract on every build.
 public/Moulin House Photos/
 public/photo-source/
 feedback-incoming/
