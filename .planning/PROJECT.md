@@ -8,11 +8,33 @@ Marketing site for **Le Moulin à Rêves** — a private luxury vacation compoun
 
 **Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.** Brand, photography, and copy all serve this. The editor / CMS / i18n stack exists so the client can keep that surface fresh without dev involvement.
 
-## Most Recent Milestone: v1.2 Status Visibility — SHIPPED 2026-05-21
+## Current Milestone: v1.3 File-Driven Per-Page Edit Flow
 
-v1.2 made the v1.1 batch-feedback pipeline observable to the client. After Submit, a per-batch progress bar on `/feedback` lights up through 5 stages (Submitted → Reviewing → PR opened → Merged/Needs-review/Question → Live), driven by an auth-gated `/api/feedback/status/[issueNumber]` endpoint rolling GitHub issue + PR + commit + Vercel deploy state into a single resolver. 10/10 STATUS-* requirements satisfied. Shipped as single squash-merged PR #99 + companion fix PR #98 + retrospective wiring-gap closure via quick task `260521-ou9` (the first time a milestone audit caught a defect that the phase's local code-inspection verification missed). Graceful VERCEL_TOKEN degrade verified.
+**Goal:** Let the client paste a freeform list of changes for any single page, have Claude Haiku map each line to an addressable DOM element via a build-time edit catalog, and approve/reject each proposed match in a side panel before the approved set flows through the existing v1.1 batch pipeline unchanged.
+
+**Target features:**
+- Build-time **edit catalog** — one JSON file per route emitted after `astro build`, listing every addressable element (i18n keys, images, gallery items, headings) with stable IDs + locator signals.
+- **Matcher endpoint** — `POST /api/feedback/match` calls `claude-haiku-4-5` against the page's catalog to map each freeform line → primary element ID + alternates + confidence + reason.
+- **Match-inject overlay** — new `public/feedback-match-inject.js` (separate from `feedback-inject.js`) pins numbered orange badges on each matched element inside the iframe.
+- **Approve / Reject / Pick-manually** side panel — approved items become standard v2 staged edits and feed the existing "Submit batch" pipeline.
+- **Per-page input mode on `/feedback`** — page picker + textarea + "Match edits" button alongside the existing per-element click flow.
+
+**Key constraints:**
+- Purely additive on top of v1.1/v1.2 — submit endpoint, GitHub issue schema, Claude Action, autonomy gate stay byte-for-byte unchanged.
+- Reuses `signalCount()` / `validateEdit()` from `src/pages/api/feedback/validate.ts`; catalogs supply ≥2 locator signals per match (i18nKey + domPath + currentText + nearestHeading) so approved batches auto-merge under the §4 gate.
+- New env var: `ANTHROPIC_API_KEY` (server-only).
+- New cache-bust constant: `MATCH_INJECT_VER` alongside `FEEDBACK_INJECT_VER`.
+
+Design source: [`a-couple-ideas-this-melodic-nebula.md`](/Users/Montster/.claude/plans/a-couple-ideas-this-melodic-nebula.md) Feature 2.
+
+<details>
+<summary>Previous: v1.2 Status Visibility — SHIPPED 2026-05-21</summary>
+
+v1.2 made the v1.1 batch-feedback pipeline observable to the client. After Submit, a per-batch progress bar on `/feedback` lights up through 5 stages (Submitted → Reviewing → PR opened → Merged/Needs-review/Question → Live), driven by an auth-gated `/api/feedback/status/[issueNumber]` endpoint rolling GitHub issue + PR + commit + Vercel deploy state into a single resolver. 10/10 STATUS-* requirements satisfied. Shipped as single squash-merged PR #99 + companion fix PR #98 + retrospective wiring-gap closure via quick task `260521-ou9`. Graceful VERCEL_TOKEN degrade verified.
 
 Full detail: [`MILESTONES.md` § v1.2](./MILESTONES.md) · [`milestones/v1.2-ROADMAP.md`](./milestones/v1.2-ROADMAP.md) · [`milestones/v1.2-MILESTONE-AUDIT.md`](./milestones/v1.2-MILESTONE-AUDIT.md) · [`RETROSPECTIVE.md`](./RETROSPECTIVE.md)
+
+</details>
 
 <details>
 <summary>Previous: v1.1 Batch Feedback Pipeline — SHIPPED 2026-05-21</summary>
@@ -22,10 +44,6 @@ v1.1 replaced the 1-edit-per-deploy feedback flow with a batched submission mode
 Full detail: [`MILESTONES.md` § v1.1](./MILESTONES.md) · [`milestones/v1.1-ROADMAP.md`](./milestones/v1.1-ROADMAP.md) · [`milestones/v1.1-MILESTONE-AUDIT.md`](./milestones/v1.1-MILESTONE-AUDIT.md)
 
 </details>
-
-## Next Milestone: TBD — run `/gsd-new-milestone`
-
-v1.2 is shipped + archived. The queued next-milestone target on the roadmap is **v1.3 File-Driven Per-Page Edit Flow** (Feature 2 of `/Users/Montster/.claude/plans/a-couple-ideas-this-melodic-nebula.md`) — build-time edit catalogs per route, Claude-Haiku matcher endpoint, `feedback-match-inject.js` overlay, side panel approve/reject; reuses the v1.1 batch submit pipeline unchanged. Several deferred items (gallery modal rewrite, calendar 12-month range, editor/publishing flow audit, Melissa's `CLIENT-CLARIFICATION.md` answers if she's replied) also remain candidates. Pick the focus via `/gsd-new-milestone`.
 
 ## Requirements
 
@@ -58,9 +76,14 @@ v1.2 is shipped + archived. The queued next-milestone target on the roadmap is *
 
 ### Active
 
-<!-- v1.2 shipped 2026-05-21. Active = TBD until /gsd-new-milestone defines the next milestone scope. Concrete REQ-IDs land in a fresh .planning/REQUIREMENTS.md when the next milestone is initialized. -->
+<!-- v1.3 File-Driven Per-Page Edit Flow — milestone initialized 2026-05-25. Concrete REQ-IDs are defined in `.planning/REQUIREMENTS.md`; this section names the categories scoped into v1.3. -->
 
-- (none currently — run `/gsd-new-milestone` to pick the next milestone focus)
+- **CATALOG**: build-time edit catalog generation (post-`astro build` integration, JSON-per-route schema, locator-signal extraction)
+- **MATCH**: matcher endpoint + Claude Haiku integration (request/response contract, prompt construction, error handling, cost guardrails)
+- **OVERLAY**: `feedback-match-inject.js` numbered-pin overlay (script loader contract, pin rendering, target resolution)
+- **PANEL**: per-line Approve / Reject / Pick-manually side panel + v1.1 staged-edits handoff (state machine, sessionStorage interop)
+- **MODE**: per-page input mode on `/feedback` (page picker, textarea, "Match edits" trigger, mode handoff to existing per-element click flow)
+- **OPS**: cache-bust contract (`MATCH_INJECT_VER`), env-var scoping (`ANTHROPIC_API_KEY` server-only), additive-only diff fence over editor + v1.1/v1.2 surfaces
 
 ### Carried forward (candidates for next milestone)
 
@@ -201,4 +224,4 @@ This document evolves at phase transitions and milestone boundaries.
 - Consider flipping `DRY_RUN=false` on the GitHub repo (`gh variable set DRY_RUN -b false`) after observing 1-2 real `client-feedback` rounds prove the v2 batch path is stable in production. Currently `true` from Phase 5 canary setup.
 
 ---
-*Last updated: 2026-05-21 — v1.2 Status Visibility shipped and archived*
+*Last updated: 2026-05-25 — v1.3 File-Driven Per-Page Edit Flow initialized*
