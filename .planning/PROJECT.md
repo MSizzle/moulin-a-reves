@@ -224,4 +224,4 @@ This document evolves at phase transitions and milestone boundaries.
 - Consider flipping `DRY_RUN=false` on the GitHub repo (`gh variable set DRY_RUN -b false`) after observing 1-2 real `client-feedback` rounds prove the v2 batch path is stable in production. Currently `true` from Phase 5 canary setup.
 
 ---
-*Last updated: 2026-05-25 — v1.3 File-Driven Per-Page Edit Flow initialized*
+*Last updated: 2026-05-26 — Phase 8 complete (Matcher Endpoint + Match-Inject Overlay + Side Panel + Per-Page Mode). Per-page review flow scaffolded end-to-end on `/feedback`; 24/24 must-haves verified programmatically. Remaining: deploy + set `ANTHROPIC_API_KEY` in Vercel Production env, then run Phase 9 dual-mode `scripts/smoke-feedback-match.mjs` canary against the live preview.*
