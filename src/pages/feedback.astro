@@ -137,8 +137,35 @@ const firstSrc = `/?feedback=1&v=${VER}`;
           <span class="spacer"></span>
           <a class="inbox" href="/feedback/inbox">Open questions ↗</a>
         </div>
-        <div class="frame-wrap">
-          <iframe id="site" src={firstSrc} title="Moulin à Rêves preview"></iframe>
+        <div class="mode-tabs" role="tablist" aria-label="Feedback mode">
+          <button class="mode-tabs__tab is-active" id="modeTabClick" role="tab" aria-selected="true" aria-controls="mode-pane-per-element" tabindex="0">Per-element click</button>
+          <button class="mode-tabs__tab" id="modeTabMatch" role="tab" aria-selected="false" aria-controls="mode-pane-per-page" tabindex="-1">Per-page review</button>
+        </div>
+        <div class="mode-pane" id="mode-pane-per-element" role="tabpanel" aria-labelledby="modeTabClick">
+          <div class="frame-wrap">
+            <iframe id="site" src={firstSrc} title="Moulin à Rêves preview"></iframe>
+          </div>
+        </div>
+        <div class="mode-pane" id="mode-pane-per-page" role="tabpanel" aria-labelledby="modeTabMatch" hidden>
+          <section class="match-input" aria-label="Per-page edit input">
+            <div class="match-input__header">
+              <label class="match-input__label" for="matchPagePick">Page:</label>
+              <select id="matchPagePick" class="match-input__picker">
+                {PAGES.map((pg) => <option value={pg.route}>{pg.label}</option>)}
+              </select>
+              <span class="match-input__hint" id="matchPickerHint" hidden>This page isn't catalogued yet.</span>
+            </div>
+            <textarea class="match-input__textarea" id="matchEditList" rows="6" maxlength="10000"
+                      aria-label="Edit list for selected page"
+                      placeholder="Paste a freeform list of changes for this page — one edit per line. Bullets, numbers, paragraphs are all fine."></textarea>
+            <div class="match-input__footer">
+              <button class="match-input__submit" id="matchSubmitBtn" disabled>Match edits</button>
+              <span class="match-input__char-count" id="matchCharCount" aria-live="polite">0 / 10000</span>
+            </div>
+          </section>
+          <div class="frame-wrap frame-wrap--match">
+            <iframe id="matchSite" title="Moulin à Rêves preview — per-page matches"></iframe>
+          </div>
         </div>
 
         <aside class="rail" id="rail" hidden>
