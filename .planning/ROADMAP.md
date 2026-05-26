@@ -74,9 +74,24 @@ Full milestone detail: [`milestones/v1.2-ROADMAP.md`](./milestones/v1.2-ROADMAP.
   2. For a representative catalog (e.g. `dist/edit-catalogs/homes/le-moulin.json`), every element row exposes a stable `id`, a `kind` ∈ `{i18n-text, i18n-html, image, gallery-image, heading, hardcoded-text}`, AND ≥ 2 locator-signal fields populated where applicable (`i18nKey`, `currentText`, `nearestHeading`, `domPath`, `imageRef`); `hardcoded-text` rows that have no `src/content/**/*.md` frontmatter source carry `requiresManualSelection: true`.
   3. Catalog locator signals are byte-identical to what the v1.1 per-element click flow would produce — the shared Node-side helper (extracted from `feedback-inject.js:169-185`) is consumed by both the catalog walker and (when run in a unit test) returns the same `{ i18nKey, currentText, nearestHeading, domPath }` tuple for the same DOM element as `captureLocator()` does in-browser.
   4. Each catalog includes a top-level `buildSha` field set to the current git HEAD short SHA so a downstream consumer (Phase 8 overlay, Phase 9 canary) can detect catalog-drift relative to the deployed `<meta name="x-build-sha">` value.
-  5. `dist/edit-catalogs/` ships to production (decision documented in the phase plan per CATALOG-06): a HEAD probe against the deployed `/edit-catalogs/homes/le-moulin.json` returns 200, AND `.vercelignore` does NOT contain a `dist/edit-catalogs` rule that would block deployment.
+  5. `dist/edit-catalogs/` ships to production (decision documented in the phase plan per CATALOG-06): a HEAD probe against the deployed `/edit-catalogs/homes/le-moulin.json` returns 200, AND `.vercelignore` does NOT contain a `dist/edit-catalogs` rule that would block deployment. _(Live HEAD probe deferred to Phase 9 — it requires a deployed Vercel build; Phase 9 Success Criterion #3 already covers it.)_
 
-**Plans**: TBD (filled in by `/gsd-plan-phase 7`)
+**Plans**: 5 plans across 3 waves
+
+Plans:
+**Wave 1**
+
+- [ ] 07-01-PLAN.md — Wave 1: Extract shared locator helper to `src/lib/locator-signals.mjs` + parity test pinning byte-identity to `public/feedback-inject.js:169-238` (CATALOG-03)
+- [ ] 07-02-PLAN.md — Wave 1: Astro integration scaffold registering `astro:build:done` hook in `astro.config.mjs` + stub catalog emission per prerendered route (CATALOG-01)
+- [ ] 07-04-PLAN.md — Wave 1: Content-collection index module `src/integrations/edit-catalog/content-index.mjs` walking `src/content/**/*.md` frontmatter for hardcoded-text source detection (CATALOG-04)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 07-03-PLAN.md — Wave 2: Catalog walker `src/integrations/edit-catalog/walker.mjs` — element classification + locator-signal population using shared helper + `requiresManualSelection` enforcement (CATALOG-02, CATALOG-03)
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
+- [ ] 07-05-PLAN.md — Wave 3: `buildSha` injection from git HEAD + `.vercelignore` ship-to-prod assertion + `scripts/check-edit-catalogs.mjs` post-build sanity script (CATALOG-05, CATALOG-06)
 
 ### Phase 8: Matcher Endpoint + Match-Inject Overlay + Side Panel + Per-Page Mode
 
@@ -127,8 +142,8 @@ Full milestone detail: [`milestones/v1.2-ROADMAP.md`](./milestones/v1.2-ROADMAP.
 | 4. Batch Pipeline Implementation | v1.1 | 11/11 | Complete | 2026-05-21 |
 | 5. Post-Deploy Verification | v1.1 | 3/3 | Complete | 2026-05-21 |
 | 6. Status Visibility | v1.2 | 3/3 + 1 quick-task closure | Complete | 2026-05-21 |
-| 7. Build-time Edit Catalog Generator | v1.3 | 0/? | Planning | — |
+| 7. Build-time Edit Catalog Generator | v1.3 | 0/5 | Planning | — |
 | 8. Matcher Endpoint + Overlay + Panel + Per-Page Mode | v1.3 | 0/? | Planning | — |
 | 9. Post-Deploy Verification | v1.3 | 0/? | Planning | — |
 
-**v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — COMPLETE 2026-05-21** (25/25 requirements). **v1.2 — COMPLETE 2026-05-21** (10/10 STATUS-* requirements). **v1.3 — PLANNING 2026-05-26** (0/32 requirements; 100% coverage across Phases 7–9; awaiting `/gsd-plan-phase 7`).
+**v1.0 — COMPLETE 2026-05-05** (38/38 requirements). **v1.1 — COMPLETE 2026-05-21** (25/25 requirements). **v1.2 — COMPLETE 2026-05-21** (10/10 STATUS-* requirements). **v1.3 — PLANNING 2026-05-26** (0/32 requirements; 100% coverage across Phases 7–9; Phase 7 plans drafted 2026-05-26).
