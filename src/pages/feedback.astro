@@ -705,6 +705,459 @@ const firstSrc = `/?feedback=1&v=${VER}`;
                 showToast('err', 'Network problem', 'We couldn’t reach the matcher. Try again in a moment.', [{ label: 'OK', ghost: true, onClick: hideToast }]);
               }
             });
+
+            // ---- Per-page review side panel (v1.3 Phase 8 Plan 05) ----------------
+            // Block A — Catalog lookup (lazy-loaded, shared across renders)
+            var matchCatalog = null; // { route, buildSha, entries: [{ id, kind, i18nKey, ... }] }
+            var matchCatalogRoute = null;
+            async function ensureCatalog(route) {
+              if (matchCatalog && matchCatalogRoute === route) return matchCatalog;
+              try {
+                var res = await fetch(routeToCatalogUrl(route), { credentials: 'same-origin' });
+                if (!res.ok) return null;
+                var json = await res.json();
+                matchCatalog = json;
+                matchCatalogRoute = route;
+                return matchCatalog;
+              } catch (_) { return null; }
+            }
+
+            // Block B — Panel render state machine (PANEL-01..05)
+            var matchPanel = document.getElementById('matchPanel');
+            var matchPanelEmpty = document.getElementById('matchPanelEmpty');
+            var matchPanelRows = document.getElementById('matchPanelRows');
+            var matchPanelRejected = document.getElementById('matchPanelRejected');
+            var matchPanelRejectedList = document.getElementById('matchPanelRejectedList');
+            var matchRejectedCount = document.getElementById('matchRejectedCount');
+            var matchPanelSubtitle = document.getElementById('matchPanelSubtitle');
+            var matchPanelHelper = document.getElementById('matchPanelHelper');
+            var matchDriftBanner = document.getElementById('matchDriftBanner');
+            var matchDriftRerun = document.getElementById('matchDriftRerun');
+            var STAGED_KEY = 'mar_feedback_staged_v1'; // owned by v1.1 corner chip; we WRITE to it but never read v1.1 internals
+            var hasShownHelperThisSession = false;
+
+            function loadMatchSet() {
+              try { return JSON.parse(sessionStorage.getItem(MATCH_SET_KEY) || 'null'); } catch (_) { return null; }
+            }
+            function saveMatchSet(ms) {
+              try { sessionStorage.setItem(MATCH_SET_KEY, JSON.stringify(ms)); } catch (_) {}
+            }
+            function loadStaged() {
+              try { return JSON.parse(sessionStorage.getItem(STAGED_KEY) || '[]'); } catch (_) { return []; }
+            }
+            function saveStaged(arr) {
+              try { sessionStorage.setItem(STAGED_KEY, JSON.stringify(arr)); } catch (_) {}
+            }
+
+            function confidenceTier(m) {
+              if (m.primaryId === null || m.primaryId === undefined) return { mod: 'none', label: 'No match' };
+              var c = typeof m.primaryConfidence === 'number' ? m.primaryConfidence : 0;
+              if (c >= 0.75) return { mod: 'green', label: 'High match · ' + Math.round(c * 100) + '%' };
+              if (c >= 0.50) return { mod: 'amber', label: 'Some confidence · ' + Math.round(c * 100) + '%' };
+              return { mod: 'red', label: 'Low match · ' + Math.round(c * 100) + '%' };
+            }
+
+            function renderRow(m, rowState, i, catalog) {
+              var li = document.createElement('li');
+              li.className = 'match-panel__row match-panel__row--' + (rowState.status || 'pending');
+              var conf = confidenceTier(m);
+              if (conf.mod === 'red' && rowState.status === 'pending') li.classList.add('match-panel__row--low-confidence');
+              li.setAttribute('data-row-index', String(i));
+
+              // --- head: line number + line text + state badge ---
+              var head = document.createElement('header');
+              head.className = 'match-panel__row-head';
+              var numEl = document.createElement('span');
+              numEl.className = 'match-panel__row-line-num';
+              numEl.textContent = String(i + 1);
+              head.appendChild(numEl);
+              var textEl = document.createElement('span');
+              textEl.className = 'match-panel__row-line-text';
+              textEl.textContent = m.line || '';
+              head.appendChild(textEl);
+              if (rowState.status === 'approved') {
+                var badge = document.createElement('span');
+                badge.className = 'match-panel__row-state-badge match-panel__row-state-badge--approved';
+                badge.setAttribute('role', 'status');
+                badge.textContent = 'Staged';
+                head.appendChild(badge);
+              } else if (rowState.status === 'manual') {
+                var mBadge = document.createElement('span');
+                mBadge.className = 'match-panel__row-state-badge match-panel__row-state-badge--manual';
+                mBadge.setAttribute('role', 'status');
+                mBadge.textContent = 'Manual';
+                head.appendChild(mBadge);
+              }
+              li.appendChild(head);
+
+              // --- primary preview ---
+              var primary = document.createElement('div');
+              primary.className = 'match-panel__row-primary';
+              if (m.primaryId) {
+                var lbl = document.createElement('span');
+                lbl.className = 'match-panel__row-primary-label';
+                lbl.textContent = 'Match:';
+                primary.appendChild(lbl);
+                var preview = document.createElement('span');
+                preview.className = 'match-panel__row-primary-preview';
+                var entry = catalog && catalog.entries.find(function (e) { return e.id === m.primaryId; });
+                var previewText = entry ? (entry.currentText || entry.altText || entry.nearestHeading || entry.id) : m.primaryId;
+                preview.textContent = '"' + (previewText || '').slice(0, 200) + '"';
+                primary.appendChild(preview);
+                var conPill = document.createElement('span');
+                conPill.className = 'match-panel__row-confidence match-panel__row-confidence--' + conf.mod;
+                conPill.setAttribute('aria-label', conf.label.replace('·', ', confidence') + ' percent');
+                conPill.textContent = conf.label;
+                primary.appendChild(conPill);
+              } else {
+                var empty = document.createElement('span');
+                empty.className = 'match-panel__row-primary-empty';
+                empty.textContent = 'No match found. Use "Pick manually" to choose the element.';
+                primary.appendChild(empty);
+                var noPill = document.createElement('span');
+                noPill.className = 'match-panel__row-confidence match-panel__row-confidence--none';
+                noPill.textContent = 'No match';
+                primary.appendChild(noPill);
+              }
+              li.appendChild(primary);
+
+              // --- alternates ---
+              if (Array.isArray(m.alternates) && m.alternates.length > 0) {
+                var alt = document.createElement('div');
+                alt.className = 'match-panel__row-alternates';
+                var altLbl = document.createElement('span');
+                altLbl.className = 'match-panel__row-alternates-label';
+                altLbl.textContent = 'Other options:';
+                alt.appendChild(altLbl);
+                var altList = document.createElement('ol');
+                altList.className = 'match-panel__row-alternates-list';
+                m.alternates.forEach(function (altId) {
+                  var altLi = document.createElement('li');
+                  var altEntry = catalog && catalog.entries.find(function (e) { return e.id === altId; });
+                  var altPreview = altEntry ? (altEntry.currentText || altEntry.altText || altEntry.nearestHeading || altId) : altId;
+                  var code = document.createElement('code');
+                  code.textContent = altId;
+                  altLi.appendChild(code);
+                  altLi.appendChild(document.createTextNode(' — "' + (altPreview || '').slice(0, 120) + '"'));
+                  altList.appendChild(altLi);
+                });
+                alt.appendChild(altList);
+                li.appendChild(alt);
+              }
+
+              // --- reason (italic, truncate at 120 per D-19) ---
+              if (m.reason) {
+                var reason = document.createElement('p');
+                reason.className = 'match-panel__row-reason';
+                var full = String(m.reason);
+                if (full.length > 120) {
+                  reason.textContent = full.slice(0, 120) + '… ';
+                  var more = document.createElement('button');
+                  more.className = 'match-panel__row-reason-more';
+                  more.type = 'button';
+                  more.setAttribute('aria-expanded', 'false');
+                  more.textContent = 'show more';
+                  more.addEventListener('click', function () {
+                    var expanded = more.getAttribute('aria-expanded') === 'true';
+                    if (expanded) {
+                      reason.firstChild.nodeValue = full.slice(0, 120) + '… ';
+                      more.textContent = 'show more';
+                      more.setAttribute('aria-expanded', 'false');
+                    } else {
+                      reason.firstChild.nodeValue = full + ' ';
+                      more.textContent = 'show less';
+                      more.setAttribute('aria-expanded', 'true');
+                    }
+                  });
+                  reason.appendChild(more);
+                } else {
+                  reason.textContent = full;
+                }
+                li.appendChild(reason);
+              }
+
+              // --- actions ---
+              var actions = document.createElement('footer');
+              actions.className = 'match-panel__row-actions';
+
+              function makeBtn(modifier, label, ariaLabel) {
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'match-panel__row-btn match-panel__row-btn--' + modifier;
+                b.textContent = label;
+                if (ariaLabel) b.setAttribute('aria-label', ariaLabel);
+                return b;
+              }
+              var lineLabel = (m.line || '').slice(0, 60);
+
+              if (rowState.status === 'approved') {
+                var undoBtn = makeBtn('undo', 'Undo', 'Undo approval for line: ' + lineLabel);
+                undoBtn.addEventListener('click', function () { handleUndo(i); });
+                actions.appendChild(undoBtn);
+              } else {
+                var apvBtn = makeBtn('approve', 'Approve', 'Approve match for line: ' + lineLabel);
+                // Disable approve if no primary AND no manualLocator (must use Pick manually first)
+                if (!m.primaryId && !rowState.manualLocator) {
+                  apvBtn.disabled = true;
+                  apvBtn.setAttribute('title', 'No match — use Pick manually');
+                }
+                apvBtn.addEventListener('click', function () { handleApprove(i); });
+                actions.appendChild(apvBtn);
+              }
+              var rejBtn = makeBtn('reject', 'Reject', 'Reject this match');
+              rejBtn.addEventListener('click', function () { handleReject(i); });
+              actions.appendChild(rejBtn);
+              var manBtn = makeBtn('manual', rowState.status === 'manual' ? 'Pick again' : 'Pick manually', 'Override match — pick element by clicking it');
+              manBtn.addEventListener('click', function () { handlePickManually(i); });
+              actions.appendChild(manBtn);
+
+              li.appendChild(actions);
+
+              // Row body click -> focus the corresponding pin in the iframe
+              li.addEventListener('click', function (ev) {
+                // Ignore button clicks
+                if (ev.target.closest('button')) return;
+                try { matchSiteFrame.contentWindow && matchSiteFrame.contentWindow.postMessage({ type: 'mar:feedback:match-focus', lineIndex: i + 1 }, location.origin); } catch (_) {}
+              });
+
+              return li;
+            }
+
+            function renderRejectedRow(m, rowState, i) {
+              // Simpler row inside the disclosure: line number + line text + Restore button.
+              var li = document.createElement('li');
+              li.className = 'match-panel__row match-panel__row--rejected';
+              li.setAttribute('data-row-index', String(i));
+              var head = document.createElement('header');
+              head.className = 'match-panel__row-head';
+              var num = document.createElement('span');
+              num.className = 'match-panel__row-line-num';
+              num.textContent = String(i + 1);
+              head.appendChild(num);
+              var text = document.createElement('span');
+              text.className = 'match-panel__row-line-text';
+              text.textContent = m.line || '';
+              head.appendChild(text);
+              li.appendChild(head);
+              var actions = document.createElement('footer');
+              actions.className = 'match-panel__row-actions';
+              var restore = document.createElement('button');
+              restore.type = 'button';
+              restore.className = 'match-panel__row-btn';
+              restore.textContent = 'Restore';
+              restore.setAttribute('aria-label', 'Restore rejected match for line: ' + (m.line || '').slice(0, 60));
+              restore.addEventListener('click', function () { handleRestore(i); });
+              actions.appendChild(restore);
+              li.appendChild(actions);
+              return li;
+            }
+
+            async function renderPanel() {
+              var ms = loadMatchSet();
+              if (!ms || !Array.isArray(ms.matches) || ms.matches.length === 0) {
+                matchPanelEmpty.hidden = false;
+                matchPanelRows.hidden = true;
+                matchPanelRejected.hidden = true;
+                matchPanelSubtitle.hidden = true;
+                return;
+              }
+              var catalog = await ensureCatalog(ms.route);
+              matchPanelEmpty.hidden = true;
+              matchPanelRows.hidden = false;
+              matchPanelSubtitle.hidden = false;
+              matchPanelSubtitle.textContent = ms.matches.length + ' edit' + (ms.matches.length === 1 ? '' : 's') + ' on ' + ms.route;
+
+              // Clear and rebuild rows
+              matchPanelRows.innerHTML = '';
+              matchPanelRejectedList.innerHTML = '';
+              var rejectedCount = 0;
+              ms.matches.forEach(function (m, i) {
+                var rowState = ms.rowStates[i] || { lineIndex: i, status: 'pending', manualLocator: null };
+                if (rowState.status === 'rejected') {
+                  matchPanelRejectedList.appendChild(renderRejectedRow(m, rowState, i));
+                  rejectedCount++;
+                } else {
+                  matchPanelRows.appendChild(renderRow(m, rowState, i, catalog));
+                }
+              });
+              matchPanelRejected.hidden = rejectedCount === 0;
+              matchRejectedCount.textContent = String(rejectedCount);
+
+              // Show helper line if at least one Approve has happened this session
+              if (hasShownHelperThisSession) matchPanelHelper.hidden = false;
+            }
+
+            // Block C — Approve / Reject / Pick-manually / Restore / Undo handlers
+            function buildStagedEditFromCatalogEntry(entry, route, lineText) {
+              // Mirror v1.1 captureLocator's output shape (.github/CLAUDE_FEEDBACK.md §8 + validate.ts signalCount).
+              // The catalog already carries the locator signals — we just re-shape them into the staged-edit format.
+              var staged = {
+                schemaVersion: 2,
+                pageRoute: route,
+                action: 'unknown',
+                note: lineText,
+                stagedAt: new Date().toISOString(),
+                submitId: 'pp_' + (globalThis.crypto && globalThis.crypto.randomUUID ? globalThis.crypto.randomUUID() : (Date.now() + '_' + Math.random().toString(36).slice(2, 10))),
+              };
+              // Action derivation by kind:
+              if (entry.kind === 'image' || entry.kind === 'gallery-image') staged.action = 'edit-image';
+              else if (entry.kind === 'i18n-html') staged.action = 'edit-html';
+              else if (entry.kind === 'i18n-text' || entry.kind === 'heading' || entry.kind === 'hardcoded-text') staged.action = 'edit-text';
+              // Locator signals — copy verbatim if present (catalog uses same field names as validate.ts).
+              if (entry.i18nKey) staged.i18nKey = entry.i18nKey;
+              if (entry.i18nAttr) staged.i18nAttr = entry.i18nAttr;
+              if (entry.currentText) staged.currentText = entry.currentText;
+              if (entry.currentTextFr) staged.currentTextFr = entry.currentTextFr;
+              if (entry.nearestHeading) staged.nearestHeading = entry.nearestHeading;
+              if (entry.imageRef) staged.imageRef = entry.imageRef;
+              if (entry.altText) staged.altText = entry.altText;
+              if (entry.domPath) staged.domPath = entry.domPath;
+              return staged;
+            }
+
+            async function handleApprove(i) {
+              var ms = loadMatchSet();
+              if (!ms || !ms.matches[i]) return;
+              var m = ms.matches[i];
+              var rowState = ms.rowStates[i] || { lineIndex: i, status: 'pending', manualLocator: null };
+              var catalog = await ensureCatalog(ms.route);
+              var staged;
+              if (rowState.manualLocator) {
+                // Manual locator was captured via v1.1 click flow; use it directly (it's already in staged-edit shape).
+                staged = Object.assign({}, rowState.manualLocator, { note: m.line, stagedAt: new Date().toISOString() });
+              } else {
+                if (!m.primaryId || !catalog) return;
+                var entry = catalog.entries.find(function (e) { return e.id === m.primaryId; });
+                if (!entry) return;
+                staged = buildStagedEditFromCatalogEntry(entry, ms.route, m.line);
+              }
+              // Append to v1.1 corner chip's batch store (D-05 / D-24).
+              var arr = loadStaged();
+              arr.push(staged);
+              saveStaged(arr);
+              // Update local row state.
+              rowState.status = 'approved';
+              ms.rowStates[i] = rowState;
+              saveMatchSet(ms);
+              hasShownHelperThisSession = true;
+              // Polite announcement for screen readers.
+              announce('Match ' + (i + 1) + ' approved and staged for batch submission.');
+              renderPanel();
+            }
+
+            function handleUndo(i) {
+              // Remove the matching staged edit (by submitId or by route+note pair if submitId missing).
+              var ms = loadMatchSet();
+              if (!ms || !ms.matches[i]) return;
+              var lineText = ms.matches[i].line;
+              var arr = loadStaged();
+              // Find the LAST staged edit matching this pageRoute + note (most-recent wins on dupes).
+              for (var j = arr.length - 1; j >= 0; j--) {
+                if (arr[j].pageRoute === ms.route && arr[j].note === lineText) { arr.splice(j, 1); break; }
+              }
+              saveStaged(arr);
+              ms.rowStates[i].status = 'pending';
+              saveMatchSet(ms);
+              renderPanel();
+            }
+
+            function handleReject(i) {
+              var ms = loadMatchSet();
+              if (!ms || !ms.rowStates[i]) return;
+              ms.rowStates[i].status = 'rejected';
+              saveMatchSet(ms);
+              announce('Match ' + (i + 1) + ' rejected. ' + countByStatus(ms, 'rejected') + ' total rejected.');
+              renderPanel();
+            }
+
+            function handleRestore(i) {
+              var ms = loadMatchSet();
+              if (!ms || !ms.rowStates[i]) return;
+              ms.rowStates[i].status = 'pending';
+              saveMatchSet(ms);
+              renderPanel();
+            }
+
+            function handlePickManually(i) {
+              try { matchSiteFrame.contentWindow && matchSiteFrame.contentWindow.postMessage({ type: 'mar:feedback:match-pick-manually', lineIndex: i + 1 }, location.origin); } catch (_) {}
+              announce('Picking match ' + (i + 1) + ' manually. Click an element in the preview.');
+              // Mark the row 'manual' as a visual cue that this row was handed off; the Approve button
+              // becomes enabled (it was disabled for no-primary rows; manual marker treats the user as
+              // having taken responsibility). The actual locator comes from the v1.1 frozen element's
+              // captureLocator() output via the corner-chip "Add to batch" click — which lands in
+              // mar_feedback_staged_v1 directly.
+              var ms = loadMatchSet();
+              if (!ms || !ms.rowStates[i]) return;
+              ms.rowStates[i].status = 'manual';
+              saveMatchSet(ms);
+              renderPanel();
+            }
+
+            function countByStatus(ms, status) {
+              return ms.rowStates.filter(function (r) { return r.status === status; }).length;
+            }
+
+            function announce(text) {
+              var live = document.getElementById('matchPanelLive');
+              if (!live) {
+                live = document.createElement('div');
+                live.id = 'matchPanelLive';
+                live.setAttribute('aria-live', 'polite');
+                live.setAttribute('aria-atomic', 'true');
+                live.style.cssText = 'position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;';
+                document.body.appendChild(live);
+              }
+              live.textContent = text;
+            }
+
+            // Block D — Drift banner Re-run handler (D-16, D-17)
+            matchDriftRerun.addEventListener('click', async function () {
+              var ms = loadMatchSet();
+              if (!ms || !ms.editList) return;
+              // Stuff the existing editList back into the textarea and trigger the existing submit flow.
+              matchPicker.value = ms.route;
+              matchTextarea.value = ms.editList;
+              // The picker-change probe needs to run with the route value freshly set:
+              await probeCatalog(matchPicker.value);
+              refreshSubmitBtn();
+              // Reuse the existing Match edits click path so error handling and matchSet stash logic stay in one place.
+              matchSubmitBtn.click();
+            });
+
+            // Block E — Inbound message dispatcher for v1.3 mar:feedback:* messages
+            window.addEventListener('message', function (ev) {
+              if (ev.origin !== location.origin) return;
+              var msg = ev.data;
+              if (!msg || typeof msg.type !== 'string' || !msg.type.startsWith('mar:feedback:')) return; // v1.1 dash-form is handled by the existing listener
+              if (msg.type === 'mar:feedback:matchset-stale') {
+                matchDriftBanner.hidden = false;
+                // Disable all Approve buttons in the panel.
+                matchPanelRows.querySelectorAll('.match-panel__row-btn--approve').forEach(function (b) {
+                  b.disabled = true;
+                  b.setAttribute('title', 'Matches are out of date — re-run match first.');
+                  b.setAttribute('aria-disabled', 'true');
+                });
+              } else if (msg.type === 'mar:feedback:match-ready') {
+                // Optional UX: clear a transient "Painting pins…" indicator (none implemented for v1).
+                matchDriftBanner.hidden = true; // any prior drift is cleared on a successful paint cycle
+              } else if (msg.type === 'mar:feedback:manual-resolved') {
+                var ms = loadMatchSet();
+                if (!ms || typeof msg.lineIndex !== 'number') return;
+                var i = msg.lineIndex - 1; // inject sends 1-based; rowStates is 0-based
+                if (ms.rowStates[i]) {
+                  ms.rowStates[i].status = 'manual';
+                  ms.rowStates[i].manualLocator = msg.locator || null;
+                  saveMatchSet(ms);
+                  renderPanel();
+                }
+              }
+            });
+
+            // Block F — Cross-plan event from Plan 04 + initial render
+            window.addEventListener('mar:match-set-updated', function () { renderPanel(); });
+            // Initial render on page load (defensive — Plan 04's matcher call fires the event, but if the user
+            // loads /feedback#mode=per-page with an existing sessionStorage matchSet, render it).
+            renderPanel();
           })();
         </script>
       </>
