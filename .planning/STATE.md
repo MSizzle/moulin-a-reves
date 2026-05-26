@@ -6,7 +6,7 @@ status: planning
 last_updated: "2026-05-26T12:41:35.178Z"
 last_activity: 2026-05-26
 progress:
-  total_phases: 0
+  total_phases: 3
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-21)
 
 **Core value:** Convey the compound's atmosphere convincingly enough to convert visitors into bookings and direct inquiries.
-**Current focus:** Between milestones — v1.2 Status Visibility archived 2026-05-21; awaiting `/gsd-new-milestone` to pick the next milestone (v1.3 file-driven per-page edit flow is the queued candidate).
+**Current focus:** v1.3 File-Driven Per-Page Edit Flow — roadmap shipped 2026-05-26, 32 v1 requirements mapped across Phases 7–9 (CATALOG → MATCH+OVERLAY+PANEL+MODE → Post-Deploy Verification), awaiting `/gsd-plan-phase 7` to decompose the catalog generator into plans.
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-05-26 — Milestone v1.3 started
+Phase: 7 — Build-time Edit Catalog Generator
+Plan: — (awaiting `/gsd-plan-phase 7`)
+Status: Not started
+Last activity: 2026-05-26 — v1.3 roadmap shipped, traceability filled (32/32 mapped)
 
 ## Performance Metrics
 
@@ -45,7 +45,9 @@ Last activity: 2026-05-26 — Milestone v1.3 started
 | 2 | 4 | ~95 min | ~24 min |
 | 3 | 1 | ~5 min | ~5 min |
 
-**v1.1 Trend:** No plans executed yet.
+**v1.1 Trend:** 14 plans (8 implementation + 3 gap-closure + 3 canary) over a single ~16h session.
+**v1.2 Trend:** 3 plans + 1 quick-task closure over a single day (2026-05-21).
+**v1.3 Trend:** No plans executed yet.
 
 *Updated after each plan completion.*
 
@@ -53,20 +55,28 @@ Last activity: 2026-05-26 — Milestone v1.3 started
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table. All v1.0, v1.1, and v1.2 decisions remain in force (i18n dual-store rule, atomic per-requirement commits, "newest round wins", `?feedback=1` flow as sibling to editor flow, OPS-02 fence, `FEEDBACK_INJECT_VER` single-source-of-truth bump, VERCEL_TOKEN Production-only scoping, 5s server cache + 8s client poll over webhook push).
+Decisions are logged in PROJECT.md Key Decisions table. All v1.0, v1.1, and v1.2 decisions remain in force (i18n dual-store rule, atomic per-requirement commits, "newest round wins", `?feedback=1` flow as sibling to editor flow, OPS-02 fence, `FEEDBACK_INJECT_VER` single-source-of-truth bump, VERCEL_TOKEN Production-only scoping, 5s server cache + 8s client poll over webhook push, shared per-edit validator as single source of truth between v1 and v2 paths).
+
+**New for v1.3 (provisional — confirm in plan-phase discuss step):**
+
+- `dist/edit-catalogs/` ships to production (no `.vercelignore` entry) so the matcher endpoint reads catalogs via the filesystem on Vercel. CATALOG-06 documents the call.
+- `feedback-match-inject.js` is a fully separate file from `feedback-inject.js` (not a code path inside the same file) so the OVERLAY-05 byte-for-byte fence on `feedback-inject.js` is mechanical rather than reviewer-judgment-bound.
+- `MATCH_INJECT_VER` lives alongside `FEEDBACK_INJECT_VER` in `src/lib/feedback-version.ts` as a second exported constant; bump independently per behavioural change to `feedback-match-inject.js`.
+- `ANTHROPIC_API_KEY` is Production-scope only on Vercel (mirrors v1.2 VERCEL_TOKEN pattern); missing key degrades the matcher to a structured 500 without affecting the per-element click flow.
 
 ### Pending Todos
 
-- **Set `VERCEL_TOKEN` in Vercel production env** — operator step, blocking stage-5 "Live" detection end-to-end. Runbook in user memory `moulin-feedback-status-rail.md`. Validate with `DASHBOARD_PASSWORD=<env> npm run canary:status`.
-- **Push v1.2 close commits to `origin/main`** — 4 local commits (`b648796 → 7ad7177`) ahead of remote. Per project PR-only convention, open a PR; or use direct push if owner chooses. The push triggers Vercel auto-deploy of the STATUS-06 fix.
-- **`/gsd-new-milestone`** — define v1.3 scope (queued: file-driven per-page edit flow Feature 2). Several other items also in the "Carried forward" pool — see PROJECT.md.
-- **Wait on Melissa's reply** (carry-over from v1.0+) — gates the items in `CLIENT-CLARIFICATION.md`. Not blocking v1.3 / v1.4.
+- **`/gsd-plan-phase 7`** — decompose Build-time Edit Catalog Generator into plans (target: shared Node-side helper extracted from `feedback-inject.js:169-185`, Astro post-build integration, per-route catalog walker, `requiresManualSelection` flag for hardcoded text without a content-collection source, `buildSha` field).
+- **Operator: set `ANTHROPIC_API_KEY`** in Vercel project env (Production scope only) before Phase 9 canary runs. The matcher gracefully degrades without it (structured 500), so Phase 8 implementation work is unblocked — only the live canary in Phase 9 needs it.
+- **Set `VERCEL_TOKEN` in Vercel production env** (carry-over from v1.2) — blocks stage-5 "Live" detection on the v1.2 rail. Runbook in user memory `moulin-feedback-status-rail.md`. Not blocking v1.3.
+- **Push v1.2 close commits to `origin/main`** (carry-over from v1.2) — 4 local commits (`b648796 → 7ad7177`) ahead of remote. Not blocking v1.3 implementation but blocks the live deployment that v1.3 will eventually layer on top of.
+- **Wait on Melissa's reply** (carry-over from v1.0+) — gates the items in `CLIENT-CLARIFICATION.md`. Not blocking v1.3.
 
 ### Blockers/Concerns
 
-- **None new.** All v1.2 implementation work is complete and verified locally. v1.2 deferred-item buckets carry forward as candidates, not blockers.
-- **Operational debt (v1.2):** stage 5 "Live" detection requires `VERCEL_TOKEN` in production env; without it the rail correctly degrades to stage 4 with `auto-merged`/`merged` sub. UX dead-end only — no crash, no data loss.
-- **Carry-forward from v1.0:** the 3 deferred verification items at `## Deferred Items → Acknowledged at v1.0 close` (Phase 2 UAT eye-only items) remain open.
+- **None new for v1.3.** The matcher endpoint's reliance on `ANTHROPIC_API_KEY` is a known degrade-gracefully path (MATCH-06 + OPS-03); Phase 8 ships in a working but-matcher-disabled state if the operator hasn't set the key yet.
+- **Operational debt (v1.2 carry):** stage 5 "Live" detection requires `VERCEL_TOKEN` in production env; without it the rail correctly degrades to stage 4. UX dead-end only — no crash, no data loss. Not blocking v1.3.
+- **Carry-forward from v1.0:** the 3 deferred verification items at `## Deferred Items → Acknowledged at v1.0 close` (Phase 2 UAT eye-only items) remain open. Not blocking v1.3.
 
 ### Quick Tasks Completed
 
@@ -80,12 +90,13 @@ Decisions are logged in PROJECT.md Key Decisions table. All v1.0, v1.1, and v1.2
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| Gallery modal | Fix X-button, forward arrow, bottom crop (all houses) | v1.2 | Milestone 1 init |
-| Calendar | Extend scrollable range to 12 months | v1.2 | Milestone 1 init |
-| Editor flow | Deep audit of fragile publish/save paths | v1.2 | Milestone 1 init |
-| Google Maps | Active embed in Getting Here section | v1.2 pending client | Milestone 1 init |
-| Groups page | New top-level page | v1.2 pending client | Milestone 1 init |
-| Clarification answers | Apply Melissa's CLIENT-CLARIFICATION.md replies | v1.2 pending client | v1.1 kickoff (2026-05-20) |
+| Gallery modal | Fix X-button, forward arrow, bottom crop (all houses) | v1.3 | Milestone 1 init |
+| Calendar | Extend scrollable range to 12 months | v1.3 | Milestone 1 init |
+| Editor flow | Deep audit of fragile publish/save paths | v1.3 | Milestone 1 init |
+| Google Maps | Active embed in Getting Here section | v1.3 pending client | Milestone 1 init |
+| Groups page | New top-level page | v1.3 pending client | Milestone 1 init |
+| Clarification answers | Apply Melissa's CLIENT-CLARIFICATION.md replies | v1.3 pending client | v1.1 kickoff (2026-05-20) |
+| Webhook-driven status push | Replace v1.2 polling with Vercel + GitHub webhooks → SSE | v1.3+ | v1.2 audit close (2026-05-21) |
 | Batch feedback open questions | 5 UX design questions (caps, cross-page, draft persistence, autonomy thresholds, cancel UX) | Phase 4 discuss-phase | v1.1 roadmap (2026-05-21) |
 
 ### Acknowledged at v1.0 close (2026-05-21)
@@ -98,9 +109,9 @@ Three open artifacts surfaced by `audit-open` were acknowledged at the v1.0 mile
 | Verification | `phases/02-ship-the-clear-edits/02-VERIFICATION.md` | human_needed | Same 6 visual confirmations expressed as a verification harness; same eye-only verdict |
 | Quick task | `quick/260506-kao-catering-hero-object-position-fix` | missing status indicator | Substantively complete 2026-05-06 (commits `a6342c2`, `98e6dd9`); only the quick-task tooling's status file is missing |
 
-*Note:* v1.0 phase directories were archived to `.planning/milestones/v1.0-phases/` during v1.1 kickoff (commit `1aa074b`); `.planning/phases/` is empty and ready for v1.1 Phase 4 work.
+*Note:* v1.0 phase directories were archived to `.planning/milestones/v1.0-phases/` during v1.1 kickoff (commit `1aa074b`); v1.1 phases archived to `.planning/milestones/v1.1-phases/` at v1.1 close; v1.2 phase directory archived to `.planning/milestones/v1.2-phases/` at v1.2 close. `.planning/phases/` is empty and ready for v1.3 Phase 7 work.
 
-**Resolution path:** Run `/gsd-verify-work 2` against the deployed preview to retire all 6 visual UAT items and close the verification gap in one pass. The quick-task status will reconcile on the next `audit-open` run. (Not blocking v1.1.)
+**Resolution path:** Run `/gsd-verify-work 2` against the deployed preview to retire all 6 visual UAT items and close the verification gap in one pass. The quick-task status will reconcile on the next `audit-open` run. (Not blocking v1.3.)
 
 ### Acknowledged at v1.2 close (2026-05-21)
 
@@ -113,12 +124,13 @@ Two quick tasks were flagged by `audit-open` as "missing status" — both have `
 
 ## Session Continuity
 
-Last session: 2026-05-21 (milestone v1.2 close)
-Stopped at: v1.2 archived; awaiting `/gsd-new-milestone`
-Resume file: — (no active phase)
+Last session: 2026-05-26 (v1.3 roadmap shipped)
+Stopped at: Phase 7 awaiting `/gsd-plan-phase 7`
+Resume file: `.planning/ROADMAP.md` → Phase 7 detail block; `.planning/REQUIREMENTS.md` → CATALOG-01..06
 
 ## Operator Next Steps
 
-1. **Set `VERCEL_TOKEN`** in the Vercel project env (Production scope only) — `moulin-feedback-status-rail.md` runbook.
-2. **Push v1.2 close commits** (`b648796 → 7ad7177`) to `origin/main` — PR or direct, owner's choice. Vercel auto-deploys on merge.
-3. **`/gsd-new-milestone`** — pick the v1.3 focus (file-driven per-page edit flow is the queued candidate).
+1. **`/gsd-plan-phase 7`** — decompose Build-time Edit Catalog Generator into plans. Reuse `closestAttr` / `i18nOf` logic from `public/feedback-inject.js:169-185` via a shared Node-side helper (CATALOG-03 is the spine; the other 5 hang off it).
+2. **Set `ANTHROPIC_API_KEY`** in Vercel project env (Production scope only) before Phase 9 canary. Not needed for Phase 7 or Phase 8 implementation — the matcher degrades gracefully without it.
+3. **Set `VERCEL_TOKEN`** (carry-over from v1.2) in Vercel production env to light up stage-5 "Live" detection on the v1.2 rail. Runbook: `moulin-feedback-status-rail.md`.
+4. **Push v1.2 close commits** (`b648796 → 7ad7177`) to `origin/main` — PR or direct, owner's choice. Blocks live deployment that v1.3 will eventually layer on top of.

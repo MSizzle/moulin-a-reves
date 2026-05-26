@@ -97,11 +97,37 @@ Explicit boundaries for v1.3 to prevent scope creep:
 
 | Requirement | Phase | Plan |
 |-------------|-------|------|
-| CATALOG-01..06 | TBD by roadmapper | — |
-| MATCH-01..07 | TBD by roadmapper | — |
-| OVERLAY-01..05 | TBD by roadmapper | — |
-| PANEL-01..05 | TBD by roadmapper | — |
-| MODE-01..04 | TBD by roadmapper | — |
-| OPS-01..05 | TBD by roadmapper | — |
+| CATALOG-01 | Phase 7 | — |
+| CATALOG-02 | Phase 7 | — |
+| CATALOG-03 | Phase 7 | — |
+| CATALOG-04 | Phase 7 | — |
+| CATALOG-05 | Phase 7 | — |
+| CATALOG-06 | Phase 7 | — |
+| MATCH-01 | Phase 8 | — |
+| MATCH-02 | Phase 8 | — |
+| MATCH-03 | Phase 8 | — |
+| MATCH-04 | Phase 8 | — |
+| MATCH-05 | Phase 8 | — |
+| MATCH-06 | Phase 8 | — |
+| MATCH-07 | Phase 8 | — |
+| OVERLAY-01 | Phase 8 | — |
+| OVERLAY-02 | Phase 8 | — |
+| OVERLAY-03 | Phase 8 | — |
+| OVERLAY-04 | Phase 8 | — |
+| OVERLAY-05 | Phase 8 | — |
+| PANEL-01 | Phase 8 | — |
+| PANEL-02 | Phase 8 | — |
+| PANEL-03 | Phase 8 | — |
+| PANEL-04 | Phase 8 | — |
+| PANEL-05 | Phase 8 | — |
+| MODE-01 | Phase 8 | — |
+| MODE-02 | Phase 8 | — |
+| MODE-03 | Phase 8 | — |
+| MODE-04 | Phase 8 | — |
+| OPS-01 | Phase 8 | — |
+| OPS-02 | Phase 9 | — |
+| OPS-03 | Phase 8 | — |
+| OPS-04 | Phase 8 | — |
+| OPS-05 | Phase 9 | — |
 
 (Filled in by `/gsd:plan-phase` and verified at milestone audit close.)
