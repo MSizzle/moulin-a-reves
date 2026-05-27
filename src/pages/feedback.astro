@@ -124,17 +124,57 @@ const firstSrc = `/?feedback=1&v=${VER}`;
         .mode-tabs__tab { transition:none; }
       }
       /* ---- match-pane split layout (per-page review) ---- */
-      .match-pane__split { display:block; flex:1; min-height:0; }
-      .match-pane__iframe-col { display:flex; flex-direction:column; min-height:0; }
+      /* Iframe fills the whole pane; drawer + panel are absolutely-positioned slide-outs from the right. */
+      .match-pane__split { display:flex; flex:1; min-height:0; position:relative; }
+      .match-pane__iframe-col { flex:1; min-width:0; display:flex; flex-direction:column; }
       .frame-wrap--match { flex:1; position:relative; background:#000; min-height:50vh; }
-      @media (min-width: 1024px) {
-        .match-pane__split { display:flex; gap:0; }
-        .match-pane__iframe-col { flex:1 1 65%; min-width:0; }
-        .match-panel { flex:0 0 35%; min-width:360px; max-width:480px; border-left:1px solid var(--line); border-top:0; max-height:none; }
+      /* Compose toggle — vertical tab on the right edge, hidden when drawer/panel is open */
+      .match-compose-toggle {
+        position:absolute; top:16px; right:0; z-index:20;
+        background:var(--accent-2); color:#fff; border:0;
+        border-top-left-radius:8px; border-bottom-left-radius:8px;
+        padding:10px 14px; font:600 13px/1.2 inherit; cursor:pointer;
+        box-shadow:-4px 0 12px rgba(0,0,0,.3);
+        transition: transform .2s ease-out, background .15s ease-out;
       }
-      /* ---- side panel ---- */
-      .match-panel { background:var(--panel); border-top:1px solid var(--line); padding:16px; overflow-y:auto; }
+      .match-compose-toggle:hover { background:#4f46e5; }
+      .match-compose-toggle:focus-visible { outline:2px solid var(--accent-2); outline-offset:2px; }
+      .match-compose-toggle.is-hidden { transform:translateX(100%); pointer-events:none; }
+      /* Compose drawer — slides in from the right */
+      .match-compose-drawer {
+        position:absolute; top:0; right:0; bottom:0;
+        width:min(420px, 80vw); background:var(--panel);
+        border-left:1px solid var(--line); padding:48px 16px 16px;
+        display:flex; flex-direction:column; gap:12px;
+        z-index:25; overflow-y:auto;
+        transform:translateX(100%); transition: transform .25s ease-out;
+        box-shadow:-8px 0 24px rgba(0,0,0,.4);
+      }
+      .match-compose-drawer.is-open { transform:translateX(0); }
+      .match-compose-drawer__close {
+        position:absolute; top:8px; left:8px;
+        background:transparent; color:var(--muted); border:0;
+        font-size:20px; line-height:1; cursor:pointer; padding:6px 10px;
+      }
+      .match-compose-drawer__close:hover { color:var(--ink); }
+      .match-compose-drawer__close:focus-visible { outline:2px solid var(--accent-2); outline-offset:2px; }
+      .match-compose-drawer__title { font:600 15px/1.2 inherit; color:var(--ink); }
+      @media (prefers-reduced-motion: reduce) {
+        .match-compose-drawer, .match-compose-toggle, .match-panel { transition:none; }
+      }
+      /* ---- side panel (match results) — slide-out drawer from right, hidden until first match ---- */
+      .match-panel {
+        position:absolute; top:0; right:0; bottom:0;
+        width:min(420px, 80vw); background:var(--panel);
+        border-left:1px solid var(--line); padding:16px; overflow-y:auto;
+        z-index:25;
+        transform:translateX(100%); transition: transform .25s ease-out;
+        box-shadow:-8px 0 24px rgba(0,0,0,.4);
+      }
+      .match-panel.is-open { transform:translateX(0); }
       .match-panel:focus-visible { outline:2px solid var(--accent-2); outline-offset:-2px; }
+      /* Empty state is no longer shown — panel only opens when there are matches */
+      .match-panel__empty { display:none; }
       .match-panel__header { margin-bottom:24px; }
       .match-panel__title { font:600 15px/1.2 inherit; color:var(--ink); margin-bottom:4px; }
       .match-panel__subtitle { font:400 12px/1.3 inherit; color:var(--muted); }
@@ -246,30 +286,28 @@ const firstSrc = `/?feedback=1&v=${VER}`;
           </div>
         </div>
         <div class="mode-pane" id="mode-pane-per-page" role="tabpanel" aria-labelledby="modeTabMatch" hidden>
-          <section class="match-input" aria-label="Per-page edit input">
-            <div class="match-input__header">
-              <label class="match-input__label" for="matchPagePick">Page:</label>
-              <select id="matchPagePick" class="match-input__picker">
-                {PAGES.map((pg) => <option value={pg.route}>{pg.label}</option>)}
-              </select>
-              <span class="match-input__hint" id="matchPickerHint" hidden>This page isn't catalogued yet.</span>
-            </div>
-            <textarea class="match-input__textarea" id="matchEditList" rows="6" maxlength="10000"
-                      aria-label="Edit list for selected page"
-                      placeholder="Paste a freeform list of changes for this page — one edit per line. Bullets, numbers, paragraphs are all fine."></textarea>
-            <div class="match-input__footer">
-              <button class="match-input__submit" id="matchSubmitBtn" disabled>Match edits</button>
-              <span class="match-input__char-count" id="matchCharCount" aria-live="polite">0 / 10000</span>
-            </div>
-          </section>
           <div class="match-pane__split">
             <div class="match-pane__iframe-col">
               <div class="frame-wrap frame-wrap--match">
                 <iframe id="matchSite" title="Moulin à Rêves preview — per-page matches"></iframe>
               </div>
             </div>
+            <button class="match-compose-toggle" id="matchComposeToggle" type="button" aria-controls="matchComposeDrawer" aria-expanded="false">✎ Compose edits</button>
+            <aside class="match-compose-drawer" id="matchComposeDrawer" aria-label="Compose per-page edits">
+              <button class="match-compose-drawer__close" id="matchComposeClose" type="button" aria-label="Close compose drawer">✕</button>
+              <h3 class="match-compose-drawer__title">Edits for this page</h3>
+              <span class="match-input__hint" id="matchPickerHint" hidden>This page isn't catalogued yet.</span>
+              <textarea class="match-input__textarea" id="matchEditList" rows="6" maxlength="10000"
+                        aria-label="Edit list for selected page"
+                        placeholder="Paste a freeform list of changes for this page — one edit per line. Bullets, numbers, paragraphs are all fine."></textarea>
+              <div class="match-input__footer">
+                <button class="match-input__submit" id="matchSubmitBtn" disabled>Match edits</button>
+                <span class="match-input__char-count" id="matchCharCount" aria-live="polite">0 / 10000</span>
+              </div>
+            </aside>
             <aside class="match-panel" id="matchPanel" aria-label="Per-page matches" tabindex="0">
-              <header class="match-panel__header">
+              <button class="match-compose-drawer__close" id="matchPanelClose" type="button" aria-label="Close matches panel">✕</button>
+              <header class="match-panel__header" style="padding-left:32px;">
                 <h3 class="match-panel__title">Per-page matches</h3>
                 <p class="match-panel__subtitle" id="matchPanelSubtitle" hidden></p>
               </header>
@@ -282,10 +320,6 @@ const firstSrc = `/?feedback=1&v=${VER}`;
                   </div>
                   <button class="match-drift-banner__action" id="matchDriftRerun" type="button">Re-run match</button>
                 </div>
-              </div>
-              <div class="match-panel__empty" id="matchPanelEmpty">
-                <p class="match-panel__empty-title">Tell us what to change on this page</p>
-                <p class="match-panel__empty-body">Type or paste your edits above, then click "Match edits". You'll review each match before anything is sent.</p>
               </div>
               <ol class="match-panel__rows" id="matchPanelRows" role="list" hidden></ol>
               <details class="match-panel__rejected" id="matchPanelRejected" hidden>
@@ -452,7 +486,13 @@ const firstSrc = `/?feedback=1&v=${VER}`;
             startAllPollers();
 
             picker.addEventListener('change', function () {
-              iframe.src = picker.value + '?feedback=1&v=' + VER;
+              var route = picker.value;
+              iframe.src = route + '?feedback=1&v=' + VER;
+              // Per-page mode mirrors the picker: load the same page (no matchSet — drift is auto-cleared)
+              try { sessionStorage.removeItem(MATCH_SET_KEY); } catch (_) {}
+              matchSiteFrame.src = route + '?feedback=1&v=' + VER;
+              closeMatchPanel();
+              if (typeof probeCatalog === 'function') probeCatalog(route);
               hideToast();
             });
 
@@ -553,14 +593,48 @@ const firstSrc = `/?feedback=1&v=${VER}`;
             var modeTabMatch = document.getElementById('modeTabMatch');
             var modePaneClick = document.getElementById('mode-pane-per-element');
             var modePaneMatch = document.getElementById('mode-pane-per-page');
-            var matchPicker = document.getElementById('matchPagePick');
             var matchPickerHint = document.getElementById('matchPickerHint');
             var matchTextarea = document.getElementById('matchEditList');
             var matchSubmitBtn = document.getElementById('matchSubmitBtn');
             var matchCharCount = document.getElementById('matchCharCount');
             var matchSiteFrame = document.getElementById('matchSite');
+            var matchComposeToggle = document.getElementById('matchComposeToggle');
+            var matchComposeDrawer = document.getElementById('matchComposeDrawer');
+            var matchComposeClose = document.getElementById('matchComposeClose');
             var MATCH_SET_KEY = 'mar_feedback_match_set_v1';
             var MAX_EDIT_LIST_CHARS = 10000;
+            // Compose drawer / panel state helpers — both drawer + panel share the right slot.
+            function openCompose() {
+              // Drawer + panel share the right slot — close the panel before opening the drawer
+              if (matchPanel) matchPanel.classList.remove('is-open');
+              matchComposeDrawer.classList.add('is-open');
+              matchComposeToggle.classList.add('is-hidden');
+              matchComposeToggle.setAttribute('aria-expanded', 'true');
+              try { matchTextarea.focus(); } catch (_) {}
+            }
+            function closeCompose() {
+              matchComposeDrawer.classList.remove('is-open');
+              matchComposeToggle.setAttribute('aria-expanded', 'false');
+              // Restore: if there are existing matches, re-open the panel; otherwise show the toggle
+              if (matchPanelHasRows()) openMatchPanel();
+              else matchComposeToggle.classList.remove('is-hidden');
+            }
+            function openMatchPanel() {
+              if (!matchPanel) return;
+              matchPanel.classList.add('is-open');
+              matchComposeToggle.classList.add('is-hidden');
+              matchComposeDrawer.classList.remove('is-open');
+            }
+            function closeMatchPanel() {
+              if (matchPanel) matchPanel.classList.remove('is-open');
+              if (!matchComposeDrawer.classList.contains('is-open')) {
+                matchComposeToggle.classList.remove('is-hidden');
+              }
+            }
+            function matchPanelHasRows() {
+              var rows = document.getElementById('matchPanelRows');
+              return rows && rows.children.length > 0;
+            }
 
             // Block B — Mode-tab hash router (D-07, D-08)
             function activateMode(mode) {
@@ -573,6 +647,11 @@ const firstSrc = `/?feedback=1&v=${VER}`;
               modeTabMatch.setAttribute('tabindex', isMatch ? '0' : '-1');
               modePaneClick.hidden = isMatch;
               modePaneMatch.hidden = !isMatch;
+              // Lazy-load the per-page iframe on entry so the user sees the page (not a blank pane).
+              // Preserve any in-flight matchSet — the iframe re-points only if it's still blank.
+              if (isMatch && matchSiteFrame && (!matchSiteFrame.src || matchSiteFrame.src === 'about:blank')) {
+                matchSiteFrame.src = picker.value + '?feedback=1&v=' + VER;
+              }
               // Update URL hash without scrolling (D-08): replace, not push
               var newHash = '#mode=' + (isMatch ? 'per-page' : 'per-element');
               if (location.hash !== newHash) history.replaceState(null, '', location.pathname + location.search + newHash);
@@ -624,10 +703,15 @@ const firstSrc = `/?feedback=1&v=${VER}`;
               }
               refreshSubmitBtn();
             }
-            matchPicker.addEventListener('change', function () { probeCatalog(matchPicker.value); });
+            // Picker change is handled in the bar's picker.change listener (per-page mode mirrors per-element navigation).
             matchTextarea.addEventListener('input', refreshSubmitBtn);
             // Initial probe for the default-selected route
-            probeCatalog(matchPicker.value);
+            probeCatalog(picker.value);
+            // Compose drawer toggle wiring
+            matchComposeToggle.addEventListener('click', openCompose);
+            matchComposeClose.addEventListener('click', closeCompose);
+            var matchPanelClose = document.getElementById('matchPanelClose');
+            if (matchPanelClose) matchPanelClose.addEventListener('click', closeMatchPanel);
             // Cmd/Ctrl+Enter submits the form
             matchTextarea.addEventListener('keydown', function (ev) {
               if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter' && !matchSubmitBtn.disabled) {
@@ -639,7 +723,7 @@ const firstSrc = `/?feedback=1&v=${VER}`;
             // Block D — Match edits click handler (MODE-02 — the core matcher call)
             matchSubmitBtn.addEventListener('click', async function () {
               if (matchSubmitBtn.disabled) return;
-              var route = matchPicker.value;
+              var route = picker.value;
               var editList = matchTextarea.value;
               // Loading state — UI-SPEC §10
               matchSubmitBtn.disabled = true;
@@ -697,6 +781,10 @@ const firstSrc = `/?feedback=1&v=${VER}`;
                 var sep = route.indexOf('?') >= 0 ? '&' : '?';
                 matchSiteFrame.src = route + sep + 'feedback=1&v=' + VER + '&matchSet=' + encodeURIComponent(data.matchSetId) + '&matchVer=' + encodeURIComponent(MVER);
                 done();
+                // Swap drawer → match panel
+                matchComposeDrawer.classList.remove('is-open');
+                matchComposeToggle.setAttribute('aria-expanded', 'false');
+                openMatchPanel();
                 // Plan 05 takes over rendering the panel rows from the same sessionStorage entry.
                 // Dispatch a custom event so Plan 05's panel renderer (also inside this IIFE) can re-render.
                 window.dispatchEvent(new CustomEvent('mar:match-set-updated', { detail: { matchSetId: data.matchSetId } }));
@@ -724,7 +812,6 @@ const firstSrc = `/?feedback=1&v=${VER}`;
 
             // Block B — Panel render state machine (PANEL-01..05)
             var matchPanel = document.getElementById('matchPanel');
-            var matchPanelEmpty = document.getElementById('matchPanelEmpty');
             var matchPanelRows = document.getElementById('matchPanelRows');
             var matchPanelRejected = document.getElementById('matchPanelRejected');
             var matchPanelRejectedList = document.getElementById('matchPanelRejectedList');
@@ -955,16 +1042,18 @@ const firstSrc = `/?feedback=1&v=${VER}`;
             async function renderPanel() {
               var ms = loadMatchSet();
               if (!ms || !Array.isArray(ms.matches) || ms.matches.length === 0) {
-                matchPanelEmpty.hidden = false;
                 matchPanelRows.hidden = true;
                 matchPanelRejected.hidden = true;
                 matchPanelSubtitle.hidden = true;
+                // No matches → close drawer, restore compose toggle
+                closeMatchPanel();
                 return;
               }
               var catalog = await ensureCatalog(ms.route);
-              matchPanelEmpty.hidden = true;
               matchPanelRows.hidden = false;
               matchPanelSubtitle.hidden = false;
+              // Matches exist → ensure panel is open (covers initial load with cached matchSet)
+              openMatchPanel();
               matchPanelSubtitle.textContent = ms.matches.length + ' edit' + (ms.matches.length === 1 ? '' : 's') + ' on ' + ms.route;
 
               // Clear and rebuild rows
