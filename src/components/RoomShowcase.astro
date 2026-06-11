@@ -28,14 +28,18 @@ interface Props {
   background?: 'cream' | 'stone';
   i18nKey?: string;
   hideTileSummary?: boolean;
+  /** Gather mode: show only italic title, hide photo-count badge, hide summary */
+  gatherMode?: boolean;
 }
 
-const { eyebrow, heading, intro, rooms, background = 'cream', i18nKey, hideTileSummary = false } = Astro.props;
+const { eyebrow, heading, intro, rooms, background = 'cream', i18nKey, hideTileSummary = false, gatherMode = false } = Astro.props;
 const sectionClass = background === 'stone' ? 'section section--tight section--soft' : 'section section--tight';
 const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
 const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
 const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
-const tileSummaryClass = hideTileSummary ? 'compound-tile__summary compound-tile__summary--hidden' : 'compound-tile__summary';
+// gatherMode forces hideTileSummary behaviour too
+const effectiveHideTileSummary = hideTileSummary || gatherMode;
+const tileSummaryClass = effectiveHideTileSummary ? 'compound-tile__summary compound-tile__summary--hidden' : 'compound-tile__summary';
 ---
 
 <section class={sectionClass}>
@@ -76,13 +80,13 @@ const tileSummaryClass = hideTileSummary ? 'compound-tile__summary compound-tile
           <div class="compound-tile compound-tile--clickable fade-in" data-gallery={JSON.stringify(galleryPhotos)} role="button" tabindex="0">
             <div class="compound-tile__media">
               <img src={room.photos[0].src} alt={room.photos[0].alt || room.title} loading="lazy" />
-              {room.photos.length > 1 && (
+              {!gatherMode && room.photos.length > 1 && (
                 <span class="card__photo-count">{room.photos.length} photos</span>
               )}
             </div>
             <div class="compound-tile__body">
-              <h3 class="compound-tile__title" {...(titleKey ? { 'data-i18n': titleKey } : {})}>{room.title}</h3>
-              {!hideTileSummary && (
+              <h3 class={gatherMode ? 'compound-tile__title compound-tile__title--gather' : 'compound-tile__title'} {...(titleKey ? { 'data-i18n': titleKey } : {})}>{room.title}</h3>
+              {!effectiveHideTileSummary && (
                 <p class={tileSummaryClass} {...(summaryKey ? { 'data-i18n': summaryKey } : {})}>{room.summary}</p>
               )}
             </div>
@@ -116,6 +120,13 @@ const tileSummaryClass = hideTileSummary ? 'compound-tile__summary compound-tile
   [data-gallery]:focus-visible {
     outline: 2px solid var(--blue-primary);
     outline-offset: 4px;
+  }
+
+  /* Gather-mode: italic room name only, no badge */
+  .compound-tile__title--gather {
+    font-style: italic;
+    font-family: var(--font-serif);
+    font-weight: 400;
   }
 
   .card__photo-count {
