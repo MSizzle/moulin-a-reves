@@ -1,0 +1,283 @@
+---
+// DRAFT: All copy on this page is draft text seeded from /about/ and
+// existing content. Owner should review ALL text before publishing.
+// Art photos and final text are pending from the owner — see TODO arrays.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ---- Art gallery — seeded with existing repo photos showing art / antiques ----
+// Prioritised: Louis Vuitton trunk living room, salon, dining rooms, interior details.
+// TODO: replace / augment with owner's dedicated art photography when received.
+// Drop directory convention:
+//   public/images/art/   → for dedicated art/antiques photos (kebab-case.webp, max 2000px q85)
+const artGallery = [
+  {
+    src: '/images/homes/maison-living-trunk.webp',
+    alt: 'The Louis Vuitton trunk coffee table in the living room of La Maison de la Rivière',
+    caption: 'The coffee table fashioned from a Louis Vuitton trunk — one of Barbara Guggenheim\'s signature pieces.',
+  },
+  {
+    src: '/images/homes/le-moulin-living.webp',
+    alt: 'The salon of Le Moulin — antiques, fabric-upholstered walls, period furnishings',
+    caption: 'Le Salon at Le Moulin — 18th-century country antiques throughout.',
+  },
+  {
+    src: '/images/homes/le-moulin-living-detail.webp',
+    alt: 'Living room detail at Le Moulin showing antique furnishings and art',
+    caption: 'A detail from Le Salon — each object chosen by Barbara Guggenheim.',
+  },
+  {
+    src: '/images/homes/le-moulin-living-couch.webp',
+    alt: 'Le Moulin salon with period sofa and artwork',
+    caption: 'Period sofa and art in Le Salon.',
+  },
+  {
+    src: '/images/homes/le-moulin-dining.webp',
+    alt: 'The dining room at Le Moulin — antique table and period chairs',
+    caption: 'The dining room at Le Moulin — set for gathering.',
+  },
+  {
+    src: '/images/homes/le-moulin-dining-2.webp',
+    alt: 'Le Moulin dining room, alternate view',
+    caption: 'Antique furnishings in the Le Moulin dining room.',
+  },
+  {
+    src: '/images/homes/maison-artistes.webp',
+    alt: 'La Maison de la Rivière — Les Artistes room with art and period decor',
+    caption: 'Les Artistes — art and period character at La Maison.',
+  },
+  {
+    src: '/images/homes/maison-artistes-couch.webp',
+    alt: 'Art and antique couch at La Maison de la Rivière',
+    caption: 'Antique sofa and art at La Maison.',
+  },
+  {
+    src: '/images/homes/maison-dining.webp',
+    alt: 'La Maison de la Rivière dining room with antique furniture',
+    caption: 'The dining room at La Maison — antique table and chairs.',
+  },
+  {
+    src: '/images/homes/le-moulin-office.webp',
+    alt: 'The study / office at Le Moulin — books, art, antiques',
+    caption: 'The study at Le Moulin — Bert Fields\'s writing room, lined with books and art.',
+  },
+  {
+    src: '/images/homes/maison-board-room.webp',
+    alt: 'La Maison de la Rivière board room / dining with art',
+    caption: 'The boardroom at La Maison — period character throughout.',
+  },
+  {
+    src: '/images/homes/hh-living-room.webp',
+    alt: 'Hollywood Hideaway living room — art and period furnishings',
+    caption: 'The Hollywood Hideaway living room — antiques and Bert\'s Hollywood memorabilia.',
+  },
+  // TODO: add owner's dedicated art photography:
+  //   - Folies Bergère poster(s) in situ
+  //   - Fabric-upholstered wall detail
+  //   - Louis Vuitton trunk close-up
+  //   - Any antique pieces the owner wants to highlight
+  //   (Drop into public/images/art/, kebab-case.webp)
+];
+
+// Lead / hero image for the art page
+const heroImage = '/images/homes/maison-living-trunk.webp';
+---
+
+<BaseLayout
+  title="The Art & Antiques — Moulin à Rêves"
+  description="The interiors of Moulin à Rêves, curated by world-renowned art advisor Barbara Guggenheim: 18th-century country antiques, original Folies Bergère posters, and the Louis Vuitton trunk coffee table."
+>
+
+  <!-- DRAFT NOTICE (visible in HTML, not rendered to visitors) -->
+  <!-- DRAFT: All copy below is draft text for owner review before publishing. -->
+
+  <!-- Hero -->
+  <section class="hero" style="height: 60vh;">
+    <div class="hero__image">
+      <img src={heroImage} alt="The Louis Vuitton trunk coffee table — La Maison de la Rivière" />
+      <!-- TODO: replace hero image with owner's preferred art/antiques hero shot
+           when dedicated photography arrives (drop into public/images/art/) -->
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow" data-i18n="art.hero.subtitle" style="font-size: 0.875rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 12px;">A living collection — DRAFT</p>
+      <h1 class="hero__title" data-i18n="art.hero.title">The Art &amp; Antiques</h1>
+    </div>
+  </section>
+
+  <!-- Intro narrative — DRAFT copy seeded from /about/ -->
+  <!-- DRAFT: Review and edit the paragraphs below before publishing. -->
+  <section class="section--tight">
+    <div class="container--narrow fade-in">
+      <h2 data-i18n="art.intro.heading">A Home Curated by a World-Renowned Art Advisor</h2>
+      <div style="margin-top: 24px;">
+        <p data-i18n="art.intro.p1" style="line-height: 1.75;">
+          The interiors of Moulin à Rêves reflect the impeccable eye of Barbara Guggenheim — world-renowned art advisor, and the woman who lovingly restored these stone houses to what they are today.
+        </p>
+        <p data-i18n="art.intro.p2" style="margin-top: 16px; line-height: 1.75;">
+          She decorated the Moulin with 18th-century country antiques: original Folies Bergère posters, walls upholstered in rich fabric, and a coffee table fashioned from a Louis Vuitton trunk. Each room tells a story — the objects are not decoration, they are the history of this place made tangible.
+        </p>
+        <p data-i18n="art.intro.p3" style="margin-top: 16px; line-height: 1.75;">
+          The collection continues throughout the compound — in the salon, the dining rooms, the hallways, and even the sleeping quarters. Guests often find themselves pausing to look.
+        </p>
+        <!-- TODO: owner to review and expand/edit narrative above; add provenance stories,
+             specific pieces she wishes to highlight, notes on the Folies Bergère posters, etc. -->
+      </div>
+      <p style="margin-top: 32px;">
+        <a href="/about/" class="link-arrow" data-i18n="art.about.link">Read the full history of Moulin à Rêves →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery grid — hero-style lightbox -->
+  <section class="section--tight section--soft">
+    <div class="container--narrow fade-in text-center">
+      <h2 data-i18n="art.gallery.heading">A glimpse of the collection</h2>
+      <p data-i18n="art.gallery.lede" style="margin-top: 12px; max-width: 56ch; margin-left: auto; margin-right: auto;">
+        Pieces photographed in situ — antiques, posters, and curiosities woven into every room.
+      </p>
+    </div>
+    <!-- Art gallery grid — each tile opens the lightbox -->
+    <div class="container fade-in" style="margin-top: 36px;">
+      <div class="art-gallery-grid">
+        {artGallery.map((item, i) => (
+          <div
+            class="art-gallery-tile"
+            data-gallery={JSON.stringify(artGallery)}
+            data-gallery-index={i}
+            role="button"
+            tabindex="0"
+            aria-label={`View ${item.alt}`}
+          >
+            <div class="card__image art-gallery-tile__image">
+              <img src={item.src} alt={item.alt} loading="lazy" />
+            </div>
+            {item.caption && (
+              <p class="art-gallery-tile__caption">{item.caption}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+    <!-- TODO: owner to add dedicated art/antiques photos to public/images/art/
+         and update artGallery array above with new entries. -->
+  </section>
+
+  <!-- Cross-link back to /about/ -->
+  <section class="section--tight">
+    <div class="container--narrow fade-in text-center">
+      <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.125rem; line-height: 1.6; max-width: 56ch; margin: 0 auto;">
+        The story of Moulin à Rêves begins with Vaudeville legend Borrah Minevitch, runs through Hollywood, and arrives in the hands of Barbara Guggenheim — who made these rooms what they are today.
+        <!-- TODO: owner to review / replace this bridge sentence -->
+      </p>
+      <p style="margin-top: 24px;">
+        <a href="/about/" class="link-arrow" data-i18n="art.about.link">Read the full history of Moulin à Rêves →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section--dark fade-in" style="padding: clamp(56px, 7vw, 96px) 0;">
+    <div class="container--narrow text-center">
+      <h2 data-i18n="art.cta.heading" style="color: #fff; font-size: clamp(1.75rem, 3.5vw, 2.75rem);">Come and see it in person</h2>
+      <p data-i18n="art.cta.tagline" style="color: rgba(255,255,255,0.75); margin-top: 16px; max-width: 52ch; margin-left: auto; margin-right: auto;">
+        No reproduction does it justice. Stay at Moulin à Rêves and live among the collection.
+      </p>
+      <a href="/contact/" class="btn btn--primary" data-i18n="art.cta.button" style="margin-top: 28px;">
+        Inquire about availability
+      </a>
+    </div>
+  </section>
+
+  <style>
+    .art-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 2.5vw, 28px);
+    }
+    @media (max-width: 768px) {
+      .art-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .art-gallery-grid { grid-template-columns: 1fr; }
+    }
+    .art-gallery-tile {
+      cursor: zoom-in;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .art-gallery-tile:focus-visible {
+      outline: 2px solid var(--blue-primary);
+      outline-offset: 2px;
+    }
+    .art-gallery-tile__image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--bg-stone);
+    }
+    .art-gallery-tile__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .art-gallery-tile:hover .art-gallery-tile__image img {
+      transform: scale(1.04);
+    }
+    /* Overlay hover effect */
+    .art-gallery-tile__image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,15,15,0.32) 0%, rgba(15,15,15,0) 50%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .art-gallery-tile:hover .art-gallery-tile__image::before { opacity: 1; }
+    .art-gallery-tile__caption {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+  </style>
+
+  <!-- Wire gallery tiles: clicking any tile opens the lightbox at that index -->
+  <script is:inline>
+    (function () {
+      document.querySelectorAll('.art-gallery-tile[data-gallery]').forEach(function (tile) {
+        tile.addEventListener('click', function () {
+          var raw = tile.dataset.gallery;
+          var startIndex = parseInt(tile.dataset.galleryIndex || '0', 10);
+          if (!raw) return;
+          try {
+            var items = JSON.parse(raw);
+            items = items.map(function (it) {
+              if (typeof it === 'string') return { src: it, alt: '', caption: '' };
+              return it;
+            });
+            // Trigger via the global data-gallery handler by injecting a temporary element
+            var tmp = document.createElement('div');
+            tmp.setAttribute('data-gallery', JSON.stringify(items));
+            tmp.setAttribute('data-gallery-start', String(startIndex));
+            tmp.style.display = 'none';
+            document.body.appendChild(tmp);
+            // Dispatch a click so the global handler in BaseLayout picks it up
+            tmp.click();
+            document.body.removeChild(tmp);
+          } catch (_) {}
+        });
+        tile.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tile.click(); }
+        });
+      });
+    })();
+  </script>
+
+</BaseLayout>

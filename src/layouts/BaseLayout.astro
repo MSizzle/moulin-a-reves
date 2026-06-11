@@ -90,6 +90,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           <li><a href="/groups/" data-i18n="nav.groups">Groups</a></li>
           <li><a href="/catering/" data-i18n="nav.catering">Catering</a></li>
           <li><a href="/wellness/" data-i18n="nav.wellness">Wellness</a></li>
+          <li><a href="/art/" data-i18n="nav.art">Art & Antiques</a></li>
           <li><a href="/about/" data-i18n="nav.about">About</a></li>
         </ul>
 
@@ -121,6 +122,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           <li><a href="/groups/" data-i18n="nav.groups">Groups</a></li>
           <li><a href="/catering/" data-i18n="nav.catering">Catering</a></li>
           <li><a href="/wellness/" data-i18n="nav.wellness">Wellness</a></li>
+          <li><a href="/art/" data-i18n="nav.art">Art & Antiques</a></li>
           <li><a href="/about/" data-i18n="nav.about">About</a></li>
           <li><a href="/contact/" data-i18n="nav.contact">Contact</a></li>
         </ul>
@@ -154,6 +156,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           <div class="footer__links">
             <h4 data-i18n="footer.info">Info</h4>
             <ul>
+              <li><a href="/art/" data-i18n="footer.art">Art & Antiques</a></li>
               <li><a href="/about/" data-i18n="footer.about">About</a></li>
               <li><a href="/contact/" data-i18n="footer.contact">Contact</a></li>
               <li><a href="/gallery/" data-i18n="footer.gallery">Gallery</a></li>
@@ -844,7 +847,9 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
                   return it;
                 });
                 var fullbleed = target.classList && target.classList.contains('compound-tile--clickable');
-                open(items, 0, { full: fullbleed });
+                // Support data-gallery-start for per-tile start index (art page, etc.)
+                var startIdx = target.dataset.galleryStart ? parseInt(target.dataset.galleryStart, 10) : 0;
+                open(items, startIdx, { full: fullbleed });
               } catch (_) {}
               return;
             }
@@ -876,7 +881,8 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
                 return it;
               });
               var fullbleed = card.classList && card.classList.contains('compound-tile--clickable');
-              open(items, 0, { full: fullbleed });
+              var startIdx = card.dataset.galleryStart ? parseInt(card.dataset.galleryStart, 10) : 0;
+              open(items, startIdx, { full: fullbleed });
             } catch (_) {}
           }
         });
