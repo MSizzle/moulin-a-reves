@@ -804,4 +804,45 @@ export const translations: Record<string, Record<string, string>> = {
   'getting.trips.fontainebleau.h': { en: 'Fontainebleau', fr: 'Fontainebleau' },
   'getting.trips.fontainebleau.p': { en: 'Royal château and 25,000 hectares of ancient forest, twenty minutes away.', fr: 'Château royal et 25 000 hectares de forêt ancienne, à vingt minutes.' },
   'getting.map.caption': { en: 'Méréville, France · One hour south of Paris', fr: 'Méréville, France · À une heure au sud de Paris' },
+
+  // ---- Groups: Florence H. quote (Item 9) ----
+  'groups.testimonials.q4': {
+    en: '"The reality far exceeded our expectations… We wholeheartedly recommend your rental to anyone who appreciates peace, quiet, and refinement."',
+    fr: '« La réalité a largement dépassé nos attentes… Nous recommandons chaleureusement votre location à quiconque apprécie la paix, le calme et le raffinement. »',
+  },
+  'groups.testimonials.a4': { en: '— Florence H., VRBO', fr: '— Florence H., VRBO' },
+  'groups.testimonials.florence.readmore': { en: 'Read the full review', fr: 'Lire l\'avis complet' },
+
+  // ---- Navigation / footer: Art page (Item 10) ----
+  'nav.art': { en: 'Art & Antiques', fr: 'Art & Antiquités' },
+  'footer.art': { en: 'Art & Antiques', fr: 'Art & Antiquités' },
+
+  // ---- Art page (Item 10) — DRAFT copy ----
+  'art.hero.title': { en: 'The Art & Antiques', fr: 'L\'Art & les Antiquités' },
+  'art.hero.subtitle': { en: 'A living collection — DRAFT', fr: 'Une collection vivante — BROUILLON' },
+  'art.intro.heading': { en: 'A Home Curated by a World-Renowned Art Advisor', fr: 'Une maison aménagée par une conseillère en art de renommée mondiale' },
+  'art.intro.p1': {
+    en: 'The interiors of Moulin à Rêves reflect the impeccable eye of Barbara Guggenheim — world-renowned art advisor, and the woman who lovingly restored these stone houses to what they are today.',
+    fr: 'Les intérieurs du Moulin à Rêves reflètent l\'œil impeccable de Barbara Guggenheim — conseillère en art de renommée mondiale, et la femme qui a amoureusement restauré ces maisons en pierre pour en faire ce qu\'elles sont aujourd\'hui.',
+  },
+  'art.intro.p2': {
+    en: 'She decorated the Moulin with 18th-century country antiques: original Folies Bergère posters, walls upholstered in rich fabric, and a coffee table fashioned from a Louis Vuitton trunk. Each room tells a story — the objects are not decoration, they are the history of this place made tangible.',
+    fr: 'Elle a décoré le Moulin d\'antiquités campagnardes du XVIIIe siècle : des affiches originales des Folies Bergère, des murs tapissés de tissu, et une table basse faite d\'une malle Louis Vuitton. Chaque pièce raconte une histoire — les objets ne sont pas de simples décorations, ils incarnent l\'histoire de ce lieu.',
+  },
+  'art.intro.p3': {
+    en: 'The collection continues throughout the compound — in the salon, the dining rooms, the hallways, and even the sleeping quarters. Guests often find themselves pausing to look.',
+    fr: 'La collection se poursuit dans tout le domaine — dans le salon, les salles à manger, les couloirs et même les chambres. Les hôtes s\'arrêtent souvent pour regarder.',
+  },
+  'art.gallery.heading': { en: 'A glimpse of the collection', fr: 'Un aperçu de la collection' },
+  'art.gallery.lede': {
+    en: 'Pieces photographed in situ — antiques, posters, and curiosities woven into every room.',
+    fr: 'Pièces photographiées in situ — antiquités, affiches et curiosités tissées dans chaque pièce.',
+  },
+  'art.about.link': { en: 'Read the full history of Moulin à Rêves →', fr: 'Lire l\'histoire complète du Moulin à Rêves →' },
+  'art.cta.heading': { en: 'Come and see it in person', fr: 'Venez le voir en personne' },
+  'art.cta.tagline': {
+    en: 'No reproduction does it justice. Stay at Moulin à Rêves and live among the collection.',
+    fr: 'Aucune reproduction ne lui rend justice. Séjournez au Moulin à Rêves et vivez au milieu de la collection.',
+  },
+  'art.cta.button': { en: 'Inquire about availability', fr: 'Renseignez-vous sur les disponibilités' },
 };
