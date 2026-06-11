@@ -1900,22 +1900,36 @@
     "en": "Also included"
   },
   "le-moulin.amenities.feature.0.title": {
-    "en": "Gardens & the Bridge"
+    "en": "The Gardens",
+    "fr": "Les Jardins"
   },
   "le-moulin.amenities.feature.0.summary": {
-    "en": "Flower gardens and a Giverny-style bridge across the millstream — the photo-spot of the property."
+    "en": "The Giverny-style bridge, walled gardens, millstream, and quiet corners.",
+    "fr": "Le pont style Giverny, les jardins clos, le moulin et ses recoins secrets."
   },
   "le-moulin.amenities.feature.1.title": {
-    "en": "Al Fresco Patio"
+    "en": "The Grange",
+    "fr": "La Grange"
   },
   "le-moulin.amenities.feature.1.summary": {
-    "en": "A wide patio for outdoor dining and lounge chairs, opening directly onto the gardens and the river."
+    "en": "Open-air entertaining barn with stone fireplace, ping-pong table, and the long communal table for twenty.",
+    "fr": "Grange ouverte avec cheminée en pierre, ping-pong et grande table commune pour vingt personnes."
   },
   "le-moulin.amenities.feature.2.title": {
-    "en": "The River at Dusk"
+    "en": "The Spa",
+    "fr": "Le Spa"
   },
   "le-moulin.amenities.feature.2.summary": {
-    "en": "The Juine flows through the house itself. Stay up for the moment the bridge lights and the water turns gold."
+    "en": "A glassed-in solarium with jacuzzi — warm-weather mornings, winter evenings, year-round.",
+    "fr": "Un solarium vitré avec jacuzzi — matins estivaux, soirées hivernales, toute l'année."
+  },
+  "le-moulin.amenities.feature.3.title": {
+    "en": "The Chicken Coop & Wishing Well",
+    "fr": "Le Poulailler & le Puits"
+  },
+  "le-moulin.amenities.feature.3.summary": {
+    "en": "Charming corners of the estate — the resident chickens and the vine-covered wishing well.",
+    "fr": "Les coins charmants du domaine — les poules résidentes et le puits couvert de vigne."
   },
   "le-moulin.amenities.amenity.0": {
     "en": "WiFi throughout"
@@ -2096,16 +2110,36 @@
     "en": "Also included"
   },
   "hideaway.amenities.feature.0.title": {
-    "en": "The Gazebo"
+    "en": "The Gardens",
+    "fr": "Les Jardins"
   },
   "hideaway.amenities.feature.0.summary": {
-    "en": "Covered gazebo with a dining table for eight — al fresco meals, sheltered from the afternoon sun."
+    "en": "The Giverny-style bridge, walled gardens, millstream, and quiet corners.",
+    "fr": "Le pont style Giverny, les jardins clos, le moulin et ses recoins secrets."
   },
   "hideaway.amenities.feature.1.title": {
-    "en": "Yoga on the Lawn"
+    "en": "The Grange",
+    "fr": "La Grange"
   },
   "hideaway.amenities.feature.1.summary": {
-    "en": "Wide stretch of lawn beside the gazebo — used for morning yoga, lawn games, or simply doing nothing."
+    "en": "Open-air entertaining barn with stone fireplace, ping-pong table, and the long communal table for twenty.",
+    "fr": "Grange ouverte avec cheminée en pierre, ping-pong et grande table commune pour vingt personnes."
+  },
+  "hideaway.amenities.feature.2.title": {
+    "en": "The Spa",
+    "fr": "Le Spa"
+  },
+  "hideaway.amenities.feature.2.summary": {
+    "en": "A glassed-in solarium with jacuzzi — warm-weather mornings, winter evenings, year-round.",
+    "fr": "Un solarium vitré avec jacuzzi — matins estivaux, soirées hivernales, toute l'année."
+  },
+  "hideaway.amenities.feature.3.title": {
+    "en": "The Chicken Coop & Wishing Well",
+    "fr": "Le Poulailler & le Puits"
+  },
+  "hideaway.amenities.feature.3.summary": {
+    "en": "Charming corners of the estate — the resident chickens and the vine-covered wishing well.",
+    "fr": "Les coins charmants du domaine — les poules résidentes et le puits couvert de vigne."
   },
   "hideaway.amenities.amenity.0": {
     "en": "WiFi throughout"
@@ -2270,22 +2304,36 @@
     "en": "Also included"
   },
   "riviere.amenities.feature.0.title": {
-    "en": "The Stream & Apple Trees"
+    "en": "The Gardens",
+    "fr": "Les Jardins"
   },
   "riviere.amenities.feature.0.summary": {
-    "en": "French doors open from the living room directly onto the stream and the orchard — the main view from every window on this side."
+    "en": "The Giverny-style bridge, walled gardens, millstream, and quiet corners.",
+    "fr": "Le pont style Giverny, les jardins clos, le moulin et ses recoins secrets."
   },
   "riviere.amenities.feature.1.title": {
-    "en": "The Compound Gardens"
+    "en": "The Grange",
+    "fr": "La Grange"
   },
   "riviere.amenities.feature.1.summary": {
-    "en": "Shared with the rest of the compound — flower beds, lawns, and a Giverny-style bridge over the millstream."
+    "en": "Open-air entertaining barn with stone fireplace, ping-pong table, and the long communal table for twenty.",
+    "fr": "Grange ouverte avec cheminée en pierre, ping-pong et grande table commune pour vingt personnes."
   },
   "riviere.amenities.feature.2.title": {
-    "en": "Al Fresco Dining"
+    "en": "The Spa",
+    "fr": "Le Spa"
   },
   "riviere.amenities.feature.2.summary": {
-    "en": "Patio and gazebo space across the compound, with tables for dinner parties under the stars."
+    "en": "A glassed-in solarium with jacuzzi — warm-weather mornings, winter evenings, year-round.",
+    "fr": "Un solarium vitré avec jacuzzi — matins estivaux, soirées hivernales, toute l'année."
+  },
+  "riviere.amenities.feature.3.title": {
+    "en": "The Chicken Coop & Wishing Well",
+    "fr": "Le Poulailler & le Puits"
+  },
+  "riviere.amenities.feature.3.summary": {
+    "en": "Charming corners of the estate — the resident chickens and the vine-covered wishing well.",
+    "fr": "Les coins charmants du domaine — les poules résidentes et le puits couvert de vigne."
   },
   "riviere.amenities.amenity.0": {
     "en": "WiFi throughout"

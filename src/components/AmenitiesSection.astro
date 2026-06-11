@@ -4,6 +4,8 @@ interface Feature {
   summary: string;
   image: string;
   alt?: string;
+  /** When exploreMode=true: photos to open in the hero lightbox on click */
+  gallery?: { src: string; alt?: string; caption?: string }[];
 }
 
 interface AmenityItem {
@@ -19,9 +21,11 @@ interface Props {
   amenities: AmenityItem[];
   background?: 'cream' | 'stone';
   i18nKey?: string;
+  /** Explore mode: render features as 4-equal-square clickable tiles opening the hero lightbox */
+  exploreMode?: boolean;
 }
 
-const { eyebrow = 'Amenities & Grounds', heading = "What's Here", intro, features, amenities, background = 'cream', i18nKey } = Astro.props;
+const { eyebrow = 'Amenities & Grounds', heading = "What's Here", intro, features, amenities, background = 'cream', i18nKey, exploreMode = false } = Astro.props;
 const sectionClass = background === 'stone' ? 'section section--tight section--soft' : 'section section--tight';
 const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
 const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
@@ -62,7 +66,7 @@ function svgFor(key: string | undefined): string {
       {intro && <p style="margin-top: 12px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
     </div>
 
-    {features.length > 0 && (
+    {features.length > 0 && !exploreMode && (
       <div class="amenity-features">
         {features.map((f, i) => {
           const featTitleKey = i18nKey ? `${i18nKey}.feature.${i}.title` : undefined;
@@ -77,6 +81,32 @@ function svgFor(key: string | undefined): string {
                 <p class="amenity-feature__summary" {...(featSummaryKey ? { 'data-i18n': featSummaryKey } : {})}>{f.summary}</p>
               </div>
             </article>
+          );
+        })}
+      </div>
+    )}
+
+    {features.length > 0 && exploreMode && (
+      <div class="explore-grid">
+        {features.map((f, i) => {
+          const featTitleKey = i18nKey ? `${i18nKey}.feature.${i}.title` : undefined;
+          const gallery = f.gallery && f.gallery.length > 0 ? f.gallery : [{ src: f.image, alt: f.alt || f.title }];
+          return (
+            <div
+              class="explore-tile compound-tile--clickable fade-in"
+              data-gallery={JSON.stringify(gallery)}
+              role="button"
+              tabindex="0"
+              aria-label={`View photos: ${f.title}`}
+            >
+              <div class="explore-tile__media">
+                <img src={f.image} alt={f.alt || f.title} loading="lazy" />
+                <div class="explore-tile__overlay"></div>
+              </div>
+              <div class="explore-tile__label">
+                <h3 class="explore-tile__title" {...(featTitleKey ? { 'data-i18n': featTitleKey } : {})}>{f.title}</h3>
+              </div>
+            </div>
           );
         })}
       </div>
@@ -149,6 +179,76 @@ function svgFor(key: string | undefined): string {
     color: var(--ink-soft);
     line-height: 1.55;
     max-width: none;
+  }
+
+  /* ---- Explore the Estate 4-square grid ---- */
+  .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .explore-tile {
+    position: relative;
+    cursor: zoom-in;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    background: var(--bg-stone);
+  }
+
+  .explore-tile__media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .explore-tile__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-out);
+  }
+
+  .explore-tile:hover .explore-tile__media img {
+    transform: scale(1.05);
+  }
+
+  .explore-tile__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 15, 15, 0.65) 0%, rgba(15, 15, 15, 0) 55%);
+    pointer-events: none;
+  }
+
+  .explore-tile__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 14px;
+    z-index: 2;
+  }
+
+  .explore-tile__title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: white;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+
+  .explore-tile:focus-visible {
+    outline: 2px solid var(--blue-primary);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 768px) {
+    .explore-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .amenity-list {
