@@ -823,6 +823,26 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           el.appendChild(pill);
         });
 
+        // Keyboard activation for [data-gallery] tiles (role=button)
+        document.addEventListener('keydown', function (e) {
+          if (lb.classList.contains('is-open')) return; // handled below
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          var card = e.target && e.target.closest && e.target.closest('[data-gallery]');
+          if (card) {
+            e.preventDefault();
+            try {
+              var raw = card.dataset.gallery;
+              var items = JSON.parse(raw);
+              items = items.map(function (it) {
+                if (typeof it === 'string') return { src: it, alt: '', caption: '' };
+                return it;
+              });
+              var fullbleed = card.classList && card.classList.contains('compound-tile--clickable');
+              open(items, 0, { full: fullbleed });
+            } catch (_) {}
+          }
+        });
+
         lb.querySelectorAll('[data-lightbox-close]').forEach(function (el) {
           el.addEventListener('click', close);
         });

@@ -70,8 +70,10 @@ const tileSummaryClass = hideTileSummary ? 'compound-tile__summary compound-tile
               }
             : {}),
         };
+        // Build the photos-only payload for the hero lightbox
+        const galleryPhotos = room.photos.map(p => ({ src: p.src, alt: p.alt || room.title, caption: p.caption || '' }));
         return (
-          <div class="compound-tile compound-tile--clickable fade-in" data-room={JSON.stringify(roomPayload)} role="button" tabindex="0">
+          <div class="compound-tile compound-tile--clickable fade-in" data-gallery={JSON.stringify(galleryPhotos)} role="button" tabindex="0">
             <div class="compound-tile__media">
               <img src={room.photos[0].src} alt={room.photos[0].alt || room.title} loading="lazy" />
               {room.photos.length > 1 && (
@@ -92,13 +94,13 @@ const tileSummaryClass = hideTileSummary ? 'compound-tile__summary compound-tile
 </section>
 
 <style>
-  [data-room] {
+  [data-gallery] {
     cursor: zoom-in;
   }
-  [data-room] .compound-tile__media {
+  [data-gallery] .compound-tile__media {
     position: relative;
   }
-  [data-room] .compound-tile__media::before {
+  [data-gallery] .compound-tile__media::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -108,10 +110,10 @@ const tileSummaryClass = hideTileSummary ? 'compound-tile__summary compound-tile
     z-index: 2;
     pointer-events: none;
   }
-  [data-room]:hover .compound-tile__media::before {
+  [data-gallery]:hover .compound-tile__media::before {
     opacity: 1;
   }
-  [data-room]:focus-visible {
+  [data-gallery]:focus-visible {
     outline: 2px solid var(--blue-primary);
     outline-offset: 4px;
   }
