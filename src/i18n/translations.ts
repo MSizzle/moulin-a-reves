@@ -68,8 +68,6 @@ export const translations: Record<string, Record<string, string>> = {
   'le-moulin.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'hideaway.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
   'riviere.availability.heading': { en: 'Join us!', fr: 'Rejoignez-nous !' },
-  'home.availability.intro': { en: 'Live calendar synced from Airbnb and VRBO. Greyed dates are booked.', fr: 'Calendrier en direct synchronisé depuis Airbnb et VRBO. Les dates grisées sont réservées.' },
-  'availability.note': { en: "Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm.", fr: "Calendrier en direct synchronisé depuis nos annonces Airbnb et VRBO — couvre tout le domaine. Les dates grisées sont déjà réservées. Vous avez trouvé une fenêtre ? Dites-nous vos dates et nous confirmerons." },
   'home.area.heading': { en: 'Discover the Area', fr: 'Découvrez la région' },
   'home.area.intro': { en: 'Just one hour from Paris, discover the charm, beauty and history of nearby châteaux and villages.', fr: "À seulement une heure de Paris, découvrez le charme, la beauté et l'histoire des châteaux et villages voisins." },
   'home.senseof.quote': {

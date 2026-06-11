@@ -54,8 +54,7 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
       </div>
 
       <div class="availability__footer">
-        <span class="availability__sync" id="availability-sync" data-i18n="availability.note">Live calendar synced from our Airbnb and VRBO listings — covers the whole compound. Greyed dates are already booked. Found a window? Tell us your dates and we'll confirm.</span>
-        <a href="/contact/" class="link-arrow">Inquire About Dates →</a>
+        <a href="/contact/" class="link-arrow">Inquire About Dates</a>
       </div>
     </div>
   </div>
@@ -215,19 +214,8 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
     margin-top: 56px;
     padding-top: 24px;
     border-top: 1px solid rgba(32, 32, 32, 0.08);
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 18px;
-    flex-wrap: wrap;
+    text-align: center;
   }
-  .availability__sync {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 0.9375rem;
-    color: var(--ink-mute);
-  }
-
   @media (max-width: 900px) {
     .availability__months {
       column-gap: 48px;
@@ -253,8 +241,6 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
       row-gap: 32px;
     }
     .availability__footer {
-      justify-content: center;
-      text-align: center;
       margin-top: 40px;
     }
   }
@@ -334,7 +320,6 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
     var monthsToShow = parseInt((calendar && calendar.dataset.months) || '12', 10);
     var monthsPerView = 2;
     var maxOffset = Math.max(0, monthsToShow - monthsPerView);
-    var syncEl = document.getElementById('availability-sync');
     var selectEl = document.getElementById('availability-month-select');
     var prevBtn = document.getElementById('availability-prev');
     var nextBtn = document.getElementById('availability-next');
@@ -417,16 +402,6 @@ const introKey = i18nKey ? `${i18nKey}.intro` : undefined;
       state.offset = clamped;
       if (selectEl) selectEl.value = String(clamped);
       renderMonths();
-    }
-
-    function updateSyncLabel(lastSynced) {
-      if (!syncEl || !lastSynced) return;
-      try {
-        var fmt = new Date(lastSynced).toLocaleString(undefined, {
-          month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
-        });
-        syncEl.textContent = 'Synced ' + fmt + ' from Airbnb + VRBO';
-      } catch (_) {}
     }
 
     function showError() {
