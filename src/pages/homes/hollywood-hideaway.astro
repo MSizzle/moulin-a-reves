@@ -18,6 +18,7 @@ const bedrooms = [
     title: 'Through the Looking Glass',
     summary: 'King bedroom on the ground floor — en-suite bath with tub and shower.',
     longDescription: 'The largest bedroom.',
+    qualities: '🛌 King bed · 🛁 En-suite tub & shower · 🌿 Ground floor',
     details: [
       { label: 'Bed', value: 'King' },
       { label: 'Floor', value: 'Ground' },
@@ -38,6 +39,7 @@ const bedrooms = [
     id: 'american-in-paris',
     title: 'An American in Paris',
     summary: 'Queen bedroom on the ground floor.',
+    qualities: '🛏 Queen bed · 🚿 Hall tub & shower · 🌸 Garden view',
     details: [
       { label: 'Bed', value: 'Queen' },
       { label: 'Floor', value: 'Ground' },
@@ -59,6 +61,7 @@ const bedrooms = [
     title: 'Sleeping Beauty',
     summary: 'Attic room with two twins. Up two steep flights.',
     longDescription: 'Tucked under the eaves, themed around the fairy tale — antique spinning wheels visible through the doorway. The two stairwells climbing up to the room are lined with framed scarf-print and embroidered art.',
+    qualities: '🛏 Twin beds · 🚿 Hall bath · Up two steep flights',
     details: [
       { label: 'Bed', value: '2 Twins' },
       { label: 'Floor', value: 'Attic' },
@@ -275,7 +278,7 @@ const amenities = [
   <!-- Living Spaces -->
   <RoomShowcase
     eyebrow=""
-    heading="Where you'll gather"
+    heading="Where you'll gather &amp; dine"
     intro=""
     rooms={livingSpaces}
     i18nKey="hideaway.living"

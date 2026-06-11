@@ -18,6 +18,8 @@ export interface Room {
   longDescription?: string;
   details?: Detail[];
   photos: Photo[];
+  /** Optional: 3 emoji-prefixed quality tags for sleep cards, e.g. "🛌 King bedroom · 🛁 En-suite bath · ✨ Upstairs" */
+  qualities?: string;
 }
 
 interface Props {
@@ -89,6 +91,9 @@ const tileSummaryClass = effectiveHideTileSummary ? 'compound-tile__summary comp
               {!effectiveHideTileSummary && (
                 <p class={tileSummaryClass} {...(summaryKey ? { 'data-i18n': summaryKey } : {})}>{room.summary}</p>
               )}
+              {!gatherMode && room.qualities && (
+                <p class="compound-tile__qualities">{room.qualities}</p>
+              )}
             </div>
           </div>
         );
@@ -120,6 +125,15 @@ const tileSummaryClass = effectiveHideTileSummary ? 'compound-tile__summary comp
   [data-gallery]:focus-visible {
     outline: 2px solid var(--blue-primary);
     outline-offset: 4px;
+  }
+
+  /* Sleep-mode: emoji quality tags second line */
+  .compound-tile__qualities {
+    font-size: 0.8125rem;
+    color: var(--ink-mute);
+    margin-top: 6px;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
   }
 
   /* Gather-mode: italic room name only, no badge */

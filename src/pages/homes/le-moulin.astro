@@ -18,6 +18,7 @@ const bedrooms = [
     title: 'La Suite Romantique',
     summary: 'Upstairs master with king bed, en-suite shower.',
     longDescription: 'The largest bedroom in the house. Tall windows, exposed beams, and a king bed.',
+    qualities: '🛌 King bedroom · 🛁 En-suite shower · ✨ Upstairs master',
     details: [
       { label: 'Bed', value: 'King' },
       { label: 'Floor', value: 'Upstairs' },
@@ -35,6 +36,7 @@ const bedrooms = [
     title: 'La Chambre de la Rivière',
     summary: 'The River Room — two twin beds on the ground floor.',
     longDescription: 'A quiet ground-floor bedroom that opens onto the millhouse hall. The river runs just beyond the wall.',
+    qualities: '🛏 Twin beds · 🚿 Hall shower · 🌊 Beside the river',
     details: [
       { label: 'Bed', value: '2 Twins' },
       { label: 'Floor', value: 'Ground' },
@@ -50,6 +52,7 @@ const bedrooms = [
     id: 'cerises',
     title: 'Les Cerises',
     summary: 'The Cherry Room — queen bed, in-room sink and bidet.',
+    qualities: '🛏 Queen bed · 🪞 In-room sink & bidet · 🛁 Hall clawfoot tub',
     details: [
       { label: 'Bed', value: 'Queen' },
       { label: 'Floor', value: 'Upstairs' },
@@ -66,6 +69,7 @@ const bedrooms = [
     id: 'roses',
     title: 'Les Roses',
     summary: 'The Rose Room — two twin beds.',
+    qualities: '🛏 Twin beds · 🛁 Hall clawfoot tub · 🌸 Upstairs',
     details: [
       { label: 'Bed', value: '2 Twins' },
       { label: 'Floor', value: 'Upstairs' },
@@ -81,6 +85,7 @@ const bedrooms = [
     title: 'Le Loft Suite',
     summary: 'Attic suite with two twins (combinable as king) plus a separate TV area.',
     longDescription: 'A whole-floor retreat. Up a steep flight of stairs.',
+    qualities: '🛏 Twins or King · 🛁 Hall shower · Up steep stairs',
     details: [
       { label: 'Bed', value: '2 Twins (or King) + 2 Floor Twins' },
       { label: 'Floor', value: 'Attic' },
@@ -292,7 +297,7 @@ const amenities = [
   <!-- Living Spaces -->
   <RoomShowcase
     eyebrow=""
-    heading="Where you'll gather"
+    heading="Where you'll gather &amp; dine"
     intro=""
     rooms={livingSpaces}
     i18nKey="le-moulin.living"

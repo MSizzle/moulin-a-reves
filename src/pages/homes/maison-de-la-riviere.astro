@@ -17,6 +17,7 @@ const bedrooms = [
     id: 'artistes',
     title: 'La Chambre des Artistes',
     summary: 'The Artists\' Room — upstairs. King bed plus a twin.',
+    qualities: '🛌 King + twin beds · 🛁 Hall tub & shower · 🎨 Upstairs atelier',
     details: [
       { label: 'Bed', value: 'King + Twin' },
       { label: 'Floor', value: 'Upstairs' },
@@ -32,6 +33,7 @@ const bedrooms = [
     id: 'ecrivains',
     title: 'La Chambre des Écrivains',
     summary: 'The Writers\' Room — upstairs. Double bed, in-room sink.',
+    qualities: '🛏 Double bed · ✍️ In-room sink · 🛁 Hall tub & shower',
     details: [
       { label: 'Bed', value: 'Double' },
       { label: 'Floor', value: 'Upstairs' },
@@ -208,7 +210,7 @@ const amenities = [
   <!-- Living Spaces -->
   <RoomShowcase
     eyebrow=""
-    heading="Where you'll gather"
+    heading="Where you'll gather &amp; dine"
     intro=""
     rooms={livingSpaces}
     i18nKey="riviere.living"

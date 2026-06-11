@@ -1865,7 +1865,8 @@
     "en": ""
   },
   "le-moulin.living.heading": {
-    "en": "Where You'll Gather"
+    "en": "Where you'll gather & dine",
+    "fr": "Où vous vous retrouverez & dînerez"
   },
   "le-moulin.living.intro": {
     "en": ""
@@ -2066,7 +2067,8 @@
     "en": ""
   },
   "hideaway.living.heading": {
-    "en": "Where you'll gather"
+    "en": "Where you'll gather & dine",
+    "fr": "Où vous vous retrouverez & dînerez"
   },
   "hideaway.living.intro": {
     "en": "One long upstairs room and the bright kitchen below — the working heart of the Hideaway."
@@ -2233,7 +2235,8 @@
     "en": ""
   },
   "riviere.living.heading": {
-    "en": "Where you'll gather"
+    "en": "Where you'll gather & dine",
+    "fr": "Où vous vous retrouverez & dînerez"
   },
   "riviere.living.intro": {
     "en": "A sun-drenched living room, a dining room for eighteen, and a stone-and-beam kitchen."
