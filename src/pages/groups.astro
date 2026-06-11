@@ -1,5 +1,90 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ---- Item 8: Gallery data for the three group-type sections ----
+// Each array is seeded with existing repo images.
+// TODO: drop owner's dedicated gallery photos here when received.
+// Drop directory convention:
+//   public/images/groups/yoga/      → for Yoga retreat gallery images (kebab-case.webp, max 2000px, q85)
+//   public/images/groups/family/    → for Family reunion gallery images
+//   public/images/groups/creative/  → for Creative retreat gallery images
+// Run scripts/process-photos.mjs (or sharp inline) to resize stills to max 2000px webp q85
+// before adding to the arrays below.
+
+const yogaGallery = [
+  // Lead image (shown in split layout; clicking opens the full lightbox)
+  { src: '/images/wellness-yoga-mill-facade.webp', alt: 'Yoga practice on the lawn outside Le Moulin\'s blue-shuttered facade' },
+  { src: '/images/wellness-yoga-bridge.webp', alt: 'Morning yoga beside the millstream at Moulin à Rêves' },
+  { src: '/images/wellness-yoga-sun-salutations.webp', alt: 'Sun salutations on the lawn at Moulin à Rêves' },
+  { src: '/images/wellness-yoga-adjustments.webp', alt: 'Yoga adjustments during a retreat at Moulin à Rêves' },
+  { src: '/images/wellness-yoga-stretch.webp', alt: 'Stretching on the grass at Moulin à Rêves' },
+  { src: '/images/wellness-yoga-tree.webp', alt: 'Tree pose by the millstream' },
+  { src: '/images/wellness-yoga-well.webp', alt: 'Yoga meditation by the stone well at Moulin à Rêves' },
+  { src: '/images/wellness-yoga-hideaway.webp', alt: 'Yoga practice at the Hollywood Hideaway' },
+  { src: '/images/wellness-massage-garden.webp', alt: 'Outdoor massage treatment in the gardens' },
+  { src: '/images/wellness-massage-mill-lawn.webp', alt: 'Massage on the mill lawn' },
+  // TODO: add owner's yoga retreat gallery photos (drop into public/images/groups/yoga/)
+];
+
+const familyGallery = [
+  // Lead image (shown in split layout; clicking opens the full lightbox)
+  { src: '/images/group-kids-bridge.webp', alt: 'Children running across the painted bridge over the millstream at Moulin à Rêves' },
+  { src: '/images/group-father-friends.webp', alt: 'Fathers and friends gathered at Moulin à Rêves' },
+  { src: '/images/group-bbq.webp', alt: 'Outdoor barbecue gathering at Moulin à Rêves' },
+  { src: '/images/group-dinner.webp', alt: 'Group dinner at Moulin à Rêves' },
+  { src: '/images/group-mother-daughter-steps.webp', alt: 'Mother and daughter on the steps at Moulin à Rêves' },
+  { src: '/images/group-ping-pong.webp', alt: 'Ping pong game at Moulin à Rêves' },
+  { src: '/images/barn-events.webp', alt: 'Long dinner table set under La Grange\'s covered pavilion' },
+  { src: '/images/garden-chaises-wide.webp', alt: 'Chaise longues in the garden at Moulin à Rêves' },
+  { src: '/images/garden-breakfast.webp', alt: 'Breakfast in the walled garden' },
+  { src: '/images/group-tuscan-sun.webp', alt: 'Friends relaxing in the sun at Moulin à Rêves' },
+  // TODO: add owner's family reunion gallery photos (drop into public/images/groups/family/)
+];
+
+const creativeGallery = [
+  // Lead image (shown in split layout; clicking opens the full lightbox)
+  { src: '/images/retreat-writers.webp', alt: 'Writers gathered at a long table for a creative retreat at Moulin à Rêves' },
+  { src: '/images/screening-room.webp', alt: 'Screening room / workshop space at Moulin à Rêves' },
+  { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange covered pavilion — workshop space for twenty' },
+  { src: '/images/homes/la-grange-pavilion.webp', alt: 'Under the beams of La Grange at Moulin à Rêves' },
+  { src: '/images/homes/la-grange-hero.webp', alt: 'La Grange exterior at Moulin à Rêves' },
+  { src: '/images/garden-monet-painting.webp', alt: 'Painting in the garden at Moulin à Rêves, inspired by Monet' },
+  { src: '/images/bridge-garden.webp', alt: 'The garden bridge — painterly setting at Moulin à Rêves' },
+  { src: '/images/garden-private-spot.webp', alt: 'A quiet private spot in the gardens for writing or reflection' },
+  { src: '/images/garden-giverny-bridge.webp', alt: 'Japanese-style garden bridge at Moulin à Rêves' },
+  // TODO: add owner's creative retreat gallery photos (drop into public/images/groups/creative/)
+];
+
+// ---- Item 9: Video testimonial row ----
+// Data-driven: add/remove videos from this array to update the row.
+// Processed videos live in public/videos/; posters in public/images/testimonials/.
+const testimonialVideos = [
+  {
+    src: '/videos/testimonial-rave-review.mp4',
+    poster: '/images/testimonials/testimonial-rave-review-poster.webp',
+    label: null, // EN label; null = no extra label
+  },
+  {
+    src: '/videos/testimonial-friends-birthday.mp4',
+    poster: '/images/testimonials/testimonial-friends-birthday-poster.webp',
+    label: null,
+  },
+  {
+    src: '/videos/testimonial-guests-luxembourg.mp4',
+    poster: '/images/testimonials/testimonial-guests-luxembourg-poster.webp',
+    label: null,
+  },
+  {
+    src: '/videos/testimonial-family-french.mp4',
+    poster: '/images/testimonials/testimonial-family-french-poster.webp',
+    label: '(en français)', // French-language video label
+  },
+  {
+    src: '/videos/testimonial-husband-english-tag.mp4',
+    poster: '/images/testimonials/testimonial-husband-english-tag-poster.webp',
+    label: null,
+  },
+];
 ---
 
 <BaseLayout title="Groups — Yoga, Family Reunions & Creative Retreats | Moulin à Rêves" description="Host your group at Moulin à Rêves: yoga retreats, family reunions, and creative retreats on a private compound one hour from Paris. Sleeps 20.">
@@ -25,11 +110,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Yoga -->
+  <!-- Yoga — Item 8: clickable gallery, lead image shown, lightbox opens full set -->
   <section id="yoga" class="fade-in">
     <div class="split">
       <div class="split__image">
-        <img src="/images/wellness-yoga-mill-facade.webp" alt="Yoga practice on the lawn outside Le Moulin's blue-shuttered facade" loading="lazy" />
+        <!-- data-gallery triggers the fullscreen lightbox with all yoga gallery images -->
+        <div
+          class="groups-gallery-trigger"
+          data-gallery={JSON.stringify(yogaGallery)}
+          role="button"
+          tabindex="0"
+          aria-label="View yoga retreat gallery"
+        >
+          <img src="/images/wellness-yoga-mill-facade.webp" alt="Yoga practice on the lawn outside Le Moulin's blue-shuttered facade" loading="lazy" />
+          <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
+        </div>
       </div>
       <div class="split__body">
         <span class="split__eyebrow" data-i18n="groups.yoga.eyebrow">Yoga & Wellness Retreats</span>
@@ -45,7 +140,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Family Reunions -->
+  <!-- Family Reunions — Item 8: clickable gallery -->
   <section id="family-reunions" class="fade-in">
     <div class="split split--reverse">
       <div class="split__body">
@@ -60,16 +155,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <a href="/contact/" class="link-arrow" data-i18n="groups.family.cta">Plan a family reunion →</a>
       </div>
       <div class="split__image">
-        <img src="/images/group-kids-bridge.webp" alt="Children running across the painted bridge over the millstream at Moulin à Rêves" loading="lazy" />
+        <!-- data-gallery triggers the fullscreen lightbox with all family gallery images -->
+        <div
+          class="groups-gallery-trigger"
+          data-gallery={JSON.stringify(familyGallery)}
+          role="button"
+          tabindex="0"
+          aria-label="View family reunion gallery"
+        >
+          <img src="/images/group-kids-bridge.webp" alt="Children running across the painted bridge over the millstream at Moulin à Rêves" loading="lazy" />
+          <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Creative Retreats -->
+  <!-- Creative Retreats — Item 8: clickable gallery -->
   <section id="creative-retreats" class="fade-in">
     <div class="split">
       <div class="split__image">
-        <img src="/images/retreat-writers.webp" alt="Writers gathered at a long table for a creative retreat at Moulin à Rêves" loading="lazy" />
+        <!-- data-gallery triggers the fullscreen lightbox with all creative gallery images -->
+        <div
+          class="groups-gallery-trigger"
+          data-gallery={JSON.stringify(creativeGallery)}
+          role="button"
+          tabindex="0"
+          aria-label="View creative retreats gallery"
+        >
+          <img src="/images/retreat-writers.webp" alt="Writers gathered at a long table for a creative retreat at Moulin à Rêves" loading="lazy" />
+          <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
+        </div>
       </div>
       <div class="split__body">
         <span class="split__eyebrow" data-i18n="groups.creative.eyebrow">Creative Retreats</span>
@@ -85,12 +200,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Testimonials — Item 9: video row above written quotes -->
   <section class="section--tighter section--stone">
     <div class="container">
       <div class="text-center fade-in" style="margin-bottom: 36px;">
         <h2 data-i18n="groups.testimonials.heading">From past groups</h2>
       </div>
+
+      <!-- Item 9: Data-driven video testimonial row (above written quotes) -->
+      <!-- NOTE: subtitle question surfaced in report — not decided here. -->
+      <!-- NOTE: "(en français)" label on the French-language video. -->
+      <div class="testimonial-videos fade-in">
+        {testimonialVideos.map((v) => (
+          <button
+            class="testimonial-video-card"
+            data-video-src={v.src}
+            data-video-poster={v.poster}
+            aria-label={`Play video testimonial${v.label ? ' ' + v.label : ''}`}
+            type="button"
+          >
+            <div class="testimonial-video-card__thumb">
+              <img src={v.poster} alt={`Video testimonial poster${v.label ? ' ' + v.label : ''}`} loading="lazy" />
+              <span class="testimonial-video-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="36" height="36" fill="white"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.55)"/><polygon points="10,8 18,12 10,16" fill="white"/></svg>
+              </span>
+            </div>
+            {v.label && <span class="testimonial-video-card__label">{v.label}</span>}
+          </button>
+        ))}
+      </div>
+
+      <!-- Existing written quotes — kept exactly as-is (Item 9 requirement) -->
       <div class="testimonials-grid">
         <figure class="testimonial-card fade-in">
           <blockquote class="testimonial" data-i18n="groups.testimonials.q1">
@@ -110,6 +250,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </blockquote>
           <figcaption class="testimonial__attribution" data-i18n="groups.testimonials.a3">— David · Writing Retreat, May 2025</figcaption>
         </figure>
+
+        <!-- Item 9: Fourth written quote — Florence H., VRBO -->
+        <!-- PLACEMENT NOTE: This is the assistant's placement of Florence's review;
+             the owner should move it if preferred (e.g., before the video row, or after). -->
+        <figure class="testimonial-card testimonial-card--florence fade-in">
+          <blockquote class="testimonial" data-i18n="groups.testimonials.q4">
+            "The reality far exceeded our expectations… We wholeheartedly recommend your rental to anyone who appreciates peace, quiet, and refinement."
+          </blockquote>
+          <figcaption class="testimonial__attribution" data-i18n="groups.testimonials.a4">— Florence H., VRBO</figcaption>
+          <!-- "Read the full review" expander — full text ⏳ owner will paste in below -->
+          <details class="testimonial-card__expander">
+            <summary class="testimonial-card__expander-toggle" data-i18n="groups.testimonials.florence.readmore">Read the full review</summary>
+            <div class="testimonial-card__expander-body">
+              <!-- TODO: paste Florence's full review text here when received from owner -->
+              <p style="color: var(--ink-mute); font-style: italic;">[Full review text — owner to paste]</p>
+            </div>
+          </details>
+        </figure>
       </div>
     </div>
   </section>
@@ -127,12 +285,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <style>
-    /* Testimonials section needs real breathing room — without this rule the class
-       had no padding and the cards collided with neighbours. */
+    /* Testimonials section needs real breathing room */
     .section--tighter { padding-top: clamp(72px, 8vw, 120px); padding-bottom: clamp(72px, 8vw, 120px); }
 
-    /* Plan-your-group-stay CTA: shows the photo at its full natural aspect (no
-       crop) followed by the call-to-action — fits horizontal images cleanly. */
+    /* Plan-your-group-stay CTA */
     .groups-cta {
       padding-top: clamp(56px, 7vw, 96px);
       padding-bottom: clamp(56px, 7vw, 96px);
@@ -149,10 +305,123 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       border-radius: 4px;
     }
 
+    /* ---- Item 8: Gallery trigger (wraps the lead image in each split section) ---- */
+    .groups-gallery-trigger {
+      position: relative;
+      cursor: zoom-in;
+      display: block;
+    }
+    .groups-gallery-trigger img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .groups-gallery-pill {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+    }
+    .groups-gallery-trigger:hover .groups-gallery-pill,
+    .groups-gallery-trigger:focus-visible .groups-gallery-pill {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 768px) {
+      .groups-gallery-pill { opacity: 1; transform: translateY(0); }
+    }
+    .groups-gallery-trigger:focus-visible {
+      outline: 2px solid var(--blue-primary);
+      outline-offset: 2px;
+    }
+
+    /* ---- Item 9: Video testimonial row ---- */
+    .testimonial-videos {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: clamp(12px, 2vw, 20px);
+      margin-bottom: clamp(32px, 4vw, 52px);
+    }
+    @media (max-width: 1024px) {
+      .testimonial-videos { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .testimonial-videos { grid-template-columns: repeat(2, 1fr); }
+    }
+    .testimonial-video-card {
+      position: relative;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .testimonial-video-card__thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #111;
+    }
+    .testimonial-video-card__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .testimonial-video-card:hover .testimonial-video-card__thumb img {
+      transform: scale(1.03);
+    }
+    .testimonial-video-card__play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s ease;
+    }
+    .testimonial-video-card:hover .testimonial-video-card__play { opacity: 0.85; }
+    .testimonial-video-card__label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-mute);
+      font-style: italic;
+    }
+
+    /* ---- Testimonials grid — 4 cards now (Florence is 4th) ---- */
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: clamp(20px, 3vw, 36px);
+    }
+    @media (min-width: 1024px) {
+      /* 3 + 1 layout: first 3 in a row, Florence full-width below */
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .testimonial-card--florence {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 640px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
     }
     .testimonial-card {
       margin: 0;
@@ -177,9 +446,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       letter-spacing: 0.06em;
       color: var(--ink-mute);
     }
-    @media (max-width: 900px) {
-      .testimonials-grid { grid-template-columns: 1fr; }
+
+    /* Florence expander */
+    .testimonial-card__expander {
+      margin-top: 16px;
+    }
+    .testimonial-card__expander-toggle {
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      color: var(--blue-primary);
+      list-style: none;
+    }
+    .testimonial-card__expander-toggle::-webkit-details-marker { display: none; }
+    .testimonial-card__expander-body {
+      margin-top: 12px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
     }
   </style>
+
+  <!-- Item 9: Video card click handler — opens video in the fullscreen lightbox -->
+  <script is:inline>
+    (function () {
+      document.querySelectorAll('.testimonial-video-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var src = card.dataset.videoSrc;
+          var poster = card.dataset.videoPoster;
+          if (!src) return;
+          // Build a single-item "gallery" with type:video so the lightbox video path activates
+          var items = [{ type: 'video', src: src, poster: poster || '', alt: '', caption: '' }];
+          // The lightbox open() function is scoped inside its IIFE but we can trigger it
+          // via a synthetic data-gallery click on a hidden trigger element.
+          // Instead we dispatch a custom event that the lightbox script listens for.
+          var lb = document.getElementById('lightbox');
+          if (!lb) return;
+          // Re-use the global click delegation: create a temporary element
+          // with data-gallery and click it so the existing handler fires.
+          var tmp = document.createElement('div');
+          tmp.setAttribute('data-gallery', JSON.stringify(items));
+          tmp.style.display = 'none';
+          document.body.appendChild(tmp);
+          tmp.click();
+          document.body.removeChild(tmp);
+        });
+      });
+    })();
+  </script>
 
 </BaseLayout>
