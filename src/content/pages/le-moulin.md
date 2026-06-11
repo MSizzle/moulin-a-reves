@@ -49,12 +49,8 @@ gallery:
     alt: "Front gate at Le Moulin with vintage bicycle and baguette"
   - src: "/images/homes/le-moulin-courtyard.webp"
     alt: "Le Moulin courtyard with the stone facade and gardens"
-  - src: "/images/homes/le-moulin-welcome-rose.webp"
-    alt: "Welcoming rose at the entrance to Le Moulin"
   - src: "/images/homes/le-moulin-office.webp"
     alt: "Le Moulin office with desk and reading chair"
-  - src: "/images/homes/le-moulin-marie-antoinette.webp"
-    alt: "Marie Antoinette the resident hen in the gardens at Le Moulin"
   - src: "/images/homes/le-moulin-marie-antoinette-patio.webp"
     alt: "Marie Antoinette on the patio at Le Moulin"
 ---
