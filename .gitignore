@@ -43,3 +43,7 @@ scripts/previews/
 
 # local-only snapshot log dirs (the git tags are the canonical rollback markers)
 .planning/snapshots/
+
+# raw asset inbox from client — only processed outputs (mp4/webp) are committed; raw .movs can exceed 100MB
+June 2026 Moulin/
+assets-inbox/
