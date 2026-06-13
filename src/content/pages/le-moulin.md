@@ -23,6 +23,8 @@ gallery:
     alt: "Le Moulin — stone facade with blue shutters and antique flower cart"
   - src: "/images/homes/le-moulin-estate-river.webp"
     alt: "The estate with the Juine River running through the property"
+  - src: "/images/homes/le-moulin-stream-flowerboxes.webp"
+    alt: "The Juine stream running beneath the flower-boxed footbridge at Le Moulin's blue door"
   - src: "/images/homes/le-moulin-living.webp"
     alt: "Le Salon — leather club chairs, exposed beams, and the antique mill wheel"
   - src: "/images/homes/le-moulin-dining.webp"
