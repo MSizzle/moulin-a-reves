@@ -18,7 +18,7 @@ const bedrooms = [
     title: 'Through the Looking Glass',
     summary: 'King bedroom on the ground floor — en-suite bath with tub and shower.',
     longDescription: 'The largest bedroom.',
-    qualities: '🛌 King bed · 🛁 En-suite tub & shower · 🌿 Ground floor',
+    qualities: 'King bed · En-suite tub & shower · Ground Floor',
     details: [
       { label: 'Bed', value: 'King' },
       { label: 'Floor', value: 'Ground' },
@@ -38,7 +38,7 @@ const bedrooms = [
     id: 'american-in-paris',
     title: 'An American in Paris',
     summary: 'Queen bedroom on the ground floor.',
-    qualities: '🛏 Queen bed · 🚿 Hall tub & shower · 🌸 Garden view',
+    qualities: 'Queen bed · Hall tub & shower · Ground Floor',
     details: [
       { label: 'Bed', value: 'Queen' },
       { label: 'Floor', value: 'Ground' },
@@ -59,7 +59,7 @@ const bedrooms = [
     title: 'Sleeping Beauty',
     summary: 'Attic room with two twins. Up two steep flights.',
     longDescription: 'Tucked under the eaves, themed around the fairy tale — antique spinning wheels visible through the doorway. The two stairwells climbing up to the room are lined with framed scarf-print and embroidered art.',
-    qualities: '🛏 Twin beds · 🚿 Hall bath · Up two steep flights',
+    qualities: 'Twin beds · Hall bath · Up Steep Stairs',
     details: [
       { label: 'Bed', value: '2 Twins' },
       { label: 'Floor', value: 'Attic' },
@@ -188,7 +188,7 @@ const amenities = [
 ];
 ---
 
-<BaseLayout title="The Hollywood Hideaway — French Countryside Rental Near Paris" description="Three-bedroom French countryside rental with a suite, sleeps 6. A secluded sanctuary of Hollywood's top power lawyer. Méréville, France — one hour from Paris.">
+<BaseLayout title="The Hollywood Hideaway — French Countryside Retreat Near Paris" description="A longtime private retreat in Méréville, France — sleeps 6, one hour from Paris.">
 
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -258,26 +258,17 @@ const amenities = [
     }
   </style>
 
-  <!-- Stats Bar -->
-  <section class="section" style="padding-top: 32px; padding-bottom: 24px;">
-    <div class="container">
-      <div class="stats-bar">
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.bedrooms}</div>
-          <div class="stats-bar__label" data-i18n="hideaway.stats.bedrooms">Bedrooms</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.bathrooms}</div>
-          <div class="stats-bar__label" data-i18n="hideaway.stats.bathrooms">Baths</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.sleeps}</div>
-          <div class="stats-bar__label" data-i18n="hideaway.stats.guests">Guests</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.beds}</div>
-          <div class="stats-bar__label" data-i18n="hideaway.stats.beds">Beds</div>
-        </div>
+  <!-- Narrative / Story (directly beneath hero) -->
+  <section class="section--tight">
+    <div class="container--narrow fade-in">
+      <h2 data-i18n="hideaway.narrative.heading">{cms.title}</h2>
+      <div style="margin-top: 24px;">
+        <p class="prose-lead" data-i18n="hideaway.narrative.summary">
+          For almost half a century, The Hollywood Hideaway was the cherished summer retreat of renowned Hollywood attorney Bert Fields. Here he spent Augusts writing, cooking, entertaining friends, and enjoying the pleasures of French country life far from the spotlight of Los Angeles.
+        </p>
+        <p style="margin-top: 16px;" data-i18n="hideaway.narrative.p1">
+          Thoughtfully decorated by his wife, renowned art advisor Barbara Guggenheim, the Hollywood Hideaway's bedrooms are named for classic movies and inspired by the French antiques within them. The oversized living-and-dining room opens onto a wisteria-covered gazebo and patio. This home retains the warmth and character that made it such a beloved refuge for generations of family and friends.
+        </p>
       </div>
     </div>
   </section>
@@ -285,41 +276,26 @@ const amenities = [
   <!-- Photo Carousel -->
   <PhotoCarousel images={carouselImages} />
 
-  <!-- Narrative Description -->
-  <section class="section--tight">
-    <div class="container--narrow fade-in">
-      <h2 data-i18n="hideaway.narrative.heading">{cms.title}</h2>
-      <div style="margin-top: 24px;">
-        <p class="prose-lead" data-i18n="hideaway.narrative.summary">
-          {cms.summary}
-        </p>
-        <p style="margin-top: 16px;" data-i18n="hideaway.narrative.p1">
-          For decades, the treasured sanctuary of Hollywood's #1 power lawyer — clients included Tom Cruise, Dustin Hoffman, Michael Jackson, and Mario Puzo. Furnished with French antiques.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rooms (bedrooms) -->
-  <RoomShowcase
-    eyebrow=""
-    heading="Where you'll sleep"
-    intro="3 bedrooms."
-    rooms={bedrooms}
-    background="stone"
-    i18nKey="hideaway.bedrooms"
-    hideTileSummary={true}
-  />
-
   <!-- Living Spaces -->
   <RoomShowcase
     eyebrow=""
-    heading="Where you'll gather &amp; dine"
+    heading="The Living Spaces"
     intro=""
     rooms={livingSpaces}
     i18nKey="hideaway.living"
     hideTileSummary={true}
     gatherMode={true}
+  />
+
+  <!-- The Bedrooms -->
+  <RoomShowcase
+    eyebrow=""
+    heading="The Bedrooms"
+    intro="4 Bedrooms • 2 Bathrooms • 4 Beds • Sleeps 6"
+    rooms={bedrooms}
+    background="stone"
+    i18nKey="hideaway.bedrooms"
+    hideTileSummary={true}
   />
 
   <!-- Explore the Estate (4-square lightbox tiles) + Also Included amenity list -->
@@ -372,7 +348,7 @@ const amenities = [
               <span data-i18n="hideaway.cross.moulin.beds">5 Bedrooms</span>
               <span data-i18n="hideaway.cross.moulin.sleeps">Sleeps 10</span>
             </div>
-            <p>An historic mill on the Juine River. The river runs through the house. Five bedrooms across three floors.</p>
+            <p>The original mill and principal residence of the estate.</p>
             <span class="link-arrow">Discover Le Moulin</span>
           </div>
         </a>
@@ -386,7 +362,7 @@ const amenities = [
               <span data-i18n="hideaway.cross.riviere.beds">2 Bedrooms</span>
               <span data-i18n="hideaway.cross.riviere.sleeps">Sleeps 4</span>
             </div>
-            <p>Sun-drenched cottage with French doors onto the stream and apple trees. Two bedrooms, dining for 18, an authentic Louis Vuitton trunk as a coffee table.</p>
+            <p>The sun-drenched cottage where your cares float away.</p>
             <span class="link-arrow">Discover La Maison</span>
           </div>
         </a>

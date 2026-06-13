@@ -18,7 +18,7 @@ const bedrooms = [
     title: 'La Suite Romantique',
     summary: 'Upstairs master with king bed, en-suite shower.',
     longDescription: 'The largest bedroom in the house. Tall windows, exposed beams, and a king bed.',
-    qualities: '🛌 King bedroom · 🛁 En-suite shower · ✨ Upstairs master',
+    qualities: 'King bedroom · En-suite shower · Upstairs',
     details: [
       { label: 'Bed', value: 'King' },
       { label: 'Floor', value: 'Upstairs' },
@@ -37,7 +37,7 @@ const bedrooms = [
     title: 'La Chambre de la Rivière',
     summary: 'The River Room — two twin beds on the ground floor.',
     longDescription: 'A quiet ground-floor bedroom that opens onto the millhouse hall. The river runs just beyond the wall.',
-    qualities: '🛏 Twin beds · 🚿 Hall shower · 🌊 Beside the river',
+    qualities: 'Twin beds · Hall shower · Ground Floor',
     details: [
       { label: 'Bed', value: '2 Twins' },
       { label: 'Floor', value: 'Ground' },
@@ -53,7 +53,7 @@ const bedrooms = [
     id: 'cerises',
     title: 'Les Cerises',
     summary: 'The Cherry Room — queen bed, in-room sink and bidet.',
-    qualities: '🛏 Queen bed · 🪞 In-room sink & bidet · 🛁 Hall clawfoot tub',
+    qualities: 'Queen bed · In-room sink & bidet · Hall clawfoot tub · Upstairs',
     details: [
       { label: 'Bed', value: 'Queen' },
       { label: 'Floor', value: 'Upstairs' },
@@ -70,7 +70,7 @@ const bedrooms = [
     id: 'roses',
     title: 'Les Roses',
     summary: 'The Rose Room — two twin beds.',
-    qualities: '🛏 Twin beds · 🛁 Hall clawfoot tub · 🌸 Upstairs',
+    qualities: 'Twin beds · Hall clawfoot tub · Upstairs',
     details: [
       { label: 'Bed', value: '2 Twins' },
       { label: 'Floor', value: 'Upstairs' },
@@ -86,7 +86,7 @@ const bedrooms = [
     title: 'Le Loft Suite',
     summary: 'Attic suite with two twins (combinable as king) plus a separate TV area.',
     longDescription: 'A whole-floor retreat. Up a steep flight of stairs.',
-    qualities: '🛏 Twins or King · 🛁 Hall shower · Up steep stairs',
+    qualities: 'Twins or King · Hall shower · Up Steep Stairs',
     details: [
       { label: 'Bed', value: '2 Twins (or King) + 2 Floor Twins' },
       { label: 'Floor', value: 'Attic' },
@@ -214,7 +214,7 @@ const amenities = [
 ];
 ---
 
-<BaseLayout title="Le Moulin — Historic Mill Rental in Méréville, France" description="Historic 1800s mill house in Méréville, France. Sleeps 10 across 5 bedrooms and 4 baths. The Juine River flows through the house. One hour from Paris.">
+<BaseLayout title="Le Moulin — Historic Mill House in Méréville, France" description="Historic 1800s mill house in Méréville, France. Sleeps 10 across 5 bedrooms and 4 baths. The Juine River flows through the house. One hour from Paris.">
 
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -284,26 +284,20 @@ const amenities = [
     }
   </style>
 
-  <!-- Stats Bar -->
-  <section class="section" style="padding-top: 32px; padding-bottom: 24px;">
-    <div class="container">
-      <div class="stats-bar">
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.bedrooms}</div>
-          <div class="stats-bar__label" data-i18n="le-moulin.stats.bedrooms">Bedrooms</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.bathrooms}</div>
-          <div class="stats-bar__label" data-i18n="le-moulin.stats.bathrooms">Baths</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.sleeps}</div>
-          <div class="stats-bar__label" data-i18n="le-moulin.stats.guests">Guests</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.beds}</div>
-          <div class="stats-bar__label" data-i18n="le-moulin.stats.beds">Beds</div>
-        </div>
+  <!-- Narrative / Story (directly beneath hero) -->
+  <section class="section--tight">
+    <div class="container--narrow fade-in">
+      <h2 data-i18n="le-moulin.narrative.heading">{cms.title}</h2>
+      <div style="margin-top: 24px;">
+        <p class="prose-lead" data-i18n="le-moulin.narrative.summary">
+          The original mill house was once home to the famed vaudevillian Borrah Minevitch. Here he entertained an extraordinary circle of friends — among them Charlie Chaplin, Jean Cocteau, Jacques Tati, the legendary Paris restaurant Maxim's, and even the Duchess of Windsor.
+        </p>
+        <p style="margin-top: 16px;" data-i18n="le-moulin.narrative.p1">
+          Borrah's personal treasures — musical instruments, antiques, and an 1891 Folies Bergère poster — fill Le Moulin with his theatrical style.
+        </p>
+        <p style="margin-top: 16px;" data-i18n="le-moulin.narrative.p2">
+          The spacious eat-in kitchen and formal dining room continue a tradition of hospitality, gathering, and lively conversation that has endured for generations.
+        </p>
       </div>
     </div>
   </section>
@@ -311,41 +305,26 @@ const amenities = [
   <!-- Photo Carousel -->
   <PhotoCarousel images={carouselImages} />
 
-  <!-- Narrative Description -->
-  <section class="section--tight">
-    <div class="container--narrow fade-in">
-      <h2 data-i18n="le-moulin.narrative.heading">{cms.title}</h2>
-      <div style="margin-top: 24px;">
-        <p class="prose-lead" data-i18n="le-moulin.narrative.summary">
-          {cms.summary}
-        </p>
-        <p style="margin-top: 16px;" data-i18n="le-moulin.narrative.p1">
-          Built in 1800. The Juine River flows through the house. Wake up to the roosters; cross the Giverny-style bridge to the gardens.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rooms (bedrooms) -->
-  <RoomShowcase
-    eyebrow=""
-    heading="Where you'll sleep"
-    intro="5 bedrooms on 3 floors."
-    rooms={bedrooms}
-    background="stone"
-    i18nKey="le-moulin.bedrooms"
-    hideTileSummary={true}
-  />
-
   <!-- Living Spaces -->
   <RoomShowcase
     eyebrow=""
-    heading="Where you'll gather &amp; dine"
+    heading="The Living Spaces"
     intro=""
     rooms={livingSpaces}
     i18nKey="le-moulin.living"
     hideTileSummary={true}
     gatherMode={true}
+  />
+
+  <!-- The Bedrooms -->
+  <RoomShowcase
+    eyebrow=""
+    heading="The Bedrooms"
+    intro="5 Bedrooms • 4 Bathrooms • 8 Beds • Sleeps 10"
+    rooms={bedrooms}
+    background="stone"
+    i18nKey="le-moulin.bedrooms"
+    hideTileSummary={true}
   />
 
   <!-- Explore the Estate (4-square lightbox tiles) + Also Included amenity list -->
@@ -398,7 +377,7 @@ const amenities = [
               <span data-i18n="le-moulin.cross.hideaway.beds">3 Bedrooms + Suite</span>
               <span data-i18n="le-moulin.cross.hideaway.sleeps">Sleeps 6</span>
             </div>
-            <p>Three bedrooms plus a suite. The secluded sanctuary of Hollywood's #1 power lawyer — French antiques, a covered gazebo, the compound's gardens.</p>
+            <p>The secluded retreat once enjoyed by French and American stars.</p>
             <span class="link-arrow">Discover the Hideaway</span>
           </div>
         </a>
@@ -412,7 +391,7 @@ const amenities = [
               <span data-i18n="le-moulin.cross.riviere.beds">2 Bedrooms</span>
               <span data-i18n="le-moulin.cross.riviere.sleeps">Sleeps 4</span>
             </div>
-            <p>Sun-drenched cottage with French doors onto the stream and apple trees. Two bedrooms, dining for 18, an authentic Louis Vuitton trunk as a coffee table.</p>
+            <p>The sun-drenched cottage where your cares float away.</p>
             <span class="link-arrow">Discover La Maison</span>
           </div>
         </a>

@@ -18,10 +18,8 @@ summary: "Sun-drenched cottage with French doors onto the stream and apple trees
 
 # Photo carousel — main page gallery
 gallery:
-  - src: "/images/homes/le-jardin-hero.webp"
-    alt: "La Maison de la Rivière with the stream running alongside the garden"
   - src: "/images/homes/maison-ext.webp"
-    alt: "Front facade of Maison sur la Rivière with dormers and ivy"
+    alt: "Front facade of Maison de la Rivière with dormers and ivy"
   - src: "/images/homes/riviere-facade-ivy.webp"
     alt: "Ivy-clad stone facade of La Maison de la Rivière with blue shutters and the Cavalier on the gravel"
   - src: "/images/homes/riviere-blue-shutters-roses.webp"
@@ -45,5 +43,7 @@ gallery:
   - src: "/images/homes/maison-ecrivains.webp"
     alt: "La Chambre des Écrivains with toile-print wallpaper and corner sink"
   - src: "/images/homes/maison-bath.webp"
-    alt: "Bathroom at Maison sur la Rivière"
+    alt: "Bathroom at Maison de la Rivière"
+  - src: "/images/homes/le-jardin-hero.webp"
+    alt: "La Maison de la Rivière with the stream running alongside the garden"
 ---

@@ -1834,22 +1834,24 @@
     "en": "Le Moulin"
   },
   "le-moulin.narrative.summary": {
-    "en": " A beautiful, historic mill house in Mèrèville, the watercress capital of France. Built in 1800, this was a working mill — in fact the Juine River still flows right through the house! "
+    "en": "The original mill house was once home to the famed vaudevillian Borrah Minevitch. Here he entertained an extraordinary circle of friends — among them Charlie Chaplin, Jean Cocteau, Jacques Tati, the legendary Paris restaurant Maxim's, and even the Duchess of Windsor."
   },
   "le-moulin.narrative.p1": {
-    "en": "Relax in the gardens. Let your worries float away on the Juine River. Wake up to the roosters crowing in the chicken coop. Go back in time as you gaze at the flower gardens and Giverny-style bridge. Make a wish in the wishing well."
+    "en": "Borrah's personal treasures — musical instruments, antiques, and an 1891 Folies Bergère poster — fill Le Moulin with his theatrical style."
   },
   "le-moulin.narrative.p2": {
-    "en": "Dine al fresco in the beautiful setting. This is a place inspiration, fun and quiet time together."
+    "en": "The spacious eat-in kitchen and formal dining room continue a tradition of hospitality, gathering, and lively conversation that has endured for generations."
   },
   "le-moulin.bedrooms.eyebrow": {
     "en": ""
   },
   "le-moulin.bedrooms.heading": {
-    "en": "Where you'll sleep"
+    "en": "The Bedrooms",
+    "fr": "Les Chambres"
   },
   "le-moulin.bedrooms.intro": {
-    "en": "Five bedrooms on three floors"
+    "en": "5 Bedrooms • 4 Bathrooms • 8 Beds • Sleeps 10",
+    "fr": "5 Chambres • 4 Salles de bain • 8 Lits • Couchage 10"
   },
   "le-moulin.bedrooms.room.riviere.title": {
     "en": "La Chambre de la Rivière"
@@ -1885,8 +1887,8 @@
     "en": ""
   },
   "le-moulin.living.heading": {
-    "en": "Where you'll gather & dine",
-    "fr": "Où vous vous retrouverez & dînerez"
+    "en": "The Living Spaces",
+    "fr": "Les Espaces de Vie"
   },
   "le-moulin.living.intro": {
     "en": ""
@@ -2032,7 +2034,7 @@
     "en": "The Hollywood Hideaway"
   },
   "hideaway.hero.tagline": {
-    "en": "Where French and American stars entertained."
+    "en": "A secluded countryside retreat — sleeps 6."
   },
   "hideaway.stats.bedroomsSuite": {
     "en": "Bedrooms + Suite"
@@ -2053,10 +2055,10 @@
     "en": "The Hollywood Hideaway"
   },
   "hideaway.narrative.summary": {
-    "en": ""
+    "en": "For almost half a century, The Hollywood Hideaway was the cherished summer retreat of renowned Hollywood attorney Bert Fields. Here he spent Augusts writing, cooking, entertaining friends, and enjoying the pleasures of French country life far from the spotlight of Los Angeles."
   },
   "hideaway.narrative.p1": {
-    "en": "For decades, The Hollywood Hideaway was a treasured sanctuary getaway for Hollywood's #1 power lawyer whose clients included Tom Cruise, Dustin Hoffman, Michael Jackson, Mario Puzzo and the luminaries of LA."
+    "en": "Thoughtfully decorated by his wife, renowned art advisor Barbara Guggenheim, the Hollywood Hideaway's bedrooms are named for classic movies and inspired by the French antiques within them. The oversized living-and-dining room opens onto a wisteria-covered gazebo and patio. This home retains the warmth and character that made it such a beloved refuge for generations of family and friends."
   },
   "hideaway.narrative.p2": {
     "en": "This was his happy home where he entertained his Hollywood pals and cooked and relaxed in the French countryside. Now you can follow in the footsteps of the stars and make this your own home in France. It is beautifully furnished with French antiques."
@@ -2065,10 +2067,12 @@
     "en": ""
   },
   "hideaway.bedrooms.heading": {
-    "en": "Where you'll sleep"
+    "en": "The Bedrooms",
+    "fr": "Les Chambres"
   },
   "hideaway.bedrooms.intro": {
-    "en": "Three bedrooms plus an adjacent suite"
+    "en": "4 Bedrooms • 2 Bathrooms • 4 Beds • Sleeps 6",
+    "fr": "4 Chambres • 2 Salles de bain • 4 Lits • Couchage 6"
   },
   "hideaway.bedrooms.room.looking-glass.title": {
     "en": "Through the Looking Glass"
@@ -2098,8 +2102,8 @@
     "en": ""
   },
   "hideaway.living.heading": {
-    "en": "Where you'll gather & dine",
-    "fr": "Où vous vous retrouverez & dînerez"
+    "en": "The Living Spaces",
+    "fr": "Les Espaces de Vie"
   },
   "hideaway.living.intro": {
     "en": "One long upstairs room and the bright kitchen below — the working heart of the Hideaway."
@@ -2256,16 +2260,18 @@
     "en": "La Maison de la Rivière"
   },
   "riviere.narrative.summary": {
-    "en": ""
+    "en": "Bathed in natural light and overlooking the river, Maison de la Rivière combines the beauty of the French countryside with an atmosphere of creativity and inspiration. Floor-to-ceiling French doors open to the water, while thoughtfully collected artwork and inviting gathering spaces make it a favorite place for conversation. Whether writing, laughing, or simply watching the river flow by, guests are drawn to the elegance and beauty that make Maison de la Rivière so inspiring."
   },
   "riviere.bedrooms.eyebrow": {
     "en": ""
   },
   "riviere.bedrooms.heading": {
-    "en": "Where you'll sleep"
+    "en": "The Bedrooms",
+    "fr": "Les Chambres"
   },
   "riviere.bedrooms.intro": {
-    "en": "Two upstairs bedrooms sharing a hall bath"
+    "en": "2 Bedrooms • 1 Bathroom • 3 Beds • Sleeps 4",
+    "fr": "2 Chambres • 1 Salle de bain • 3 Lits • Couchage 4"
   },
   "riviere.bedrooms.room.artistes.title": {
     "en": "La Chambre des Artistes"
@@ -2283,8 +2289,8 @@
     "en": ""
   },
   "riviere.living.heading": {
-    "en": "Where you'll gather & dine",
-    "fr": "Où vous vous retrouverez & dînerez"
+    "en": "The Living Spaces",
+    "fr": "Les Espaces de Vie"
   },
   "riviere.living.intro": {
     "en": "A sun-drenched living room, a dining room for eighteen, and a stone-and-beam kitchen."

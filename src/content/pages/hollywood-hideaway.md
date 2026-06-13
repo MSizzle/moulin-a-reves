@@ -2,7 +2,7 @@
 # The Hollywood Hideaway — Content
 
 title: "The Hollywood Hideaway"
-tagline: "A secluded retreat in the French countryside — sleeps 6."
+tagline: "A secluded countryside retreat — sleeps 6."
 heroImage: "/images/homes/hh-patio.webp"
 eyebrow: ""
 
@@ -16,7 +16,7 @@ sleeps: 6
 sqm: null
 
 # Summary
-summary: "Three bedrooms plus a suite. The secluded sanctuary of Hollywood's #1 power lawyer — French antiques, a covered gazebo, the compound's gardens."
+summary: "A longtime private retreat in the French countryside — three bedrooms plus a suite, French antiques, a covered gazebo, and the compound's gardens. Sleeps 6."
 
 # Photo carousel — main page gallery
 gallery:

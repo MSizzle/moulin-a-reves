@@ -34,6 +34,38 @@ considered safe, but listed for completeness: `home.exp.events.desc`, `homes.ren
 room to gather → « de la place pour se retrouver »), `groups.yoga.p2` (twenty→ten),
 the three `groups.*.cta` arrow removals, `art.hero.subtitle` (dropped "— BROUILLON").
 
+## Phase 2 — house pages (Le Moulin / Hollywood Hideaway / Maison de la Rivière)
+
+### English-only — FR translation still needed (left EN, not guessed)
+
+These are the new/replaced **story** paragraphs and one tagline. They contain proper nouns
+and nuance, so they were left English-only pending a native-speaker pass (per the "translate
+where confident, log the rest" workflow). Keys in `public/i18n/translations.json`:
+
+- `le-moulin.narrative.summary`, `le-moulin.narrative.p1`, `le-moulin.narrative.p2` — Le Moulin
+  story (Borrah Minevitch / Maxim's / Folies Bergère / eat-in kitchen tradition).
+- `hideaway.hero.tagline` — "A secluded countryside retreat — sleeps 6." (en only; FR needed)
+- `hideaway.narrative.summary`, `hideaway.narrative.p1` — Hollywood Hideaway story
+  (Bert Fields / Barbara Guggenheim / bedrooms named for classic movies).
+- `riviere.narrative.summary` — Maison de la Rivière story (verbatim client copy).
+
+### FR provided this pass — please verify wording/tone
+
+| Key(s) | EN | FR provided (review) |
+|---|---|---|
+| `*.bedrooms.heading` (all 3 houses) | The Bedrooms | Les Chambres |
+| `*.living.heading` (all 3 houses) | The Living Spaces | Les Espaces de Vie (confirm vs. "Les Pièces à Vivre") |
+| `le-moulin.bedrooms.intro` | 5 Bedrooms • 4 Bathrooms • 8 Beds • Sleeps 10 | 5 Chambres • 4 Salles de bain • 8 Lits • Couchage 10 |
+| `hideaway.bedrooms.intro` | 4 Bedrooms • 2 Bathrooms • 4 Beds • Sleeps 6 | 4 Chambres • 2 Salles de bain • 4 Lits • Couchage 6 |
+| `riviere.bedrooms.intro` | 2 Bedrooms • 1 Bathroom • 3 Beds • Sleeps 4 | 2 Chambres • 1 Salle de bain • 3 Lits • Couchage 4 |
+
+### English-only (no i18n key) — FR shows English
+
+- House-page **bedroom `qualities`** lines (e.g. "King bedroom · En-suite shower · Upstairs")
+  render without a `data-i18n` key in `RoomShowcase.astro`, so French visitors see English.
+  Matches prior behaviour (they were emoji English before). Add keys if FR is wanted.
+- Cross-link / listing **card descriptions** (short house blurbs) are static `<p>` with no key.
+
 ## Non-runtime note
 
 `src/i18n/translations.ts` is the legacy seed (not used at runtime). Its `home.intro.text`

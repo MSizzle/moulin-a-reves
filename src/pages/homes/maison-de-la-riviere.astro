@@ -17,7 +17,7 @@ const bedrooms = [
     id: 'artistes',
     title: 'La Chambre des Artistes',
     summary: 'The Artists\' Room — upstairs. King bed plus a twin.',
-    qualities: '🛌 King + twin beds · 🛁 Hall tub & shower · 🎨 Upstairs atelier',
+    qualities: 'King + twin beds · Hall tub & shower · Upstairs',
     details: [
       { label: 'Bed', value: 'King + Twin' },
       { label: 'Floor', value: 'Upstairs' },
@@ -26,14 +26,14 @@ const bedrooms = [
     photos: [
       { src: '/images/homes/maison-artistes.webp', alt: 'La Chambre des Artistes — attic bedroom with cathedral ceiling and antique drawings' },
       { src: '/images/homes/maison-artistes-couch.webp', alt: 'La Chambre des Artistes facing the couch, alternate angle' },
-      { src: '/images/homes/maison-bath.webp', alt: 'Shared upstairs bathroom at Maison sur la Rivière' },
+      { src: '/images/homes/maison-bath.webp', alt: 'Shared upstairs bathroom at Maison de la Rivière' },
     ],
   },
   {
     id: 'ecrivains',
     title: 'La Chambre des Écrivains',
     summary: 'The Writers\' Room — upstairs. Double bed, in-room sink.',
-    qualities: '🛏 Double bed · ✍️ In-room sink · 🛁 Hall tub & shower',
+    qualities: 'Double bed · In-room sink · Hall tub & shower · Upstairs',
     details: [
       { label: 'Bed', value: 'Double' },
       { label: 'Floor', value: 'Upstairs' },
@@ -42,7 +42,7 @@ const bedrooms = [
     photos: [
       { src: '/images/homes/maison-ecrivains.webp', alt: 'La Chambre des Écrivains with toile-print wallpaper and corner sink' },
       { src: '/images/homes/maison-ecrivains-2.webp', alt: 'La Chambre des Écrivains with the door to the balcony, alternate view' },
-      { src: '/images/homes/maison-bath.webp', alt: 'Shared upstairs bathroom at Maison sur la Rivière' },
+      { src: '/images/homes/maison-bath.webp', alt: 'Shared upstairs bathroom at Maison de la Rivière' },
     ],
   },
 ];
@@ -156,7 +156,7 @@ const amenities = [
 ];
 ---
 
-<BaseLayout title="La Maison de la Rivière — Sunny Cottage Rental Near Paris" description="Sunny two-bedroom cottage rental in Méréville, France — sleeps 4. Overlooks the Juine River and apple trees. Dining for 18, one hour from Paris.">
+<BaseLayout title="La Maison de la Rivière — Sunny Cottage Near Paris" description="Sunny two-bedroom cottage in Méréville, France — sleeps 4. Overlooks the Juine River and apple trees. Dining for 18, one hour from Paris.">
 
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -199,26 +199,14 @@ const amenities = [
     </div>
   </section>
 
-  <!-- Stats Bar -->
-  <section class="section" style="padding-top: 32px; padding-bottom: 24px;">
-    <div class="container">
-      <div class="stats-bar">
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.bedrooms}</div>
-          <div class="stats-bar__label" data-i18n="riviere.stats.bedrooms">Bedrooms</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.bathrooms}</div>
-          <div class="stats-bar__label" data-i18n="riviere.stats.bathrooms">Bathrooms</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.sleeps}</div>
-          <div class="stats-bar__label" data-i18n="riviere.stats.guests">Guests</div>
-        </div>
-        <div class="stats-bar__item">
-          <div class="stats-bar__number">{cms.beds}</div>
-          <div class="stats-bar__label" data-i18n="riviere.stats.beds">Beds</div>
-        </div>
+  <!-- Narrative / Story (directly beneath hero) -->
+  <section class="section--tight">
+    <div class="container--narrow fade-in">
+      <h2 data-i18n="riviere.narrative.heading">{cms.title}</h2>
+      <div style="margin-top: 24px;">
+        <p class="prose-lead" data-i18n="riviere.narrative.summary">
+          Bathed in natural light and overlooking the river, Maison de la Rivière combines the beauty of the French countryside with an atmosphere of creativity and inspiration. Floor-to-ceiling French doors open to the water, while thoughtfully collected artwork and inviting gathering spaces make it a favorite place for conversation. Whether writing, laughing, or simply watching the river flow by, guests are drawn to the elegance and beauty that make Maison de la Rivière so inspiring.
+        </p>
       </div>
     </div>
   </section>
@@ -226,38 +214,26 @@ const amenities = [
   <!-- Photo Carousel -->
   <PhotoCarousel images={carouselImages} />
 
-  <!-- Narrative Description -->
-  <section class="section--tight">
-    <div class="container--narrow fade-in">
-      <h2 data-i18n="riviere.narrative.heading">{cms.title}</h2>
-      <div style="margin-top: 24px;">
-        <p class="prose-lead" data-i18n="riviere.narrative.summary">
-          {cms.summary}
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rooms (bedrooms) -->
-  <RoomShowcase
-    eyebrow=""
-    heading="Where you'll sleep"
-    intro="2 bedrooms upstairs, sharing a hall bath."
-    rooms={bedrooms}
-    background="stone"
-    i18nKey="riviere.bedrooms"
-    hideTileSummary={true}
-  />
-
   <!-- Living Spaces -->
   <RoomShowcase
     eyebrow=""
-    heading="Where you'll gather &amp; dine"
+    heading="The Living Spaces"
     intro=""
     rooms={livingSpaces}
     i18nKey="riviere.living"
     hideTileSummary={true}
     gatherMode={true}
+  />
+
+  <!-- The Bedrooms -->
+  <RoomShowcase
+    eyebrow=""
+    heading="The Bedrooms"
+    intro="2 Bedrooms • 1 Bathroom • 3 Beds • Sleeps 4"
+    rooms={bedrooms}
+    background="stone"
+    i18nKey="riviere.bedrooms"
+    hideTileSummary={true}
   />
 
   <!-- Explore the Estate (4-square lightbox tiles) + Also Included amenity list -->
@@ -310,7 +286,7 @@ const amenities = [
               <span data-i18n="riviere.cross.moulin.beds">5 Bedrooms</span>
               <span data-i18n="riviere.cross.moulin.sleeps">Sleeps 10</span>
             </div>
-            <p>An historic mill on the Juine River. The river runs through the house. Five bedrooms across three floors.</p>
+            <p>The original mill and principal residence of the estate.</p>
             <span class="link-arrow">Discover Le Moulin</span>
           </div>
         </a>
@@ -324,7 +300,7 @@ const amenities = [
               <span data-i18n="riviere.cross.hideaway.beds">3 Bedrooms + Suite</span>
               <span data-i18n="riviere.cross.hideaway.sleeps">Sleeps 6</span>
             </div>
-            <p>Three bedrooms plus a suite. The secluded sanctuary of Hollywood's #1 power lawyer — French antiques, a covered gazebo, the compound's gardens.</p>
+            <p>The secluded retreat once enjoyed by French and American stars.</p>
             <span class="link-arrow">Discover the Hideaway</span>
           </div>
         </a>
