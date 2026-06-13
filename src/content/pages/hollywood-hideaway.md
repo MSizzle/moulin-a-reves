@@ -2,7 +2,7 @@
 # The Hollywood Hideaway — Content
 
 title: "The Hollywood Hideaway"
-tagline: "A 60-year sanctuary in the French countryside — sleeps 7."
+tagline: "A 60-year sanctuary in the French countryside — sleeps 6."
 heroImage: "/images/homes/hh-patio.webp"
 eyebrow: ""
 
@@ -12,7 +12,7 @@ suites: 1
 bathrooms: 2
 beds: 4
 pulloutSofas: 1
-sleeps: 7
+sleeps: 6
 sqm: null
 
 # Summary

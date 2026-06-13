@@ -83,7 +83,7 @@ export const translations: Record<string, Record<string, string>> = {
   'home.exp.explore.title': { en: 'Explore', fr: 'Explorer' },
   'home.exp.explore.desc': { en: 'Forests, châteaux, painters\u2019 villages, and Paris \u2014 all within reach.', fr: "Forêts, châteaux, villages de peintres et Paris \u2014 tout à portée de main." },
   'home.exp.events.title': { en: 'Events', fr: 'Événements' },
-  'home.exp.events.desc': { en: 'Reunions, retreats, celebrations \u2014 space for up to 20 guests.', fr: "Réunions, retraites, célébrations \u2014 de la place pour 20 convives." },
+  'home.exp.events.desc': { en: 'Reunions, retreats, celebrations \u2014 room for gatherings of up to 20.', fr: "Réunions, retraites, célébrations \u2014 de la place pour 20 convives." },
   'home.testimonial': {
     en: '"We came for a family reunion and left as a closer family. The houses, the stream, the long dinners in the garden \u2014 it was everything we\u2019d hoped for and more. The children still talk about the forest."',
     fr: "\"Nous sommes venus pour une réunion de famille et sommes repartis plus unis que jamais. Les maisons, le bief, les longs dîners au jardin \u2014 c'était tout ce que nous espérions, et bien plus encore. Les enfants parlent encore de la forêt.\""
@@ -117,7 +117,7 @@ export const translations: Record<string, Record<string, string>> = {
   'homes.jardin.sleeps': { en: 'Sleeps 6', fr: '6 Couchages' },
   'homes.jardin.link': { en: 'Discover Le Jardin', fr: 'Découvrir Le Jardin' },
   'homes.rentall.heading': { en: 'Rent All Three', fr: 'Louez les Trois' },
-  'homes.rentall.text': { en: 'Book the entire compound for up to 20 guests. Family reunions, retreats, celebrations \u2014 the whole place, exclusively yours.', fr: "Réservez le domaine entier pour jusqu'à 20 personnes. Réunions de famille, retraites, célébrations \u2014 le lieu, rien que pour vous." },
+  'homes.rentall.text': { en: 'Book the entire compound for up to 10 guests. Family reunions, retreats, celebrations \u2014 the whole place, exclusively yours.', fr: "Réservez le domaine entier pour jusqu'à 10 personnes. Réunions de famille, retraites, célébrations \u2014 le lieu, rien que pour vous." },
   'homes.rentall.button': { en: 'Explore the Compound', fr: 'Découvrir le Domaine' },
 
   // =====================
@@ -602,8 +602,8 @@ export const translations: Record<string, Record<string, string>> = {
     fr: "La restauration a commencé avec un principe simple : garder tout ce que le temps a rendu beau, réparer tout ce que le temps a abîmé, et n'ajouter que le nécessaire pour rendre les maisons confortables selon les usages d'aujourd'hui. Les épais murs de calcaire sont restés. Les poutres de chêne ont été nettoyées et traitées, mais pas remplacées. Les volets bleus \u2014 une tradition dans cette partie de la Seine-et-Marne \u2014 ont été reconstruits par un menuisier local avec les mêmes proportions que les originaux. Chauffage, plomberie, isolation et cuisines ont été mis aux normes actuelles, mais le caractère des bâtiments a été préservé."
   },
   'about.place.p4': {
-    en: "Today, Moulin a Reves is three houses: Le Moulin, the original mill; La Grange, the converted barn; and Le Jardin, the garden cottage. Each sleeps six. Together, they sleep twenty. They share a garden, a millstream, a petanque court, and the kind of unhurried atmosphere that the French countryside has been offering to anyone willing to slow down for two hundred years.",
-    fr: "Aujourd'hui, Moulin à Rêves, ce sont trois maisons : Le Moulin, le moulin d'origine ; La Grange, la grange convertie ; et Le Jardin, le cottage de jardin. Chacune accueille six personnes. Ensemble, elles accueillent vingt. Elles partagent un jardin, un bief, un terrain de pétanque et cette atmosphère sans hâte que la campagne française offre depuis deux cents ans à quiconque accepte de ralentir."
+    en: "Today, Moulin à Rêves is three houses: Le Moulin, the original mill; The Hollywood Hideaway, the star's retreat; and La Maison de la Rivière, the riverside cottage. Together they welcome up to ten guests. They share a garden, a millstream, a petanque court, and the kind of unhurried atmosphere that the French countryside has been offering to anyone willing to slow down for two hundred years.",
+    fr: "Aujourd'hui, Moulin à Rêves, ce sont trois maisons : Le Moulin, le moulin d'origine ; The Hollywood Hideaway, la retraite des stars ; et La Maison de la Rivière, le cottage au bord de l'eau. Ensemble, elles accueillent jusqu'à dix personnes. Elles partagent un jardin, un bief, un terrain de pétanque et cette atmosphère sans hâte que la campagne française offre depuis deux cents ans à quiconque accepte de ralentir."
   },
   'about.people.heading': { en: 'The People', fr: 'Les Personnes' },
   'about.people.p1': {

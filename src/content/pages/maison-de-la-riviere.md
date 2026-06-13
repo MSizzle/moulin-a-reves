@@ -2,7 +2,7 @@
 # La Maison de la Rivière — Content
 
 title: "La Maison de la Rivière"
-tagline: "Sunny cottage overlooking the stream — sleeps 5."
+tagline: "Sunny cottage overlooking the stream — sleeps 4."
 heroImage: "/images/homes/le-jardin-hero.webp"
 eyebrow: "La Maison de la Rivière"
 
@@ -10,7 +10,7 @@ eyebrow: "La Maison de la Rivière"
 bedrooms: 2
 bathrooms: 1
 beds: 3
-sleeps: 5
+sleeps: 4
 sqm: null
 
 # Summary

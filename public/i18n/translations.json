@@ -260,8 +260,8 @@
     "fr": "Événements"
   },
   "home.exp.events.desc": {
-    "en": "Reunions, retreats, celebrations — space for up to 20 guests.",
-    "fr": "Réunions, retraites, célébrations — de la place pour 20 convives."
+    "en": "Reunions, retreats, celebrations — room for gatherings of up to 20.",
+    "fr": "Réunions, retraites, célébrations — de la place pour des rassemblements jusqu'à 20 personnes."
   },
   "home.testimonial": {
     "en": "\"We came for a family reunion and left as a closer family. The houses, the stream, the long dinners in the garden — it was everything we’d hoped for and more. The children still talk about the forest.\"",
@@ -356,8 +356,8 @@
     "fr": "Louez les Trois"
   },
   "homes.rentall.text": {
-    "en": "Reunions, Retreats and Relaxation for up to 20 guests.",
-    "fr": "Réservez le domaine entier pour jusqu'à 20 personnes. Réunions de famille, retraites, célébrations — le lieu, rien que pour vous."
+    "en": "Reunions, Retreats and Relaxation for up to 10 guests.",
+    "fr": "Réservez le domaine entier pour jusqu'à 10 personnes. Réunions de famille, retraites, célébrations — le lieu, rien que pour vous."
   },
   "homes.rentall.button": {
     "en": "Explore the Compound",
@@ -1452,8 +1452,8 @@
     "fr": "La restauration a commencé avec un principe simple : garder tout ce que le temps a rendu beau, réparer tout ce que le temps a abîmé, et n'ajouter que le nécessaire pour rendre les maisons confortables selon les usages d'aujourd'hui. Les épais murs de calcaire sont restés. Les poutres de chêne ont été nettoyées et traitées, mais pas remplacées. Les volets bleus — une tradition dans cette partie de la Seine-et-Marne — ont été reconstruits par un menuisier local avec les mêmes proportions que les originaux. Chauffage, plomberie, isolation et cuisines ont été mis aux normes actuelles, mais le caractère des bâtiments a été préservé."
   },
   "about.place.p4": {
-    "en": "Today, Moulin a Reves is three houses: Le Moulin, the original mill; La Grange, the converted barn; and Le Jardin, the garden cottage. Each sleeps six. Together, they sleep twenty. They share a garden, a millstream, a petanque court, and the kind of unhurried atmosphere that the French countryside has been offering to anyone willing to slow down for two hundred years.",
-    "fr": "Aujourd'hui, Moulin à Rêves, ce sont trois maisons : Le Moulin, le moulin d'origine ; La Grange, la grange convertie ; et Le Jardin, le cottage de jardin. Chacune accueille six personnes. Ensemble, elles accueillent vingt. Elles partagent un jardin, un bief, un terrain de pétanque et cette atmosphère sans hâte que la campagne française offre depuis deux cents ans à quiconque accepte de ralentir."
+    "en": "Today, Moulin à Rêves is three houses: Le Moulin, the original mill; The Hollywood Hideaway, the star's retreat; and La Maison de la Rivière, the riverside cottage. Together they welcome up to ten guests. They share a garden, a millstream, a petanque court, and the kind of unhurried atmosphere that the French countryside has been offering to anyone willing to slow down for two hundred years.",
+    "fr": "Aujourd'hui, Moulin à Rêves, ce sont trois maisons : Le Moulin, le moulin d'origine ; The Hollywood Hideaway, la retraite des stars ; et La Maison de la Rivière, le cottage au bord de l'eau. Ensemble, elles accueillent jusqu'à dix personnes. Elles partagent un jardin, un bief, un terrain de pétanque et cette atmosphère sans hâte que la campagne française offre depuis deux cents ans à quiconque accepte de ralentir."
   },
   "about.people.heading": {
     "en": "The People",
@@ -1758,7 +1758,7 @@
     "en": "2 Baths"
   },
   "homes.card.hideaway.sleeps": {
-    "en": "Sleeps 7"
+    "en": "Sleeps 6"
   },
   "homes.card.riviere.eyebrow": {
     "en": ""
@@ -1773,7 +1773,7 @@
     "en": "1 Bath"
   },
   "homes.card.riviere.sleeps": {
-    "en": "Sleeps 5"
+    "en": "Sleeps 4"
   },
   "homes.rentall.cta": {
     "en": "Explore the Compound"
@@ -1980,7 +1980,7 @@
     "en": "3 Bedrooms + Suite"
   },
   "le-moulin.cross.hideaway.sleeps": {
-    "en": "Sleeps 7"
+    "en": "Sleeps 6"
   },
   "le-moulin.cross.riviere.eyebrow": {
     "en": ""
@@ -1992,7 +1992,7 @@
     "en": "2 Bedrooms"
   },
   "le-moulin.cross.riviere.sleeps": {
-    "en": "Sleeps 5"
+    "en": "Sleeps 4"
   },
   "le-moulin.cross.cta": {
     "en": "Rent All Three Maisons"
@@ -2195,7 +2195,7 @@
     "en": "2 Bedrooms"
   },
   "hideaway.cross.riviere.sleeps": {
-    "en": "Sleeps 5"
+    "en": "Sleeps 4"
   },
   "hideaway.cross.cta": {
     "en": "Rent All Three Maisons"
@@ -2346,7 +2346,7 @@
     "en": "Stream & orchard view"
   },
   "riviere.amenities.amenity.8": {
-    "en": "Sleeps 5 across 3 beds"
+    "en": "Sleeps 4 across 3 beds"
   },
   "riviere.availability.eyebrow": {
     "en": "Availability"
@@ -2389,7 +2389,7 @@
     "en": "3 Bedrooms + Suite"
   },
   "riviere.cross.hideaway.sleeps": {
-    "en": "Sleeps 7"
+    "en": "Sleeps 6"
   },
   "riviere.cross.cta": {
     "en": "Rent All Three Maisons"
@@ -2536,7 +2536,7 @@
     "en": "10 January 2026"
   },
   "journal.family.p1": {
-    "en": "The family reunion is one of those ideas that sounds wonderful and then, the moment you begin organising it, becomes a logistics challenge of considerable scale. Where do twenty people sleep? How do you keep three generations happy at the same time? What happens when the teenagers want to disappear and the grandparents want company? Who cooks? Who cleans? And how do you make it feel like a holiday for the person doing the organising?"
+    "en": "The family reunion is one of those ideas that sounds wonderful and then, the moment you begin organising it, becomes a logistics challenge of considerable scale. Where do ten people sleep? How do you keep three generations happy at the same time? What happens when the teenagers want to disappear and the grandparents want company? Who cooks? Who cleans? And how do you make it feel like a holiday for the person doing the organising?"
   },
   "journal.family.p2": {
     "en": "We have hosted dozens of family reunions at Moulin à Rêves, and we have learned a few things. Here is what works."
@@ -2548,7 +2548,7 @@
     "en": "The single most important decision in planning a family reunion is accommodation, and the single most important quality of that accommodation is this: separate sleeping, shared living. Families need to be close enough to gather easily and far enough apart to retreat when they need to. A hotel scatters everyone along corridors. A single large house forces everyone into the same rhythm. A compound — three houses arranged around shared gardens — does something different. It gives each family unit a front door, a kitchen, a living room, and a bedtime that belongs to them, while the garden between the houses becomes the communal space where everything interesting happens."
   },
   "journal.family.p4": {
-    "en": "At Moulin à Rêves, the three houses — Le Moulin, La Grange, and Le Jardin — each sleep six, for a total of twenty. They are close enough that a child can run between them, and far enough apart that you cannot hear the baby crying in the next house. This turns out to be the exact right distance for a family reunion."
+    "en": "At Moulin à Rêves, the three houses — Le Moulin, The Hollywood Hideaway, and La Maison de la Rivière — together welcome up to ten guests. They are close enough that a child can run between them, and far enough apart that you cannot hear the baby crying in the next house. This turns out to be the exact right distance for a family reunion."
   },
   "journal.family.h.feed": {
     "en": "Let Someone Else Feed You"
@@ -2560,7 +2560,7 @@
     "en": "We offer breakfast delivery each morning — baskets of croissants, fresh bread, local butter and jam, delivered to each house before anyone is fully awake. This alone changes the rhythm of the day. Nobody has to plan breakfast. Nobody has to shop for it. You just open the door and it is there."
   },
   "journal.family.p7": {
-    "en": "For dinner, consider hiring a private chef for at least two or three evenings. The long outdoor dinner — twenty people at a table beneath the linden trees, the children running back and forth, the wine being poured, the conversation getting louder as the evening gets softer — this is the image everyone will remember. Let a professional make the food. You make the memory."
+    "en": "For dinner, consider hiring a private chef for at least two or three evenings. The long outdoor dinner — the whole party at a table beneath the linden trees, the children running back and forth, the wine being poured, the conversation getting louder as the evening gets softer — this is the image everyone will remember. Let a professional make the food. You make the memory."
   },
   "journal.family.p8": {
     "en": "For the other evenings, keep it simple. The markets at Milly-la-Foret and Fontainebleau are excellent, and the kitchens in each house are designed for real cooking. A rotation works well: each house takes a turn preparing dinner for the whole group. The competitive instinct alone will produce some remarkable meals."
@@ -3258,8 +3258,8 @@
     "fr": "Groupes"
   },
   "groups.hero.tagline": {
-    "en": "Three maisons, shared grounds, room for twenty — your group, your week, our compound.",
-    "fr": "Trois maisons, un domaine partagé, de la place pour vingt — votre groupe, votre semaine, notre domaine."
+    "en": "Three maisons, shared grounds, room to gather — your group, your week, our compound.",
+    "fr": "Trois maisons, un domaine partagé, de la place pour se retrouver — votre groupe, votre semaine, notre domaine."
   },
   "groups.intro.heading": {
     "en": "Built for gathering",
@@ -3282,8 +3282,8 @@
     "fr": "La pelouse au lever du soleil, le bief du moulin tout près, La Grange quand vient la pluie. Pratiquez sur l'herbe, près du pont, ou sous la pavillon — avec votre enseignant ou le nôtre. Massages et soins beauté avec des praticiens locaux de confiance sont faciles à organiser sur place."
   },
   "groups.yoga.p2": {
-    "en": "Up to twenty practitioners across three houses — single rooms when guests want quiet, shared meals when they don't.",
-    "fr": "Jusqu'à vingt pratiquants répartis dans trois maisons — chambres individuelles pour le calme, repas partagés pour la convivialité."
+    "en": "Up to ten practitioners across three houses — single rooms when guests want quiet, shared meals when they don't.",
+    "fr": "Jusqu'à dix pratiquants répartis dans trois maisons — chambres individuelles pour le calme, repas partagés pour la convivialité."
   },
   "groups.yoga.cta": {
     "en": "Plan a yoga retreat →",
