@@ -7,8 +7,8 @@ heroImage: "/images/homes/hh-patio.webp"
 eyebrow: ""
 
 # Stats
-bedrooms: 3
-suites: 1
+bedrooms: 4
+suites: 0
 bathrooms: 2
 beds: 4
 pulloutSofas: 1

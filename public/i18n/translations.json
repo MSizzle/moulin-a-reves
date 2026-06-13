@@ -1780,7 +1780,7 @@
     "en": "The Hollywood Hideaway"
   },
   "homes.card.hideaway.beds": {
-    "en": "3 Bedrooms + Suite"
+    "en": "4 Bedrooms"
   },
   "homes.card.hideaway.baths": {
     "en": "2 Baths"
@@ -1834,13 +1834,16 @@
     "en": "Le Moulin"
   },
   "le-moulin.narrative.summary": {
-    "en": "The original mill house was once home to the famed vaudevillian Borrah Minevitch. Here he entertained an extraordinary circle of friends — among them Charlie Chaplin, Jean Cocteau, Jacques Tati, the legendary Paris restaurant Maxim's, and even the Duchess of Windsor."
+    "en": "The original mill house was once home to the famed vaudevillian Borrah Minevitch. Here he entertained an extraordinary circle of friends — among them Charlie Chaplin, Jean Cocteau, Jacques Tati, the legendary Paris restaurant Maxim's, and even the Duchess of Windsor.",
+    "fr": "La maison du moulin d'origine fut autrefois la demeure du célèbre vaudevilliste Borrah Minevitch. Il y recevait un cercle d'amis extraordinaire — parmi lesquels Charlie Chaplin, Jean Cocteau, Jacques Tati, le légendaire restaurant parisien Maxim's, et même la duchesse de Windsor."
   },
   "le-moulin.narrative.p1": {
-    "en": "Borrah's personal treasures — musical instruments, antiques, and an 1891 Folies Bergère poster — fill Le Moulin with his theatrical style."
+    "en": "Borrah's personal treasures — musical instruments, antiques, and an 1891 Folies Bergère poster — fill Le Moulin with his theatrical style.",
+    "fr": "Les trésors personnels de Borrah — instruments de musique, antiquités et une affiche des Folies Bergère de 1891 — emplissent Le Moulin de son style théâtral."
   },
   "le-moulin.narrative.p2": {
-    "en": "The spacious eat-in kitchen and formal dining room continue a tradition of hospitality, gathering, and lively conversation that has endured for generations."
+    "en": "The spacious eat-in kitchen and formal dining room continue a tradition of hospitality, gathering, and lively conversation that has endured for generations.",
+    "fr": "La grande cuisine conviviale et la salle à manger d'apparat perpétuent une tradition d'hospitalité, de retrouvailles et de conversations animées qui se transmet depuis des générations."
   },
   "le-moulin.bedrooms.eyebrow": {
     "en": ""
@@ -2007,7 +2010,7 @@
     "en": "The Hollywood Hideaway"
   },
   "le-moulin.cross.hideaway.beds": {
-    "en": "3 Bedrooms + Suite"
+    "en": "4 Bedrooms"
   },
   "le-moulin.cross.hideaway.sleeps": {
     "en": "Sleeps 6"
@@ -2034,7 +2037,8 @@
     "en": "The Hollywood Hideaway"
   },
   "hideaway.hero.tagline": {
-    "en": "A secluded countryside retreat — sleeps 6."
+    "en": "A secluded countryside retreat — sleeps 6.",
+    "fr": "Un refuge secret à la campagne — jusqu'à 6 personnes."
   },
   "hideaway.stats.bedroomsSuite": {
     "en": "Bedrooms + Suite"
@@ -2055,10 +2059,12 @@
     "en": "The Hollywood Hideaway"
   },
   "hideaway.narrative.summary": {
-    "en": "For almost half a century, The Hollywood Hideaway was the cherished summer retreat of renowned Hollywood attorney Bert Fields. Here he spent Augusts writing, cooking, entertaining friends, and enjoying the pleasures of French country life far from the spotlight of Los Angeles."
+    "en": "For almost half a century, The Hollywood Hideaway was the cherished summer retreat of renowned Hollywood attorney Bert Fields. Here he spent Augusts writing, cooking, entertaining friends, and enjoying the pleasures of French country life far from the spotlight of Los Angeles.",
+    "fr": "Pendant près d'un demi-siècle, le Hollywood Hideaway fut la résidence d'été tant aimée du célèbre avocat hollywoodien Bert Fields. Il y passait ses mois d'août à écrire, cuisiner, recevoir ses amis et goûter aux plaisirs de la vie à la campagne française, loin des projecteurs de Los Angeles."
   },
   "hideaway.narrative.p1": {
-    "en": "Thoughtfully decorated by his wife, renowned art advisor Barbara Guggenheim, the Hollywood Hideaway's bedrooms are named for classic movies and inspired by the French antiques within them. The oversized living-and-dining room opens onto a wisteria-covered gazebo and patio. This home retains the warmth and character that made it such a beloved refuge for generations of family and friends."
+    "en": "Thoughtfully decorated by his wife, renowned art advisor Barbara Guggenheim, the Hollywood Hideaway's bedrooms are named for classic movies and inspired by the French antiques within them. The oversized living-and-dining room opens onto a wisteria-covered gazebo and patio. This home retains the warmth and character that made it such a beloved refuge for generations of family and friends.",
+    "fr": "Décorées avec soin par son épouse, la renommée conseillère en art Barbara Guggenheim, les chambres du Hollywood Hideaway portent le nom de films classiques et s'inspirent des antiquités françaises qui les habitent. Le vaste séjour-salle à manger ouvre sur une gloriette et une terrasse couvertes de glycine. Cette maison conserve la chaleur et le caractère qui en ont fait un refuge cher à des générations de proches et d'amis."
   },
   "hideaway.narrative.p2": {
     "en": "This was his happy home where he entertained his Hollywood pals and cooked and relaxed in the French countryside. Now you can follow in the footsteps of the stars and make this your own home in France. It is beautifully furnished with French antiques."
@@ -2260,7 +2266,8 @@
     "en": "La Maison de la Rivière"
   },
   "riviere.narrative.summary": {
-    "en": "Bathed in natural light and overlooking the river, Maison de la Rivière combines the beauty of the French countryside with an atmosphere of creativity and inspiration. Floor-to-ceiling French doors open to the water, while thoughtfully collected artwork and inviting gathering spaces make it a favorite place for conversation. Whether writing, laughing, or simply watching the river flow by, guests are drawn to the elegance and beauty that make Maison de la Rivière so inspiring."
+    "en": "Bathed in natural light and overlooking the river, Maison de la Rivière combines the beauty of the French countryside with an atmosphere of creativity and inspiration. Floor-to-ceiling French doors open to the water, while thoughtfully collected artwork and inviting gathering spaces make it a favorite place for conversation. Whether writing, laughing, or simply watching the river flow by, guests are drawn to the elegance and beauty that make Maison de la Rivière so inspiring.",
+    "fr": "Baignée de lumière naturelle et donnant sur la rivière, la Maison de la Rivière allie la beauté de la campagne française à une atmosphère de créativité et d'inspiration. Des portes-fenêtres toute hauteur s'ouvrent sur l'eau, tandis que des œuvres d'art choisies avec soin et de chaleureux espaces de convivialité en font un lieu de conversation privilégié. Qu'ils écrivent, rient ou regardent simplement la rivière s'écouler, les hôtes sont séduits par l'élégance et la beauté qui rendent la Maison de la Rivière si inspirante."
   },
   "riviere.bedrooms.eyebrow": {
     "en": ""
@@ -2420,7 +2427,7 @@
     "en": "The Hollywood Hideaway"
   },
   "riviere.cross.hideaway.beds": {
-    "en": "3 Bedrooms + Suite"
+    "en": "4 Bedrooms"
   },
   "riviere.cross.hideaway.sleeps": {
     "en": "Sleeps 6"

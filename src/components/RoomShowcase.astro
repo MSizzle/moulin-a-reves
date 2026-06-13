@@ -32,9 +32,11 @@ interface Props {
   hideTileSummary?: boolean;
   /** Gather mode: show only italic title, hide photo-count badge, hide summary */
   gatherMode?: boolean;
+  /** Render the intro as a strong, near-black summary line (e.g. "5 Bedrooms • 4 Baths • …") */
+  introStrong?: boolean;
 }
 
-const { eyebrow, heading, intro, rooms, background = 'cream', i18nKey, hideTileSummary = false, gatherMode = false } = Astro.props;
+const { eyebrow, heading, intro, rooms, background = 'cream', i18nKey, hideTileSummary = false, gatherMode = false, introStrong = false } = Astro.props;
 const sectionClass = background === 'stone' ? 'section section--tight section--soft' : 'section section--tight';
 const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
 const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
@@ -49,7 +51,9 @@ const tileSummaryClass = effectiveHideTileSummary ? 'compound-tile__summary comp
     <div class="text-center fade-in" style="margin-bottom: 28px;">
       {eyebrow && <span class="eyebrow" {...(eyebrowKey ? { 'data-i18n': eyebrowKey } : {})}>{eyebrow}</span>}
       <h2 set:html={heading} {...(headingKey ? { 'data-i18n-html': headingKey } : {})} />
-      {intro && <p style="margin-top: 10px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>}
+      {intro && (introStrong
+        ? <p class="roomshowcase__summary" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>
+        : <p style="margin-top: 10px; font-size: 0.875rem; color: var(--ink-mute);" {...(introKey ? { 'data-i18n': introKey } : {})}>{intro}</p>)}
     </div>
     <div class="compound-grid compound-grid--3 compound-grid--rooms">
       {rooms.map((room, i) => {
@@ -125,6 +129,15 @@ const tileSummaryClass = effectiveHideTileSummary ? 'compound-tile__summary comp
   [data-gallery]:focus-visible {
     outline: 2px solid var(--blue-primary);
     outline-offset: 4px;
+  }
+
+  /* Strong intro: bedroom summary line (Bedrooms • Baths • Beds • Sleeps) */
+  .roomshowcase__summary {
+    margin-top: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.01em;
   }
 
   /* Sleep-mode: emoji quality tags second line */

@@ -36,18 +36,17 @@ the three `groups.*.cta` arrow removals, `art.hero.subtitle` (dropped "— BROUI
 
 ## Phase 2 — house pages (Le Moulin / Hollywood Hideaway / Maison de la Rivière)
 
-### English-only — FR translation still needed (left EN, not guessed)
+### Story copy — FR drafted, please verify (native-speaker review)
 
-These are the new/replaced **story** paragraphs and one tagline. They contain proper nouns
-and nuance, so they were left English-only pending a native-speaker pass (per the "translate
-where confident, log the rest" workflow). Keys in `public/i18n/translations.json`:
+These story paragraphs + the HH tagline now have French in `public/i18n/translations.json`.
+The drafts are idiomatic but contain proper nouns and tone calls — confirm before final:
 
 - `le-moulin.narrative.summary`, `le-moulin.narrative.p1`, `le-moulin.narrative.p2` — Le Moulin
-  story (Borrah Minevitch / Maxim's / Folies Bergère / eat-in kitchen tradition).
-- `hideaway.hero.tagline` — "A secluded countryside retreat — sleeps 6." (en only; FR needed)
+  story (Borrah Minevitch / Maxim's / Folies Bergère). Check "salle à manger d'apparat" tone.
+- `hideaway.hero.tagline` — "Un refuge secret à la campagne — jusqu'à 6 personnes."
 - `hideaway.narrative.summary`, `hideaway.narrative.p1` — Hollywood Hideaway story
-  (Bert Fields / Barbara Guggenheim / bedrooms named for classic movies).
-- `riviere.narrative.summary` — Maison de la Rivière story (verbatim client copy).
+  (Bert Fields / Barbara Guggenheim). Check "gloriette" (gazebo) and "conseillère en art".
+- `riviere.narrative.summary` — Maison de la Rivière story.
 
 ### FR provided this pass — please verify wording/tone
 

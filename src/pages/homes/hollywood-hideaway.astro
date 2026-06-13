@@ -35,6 +35,22 @@ const bedrooms = [
     ],
   },
   {
+    id: 'secret-garden',
+    title: 'The Secret Garden',
+    summary: 'A small adjacent sitting-room suite with a pull-out sofa for one. Accesses the bathroom through Through the Looking Glass.',
+    longDescription: 'A bonus space attached to the master — perfect for a kid, an extra adult, or a quiet reading nook by day. The pull-out sofa sleeps one comfortably.',
+    qualities: 'Sitting-room suite · Pull-out sofa for one · Ground Floor',
+    details: [
+      { label: 'Sleeps', value: '1 (pull-out sofa)' },
+      { label: 'Bathroom', value: 'Shared via Through the Looking Glass' },
+    ],
+    photos: [
+      { src: '/images/homes/hh-secret-garden-sitting.webp', alt: 'The Secret Garden suite sitting room with floral wallpaper and fireplace' },
+      { src: '/images/homes/hh-secret-garden-couch.webp', alt: 'Secret Garden sitting room with deep velvet couch' },
+      { src: '/images/homes/hh-secret-garden-2.webp', alt: 'Secret Garden suite, alternate angle' },
+    ],
+  },
+  {
     id: 'american-in-paris',
     title: 'An American in Paris',
     summary: 'Queen bedroom on the ground floor.',
@@ -292,6 +308,7 @@ const amenities = [
     eyebrow=""
     heading="The Bedrooms"
     intro="4 Bedrooms • 2 Bathrooms • 4 Beds • Sleeps 6"
+    introStrong={true}
     rooms={bedrooms}
     background="stone"
     i18nKey="hideaway.bedrooms"
