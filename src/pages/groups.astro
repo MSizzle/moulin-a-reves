@@ -13,40 +13,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const yogaGallery = [
   // Lead image (shown in split layout; clicking opens the full lightbox)
-  { src: '/images/wellness-yoga-mill-facade.webp', alt: 'Yoga practice on the lawn outside Le Moulin\'s blue-shuttered facade' },
+  // Phase 3 §5: removed empty-mats facade, tree-pose, and the two massage-table photos.
+  { src: '/images/wellness-yoga-sun-salutations.webp', alt: 'Sun salutations beside the millstream at Moulin à Rêves' },
   { src: '/images/wellness-yoga-bridge.webp', alt: 'Morning yoga beside the millstream at Moulin à Rêves' },
-  { src: '/images/wellness-yoga-sun-salutations.webp', alt: 'Sun salutations on the lawn at Moulin à Rêves' },
   { src: '/images/wellness-yoga-adjustments.webp', alt: 'Yoga adjustments during a retreat at Moulin à Rêves' },
   { src: '/images/wellness-yoga-stretch.webp', alt: 'Stretching on the grass at Moulin à Rêves' },
-  { src: '/images/wellness-yoga-tree.webp', alt: 'Tree pose by the millstream' },
   { src: '/images/wellness-yoga-well.webp', alt: 'Yoga meditation by the stone well at Moulin à Rêves' },
   { src: '/images/wellness-yoga-hideaway.webp', alt: 'Yoga practice at the Hollywood Hideaway' },
-  { src: '/images/wellness-massage-garden.webp', alt: 'Outdoor massage treatment in the gardens' },
-  { src: '/images/wellness-massage-mill-lawn.webp', alt: 'Massage on the mill lawn' },
   { src: '/images/groups-yoga-lawn-dog.webp', alt: 'Yoga mats laid out on the lawn with the dog and the blue-shuttered mill behind at Moulin à Rêves' },
   // TODO: add owner's yoga retreat gallery photos (drop into public/images/groups/yoga/)
 ];
 
 const familyGallery = [
   // Lead image (shown in split layout; clicking opens the full lightbox)
+  // Phase 3 §5: removed the beer-toast photo and the four no-people shots
+  // (two duplicate empty dinner-table photos + two empty garden photos).
   { src: '/images/groups-family-gathering-grange.webp', alt: 'Three generations of a family gathered around the table under La Grange\'s pavilion at Moulin à Rêves' },
   { src: '/images/group-kids-bridge.webp', alt: 'Children running across the painted bridge over the millstream at Moulin à Rêves' },
   { src: '/images/group-father-friends.webp', alt: 'Fathers and friends gathered at Moulin à Rêves' },
-  { src: '/images/group-bbq.webp', alt: 'Outdoor barbecue gathering at Moulin à Rêves' },
-  { src: '/images/group-dinner.webp', alt: 'Group dinner at Moulin à Rêves' },
   { src: '/images/group-mother-daughter-steps.webp', alt: 'Mother and daughter on the steps at Moulin à Rêves' },
   { src: '/images/group-ping-pong.webp', alt: 'Ping pong game at Moulin à Rêves' },
-  { src: '/images/barn-events.webp', alt: 'Long dinner table set under La Grange\'s covered pavilion' },
-  { src: '/images/garden-chaises-wide.webp', alt: 'Chaise longues in the garden at Moulin à Rêves' },
-  { src: '/images/garden-breakfast.webp', alt: 'Breakfast in the walled garden' },
   { src: '/images/group-tuscan-sun.webp', alt: 'Friends relaxing in the sun at Moulin à Rêves' },
   // TODO: add owner's family reunion gallery photos (drop into public/images/groups/family/)
 ];
 
 const creativeGallery = [
   // Lead image (shown in split layout; clicking opens the full lightbox)
+  // Phase 3 §5: removed the screening-room photo.
+  // TODO (Phase 3 §5): add the women-on-the-bridge-with-wings photo when received from owner
+  //   (drop into public/images/groups/creative/ → /images/groups/creative-bridge-wings.webp).
   { src: '/images/retreat-writers.webp', alt: 'Writers gathered at a long table for a creative retreat at Moulin à Rêves' },
-  { src: '/images/screening-room.webp', alt: 'Screening room / workshop space at Moulin à Rêves' },
   { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange covered pavilion — workshop space for twenty' },
   { src: '/images/homes/la-grange-pavilion.webp', alt: 'Under the beams of La Grange at Moulin à Rêves' },
   { src: '/images/homes/la-grange-hero.webp', alt: 'La Grange exterior at Moulin à Rêves' },
@@ -57,19 +53,25 @@ const creativeGallery = [
   // TODO: add owner's creative retreat gallery photos (drop into public/images/groups/creative/)
 ];
 
+// ---- Phase 3 §2: Celebrations block gallery (milestone birthdays, family reunions) ----
+const celebrationsGallery = [
+  // Lead image (shown in split layout; clicking opens the full lightbox)
+  { src: '/images/catering-group-gathering.webp', alt: 'A large family gathered with a cake and gifts under La Grange at Moulin à Rêves' },
+  { src: '/images/champagne.webp', alt: 'Champagne set out on a quiet garden table at Moulin à Rêves' },
+  { src: '/images/melissa-toast-bridge.webp', alt: 'A celebratory toast by the painted bridge at Moulin à Rêves' },
+  { src: '/images/groups-family-gathering-grange.webp', alt: 'Three generations gathered around the table under La Grange\'s pavilion at Moulin à Rêves' },
+];
+
 // ---- Item 9: Video testimonial row ----
 // Data-driven: add/remove videos from this array to update the row.
 // Processed videos live in public/videos/; posters in public/images/testimonials/.
+// Phase 3 §3: removed the "friends-birthday" and "husband-english-tag" videos;
+// three remain (rave-review, guests-luxembourg, family-french en français).
 const testimonialVideos = [
   {
     src: '/videos/testimonial-rave-review.mp4',
     poster: '/images/testimonials/testimonial-rave-review-poster.webp',
     label: null, // EN label; null = no extra label
-  },
-  {
-    src: '/videos/testimonial-friends-birthday.mp4',
-    poster: '/images/testimonials/testimonial-friends-birthday-poster.webp',
-    label: null,
   },
   {
     src: '/videos/testimonial-guests-luxembourg.mp4',
@@ -81,11 +83,6 @@ const testimonialVideos = [
     poster: '/images/testimonials/testimonial-family-french-poster.webp',
     label: '(en français)', // French-language video label
   },
-  {
-    src: '/videos/testimonial-husband-english-tag.mp4',
-    poster: '/images/testimonials/testimonial-husband-english-tag-poster.webp',
-    label: null,
-  },
 ];
 ---
 
@@ -94,20 +91,20 @@ const testimonialVideos = [
   <!-- Hero -->
   <section class="hero" style="height: 56vh;">
     <div class="hero__image">
-      <img src="/images/wellness-yoga-bridge.webp" alt="Morning yoga beside the millstream at Moulin à Rêves" />
+      <img src="/images/groups/grange-art-of-gathering.webp" alt="La Grange set for a gathering at Moulin à Rêves." />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title" data-i18n="groups.hero.title">Groups</h1>
+      <h1 class="hero__title" data-i18n="groups.hero.title">The Art of Gathering</h1>
     </div>
   </section>
 
   <!-- Intro -->
   <section class="section--tight">
     <div class="container--narrow text-center fade-in">
-      <h2 data-i18n="groups.intro.heading">Built for gathering</h2>
+      <h2 data-i18n="groups.intro.heading">Celebrate, create, and reconnect.</h2>
       <p data-i18n="groups.intro.text" style="margin-top: 20px;">
-        Three stone houses, a walled garden, the millstream, La Grange for long dinners, a gym, a screening room, a jacuzzi, and the lawn for sun salutations. Booked together, the compound becomes whatever your group needs it to be — a retreat, a reunion, a workshop, a celebration.
+        Encircled by a stone wall for total privacy, Moulin à Rêves is an elegant sanctuary where guests can retreat, recharge, and make memories of a lifetime.
       </p>
     </div>
   </section>
@@ -124,7 +121,7 @@ const testimonialVideos = [
           tabindex="0"
           aria-label="View yoga retreat gallery"
         >
-          <img src="/images/wellness-yoga-mill-facade.webp" alt="Yoga practice on the lawn outside Le Moulin's blue-shuttered facade" loading="lazy" />
+          <img src="/images/wellness-yoga-sun-salutations.webp" alt="Sun salutations beside the millstream at Moulin à Rêves" loading="lazy" />
           <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
         </div>
       </div>
@@ -202,6 +199,33 @@ const testimonialVideos = [
     </div>
   </section>
 
+  <!-- Celebrations — Phase 3 §2: clickable gallery, mirrors the other category blocks -->
+  <section id="celebrations" class="fade-in">
+    <div class="split split--reverse">
+      <div class="split__body">
+        <span class="split__eyebrow" data-i18n="groups.celebrations.eyebrow">Celebrations</span>
+        <h2 data-i18n="groups.celebrations.heading">Celebrations at Moulin à Rêves</h2>
+        <p data-i18n="groups.celebrations.p1">
+          From milestone birthdays to family reunions, Moulin à Rêves offers a setting where memories are made and shared.
+        </p>
+        <a href="/contact/" class="link-arrow" data-i18n="groups.celebrations.cta">Plan a celebration</a>
+      </div>
+      <div class="split__image">
+        <!-- data-gallery triggers the fullscreen lightbox with all celebrations gallery images -->
+        <div
+          class="groups-gallery-trigger"
+          data-gallery={JSON.stringify(celebrationsGallery)}
+          role="button"
+          tabindex="0"
+          aria-label="View celebrations gallery"
+        >
+          <img src="/images/catering-group-gathering.webp" alt="A large family gathered with a cake and gifts under La Grange at Moulin à Rêves" loading="lazy" />
+          <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Testimonials — Item 9: video row above written quotes -->
   <section class="section--tighter section--stone">
     <div class="container">
@@ -232,45 +256,12 @@ const testimonialVideos = [
         ))}
       </div>
 
-      <!-- Existing written quotes — kept exactly as-is (Item 9 requirement) -->
-      <div class="testimonials-grid">
-        <figure class="testimonial-card fade-in">
-          <blockquote class="testimonial" data-i18n="groups.testimonials.q1">
-            "We came for a family reunion and left as a closer family. The kids still talk about the river."
-          </blockquote>
-          <figcaption class="testimonial__attribution" data-i18n="groups.testimonials.a1">— Sophie &amp; Laurent · Family Reunion, August 2025</figcaption>
-        </figure>
-        <figure class="testimonial-card fade-in">
-          <blockquote class="testimonial" data-i18n="groups.testimonials.q2">
-            "Twelve students, seven days, three meals on the lawn. The setting did half the teaching for me."
-          </blockquote>
-          <figcaption class="testimonial__attribution" data-i18n="groups.testimonials.a2">— Anika · Yoga Retreat Host, June 2025</figcaption>
-        </figure>
-        <figure class="testimonial-card fade-in">
-          <blockquote class="testimonial" data-i18n="groups.testimonials.q3">
-            "Our writers' week. Quiet rooms, long dinners, the millstream outside the window. Nobody wanted to leave."
-          </blockquote>
-          <figcaption class="testimonial__attribution" data-i18n="groups.testimonials.a3">— David · Writing Retreat, May 2025</figcaption>
-        </figure>
-
-        <!-- Item 9: Fourth written quote — Florence H., VRBO -->
-        <!-- PLACEMENT NOTE: This is the assistant's placement of Florence's review;
-             the owner should move it if preferred (e.g., before the video row, or after). -->
-        <figure class="testimonial-card testimonial-card--florence fade-in">
-          <blockquote class="testimonial" data-i18n="groups.testimonials.q4">
-            "The reality far exceeded our expectations… We wholeheartedly recommend your rental to anyone who appreciates peace, quiet, and refinement."
-          </blockquote>
-          <figcaption class="testimonial__attribution" data-i18n="groups.testimonials.a4">— Florence H., VRBO</figcaption>
-          <!-- "Read the full review" expander — full text ⏳ owner will paste in below -->
-          <details class="testimonial-card__expander">
-            <summary class="testimonial-card__expander-toggle" data-i18n="groups.testimonials.florence.readmore">Read the full review</summary>
-            <div class="testimonial-card__expander-body">
-              <!-- TODO: paste Florence's full review text here when received from owner -->
-              <p style="color: var(--ink-mute); font-style: italic;">[Full review text — owner to paste]</p>
-            </div>
-          </details>
-        </figure>
-      </div>
+      <!-- Phase 3 §3: four written quotes replaced by one anonymous full-width line -->
+      <figure class="testimonial-line fade-in">
+        <blockquote class="testimonial-line__quote" data-i18n="groups.testimonials.quote">
+          "Magnificent grounds, extraordinary taste, and a rare sense of peace and refinement. The estate exceeded our expectations in every way."
+        </blockquote>
+      </figure>
     </div>
   </section>
 
@@ -349,17 +340,16 @@ const testimonialVideos = [
     }
 
     /* ---- Item 9: Video testimonial row ---- */
+    /* Phase 3 §3: three videos remain — 3-up row, centred and width-capped */
     .testimonial-videos {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: clamp(12px, 2vw, 20px);
-      margin-bottom: clamp(32px, 4vw, 52px);
-    }
-    @media (max-width: 1024px) {
-      .testimonial-videos { grid-template-columns: repeat(3, 1fr); }
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(12px, 2vw, 24px);
+      max-width: 960px;
+      margin: 0 auto clamp(32px, 4vw, 52px);
     }
     @media (max-width: 640px) {
-      .testimonial-videos { grid-template-columns: repeat(2, 1fr); }
+      .testimonial-videos { grid-template-columns: 1fr; max-width: 420px; }
     }
     .testimonial-video-card {
       position: relative;
@@ -407,67 +397,20 @@ const testimonialVideos = [
       font-style: italic;
     }
 
-    /* ---- Testimonials grid — 4 cards now (Florence is 4th) ---- */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: clamp(20px, 3vw, 36px);
+    /* ---- Phase 3 §3: single anonymous testimonial line across the bottom ---- */
+    .testimonial-line {
+      margin: 0 auto;
+      max-width: 60ch;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      padding-top: clamp(28px, 3.5vw, 44px);
     }
-    @media (min-width: 1024px) {
-      /* 3 + 1 layout: first 3 in a row, Florence full-width below */
-      .testimonials-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .testimonial-card--florence {
-        grid-column: 1 / -1;
-      }
-    }
-    @media (max-width: 640px) {
-      .testimonials-grid { grid-template-columns: 1fr; }
-    }
-    .testimonial-card {
+    .testimonial-line__quote {
       margin: 0;
-      padding: clamp(28px, 3vw, 40px);
-      background: var(--bg-warm-white);
-      border-bottom: 3px solid var(--blue-primary);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .testimonial-card .testimonial {
       font-family: var(--font-serif);
-      font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
-      line-height: 1.55;
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      line-height: 1.5;
       font-style: italic;
-      color: var(--ink);
-      margin: 0 0 18px;
-    }
-    .testimonial-card .testimonial__attribution {
-      font-family: var(--font-body);
-      font-size: 0.8125rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-mute);
-    }
-
-    /* Florence expander */
-    .testimonial-card__expander {
-      margin-top: 16px;
-    }
-    .testimonial-card__expander-toggle {
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-size: 0.8125rem;
-      letter-spacing: 0.08em;
-      color: var(--blue-primary);
-      list-style: none;
-    }
-    .testimonial-card__expander-toggle::-webkit-details-marker { display: none; }
-    .testimonial-card__expander-body {
-      margin-top: 12px;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1rem;
-      line-height: 1.6;
       color: var(--ink);
     }
   </style>

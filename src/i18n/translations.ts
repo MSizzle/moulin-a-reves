@@ -805,14 +805,6 @@ export const translations: Record<string, Record<string, string>> = {
   'getting.trips.fontainebleau.p': { en: 'Royal château and 25,000 hectares of ancient forest, twenty minutes away.', fr: 'Château royal et 25 000 hectares de forêt ancienne, à vingt minutes.' },
   'getting.map.caption': { en: 'Méréville, France · One hour south of Paris', fr: 'Méréville, France · À une heure au sud de Paris' },
 
-  // ---- Groups: Florence H. quote (Item 9) ----
-  'groups.testimonials.q4': {
-    en: '"The reality far exceeded our expectations… We wholeheartedly recommend your rental to anyone who appreciates peace, quiet, and refinement."',
-    fr: '« La réalité a largement dépassé nos attentes… Nous recommandons chaleureusement votre location à quiconque apprécie la paix, le calme et le raffinement. »',
-  },
-  'groups.testimonials.a4': { en: '— Florence H., VRBO', fr: '— Florence H., VRBO' },
-  'groups.testimonials.florence.readmore': { en: 'Read the full review', fr: 'Lire l\'avis complet' },
-
   // ---- Navigation / footer: Art page (Item 10) ----
   'nav.art': { en: 'Art & Antiques', fr: 'Art & Antiquités' },
   'footer.art': { en: 'Art & Antiques', fr: 'Art & Antiquités' },

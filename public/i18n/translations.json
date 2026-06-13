@@ -3296,20 +3296,20 @@
     "fr": "Célébrations entre amis"
   },
   "groups.hero.title": {
-    "en": "Groups",
-    "fr": "Groupes"
+    "en": "The Art of Gathering",
+    "fr": "L'Art de se Retrouver"
   },
   "groups.hero.tagline": {
     "en": "Three maisons, shared grounds, room to gather — your group, your week, our compound.",
     "fr": "Trois maisons, un domaine partagé, de la place pour se retrouver — votre groupe, votre semaine, notre domaine."
   },
   "groups.intro.heading": {
-    "en": "Built for gathering",
-    "fr": "Conçu pour se retrouver"
+    "en": "Celebrate, create, and reconnect.",
+    "fr": "Célébrez, créez, reconnectez-vous."
   },
   "groups.intro.text": {
-    "en": "Three stone houses, a walled garden, the millstream, La Grange for long dinners, a gym, a screening room, a jacuzzi, and the lawn for sun salutations. Booked together, the compound becomes whatever your group needs it to be — a retreat, a reunion, a workshop, a celebration.",
-    "fr": "Trois maisons en pierre, un jardin clos, le bief du moulin, La Grange pour les longs dîners, une salle de sport, une salle de cinéma, un jacuzzi et la pelouse pour les salutations au soleil. Loué dans son ensemble, le domaine devient ce dont votre groupe a besoin — une retraite, une réunion, un atelier, une célébration."
+    "en": "Encircled by a stone wall for total privacy, Moulin à Rêves is an elegant sanctuary where guests can retreat, recharge, and make memories of a lifetime.",
+    "fr": "Entouré d'un mur de pierre pour une intimité totale, Moulin à Rêves est un sanctuaire élégant où les hôtes peuvent se ressourcer, se détendre et créer des souvenirs inoubliables."
   },
   "groups.yoga.eyebrow": {
     "en": "Yoga & Wellness Retreats",
@@ -3375,30 +3375,6 @@
     "en": "From past groups",
     "fr": "Paroles de groupes"
   },
-  "groups.testimonials.q1": {
-    "en": "\"We came for a family reunion and left as a closer family. The kids still talk about the river.\"",
-    "fr": "« Nous sommes venus pour une réunion de famille et nous en sommes repartis plus proches. Les enfants parlent encore de la rivière. »"
-  },
-  "groups.testimonials.a1": {
-    "en": "— Sophie & Laurent · Family Reunion, August 2025",
-    "fr": "— Sophie & Laurent · Réunion de famille, août 2025"
-  },
-  "groups.testimonials.q2": {
-    "en": "\"Twelve students, seven days, three meals on the lawn. The setting did half the teaching for me.\"",
-    "fr": "« Douze élèves, sept jours, trois repas sur la pelouse. Le cadre a fait la moitié de l'enseignement à ma place. »"
-  },
-  "groups.testimonials.a2": {
-    "en": "— Anika · Yoga Retreat Host, June 2025",
-    "fr": "— Anika · Hôte de retraite de yoga, juin 2025"
-  },
-  "groups.testimonials.q3": {
-    "en": "\"Our writers' week. Quiet rooms, long dinners, the millstream outside the window. Nobody wanted to leave.\"",
-    "fr": "« Notre semaine d'écriture. Chambres calmes, longs dîners, le bief du moulin sous la fenêtre. Personne ne voulait partir. »"
-  },
-  "groups.testimonials.a3": {
-    "en": "— David · Writing Retreat, May 2025",
-    "fr": "— David · Retraite d'écriture, mai 2025"
-  },
   "groups.cta.heading": {
     "en": "Plan your group stay",
     "fr": "Organisez votre séjour en groupe"
@@ -3411,20 +3387,6 @@
     "en": "Inquire",
     "fr": "Réserver"
   },
-
-  "groups.testimonials.q4": {
-    "en": "\"The reality far exceeded our expectations… We wholeheartedly recommend your rental to anyone who appreciates peace, quiet, and refinement.\"",
-    "fr": "« La réalité a largement dépassé nos attentes… Nous recommandons chaleureusement votre location à quiconque apprécie la paix, le calme et le raffinement. »"
-  },
-  "groups.testimonials.a4": {
-    "en": "— Florence H., VRBO",
-    "fr": "— Florence H., VRBO"
-  },
-  "groups.testimonials.florence.readmore": {
-    "en": "Read the full review",
-    "fr": "Lire l'avis complet"
-  },
-
   "nav.art": {
     "en": "Art & Antiques",
     "fr": "Art & Antiquités"
@@ -3433,7 +3395,6 @@
     "en": "Art & Antiques",
     "fr": "Art & Antiquités"
   },
-
   "art.hero.title": {
     "en": "The Art & Antiques",
     "fr": "L'Art & les Antiquités"
@@ -3481,5 +3442,25 @@
   "art.cta.button": {
     "en": "Inquire about availability",
     "fr": "Renseignez-vous sur les disponibilités"
+  },
+  "groups.celebrations.eyebrow": {
+    "en": "Celebrations",
+    "fr": "Célébrations"
+  },
+  "groups.celebrations.heading": {
+    "en": "Celebrations at Moulin à Rêves",
+    "fr": "Célébrations au Moulin à Rêves"
+  },
+  "groups.celebrations.p1": {
+    "en": "From milestone birthdays to family reunions, Moulin à Rêves offers a setting where memories are made and shared.",
+    "fr": "Des anniversaires marquants aux réunions de famille, Moulin à Rêves offre un cadre où les souvenirs se créent et se partagent."
+  },
+  "groups.celebrations.cta": {
+    "en": "Plan a celebration",
+    "fr": "Organiser une célébration"
+  },
+  "groups.testimonials.quote": {
+    "en": "\"Magnificent grounds, extraordinary taste, and a rare sense of peace and refinement. The estate exceeded our expectations in every way.\"",
+    "fr": "« Des terrains magnifiques, un goût extraordinaire et un rare sentiment de paix et de raffinement. Le domaine a dépassé toutes nos attentes en tous points. »"
   }
 }
