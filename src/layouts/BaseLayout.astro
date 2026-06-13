@@ -625,13 +625,16 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
         background: var(--bg-cream);
       }
-      /* Video slide inside lightbox — hidden by default, shown for video items */
+      /* Video slide inside lightbox — hidden by default, shown for video items.
+         width/height auto + max-* bounds let the video size from its intrinsic
+         aspect ratio (never stretched), regardless of portrait/landscape source. */
       .lightbox__video {
         display: none;
+        width: auto;
+        height: auto;
         max-width: 100%;
         max-height: 80vh;
-        width: 100%;
-        height: auto;
+        object-fit: contain;
         background: #000;
         box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
       }
