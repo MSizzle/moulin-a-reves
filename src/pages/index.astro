@@ -36,7 +36,7 @@ const writings = [
 const compoundFeatures = [
   {
     title: 'La Grange',
-    summary: 'The covered pavilion for long dinners, fireside evenings, ping pong, and gathering under the beams.',
+    summary: 'A covered pavilion for long dinners and fireside memories.',
     image: '/images/homes/la-grange-pavilion-wide.webp',
     alt: 'La Grange covered entertaining barn at Moulin à Rêves',
     gallery: [
@@ -55,7 +55,7 @@ const compoundFeatures = [
   },
   {
     title: 'Gardens',
-    summary: 'The millstream, lawns, old stone, quiet corners, and the blue bridge over the water.',
+    summary: 'The Giverny-style bridge, flowering gardens, and a wishing well.',
     image: '/images/bridge-garden.webp',
     alt: 'Walled gardens and the millstream at Moulin à Rêves',
     gallery: [
@@ -72,8 +72,8 @@ const compoundFeatures = [
     ],
   },
   {
-    title: 'Solarium & Jacuzzi',
-    summary: 'A glassed-in solarium with jacuzzi — warm-weather mornings, winter evenings, year-round.',
+    title: 'The Jacuzzi Spa',
+    summary: 'A glass-enclosed sanctuary for year-round relaxation.',
     image: '/images/wellness-jacuzzi-2.webp',
     alt: 'The jacuzzi in the solarium at Moulin à Rêves',
     gallery: [
@@ -82,8 +82,8 @@ const compoundFeatures = [
     ],
   },
   {
-    title: 'Gym & Bikes',
-    summary: 'Treadmill, elliptical, weights, boxing bag, yoga mats, and electric bikes for the village and forest.',
+    title: 'Fitness Studio & Bikes',
+    summary: 'Elliptical, treadmill, boxing bag, and electric bicycles for exploring the countryside.',
     image: '/images/gym.webp',
     alt: 'Private gym at Moulin à Rêves with elliptical, treadmill, and mirrored wall',
     gallery: [
@@ -95,7 +95,7 @@ const compoundFeatures = [
   },
   {
     title: 'Screening Room',
-    summary: 'An upstairs cinema room with leather club chairs for films, talks, and rainy afternoons.',
+    summary: 'A private cinema with leather club chairs for films and rainy afternoons.',
     image: '/images/screening-room.webp',
     alt: 'Screening room at Moulin à Rêves',
     gallery: [
@@ -106,7 +106,7 @@ const compoundFeatures = [
   // TODO(Melissa): drop chicken-coop photos in /public/images/ and append them to the gallery below.
   {
     title: 'Chicken Coop',
-    summary: 'A working chicken coop. Wake up to the roosters; collect the eggs.',
+    summary: 'Wake up to the roosters for authentic French country life.',
     image: '/images/personality.webp',
     alt: 'Marie Antoinette near the rooster in the garden at Moulin à Rêves',
     gallery: [
@@ -118,7 +118,7 @@ const compoundFeatures = [
 const groupTypes = [
   { title: 'Family reunions', image: '/images/catering-group-gathering.webp', alt: 'Family gathered for a meal at Moulin à Rêves' },
   { title: 'Yoga Retreats', image: '/images/wellness-yoga-hideaway.webp', alt: 'Yoga practice on the lawn beside the Hollywood Hideaway at Moulin à Rêves' },
-  { title: 'Celebrate with Friends', image: '/images/group-bbq.webp', alt: 'Friends raising a toast outside Hollywood Hideaway at Moulin à Rêves' },
+  { title: 'Celebrations with Friends', image: '/images/group-bbq.webp', alt: 'Friends raising a toast outside Hollywood Hideaway at Moulin à Rêves' },
 ];
 ---
 
@@ -213,11 +213,9 @@ const groupTypes = [
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <h1 class="hero__title" data-i18n-html="home.title">Your Dream French Vacation</h1>
+      <h1 class="hero__title" data-i18n-html="home.title">Moulin à Rêves</h1>
+      <p class="hero__tagline" data-i18n="home.subtitle">The Mill of Dreams</p>
       <p class="hero__location" data-i18n="home.hero.location">Méréville, France</p>
-      <div class="hero__actions">
-        <a href="/contact/" class="btn btn--white" data-i18n="home.cta">Join us</a>
-      </div>
     </div>
     <span class="hero__scroll" aria-hidden="true">découvrir</span>
   </section>
@@ -365,10 +363,24 @@ const groupTypes = [
     </div>
   </section>
 
+  <!-- Full-width Giverny bridge band -->
+  <section style="margin: 8px 0 0;">
+    <img src="/images/homepage-giverny-bridge.webp" alt="The Giverny-style bridge over the millstream at Moulin à Rêves" style="width: 100%; height: clamp(320px, 52vh, 620px); object-fit: cover; display: block;" loading="lazy" />
+  </section>
+
+  <!-- The Luxury of Space -->
+  <section class="text-center" style="padding-top: 36px; padding-bottom: 24px;">
+    <div class="container--narrow fade-in">
+      <h2 data-i18n="home.luxuryspace.heading">The Luxury of Space</h2>
+      <p data-i18n="home.luxuryspace.text" style="margin-top: 20px;">Encircled by stone walls and surrounded by gardens, Moulin à Rêves offers guests beauty, privacy, and space to relax and reconnect. Whether you come alone, as a couple, or with friends for a celebration or retreat, here you can slow down and be inspired.</p>
+    </div>
+  </section>
+
   <!-- Les Maisons -->
   <section class="section maisons-section" style="padding-top: 24px;">
     <div class="container text-center fade-in" style="margin-bottom: 28px;">
       <h2 data-i18n="home.homes.heading">Discover the Homes</h2>
+      <p data-i18n="home.homes.intro" class="maisons-intro" style="margin-top: 16px;">Although the estate offers ten bedrooms across three homes, we welcome a maximum of ten lodging guests, ensuring an exceptional sense of privacy and space.</p>
     </div>
     <div class="maisons-stack">
       <a href="/homes/le-moulin/" class="split split--maison fade-in">
@@ -380,7 +392,7 @@ const groupTypes = [
           <div class="split__meta">
             <span>5 Bedrooms</span><span>4 Baths</span><span>Sleeps 10</span>
           </div>
-          <p>An historic mill on the Juine River. The river runs through the house. Five bedrooms across three floors.</p>
+          <p>The original mill and principal residence of the estate.</p>
           <span class="link-arrow">Discover Le Moulin →</span>
         </div>
       </a>
@@ -393,7 +405,7 @@ const groupTypes = [
           <div class="split__meta">
             <span>3 Bedrooms + Suite</span><span>2 Baths</span><span>Sleeps 6</span>
           </div>
-          <p>Three bedrooms plus a suite. The 60-year sanctuary of Hollywood's #1 power lawyer — French antiques, a covered gazebo, the compound's gardens.</p>
+          <p>The secluded retreat once enjoyed by French and American stars.</p>
           <span class="link-arrow">Discover the Hideaway →</span>
         </div>
       </a>
@@ -406,10 +418,18 @@ const groupTypes = [
           <div class="split__meta">
             <span>2 Bedrooms</span><span>1 Bath</span><span>Sleeps 4</span>
           </div>
-          <p>Sun-drenched cottage with French doors onto the stream and apple trees. Two bedrooms, dining for 18, an authentic Louis Vuitton trunk as a coffee table.</p>
+          <p>The sun-drenched cottage where your cares float away.</p>
           <span class="link-arrow">Discover La Maison →</span>
         </div>
       </a>
+    </div>
+  </section>
+
+  <!-- Refined Country Living -->
+  <section class="text-center" style="padding-top: 8px; padding-bottom: 24px;">
+    <div class="container--narrow fade-in">
+      <h2 data-i18n="home.refined.heading">Refined Country Living</h2>
+      <p data-i18n="home.refined.text" style="margin-top: 12px;">Historic charm meets modern luxury.</p>
     </div>
   </section>
 
@@ -463,7 +483,7 @@ const groupTypes = [
   <!-- We Make It Easy -->
   <section class="section--tighter">
     <div class="container text-center fade-in" style="margin-bottom: 24px;">
-      <h2>We Make It Easy</h2>
+      <h2>Effortless Living</h2>
     </div>
     <div class="container">
       <div class="showcase showcase--triple">
@@ -502,6 +522,7 @@ const groupTypes = [
   <section class="section--tighter" style="padding-bottom: 12px;">
     <div class="container text-center fade-in" style="margin-bottom: 24px;">
       <h2 data-i18n="home.groups.heading">{cms.groupsHeading}</h2>
+      <p data-i18n="home.groups.sub" style="margin-top: 12px;">A private estate designed for meaningful time together.</p>
     </div>
     <div class="container">
       <div class="showcase showcase--triple">
