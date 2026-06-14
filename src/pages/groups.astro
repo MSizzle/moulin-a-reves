@@ -340,12 +340,12 @@ const testimonialVideos = [
     }
 
     /* ---- Item 9: Video testimonial row ---- */
-    /* Phase 3 §3: three videos remain — 3-up row, centred and width-capped */
+    /* Three videos in a 3-up row spanning the full content width, with a small
+       gap between (client June 14: larger thumbnails, full width). */
     .testimonial-videos {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(12px, 2vw, 24px);
-      max-width: 960px;
+      gap: clamp(14px, 1.8vw, 28px);
       margin: 0 auto clamp(32px, 4vw, 52px);
     }
     @media (max-width: 640px) {
