@@ -912,6 +912,17 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           if (e.key === 'ArrowRight') next();
           if (e.key === 'ArrowLeft') prev();
         });
+
+        // Touch swipe (mobile) — reuse next()/prev()
+        var lbTouchX = 0, lbTouchY = 0;
+        function lbSwipeStart(e) { lbTouchX = e.changedTouches[0].clientX; lbTouchY = e.changedTouches[0].clientY; }
+        function lbSwipeEnd(e) {
+          var dx = e.changedTouches[0].clientX - lbTouchX;
+          var dy = e.changedTouches[0].clientY - lbTouchY;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) next(); else prev(); }
+        }
+        if (img) { img.addEventListener('touchstart', lbSwipeStart, { passive: true }); img.addEventListener('touchend', lbSwipeEnd, { passive: true }); }
+        if (vid) { vid.addEventListener('touchstart', lbSwipeStart, { passive: true }); vid.addEventListener('touchend', lbSwipeEnd, { passive: true }); }
       })();
     </script>
 
@@ -1080,6 +1091,19 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           if (e.key === 'ArrowRight') next();
           if (e.key === 'ArrowLeft') prev();
         });
+
+        // Touch swipe (mobile) — bound to the main image so the thumb strip still scrolls
+        var rmTouchX = 0, rmTouchY = 0;
+        if (img) {
+          img.addEventListener('touchstart', function (e) {
+            rmTouchX = e.changedTouches[0].clientX; rmTouchY = e.changedTouches[0].clientY;
+          }, { passive: true });
+          img.addEventListener('touchend', function (e) {
+            var dx = e.changedTouches[0].clientX - rmTouchX;
+            var dy = e.changedTouches[0].clientY - rmTouchY;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) next(); else prev(); }
+          }, { passive: true });
+        }
       })();
     </script>
 
