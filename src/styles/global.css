@@ -17,9 +17,11 @@
   --ink-soft: #4C4C4C;
   --ink-mute: #757575;
 
-  /* Primary accent — Volet Bleu (retained as subtle accent only) */
-  --blue-primary: #2E5A88;
-  --blue-dark: #1B4F72;
+  /* Primary accent — watercress green, matched to the footer (client June 14).
+     Token names kept as --blue-* to preserve dashboard color bindings + existing
+     references; values repointed to green so the accent is green site-wide. */
+  --blue-primary: #2F4A34;
+  --blue-dark: #243A29;
   --blue-light: #5B8DB8;
   --blue-shutter: #4577A8;
   --blue-pale: #E8F0F8;
@@ -422,12 +424,12 @@ img,
 }
 
 .btn--primary {
-  background-color: var(--ink);
+  background-color: var(--blue-primary); /* footer green */
   color: white;
 }
 
 .btn--primary:hover {
-  background-color: #000;
+  background-color: var(--blue-dark); /* darker green */
   color: white;
 }
 
