@@ -308,16 +308,16 @@
     "fr": "Dites-nous vos dates, votre groupe, vos envies. Nous nous occupons du reste."
   },
   "home.cta.button": {
-    "en": "Bienvenue!",
-    "fr": "Bienvenue !"
+    "en": "Join us!",
+    "fr": "Rejoignez-nous !"
   },
   "homes.hero.title": {
     "en": "Bienvenue Chez Vous",
     "fr": "Bienvenue Chez Vous"
   },
   "homes.hero.tagline": {
-    "en": "All size groups welcome. Rent 1 home or enjoy all 3.",
-    "fr": "Toutes tailles de groupes bienvenues. Louez 1 maison ou profitez des 3."
+    "en": "Rent one home or enjoy the entire estate.",
+    "fr": "Louez une maison ou profitez du domaine tout entier."
   },
   "homes.moulin.desc": {
     "en": "The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.",
@@ -380,8 +380,8 @@
     "fr": "Découvrir Le Jardin"
   },
   "homes.rentall.heading": {
-    "en": "Your French Countryside Estate.",
-    "fr": "Louez les Trois"
+    "en": "Reunions, Retreats and Relaxation for up to 10 guests.",
+    "fr": "Réunions, retraites et détente pour 10 invités."
   },
   "homes.rentall.text": {
     "en": "Reunions, Retreats and Relaxation for up to 10 guests.",
@@ -1280,8 +1280,8 @@
     "fr": "Nous connaissons bien la région. Dites-nous ce qui vous plaît et nous préparerons une liste de choses à voir et à faire pendant votre séjour."
   },
   "explore.cta.button": {
-    "en": "Bienvenue!",
-    "fr": "Bienvenue !"
+    "en": "Join us.",
+    "fr": "Rejoignez-nous."
   },
   "catering.hero.title": {
     "en": "Catering",
@@ -1816,7 +1816,8 @@
     "en": "Sleeps 4"
   },
   "homes.rentall.cta": {
-    "en": "Explore the Compound"
+    "en": "Join us.",
+    "fr": "Rejoignez-nous."
   },
   "le-moulin.hero.eyebrow": {
     "en": " "

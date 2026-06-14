@@ -1588,17 +1588,17 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
 
       /* ---- Footer ---- */
       .footer {
-        --footer-bg: #B7DCEB;
-        --footer-ink: #163E58;
-        --footer-ink-soft: rgba(22, 62, 88, 0.78);
-        --footer-line: rgba(22, 62, 88, 0.18);
+        --footer-bg: #2F4A34; /* dark watercress green (client June 13) */
+        --footer-ink: #FFFFFF;
+        --footer-ink-soft: rgba(255, 255, 255, 0.82);
+        --footer-line: rgba(255, 255, 255, 0.20);
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 42%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 42%),
           var(--footer-bg);
         color: var(--footer-ink);
         padding-top: 72px;
         padding-bottom: 34px;
-        border-top: 1px solid rgba(22, 62, 88, 0.12);
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
       }
 
       .footer__grid {
@@ -1674,7 +1674,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       }
 
       .footer__contact a:hover {
-        color: var(--blue-dark);
+        color: rgba(255, 255, 255, 0.7);
       }
 
       .footer__newsletter {
@@ -1703,26 +1703,26 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         min-width: 0;
         padding: 12px 14px;
         font-size: 0.875rem;
-        background: rgba(255, 255, 255, 0.72);
-        border: 1px solid rgba(22, 62, 88, 0.22);
-        color: var(--footer-ink);
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        color: #1C2A1F;
         border-radius: 0;
       }
 
       .footer__newsletter-form .form__input::placeholder {
-        color: rgba(22, 62, 88, 0.58);
+        color: rgba(28, 42, 31, 0.55);
       }
 
       .footer__newsletter-form .btn {
         padding: 12px 20px;
         font-size: 0.75rem;
         white-space: nowrap;
-        background: var(--footer-ink);
+        background: #3B5E43;
         color: white;
       }
 
       .footer__newsletter-form .btn:hover {
-        background: var(--blue-dark);
+        background: #243A29;
         color: white;
       }
 
@@ -1734,7 +1734,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
 
       .footer__bottom p {
         font-size: 0.8125rem;
-        color: rgba(22, 62, 88, 0.68);
+        color: rgba(255, 255, 255, 0.7);
         font-weight: 500;
         max-width: none;
       }

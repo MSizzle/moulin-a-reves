@@ -453,6 +453,17 @@ img,
   color: var(--ink);
 }
 
+/* Watercress-green CTA ("Join us") — client June 13 */
+.btn--green {
+  background-color: #3B5E43;
+  color: white;
+}
+
+.btn--green:hover {
+  background-color: #243A29;
+  color: white;
+}
+
 /* ---- Links with arrows ---- */
 .link-arrow {
   font-family: var(--font-body);
