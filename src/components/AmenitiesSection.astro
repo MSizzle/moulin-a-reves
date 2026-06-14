@@ -90,24 +90,25 @@ function svgFor(key: string | undefined): string {
     )}
 
     {features.length > 0 && exploreMode && (
-      <div class="explore-grid">
+      <div class="compound-grid compound-grid--3">
         {features.map((f, i) => {
           const featTitleKey = featureKeyPrefix ? `${featureKeyPrefix}.${i}.title` : (i18nKey ? `${i18nKey}.feature.${i}.title` : undefined);
+          const featSummaryKey = featureKeyPrefix ? `${featureKeyPrefix}.${i}.summary` : (i18nKey ? `${i18nKey}.feature.${i}.summary` : undefined);
           const gallery = f.gallery && f.gallery.length > 0 ? f.gallery : [{ src: f.image, alt: f.alt || f.title }];
           return (
             <div
-              class="explore-tile compound-tile--clickable fade-in"
+              class="compound-tile compound-tile--clickable fade-in"
               data-gallery={JSON.stringify(gallery)}
               role="button"
               tabindex="0"
               aria-label={`View photos: ${f.title}`}
             >
-              <div class="explore-tile__media">
+              <div class="compound-tile__media">
                 <img src={f.image} alt={f.alt || f.title} loading="lazy" />
-                <div class="explore-tile__overlay"></div>
               </div>
-              <div class="explore-tile__label">
-                <h3 class="explore-tile__title" {...(featTitleKey ? { 'data-i18n': featTitleKey } : {})}>{f.title}</h3>
+              <div class="compound-tile__body">
+                <h3 class="compound-tile__title" {...(featTitleKey ? { 'data-i18n': featTitleKey } : {})}>{f.title}</h3>
+                <p class="compound-tile__summary" {...(featSummaryKey ? { 'data-i18n': featSummaryKey } : {})}>{f.summary}</p>
               </div>
             </div>
           );
@@ -184,75 +185,9 @@ function svgFor(key: string | undefined): string {
     max-width: none;
   }
 
-  /* ---- Explore the Estate tile grid (six estate-wide tiles, 3×2) ---- */
-  .explore-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 48px;
-  }
-
-  .explore-tile {
-    position: relative;
-    cursor: zoom-in;
-    overflow: hidden;
-    aspect-ratio: 3 / 4;
-    background: var(--bg-stone);
-  }
-
-  .explore-tile__media {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .explore-tile__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s var(--ease-out);
-  }
-
-  .explore-tile:hover .explore-tile__media img {
-    transform: scale(1.05);
-  }
-
-  .explore-tile__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(15, 15, 15, 0.65) 0%, rgba(15, 15, 15, 0) 55%);
-    pointer-events: none;
-  }
-
-  .explore-tile__label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 16px 14px;
-    z-index: 2;
-  }
-
-  .explore-tile__title {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: white;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
-    margin: 0;
-  }
-
-  .explore-tile:focus-visible {
-    outline: 2px solid var(--blue-primary);
-    outline-offset: 4px;
-  }
-
-  @media (max-width: 768px) {
-    .explore-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+  /* Explore-the-Estate tiles reuse the home page's global .compound-grid /
+     .compound-tile styles (image with title + summary below) so the house-page
+     section matches the home page exactly — see src/styles/global.css. */
 
   .amenity-list {
     border-top: 1px solid rgba(32, 32, 32, 0.1);

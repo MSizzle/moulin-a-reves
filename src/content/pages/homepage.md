@@ -2,7 +2,7 @@
 heroTagline: "Méréville · France"
 heroImage: "/images/hero-compound.webp"
 introHeading: "A private compound, one hour from Paris."
-introText: "Just one hour from Paris, Moulin à Rêves transports you to the romance of the French countryside. Once a working watermill, the Juine River still flows through Le Moulin."
+introText: "Just one hour from Paris, Moulin à Rêves transports you to the romance of the French countryside. Historic charm meets refined country elegance on this tranquil estate. Once a working watermill, the Juine River still flows through Le Moulin."
 groupsHeading: "The Art of Gathering"
 groupsDescription: "Three maisons, shared grounds, room to gather — book the whole compound for your group."
 groupsCta: "Plan a Group Stay"

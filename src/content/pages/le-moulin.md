@@ -19,6 +19,8 @@ summary: "An historic mill on the Juine River in Méréville, France. The river 
 
 # Photo carousel — main page gallery
 gallery:
+  - src: "/images/homes/le-moulin-flower-cart.webp"
+    alt: "Le Moulin — stone facade with blue shutters and the antique flower cart in the cobblestone courtyard"
   - src: "/images/homes/le-moulin-estate-river.webp"
     alt: "The estate with the Juine River running through the property"
   - src: "/images/homes/le-moulin-stream-flowerboxes.webp"
@@ -41,8 +43,6 @@ gallery:
     alt: "Le Loft Suite — master bedroom under cathedral ceilings"
   - src: "/images/homes/le-moulin-river-room.webp"
     alt: "La Chambre de la Rivière — twin beds with stone walls and lantern light"
-  - src: "/images/homes/le-moulin-flower-cart.webp"
-    alt: "Stone facade with the antique flower cart in the courtyard"
   - src: "/images/homes/le-moulin-back-patio.webp"
     alt: "Back patio with cafe seating outside the stone facade"
   - src: "/images/homes/le-moulin-gate.webp"
