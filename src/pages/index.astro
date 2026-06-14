@@ -156,11 +156,17 @@ const groupTypes = [
       display: block;
     }
     .hero-lc__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
       max-width: min(1280px, 94vw);
       margin: 0 auto;
       padding: clamp(28px, 4vw, 48px) 24px clamp(8px, 2vw, 20px);
     }
+    /* Each line centers as a shrink-wrapped flex item — independent of the
+       global `p { max-width: 65ch }` rule and per-element margin shorthands. */
+    .hero-lc__content > * { max-width: 100%; }
     .hero-lc__title {
       font-family: var(--font-serif);
       font-size: clamp(2.25rem, 5vw, 5.5rem);
