@@ -21,11 +21,14 @@ interface Props {
   amenities: AmenityItem[];
   background?: 'cream' | 'stone';
   i18nKey?: string;
-  /** Explore mode: render features as 4-equal-square clickable tiles opening the hero lightbox */
+  /** Explore mode: render features as equal-square clickable tiles opening the hero lightbox */
   exploreMode?: boolean;
+  /** Override the i18n key prefix for explore-tile titles (e.g. reuse the home page's
+      'home.compound.feat' keys so the shared estate tiles translate identically everywhere). */
+  featureKeyPrefix?: string;
 }
 
-const { eyebrow = 'Amenities & Grounds', heading = "What's Here", intro, features, amenities, background = 'cream', i18nKey, exploreMode = false } = Astro.props;
+const { eyebrow = 'Amenities & Grounds', heading = "What's Here", intro, features, amenities, background = 'cream', i18nKey, exploreMode = false, featureKeyPrefix } = Astro.props;
 const sectionClass = background === 'stone' ? 'section section--tight section--soft' : 'section section--tight';
 const eyebrowKey = i18nKey ? `${i18nKey}.eyebrow` : undefined;
 const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
@@ -89,7 +92,7 @@ function svgFor(key: string | undefined): string {
     {features.length > 0 && exploreMode && (
       <div class="explore-grid">
         {features.map((f, i) => {
-          const featTitleKey = i18nKey ? `${i18nKey}.feature.${i}.title` : undefined;
+          const featTitleKey = featureKeyPrefix ? `${featureKeyPrefix}.${i}.title` : (i18nKey ? `${i18nKey}.feature.${i}.title` : undefined);
           const gallery = f.gallery && f.gallery.length > 0 ? f.gallery : [{ src: f.image, alt: f.alt || f.title }];
           return (
             <div
@@ -181,10 +184,10 @@ function svgFor(key: string | undefined): string {
     max-width: none;
   }
 
-  /* ---- Explore the Estate 4-square grid ---- */
+  /* ---- Explore the Estate tile grid (six estate-wide tiles, 3×2) ---- */
   .explore-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-bottom: 48px;
   }
