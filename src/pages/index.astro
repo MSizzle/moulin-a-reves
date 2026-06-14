@@ -43,13 +43,10 @@ const compoundFeatures = [
       { src: '/images/homes/la-grange-hero.webp', alt: 'La Grange exterior — covered pavilion at the heart of the compound' },
       { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange — wide view of the open pavilion' },
       { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
-      { src: '/images/homes/la-grange-living.webp', alt: 'La Grange living area beside the stone hearth' },
       { src: '/images/homes/la-grange-fire.webp', alt: 'Fire crackling in the stone hearth of La Grange' },
       { src: '/images/homes/la-grange-fire-2.webp', alt: 'Roaring fire in the stone fireplace at La Grange' },
-      { src: '/images/homes/la-grange-party-setup.webp', alt: 'La Grange pavilion set with banquet tables for a party' },
-      { src: '/images/homes/la-grange-plates.webp', alt: 'Long banquet table at La Grange set with china plates and stemware' },
+      { src: '/images/grange-fireplace-flame.webp', alt: 'Stone fireplace blazing at La Grange with champagne and celebration setup' },
       { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse carriage on display inside La Grange' },
-      { src: '/images/homes/la-grange-jetson-chariot.webp', alt: 'Jetson the Cavalier in a small chariot inside La Grange' },
       { src: '/images/group-dinner.webp', alt: 'Dinner laid on the long table under La Grange\'s pavilion' },
       { src: '/images/grange-set-table.webp', alt: 'The long table set under La Grange\'s pavilion with the garden and painted bridge beyond' },
     ],
@@ -101,10 +98,10 @@ const compoundFeatures = [
   {
     title: 'Screening Room',
     summary: 'A private cinema with leather club chairs for films and rainy afternoons.',
-    image: '/images/screening-room.webp',
-    alt: 'Screening room at Moulin à Rêves',
+    image: '/images/grange-screening-netflix.webp',
+    alt: 'Screening room at La Grange with Netflix on the large screen and leather sofas',
     gallery: [
-      { src: '/images/screening-room.webp', alt: 'Screening room with leather club chairs facing the screen' },
+      { src: '/images/grange-screening-netflix.webp', alt: 'Screening room at La Grange with Netflix on the large screen and leather sofas' },
       { src: '/images/homes/la-grange-screening-2.webp', alt: 'Screening room facing the leather chairs from the rear' },
     ],
   },
@@ -121,7 +118,7 @@ const compoundFeatures = [
 ];
 
 const groupTypes = [
-  { title: 'Family reunions', image: '/images/catering-group-gathering.webp', alt: 'Family gathered for a meal at Moulin à Rêves' },
+  { title: 'Family reunions', image: '/images/family-reunions.webp', alt: 'Family gathered for a celebration under La Grange at Moulin à Rêves' },
   { title: 'Yoga Retreats', image: '/images/wellness-yoga-hideaway.webp', alt: 'Yoga practice on the lawn beside the Hollywood Hideaway at Moulin à Rêves' },
   { title: 'Celebrations with Friends', image: '/images/group-bbq.webp', alt: 'Friends raising a toast outside Hollywood Hideaway at Moulin à Rêves' },
 ];
@@ -211,55 +208,66 @@ const groupTypes = [
     })} />
   </Fragment>
 
-  <!-- Hero -->
-  <section class="hero hero--lc">
-    <div class="hero__image">
+  <!-- Hero — unfiltered image with the wordmark set below it (client 6pm note) -->
+  <section class="hero-lc">
+    <div class="hero-lc__image">
       <img src={cms.heroImage} alt="Moulin à Rêves compound — stone houses with blue shutters along the millstream" />
     </div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <h1 class="hero__title" data-i18n-html="home.title">Moulin à Rêves</h1>
-      <p class="hero__tagline" data-i18n="home.subtitle" style="font-size: clamp(1.6875rem, 2.7vw, 2.4375rem);">The Mill of Dreams</p>
-      <p class="hero__location" data-i18n="home.hero.location">Méréville, France</p>
+    <div class="hero-lc__content">
+      <h1 class="hero-lc__title" data-i18n-html="home.title">Moulin à Rêves</h1>
+      <p class="hero-lc__tagline" data-i18n="home.subtitle">The Mill of Dreams</p>
+      <p class="hero-lc__location" data-i18n="home.hero.location">Méréville, France</p>
     </div>
   </section>
 
   <style>
-    .hero--lc { height: 88vh; min-height: 580px; align-items: center; padding-bottom: 0; }
-    .hero--lc .hero__content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: min(1280px, 94vw);
+    /* Home hero — full-bleed unfiltered image, wordmark set below on cream */
+    .hero-lc { background: var(--bg-cream); }
+    .hero-lc__image {
+      width: 100%;
+      height: clamp(420px, 62vh, 760px);
+      overflow: hidden;
     }
-    .hero--lc .hero__title {
-      font-size: clamp(2.25rem, 5vw, 6rem);
-      max-width: none;
+    .hero-lc__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-lc__content {
+      text-align: center;
+      max-width: min(1280px, 94vw);
+      margin: 0 auto;
+      padding: clamp(28px, 4vw, 48px) 24px clamp(8px, 2vw, 20px);
+    }
+    .hero-lc__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.25rem, 5vw, 5.5rem);
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+      line-height: 1.04;
+      margin: 0;
     }
     @media (min-width: 900px) {
-      .hero--lc .hero__title { white-space: nowrap; }
+      .hero-lc__title { white-space: nowrap; }
     }
-    .hero--lc .hero__tagline {
+    .hero-lc__tagline {
       font-family: var(--font-serif);
-      font-size: clamp(1.125rem, 1.8vw, 1.625rem);
+      font-size: clamp(1.3125rem, 2.4vw, 2.0625rem);
       font-weight: 400;
       line-height: 1.3;
-      color: rgba(255, 255, 255, 0.96);
-      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
-      max-width: 720px;
-      margin: 16px auto 4px;
-      text-align: center;
+      color: var(--ink-soft);
+      margin: 10px 0 0;
     }
-    .hero--lc .hero__location {
+    .hero-lc__location {
       font-family: var(--font-body);
       font-size: 0.8125rem;
       font-weight: 500;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.92);
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
-      margin: 0 auto 28px;
-      text-align: center;
+      color: var(--ink-mute);
+      margin: 16px 0 0;
     }
     .hero__eyebrow {
       display: block;
@@ -333,7 +341,7 @@ const groupTypes = [
       color: var(--ink-mute);
     }
     .maisons-intro {
-      max-width: 540px;
+      max-width: 880px;
       margin-left: auto;
       margin-right: auto;
       font-size: 1.0625rem;
@@ -433,7 +441,6 @@ const groupTypes = [
   <section class="text-center" style="padding-top: 8px; padding-bottom: 24px;">
     <div class="container--narrow fade-in">
       <h2 data-i18n="home.refined.heading">Refined Country Living</h2>
-      <p data-i18n="home.refined.text" style="margin-top: 12px;">Historic charm meets modern luxury.</p>
     </div>
   </section>
 
@@ -706,14 +713,8 @@ const groupTypes = [
     })();
   </script>
 
-  <!-- Discover the Area -->
-  <section class="section--tighter section--soft text-center">
-    <div class="container fade-in">
-      <h2 data-i18n="home.area.heading">Discover the Area</h2>
-      <p data-i18n="home.area.intro" style="margin-top: 12px;">Just one hour from Paris, discover the charm, beauty and history of nearby châteaux and villages.</p>
-      <a href="/explore/" class="link-arrow" style="margin-top: 20px; display: inline-block;">Explore the area</a>
-    </div>
-  </section>
+  <!-- Discover the Area — removed per client 6pm note (flows straight to Plan Your Stay).
+       Translation keys home.area.* are intentionally left in translations.json for later restore. -->
 
   <!-- CTA -->
   <section class="section--tighter text-center">
