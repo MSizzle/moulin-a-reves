@@ -1347,6 +1347,18 @@
     "en": "Your chef knows the local producers, the seasonal ingredients, and the way a meal should feel when you're eating it outdoors in the French countryside: generous, unhurried, built around what's good right now.",
     "fr": "Votre chef connaît les producteurs locaux, les ingrédients de saison et la façon dont un repas doit se vivre quand on le déguste en plein air dans la campagne française : généreux, sans hâte, construit autour de ce qui est bon en ce moment."
   },
+  "catering.patisserie.heading": {
+    "en": "Pâtisseries & Sweets",
+    "fr": "Pâtisseries & Douceurs"
+  },
+  "catering.patisserie.p1": {
+    "en": "Macarons, tarts, layered cakes, and seasonal fruit from the village pâtissiers — a tray waiting on the table when guests arrive, or a celebration cake delivered to mark the occasion.",
+    "fr": "Macarons, tartes, gâteaux à étages et fruits de saison des pâtissiers du village — un plateau qui attend sur la table à l'arrivée des invités, ou un gâteau de fête livré pour marquer l'occasion."
+  },
+  "catering.gallery.heading": {
+    "en": "Sur la <span class=\"serif-italic\">table</span>",
+    "fr": "Sur la <span class=\"serif-italic\">table</span>"
+  },
   "catering.testimonial": {
     "en": "\"We had the private chef for four nights and it transformed the trip. Every meal was an event. The duck with cherry sauce on the last evening — I still think about it.\"",
     "fr": "\"Nous avons eu le chef privé pendant quatre soirs et cela a transformé notre séjour. Chaque repas était un événement. Le canard à la sauce cerise du dernier soir — j'y pense encore.\""
@@ -1843,7 +1855,7 @@
   },
   "le-moulin.narrative.p2": {
     "en": "His tradition of joyful hospitality welcomes you and your guests!",
-    "fr": "La grande cuisine conviviale et la salle à manger d'apparat perpétuent une tradition d'hospitalité, de retrouvailles et de conversations animées qui se transmet depuis des générations."
+    "fr": "Sa tradition d'hospitalité joyeuse vous accueille, vous et vos invités !"
   },
   "le-moulin.bedrooms.eyebrow": {
     "en": ""
