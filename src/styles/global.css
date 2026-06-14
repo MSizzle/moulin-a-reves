@@ -982,7 +982,9 @@ img,
 
 .hero__title {
   font-family: var(--font-serif);
-  font-size: clamp(2.75rem, 6.2vw, 8rem);
+  /* Capped at 5rem so multi-word titles ("The Art of Gathering") stay on one
+     line within the content box on wide monitors instead of wrapping. */
+  font-size: clamp(2.25rem, 6vw, 5rem);
   font-weight: 400;
   color: white;
   margin-bottom: 24px;
