@@ -126,6 +126,12 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           <li><a href="/about/" data-i18n="nav.about">About</a></li>
           <li><a href="/contact/" data-i18n="nav.contact">Contact</a></li>
         </ul>
+        <a href="/contact/" class="btn btn--primary nav__mobile-cta" data-i18n="nav.inquire">Inquire</a>
+        <button class="lang-toggle nav__mobile-lang" id="lang-toggle-mobile" aria-label="Toggle language">
+          <span class="lang-toggle__label lang-toggle__label--active" data-lang="en">EN</span>
+          <span class="lang-toggle__slider"></span>
+          <span class="lang-toggle__label" data-lang="fr">FR</span>
+        </button>
         <div class="nav__mobile-contact">
           <a href="tel:+13474503786">+1 (347) 450-3786</a>
         </div>
@@ -366,7 +372,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         position: absolute;
         bottom: 16px;
         right: 16px;
-        background: rgba(15, 15, 15, 0.65);
+        background: var(--blue-primary); /* footer green */
         color: white;
         font-family: var(--font-body);
         font-size: 0.6875rem;
@@ -553,7 +559,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .lightbox--cream { background: var(--bg-stone); }
       .lightbox--cream .lightbox__image { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18); }
       .lightbox--cream .lightbox__caption { color: var(--ink-soft); }
-      .lightbox--cream .lightbox__counter { color: var(--ink-mute); }
+      .lightbox--cream .lightbox__counter { color: #fff; }
       .lightbox--cream .lightbox__close,
       .lightbox--cream .lightbox__nav {
         background: rgba(0, 0, 0, 0.04);
@@ -585,7 +591,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         left: 50%;
         bottom: 28px;
         transform: translateX(-50%);
-        color: var(--ink-mute);
+        color: #fff;
         text-shadow: none;
       }
       .lightbox--full .lightbox__close,
@@ -659,7 +665,9 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         font-weight: 500;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.6);
+        color: #fff;
+        background: var(--blue-primary); /* footer green */
+        padding: 6px 12px;
       }
       .lightbox__close,
       .lightbox__nav {
@@ -1477,11 +1485,23 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         width: 24px;
         height: 2px;
         background: white;
-        transition: background var(--duration) var(--ease-out);
+        transform-origin: center;
+        transition: transform var(--duration) var(--ease-out), opacity var(--duration) var(--ease-out), background var(--duration) var(--ease-out);
       }
 
       .nav--scrolled .nav__hamburger span {
         background: var(--text-primary);
+      }
+
+      /* Hamburger → X when the mobile menu is open */
+      .nav__hamburger.is-open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav__hamburger.is-open span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav__hamburger.is-open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
       }
 
       /* Language Toggle */
@@ -1584,6 +1604,34 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .nav__mobile-contact a {
         color: var(--text-light);
         font-size: 0.875rem;
+      }
+
+      /* Inquire CTA inside the mobile menu */
+      .nav__mobile-cta {
+        margin-top: 8px;
+      }
+
+      /* Language toggle inside the mobile menu (sits on the dark overlay,
+         so the default white-on-translucent toggle styling already fits) */
+      .nav__mobile-lang {
+        margin-top: 28px;
+      }
+
+      /* ---- Mobile nav bar: always-legible solid bar + decluttered top ---- */
+      @media (max-width: 768px) {
+        /* Solid bar by default so the logo + hamburger never disappear
+           against a light hero (they were white-on-light until scroll). */
+        .nav {
+          background: rgba(254, 252, 248, 0.95);
+          backdrop-filter: blur(12px);
+          box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+        }
+        .nav__logo-text { color: var(--text-primary); }
+        .nav__hamburger span { background: var(--text-primary); }
+
+        /* Top bar shows logo + hamburger only; lang + Inquire move into the menu. */
+        .nav__actions .lang-toggle,
+        .nav__actions .btn--primary { display: none; }
       }
 
       /* ---- Footer ---- */
@@ -1792,8 +1840,30 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       const mobile = document.getElementById('nav-mobile');
       const close = document.getElementById('nav-close');
 
-      toggle?.addEventListener('click', () => mobile?.classList.add('active'));
-      close?.addEventListener('click', () => mobile?.classList.remove('active'));
+      function openMobileMenu() {
+        mobile?.classList.add('active');
+        toggle?.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMobileMenu() {
+        mobile?.classList.remove('active');
+        toggle?.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      toggle?.addEventListener('click', () => {
+        if (mobile?.classList.contains('active')) closeMobileMenu();
+        else openMobileMenu();
+      });
+      close?.addEventListener('click', closeMobileMenu);
+      // Close after tapping a destination link
+      mobile?.querySelectorAll('a[href]').forEach((a) => {
+        a.addEventListener('click', closeMobileMenu);
+      });
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobile?.classList.contains('active')) closeMobileMenu();
+      });
 
       // Scroll animations — with sibling stagger for grid children
       const observer = new IntersectionObserver(
@@ -1899,10 +1969,11 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         }
       }
 
-      // Toggle click handler
-      const langToggle = document.getElementById('lang-toggle');
-      langToggle?.addEventListener('click', () => {
-        setLanguage(currentLang === 'en' ? 'fr' : 'en');
+      // Toggle click handler — bind every toggle (top bar + mobile menu)
+      document.querySelectorAll('.lang-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          setLanguage(currentLang === 'en' ? 'fr' : 'en');
+        });
       });
 
       // Apply saved language on load
