@@ -3,7 +3,9 @@
    Stone & Blue Palette
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+/* Fonts are loaded via a <link> in BaseLayout.astro <head> rather than an
+   @import here, so the browser fetches them in parallel with this stylesheet
+   instead of waiting to discover them only after global.css downloads+parses. */
 
 :root {
   /* Backgrounds — Le Collectionist-style neutrals */

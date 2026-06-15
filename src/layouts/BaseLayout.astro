@@ -53,9 +53,11 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content="Moulin à Rêves stone maisons with blue shutters beside the millstream" />
 
-    <!-- Fonts preload -->
+    <!-- Fonts: preconnect + a direct stylesheet link (loaded in parallel with
+         global.css rather than chained behind it via @import). -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
