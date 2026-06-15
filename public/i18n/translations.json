@@ -175,6 +175,10 @@
     "en": "A private estate designed for meaningful time together.",
     "fr": "Un domaine privé conçu pour des moments précieux partagés."
   },
+  "home.groups.events": {
+    "en": "Events welcome for up to 35 guests, for an additional fee.",
+    "fr": "Les événements sont les bienvenus jusqu'à 35 invités, moyennant un supplément."
+  },
   "home.homes.eyebrow": {
     "en": "The Three Houses",
     "fr": "Les Trois Maisons"
@@ -1296,8 +1300,8 @@
     "fr": "Bon appétit !"
   },
   "catering.intro.text": {
-    "en": "The kitchen is stocked, the markets are close, and cooking with fresh ingredients is part of the joy. But some mornings, you'd rather find a basket of warm croissants at the door. And some evenings, you'd rather sit down to a table already set, a meal already made, a bottle already opened. That's what this is for",
-    "fr": "Vous êtes en vacances. La cuisine est équipée, les marchés sont proches, et cuisiner avec des produits frais fait partie du plaisir. Mais certains matins, on préfère trouver un panier de croissants chauds à la porte. Et certains soirs, s'asseoir à une table déjà dressée, devant un repas déjà prêt, une bouteille déjà ouverte. C'est à cela que ce service est destiné."
+    "en": "Food is one of the great pleasures of French life, and at Moulin à Rêves, we make it easy to enjoy. Visit the weekly market, browse the local boulangerie, shop at the nearby supermarket, or let us help arrange the details before you arrive.",
+    "fr": "La gastronomie est l’un des grands plaisirs de la vie française, et à Moulin à Rêves, nous facilitons ce plaisir. Visitez le marché hebdomadaire, flânez à la boulangerie du village, faites vos courses au supermarché voisin, ou laissez-nous organiser les détails avant votre arrivée."
   },
   "catering.breakfast.heading": {
     "en": "Breakfast Delivery",
@@ -1336,16 +1340,16 @@
     "fr": "Dites-nous l'occasion, le nombre d'invités et les éventuelles restrictions alimentaires, et nous préparerons une proposition."
   },
   "catering.chef.heading": {
-    "en": "Nourishing Drop off Meals prepared by local chefs",
-    "fr": "Repas nourrissants livrés, préparés par des chefs locaux"
+    "en": "Local Chefs & Catering",
+    "fr": "Chefs Locaux & Traiteurs"
   },
   "catering.chef.p1": {
-    "en": "For groups who want to hand over the kitchen entirely, we arrange a private chef for the duration of your stay. They'll shop at the morning markets, cook breakfast and dinner each day, and adapt the menus to your group — vegan guests, children's meals, a birthday cake at the end.",
-    "fr": "Pour les groupes qui souhaitent confier entièrement la cuisine, nous mettons à disposition un chef privé pour la durée de votre séjour. Il fait ses courses aux marchés du matin, prépare petit-déjeuner et dîner chaque jour, et adapte les menus à votre groupe — convives végétaliens, repas pour enfants, gâteau d'anniversaire pour finir."
+    "en": "From nourishing retreat meals to elegant dinners beneath La Grange, we’re happy to connect you with trusted local chefs, caterers, and food producers.",
+    "fr": "Des repas nourrissants pour les retraites aux dîners élégants sous La Grange, nous nous ferons un plaisir de vous mettre en relation avec des chefs, traiteurs et producteurs locaux de confiance."
   },
   "catering.chef.p2": {
-    "en": "Your chef knows the local producers, the seasonal ingredients, and the way a meal should feel when you're eating it outdoors in the French countryside: generous, unhurried, built around what's good right now.",
-    "fr": "Votre chef connaît les producteurs locaux, les ingrédients de saison et la façon dont un repas doit se vivre quand on le déguste en plein air dans la campagne française : généreux, sans hâte, construit autour de ce qui est bon en ce moment."
+    "en": "Options range from simple drop-off meals prepared by local artisans to fully catered celebrations with service staff. We can recommend everything from traditional French country fare featuring local specialties to refined multi-course dinners for special occasions.",
+    "fr": "Les options vont des simples repas livrés préparés par des artisans locaux aux célébrations entièrement traitées avec personnel de service. Nous pouvons tout recommander, de la cuisine traditionnelle de campagne française mettant à l’honneur les spécialités locales aux dîners raffinés à plusieurs plats pour les grandes occasions."
   },
   "catering.patisserie.heading": {
     "en": "Pâtisseries & Sweets",
@@ -1376,8 +1380,8 @@
     "fr": "Dites-nous vos envies et nous préparerons une proposition de restauration pour votre séjour. Tous les tarifs sont disponibles sur demande."
   },
   "catering.cta.button": {
-    "en": "Inquire About Catering",
-    "fr": "Demander un Devis Restauration"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "wellness.hero.title": {
     "en": "Wellness",
@@ -1388,12 +1392,16 @@
     "fr": "Yoga, massage et ce genre de calme qui ressource."
   },
   "wellness.intro.heading": {
-    "en": "Let Someone Take Care of You",
-    "fr": "Laissez-vous Choyer"
+    "en": "Bien-Être",
+    "fr": "Bien-Être"
+  },
+  "wellness.intro.subhead": {
+    "en": "The Art of Relaxation",
+    "fr": "L'Art de la Détente"
   },
   "wellness.intro.text": {
-    "en": "The countryside does most of the work. The air, the silence, the rhythm of days that have nowhere urgent to go. But sometimes your shoulders need more than fresh air, and your mind needs more than a good view. That's where our wellness partners come in — local practitioners who come to the compound so you don't have to go anywhere at all.",
-    "fr": "La campagne fait l'essentiel du travail. L'air, le silence, le rythme de journées qui n'ont rien d'urgent. Mais parfois vos épaules ont besoin de plus que l'air frais, et votre esprit de plus qu'une belle vue. C'est là qu'interviennent nos partenaires bien-être — des praticiens locaux qui viennent au domaine pour que vous n'ayez à aller nulle part."
+    "en": "At Moulin à Rêves, well-being comes naturally. The gardens, the river, and the slower rhythm of French country life create an atmosphere of beauty, tranquility, and restoration. For those seeking a little extra indulgence, we are happy to connect you with trusted local practitioners who can enhance your stay with services at the estate.",
+    "fr": "À Moulin à Rêves, le bien-être vient naturellement. Les jardins, la rivière et le rythme plus lent de la vie à la campagne française créent une atmosphère de beauté, de tranquillité et de ressourcement. Pour ceux qui recherchent un peu plus de douceur, nous nous ferons un plaisir de vous mettre en relation avec des praticiens locaux de confiance qui agrémenteront votre séjour de services au domaine."
   },
   "wellness.intro.text2": {
     "en": "Book a private instructor to lead classes on the lawn or in the grange. 8 yoga mats are available at the property for your use.",
@@ -1404,8 +1412,8 @@
     "fr": "Yoga sur la Pelouse"
   },
   "wellness.yoga.p1": {
-    "en": "The lawn between the houses catches the morning sun from the east, and by eight o'clock, it's warm enough for bare feet on grass. Your instructor arrives with mats and props, and for the next hour, the only sounds are breath, birdsong, and the millstream.",
-    "fr": "La pelouse entre les maisons capte le soleil matinal venant de l'est, et dès huit heures, il fait assez chaud pour poser les pieds nus dans l'herbe. Votre professeur arrive avec tapis et accessoires, et pendant l'heure qui suit, les seuls sons sont le souffle, le chant des oiseaux et le bief."
+    "en": "Practice beside the river, in the gym, or in La Grange. Private yoga instructors can be arranged for individuals or groups. Ten yoga mats are available for guest use.",
+    "fr": "Pratiquez au bord de la rivière, dans la salle de sport ou dans La Grange. Des professeurs de yoga privés peuvent être organisés pour les individus ou les groupes. Dix tapis de yoga sont à la disposition des hôtes."
   },
   "wellness.yoga.p2": {
     "en": "Sessions are available for all levels — from gentle morning flows to more dynamic vinyasa. For groups, we can arrange a daily practice throughout your stay. For yoga retreat organisers, we can help structure a full programme with meals, accommodation, and additional wellness services.",
@@ -1416,8 +1424,8 @@
     "fr": "Massage"
   },
   "wellness.massage.p1": {
-    "en": "Your massage therapist sets up in one of the houses or, on warm days, on the shaded terrace — wherever you're most comfortable. Treatments range from deep tissue to relaxation massage, using plant-based oils from a producer in Provence.",
-    "fr": "Votre masseur s'installe dans l'une des maisons ou, les jours de beau temps, sur la terrasse ombragée — là où vous êtes le plus à l'aise. Les soins vont du massage en profondeur au massage relaxant, avec des huiles végétales d'un producteur de Provence."
+    "en": "Enjoy a relaxing massage in the privacy of your guest room or outdoors beside the river, surrounded by the beauty of the estate.",
+    "fr": "Profitez d'un massage relaxant dans l'intimité de votre chambre ou en plein air au bord de la rivière, entouré par la beauté du domaine."
   },
   "wellness.massage.p2": {
     "en": "You'll book a time, and that's the last decision you have to make. Afterwards, you'll sit in the garden with a glass of water and wonder why you don't do this more often. Sessions are typically 60 or 90 minutes, and can be arranged for individuals or for the whole group over the course of a day.",
@@ -1428,8 +1436,8 @@
     "fr": "Soins Esthétiques"
   },
   "wellness.beauty.p1": {
-    "en": "Facials, manicures, pedicures — small indulgences that fit naturally into an afternoon when you have no plans and no intention of making any. Our beauty therapist comes to the compound with everything needed, using French skincare products that smell the way the countryside looks.",
-    "fr": "Soins du visage, manucures, pédicures — de petits plaisirs qui s'intègrent naturellement dans un après-midi où vous n'avez aucun plan et aucune intention d'en faire. Notre esthéticienne vient au domaine avec tout le nécessaire, utilisant des produits de soins français qui sentent aussi bon que la campagne est belle."
+    "en": "Facials, manicures, pedicures, and beauty treatments can be arranged at Moulin à Rêves. For guests who prefer to venture into town, Méréville hosts two beauty salons offering a full range of services.",
+    "fr": "Soins du visage, manucures, pédicures et soins de beauté peuvent être organisés à Moulin à Rêves. Pour les hôtes qui préfèrent se rendre en ville, Méréville compte deux salons de beauté offrant une gamme complète de services."
   },
   "wellness.beauty.p2": {
     "en": "Treatments can be booked individually or as part of a group spa afternoon. Particularly good for the day before a celebration, or the day after a long hike through Fontainebleau Forest.",
@@ -1464,8 +1472,20 @@
     "fr": "Dites-nous vos envies et nous les organisons. Tous les services bien-être sont tarifés sur demande."
   },
   "wellness.cta.button": {
-    "en": "Inquire About Wellness",
-    "fr": "Demander un Devis Bien-être"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
+  },
+  "wellness.temps.heading": {
+    "en": "Le Temps de Vivre",
+    "fr": "Le Temps de Vivre"
+  },
+  "wellness.temps.p1": {
+    "en": "The French have a phrase, <span class=\"serif-italic\">le temps de vivre</span> — the time to live. It is the pleasure of slowing down, savoring the moment, and enjoying life without hurry.",
+    "fr": "Les Français ont une expression, <span class=\"serif-italic\">le temps de vivre</span>. C'est le plaisir de ralentir, de savourer l'instant et de profiter de la vie sans se presser."
+  },
+  "wellness.temps.p2": {
+    "en": "Whether it's a morning yoga class, an afternoon massage, or simply a quiet moment in the garden, Moulin à Rêves offers space to restore, reconnect, and enjoy the pleasures of the present moment.",
+    "fr": "Qu'il s'agisse d'un cours de yoga le matin, d'un massage l'après-midi ou simplement d'un moment de calme au jardin, Moulin à Rêves offre l'espace pour se ressourcer, se reconnecter et savourer les plaisirs de l'instant présent."
   },
   "about.hero.title": {
     "en": "About",
@@ -1536,12 +1556,12 @@
     "fr": "Planifiez Votre Séjour"
   },
   "about.history.p1": {
-    "en": "The history of Moulin à Rêves is as magical as the setting. It has been owned by one family for over 75 years. It was purchased in 1948 by Vaudeville legend Borrah Minevitch. Borrah began playing the harmonica as a 5-year-old boy to pass the time while he sold newspapers. He earned $1,000,000 from the Hohner harmonica company for his chromatic harmonica invention. He was friends with Charlie Chaplin and producer Billy Rose, and toured the world with his band, the Harmonica Rascals — from Florenz Ziegfeld's Broadway theatres to Berlin, London, and Vienna. He fell in love with France. Watch the Rascals: <a href=\"https://www.youtube.com/watch?v=mESI_bER0v8\" target=\"_blank\" rel=\"noopener\">vintage performance</a> · <a href=\"https://www.youtube.com/watch?v=-C4Qj8nyvaw\" target=\"_blank\" rel=\"noopener\">on film</a>.",
-    "fr": "L'histoire du Moulin à Rêves est aussi magique que son cadre. Il appartient à la même famille depuis plus de 75 ans. Il fut acquis en 1948 par la légende du vaudeville Borrah Minevitch. Borrah commença à jouer de l'harmonica à l'âge de 5 ans pour passer le temps en vendant des journaux. Il gagna 1 000 000 $ auprès de la société d'harmonicas Hohner pour son invention de l'harmonica chromatique. Ami de Charlie Chaplin et du producteur Billy Rose, il fit le tour du monde avec son groupe, les Harmonica Rascals — des théâtres de Broadway de Florenz Ziegfeld à Berlin, Londres et Vienne. Il tomba amoureux de la France. Voir les Rascals : <a href=\"https://www.youtube.com/watch?v=mESI_bER0v8\" target=\"_blank\" rel=\"noopener\">prestation d'époque</a> · <a href=\"https://www.youtube.com/watch?v=-C4Qj8nyvaw\" target=\"_blank\" rel=\"noopener\">au cinéma</a>."
+    "en": "The story of Moulin à Rêves is every bit as magical as the estate itself.",
+    "fr": "L’histoire du Moulin à Rêves est tout aussi magique que le domaine lui-même."
   },
   "about.history.p2": {
-    "en": "He used his harmonica fortune to acquire this Mill and a famous jazz club on Paris's Île Saint-Louis. Alongside his friend, the owner of the legendary Maxim's, they planned to turn the Moulin into an inn for Paris artists. Their guests and friends included icons like Jacques Tati and Jean Cocteau. Borrah's daughter married Hollywood star lawyer Bert Fields, whose clients included Michael Jackson, Dustin Hoffman, Tom Cruise, and so many others. For 50 years, this was Bert's \"Hollywood Hideaway\" where he cooked, wrote, and entertained. His Hollywood friends would visit him here, far from the paparazzi.",
-    "fr": "Il utilisa sa fortune d'harmoniciste pour acquérir ce Moulin et un célèbre club de jazz sur l'Île Saint-Louis à Paris. Aux côtés de son ami, propriétaire du légendaire Maxim's, ils projetèrent de faire du Moulin une auberge pour les artistes parisiens. Parmi leurs invités et amis figuraient des icônes comme Jacques Tati et Jean Cocteau. La fille de Borrah épousa l'avocat hollywoodien Bert Fields, dont la clientèle comprenait Michael Jackson, Dustin Hoffman, Tom Cruise et tant d'autres. Pendant 50 ans, ce fut le « Hollywood Hideaway » de Bert, où il cuisinait, écrivait et recevait. Ses amis d'Hollywood venaient le voir ici, loin des paparazzi."
+    "en": "For more than seventy-five years, it has remained in the hands of one family. The story begins in 1948, when vaudeville legend Borrah Minevitch fell in love with Moulin à Rêves.",
+    "fr": "Depuis plus de soixante-quinze ans, il demeure entre les mains d’une même famille. L’histoire commence en 1948, lorsque la légende du vaudeville Borrah Minevitch tomba amoureux du Moulin à Rêves."
   },
   "about.gallery.heading": {
     "en": "From the <span class=\"serif-italic\">archives</span>",
@@ -2011,7 +2031,8 @@
     "en": "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry."
   },
   "le-moulin.cta.button": {
-    "en": "Inquire About Dates"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "le-moulin.cross.heading": {
     "en": "Les Autres Maisons"
@@ -2128,7 +2149,8 @@
     "en": "One long upstairs room and the bright kitchen below — the working heart of the Hideaway."
   },
   "hideaway.living.room.upstairs.title": {
-    "en": "The Upstairs Room"
+    "en": "The Living & Dining Room",
+    "fr": "Le Salon et la Salle à Manger"
   },
   "hideaway.living.room.upstairs.summary": {
     "en": "Open upstairs space — dining table for ten, sitting area, and the room many guests use for yoga or morning meetings."
@@ -2219,7 +2241,8 @@
     "en": "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry."
   },
   "hideaway.cta.button": {
-    "en": "Inquire About Dates"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "hideaway.cross.heading": {
     "en": "Les Autres Maisons"
@@ -2328,7 +2351,8 @@
     "en": "Elegant dining room with a table that seats up to eighteen — built for dinner parties and long, candlelit evenings."
   },
   "riviere.living.room.kitchen.title": {
-    "en": "The Kitchen"
+    "en": "The Eat-In Kitchen",
+    "fr": "La Cuisine"
   },
   "riviere.living.room.kitchen.summary": {
     "en": "Eat-in kitchen with stone walls and exposed beams. Oven, full fridge + freezer, microwave, toaster, Nespresso, kettle."
@@ -2416,7 +2440,8 @@
     "en": "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry."
   },
   "riviere.cta.button": {
-    "en": "Inquire About Dates"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "riviere.cross.heading": {
     "en": "Les Autres Maisons"
@@ -3324,6 +3349,10 @@
     "en": "Encircled by a stone wall for total privacy, Moulin à Rêves is an elegant sanctuary where guests can retreat, recharge, and make memories of a lifetime.",
     "fr": "Entouré d'un mur de pierre pour une intimité totale, Moulin à Rêves est un sanctuaire élégant où les hôtes peuvent se ressourcer, se détendre et créer des souvenirs inoubliables."
   },
+  "groups.intro.events": {
+    "en": "We welcome events with a maximum of 35 guests for an additional event fee of €5,000.",
+    "fr": "Nous accueillons les événements jusqu'à 35 invités, moyennant un forfait événementiel supplémentaire de 5 000 €."
+  },
   "groups.yoga.eyebrow": {
     "en": "Yoga & Wellness Retreats",
     "fr": "Retraites Yoga & Bien-être"
@@ -3333,12 +3362,12 @@
     "fr": "Retraites de yoga"
   },
   "groups.yoga.p1": {
-    "en": "The lawn at sunrise, the millstream in earshot, La Grange when the rain comes. Practice on the grass, by the bridge, or in the pavilion — and bring your own teacher or ours. Massages and beauty treatments by trusted local practitioners are easy to arrange on site.",
-    "fr": "La pelouse au lever du soleil, le bief du moulin tout près, La Grange quand vient la pluie. Pratiquez sur l'herbe, près du pont, ou sous la pavillon — avec votre enseignant ou le nôtre. Massages et soins beauté avec des praticiens locaux de confiance sont faciles à organiser sur place."
+    "en": "The perfect setting for rest, reflection, and renewal. Practice in the garden beside the river, near the Giverny-style bridge, surrounded by the quiet beauty of the French countryside. On rainy days, bring your mats inside La Grange.",
+    "fr": "Le cadre idéal pour le repos, la réflexion et le renouveau. Pratiquez dans le jardin au bord de la rivière, près du pont à la Giverny, entouré de la beauté paisible de la campagne française. Les jours de pluie, installez vos tapis dans La Grange."
   },
   "groups.yoga.p2": {
-    "en": "Up to ten practitioners across three houses — single rooms when guests want quiet, shared meals when they don't.",
-    "fr": "Jusqu'à dix pratiquants répartis dans trois maisons — chambres individuelles pour le calme, repas partagés pour la convivialité."
+    "en": "Nourish your students with abundant meals prepared by local chefs. Moulin à Rêves offers not only an inspiring setting for practice, but also a place for connection, conversation, and restoration.",
+    "fr": "Régalez vos élèves de repas généreux préparés par des chefs locaux. Moulin à Rêves offre non seulement un cadre inspirant pour la pratique, mais aussi un lieu de connexion, de conversation et de ressourcement."
   },
   "groups.yoga.cta": {
     "en": "Plan a yoga retreat",
@@ -3353,12 +3382,12 @@
     "fr": "Réunions de famille"
   },
   "groups.family.p1": {
-    "en": "Three generations, three houses, one garden — together by day, separate when needed. Grandparents settle into Le Moulin, the cousins claim the Hideaway, the new parents take the cottage. The kids run the bridge between them.",
-    "fr": "Trois générations, trois maisons, un jardin — ensemble le jour, séparés quand il faut. Les grands-parents s'installent au Moulin, les cousins prennent le Hideaway, les jeunes parents le cottage. Les enfants courent sur le pont entre les maisons."
+    "en": "Three generations, three homes, one garden — together when you wish, with space to retreat when you prefer quiet time alone. Grandparents settle into Le Moulin, cousins claim the Hideaway, and young families enjoy the cottage. The children run freely between them.",
+    "fr": "Trois générations, trois maisons, un jardin — ensemble quand vous le souhaitez, avec l'espace de vous retirer quand vous préférez le calme. Les grands-parents s'installent au Moulin, les cousins prennent le Hideaway, et les jeunes familles profitent du cottage. Les enfants courent librement entre les maisons."
   },
   "groups.family.p2": {
-    "en": "A long table under La Grange for the whole-family dinner, a screening room for the rainy afternoon, electric bikes for the village run. Catering, breakfast delivery, and private chefs are easy to arrange.",
-    "fr": "Une grande table sous La Grange pour le dîner familial, une salle de cinéma pour les après-midi de pluie, des vélos électriques pour aller au village. Restauration, livraison de petits-déjeuners et chefs privés sont faciles à organiser."
+    "en": "Long dinners beneath La Grange, ping pong tournaments on the lawn, evenings around the fire pit, films in the screening room, bicycle rides through the village. Time together at Moulin à Rêves creates magical memories of a lifetime.",
+    "fr": "De longs dîners sous La Grange, des tournois de ping-pong sur la pelouse, des soirées autour du feu, des films dans la salle de cinéma, des balades à vélo dans le village. Les moments partagés à Moulin à Rêves créent des souvenirs magiques pour la vie."
   },
   "groups.family.cta": {
     "en": "Plan a family reunion",
@@ -3373,20 +3402,28 @@
     "fr": "Retraites créatives"
   },
   "groups.creative.p1": {
-    "en": "Writing weeks, painting workshops, photography intensives, songwriting sessions — the compound has room for the practice and the quiet. La Grange holds workshops of twenty under the beams. The library, the gardens, and the rooms hold the long, slow work in between.",
-    "fr": "Semaines d'écriture, ateliers de peinture, stages de photographie, sessions d'auteurs-compositeurs — le domaine a la place pour la pratique et le calme. La Grange accueille des ateliers de vingt sous les poutres. La bibliothèque, les jardins et les chambres accueillent le travail lent et long qui se fait entre les sessions."
+    "en": "Whether you're finishing a screenplay, starting a memoir, picking up a paintbrush, or gathering with fellow artists, Moulin à Rêves offers the space and quiet needed for meaningful creative work.",
+    "fr": "Que vous terminiez un scénario, commenciez des mémoires, preniez un pinceau ou vous réunissiez entre artistes, Moulin à Rêves offre l'espace et le calme nécessaires à un travail créatif qui a du sens."
   },
   "groups.creative.p2": {
-    "en": "Same setting that drew the painters of Barbizon, fifteen minutes away. Bring your group, your facilitator, and your medium — we'll make the rooms ready.",
-    "fr": "Le même cadre qui a attiré les peintres de Barbizon, à quinze minutes. Amenez votre groupe, votre animateur et votre médium — nous préparerons les pièces."
+    "en": "Writing retreats, painting workshops, and photography outings all find a natural home here. The gentle rhythm of the river, the gardens, and the ever-changing light create an atmosphere that encourages reflection and creative flow.",
+    "fr": "Retraites d'écriture, ateliers de peinture et sorties photographiques trouvent ici un cadre naturel. Le rythme paisible de la rivière, les jardins et la lumière toujours changeante créent une atmosphère propice à la réflexion et à l'élan créatif."
+  },
+  "groups.creative.p3": {
+    "en": "Gather beneath the beams of La Grange for workshops and conversation, then retreat to the library, gardens, or your own room for focus and deep work.",
+    "fr": "Réunissez-vous sous les poutres de La Grange pour des ateliers et des échanges, puis retirez-vous à la bibliothèque, dans les jardins ou dans votre chambre pour vous concentrer et travailler en profondeur."
+  },
+  "groups.creative.p4": {
+    "en": "Come alone or gather with students, colleagues, or fellow creatives and make the estate your artistic home.",
+    "fr": "Venez seul ou en groupe avec vos élèves, collègues ou autres créatifs, et faites du domaine votre foyer artistique."
   },
   "groups.creative.cta": {
     "en": "Plan a creative retreat",
     "fr": "Organiser une retraite créative"
   },
   "groups.testimonials.heading": {
-    "en": "From past groups",
-    "fr": "Paroles de groupes"
+    "en": "From Our Guests",
+    "fr": "Paroles de nos hôtes"
   },
   "groups.cta.heading": {
     "en": "Plan your group stay",
@@ -3397,8 +3434,8 @@
     "fr": "Dites-nous vos dates et votre groupe — nous nous occupons du reste."
   },
   "groups.cta.button": {
-    "en": "Inquire",
-    "fr": "Réserver"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "nav.art": {
     "en": "Art & Antiques",
@@ -3421,20 +3458,28 @@
     "fr": "Une maison aménagée par une conseillère en art de renommée mondiale"
   },
   "art.intro.p1": {
-    "en": "The interiors of Moulin à Rêves reflect the impeccable eye of Barbara Guggenheim — world-renowned art advisor, and the woman who lovingly restored these stone houses to what they are today.",
-    "fr": "Les intérieurs du Moulin à Rêves reflètent l'œil impeccable de Barbara Guggenheim — conseillère en art de renommée mondiale, et la femme qui a amoureusement restauré ces maisons en pierre pour en faire ce qu'elles sont aujourd'hui."
+    "en": "Together with her husband, renowned attorney Bert Fields, art advisor Barbara Guggenheim has been the loving steward of Moulin à Rêves for more than thirty years.",
+    "fr": "Aux côtés de son mari, le célèbre avocat Bert Fields, la conseillère en art Barbara Guggenheim veille amoureusement sur Moulin à Rêves depuis plus de trente ans."
   },
   "art.intro.p2": {
-    "en": "She decorated the Moulin with 18th-century country antiques: original Folies Bergère posters, walls upholstered in rich fabric, and a coffee table fashioned from a Louis Vuitton trunk. Each room tells a story — the objects are not decoration, they are the history of this place made tangible.",
-    "fr": "Elle a décoré le Moulin d'antiquités campagnardes du XVIIIe siècle : des affiches originales des Folies Bergère, des murs tapissés de tissu, et une table basse faite d'une malle Louis Vuitton. Chaque pièce raconte une histoire — les objets ne sont pas de simples décorations, ils incarnent l'histoire de ce lieu."
+    "en": "Her impeccable taste and passion for collecting have infused every room of the estate with beauty, character, and a touch of whimsy. From fine oil paintings and 19th-century antiques to her beloved collections of poodle figurines and vintage scarves, Moulin à Rêves reflects decades of thoughtful collecting and loving restoration.",
+    "fr": "Son goût impeccable et sa passion pour la collection ont insufflé à chaque pièce du domaine beauté, caractère et une touche de fantaisie. Des belles peintures à l'huile et antiquités du XIXe siècle à ses chères collections de figurines de caniches et de foulards vintage, Moulin à Rêves reflète des décennies de collection réfléchie et de restauration amoureuse."
   },
   "art.intro.p3": {
-    "en": "The collection continues throughout the compound — in the salon, the dining rooms, the hallways, and even the sleeping quarters. Guests often find themselves pausing to look.",
-    "fr": "La collection se poursuit dans tout le domaine — dans le salon, les salles à manger, les couloirs et même les chambres. Les hôtes s'arrêtent souvent pour regarder."
+    "en": "Richly upholstered walls, luxurious down duvets, fine French linens, and antique furnishings create interiors that feel both elegant and inviting, enveloping guests in a sense of comfort, authenticity, and old-world French charm.",
+    "fr": "Des murs richement tapissés, de luxueuses couettes en duvet, de beau linge français et des meubles anciens créent des intérieurs à la fois élégants et accueillants, enveloppant les hôtes d'un sentiment de confort, d'authenticité et de charme français d'autrefois."
+  },
+  "art.intro.p4": {
+    "en": "The collection extends throughout the estate. The antique water wheel from the original mill rests in the living room. A historic farm cart stands before Le Moulin, and an antique carriage awaits in La Grange.",
+    "fr": "La collection s'étend dans tout le domaine. L'ancienne roue à aubes du moulin d'origine repose dans le salon. Une charrette de ferme historique se dresse devant Le Moulin, et une calèche ancienne attend dans La Grange."
+  },
+  "art.intro.p5": {
+    "en": "These antiques and authentic touches create a special atmosphere that feels both elegant and enchanting. Moulin à Rêves is not a museum, but a cherished home where guests are invited to make themselves at home among these treasures and enjoy the timeless beauty of the estate.",
+    "fr": "Ces antiquités et ces touches authentiques créent une atmosphère particulière, à la fois élégante et enchanteresse. Moulin à Rêves n'est pas un musée, mais une demeure chérie où les hôtes sont invités à se sentir chez eux parmi ces trésors et à savourer la beauté intemporelle du domaine."
   },
   "art.gallery.heading": {
-    "en": "A glimpse of the collection",
-    "fr": "Un aperçu de la collection"
+    "en": "A Glimpse of the Collection",
+    "fr": "Un Aperçu de la Collection"
   },
   "art.gallery.lede": {
     "en": "Pieces photographed in situ — antiques, posters, and curiosities woven into every room.",
@@ -3453,8 +3498,8 @@
     "fr": "Aucune reproduction ne lui rend justice. Séjournez au Moulin à Rêves et vivez au milieu de la collection."
   },
   "art.cta.button": {
-    "en": "Inquire about availability",
-    "fr": "Renseignez-vous sur les disponibilités"
+    "en": "Join us",
+    "fr": "Rejoignez-nous"
   },
   "groups.celebrations.eyebrow": {
     "en": "Celebrations",
@@ -3465,8 +3510,12 @@
     "fr": "Célébrations au Moulin à Rêves"
   },
   "groups.celebrations.p1": {
-    "en": "From milestone birthdays to family reunions, Moulin à Rêves offers a setting where memories are made and shared.",
-    "fr": "Des anniversaires marquants aux réunions de famille, Moulin à Rêves offre un cadre où les souvenirs se créent et se partagent."
+    "en": "Some occasions deserve more than a restaurant reservation. From milestone birthdays and anniversaries to intimate weddings, reunions, and special gatherings, Moulin à Rêves offers a beautiful setting for celebrating life's memorable moments.",
+    "fr": "Certaines occasions méritent mieux qu'une réservation au restaurant. Des anniversaires marquants aux mariages intimes, en passant par les retrouvailles et les grandes occasions, Moulin à Rêves offre un cadre magnifique pour célébrer les moments mémorables de la vie."
+  },
+  "groups.celebrations.p2": {
+    "en": "Gather beneath La Grange, dine under the stars, and enjoy the rare luxury of having a French estate all to yourselves.",
+    "fr": "Réunissez-vous sous La Grange, dînez sous les étoiles et savourez le luxe rare d'avoir un domaine français rien que pour vous."
   },
   "groups.celebrations.cta": {
     "en": "Plan a celebration",
@@ -3475,5 +3524,93 @@
   "groups.testimonials.quote": {
     "en": "\"Magnificent grounds, extraordinary taste, and a rare sense of peace and refinement. The estate exceeded our expectations in every way.\"",
     "fr": "« Des terrains magnifiques, un goût extraordinaire et un rare sentiment de paix et de raffinement. Le domaine a dépassé toutes nos attentes en tous points. »"
+  },
+  "about.history.heading": {
+    "en": "The History of Moulin à Rêves",
+    "fr": "L'Histoire du Moulin à Rêves"
+  },
+  "about.history.subtitle": {
+    "en": "From Vaudeville to Hollywood to You",
+    "fr": "Du Vaudeville à Hollywood jusqu’à Vous"
+  },
+  "about.history.p3": {
+    "en": "Born in Minsk, Borrah arrived in America at the age of five. He dreamed of playing the violin, but his mother could only afford a toy harmonica. Borrah was a \"newsy\" and played his harmonica while selling papers on the street. He discovered that the more he played, the more papers he sold. He never stopped playing—or tinkering.",
+    "fr": "Né à Minsk, Borrah arriva en Amérique à l’âge de cinq ans. Il rêvait de jouer du violon, mais sa mère ne put lui offrir qu’un harmonica jouet. Borrah était « vendeur de journaux » et jouait de l’harmonica en vendant ses journaux dans la rue. Il découvrit que plus il jouait, plus il vendait de journaux. Il ne cessa jamais de jouer — ni de bricoler."
+  },
+  "about.history.p4": {
+    "en": "By the time he was in college, Borrah perfected the chromatic harmonica and sold the rights to Hohner for $1,000,000. He became the world’s first harmonica virtuoso and one of vaudeville’s biggest stars. Leading his band, The Harmonica Rascals, he performed on Broadway with Florenz Ziegfeld and toured symphony halls from Hollywood to London, Berlin, and Vienna.",
+    "fr": "À l’université déjà, Borrah perfectionna l’harmonica chromatique et en vendit les droits à Hohner pour 1 000 000 $. Il devint le premier virtuose mondial de l’harmonica et l’une des plus grandes vedettes du vaudeville. À la tête de son groupe, The Harmonica Rascals, il se produisit à Broadway avec Florenz Ziegfeld et parcourut les salles de concert de Hollywood à Londres, Berlin et Vienne."
+  },
+  "about.history.p5": {
+    "en": "Success brought Borrah to Paris, where he purchased a celebrated jazz club on Île Saint-Louis. He bought Moulin à Rêves with the vision of turning it into an inn for artists and writers.",
+    "fr": "Le succès mena Borrah à Paris, où il acquit un célèbre club de jazz sur l’Île Saint-Louis. Il acheta Moulin à Rêves avec la vision d’en faire une auberge pour artistes et écrivains."
+  },
+  "about.history.p6": {
+    "en": "Charlie Chaplin, Jean Cocteau, Jacques Tati, Billy Rose, Maxime of Maxim’s, and even the Duchess of Windsor were among his friends and guests. Moulin à Rêves became a place where conversation, music, art, and friendship flourished.",
+    "fr": "Charlie Chaplin, Jean Cocteau, Jacques Tati, Billy Rose, Maxime de chez Maxim’s, et même la duchesse de Windsor figuraient parmi ses amis et ses invités. Moulin à Rêves devint un lieu où la conversation, la musique, l’art et l’amitié s’épanouissaient."
+  },
+  "about.history.p7": {
+    "en": "The next chapter belongs to renowned attorney Bert Fields, who married Borrah’s daughter, model Lydia Stevens. Bert became one of Hollywood’s most influential lawyers. His clients included Michael Jackson, Tom Cruise, Dustin Hoffman, Warren Beatty, and major studios including Disney and DreamWorks. For nearly fifty years, Moulin à Rêves remained Bert’s beloved sanctuary. Here he cooked, wrote, entertained friends, and enjoyed the pleasures of French country life. The Hollywood Hideaway, one of the estate’s three homes, still reflects his warmth, hospitality, and love of gathering people together.",
+    "fr": "Le chapitre suivant appartient au célèbre avocat Bert Fields, qui épousa la fille de Borrah, le mannequin Lydia Stevens. Bert devint l’un des avocats les plus influents d’Hollywood. Parmi ses clients figuraient Michael Jackson, Tom Cruise, Dustin Hoffman, Warren Beatty, et de grands studios dont Disney et DreamWorks. Pendant près de cinquante ans, Moulin à Rêves demeura le sanctuaire bien-aimé de Bert. Ici, il cuisinait, écrivait, recevait ses amis et savourait les plaisirs de la vie à la campagne française. Le Hollywood Hideaway, l’une des trois maisons du domaine, reflète encore sa chaleur, son hospitalité et son amour de réunir les gens."
+  },
+  "about.history.p8": {
+    "en": "Today, the estate reflects the eye and stewardship of Bert’s second wife, art advisor Barbara Guggenheim. For more than thirty years, she has lovingly restored the property and infused it with her impeccable taste. From fine antiques and oil paintings to whimsical collections of poodle ceramics and scarves, her influence brings elegance, warmth, and charm to every corner of the estate.",
+    "fr": "Aujourd’hui, le domaine reflète le regard et l’intendance de la seconde épouse de Bert, la conseillère en art Barbara Guggenheim. Depuis plus de trente ans, elle a amoureusement restauré la propriété et l’a imprégnée de son goût impeccable. Des belles antiquités et peintures à l’huile aux collections fantaisistes de caniches en céramique et de foulards, son influence apporte élégance, chaleur et charme à chaque recoin du domaine."
+  },
+  "about.history.p9": {
+    "en": "And now the story continues with you.",
+    "fr": "Et maintenant, l’histoire se poursuit avec vous."
+  },
+  "about.history.p10": {
+    "en": "Bienvenue chez vous.",
+    "fr": "Bienvenue chez vous."
+  },
+  "about.history.media": {
+    "en": "Watch & listen: <a href=\"https://youtu.be/mESI_bER0v8\" target=\"_blank\" rel=\"noopener\">Borrah on YouTube</a> · <a href=\"https://youtu.be/r3tYKO1ByDw\" target=\"_blank\" rel=\"noopener\">The Harmonica Rascals on film</a> · <a href=\"https://open.spotify.com/artist/3MsD3zR8zUIHAzNdQhgGbm\" target=\"_blank\" rel=\"noopener\">Borrah on Spotify</a>",
+    "fr": "À regarder & écouter : <a href=\"https://youtu.be/mESI_bER0v8\" target=\"_blank\" rel=\"noopener\">Borrah sur YouTube</a> · <a href=\"https://youtu.be/r3tYKO1ByDw\" target=\"_blank\" rel=\"noopener\">Les Harmonica Rascals au cinéma</a> · <a href=\"https://open.spotify.com/artist/3MsD3zR8zUIHAzNdQhgGbm\" target=\"_blank\" rel=\"noopener\">Borrah sur Spotify</a>"
+  },
+  "catering.table.heading": {
+    "en": "À Table",
+    "fr": "À Table"
+  },
+  "catering.table.p1": {
+    "en": "Some of the most memorable moments at Moulin à Rêves happen around the table. Gather in one of three elegant dining rooms, beneath La Grange, or on one of the estate’s garden patios dressed with Pierre Deux linens. Whether you’re cooking with market-fresh ingredients, sharing a catered feast, or lingering over a bottle of wine with friends, here meals are meant to be savored as long as the conversation lasts.",
+    "fr": "Certains des moments les plus mémorables à Moulin à Rêves se vivent autour de la table. Réunissez-vous dans l’une des trois élégantes salles à manger, sous La Grange, ou sur l’une des terrasses du jardin habillées de linge Pierre Deux. Que vous cuisiniez des produits frais du marché, partagiez un festin traiteur ou vous attardiez autour d’une bouteille de vin entre amis, ici les repas se savourent aussi longtemps que dure la conversation."
+  },
+  "catering.arrival.heading": {
+    "en": "Before Your Arrival",
+    "fr": "Avant Votre Arrivée"
+  },
+  "catering.arrival.p1": {
+    "en": "Arrive to a kitchen stocked with groceries, wine, and essentials. Whether you’d like breakfast staples, picnic supplies, aperitif ingredients, or provisions for a special dinner, we can arrange advance shopping for an additional fee.",
+    "fr": "Arrivez dans une cuisine garnie de provisions, de vin et de l’essentiel. Que vous souhaitiez de quoi composer vos petits-déjeuners, des fournitures pour un pique-nique, des ingrédients pour l’apéritif ou des provisions pour un dîner spécial, nous pouvons organiser les courses à l’avance, moyennant un supplément."
+  },
+  "catering.boulangerie.heading": {
+    "en": "Fresh from the Boulangerie",
+    "fr": "Tout Frais de la Boulangerie"
+  },
+  "catering.boulangerie.p1": {
+    "en": "Start your day with warm baguettes and croissants delivered to the estate each morning, or bike into the village and enjoy one of France’s most cherished daily rituals.",
+    "fr": "Commencez la journée avec des baguettes et des croissants chauds livrés au domaine chaque matin, ou allez à vélo au village savourer l’un des rituels quotidiens les plus chers à la France."
+  },
+  "catering.guest.heading": {
+    "en": "Be Our Guest",
+    "fr": "Soyez Notre Invité"
+  },
+  "catering.guest.p1": {
+    "en": "From setup and serving to cleanup, we can connect you with trusted local staff so you can focus on enjoying time with family and friends.",
+    "fr": "De la mise en place au service jusqu’au rangement, nous pouvons vous mettre en relation avec du personnel local de confiance pour que vous puissiez vous consacrer pleinement aux moments en famille et entre amis."
+  },
+  "catering.sante.heading": {
+    "en": "À Votre Santé",
+    "fr": "À Votre Santé"
+  },
+  "catering.sante.p1": {
+    "en": "Whether it’s a simple breakfast on the terrace or a celebration beneath La Grange, we believe the best memories are made around the table.",
+    "fr": "Qu’il s’agisse d’un simple petit-déjeuner sur la terrasse ou d’une célébration sous La Grange, nous croyons que les meilleurs souvenirs se créent autour de la table."
+  },
+  "catering.sante.p2": {
+    "en": "We’ll help you enjoy the pleasures of French country life.",
+    "fr": "Nous vous aiderons à savourer les plaisirs de la vie à la campagne française."
   }
 }

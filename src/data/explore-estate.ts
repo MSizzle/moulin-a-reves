@@ -26,18 +26,15 @@ export const exploreEstateFeatures: EstateFeature[] = [
     image: '/images/homes/la-grange-pavilion-wide.webp',
     alt: 'La Grange covered entertaining barn at Moulin à Rêves',
     gallery: [
-      { src: '/images/homes/la-grange-hero.webp', alt: 'La Grange exterior — covered pavilion at the heart of the compound' },
       { src: '/images/grange-fireplace-flame.webp', alt: 'Stone fireplace blazing at La Grange with champagne and celebration setup' },
       { src: '/images/group-dinner.webp', alt: "Dinner laid on the long table under La Grange's pavilion with the green garden beyond" },
       { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange — wide view of the open pavilion' },
       { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
-      { src: '/images/homes/la-grange-fire.webp', alt: 'Fire crackling in the stone hearth of La Grange' },
-      { src: '/images/homes/la-grange-fire-2.webp', alt: 'Roaring fire in the stone fireplace at La Grange' },
-      { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse carriage on display inside La Grange' },
       { src: '/images/grange-set-table.webp', alt: "The long table set under La Grange's pavilion with the garden and painted bridge beyond" },
       { src: '/images/homes/grange-fire-table-brighter.webp', alt: 'Fire blazing in the stone hearth of La Grange beside a candlelit dinner table' },
       { src: '/images/groups-family-gathering-grange.webp', alt: "A family gathered around the long table under La Grange's pavilion" },
       { src: '/images/homes/la-grange-plates.webp', alt: "The long table under La Grange's pavilion set with rose-pattern china" },
+      { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse carriage on display inside La Grange' },
     ],
   },
   {
@@ -68,6 +65,7 @@ export const exploreEstateFeatures: EstateFeature[] = [
     gallery: [
       { src: '/images/jacuzzi-spa-solarium.webp', alt: 'The glass-enclosed solarium jacuzzi with a robe and stone walls at Moulin à Rêves' },
       { src: '/images/wellness-jacuzzi-2.webp', alt: 'The jacuzzi in the solarium at Moulin à Rêves' },
+      { src: '/images/jacuzzi-spa-shower.webp', alt: 'The jacuzzi spa with rainfall shower and glass-enclosed solarium at Moulin à Rêves' },
     ],
   },
   {
@@ -80,6 +78,7 @@ export const exploreEstateFeatures: EstateFeature[] = [
       { src: '/images/homes/la-grange-gym-boxing.webp', alt: 'Gym with treadmill and Everlast boxing setup' },
       { src: '/images/homes/la-grange-bikes.webp', alt: 'Bicycles parked in La Grange under exposed wood beams' },
       { src: '/images/homes/la-grange-bikes-door.webp', alt: 'Bicycles lined up inside La Grange facing the door' },
+      { src: '/images/explore/cycling-gate.webp', alt: 'Cycling out through the blue gate with Jetson the Cavalier and a baguette in the basket' },
     ],
   },
   {

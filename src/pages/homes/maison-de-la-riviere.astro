@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AvailabilityCalendar from '../../components/AvailabilityCalendar.astro';
 import PhotoCarousel from '../../components/PhotoCarousel.astro';
 import RoomShowcase from '../../components/RoomShowcase.astro';
 import AmenitiesSection from '../../components/AmenitiesSection.astro';
@@ -72,7 +71,7 @@ const livingSpaces = [
   },
   {
     id: 'kitchen',
-    title: 'Kitchen',
+    title: 'The Eat-In Kitchen',
     summary: 'Eat-in kitchen with stone walls and exposed beams.',
     photos: [
       { src: '/images/homes/maison-kitchen.webp', alt: 'Kitchen with wood cabinetry and bread on the stovetop' },
@@ -191,68 +190,10 @@ const amenities = [
     exploreMode={true}
   />
 
-  <!-- Availability -->
-  <AvailabilityCalendar
-    monthsToShow={12}
-    eyebrow=""
-    heading="Join us!"
-    intro=""
-    i18nKey="riviere.availability"
-  />
-
-  <!-- CTA -->
-  <section class="hero hero--cta" style="height: 45vh; min-height: 350px;">
-    <div class="hero__image">
-      <img src="/images/homes/le-jardin-hero.webp" alt="La Maison de la Rivière at golden hour" loading="lazy" />
-    </div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <h2 class="hero__title" style="font-size: clamp(2rem, 4vw, 3rem);" data-i18n="riviere.cta.heading">Interested in {cms.title}?</h2>
-      <a href="/contact/" class="btn btn--white" data-i18n="riviere.cta.button">Inquire About Dates</a>
-    </div>
-  </section>
-
-  <!-- Cross Links -->
-  <section class="section--tight">
-    <div class="container">
-      <div class="text-center fade-in" style="margin-bottom: 24px;">
-        <h2 data-i18n="riviere.cross.heading">Les Autres Maisons</h2>
-      </div>
-    </div>
-    <div class="maisons-stack">
-        <a href="/homes/le-moulin/" class="split split--maison fade-in">
-          <div class="split__image">
-            <img src="/images/homes/le-moulin-hero.webp" alt="Le Moulin" loading="lazy" />
-          </div>
-          <div class="split__body">
-            <h2 data-i18n="riviere.cross.moulin.title">Le Moulin</h2>
-            <div class="split__meta">
-              <span data-i18n="riviere.cross.moulin.beds">5 Bedrooms</span>
-              <span data-i18n="riviere.cross.moulin.sleeps">Sleeps 10</span>
-            </div>
-            <p>The original mill and principal residence of the estate.</p>
-            <span class="link-arrow">Discover Le Moulin</span>
-          </div>
-        </a>
-        <a href="/homes/hollywood-hideaway/" class="split split--maison split--reverse fade-in">
-          <div class="split__image">
-            <img src="/images/homes/hh-exterior.webp" alt="The Hollywood Hideaway" loading="lazy" />
-          </div>
-          <div class="split__body">
-            <h2 data-i18n="riviere.cross.hideaway.title">The Hollywood Hideaway</h2>
-            <div class="split__meta">
-              <span data-i18n="riviere.cross.hideaway.beds">4 Bedrooms</span>
-              <span data-i18n="riviere.cross.hideaway.sleeps">Sleeps 6</span>
-            </div>
-            <p>The secluded retreat once enjoyed by French and American stars.</p>
-            <span class="link-arrow">Discover the Hideaway</span>
-          </div>
-        </a>
-      </div>
-    <div class="container">
-      <div class="text-center" style="margin-top: 32px;">
-        <a href="/the-compound/" class="link-arrow" data-i18n="riviere.cross.cta">Rent All Three Maisons</a>
-      </div>
+  <!-- Join us -->
+  <section class="section--tighter text-center">
+    <div class="container fade-in">
+      <a href="/contact/" class="btn btn--green" data-i18n="riviere.cta.button">Join us</a>
     </div>
   </section>
 
