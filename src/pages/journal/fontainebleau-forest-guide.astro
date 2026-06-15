@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Img from '../../components/Img.astro';
 ---
 
 <BaseLayout title="A Walker's Guide to Fontainebleau Forest — Moulin à Rêves Journal" description="Our favourite walks in Fontainebleau Forest, from gentle morning strolls to full-day hikes through sandstone gorges and ancient oaks near Barbizon.">
@@ -29,7 +30,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- Hero -->
   <section class="hero" style="height: 55vh;">
     <div class="hero__image">
-      <img src="/images/explore/forest.webp" alt="Ancient oaks and sandstone boulders in Fontainebleau Forest near Moulin à Rêves, Barbizon" />
+      <Img src="/images/explore/forest.webp" alt="Ancient oaks and sandstone boulders in Fontainebleau Forest near Moulin à Rêves, Barbizon" sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">

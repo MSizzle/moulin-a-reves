@@ -1,4 +1,6 @@
 ---
+import Img from './Img.astro';
+
 interface Image {
   src: string;
   alt: string;
@@ -31,7 +33,7 @@ const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
     <div class="photo-carousel__stage">
       {images.map((img, i) => (
         <div class={`photo-carousel__slide ${i === 0 ? 'is-active' : ''}`} data-carousel-slide>
-          <img src={img.src} alt={img.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+          <Img src={img.src} alt={img.alt} sizes="100vw" loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} />
         </div>
       ))}
 

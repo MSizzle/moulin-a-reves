@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Img from '../components/Img.astro';
 import matter from 'gray-matter';
 import fs from 'node:fs';
 import { exploreEstateFeatures } from '../data/explore-estate';
@@ -132,7 +133,7 @@ const groupTypes = [
   <!-- Hero — unfiltered image with the wordmark set below it (client 6pm note) -->
   <section class="hero-lc">
     <div class="hero-lc__image">
-      <img src={cms.heroImage} alt="Moulin à Rêves compound — stone houses with blue shutters along the millstream" loading="eager" fetchpriority="high" decoding="async" />
+      <Img src={cms.heroImage} alt="Moulin à Rêves compound — stone houses with blue shutters along the millstream" sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero-lc__content text-center">
       <h1 class="hero-lc__title" data-i18n-html="home.title">Moulin à Rêves</h1>
@@ -306,7 +307,7 @@ const groupTypes = [
 
   <!-- Full-width Giverny bridge band -->
   <section style="margin: 8px 0 0;">
-    <img src="/images/homepage-giverny-bridge.webp" alt="The Giverny-style bridge over the millstream at Moulin à Rêves" style="width: 100%; height: 70vh; object-fit: cover; object-position: center 70%; display: block;" loading="lazy" />
+    <Img src="/images/homepage-giverny-bridge.webp" alt="The Giverny-style bridge over the millstream at Moulin à Rêves" sizes="100vw" style="width: 100%; height: 70vh; object-fit: cover; object-position: center 70%; display: block;" loading="lazy" />
   </section>
 
   <!-- The Luxury of Space -->

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Img from '../../components/Img.astro';
 ---
 
 <BaseLayout title="How to Plan a Family Reunion in the French Countryside — Moulin à Rêves Journal" description="A practical guide to planning a multi-generational family reunion at Moulin à Rêves — three houses, shared grounds, and a week that brings everyone together.">
@@ -29,7 +30,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- Hero -->
   <section class="hero" style="height: 55vh;">
     <div class="hero__image">
-      <img src="/images/outdoor-dining.webp" alt="Multi-generational family dinner outdoors at Moulin à Rêves compound near Barbizon, France" />
+      <Img src="/images/outdoor-dining.webp" alt="Multi-generational family dinner outdoors at Moulin à Rêves compound near Barbizon, France" sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">

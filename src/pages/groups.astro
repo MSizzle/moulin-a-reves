@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Img from '../components/Img.astro';
 
 // ---- Item 8: Gallery data for the three group-type sections ----
 // Each array is seeded with existing repo images.
@@ -91,7 +92,7 @@ const testimonialVideos = [
   <!-- Hero -->
   <section class="hero" style="height: 60vh;">
     <div class="hero__image">
-      <img src="/images/groups/grange-art-of-gathering.webp" alt="La Grange set for a gathering at Moulin à Rêves." style="object-position: center 72%;" />
+      <Img src="/images/groups/grange-art-of-gathering.webp" alt="La Grange set for a gathering at Moulin à Rêves." style="object-position: center 72%;" sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">

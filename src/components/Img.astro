@@ -1,0 +1,67 @@
+---
+/**
+ * <Img> — responsive <img> for the committed photos under /public/images/.
+ *
+ * It keeps the original 2000px WebP as the `src` (so the markup degrades to a
+ * plain working image if anything goes wrong) and adds a `srcset` of smaller
+ * width variants. Those variants are GENERATED AT BUILD TIME by the
+ * `responsive-images` integration (src/integrations/responsive-images), which
+ * scans the emitted HTML for `<base>-<w>.webp` references and writes each one
+ * into dist/client/ with Sharp. Nothing extra is committed to the repo.
+ *
+ * Usage:
+ *   <Img src="/images/hero-compound.webp" alt="…" sizes="100vw"
+ *        loading="eager" fetchpriority="high" />
+ *
+ * Only local `/images/….webp` sources get a srcset; anything else (remote URLs,
+ * non-webp) falls back to a plain <img src> so callers can't accidentally point
+ * srcset at files the integration won't generate.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  sizes?: string;
+  /** Variant widths to offer. The original is added at 2000w. */
+  widths?: number[];
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  decoding?: 'async' | 'sync' | 'auto';
+  class?: string;
+  style?: string;
+  [key: string]: any;
+}
+
+const {
+  src,
+  alt,
+  sizes = '100vw',
+  widths = [480, 768, 1280],
+  loading = 'lazy',
+  fetchpriority,
+  decoding = 'async',
+  class: className,
+  style,
+  ...rest
+} = Astro.props;
+
+// Only build a srcset for local committed WebP photos. The variant files are
+// `<base>-<w>.webp` next to the original (e.g. /images/hero-compound-768.webp).
+const isResponsive = typeof src === 'string' && src.startsWith('/images/') && src.endsWith('.webp');
+const base = isResponsive ? src.slice(0, -'.webp'.length) : '';
+const srcset = isResponsive
+  ? [...widths.map((w) => `${base}-${w}.webp ${w}w`), `${src} 2000w`].join(', ')
+  : undefined;
+---
+
+<img
+  src={src}
+  srcset={srcset}
+  sizes={srcset ? sizes : undefined}
+  alt={alt}
+  loading={loading}
+  decoding={decoding}
+  fetchpriority={fetchpriority}
+  class={className}
+  style={style}
+  {...rest}
+/>

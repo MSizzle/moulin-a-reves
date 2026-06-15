@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Img from '../components/Img.astro';
 
 const historyGallery = [
   {
@@ -40,7 +41,7 @@ const historyGallery = [
   <!-- Hero -->
   <section class="hero" style="height: 60vh;">
     <div class="hero__image">
-      <img src="/images/history/borrah-metal-sculpture.webp" alt="Bronze relief sculpture of Borrah Minevitch and the Harmonica Rascals" />
+      <Img src="/images/history/borrah-metal-sculpture.webp" alt="Bronze relief sculpture of Borrah Minevitch and the Harmonica Rascals" sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">

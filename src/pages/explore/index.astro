@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Img from '../../components/Img.astro';
 
 // Méréville gallery — order per client June 13 notes:
 // 1 arrival · 2 watercress · 3 market hall · 4 fields · 5 bicycle · 6 gardens
@@ -65,7 +66,7 @@ const dayTrips = [
   <!-- Hero -->
   <section class="hero" style="height: 60vh;">
     <div class="hero__image">
-      <img src="/images/explore/moret-bridge.webp" alt="Stone bridge over the Loing river in Moret-sur-Loing, twenty-five minutes from Moulin à Rêves" />
+      <Img src="/images/explore/moret-bridge.webp" alt="Stone bridge over the Loing river in Moret-sur-Loing, twenty-five minutes from Moulin à Rêves" sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero__content">
       <h1 class="hero__title" data-i18n="explore.hero.title">Things to Do</h1>

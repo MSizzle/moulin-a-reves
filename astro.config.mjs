@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 import { execSync } from 'node:child_process';
 import editCatalog from './src/integrations/edit-catalog/index.mjs';
+import responsiveImages from './src/integrations/responsive-images/index.mjs';
 
 // Resolve git HEAD short SHA at config-load time (once per `astro build`).
 // Mirrors src/integrations/edit-catalog/index.mjs:126-133 so the <meta x-build-sha>
@@ -21,7 +22,7 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [sitemap({
     filter: (page) => !page.includes('/success/') && !page.includes('/the-compound/')
-  }), editCatalog()],
+  }), editCatalog(), responsiveImages()],
   vite: {
     define: {
       // Replaces every BUILD_SHA identifier in the source tree with this JSON-stringified value.

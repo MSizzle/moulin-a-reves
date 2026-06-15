@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Img from '../../components/Img.astro';
 ---
 
 <BaseLayout title="Les Maisons — Three Vacation Rentals in Méréville, France" description="Three maisons in a private historic compound in Méréville, France. Le Moulin, The Hollywood Hideaway, and La Maison de la Rivière.">
 
   <section class="hero hero--cta" style="height: 60vh;">
     <div class="hero__image">
-      <img src="/images/homes/all-three.webp" alt="The compound at Moulin à Rêves in Méréville, France" />
+      <Img src="/images/homes/all-three.webp" alt="The compound at Moulin à Rêves in Méréville, France" sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
