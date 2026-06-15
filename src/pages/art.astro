@@ -13,24 +13,39 @@ const artGallery = [
   {
     src: '/images/homes/maison-living-trunk.webp',
     alt: 'The Louis Vuitton trunk coffee table in the living room of La Maison de la Rivière',
-    caption: 'The coffee table fashioned from a Louis Vuitton trunk — one of Barbara Guggenheim\'s signature pieces.',
-  },
-  {
-    src: '/images/homes/le-moulin-living.webp',
-    alt: 'The salon of Le Moulin — antiques, fabric-upholstered walls, period furnishings',
-    caption: 'Le Salon at Le Moulin — 18th-century country antiques throughout.',
+    title: 'Louis Vuitton Trunk Coffee Table',
+    caption: 'One of Barbara Guggenheim\'s favorite finds.',
   },
   {
     src: '/images/homes/le-moulin-living-detail.webp',
-    alt: 'Living room detail at Le Moulin showing antique furnishings and art',
-    caption: 'A detail from Le Salon — each object chosen by Barbara Guggenheim.',
+    alt: 'The antique water wheel from the original mill in the living room at Le Moulin',
+    title: 'The Original Mill Water Wheels',
+    caption: 'A link to the estate\'s history as a working mill.',
   },
-  // TODO: add owner's dedicated art photography:
-  //   - Folies Bergère poster(s) in situ
-  //   - Fabric-upholstered wall detail
-  //   - Louis Vuitton trunk close-up
-  //   - Any antique pieces the owner wants to highlight
-  //   (Drop into public/images/art/, kebab-case.webp)
+  {
+    src: '/images/homes/le-moulin-living.webp',
+    alt: 'Le Salon at Le Moulin — antiques, fabric-upholstered walls, period furnishings',
+    title: 'Le Salon',
+    caption: 'A collection of art, antiques, and treasured objects gathered over time.',
+  },
+  {
+    src: '/images/art/letter-to-eiffel-1889.webp',
+    alt: 'An 1889 envelope from the Exposition Universelle addressed to Gustave Eiffel',
+    title: 'A Letter to Gustave Eiffel',
+    caption: 'An 1889 envelope from the Exposition Universelle in Paris, addressed to the tower\'s creator.',
+  },
+  {
+    src: '/images/art/antique-commode.webp',
+    alt: 'An antique oak commode with bronze hardware at Moulin à Rêves',
+    title: 'An Antique Commode',
+    caption: 'A period oak chest of drawers with original bronze hardware.',
+  },
+  {
+    src: '/images/art/mon-ami-portrait.webp',
+    alt: 'An oil portrait of a man in a top hat at Moulin à Rêves',
+    title: 'Mon Ami',
+    caption: 'A portrait in oils — one of the many paintings collected throughout the estate.',
+  },
 ];
 
 // Lead / hero image for the art page
@@ -51,16 +66,14 @@ const heroImage = '/images/homes/maison-living-trunk.webp';
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <p class="hero__eyebrow" data-i18n="art.hero.subtitle" style="font-size: 0.875rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 12px;">A living collection</p>
-      <h1 class="hero__title" data-i18n="art.hero.title">The Art &amp; Antiques</h1>
+      <h1 class="hero__title" data-i18n="art.hero.title">Art and Antiques</h1>
     </div>
   </section>
 
   <!-- Intro narrative -->
   <section class="section--tight">
     <div class="container--narrow fade-in">
-      <h2 data-i18n="art.intro.heading">A Home Curated by a World-Renowned Art Advisor</h2>
-      <div style="margin-top: 24px;">
+      <div>
         <p data-i18n="art.intro.p1" style="line-height: 1.75;">
           Together with her husband, renowned attorney Bert Fields, art advisor Barbara Guggenheim has been the loving steward of Moulin à Rêves for more than thirty years.
         </p>
@@ -105,8 +118,11 @@ const heroImage = '/images/homes/maison-living-trunk.webp';
             <div class="card__image art-gallery-tile__image">
               <img src={item.src} alt={item.alt} loading="lazy" />
             </div>
-            {item.caption && (
-              <p class="art-gallery-tile__caption">{item.caption}</p>
+            {(item.title || item.caption) && (
+              <div class="art-gallery-tile__caption">
+                {item.title && <span class="art-gallery-tile__caption-title">{item.title}</span>}
+                {item.caption}
+              </div>
             )}
           </div>
         ))}
@@ -116,22 +132,9 @@ const heroImage = '/images/homes/maison-living-trunk.webp';
          and update artGallery array above with new entries. -->
   </section>
 
-  <!-- Cross-link back to /about/ -->
-  <section class="section--tight">
-    <div class="container--narrow fade-in text-center">
-      <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.125rem; line-height: 1.6; max-width: 56ch; margin: 0 auto;">
-        The story of Moulin à Rêves begins with Vaudeville legend Borrah Minevitch, runs through Hollywood, and arrives in the hands of Barbara Guggenheim — who made these rooms what they are today.
-        <!-- TODO: owner to review / replace this bridge sentence -->
-      </p>
-      <p style="margin-top: 24px;">
-        <a href="/about/" class="link-arrow" data-i18n="art.about.link">Read the full history of Moulin à Rêves</a>
-      </p>
-    </div>
-  </section>
-
   <!-- CTA -->
-  <section class="section--tight fade-in text-center">
-    <div class="container">
+  <section class="section text-center">
+    <div class="container fade-in">
       <a href="/contact/" class="btn btn--green" data-i18n="art.cta.button">Join us</a>
     </div>
   </section>
@@ -193,6 +196,15 @@ const heroImage = '/images/homes/maison-living-trunk.webp';
       line-height: 1.5;
       color: var(--ink-soft);
       margin: 0;
+    }
+    .art-gallery-tile__caption-title {
+      display: block;
+      font-family: var(--font-serif);
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 2px;
     }
   </style>
 

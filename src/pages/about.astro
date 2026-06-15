@@ -2,12 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Img from '../components/Img.astro';
 
-const historyGallery = [
-  {
-    src: '/images/history/borrah-minevitch-portrait.webp',
-    alt: 'Vaudeville harmonica virtuoso Borrah Minevitch — Library of Congress portrait',
-    caption: 'Borrah Minevitch, c. 1920s — vaudeville harmonica virtuoso who bought the Moulin in 1948.',
-  },
+// History gallery — June 15 revision: a featured full-width image, then a row of
+// three, then a portrait beneath. (borrah-archive-1 retired.)
+const featuredImage = {
+  src: '/images/history/borrah-albums.webp',
+  alt: "Borrah Minevitch's record albums and books, alongside Bert and Barbara memorabilia",
+  caption: 'Albums, books, and family pieces — Borrah, Bert, and Barbara across the decades.',
+};
+const secondRow = [
   {
     src: '/images/history/borrah-chaplin.webp',
     alt: 'Charlie Chaplin photographed with Borrah Minevitch',
@@ -16,24 +18,19 @@ const historyGallery = [
   {
     src: '/images/history/borrah-why-i-love-the-harmonica.webp',
     alt: "Cover of Borrah Minevitch's book Why I Love the Harmonica",
-    caption: '"Why I Love the Harmonica" — Borrah\'s own book on the instrument that made his name.',
+    caption: 'Why I Love the Harmonica — Borrah\'s own book on the instrument that made his name.',
   },
   {
     src: '/images/history/borrah-harmonica-secrets.webp',
     alt: "Vintage harmonica memorabilia from Borrah Minevitch's career",
     caption: 'Pages from the Harmonica Rascals years — sheet music, programmes, and stage memorabilia.',
   },
-  {
-    src: '/images/history/borrah-albums.webp',
-    alt: "Borrah Minevitch's record albums and books, alongside Bert and Barbara memorabilia",
-    caption: 'Albums, books, and family pieces — Borrah, Bert, and Barbara across the decades.',
-  },
-  {
-    src: '/images/history/borrah-archive-1.webp',
-    alt: 'Archival photograph from the Minevitch family collection',
-    caption: 'From the family archive.',
-  },
 ];
+const belowFeatured = {
+  src: '/images/history/borrah-minevitch-portrait.webp',
+  alt: 'Vaudeville harmonica virtuoso Borrah Minevitch — Library of Congress portrait',
+  caption: 'Borrah Minevitch, c. 1920s — vaudeville harmonica virtuoso who bought the Moulin in 1948.',
+};
 ---
 
 <BaseLayout title="About Moulin à Rêves — Historic French Mill Compound Near Paris" description="The history of Moulin à Rêves — a 19th-century mill on the Juine River in Méréville, France.">
@@ -82,12 +79,26 @@ const historyGallery = [
         <p data-i18n="about.history.p9" style="margin-top: 16px;">
           And now the story continues with you.
         </p>
-        <p class="serif-italic" data-i18n="about.history.p10" style="margin-top: 16px; font-size: 1.25rem;">
+        <p data-i18n="about.history.p10" style="margin-top: 16px; font-size: 1.25rem;">
           Bienvenue chez vous.
         </p>
-        <p data-i18n-html="about.history.media" style="margin-top: 24px;">
-          Watch &amp; listen: <a href="https://youtu.be/mESI_bER0v8" target="_blank" rel="noopener">Borrah on YouTube</a> · <a href="https://youtu.be/r3tYKO1ByDw" target="_blank" rel="noopener">The Harmonica Rascals on film</a> · <a href="https://open.spotify.com/artist/3MsD3zR8zUIHAzNdQhgGbm" target="_blank" rel="noopener">Borrah on Spotify</a>
-        </p>
+        <div class="watch-listen" style="margin-top: 28px;">
+          <p class="watch-listen__label" data-i18n="about.media.label">Watch &amp; Listen</p>
+          <div class="watch-listen__cards">
+            <a class="watch-listen__card" href="https://youtu.be/mESI_bER0v8" target="_blank" rel="noopener">
+              <span class="watch-listen__icon" aria-hidden="true">▶</span>
+              <span class="watch-listen__text"><span class="watch-listen__title" data-i18n="about.media.youtube">Borrah on YouTube</span><span class="watch-listen__src">YouTube</span></span>
+            </a>
+            <a class="watch-listen__card" href="https://youtu.be/r3tYKO1ByDw" target="_blank" rel="noopener">
+              <span class="watch-listen__icon" aria-hidden="true">▶</span>
+              <span class="watch-listen__text"><span class="watch-listen__title" data-i18n="about.media.film">The Harmonica Rascals on Film</span><span class="watch-listen__src">YouTube</span></span>
+            </a>
+            <a class="watch-listen__card" href="https://open.spotify.com/artist/3MsD3zR8zUIHAzNdQhgGbm" target="_blank" rel="noopener">
+              <span class="watch-listen__icon" aria-hidden="true">♪</span>
+              <span class="watch-listen__text"><span class="watch-listen__title" data-i18n="about.media.spotify">Borrah on Spotify</span><span class="watch-listen__src">Spotify</span></span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -95,18 +106,25 @@ const historyGallery = [
   <!-- History Gallery -->
   <section class="section--tight">
     <div class="container--narrow fade-in text-center">
-      <h2 data-i18n-html="about.gallery.heading">From the <span class="serif-italic">archives</span></h2>
-      <p data-i18n="about.gallery.lede" style="margin-top: 12px; max-width: 56ch; margin-left: auto; margin-right: auto;">Glimpses of Borrah Minevitch, his Harmonica Rascals years, and the family he passed the Mill on to.</p>
+      <h2 data-i18n="about.gallery.heading">From the Archives</h2>
     </div>
     <div class="container fade-in" style="margin-top: 36px;">
-      <div class="history-gallery">
-        {historyGallery.map((img) => (
+      <figure class="history-featured">
+        <img src={featuredImage.src} alt={featuredImage.alt} loading="lazy" />
+        <figcaption>{featuredImage.caption}</figcaption>
+      </figure>
+      <div class="history-gallery history-gallery--3" style="margin-top: 32px;">
+        {secondRow.map((img) => (
           <figure class="history-gallery__item">
             <img src={img.src} alt={img.alt} loading="lazy" />
             <figcaption>{img.caption}</figcaption>
           </figure>
         ))}
       </div>
+      <figure class="history-featured" style="margin-top: 32px;">
+        <img src={belowFeatured.src} alt={belowFeatured.alt} loading="lazy" />
+        <figcaption>{belowFeatured.caption}</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -114,7 +132,6 @@ const historyGallery = [
   <section class="section--tight section--soft" id="faq">
     <div class="container--narrow fade-in text-center">
       <h2 data-i18n-html="about.faq.heading">Frequently Asked <span class="serif-italic">Questions</span></h2>
-      <p data-i18n="about.faq.lede" style="margin-top: 12px; max-width: 56ch; margin-left: auto; margin-right: auto;">Address, directions from Paris and the airports, taxis, ride apps, car rental, and nearby day trips.</p>
     </div>
     <div class="container--narrow fade-in" style="margin-top: 36px;">
       <div class="faq" id="getting-here">
@@ -256,6 +273,92 @@ const historyGallery = [
       line-height: 1.5;
       color: var(--ink-soft);
       font-style: italic;
+    }
+
+    /* June 15: featured full-width image + a forced row of three */
+    .history-featured {
+      margin: 0 auto;
+      max-width: 900px;
+    }
+    .history-featured img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #f5f3ee;
+    }
+    .history-featured figcaption {
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      font-style: italic;
+      text-align: center;
+    }
+    .history-gallery--3 { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 768px) {
+      .history-gallery--3 { grid-template-columns: 1fr; }
+    }
+
+    /* June 15: Watch & Listen link cards */
+    .watch-listen__label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 0 0 12px;
+    }
+    .watch-listen__cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 640px) {
+      .watch-listen__cards { grid-template-columns: 1fr; }
+    }
+    .watch-listen__card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--ink);
+      background: #fff;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+    .watch-listen__card:hover {
+      border-color: var(--blue-primary, #3a5a8a);
+      background: var(--bg-stone, #f5f3ee);
+      transform: translateY(-2px);
+    }
+    .watch-listen__icon {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--blue-primary, #3a5a8a);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+    .watch-listen__text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+      text-align: left;
+    }
+    .watch-listen__title { font-family: var(--font-serif); font-size: 0.95rem; }
+    .watch-listen__src {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
     }
   </style>
 

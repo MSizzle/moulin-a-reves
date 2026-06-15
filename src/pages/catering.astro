@@ -8,7 +8,7 @@ import Img from '../components/Img.astro';
   <!-- Hero — guests gathered behind a table laid with food at La Grange -->
   <section class="hero catering-hero" style="height: 60vh;">
     <div class="hero__image">
-      <Img src="/images/catering-group-table.webp" alt="Guests gathered behind a long table laid with food at Moulin à Rêves" sizes="100vw" loading="eager" fetchpriority="high" />
+      <Img src="/images/groups/grange-art-of-gathering.webp" alt="The long table set under La Grange — The Art of Gathering at Moulin à Rêves" sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
@@ -17,7 +17,7 @@ import Img from '../components/Img.astro';
   </section>
 
   <!-- Intro -->
-  <section class="section--tight">
+  <section class="section--tight" style="padding-bottom: 24px;">
     <div class="container--narrow text-center fade-in">
       <h2 data-i18n="catering.intro.heading">Bon Appétit!</h2>
       <p data-i18n="catering.intro.text" style="margin-top: 20px;">Food is one of the great pleasures of French life, and at Moulin à Rêves, we make it easy to enjoy. Visit the weekly market, browse the local boulangerie, shop at the nearby supermarket, or let us help arrange the details before you arrive.</p>
@@ -25,7 +25,7 @@ import Img from '../components/Img.astro';
   </section>
 
   <!-- À Table -->
-  <section class="section--tight fade-in">
+  <section class="section--tight fade-in" style="padding-top: 24px;">
     <div class="split">
       <div class="split__image">
         <img src="/images/homes/maison-dinner-light.webp" alt="The dining room table set for a fully staffed meal at Moulin à Rêves" loading="lazy" />
@@ -37,8 +37,8 @@ import Img from '../components/Img.astro';
     </div>
   </section>
 
-  <!-- Before Your Arrival -->
-  <section class="section--tight fade-in">
+  <!-- Before Your Arrival — June 15: vertical padding reduced ~50% -->
+  <section class="section--tight fade-in" style="padding-top: 28px; padding-bottom: 28px;">
     <div class="container--narrow text-center">
       <h2 data-i18n="catering.arrival.heading">Before Your Arrival</h2>
       <p data-i18n="catering.arrival.p1" style="margin-top: 20px;">Arrive to a kitchen stocked with groceries, wine, and essentials. Whether you'd like breakfast staples, picnic supplies, aperitif ingredients, or provisions for a special dinner, we can arrange advance shopping for an additional fee.</p>
@@ -62,7 +62,7 @@ import Img from '../components/Img.astro';
   <section class="section--tight fade-in">
     <div class="split">
       <div class="split__image">
-        <img src="/images/group-dinner.webp" alt="A long table set for dinner beneath La Grange at Moulin à Rêves" loading="lazy" />
+        <img src="/images/catering-meat-platter.webp" alt="A platter of sliced roast meats garnished with herbs, citrus, and edible flowers, prepared by a local chef at Moulin à Rêves" loading="lazy" />
       </div>
       <div class="split__body">
         <h2 data-i18n="catering.chef.heading">Local Chefs &amp; Catering</h2>
@@ -80,18 +80,15 @@ import Img from '../components/Img.astro';
         <p data-i18n="catering.guest.p1">From setup and serving to cleanup, we can connect you with trusted local staff so you can focus on enjoying time with family and friends.</p>
       </div>
       <div class="split__image">
-        <img src="/images/catering-friends.webp" alt="Friends gathered around a meal or celebration at Moulin à Rêves" loading="lazy" />
+        <img src="/images/catering-group-spread.webp" alt="A group of guests gathered behind a long table laden with a catered spread of salads and dishes at Moulin à Rêves" loading="lazy" />
       </div>
     </div>
   </section>
 
-  <!-- À Votre Santé -->
-  <section class="section--tight fade-in">
-    <div class="container--narrow text-center">
-      <h2 data-i18n="catering.sante.heading">À Votre Santé</h2>
-      <p data-i18n="catering.sante.p1" style="margin-top: 20px;">Whether it's a simple breakfast on the terrace or a celebration beneath La Grange, we believe the best memories are made around the table.</p>
-      <p data-i18n="catering.sante.p2" style="margin-top: 16px;">We'll help you enjoy the pleasures of French country life.</p>
-      <a href="/contact/" class="btn btn--green" data-i18n="catering.cta.button" style="margin-top: 28px;">Join us</a>
+  <!-- CTA — June 15: À Votre Santé section removed; green Join Us retained with consistent spacing -->
+  <section class="section text-center">
+    <div class="container fade-in">
+      <a href="/contact/" class="btn btn--green" data-i18n="catering.cta.button">Join us</a>
     </div>
   </section>
 

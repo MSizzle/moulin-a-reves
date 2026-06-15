@@ -51,8 +51,6 @@ gallery:
     alt: "Le Moulin courtyard with the stone facade and gardens"
   - src: "/images/homes/le-moulin-office.webp"
     alt: "Le Moulin office with desk and reading chair"
-  - src: "/images/homes/le-moulin-marie-antoinette-patio.webp"
-    alt: "Marie Antoinette on the patio at Le Moulin"
   - src: "/images/homes/le-moulin-hero.webp"
     alt: "Le Moulin — stone facade with blue shutters and antique flower cart"
 ---

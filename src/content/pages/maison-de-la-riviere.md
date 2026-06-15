@@ -20,10 +20,10 @@ summary: "Sun-drenched cottage with French doors onto the stream and apple trees
 gallery:
   - src: "/images/homes/maison-ext.webp"
     alt: "Front facade of Maison de la Rivière with dormers and ivy"
-  - src: "/images/homes/riviere-facade-ivy.webp"
-    alt: "Ivy-clad stone facade of La Maison de la Rivière with blue shutters and the Cavalier on the gravel"
   - src: "/images/homes/riviere-blue-shutters-roses.webp"
     alt: "Pink climbing roses against the blue shutters and French doors of La Maison de la Rivière"
+  - src: "/images/garden-blue-gate.webp"
+    alt: "The blue wooden gates in the stone wall at the entrance to the compound of Moulin à Rêves"
   - src: "/images/homes/maison-living-fire.webp"
     alt: "Living room facing the stone fireplace with floral couches"
   - src: "/images/homes/maison-living-trunk.webp"

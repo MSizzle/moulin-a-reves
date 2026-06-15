@@ -1564,8 +1564,8 @@
     "fr": "Depuis plus de soixante-quinze ans, il demeure entre les mains d’une même famille. L’histoire commence en 1948, lorsque la légende du vaudeville Borrah Minevitch tomba amoureux du Moulin à Rêves."
   },
   "about.gallery.heading": {
-    "en": "From the <span class=\"serif-italic\">archives</span>",
-    "fr": "Issus des <span class=\"serif-italic\">archives</span>"
+    "en": "From the Archives",
+    "fr": "Issus des archives"
   },
   "about.gallery.lede": {
     "en": "A few glimpses of Borrah Minevitch and the era he came from. More family photos to come.",
@@ -3342,16 +3342,16 @@
     "fr": "Trois maisons, un domaine partagé, de la place pour se retrouver — votre groupe, votre semaine, notre domaine."
   },
   "groups.intro.heading": {
-    "en": "Celebrate, create, and reconnect.",
-    "fr": "Célébrez, créez, reconnectez-vous."
+    "en": "A Sanctuary for Meaningful Time Together",
+    "fr": "Un sanctuaire pour des moments précieux ensemble"
   },
   "groups.intro.text": {
-    "en": "Encircled by a stone wall for total privacy, Moulin à Rêves is an elegant sanctuary where guests can retreat, recharge, and make memories of a lifetime.",
-    "fr": "Entouré d'un mur de pierre pour une intimité totale, Moulin à Rêves est un sanctuaire élégant où les hôtes peuvent se ressourcer, se détendre et créer des souvenirs inoubliables."
+    "en": "From intimate retreats to milestone celebrations, Moulin à Rêves offers a rare setting where family, friends, and colleagues can gather, create, celebrate, and reconnect.",
+    "fr": "Des retraites intimes aux grandes célébrations, Moulin à Rêves offre un cadre rare où familles, amis et collègues peuvent se réunir, créer, célébrer et se retrouver."
   },
   "groups.intro.events": {
-    "en": "We welcome events with a maximum of 35 guests for an additional event fee of €5,000.",
-    "fr": "Nous accueillons les événements jusqu'à 35 invités, moyennant un forfait événementiel supplémentaire de 5 000 €."
+    "en": "Private events of up to 35 guests may be hosted on the estate for an additional event fee of $5,000.",
+    "fr": "Des événements privés jusqu'à 35 invités peuvent être organisés sur le domaine moyennant des frais d'événement supplémentaires de 5 000 $."
   },
   "groups.yoga.eyebrow": {
     "en": "Yoga & Wellness Retreats",
@@ -3398,20 +3398,20 @@
     "fr": "Retraites créatives"
   },
   "groups.creative.heading": {
-    "en": "Creative retreats",
+    "en": "Creative Retreats",
     "fr": "Retraites créatives"
   },
   "groups.creative.p1": {
-    "en": "Whether you're finishing a screenplay, starting a memoir, picking up a paintbrush, or gathering with fellow artists, Moulin à Rêves offers the space and quiet needed for meaningful creative work.",
-    "fr": "Que vous terminiez un scénario, commenciez des mémoires, preniez un pinceau ou vous réunissiez entre artistes, Moulin à Rêves offre l'espace et le calme nécessaires à un travail créatif qui a du sens."
+    "en": "Moulin à Rêves is a place of inspiration. Whether you're starting a memoir, collaborating on a screenplay, or leading an artistic retreat, Moulin à Rêves offers the space and beauty for meaningful creative work.",
+    "fr": "Moulin à Rêves est un lieu d'inspiration. Que vous commenciez un mémoire, collaboriez à un scénario ou animiez une retraite artistique, Moulin à Rêves offre l'espace et la beauté propices à un travail créatif véritable."
   },
   "groups.creative.p2": {
-    "en": "Writing retreats, painting workshops, and photography outings all find a natural home here. The gentle rhythm of the river, the gardens, and the ever-changing light create an atmosphere that encourages reflection and creative flow.",
-    "fr": "Retraites d'écriture, ateliers de peinture et sorties photographiques trouvent ici un cadre naturel. Le rythme paisible de la rivière, les jardins et la lumière toujours changeante créent une atmosphère propice à la réflexion et à l'élan créatif."
+    "en": "The rhythm of the river creates an atmosphere that encourages creative flow. There's even a historic wishing well, so that you can fill your creative well.",
+    "fr": "Le rythme de la rivière crée une atmosphère qui favorise l'élan créatif. Il y a même un ancien puits aux souhaits, pour puiser à la source de votre créativité."
   },
   "groups.creative.p3": {
-    "en": "Gather beneath the beams of La Grange for workshops and conversation, then retreat to the library, gardens, or your own room for focus and deep work.",
-    "fr": "Réunissez-vous sous les poutres de La Grange pour des ateliers et des échanges, puis retirez-vous à la bibliothèque, dans les jardins ou dans votre chambre pour vous concentrer et travailler en profondeur."
+    "en": "Gather in La Grange for workshops and conversation. Retreat to a private nook in the gardens or living rooms for focus and deep work. Many books and songs have been created here.",
+    "fr": "Réunissez-vous dans La Grange pour des ateliers et des échanges. Retirez-vous dans un coin tranquille des jardins ou des salons pour vous concentrer et travailler en profondeur. De nombreux livres et chansons y ont vu le jour."
   },
   "groups.creative.p4": {
     "en": "Come alone or gather with students, colleagues, or fellow creatives and make the estate your artistic home.",
@@ -3446,8 +3446,8 @@
     "fr": "Art & Antiquités"
   },
   "art.hero.title": {
-    "en": "The Art & Antiques",
-    "fr": "L'Art & les Antiquités"
+    "en": "Art and Antiques",
+    "fr": "Art et Antiquités"
   },
   "art.hero.subtitle": {
     "en": "A living collection",
@@ -3510,12 +3510,12 @@
     "fr": "Célébrations au Moulin à Rêves"
   },
   "groups.celebrations.p1": {
-    "en": "Some occasions deserve more than a restaurant reservation. From milestone birthdays and anniversaries to intimate weddings, reunions, and special gatherings, Moulin à Rêves offers a beautiful setting for celebrating life's memorable moments.",
-    "fr": "Certaines occasions méritent mieux qu'une réservation au restaurant. Des anniversaires marquants aux mariages intimes, en passant par les retrouvailles et les grandes occasions, Moulin à Rêves offre un cadre magnifique pour célébrer les moments mémorables de la vie."
+    "en": "Some places host events. Moulin à Rêves becomes part of the memory.",
+    "fr": "Certains lieux accueillent des événements. Moulin à Rêves devient partie du souvenir."
   },
   "groups.celebrations.p2": {
-    "en": "Gather beneath La Grange, dine under the stars, and enjoy the rare luxury of having a French estate all to yourselves.",
-    "fr": "Réunissez-vous sous La Grange, dînez sous les étoiles et savourez le luxe rare d'avoir un domaine français rien que pour vous."
+    "en": "Whether celebrating a wedding, birthday, anniversary, holiday, or special gathering, Moulin à Rêves offers a beautiful setting for life's most meaningful occasions.",
+    "fr": "Qu'il s'agisse d'un mariage, d'un anniversaire, d'une fête ou d'une réunion particulière, Moulin à Rêves offre un cadre magnifique pour les occasions les plus précieuses de la vie."
   },
   "groups.celebrations.cta": {
     "en": "Plan a celebration",
@@ -3612,5 +3612,29 @@
   "catering.sante.p2": {
     "en": "We’ll help you enjoy the pleasures of French country life.",
     "fr": "Nous vous aiderons à savourer les plaisirs de la vie à la campagne française."
+  },
+  "groups.intro.estate": {
+    "en": "Enclosed within its own gardens and gathering spaces, the estate combines the beauty of the French countryside with the rare luxury of having an entire estate to yourselves.",
+    "fr": "Niché dans ses propres jardins et espaces de réception, le domaine allie la beauté de la campagne française au luxe rare d'avoir tout un domaine rien que pour vous."
+  },
+  "groups.celebrations.p3": {
+    "en": "Gather beneath La Grange, dine under the stars, and enjoy the rare luxury of quality time with those you love most.",
+    "fr": "Réunissez-vous sous La Grange, dînez sous les étoiles et savourez le luxe rare de moments de qualité avec ceux que vous aimez le plus."
+  },
+  "about.media.label": {
+    "en": "Watch & Listen",
+    "fr": "À voir et à écouter"
+  },
+  "about.media.youtube": {
+    "en": "Borrah on YouTube",
+    "fr": "Borrah sur YouTube"
+  },
+  "about.media.film": {
+    "en": "The Harmonica Rascals on Film",
+    "fr": "Les Harmonica Rascals à l'écran"
+  },
+  "about.media.spotify": {
+    "en": "Borrah on Spotify",
+    "fr": "Borrah sur Spotify"
   }
 }

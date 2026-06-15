@@ -27,14 +27,14 @@ export const exploreEstateFeatures: EstateFeature[] = [
     alt: 'La Grange covered entertaining barn at Moulin à Rêves',
     gallery: [
       { src: '/images/grange-fireplace-flame.webp', alt: 'Stone fireplace blazing at La Grange with champagne and celebration setup' },
-      { src: '/images/group-dinner.webp', alt: "Dinner laid on the long table under La Grange's pavilion with the green garden beyond" },
-      { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange — wide view of the open pavilion' },
-      { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
       { src: '/images/grange-set-table.webp', alt: "The long table set under La Grange's pavilion with the garden and painted bridge beyond" },
+      { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange — wide view of the open pavilion' },
       { src: '/images/homes/grange-fire-table-brighter.webp', alt: 'Fire blazing in the stone hearth of La Grange beside a candlelit dinner table' },
       { src: '/images/groups-family-gathering-grange.webp', alt: "A family gathered around the long table under La Grange's pavilion" },
       { src: '/images/homes/la-grange-plates.webp', alt: "The long table under La Grange's pavilion set with rose-pattern china" },
       { src: '/images/homes/la-grange-carriage.webp', alt: 'Antique horse carriage on display inside La Grange' },
+      { src: '/images/groups/grange-party-gathering.webp', alt: "Guests gathered for a celebration beneath La Grange's covered pavilion at Moulin à Rêves" },
+      { src: '/images/homes/la-grange-pavilion.webp', alt: 'La Grange pavilion with stone fireplace and ping-pong table' },
     ],
   },
   {
@@ -45,6 +45,7 @@ export const exploreEstateFeatures: EstateFeature[] = [
     gallery: [
       { src: '/images/garden-chaises-dream-view.webp', alt: 'Wicker chaise lounges on the sunlit lawn looking toward the willow and bridge in the gardens' },
       { src: '/images/bridge-garden.webp', alt: 'Giverny-style painted bridge over the stream beneath willow trees' },
+      { src: '/images/garden-blue-gate.webp', alt: 'The blue wooden gates set in the stone garden wall at the enclosed compound of Moulin à Rêves' },
       { src: '/images/lifestyle-smelling-roses-shutters.webp', alt: 'Stopping to smell the climbing pink roses against the blue shutters at Moulin à Rêves' },
       { src: '/images/garden-chaises-wide.webp', alt: 'Wide garden view with chaise lounges' },
       { src: '/images/garden-chaise-jetson.webp', alt: 'Garden chaise lounges with Jetson the Cavalier' },

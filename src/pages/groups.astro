@@ -13,16 +13,14 @@ import Img from '../components/Img.astro';
 // before adding to the arrays below.
 
 const yogaGallery = [
-  // Lead image (shown in split layout; clicking opens the full lightbox)
-  // Phase 3 §5: removed empty-mats facade, tree-pose, and the two massage-table photos.
+  // June 15 revision: lead is now the former #6 (Hideaway aerial); the "women with wings"
+  // bridge photo moved to the Creative Retreats gallery. Remaining order preserved.
+  { src: '/images/wellness-yoga-hideaway.webp', alt: 'Aerial view of a yoga class on the lawn beside the millstream at Moulin à Rêves' },
   { src: '/images/wellness-yoga-sun-salutations.webp', alt: 'Sun salutations beside the millstream at Moulin à Rêves' },
-  { src: '/images/wellness-yoga-bridge.webp', alt: 'Morning yoga beside the millstream at Moulin à Rêves' },
-  { src: '/images/wellness-yoga-adjustments.webp', alt: 'Yoga adjustments during a retreat at Moulin à Rêves' },
+  { src: '/images/wellness-yoga-adjustments.webp', alt: 'A yoga instructor assisting a student during a retreat at Moulin à Rêves' },
   { src: '/images/wellness-yoga-stretch.webp', alt: 'Stretching on the grass at Moulin à Rêves' },
   { src: '/images/wellness-yoga-well.webp', alt: 'Yoga meditation by the stone well at Moulin à Rêves' },
-  { src: '/images/wellness-yoga-hideaway.webp', alt: 'Yoga practice at the Hollywood Hideaway' },
   { src: '/images/groups-yoga-lawn-dog.webp', alt: 'Yoga mats laid out on the lawn with the dog and the blue-shuttered mill behind at Moulin à Rêves' },
-  // TODO: add owner's yoga retreat gallery photos (drop into public/images/groups/yoga/)
 ];
 
 const familyGallery = [
@@ -35,32 +33,30 @@ const familyGallery = [
   { src: '/images/group-mother-daughter-steps.webp', alt: 'Mother and daughter on the steps at Moulin à Rêves' },
   { src: '/images/group-ping-pong.webp', alt: 'Ping pong game at Moulin à Rêves' },
   { src: '/images/group-tuscan-sun.webp', alt: 'Friends relaxing in the sun at Moulin à Rêves' },
-  // TODO: add owner's family reunion gallery photos (drop into public/images/groups/family/)
+  { src: '/images/groups/family-ping-pong.webp', alt: 'Two guests playing ping pong on the lawn in front of the blue-shuttered mill house at Moulin à Rêves' },
 ];
 
 const creativeGallery = [
-  // Lead image (shown in split layout; clicking opens the full lightbox)
-  // Phase 3 §5: removed the screening-room photo.
-  // TODO (Phase 3 §5): add the women-on-the-bridge-with-wings photo when received from owner
-  //   (drop into public/images/groups/creative/ → /images/groups/creative-bridge-wings.webp).
-  { src: '/images/retreat-writers.webp', alt: 'Writers gathered at a long table for a creative retreat at Moulin à Rêves' },
-  { src: '/images/homes/la-grange-pavilion-wide.webp', alt: 'La Grange covered pavilion — workshop space for twenty' },
-  { src: '/images/homes/la-grange-pavilion.webp', alt: 'Under the beams of La Grange at Moulin à Rêves' },
-  { src: '/images/homes/la-grange-hero.webp', alt: 'La Grange exterior at Moulin à Rêves' },
-  { src: '/images/garden-monet-painting.webp', alt: 'Painting in the garden at Moulin à Rêves, inspired by Monet' },
-  { src: '/images/bridge-garden.webp', alt: 'The garden bridge — painterly setting at Moulin à Rêves' },
-  { src: '/images/garden-private-spot.webp', alt: 'A quiet private spot in the gardens for writing or reflection' },
-  { src: '/images/garden-giverny-bridge.webp', alt: 'Japanese-style garden bridge at Moulin à Rêves' },
-  // TODO: add owner's creative retreat gallery photos (drop into public/images/groups/creative/)
+  // June 15 revision: cover image kept; all other photos replaced with the owner's
+  // dedicated creative-retreat shots. The "women with wings" bridge photo moved here
+  // from the Yoga gallery.
+  { src: '/images/retreat-writers.webp', alt: 'A writer working on a laptop on a garden chaise during a creative retreat at Moulin à Rêves' },
+  { src: '/images/groups/creative-board-table.webp', alt: 'The long board-room table beneath a large landscape painting — a writing and workshop space at Moulin à Rêves' },
+  { src: '/images/groups/creative-wishing-well.webp', alt: 'The historic stone wishing well in the gardens at Moulin à Rêves' },
+  { src: '/images/wellness-yoga-bridge.webp', alt: 'Guests on the Giverny-style green bridge holding yoga mats aloft like wings at Moulin à Rêves' },
+  { src: '/images/groups/creative-writer-paradise.webp', alt: 'A writer at work on a laptop, reclining on a garden chaise beside the bridge at Moulin à Rêves' },
+  { src: '/images/groups/creative-jetson-napping.webp', alt: 'The Cavalier napping on the couch beside the Louis Vuitton trunk in the river house living room at Moulin à Rêves' },
+  { src: '/images/groups/creative-board-table-angle.webp', alt: 'The long board-room table beneath the landscape painting, viewed from the far end — a writing and workshop space at Moulin à Rêves' },
 ];
 
-// ---- Phase 3 §2: Celebrations block gallery (milestone birthdays, family reunions) ----
+// ---- Celebrations block gallery (June 15 revision) ----
 const celebrationsGallery = [
   // Lead image (shown in split layout; clicking opens the full lightbox)
-  { src: '/images/catering-group-gathering.webp', alt: 'A large family gathered with a cake and gifts under La Grange at Moulin à Rêves' },
+  { src: '/images/groups/grange-party-gathering.webp', alt: "Guests gathered for a celebration beneath La Grange's covered pavilion at Moulin à Rêves" },
+  { src: '/images/melissa-toast-bridge.webp', alt: 'A guest in a pink dress raising a celebratory toast by the painted bridge at Moulin à Rêves' },
   { src: '/images/champagne.webp', alt: 'Champagne set out on a quiet garden table at Moulin à Rêves' },
-  { src: '/images/melissa-toast-bridge.webp', alt: 'A celebratory toast by the painted bridge at Moulin à Rêves' },
   { src: '/images/groups-family-gathering-grange.webp', alt: 'Three generations gathered around the table under La Grange\'s pavilion at Moulin à Rêves' },
+  { src: '/images/groups/guys-getaway.webp', alt: "A group of friends gathered around the table under La Grange for a celebration at Moulin à Rêves" },
 ];
 
 // ---- Item 9: Video testimonial row ----
@@ -92,7 +88,7 @@ const testimonialVideos = [
   <!-- Hero -->
   <section class="hero" style="height: 60vh;">
     <div class="hero__image">
-      <Img src="/images/groups/grange-art-of-gathering.webp" alt="La Grange set for a gathering at Moulin à Rêves." style="object-position: center 72%;" sizes="100vw" loading="eager" fetchpriority="high" />
+      <Img src="/images/family-reunions.webp" alt="A family gathered for a celebration under La Grange at Moulin à Rêves." sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
@@ -103,12 +99,15 @@ const testimonialVideos = [
   <!-- Intro -->
   <section class="section--tight">
     <div class="container--narrow text-center fade-in">
-      <h2 data-i18n="groups.intro.heading">Celebrate, create, and reconnect.</h2>
+      <h2 data-i18n="groups.intro.heading">A Sanctuary for Meaningful Time Together</h2>
       <p data-i18n="groups.intro.text" style="margin-top: 20px;">
-        Encircled by a stone wall for total privacy, Moulin à Rêves is an elegant sanctuary where guests can retreat, recharge, and make memories of a lifetime.
+        From intimate retreats to milestone celebrations, Moulin à Rêves offers a rare setting where family, friends, and colleagues can gather, create, celebrate, and reconnect.
+      </p>
+      <p data-i18n="groups.intro.estate" style="margin-top: 16px;">
+        Enclosed within its own gardens and gathering spaces, the estate combines the beauty of the French countryside with the rare luxury of having an entire estate to yourselves.
       </p>
       <p data-i18n="groups.intro.events" style="margin-top: 16px;">
-        We welcome events with a maximum of 35 guests for an additional event fee of €5,000.
+        Private events of up to 35 guests may be hosted on the estate for an additional event fee of $5,000.
       </p>
     </div>
   </section>
@@ -125,7 +124,7 @@ const testimonialVideos = [
           tabindex="0"
           aria-label="View yoga retreat gallery"
         >
-          <img src="/images/wellness-yoga-sun-salutations.webp" alt="Sun salutations beside the millstream at Moulin à Rêves" loading="lazy" />
+          <img src="/images/wellness-yoga-hideaway.webp" alt="Aerial view of a yoga class on the lawn beside the millstream at Moulin à Rêves" loading="lazy" />
           <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
         </div>
       </div>
@@ -172,56 +171,9 @@ const testimonialVideos = [
     </div>
   </section>
 
-  <!-- Creative Retreats — Item 8: clickable gallery -->
-  <section id="creative-retreats" class="section--tight fade-in">
-    <div class="split">
-      <div class="split__image">
-        <!-- data-gallery triggers the fullscreen lightbox with all creative gallery images -->
-        <div
-          class="groups-gallery-trigger"
-          data-gallery={JSON.stringify(creativeGallery)}
-          role="button"
-          tabindex="0"
-          aria-label="View creative retreats gallery"
-        >
-          <img src="/images/retreat-writers.webp" alt="Writers gathered at a long table for a creative retreat at Moulin à Rêves" loading="lazy" />
-          <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
-        </div>
-      </div>
-      <div class="split__body">
-        <span class="split__eyebrow" data-i18n="groups.creative.eyebrow">Creative Retreats</span>
-        <h2 data-i18n="groups.creative.heading">Creative retreats</h2>
-        <p data-i18n="groups.creative.p1">
-          Whether you're finishing a screenplay, starting a memoir, picking up a paintbrush, or gathering with fellow artists, Moulin à Rêves offers the space and quiet needed for meaningful creative work.
-        </p>
-        <p data-i18n="groups.creative.p2">
-          Writing retreats, painting workshops, and photography outings all find a natural home here. The gentle rhythm of the river, the gardens, and the ever-changing light create an atmosphere that encourages reflection and creative flow.
-        </p>
-        <p data-i18n="groups.creative.p3">
-          Gather beneath the beams of La Grange for workshops and conversation, then retreat to the library, gardens, or your own room for focus and deep work.
-        </p>
-        <p data-i18n="groups.creative.p4">
-          Come alone or gather with students, colleagues, or fellow creatives and make the estate your artistic home.
-        </p>
-        <a href="/contact/" class="link-arrow" data-i18n="groups.creative.cta">Plan a creative retreat</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Celebrations — Phase 3 §2: clickable gallery, mirrors the other category blocks -->
+  <!-- Celebrations — June 15 revision: now precedes Creative Retreats -->
   <section id="celebrations" class="section--tight fade-in">
-    <div class="split split--reverse">
-      <div class="split__body">
-        <span class="split__eyebrow" data-i18n="groups.celebrations.eyebrow">Celebrations</span>
-        <h2 data-i18n="groups.celebrations.heading">Celebrations at Moulin à Rêves</h2>
-        <p data-i18n="groups.celebrations.p1">
-          Some occasions deserve more than a restaurant reservation. From milestone birthdays and anniversaries to intimate weddings, reunions, and special gatherings, Moulin à Rêves offers a beautiful setting for celebrating life's memorable moments.
-        </p>
-        <p data-i18n="groups.celebrations.p2">
-          Gather beneath La Grange, dine under the stars, and enjoy the rare luxury of having a French estate all to yourselves.
-        </p>
-        <a href="/contact/" class="link-arrow" data-i18n="groups.celebrations.cta">Plan a celebration</a>
-      </div>
+    <div class="split">
       <div class="split__image">
         <!-- data-gallery triggers the fullscreen lightbox with all celebrations gallery images -->
         <div
@@ -231,7 +183,54 @@ const testimonialVideos = [
           tabindex="0"
           aria-label="View celebrations gallery"
         >
-          <img src="/images/catering-group-gathering.webp" alt="A large family gathered with a cake and gifts under La Grange at Moulin à Rêves" loading="lazy" />
+          <img src="/images/groups/grange-party-gathering.webp" alt="Guests gathered for a celebration beneath La Grange's covered pavilion at Moulin à Rêves" loading="lazy" />
+          <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
+        </div>
+      </div>
+      <div class="split__body">
+        <span class="split__eyebrow" data-i18n="groups.celebrations.eyebrow">Celebrations</span>
+        <h2 data-i18n="groups.celebrations.heading">Celebrations at Moulin à Rêves</h2>
+        <p data-i18n="groups.celebrations.p1">
+          Some places host events. Moulin à Rêves becomes part of the memory.
+        </p>
+        <p data-i18n="groups.celebrations.p2">
+          Whether celebrating a wedding, birthday, anniversary, holiday, or special gathering, Moulin à Rêves offers a beautiful setting for life's most meaningful occasions.
+        </p>
+        <p data-i18n="groups.celebrations.p3">
+          Gather beneath La Grange, dine under the stars, and enjoy the rare luxury of quality time with those you love most.
+        </p>
+        <a href="/contact/" class="link-arrow" data-i18n="groups.celebrations.cta">Plan a celebration</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creative Retreats — June 15 revision: now follows Celebrations -->
+  <section id="creative-retreats" class="section--tight fade-in">
+    <div class="split split--reverse">
+      <div class="split__body">
+        <span class="split__eyebrow" data-i18n="groups.creative.eyebrow">Creative Retreats</span>
+        <h2 data-i18n="groups.creative.heading">Creative Retreats</h2>
+        <p data-i18n="groups.creative.p1">
+          Moulin à Rêves is a place of inspiration. Whether you're starting a memoir, collaborating on a screenplay, or leading an artistic retreat, Moulin à Rêves offers the space and beauty for meaningful creative work.
+        </p>
+        <p data-i18n="groups.creative.p2">
+          The rhythm of the river creates an atmosphere that encourages creative flow. There's even a historic wishing well, so that you can fill your creative well.
+        </p>
+        <p data-i18n="groups.creative.p3">
+          Gather in La Grange for workshops and conversation. Retreat to a private nook in the gardens or living rooms for focus and deep work. Many books and songs have been created here.
+        </p>
+        <a href="/contact/" class="link-arrow" data-i18n="groups.creative.cta">Plan a creative retreat</a>
+      </div>
+      <div class="split__image">
+        <!-- data-gallery triggers the fullscreen lightbox with all creative gallery images -->
+        <div
+          class="groups-gallery-trigger"
+          data-gallery={JSON.stringify(creativeGallery)}
+          role="button"
+          tabindex="0"
+          aria-label="View creative retreats gallery"
+        >
+          <img src="/images/retreat-writers.webp" alt="A writer working on a laptop on a garden chaise during a creative retreat at Moulin à Rêves" loading="lazy" />
           <span class="groups-gallery-pill" aria-hidden="true">View gallery</span>
         </div>
       </div>
@@ -277,12 +276,10 @@ const testimonialVideos = [
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="groups-cta fade-in">
-    <div class="groups-cta__body container--narrow text-center">
-      <h2 data-i18n="groups.cta.heading" style="font-size: clamp(2rem, 4vw, 3rem);">Plan your group stay</h2>
-      <p data-i18n="groups.cta.tagline" style="margin-top: 14px; max-width: 56ch; margin-left: auto; margin-right: auto;">Tell us your dates and your group — we'll take it from there.</p>
-      <a href="/contact/" class="btn btn--green" data-i18n="groups.cta.button" style="margin-top: 24px;">Join us</a>
+  <!-- CTA — June 15: heading + tagline removed; just the green Join Us button with consistent spacing -->
+  <section class="section text-center">
+    <div class="container fade-in">
+      <a href="/contact/" class="btn btn--green" data-i18n="groups.cta.button">Join us</a>
     </div>
   </section>
 

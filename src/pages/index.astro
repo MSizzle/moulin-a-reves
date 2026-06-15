@@ -464,14 +464,14 @@ const groupTypes = [
     <div class="container">
       <div class="showcase showcase--triple">
         {groupTypes.map((g, i) => (
-          <div class="card fade-in">
+          <a class="card fade-in" href="/groups/" style="text-decoration:none;color:inherit;">
             <div class="card__image">
               <img src={g.image} alt={g.alt} loading="lazy" />
             </div>
             <div class="card__body">
               <h3 class="card__title" data-i18n={`home.groups.type.${i}.title`}>{g.title}</h3>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
@@ -643,7 +643,7 @@ const groupTypes = [
        Translation keys home.area.* are intentionally left in translations.json for later restore. -->
 
   <!-- CTA -->
-  <section class="section--tighter text-center">
+  <section class="section text-center">
     <div class="container fade-in">
       <a href="/contact/" class="btn btn--green" data-i18n="home.cta.button">Join us!</a>
     </div>
