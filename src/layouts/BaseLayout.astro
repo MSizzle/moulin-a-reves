@@ -1574,66 +1574,71 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         display: none;
       }
 
-      /* Mobile nav */
+      /* Mobile nav — a dropdown panel that slides down from the bar in the
+         same cream shade as the navbar (not a fullscreen dark overlay). It is
+         anchored to the fixed .nav via top:100%, so it hangs flush beneath it. */
       .nav__mobile {
-        position: fixed;
-        inset: 0;
-        background: var(--bg-dark);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(254, 252, 248, 0.98);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
         z-index: 200;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        /* Scroll instead of clipping when the menu is taller than the
-           viewport (small phones / landscape). Top padding clears the
-           close button; bottom padding respects the safe-area inset. */
+        align-items: stretch;
+        padding: 8px var(--side-padding-mobile) 24px;
+        /* Never taller than the space below the bar; scroll only as a last
+           resort on very short (landscape) viewports. */
+        max-height: calc(100vh - 60px);
+        max-height: calc(100dvh - 60px);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        padding: 88px 24px max(40px, env(safe-area-inset-bottom));
+        /* Slide-down reveal */
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s, visibility 0.3s;
+        transform: translateY(-10px);
+        transition: opacity 0.28s var(--ease-out), transform 0.28s var(--ease-out), visibility 0.28s;
       }
 
       .nav__mobile.active {
         opacity: 1;
         visibility: visible;
+        transform: translateY(0);
       }
 
+      /* The hamburger itself toggles the dropdown (and morphs to an X), so the
+         old floating close button is unused. */
       .nav__close {
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 2rem;
-        cursor: pointer;
+        display: none;
       }
 
       .nav__mobile-links {
         list-style: none;
-        text-align: center;
-        /* Pairs with margin-bottom:auto on the last child to vertically
-           center the block when there is spare room, collapsing to 0 when
-           the content overflows so nothing gets clipped. */
-        margin-top: auto;
+        width: 100%;
       }
 
       .nav__mobile-links li {
-        margin-bottom: 24px;
+        margin: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       }
 
       .nav__mobile-links a {
+        display: block;
         font-family: var(--font-display);
-        font-size: 1.75rem;
-        color: white;
+        font-size: 1.125rem;
+        color: var(--text-primary);
         text-decoration: none;
+        text-align: center;
+        padding: 14px 4px;
       }
 
       .nav__mobile-contact {
-        margin-top: 48px;
-        margin-bottom: auto;
+        margin-top: 20px;
+        text-align: center;
       }
 
       .nav__mobile-contact a {
@@ -1641,15 +1646,25 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         font-size: 0.875rem;
       }
 
-      /* Inquire CTA inside the mobile menu */
+      /* Inquire CTA inside the dropdown */
       .nav__mobile-cta {
-        margin-top: 8px;
+        margin-top: 18px;
+        align-self: center;
       }
 
-      /* Language toggle inside the mobile menu (sits on the dark overlay,
-         so the default white-on-translucent toggle styling already fits) */
+      /* Language toggle inside the dropdown — force the dark-text (scrolled)
+         styling since it now sits on a light cream panel, not the dark overlay. */
       .nav__mobile-lang {
-        margin-top: 28px;
+        margin-top: 18px;
+        align-self: center;
+        background: rgba(0, 0, 0, 0.05);
+        border-color: rgba(0, 0, 0, 0.12);
+      }
+      .nav__mobile-lang .lang-toggle__label {
+        color: var(--text-light);
+      }
+      .nav__mobile-lang .lang-toggle__label--active {
+        color: var(--blue-primary);
       }
 
       /* ---- Mobile nav bar: always-legible solid bar + decluttered top ---- */
@@ -1878,15 +1893,14 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       function openMobileMenu() {
         mobile?.classList.add('active');
         toggle?.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
       }
       function closeMobileMenu() {
         mobile?.classList.remove('active');
         toggle?.classList.remove('is-open');
-        document.body.style.overflow = '';
       }
 
-      toggle?.addEventListener('click', () => {
+      toggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
         if (mobile?.classList.contains('active')) closeMobileMenu();
         else openMobileMenu();
       });
@@ -1894,6 +1908,13 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       // Close after tapping a destination link
       mobile?.querySelectorAll('a[href]').forEach((a) => {
         a.addEventListener('click', closeMobileMenu);
+      });
+      // Close when tapping anywhere outside the open dropdown
+      document.addEventListener('click', (e) => {
+        if (!mobile?.classList.contains('active')) return;
+        const t = e.target as Node;
+        if (mobile.contains(t) || toggle?.contains(t)) return;
+        closeMobileMenu();
       });
       // Close on Escape
       document.addEventListener('keydown', (e) => {
