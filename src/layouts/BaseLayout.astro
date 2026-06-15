@@ -220,8 +220,8 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
     <!-- Lightbox for clickable room/photo galleries (supports photo + video slides) -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
       <button class="lightbox__close" aria-label="Close gallery" data-lightbox-close>&times;</button>
-      <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image" data-lightbox-prev>&#8249;</button>
-      <button class="lightbox__nav lightbox__nav--next" aria-label="Next image" data-lightbox-next>&#8250;</button>
+      <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image" data-lightbox-prev><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      <button class="lightbox__nav lightbox__nav--next" aria-label="Next image" data-lightbox-next><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
       <div class="lightbox__stage">
         <img class="lightbox__image" id="lightbox-image" src="" alt="" />
         <!-- Video slide: shown when item.type === 'video'; hidden otherwise -->
@@ -562,14 +562,12 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .lightbox--cream .lightbox__image { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18); }
       .lightbox--cream .lightbox__caption { color: var(--ink-soft); }
       .lightbox--cream .lightbox__counter { color: #fff; }
-      .lightbox--cream .lightbox__close,
-      .lightbox--cream .lightbox__nav {
+      .lightbox--cream .lightbox__close {
         background: rgba(0, 0, 0, 0.04);
         color: var(--ink);
         border-color: rgba(0, 0, 0, 0.12);
       }
-      .lightbox--cream .lightbox__close:hover,
-      .lightbox--cream .lightbox__nav:hover {
+      .lightbox--cream .lightbox__close:hover {
         background: rgba(0, 0, 0, 0.08);
       }
       .lightbox--blur { background: #ffffff; }
@@ -596,8 +594,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         color: #fff;
         text-shadow: none;
       }
-      .lightbox--full .lightbox__close,
-      .lightbox--full .lightbox__nav {
+      .lightbox--full .lightbox__close {
         background: rgba(0, 0, 0, 0.04);
         color: var(--ink);
         border-color: rgba(0, 0, 0, 0.12);
@@ -605,8 +602,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
       }
-      .lightbox--full .lightbox__close:hover,
-      .lightbox--full .lightbox__nav:hover {
+      .lightbox--full .lightbox__close:hover {
         background: rgba(0, 0, 0, 0.08);
       }
       .lightbox--full .lightbox__nav {
@@ -682,9 +678,25 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         font-family: var(--font-body);
         z-index: 2;
       }
-      .lightbox__close:hover,
-      .lightbox__nav:hover {
+      .lightbox__close:hover {
         background: rgba(255, 255, 255, 0.18);
+      }
+      /* Gallery prev/next: solid white circle + dark chevron, matching the
+         PhotoCarousel arrows the client likes (instead of the faint glassy
+         buttons). This is the default across every lightbox variant. */
+      .lightbox__nav {
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--ink);
+        border: none;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        /* Keeps the white circle defined on the light gallery modes
+           (--cream / --full+--blur) as well as the dark default. */
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+      }
+      .lightbox__nav:hover {
+        background: #fff;
+        transform: translateY(-50%) scale(1.05);
       }
       .lightbox__close {
         top: 24px;
