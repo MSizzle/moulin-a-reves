@@ -1583,7 +1583,13 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        /* Scroll instead of clipping when the menu is taller than the
+           viewport (small phones / landscape). Top padding clears the
+           close button; bottom padding respects the safe-area inset. */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 88px 24px max(40px, env(safe-area-inset-bottom));
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s, visibility 0.3s;
@@ -1608,6 +1614,10 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .nav__mobile-links {
         list-style: none;
         text-align: center;
+        /* Pairs with margin-bottom:auto on the last child to vertically
+           center the block when there is spare room, collapsing to 0 when
+           the content overflows so nothing gets clipped. */
+        margin-top: auto;
       }
 
       .nav__mobile-links li {
@@ -1623,6 +1633,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
 
       .nav__mobile-contact {
         margin-top: 48px;
+        margin-bottom: auto;
       }
 
       .nav__mobile-contact a {
