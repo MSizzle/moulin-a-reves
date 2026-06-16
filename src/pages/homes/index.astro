@@ -23,7 +23,7 @@ import Img from '../../components/Img.astro';
     </div>
   </section>
 
-  <section class="section--tighter">
+  <section class="section--tighter section--maisons-end">
     <div class="maisons-stack">
       <a href="/homes/le-moulin/" class="split split--maison fade-in">
         <div class="split__image">
@@ -81,6 +81,10 @@ import Img from '../../components/Img.astro';
 
   <style>
     .section--tighter { padding-top: 56px; padding-bottom: 56px; }
+
+    /* June 16 client note: drop the white gap between the last maison row and
+       the stone "Join us." block so the stone section butts straight up. */
+    .section--maisons-end { padding-bottom: 0; }
 
     /* June 16 client note: full-bleed Garden hero (the two lounge chairs).
        Crop raised toward the bottom (not all the way) so more lawn shows and
