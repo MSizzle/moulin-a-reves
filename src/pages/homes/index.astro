@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Img from '../../components/Img.astro';
 ---
 
 <BaseLayout title="Les Maisons — Three Vacation Rentals in Méréville, France" description="Three maisons in a private historic compound in Méréville, France. Le Moulin, The Hollywood Hideaway, and La Maison de la Rivière.">
@@ -7,7 +8,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="text-center" style="padding-top: clamp(56px, 8vw, 96px); padding-bottom: clamp(20px, 3vw, 36px);">
     <div class="container--narrow fade-in">
       <h1 data-i18n="homes.hero.title">Your Private French Country Estate</h1>
-      <p data-i18n="homes.hero.tagline" style="margin-top: 16px;">Stay in one home or enjoy all three.</p>
+    </div>
+    <div class="container fade-in homes-hero">
+      <Img
+        src="/images/garden-chaises-dream-view.webp"
+        alt="Wicker chaise lounges with blue cushions on the sunlit garden lawn beneath a weeping willow at Moulin à Rêves"
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        widths={[480, 768, 1280]}
+        loading="eager"
+        fetchpriority="high"
+        class="homes-hero__img"
+      />
+      <p data-i18n="homes.hero.tagline" class="homes-hero__subtitle">Stay in one home or enjoy all three.</p>
     </div>
   </section>
 
@@ -69,6 +81,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <style>
     .section--tighter { padding-top: 56px; padding-bottom: 56px; }
+
+    /* June 16 client note: lead Garden photo as the hero under the title,
+       with the tagline as a subheader below the image. */
+    .homes-hero { margin-top: clamp(28px, 4vw, 48px); }
+    .homes-hero__img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      object-position: center 55%;
+      border-radius: 6px;
+      display: block;
+    }
+    .homes-hero__subtitle {
+      margin: clamp(20px, 2.5vw, 28px) auto 0;
+      font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+      color: var(--text-secondary);
+    }
   </style>
 
 </BaseLayout>

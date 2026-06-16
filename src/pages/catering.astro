@@ -94,6 +94,17 @@ import Img from '../components/Img.astro';
 
   <style>
     .section--tight { padding-top: 56px; padding-bottom: 56px; }
+
+    /* June 16 client note: raise the hero crop so more of the laid table shows. */
+    .catering-hero .hero__image img { object-position: center bottom; }
+
+    /* June 16 client note: make every subheader the size of "Bon Appétit!"
+       (the split-layout headings — À Table, Be Our Guest, etc. — render larger
+       via the global .split__body h2 rule). Scoped to this page only. */
+    .split__body h2 {
+      font-size: clamp(1.625rem, 2.6vw, 3rem);
+      line-height: 1.2;
+    }
     .catering-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
