@@ -19,7 +19,7 @@ import Img from '../../components/Img.astro';
   <!-- Subheader (June 16 client note: header text styled like "Discover Méréville") -->
   <section class="section--tighter text-center">
     <div class="container--narrow fade-in">
-      <h2 data-i18n="homes.hero.tagline">Stay in one home or enjoy all three.</h2>
+      <h2 class="homes-subhead" data-i18n="homes.hero.tagline">Stay in one home or enjoy all three.</h2>
     </div>
   </section>
 
@@ -83,9 +83,17 @@ import Img from '../../components/Img.astro';
     .section--tighter { padding-top: 56px; padding-bottom: 56px; }
 
     /* June 16 client note: full-bleed Garden hero (the two lounge chairs).
-       Bias the crop toward the bottom so the chairs and lawn stay in frame
-       on the wide desktop crop. */
-    .hero .hero__image img { object-position: center bottom; }
+       Crop raised toward the bottom (not all the way) so more lawn shows and
+       the chairs sit at the bottom of the frame, above the foreground bed. */
+    .hero .hero__image img { object-position: center 85%; }
+
+    /* June 16 client note: keep the subheader on one line. Fluid size capped
+       so it fills the narrow container on desktop without wrapping, and shrinks
+       with the viewport on mobile so nowrap never overflows. */
+    .homes-subhead {
+      white-space: nowrap;
+      font-size: min(2.25rem, calc((100vw - 56px) / 19));
+    }
   </style>
 
 </BaseLayout>
