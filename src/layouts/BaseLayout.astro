@@ -118,6 +118,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       <!-- Mobile overlay -->
       <div class="nav__mobile" id="nav-mobile">
         <button class="nav__close" id="nav-close" aria-label="Close menu">&times;</button>
+        <p class="nav__mobile-welcome" data-i18n="nav.mobile.welcome">Welcome!</p>
         <ul class="nav__mobile-links">
           <li><a href="/homes/" data-i18n="nav.homes">Les Maisons</a></li>
           <li><a href="/explore/" data-i18n="nav.explore">Explore</a></li>
@@ -1628,6 +1629,16 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
          old floating close button is unused. */
       .nav__close {
         display: none;
+      }
+
+      /* Welcome greeting at the top of the mobile menu (client June 16) */
+      .nav__mobile-welcome {
+        font-family: var(--font-serif);
+        font-size: 1.75rem;
+        line-height: 1.1;
+        color: var(--ink);
+        text-align: center;
+        margin: 4px 0 12px;
       }
 
       .nav__mobile-links {

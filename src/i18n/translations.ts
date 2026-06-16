@@ -2,6 +2,7 @@ export const translations: Record<string, Record<string, string>> = {
   // =====================
   // Navigation
   // =====================
+  'nav.mobile.welcome': { en: 'Welcome!', fr: 'Bienvenue !' },
   'nav.homes': { en: 'Les Maisons', fr: 'Les Maisons' },
   'nav.compound': { en: 'The Compound', fr: 'Le Domaine' },
   'nav.explore': { en: 'Explore', fr: 'Explorer' },

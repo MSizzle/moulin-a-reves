@@ -1,4 +1,8 @@
 {
+  "nav.mobile.welcome": {
+    "en": "Welcome!",
+    "fr": "Bienvenue !"
+  },
   "nav.homes": {
     "en": "Les Maisons",
     "fr": "Les Maisons"
