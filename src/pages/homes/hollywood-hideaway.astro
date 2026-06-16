@@ -183,10 +183,6 @@ const amenities = [
       <img src={cms.heroImage} alt={`${cms.title} — a treasured sanctuary in the French countryside`} />
     </div>
     <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <h1 class="hero__title" data-i18n="hideaway.hero.title">{cms.title}</h1>
-      <p class="hero__tagline" data-i18n="hideaway.hero.tagline">{cms.tagline}</p>
-    </div>
   </section>
 
   <style>
@@ -218,7 +214,8 @@ const amenities = [
   <!-- Narrative / Story (directly beneath hero) -->
   <section class="section--tight">
     <div class="container--narrow fade-in">
-      <div>
+      <h2 data-i18n="hideaway.narrative.heading">Hollywood Hideaway</h2>
+      <div style="margin-top: 24px;">
         <p class="prose-lead" data-i18n="hideaway.narrative.summary">
           For almost half a century, The Hollywood Hideaway was the cherished summer retreat of renowned Hollywood attorney Bert Fields. Here he spent Augusts writing, cooking, entertaining friends, and enjoying the pleasures of French country life far from the spotlight of Los Angeles.
         </p>

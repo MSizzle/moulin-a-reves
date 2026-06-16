@@ -316,12 +316,12 @@
     "fr": "Rejoignez-nous !"
   },
   "homes.hero.title": {
-    "en": "Bienvenue Chez Vous",
-    "fr": "Bienvenue Chez Vous"
+    "en": "Your Private French Country Estate",
+    "fr": "Votre domaine privé à la campagne française"
   },
   "homes.hero.tagline": {
-    "en": "Rent one home or enjoy the entire estate.",
-    "fr": "Louez une maison ou profitez du domaine tout entier."
+    "en": "Stay in one home or enjoy all three.",
+    "fr": "Séjournez dans une maison ou profitez des trois."
   },
   "homes.moulin.desc": {
     "en": "The heart of the compound. A stone mill house where thick walls keep summer cool and the millstream runs just outside.",
@@ -1864,7 +1864,8 @@
     "en": ""
   },
   "le-moulin.narrative.heading": {
-    "en": ""
+    "en": "Le Moulin",
+    "fr": "Le Moulin"
   },
   "le-moulin.narrative.summary": {
     "en": "The original mill house was once home to the famed vaudevillian Borrah Minevitch. Here he entertained an extraordinary circle of friends — among them Charlie Chaplin, Jean Cocteau, Jacques Tati, legendary Paris restaurateur, Maxim, and even the Duchess of Windsor.",
@@ -2090,7 +2091,8 @@
     "en": ""
   },
   "hideaway.narrative.heading": {
-    "en": "The Hollywood Hideaway"
+    "en": "Hollywood Hideaway",
+    "fr": "Hollywood Hideaway"
   },
   "hideaway.narrative.summary": {
     "en": "For almost half a century, The Hollywood Hideaway was the cherished summer retreat of renowned Hollywood attorney Bert Fields. Here he spent Augusts writing, cooking, entertaining friends, and enjoying the pleasures of French country life far from the spotlight of Los Angeles.",
@@ -3348,10 +3350,6 @@
   "groups.intro.text": {
     "en": "From intimate retreats to milestone celebrations, Moulin à Rêves offers a rare setting where family, friends, and colleagues can gather, create, celebrate, and reconnect.",
     "fr": "Des retraites intimes aux grandes célébrations, Moulin à Rêves offre un cadre rare où familles, amis et collègues peuvent se réunir, créer, célébrer et se retrouver."
-  },
-  "groups.intro.events": {
-    "en": "Private events of up to 35 guests may be hosted on the estate for an additional event fee of $5,000.",
-    "fr": "Des événements privés jusqu'à 35 invités peuvent être organisés sur le domaine moyennant des frais d'événement supplémentaires de 5 000 $."
   },
   "groups.yoga.eyebrow": {
     "en": "Yoga & Wellness Retreats",
