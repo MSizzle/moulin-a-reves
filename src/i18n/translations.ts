@@ -138,8 +138,8 @@ export const translations: Record<string, Record<string, string>> = {
     fr: "Le Moulin est la plus ancienne des trois maisons, celle qui a donné son nom au domaine. Ses murs sont épais \u2014 près d'un mètre par endroits \u2014 bâtis dans le même calcaire que les sentiers de la forêt de Fontainebleau. En été, ils gardent les pièces au frais même quand le thermomètre dépasse les trente degrés. En automne, la cheminée du salon tire merveilleusement bien, et vous vous surprendrez à lire plus longtemps que prévu, un verre d'un cru local à la main."
   },
   'moulin.narrative.p3': {
-    en: "The kitchen is where most mornings begin: a farmhouse table that seats eight without crowding, copper pans on the wall, and light that pours in from two sides. If you've ordered breakfast delivery, it arrives in a basket at your door \u2014 croissants still warm, butter from the crémerie in Barbizon, jam made from the garden's own figs. If you'd rather cook, the Saturday marché in Milly-la-Forêt is ten minutes away, and you'll come back with more than you planned.",
-    fr: "C'est à la cuisine que la plupart des matins commencent : une table de ferme pour huit convives, des casseroles en cuivre au mur et une lumière qui entre de deux côtés. Si vous avez commandé le petit-déjeuner, il arrive dans un panier à votre porte \u2014 croissants encore chauds, beurre de la crémerie de Barbizon, confiture de figues du jardin. Si vous préférez cuisiner, le marché du samedi à Milly-la-Forêt est à dix minutes, et vous en reviendrez avec plus que prévu."
+    en: "The kitchen is where most mornings begin: a farmhouse table that seats eight without crowding, copper pans on the wall, and light that pours in from two sides. If you've ordered breakfast delivery, it arrives in a basket at your door \u2014 croissants still warm, butter from a local crémerie, jam made from the garden's own figs. If you'd rather cook, the village boulangerie and the markets in Étampes are a short drive away, and you'll come back with more than you planned.",
+    fr: "C'est à la cuisine que la plupart des matins commencent : une table de ferme pour huit convives, des casseroles en cuivre au mur et une lumière qui entre de deux côtés. Si vous avez commandé le petit-déjeuner, il arrive dans un panier à votre porte \u2014 croissants encore chauds, beurre d'une crémerie locale, confiture de figues du jardin. Si vous préférez cuisiner, la boulangerie du village et les marchés d'Étampes sont à quelques minutes en voiture, et vous en reviendrez avec plus que prévu."
   },
   'moulin.narrative.p4': {
     en: "Evenings belong to the terrace. It sits just above the stream, shaded by a pair of old linden trees, and when the light drops low it turns everything the colour of warm bread. This is where the long dinners happen \u2014 the ones where nobody checks the time, where the children fall asleep in their chairs, where someone opens a second bottle and nobody objects.",
@@ -161,8 +161,8 @@ export const translations: Record<string, Record<string, string>> = {
   'moulin.amenities.heading': { en: 'Amenities', fr: 'Équipements' },
   'moulin.neighbours.heading': { en: 'Your Neighbours', fr: 'Vos Voisins' },
   'moulin.neighbours.text': {
-    en: "Le Moulin sits at the edge of Fontainebleau Forest in the Seine-et-Marne department, just south of Paris. The painters' village of Barbizon is a ten-minute drive, with its galleries, boulangeries, and the kind of light that made Millet and Rousseau stay forever. Fontainebleau itself \u2014 the town and its grand chateau \u2014 is twenty minutes away. Paris is an hour by car or train from Fontainebleau-Avon station. You'll feel a world away, but you're not.",
-    fr: "Le Moulin se trouve en lisière de la forêt de Fontainebleau, dans le département de Seine-et-Marne, juste au sud de Paris. Le village des peintres de Barbizon est à dix minutes en voiture, avec ses galeries, ses boulangeries et cette lumière qui a retenu Millet et Rousseau pour toujours. Fontainebleau \u2014 la ville et son grand château \u2014 est à vingt minutes. Paris est à une heure en voiture ou en train depuis la gare de Fontainebleau-Avon. Vous vous sentirez au bout du monde, mais vous n'y êtes pas."
+    en: "Le Moulin sits in open countryside near Méréville, in the Essonne, about an hour south of Paris. This is the quiet edge of the Île-de-France \u2014 farmland, river valleys, and small villages where life moves at its own pace. Paris is an hour by car, or by train from Étampes station, just fifteen minutes away. You'll feel a world away, but you're not.",
+    fr: "Le Moulin se trouve en pleine campagne près de Méréville, dans l'Essonne, à environ une heure au sud de Paris. C'est la lisière tranquille de l'Île-de-France \u2014 champs, vallées de rivières et petits villages où la vie suit son propre rythme. Paris est à une heure en voiture, ou en train depuis la gare d'Étampes, à quinze minutes seulement. Vous vous sentirez au bout du monde, mais vous n'y êtes pas."
   },
   'moulin.cta.heading': { en: 'Interested in Le Moulin?', fr: 'Intéressé par Le Moulin ?' },
   'moulin.cta.text': { en: "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.", fr: 'Dites-nous vos dates et nous préparerons tout pour vous. Tarifs disponibles sur demande.' },
@@ -214,8 +214,8 @@ export const translations: Record<string, Record<string, string>> = {
   'grange.amenities.heading': { en: 'Amenities', fr: 'Équipements' },
   'grange.neighbours.heading': { en: 'Your Neighbours', fr: 'Vos Voisins' },
   'grange.neighbours.text': {
-    en: "La Grange opens directly onto the shared gardens of Moulin a Reves, at the edge of Fontainebleau Forest. Walk ten minutes through the trees and you'll reach the sandstone boulders the local climbers love. Drive ten minutes the other way and you're in Barbizon, ordering a tartine at a sidewalk table. The Chateau de Fontainebleau is twenty minutes. Paris, an hour.",
-    fr: "La Grange s'ouvre directement sur les jardins partagés de Moulin à Rêves, en lisière de la forêt de Fontainebleau. Marchez dix minutes à travers les arbres et vous atteindrez les blocs de grès qu'adorent les grimpeurs locaux. Roulez dix minutes dans l'autre sens et vous voilà à Barbizon, à commander une tartine en terrasse. Le Château de Fontainebleau est à vingt minutes. Paris, à une heure."
+    en: "La Grange opens directly onto the shared gardens of Moulin à Rêves, in open countryside near Méréville. Step outside and you're among lawns, old trees, and the quiet of the Essonne, with fields and footpaths beginning just beyond the gate. Étampes and its train to Paris are fifteen minutes away. Paris, an hour.",
+    fr: "La Grange s'ouvre directement sur les jardins partagés de Moulin à Rêves, en pleine campagne près de Méréville. Sortez et vous voilà parmi les pelouses, les vieux arbres et le calme de l'Essonne, les champs et les sentiers commençant juste au-delà du portail. Étampes et son train pour Paris sont à quinze minutes. Paris, à une heure."
   },
   'grange.cta.heading': { en: 'Interested in La Grange?', fr: 'Intéressé par La Grange ?' },
   'grange.cta.text': { en: "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.", fr: 'Dites-nous vos dates et nous préparerons tout pour vous. Tarifs disponibles sur demande.' },
@@ -267,8 +267,8 @@ export const translations: Record<string, Record<string, string>> = {
   'jardin.amenities.heading': { en: 'Amenities', fr: 'Équipements' },
   'jardin.neighbours.heading': { en: 'Your Neighbours', fr: 'Vos Voisins' },
   'jardin.neighbours.text': {
-    en: "Le Jardin sits at the quietest edge of the compound, where the garden gives way to the first trees of Fontainebleau Forest. You can walk into the forest from the back gate in two minutes. Barbizon, the painters' village with its galleries and boulangeries, is a ten-minute drive. The grand Chateau de Fontainebleau is twenty minutes. Paris is reachable in an hour by car or by train from Fontainebleau-Avon station.",
-    fr: "Le Jardin se trouve au bord le plus calme du domaine, là où le jardin laisse place aux premiers arbres de la forêt de Fontainebleau. Vous pouvez entrer dans la forêt par le portail du fond en deux minutes. Barbizon, le village des peintres avec ses galeries et ses boulangeries, est à dix minutes en voiture. Le grand Château de Fontainebleau est à vingt minutes. Paris est accessible en une heure en voiture ou en train depuis la gare de Fontainebleau-Avon."
+    en: "Le Jardin sits at the quietest edge of the compound, where the garden gives way to open countryside. Step out the back gate and the fields and footpaths begin. This is the rural Essonne, about an hour south of Paris \u2014 reachable by car, or by train from Étampes station, just fifteen minutes away.",
+    fr: "Le Jardin se trouve au bord le plus calme du domaine, là où le jardin laisse place à la campagne. Franchissez le portail du fond et les champs et les sentiers commencent. C'est l'Essonne rurale, à environ une heure au sud de Paris \u2014 accessible en voiture ou en train depuis la gare d'Étampes, à quinze minutes seulement."
   },
   'jardin.cta.heading': { en: 'Interested in Le Jardin?', fr: 'Intéressé par Le Jardin ?' },
   'jardin.cta.text': { en: "Tell us your dates and we'll put together everything you need. Pricing is available on inquiry.", fr: 'Dites-nous vos dates et nous préparerons tout pour vous. Tarifs disponibles sur demande.' },
@@ -433,8 +433,8 @@ export const translations: Record<string, Record<string, string>> = {
   'explore.food.subheading': { en: 'Markets, restaurants, and the taste of the region.', fr: 'Marchés, restaurants et les saveurs de la région.' },
   'explore.food.markets.title': { en: 'Local Markets', fr: 'Marchés Locaux' },
   'explore.food.markets.desc': {
-    en: "The Saturday marche in Milly-la-Foret is the closest and the best \u2014 goat cheese, fresh bread, seasonal vegetables, and flowers. Fontainebleau has a market on Tuesday, Friday, and Sunday mornings. Ten to twenty minutes.",
-    fr: "Le marché du samedi à Milly-la-Forêt est le plus proche et le meilleur \u2014 fromage de chèvre, pain frais, légumes de saison et fleurs. Fontainebleau a un marché les mardis, vendredis et dimanches matins. De dix à vingt minutes."
+    en: "The markets in Étampes are the closest and the best \u2014 goat cheese, fresh bread, seasonal vegetables, and flowers \u2014 about fifteen minutes away, with smaller weekly markets in the surrounding villages.",
+    fr: "Les marchés d'Étampes sont les plus proches et les meilleurs \u2014 fromage de chèvre, pain frais, légumes de saison et fleurs \u2014 à environ quinze minutes, avec de plus petits marchés hebdomadaires dans les villages alentour."
   },
   'explore.food.restaurants.title': { en: 'Restaurants', fr: 'Restaurants' },
   'explore.food.restaurants.desc': {
@@ -795,15 +795,15 @@ export const translations: Record<string, Record<string, string>> = {
   'getting.trips.orleans.p': { en: 'City of Joan of Arc on the Loire.', fr: 'La ville de Jeanne d\'Arc sur la Loire.' },
   'getting.trips.barbizon.h': { en: 'Barbizon', fr: 'Barbizon' },
   'getting.trips.barbizon.p': {
-    en: 'Painters\' village at the edge of Fontainebleau forest, where Impressionism took root. <a class="gh-link" href="/journal/spring-in-barbizon/">Read more →</a>',
-    fr: 'Village des peintres en lisière de Fontainebleau, berceau de l\'impressionnisme. <a class="gh-link" href="/journal/spring-in-barbizon/">En savoir plus →</a>'
+    en: 'Painters\' village at the edge of Fontainebleau forest, where Impressionism took root.',
+    fr: 'Village des peintres en lisière de Fontainebleau, berceau de l\'impressionnisme.'
   },
   'getting.trips.vaux.h': { en: 'Vaux-le-Vicomte', fr: 'Vaux-le-Vicomte' },
   'getting.trips.vaux.p': { en: 'The château that inspired Versailles.', fr: 'Le château qui inspira Versailles.' },
   'getting.trips.loire.h': { en: 'Loire Valley', fr: 'Vallée de la Loire' },
   'getting.trips.loire.p': { en: '90 minutes away — Chambord, Chenonceau, Amboise, Blois.', fr: 'À 90 minutes — Chambord, Chenonceau, Amboise, Blois.' },
   'getting.trips.fontainebleau.h': { en: 'Fontainebleau', fr: 'Fontainebleau' },
-  'getting.trips.fontainebleau.p': { en: 'Royal château and 25,000 hectares of ancient forest, twenty minutes away.', fr: 'Château royal et 25 000 hectares de forêt ancienne, à vingt minutes.' },
+  'getting.trips.fontainebleau.p': { en: 'Royal château and 25,000 hectares of ancient forest.', fr: 'Château royal et 25 000 hectares de forêt ancienne.' },
   'getting.map.caption': { en: 'Méréville, France · One hour south of Paris', fr: 'Méréville, France · À une heure au sud de Paris' },
 
   // ---- Navigation / footer: Art page (Item 10) ----
