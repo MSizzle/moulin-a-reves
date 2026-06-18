@@ -393,6 +393,33 @@ img,
   transition: transform var(--duration) var(--ease-out);
 }
 
+/* Spawn-in: let the block settle instantly and cascade the photos in instead,
+   so each tile eases up as the grid scrolls into view (delays set in JS). */
+.photo-grid.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+.photo-grid > * {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: var(--spawn-delay, 0ms);
+}
+
+.photo-grid.visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-grid > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 .photo-grid > *:hover img {
   transform: scale(1.03);
 }
