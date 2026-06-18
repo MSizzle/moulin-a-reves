@@ -630,6 +630,15 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
         background: var(--bg-cream);
       }
+      /* Slight fade as the photo changes on prev/next (replayed from JS each
+         swap). Opacity-only so it never fights the room-modal scale-in. */
+      @keyframes photo-swap-fade { from { opacity: 0; } to { opacity: 1; } }
+      .lightbox__image,
+      .room-modal__image { animation: photo-swap-fade 0.3s var(--ease-out); }
+      @media (prefers-reduced-motion: reduce) {
+        .lightbox__image,
+        .room-modal__image { animation: none; }
+      }
       /* Video slide inside lightbox — hidden by default, shown for video items.
          width/height auto + max-* bounds let the video size from its intrinsic
          aspect ratio (never stretched), regardless of portrait/landscape source. */
@@ -805,6 +814,24 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           if (vid) { vid.pause(); vid.removeAttribute('src'); vid.load(); }
         }
 
+        // Swap the photo with a slight fade: preload first so we never flash a
+        // blank or a stale frame, then replay the CSS fade animation.
+        function swapPhoto(el, src, alt, stillCurrent) {
+          var show = function () {
+            if (stillCurrent && !stillCurrent()) return;
+            el.src = src;
+            el.alt = alt || '';
+            el.style.animation = 'none';
+            void el.offsetWidth; // reflow so the animation replays from the start
+            el.style.animation = '';
+          };
+          var pre = new Image();
+          pre.onload = show;
+          pre.onerror = show;
+          pre.src = src;
+          if (pre.complete) show();
+        }
+
         function render() {
           if (!current.length) return;
           var item = current[index];
@@ -820,8 +847,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           } else {
             lb.classList.remove('lightbox--video-slide');
             stopVideo();
-            img.src = item.src;
-            img.alt = item.alt || '';
+            swapPhoto(img, item.src, item.alt, function () { return current[index] === item; });
           }
           cap.textContent = item.caption || item.alt || '';
           counter.textContent = (index + 1) + ' / ' + current.length;
@@ -969,11 +995,28 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
             .replace(/'/g, '&#39;');
         }
 
+        // Swap the photo with a slight fade: preload first so we never flash a
+        // blank or a stale frame, then replay the CSS fade animation.
+        function swapPhoto(el, src, alt, stillCurrent) {
+          var show = function () {
+            if (stillCurrent && !stillCurrent()) return;
+            el.src = src;
+            el.alt = alt || '';
+            el.style.animation = 'none';
+            void el.offsetWidth; // reflow so the animation replays from the start
+            el.style.animation = '';
+          };
+          var pre = new Image();
+          pre.onload = show;
+          pre.onerror = show;
+          pre.src = src;
+          if (pre.complete) show();
+        }
+
         function render() {
           if (!photos.length) return;
           var p = photos[idx];
-          img.src = p.src;
-          img.alt = p.alt || '';
+          swapPhoto(img, p.src, p.alt, function () { return photos[idx] === p; });
           if (counter) counter.textContent = (idx + 1) + ' / ' + photos.length;
           if (thumbsEl) {
             Array.prototype.forEach.call(thumbsEl.children, function (t, i) {
