@@ -393,8 +393,9 @@ img,
   transition: transform var(--duration) var(--ease-out);
 }
 
-/* Spawn-in: let the block settle instantly and cascade the photos in instead,
-   so each tile eases up as the grid scrolls into view (delays set in JS). */
+/* Spawn-in: keep the grid block static and ease each photo in as IT scrolls
+   into view (per-tile, via its own observer — see BaseLayout). Tying this to
+   the whole grid made the lower tiles finish animating below the fold. */
 .photo-grid.fade-in {
   opacity: 1;
   transform: none;
@@ -402,14 +403,15 @@ img,
 
 .photo-grid > * {
   opacity: 0;
-  transform: translateY(24px) scale(0.985);
-  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
-  transition-delay: var(--spawn-delay, 0ms);
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  will-change: opacity, transform;
 }
 
-.photo-grid.visible > * {
+.photo-grid > *.spawned {
   opacity: 1;
   transform: none;
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

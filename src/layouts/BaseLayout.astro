@@ -1736,17 +1736,23 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         });
       });
 
-      // Gallery photo grids cascade their tiles in (60ms per step, capped) once
-      // the grid scrolls into view — softer than fading the whole block at once.
-      document.querySelectorAll('.photo-grid').forEach((grid) => {
-        grid.querySelectorAll(':scope > *').forEach((el, i) => {
-          if (el instanceof HTMLElement) {
-            el.style.setProperty('--spawn-delay', Math.min(i * 60, 360) + 'ms');
-          }
-        });
-      });
-
       document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+      // Gallery photos spawn in individually as each tile scrolls into view —
+      // a dedicated observer (separate from the grid-level .fade-in one) so the
+      // lower tiles in a tall grid animate when reached, not all at once.
+      const photoObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('spawned');
+              photoObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -8% 0px' }
+      );
+      document.querySelectorAll('.photo-grid > *').forEach((el) => photoObserver.observe(el));
 
       // ---- Language Toggle (EN/FR) ----
       // Translations loaded from /i18n/translations.json (generated at build time)
