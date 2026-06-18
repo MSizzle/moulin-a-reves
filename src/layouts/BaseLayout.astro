@@ -630,23 +630,9 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
         background: var(--bg-cream);
       }
-      /* Slight cross-fade as the photo changes on prev/next: JS holds the
-         outgoing frame as a background and replays this fade on the incoming
-         image over it, so the swap never reveals the backdrop (no white flash).
-         The background longhands make the held frame line up with object-fit:
-         contain. Opacity-only so it never fights the room-modal scale-in. */
-      @keyframes photo-swap-fade { from { opacity: 0; } to { opacity: 1; } }
-      .lightbox__image,
-      .room-modal__image {
-        animation: photo-swap-fade 0.3s var(--ease-out);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .lightbox__image,
-        .room-modal__image { animation: none; }
-      }
+      /* The prev/next cross-fade is done in JS: it overlays the outgoing frame
+         (sized to the current image) and fades it out over the incoming one, so
+         there's no backdrop flash and no resize jump. See swapPhoto(). */
       /* Video slide inside lightbox — hidden by default, shown for video items.
          width/height auto + max-* bounds let the video size from its intrinsic
          aspect ratio (never stretched), regardless of portrait/landscape source. */
@@ -822,25 +808,36 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
           if (vid) { vid.pause(); vid.removeAttribute('src'); vid.load(); }
         }
 
-        // Swap the photo with a slight cross-fade. Preload the next image, hold
-        // the outgoing frame as a background, then fade the incoming image in
-        // over it so the swap never reveals the backdrop (no white flash). The
-        // held frame is dropped once the fade ends, unless a newer swap started.
+        // Swap the photo with a slight cross-fade. Preload the next image, then
+        // lay the outgoing frame as an overlay sized to the current image, set
+        // the new src underneath (it shows at its own size right away — no
+        // resize jump), and fade the overlay out. No backdrop flash. Skipped
+        // under prefers-reduced-motion.
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         function swapPhoto(el, src, alt, stillCurrent) {
           var show = function () {
             if (stillCurrent && !stillCurrent()) return;
             var prevSrc = el.getAttribute('src');
+            var parent = el.parentNode;
+            if (prevSrc && parent && !prefersReduced && el.offsetWidth) {
+              var ghost = document.createElement('img');
+              ghost.src = prevSrc;
+              ghost.setAttribute('aria-hidden', 'true');
+              ghost.style.cssText =
+                'position:absolute;left:' + el.offsetLeft + 'px;top:' + el.offsetTop +
+                'px;width:' + el.offsetWidth + 'px;height:' + el.offsetHeight +
+                'px;object-fit:contain;pointer-events:none;z-index:2;' +
+                'transition:opacity 0.3s ease;opacity:1;';
+              parent.appendChild(ghost);
+              requestAnimationFrame(function () {
+                requestAnimationFrame(function () { ghost.style.opacity = '0'; });
+              });
+              var done = function () { if (ghost.parentNode) ghost.parentNode.removeChild(ghost); };
+              ghost.addEventListener('transitionend', done);
+              setTimeout(done, 600);
+            }
             el.src = src;
             el.alt = alt || '';
-            var token = (el._swap = (el._swap || 0) + 1);
-            if (prevSrc) el.style.backgroundImage = 'url("' + prevSrc + '")';
-            el.style.animation = 'none';
-            void el.offsetWidth; // reflow so the fade replays from the start
-            el.style.animation = '';
-            el.addEventListener('animationend', function clr() {
-              el.removeEventListener('animationend', clr);
-              if (el._swap === token) el.style.backgroundImage = '';
-            });
           };
           var pre = new Image();
           pre.onload = show;
@@ -1012,25 +1009,36 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
             .replace(/'/g, '&#39;');
         }
 
-        // Swap the photo with a slight cross-fade. Preload the next image, hold
-        // the outgoing frame as a background, then fade the incoming image in
-        // over it so the swap never reveals the backdrop (no white flash). The
-        // held frame is dropped once the fade ends, unless a newer swap started.
+        // Swap the photo with a slight cross-fade. Preload the next image, then
+        // lay the outgoing frame as an overlay sized to the current image, set
+        // the new src underneath (it shows at its own size right away — no
+        // resize jump), and fade the overlay out. No backdrop flash. Skipped
+        // under prefers-reduced-motion.
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         function swapPhoto(el, src, alt, stillCurrent) {
           var show = function () {
             if (stillCurrent && !stillCurrent()) return;
             var prevSrc = el.getAttribute('src');
+            var parent = el.parentNode;
+            if (prevSrc && parent && !prefersReduced && el.offsetWidth) {
+              var ghost = document.createElement('img');
+              ghost.src = prevSrc;
+              ghost.setAttribute('aria-hidden', 'true');
+              ghost.style.cssText =
+                'position:absolute;left:' + el.offsetLeft + 'px;top:' + el.offsetTop +
+                'px;width:' + el.offsetWidth + 'px;height:' + el.offsetHeight +
+                'px;object-fit:contain;pointer-events:none;z-index:2;' +
+                'transition:opacity 0.3s ease;opacity:1;';
+              parent.appendChild(ghost);
+              requestAnimationFrame(function () {
+                requestAnimationFrame(function () { ghost.style.opacity = '0'; });
+              });
+              var done = function () { if (ghost.parentNode) ghost.parentNode.removeChild(ghost); };
+              ghost.addEventListener('transitionend', done);
+              setTimeout(done, 600);
+            }
             el.src = src;
             el.alt = alt || '';
-            var token = (el._swap = (el._swap || 0) + 1);
-            if (prevSrc) el.style.backgroundImage = 'url("' + prevSrc + '")';
-            el.style.animation = 'none';
-            void el.offsetWidth; // reflow so the fade replays from the start
-            el.style.animation = '';
-            el.addEventListener('animationend', function clr() {
-              el.removeEventListener('animationend', clr);
-              if (el._swap === token) el.style.backgroundImage = '';
-            });
           };
           var pre = new Image();
           pre.onload = show;
