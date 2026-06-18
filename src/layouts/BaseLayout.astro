@@ -547,7 +547,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         position: fixed;
         inset: 0;
         z-index: 10000;
-        background: rgba(15, 15, 15, 0.92);
+        background: #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -627,7 +627,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         width: auto;
         height: auto;
         object-fit: contain;
-        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
         background: var(--bg-cream);
       }
       /* Video slide inside lightbox — hidden by default, shown for video items.
@@ -654,7 +654,7 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         font-family: var(--font-serif);
         font-style: italic;
         font-size: 1rem;
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--ink-soft);
         text-align: center;
         max-width: 60ch;
       }
@@ -671,16 +671,16 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
       .lightbox__close,
       .lightbox__nav {
         position: absolute;
-        background: rgba(255, 255, 255, 0.08);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(0, 0, 0, 0.04);
+        color: var(--ink);
+        border: 1px solid rgba(0, 0, 0, 0.12);
         cursor: pointer;
         transition: background 0.25s var(--ease-out), transform 0.25s var(--ease-out);
         font-family: var(--font-body);
         z-index: 2;
       }
       .lightbox__close:hover {
-        background: rgba(255, 255, 255, 0.18);
+        background: rgba(0, 0, 0, 0.08);
       }
       /* Gallery prev/next: solid white circle + dark chevron, matching the
          PhotoCarousel arrows the client likes (instead of the faint glassy
