@@ -87,7 +87,7 @@ const tileSummaryClass = effectiveHideTileSummary ? 'compound-tile__summary comp
         return (
           <div class="compound-tile compound-tile--clickable fade-in" data-gallery={JSON.stringify(galleryPhotos)} role="button" tabindex="0">
             <div class="compound-tile__media">
-              <Img src={room.photos[0].src} alt={room.photos[0].alt || room.title} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" loading="lazy" />
+              <Img src={room.photos[0].src} alt={room.photos[0].alt || room.title} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (min-width: 1680px) 506px, 33vw" loading="lazy" />
               {!gatherMode && room.photos.length > 1 && (
                 <span class="card__photo-count">{room.photos.length} photos</span>
               )}

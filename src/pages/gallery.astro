@@ -3,8 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Img from '../components/Img.astro';
 
 // Photos sit in a 3-col (desktop) / 2-col (≤1024px) / 1-col (≤640px) masonry
-// grid, so a grid image is never wider than ~33vw on desktop or 100vw on phones.
-const gridSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+// grid. The container caps at --content-max (1680px), so above that width each
+// column is fixed at ~506px ((1680 - 128 padding - 32 gaps) / 3) — the cap stops
+// wide/Retina screens from fetching the 2000px original for a 506px slot.
+const gridSizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (min-width: 1680px) 506px, 33vw';
 ---
 
 <BaseLayout title="Gallery — Moulin à Rêves" description="Photos of Moulin à Rêves — three stone houses, gardens, the millstream, and the French countryside near Fontainebleau Forest.">
