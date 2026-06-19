@@ -1,7 +1,5 @@
 ---
 import '../styles/global.css';
-import { FEEDBACK_INJECT_VER } from '../lib/feedback-version';
-import { BUILD_SHA_VALUE as BUILD_SHA } from '../lib/build-sha';
 
 interface Props {
   title: string;
@@ -25,7 +23,6 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="x-build-sha" content={BUILD_SHA} />
     <title>{title}</title>
 
     <!-- Canonical -->
@@ -1196,53 +1193,6 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
             if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) next(); else prev(); }
           }, { passive: true });
         }
-      })();
-    </script>
-
-    <!-- Editor click-to-edit overlay (only loads inside the editor iframe with ?edit=1) -->
-    <script is:inline>
-      (function () {
-        try {
-          var qs = new URLSearchParams(location.search);
-          if (qs.get('edit') !== '1') return;
-          if (window.parent === window) return;
-          var s = document.createElement('script');
-          s.src = '/editor-inject.js';
-          s.defer = true;
-          document.body.appendChild(s);
-        } catch (_) {}
-      })();
-    </script>
-
-    <!-- Client-feedback overlay (only loads inside the feedback iframe with ?feedback=1) -->
-    <script is:inline define:vars={{ feedbackVer: FEEDBACK_INJECT_VER }}>
-      (function () {
-        try {
-          var qs = new URLSearchParams(location.search);
-          if (qs.get('feedback') !== '1') return;
-          if (window.parent === window) return;
-          var s = document.createElement('script');
-          s.src = '/feedback-inject.js?v=' + feedbackVer;
-          s.defer = true;
-          document.body.appendChild(s);
-        } catch (_) {}
-      })();
-    </script>
-
-    <!-- Client-feedback MATCH overlay (only loads inside the feedback iframe with ?feedback=1 AND ?matchSet=<id>) -->
-    <script is:inline>
-      (function () {
-        try {
-          var qs = new URLSearchParams(location.search);
-          if (qs.get('feedback') !== '1') return;
-          if (!qs.get('matchSet')) return;
-          if (window.parent === window) return;
-          var matchVer = qs.get('matchVer') || '1';
-          var s = document.createElement('script');
-          s.src = '/feedback-match-inject.js?v=' + encodeURIComponent(matchVer);
-          s.defer = true;
-          document.body.appendChild(s);
-        } catch (_) {}
       })();
     </script>
 

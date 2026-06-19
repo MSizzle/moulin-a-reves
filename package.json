@@ -9,15 +9,8 @@
     "dev": "astro dev",
     "prebuild": "node scripts/check-public-clean.mjs",
     "build": "astro build",
-    "postbuild": "node scripts/check-edit-catalogs.mjs",
-    "check:catalogs": "node scripts/check-edit-catalogs.mjs",
     "preview": "astro preview",
-    "astro": "astro",
-    "canary:v1": "scripts/canary.sh v1",
-    "canary:v2": "scripts/canary.sh v2",
-    "canary:status": "scripts/canary.sh status",
-    "canary": "scripts/canary.sh",
-    "test:catalog": "node --test tests/edit-catalog/*.test.mjs"
+    "astro": "astro"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.98.0",
