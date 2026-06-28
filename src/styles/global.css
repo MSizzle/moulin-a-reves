@@ -401,16 +401,17 @@ img,
   transform: none;
 }
 
+/* Opacity-only fade: a translateY transform on a multi-column child fights
+   multicol re-fragmentation (and lazy-image reflow), producing janky/distorted
+   motion. Fading opacity alone composites cleanly inside `columns`. */
 .photo-grid > * {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-  will-change: opacity, transform;
+  transition: opacity 0.6s var(--ease-out);
+  will-change: opacity;
 }
 
 .photo-grid > *.spawned {
   opacity: 1;
-  transform: none;
   will-change: auto;
 }
 
