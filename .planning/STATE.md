@@ -89,6 +89,7 @@ Decisions are logged in PROJECT.md Key Decisions table. All v1.0, v1.1, and v1.2
 | 260521-sjf | Ship snapshot tooling — scripts/snapshot-pre.sh + snapshot-diff.sh + .github/workflows/snapshot.yml daily cron + gitignore .planning/snapshots/ | 2026-05-22 | 6310fe6 | [260521-sjf-ship-snapshot-tooling-for-agent-paranoia](./quick/260521-sjf-ship-snapshot-tooling-for-agent-paranoia/) |
 | 260610-tw0 | June 10 client edit batch — all 18 items from moulin-a-reves-edit-prompts doc (asset intake, sitewide lightbox, house-page edits, galleries, groups videos, /art/ page, catering hero, contact fix) | 2026-06-11 | df2ab07 | [260610-tw0-execute-june-10-client-edit-batch-from-m](./quick/260610-tw0-execute-june-10-client-edit-batch-from-m/) |
 | 260628-x7i | Smooth gallery photo-grid spawn animation — opacity-only fade, drop translateY transform that fought CSS multicol + lazy-image reflow | 2026-06-28 | ca1c36d | [260628-x7i-smooth-gallery-photo-grid-spawn-animatio](./quick/260628-x7i-smooth-gallery-photo-grid-spawn-animatio/) |
+| 260629-0cn | Fix PhotoCarousel cross-fade flash — incoming slide fades over solid outgoing (no stone-backdrop show-through) | 2026-06-29 | 70b031b | [260629-0cn-fix-photocarousel-cross-fade-flash-incom](./quick/260629-0cn-fix-photocarousel-cross-fade-flash-incom/) |
 
 ## Deferred Items
 

@@ -80,12 +80,23 @@ const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
     position: absolute;
     inset: 0;
     opacity: 0;
+    z-index: 0;
     transition: opacity 1.1s var(--ease-out);
     pointer-events: none;
   }
 
+  /* Outgoing slide holds solid underneath while the incoming fades in on top,
+     so the stone backdrop never shows through mid-transition (no flash). The
+     JS drops .is-leaving once the fade completes. */
+  .photo-carousel__slide.is-leaving {
+    opacity: 1;
+    z-index: 1;
+    transition: none;
+  }
+
   .photo-carousel__slide.is-active {
     opacity: 1;
+    z-index: 2;
     pointer-events: auto;
   }
 
@@ -265,20 +276,37 @@ const headingKey = i18nKey ? `${i18nKey}.heading` : undefined;
     let current = 0;
     let timer: ReturnType<typeof setInterval> | null = null;
     let progressTimer: ReturnType<typeof setInterval> | null = null;
+    let leaveTimer: ReturnType<typeof setTimeout> | null = null;
     let progressStart = 0;
     let paused = false;
 
     function show(i: number) {
-      slides[current]?.classList.remove('is-active');
-      thumbs[current]?.classList.remove('is-active');
+      const previous = current;
       current = (i + slides.length) % slides.length;
+      if (previous === current) return;
+
+      // Clear any slide still mid-leave from a prior rapid transition — it sits
+      // behind the active slide, so dropping it to opacity 0 is invisible.
+      slides.forEach((s) => s.classList.remove('is-leaving'));
+
+      // Outgoing stays solid underneath; incoming fades in on top (no backdrop flash).
+      slides[previous]?.classList.remove('is-active');
+      slides[previous]?.classList.add('is-leaving');
       slides[current]?.classList.add('is-active');
+
+      thumbs[previous]?.classList.remove('is-active');
       thumbs[current]?.classList.add('is-active');
       if (currentEl) currentEl.textContent = String(current + 1);
       const activeThumb = thumbs[current];
       if (activeThumb && activeThumb.scrollIntoView) {
         activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
+
+      if (leaveTimer) clearTimeout(leaveTimer);
+      leaveTimer = setTimeout(() => {
+        slides[previous]?.classList.remove('is-leaving');
+      }, 1150);
+
       resetProgress();
     }
 
