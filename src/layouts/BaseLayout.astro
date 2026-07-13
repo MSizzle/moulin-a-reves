@@ -1768,14 +1768,33 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
 
       document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
-      // Gallery photos spawn in individually as each tile scrolls into view —
-      // a dedicated observer (separate from the grid-level .fade-in one) so the
-      // lower tiles in a tall grid animate when reached, not all at once.
+      // Gallery photos fade in per-tile, but the reveal waits on the IMAGE
+      // actually decoding — not just on scroll. Otherwise an empty box fades
+      // in and the bitmap snaps in a beat later (the "spawn at different rates"
+      // jank). The observer only marks a tile ready-to-show; revealTile holds
+      // the fade until the pixels are decoded so every photo eases in clean.
+      const revealTile = (tile: Element) => {
+        const img = tile.querySelector('img');
+        if (!img) { tile.classList.add('spawned'); return; }
+        const show = () => tile.classList.add('spawned');
+        const afterDecode = () => {
+          // decode() resolves once the bitmap is paint-ready (immediately if
+          // already cached); fall back to show on any decode error.
+          if (img.decode) { img.decode().then(show, show); } else { show(); }
+        };
+        if (img.complete && img.naturalWidth > 0) {
+          afterDecode();
+        } else {
+          img.addEventListener('load', afterDecode, { once: true });
+          img.addEventListener('error', show, { once: true }); // never leave a blank box
+        }
+      };
+
       const photoObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('spawned');
+              revealTile(entry.target);
               photoObserver.unobserve(entry.target);
             }
           });

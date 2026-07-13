@@ -51,6 +51,23 @@ const base = isResponsive ? src.slice(0, -'.webp'.length) : '';
 const srcset = isResponsive
   ? [...widths.map((w) => `${base}-${w}.webp ${w}w`), `${src} 2000w`].join(', ')
   : undefined;
+
+// Reserve the layout box at build time. Without intrinsic width/height a
+// `loading="lazy"` image is zero-height until its bitmap downloads, then snaps
+// to full size — so a grid of lazy photos reflows and "pops in" unevenly as
+// each one arrives. The originals live at `public/<src>`; Sharp reads just the
+// header, so this is cheap. CSS keeps `width:100%; height:auto`, so the browser
+// uses these numbers only for the aspect-ratio box, not the rendered size.
+let dims: { width: number; height: number } | null = null;
+if (isResponsive) {
+  try {
+    const sharp = (await import('sharp')).default;
+    const meta = await sharp(`public${src}`).metadata();
+    if (meta.width && meta.height) dims = { width: meta.width, height: meta.height };
+  } catch {
+    // Missing/unreadable original — degrade to no dims rather than break the build.
+  }
+}
 ---
 
 <img
@@ -58,6 +75,8 @@ const srcset = isResponsive
   srcset={srcset}
   sizes={srcset ? sizes : undefined}
   alt={alt}
+  width={dims?.width}
+  height={dims?.height}
   loading={loading}
   decoding={decoding}
   fetchpriority={fetchpriority}
