@@ -1675,6 +1675,18 @@
     "en": "About 1 hour from Paris by car or train. <a href=\"/about/#getting-here\">See the full directions FAQ →</a> for airport transfers, train options, taxis, ride apps, and car rental.",
     "fr": "Environ 1 heure de Paris en voiture ou en train. <a href=\"/about/#getting-here\">Voir la FAQ complète sur l'accès →</a> avec transferts aéroport, trains, taxis, applis VTC et location de voiture."
   },
+  "contact.pricing.heading": {
+    "en": "Pricing & Events",
+    "fr": "Tarifs et Événements"
+  },
+  "contact.pricing.rates": {
+    "en": "Nightly rate: €2,500 per house. To rent all three homes — the entire compound — €10,000 per night. Two-night minimum stay. A linens and housekeeping fee of €250 per home is additional.",
+    "fr": "Tarif par nuit : 2 500 € par maison. Pour louer les trois maisons — l'ensemble du domaine — 10 000 € par nuit. Séjour minimum de deux nuits. Des frais de linge et de ménage de 250 € par maison s'ajoutent."
+  },
+  "contact.pricing.events": {
+    "en": "Events with a maximum of 50 people, including all lodging guests, are welcome for a €5,000 facility fee. You are welcome to decorate La Grange for your event. Catering may be arranged directly through <a href=\"/catering/\">our recommended vendors</a>.",
+    "fr": "Les événements accueillant un maximum de 50 personnes, y compris tous les hôtes logés, sont les bienvenus moyennant des frais d'installation de 5 000 €. Vous êtes libre de décorer La Grange pour votre événement. Le traiteur peut être organisé directement via <a href=\"/catering/\">nos prestataires recommandés</a>."
+  },
   "about.faq.heading": {
     "en": "Frequently Asked <span class=\"serif-italic\">Questions</span>",
     "fr": "Questions <span class=\"serif-italic\">Fréquentes</span>"
