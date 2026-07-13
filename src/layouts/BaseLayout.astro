@@ -65,6 +65,9 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
     <!-- Schema Markup -->
     <slot name="schema" />
 
+    <!-- Per-page head extras (e.g. hero preload) -->
+    <slot name="head" />
+
     <!-- Analytics (Umami, self-hosted) -->
     <script
       defer

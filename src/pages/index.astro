@@ -32,6 +32,17 @@ const groupTypes = [
 
 <BaseLayout title="Moulin à Rêves" description="A private historic compound of three stone maisons in Méréville, France. Welcomes up to 20 guests across 10 bedrooms. One hour from Paris.">
 
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href={cms.heroImage}
+      imagesrcset={`/images/hero-compound-480.webp 480w, /images/hero-compound-768.webp 768w, /images/hero-compound-1280.webp 1280w, /images/hero-compound-1600.webp 1600w, ${cms.heroImage} 2000w`}
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+  </Fragment>
+
   <Fragment slot="schema">
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -117,7 +128,7 @@ const groupTypes = [
   <!-- Hero — unfiltered image with the wordmark set below it (client 6pm note) -->
   <section class="hero-lc">
     <div class="hero-lc__image">
-      <Img src={cms.heroImage} alt="Moulin à Rêves compound — stone houses with blue shutters along the millstream" sizes="100vw" loading="eager" fetchpriority="high" />
+      <Img src={cms.heroImage} alt="Moulin à Rêves compound — stone houses with blue shutters along the millstream" sizes="100vw" widths={[480, 768, 1280, 1600]} loading="eager" fetchpriority="high" />
     </div>
     <div class="hero-lc__content text-center">
       <h1 class="hero-lc__title" data-i18n-html="home.title">Moulin à Rêves</h1>
