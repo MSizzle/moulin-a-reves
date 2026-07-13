@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-05-21)
 Phase: 9
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-07-13 - Completed quick task 260713-mu0: capacity 20 guests + events for 50 + Pricing & Events section on contact page
+Last activity: 2026-07-13 - Fast task: journal article i18n fix (data-i18n-html links + full FR translation)
 
 ## Performance Metrics
 
@@ -91,6 +91,7 @@ Decisions are logged in PROJECT.md Key Decisions table. All v1.0, v1.1, and v1.2
 | 260628-x7i | Smooth gallery photo-grid spawn animation — opacity-only fade, drop translateY transform that fought CSS multicol + lazy-image reflow | 2026-06-28 | ca1c36d | [260628-x7i-smooth-gallery-photo-grid-spawn-animatio](./quick/260628-x7i-smooth-gallery-photo-grid-spawn-animatio/) |
 | 260629-0cn | Fix PhotoCarousel cross-fade flash — incoming slide fades over solid outgoing (no stone-backdrop show-through) | 2026-06-29 | 1fcc617 | [260629-0cn-fix-photocarousel-cross-fade-flash-incom](./quick/260629-0cn-fix-photocarousel-cross-fade-flash-incom/) |
 | 260713-mu0 | Client pricing update — capacity 10→20 guests site-wide (EN+FR), events 35→50, new Pricing & Events section on contact page (€2,500/house, €10,000 compound, 2-night min, €250 linens fee, €5,000 event fee ≤50 ppl) | 2026-07-13 | 9697cf2 | [260713-mu0-pricing-capacity-update](./quick/260713-mu0-pricing-capacity-update/) |
+| fast | Journal reunion article i18n fix — data-i18n-html for 5 linked paragraphs (links no longer stripped by overlay) + full FR translation of all 26 journal.family.* keys | 2026-07-13 | a7924a8 | — |
 
 ## Deferred Items
 
