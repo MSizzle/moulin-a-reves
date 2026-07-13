@@ -1790,18 +1790,24 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `https://www.moulinare
         }
       };
 
-      const photoObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              revealTile(entry.target);
-              photoObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -8% 0px' }
-      );
-      document.querySelectorAll('.photo-grid > *').forEach((el) => photoObserver.observe(el));
+      const photoTiles = document.querySelectorAll('.photo-grid > *');
+      if ('IntersectionObserver' in window) {
+        const photoObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                revealTile(entry.target);
+                photoObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -8% 0px' }
+        );
+        photoTiles.forEach((el) => photoObserver.observe(el));
+      } else {
+        // No IntersectionObserver — reveal every photo so none stays invisible.
+        photoTiles.forEach((el) => revealTile(el));
+      }
 
       // ---- Language Toggle (EN/FR) ----
       // Translations loaded from /i18n/translations.json (generated at build time)

@@ -386,45 +386,46 @@ img,
   display: block;
 }
 
+/* Photo reveal: each image eases in — fade + a slight rise — once its bitmap
+   has decoded (per-tile observer in BaseLayout adds .spawned). Matches the
+   site-wide .fade-in motion so gallery photos animate like everything else
+   instead of popping. The figure box is ALREADY reserved by the img's intrinsic
+   width/height, so we animate the img INSIDE a fixed, overflow-hidden box — the
+   rise can't re-fragment the multicol grid the way a transform on the column
+   child would. Hover-scale shares the same transform channel (post-reveal). */
 .photo-grid img {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform var(--duration) var(--ease-out);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  will-change: opacity, transform;
 }
 
-/* Spawn-in: keep the grid block static and ease each photo in as IT scrolls
-   into view (per-tile, via its own observer — see BaseLayout). Tying this to
-   the whole grid made the lower tiles finish animating below the fold. */
-.photo-grid.fade-in {
+/* The grid container and figure boxes never hide — only the photos animate. */
+.photo-grid.fade-in,
+.photo-grid > * {
   opacity: 1;
   transform: none;
 }
 
-/* Opacity-only fade: a translateY transform on a multi-column child fights
-   multicol re-fragmentation (and lazy-image reflow), producing janky/distorted
-   motion. Fading opacity alone composites cleanly inside `columns`. */
-.photo-grid > * {
-  opacity: 0;
-  transition: opacity 0.6s var(--ease-out);
-  will-change: opacity;
-}
-
-.photo-grid > *.spawned {
+.photo-grid > *.spawned img {
   opacity: 1;
+  transform: translateY(0);
   will-change: auto;
 }
 
+.photo-grid > *.spawned:hover img {
+  transform: scale(1.03);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .photo-grid > * {
+  .photo-grid img {
     opacity: 1;
     transform: none;
     transition: none;
   }
-}
-
-.photo-grid > *:hover img {
-  transform: scale(1.03);
 }
 
 @media (max-width: 1024px) {
