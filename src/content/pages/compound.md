@@ -13,7 +13,7 @@ bathrooms: 7
 sleeps: 10
 
 # Summary
-summary: "Three houses, the Grange, the spa, the gym, the screening room — all on one private property. 10 bedrooms, 7 bathrooms, welcomes up to 10 guests."
+summary: "Three houses, the Grange, the spa, the gym, the screening room — all on one private property. 10 bedrooms, 7 bathrooms, welcomes up to 20 guests."
 
 # Location
 location: "Méréville, France"
@@ -23,7 +23,7 @@ distanceFromParis: "1 hour drive"
 
 ## Description
 
-This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It welcomes up to 10 guests, with 10 bedrooms and 7 bathrooms.
+This historic 4-building compound is a wonderful country retreat — just 1 hour drive from Paris. It welcomes up to 20 guests, with 10 bedrooms and 7 bathrooms.
 
 Encircled by a walled garden, this private compound offers 3 homes plus the versatile Grange entertaining space.
 
