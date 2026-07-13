@@ -2492,82 +2492,108 @@
     "en": "Rent All Three Maisons"
   },
   "journal.family.hero.kicker": {
-    "en": "Journal"
+    "en": "Journal",
+    "fr": "Journal"
   },
   "journal.family.hero.title": {
-    "en": "How to Plan a Family Reunion in the French Countryside"
+    "en": "How to Plan a Family Reunion in the French Countryside",
+    "fr": "Comment organiser une réunion de famille dans la campagne française"
   },
   "journal.family.date": {
-    "en": "10 January 2026"
+    "en": "10 January 2026",
+    "fr": "10 janvier 2026"
   },
   "journal.family.p1": {
-    "en": "The family reunion is one of those ideas that sounds wonderful and then, the moment you begin organising it, becomes a logistics challenge of considerable scale. Where do ten people sleep? How do you keep three generations happy at the same time? What happens when the teenagers want to disappear and the grandparents want company? Who cooks? Who cleans? And how do you make it feel like a holiday for the person doing the organising?"
+    "en": "The family reunion is one of those ideas that sounds wonderful and then, the moment you begin organising it, becomes a logistics challenge of considerable scale. Where do ten people sleep? How do you keep three generations happy at the same time? What happens when the teenagers want to disappear and the grandparents want company? Who cooks? Who cleans? And how do you make it feel like a holiday for the person doing the organising?",
+    "fr": "La réunion de famille fait partie de ces idées qui paraissent merveilleuses et qui, dès que l'on commence à l'organiser, se transforment en un défi logistique de taille. Où faire dormir dix personnes ? Comment contenter trois générations en même temps ? Que faire quand les adolescents veulent s'éclipser et que les grands-parents cherchent de la compagnie ? Qui cuisine ? Qui range ? Et comment faire en sorte que la personne qui organise ait, elle aussi, l'impression d'être en vacances ?"
   },
   "journal.family.p2": {
-    "en": "We have hosted dozens of family reunions at Moulin à Rêves, and we have learned a few things. Here is what works."
+    "en": "We have hosted dozens of family reunions at <a href=\"/the-compound/\">Moulin à Rêves</a>, and we have learned a few things. Here is what works.",
+    "fr": "Nous avons accueilli des dizaines de réunions de famille au <a href=\"/the-compound/\">Moulin à Rêves</a>, et nous en avons tiré quelques enseignements. Voici ce qui fonctionne."
   },
   "journal.family.h.architecture": {
-    "en": "The Architecture of Togetherness"
+    "en": "The Architecture of Togetherness",
+    "fr": "L'architecture du vivre-ensemble"
   },
   "journal.family.p3": {
-    "en": "The single most important decision in planning a family reunion is accommodation, and the single most important quality of that accommodation is this: separate sleeping, shared living. Families need to be close enough to gather easily and far enough apart to retreat when they need to. A hotel scatters everyone along corridors. A single large house forces everyone into the same rhythm. A compound — three houses arranged around shared gardens — does something different. It gives each family unit a front door, a kitchen, a living room, and a bedtime that belongs to them, while the garden between the houses becomes the communal space where everything interesting happens."
+    "en": "The single most important decision in planning a family reunion is accommodation, and the single most important quality of that accommodation is this: separate sleeping, shared living. Families need to be close enough to gather easily and far enough apart to retreat when they need to. A hotel scatters everyone along corridors. A single large house forces everyone into the same rhythm. A compound — three houses arranged around shared gardens — does something different. It gives each family unit a front door, a kitchen, a living room, and a bedtime that belongs to them, while the garden between the houses becomes the communal space where everything interesting happens.",
+    "fr": "La décision la plus importante dans l'organisation d'une réunion de famille est le logement, et la qualité la plus importante de ce logement tient en une formule : dormir séparément, vivre ensemble. Les familles doivent être assez proches pour se retrouver facilement et assez éloignées pour se retirer quand elles en ont besoin. Un hôtel disperse tout le monde le long des couloirs. Une seule grande maison impose à tous le même rythme. Un domaine — trois maisons disposées autour de jardins partagés — offre autre chose. Chaque famille dispose de sa porte d'entrée, de sa cuisine, de son salon et d'une heure du coucher qui lui appartient, tandis que le jardin entre les maisons devient l'espace commun où tout ce qui compte se passe."
   },
   "journal.family.p4": {
-    "en": "At Moulin à Rêves, the three houses — Le Moulin, The Hollywood Hideaway, and La Maison de la Rivière — together welcome up to twenty guests. They are close enough that a child can run between them, and far enough apart that you cannot hear the baby crying in the next house. This turns out to be the exact right distance for a family reunion."
+    "en": "At Moulin à Rêves, the three houses — <a href=\"/homes/le-moulin/\">Le Moulin</a>, <a href=\"/homes/hollywood-hideaway/\">The Hollywood Hideaway</a>, and <a href=\"/homes/maison-de-la-riviere/\">La Maison de la Rivière</a> — together welcome up to twenty guests. They are close enough that a child can run between them, and far enough apart that you cannot hear the baby crying in the next house. This turns out to be the exact right distance for a family reunion.",
+    "fr": "Au Moulin à Rêves, les trois maisons — <a href=\"/homes/le-moulin/\">Le Moulin</a>, <a href=\"/homes/hollywood-hideaway/\">The Hollywood Hideaway</a> et <a href=\"/homes/maison-de-la-riviere/\">La Maison de la Rivière</a> — accueillent ensemble jusqu'à vingt hôtes. Elles sont assez proches pour qu'un enfant puisse courir de l'une à l'autre, et assez éloignées pour que l'on n'entende pas le bébé pleurer dans la maison voisine. C'est exactement la bonne distance pour une réunion de famille."
   },
   "journal.family.h.feed": {
-    "en": "Let Someone Else Feed You"
+    "en": "Let Someone Else Feed You",
+    "fr": "Laissez-vous nourrir"
   },
   "journal.family.p5": {
-    "en": "The fastest way to ruin a family reunion is to let the cooking fall to one person. The second fastest way is to let everyone cook together in a kitchen designed for two. Our advice: outsource the meals that matter most, and keep the rest simple."
+    "en": "The fastest way to ruin a family reunion is to let the cooking fall to one person. The second fastest way is to let everyone cook together in a kitchen designed for two. Our advice: outsource the meals that matter most, and keep the rest simple.",
+    "fr": "Le moyen le plus rapide de gâcher une réunion de famille est de laisser la cuisine reposer sur une seule personne. Le deuxième moyen le plus rapide est de faire cuisiner tout le monde ensemble dans une cuisine conçue pour deux. Notre conseil : déléguez les repas qui comptent le plus, et gardez le reste simple."
   },
   "journal.family.p6": {
-    "en": "We offer breakfast delivery each morning — baskets of croissants, fresh bread, local butter and jam, delivered to each house before anyone is fully awake. This alone changes the rhythm of the day. Nobody has to plan breakfast. Nobody has to shop for it. You just open the door and it is there."
+    "en": "We offer <a href=\"/catering/\">breakfast delivery</a> each morning — baskets of croissants, fresh bread, local butter and jam, delivered to each house before anyone is fully awake. This alone changes the rhythm of the day. Nobody has to plan breakfast. Nobody has to shop for it. You just open the door and it is there.",
+    "fr": "Nous proposons une <a href=\"/catering/\">livraison de petit-déjeuner</a> chaque matin — des paniers de croissants, de pain frais, de beurre et de confitures locales, déposés devant chaque maison avant que quiconque ne soit tout à fait réveillé. Cela seul change le rythme de la journée. Personne n'a à prévoir le petit-déjeuner. Personne n'a à faire les courses. Vous ouvrez la porte, et il est là."
   },
   "journal.family.p7": {
-    "en": "For dinner, consider hiring a private chef for at least two or three evenings. The long outdoor dinner — the whole party at a table beneath the linden trees, the children running back and forth, the wine being poured, the conversation getting louder as the evening gets softer — this is the image everyone will remember. Let a professional make the food. You make the memory."
+    "en": "For dinner, consider hiring a private chef for at least two or three evenings. The long outdoor dinner — the whole party at a table beneath the linden trees, the children running back and forth, the wine being poured, the conversation getting louder as the evening gets softer — this is the image everyone will remember. Let a professional make the food. You make the memory.",
+    "fr": "Pour le dîner, envisagez un chef privé pour au moins deux ou trois soirées. Le long dîner en plein air — toute la tablée réunie sous les tilleuls, les enfants qui courent, le vin que l'on sert, la conversation qui monte à mesure que le soir s'adoucit — c'est l'image que chacun gardera en mémoire. Laissez un professionnel faire la cuisine. Vous, créez le souvenir."
   },
   "journal.family.p8": {
-    "en": "For the other evenings, keep it simple. The markets at Milly-la-Foret and Fontainebleau are excellent, and the kitchens in each house are designed for real cooking. A rotation works well: each house takes a turn preparing dinner for the whole group. The competitive instinct alone will produce some remarkable meals."
+    "en": "For the other evenings, keep it simple. The markets at Milly-la-Foret and Fontainebleau are excellent, and the kitchens in each house are designed for real cooking. A rotation works well: each house takes a turn preparing dinner for the whole group. The competitive instinct alone will produce some remarkable meals.",
+    "fr": "Pour les autres soirées, restez simples. Les marchés de Milly-la-Forêt et de Fontainebleau sont excellents, et les cuisines de chaque maison sont conçues pour vraiment cuisiner. Une rotation fonctionne bien : chaque maison prépare à son tour le dîner pour tout le groupe. L'esprit de compétition suffira à produire quelques repas remarquables."
   },
   "journal.family.h.plan": {
-    "en": "Plan Less Than You Think"
+    "en": "Plan Less Than You Think",
+    "fr": "Prévoyez moins que vous ne le pensez"
   },
   "journal.family.p9": {
-    "en": "The temptation with a family reunion is to fill the days with activities. Resist this. The best reunions we have seen are the ones where the organiser planned two or three things and left the rest open. A morning trip to Fontainebleau Forest. An afternoon at the Chateau. A wine tasting in the garden. Beyond that, let people find their own rhythm."
+    "en": "The temptation with a family reunion is to fill the days with activities. Resist this. The best reunions we have seen are the ones where the organiser planned two or three things and left the rest open. A morning trip to <a href=\"/explore/\">Fontainebleau Forest</a>. An afternoon at the Chateau. A wine tasting in the garden. Beyond that, let people find their own rhythm.",
+    "fr": "La tentation, pour une réunion de famille, est de remplir les journées d'activités. Résistez-y. Les plus belles réunions que nous ayons vues sont celles où l'organisateur avait prévu deux ou trois choses et laissé le reste ouvert. Une sortie matinale en <a href=\"/explore/\">forêt de Fontainebleau</a>. Un après-midi au château. Une dégustation de vin dans le jardin. Au-delà, laissez chacun trouver son rythme."
   },
   "journal.family.p10": {
-    "en": "The teenagers will disappear into the forest with a football. The grandparents will sit on the terrace with a book and a coffee and a view of the millstream. The parents will finally have a conversation that lasts more than four minutes. The children will make friends with the frogs. None of this requires a schedule."
+    "en": "The teenagers will disappear into the forest with a football. The grandparents will sit on the terrace with a book and a coffee and a view of the millstream. The parents will finally have a conversation that lasts more than four minutes. The children will make friends with the frogs. None of this requires a schedule.",
+    "fr": "Les adolescents disparaîtront dans la forêt avec un ballon. Les grands-parents s'installeront sur la terrasse avec un livre, un café et la vue sur le bief. Les parents auront enfin une conversation qui dure plus de quatre minutes. Les enfants se lieront d'amitié avec les grenouilles. Rien de tout cela ne demande de programme."
   },
   "journal.family.h.shared": {
-    "en": "The Power of the Shared Space"
+    "en": "The Power of the Shared Space",
+    "fr": "La force de l'espace partagé"
   },
   "journal.family.p11": {
-    "en": "The garden at Moulin à Rêves has a long table that seats twenty. It is made of reclaimed oak and it sits beneath a pair of linden trees that are older than anyone in your family. This table is where the reunion actually happens — not during the planned activities, not during the excursions, but during the long dinners that start at seven and end when someone notices it is midnight and the children fell asleep in their chairs two hours ago."
+    "en": "The garden at Moulin à Rêves has a long table that seats twenty. It is made of reclaimed oak and it sits beneath a pair of linden trees that are older than anyone in your family. This table is where the reunion actually happens — not during the planned activities, not during the excursions, but during the long dinners that start at seven and end when someone notices it is midnight and the children fell asleep in their chairs two hours ago.",
+    "fr": "Le jardin du Moulin à Rêves possède une longue table de vingt couverts. Elle est faite de chêne de récupération et se dresse sous deux tilleuls plus âgés que quiconque dans votre famille. C'est à cette table que la réunion a réellement lieu — pas pendant les activités prévues, pas pendant les excursions, mais au cours de ces longs dîners qui commencent à sept heures et se terminent quand quelqu'un remarque qu'il est minuit et que les enfants dorment sur leur chaise depuis deux heures."
   },
   "journal.family.p12": {
-    "en": "There is also a petanque court (essential for any gathering of more than four French people, and surprisingly compelling for everyone else), a lawn large enough for yoga or croquet or both, and the millstream itself, which provides a gentle background soundtrack to everything."
+    "en": "There is also a petanque court (essential for any gathering of more than four French people, and surprisingly compelling for everyone else), a lawn large enough for yoga or croquet or both, and the millstream itself, which provides a gentle background soundtrack to everything.",
+    "fr": "Il y a aussi un terrain de pétanque (indispensable dès que l'on réunit plus de quatre Français, et étonnamment captivant pour tous les autres), une pelouse assez grande pour le yoga ou le croquet — ou les deux — et le bief lui-même, qui offre une douce bande sonore à l'ensemble."
   },
   "journal.family.h.season": {
-    "en": "Choose the Right Season"
+    "en": "Choose the Right Season",
+    "fr": "Choisissez la bonne saison"
   },
   "journal.family.p13": {
-    "en": "Summer (July and August) is the classic choice for family reunions. The days are long, the evenings are warm, and the garden is at its best. Book well in advance — these months fill first."
+    "en": "Summer (July and August) is the classic choice for family reunions. The days are long, the evenings are warm, and the garden is at its best. Book well in advance — these months fill first.",
+    "fr": "L'été (juillet et août) est le choix classique pour les réunions de famille. Les journées sont longues, les soirées douces, et le jardin est à son apogée. Réservez longtemps à l'avance — ces mois se remplissent en premier."
   },
   "journal.family.p14": {
-    "en": "September and early October are, in our opinion, the best-kept secret. The summer crowds have gone, the forest is turning gold, the light has that warm, low quality that makes everything beautiful, and the markets are full of mushrooms, figs, and late-season tomatoes. The evenings are cool enough for a fire, and warm enough to eat outdoors with a jacket."
+    "en": "September and early October are, in our opinion, the best-kept secret. The summer crowds have gone, the forest is turning gold, the light has that warm, low quality that makes everything beautiful, and the markets are full of mushrooms, figs, and late-season tomatoes. The evenings are cool enough for a fire, and warm enough to eat outdoors with a jacket.",
+    "fr": "Septembre et début octobre sont, à notre avis, le secret le mieux gardé. Les foules de l'été sont parties, la forêt se pare d'or, la lumière prend cette qualité chaude et rasante qui rend tout beau, et les marchés regorgent de champignons, de figues et de tomates de fin de saison. Les soirées sont assez fraîches pour un feu, et assez douces pour dîner dehors avec une veste."
   },
   "journal.family.p15": {
-    "en": "Spring (April through June) is when the gardens and forest are at their most alive. The wisteria on Le Jardin blooms in May. The forest floor is covered in wildflowers. Paris is an hour away if anyone wants a day trip."
+    "en": "Spring (April through June) is when the gardens and forest are at their most alive. The wisteria on Le Jardin blooms in May. The forest floor is covered in wildflowers. Paris is an hour away if anyone wants a day trip.",
+    "fr": "Le printemps (d'avril à juin) est la saison où les jardins et la forêt sont les plus vivants. La glycine fleurit en mai. Le sous-bois se couvre de fleurs sauvages. Et Paris est à une heure si quelqu'un souhaite une escapade d'une journée."
   },
   "journal.family.h.start": {
-    "en": "Start the Conversation"
+    "en": "Start the Conversation",
+    "fr": "Commencez la conversation"
   },
   "journal.family.p16": {
-    "en": "The best family reunions start with a conversation, not a booking. Tell us how many you are, which generation needs the most space, whether anyone has dietary requirements or mobility concerns, and what kind of week you are imagining. We will suggest a configuration of houses, recommend catering options, and put together a proposal that takes care of the logistics so you can focus on what actually matters: being together."
+    "en": "The best family reunions start with a conversation, not a booking. Tell us how many you are, which generation needs the most space, whether anyone has dietary requirements or mobility concerns, and what kind of week you are imagining. We will suggest a configuration of houses, recommend catering options, and put together a proposal that takes care of the logistics so you can focus on what actually matters: being together.",
+    "fr": "Les plus belles réunions de famille commencent par une conversation, pas par une réservation. Dites-nous combien vous êtes, quelle génération a besoin du plus d'espace, si quelqu'un a des exigences alimentaires ou des difficultés à se déplacer, et quel genre de semaine vous imaginez. Nous vous proposerons une configuration de maisons, des options de traiteur, et une proposition qui prend en charge la logistique pour que vous puissiez vous consacrer à l'essentiel : être ensemble."
   },
   "journal.family.outro": {
-    "en": "Moulin à Rêves sleeps up to 20 across three houses, with shared gardens, a millstream, and catering services. Get in touch to start planning your family reunion."
+    "en": "Moulin à Rêves sleeps up to 20 across three houses, with shared gardens, a millstream, and catering services. <a href=\"/contact/\">Get in touch</a> to start planning your family reunion.",
+    "fr": "Le Moulin à Rêves accueille jusqu'à 20 hôtes répartis dans trois maisons, avec jardins partagés, bief et services de traiteur. <a href=\"/contact/\">Contactez-nous</a> pour commencer à organiser votre réunion de famille."
   },
   "journal.related.heading": {
     "en": "More from the Journal"
