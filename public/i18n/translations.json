@@ -164,8 +164,8 @@
     "fr": "Entouré de murs de pierre et de jardins, Moulin à Rêves offre à ses hôtes beauté, intimité et espace pour se détendre et se reconnecter. Que vous veniez seul, en couple ou entre amis pour une célébration ou une retraite, vous pourrez ici ralentir et vous laisser inspirer."
   },
   "home.homes.intro": {
-    "en": "Three distinctive homes offer different ways to experience the estate. Although Moulin à Rêves features ten bedrooms, we welcome a maximum of ten lodging guests, ensuring a rare sense of privacy and space.",
-    "fr": "Bien que le domaine offre dix chambres réparties dans trois maisons, nous accueillons un maximum de dix hôtes pour la nuit, garantissant un sentiment exceptionnel d'intimité et d'espace."
+    "en": "Three distinctive homes offer different ways to experience the estate. Moulin à Rêves features ten bedrooms across three homes, welcoming up to twenty lodging guests while preserving a rare sense of privacy and space.",
+    "fr": "Le domaine offre dix chambres réparties dans trois maisons, accueillant jusqu'à vingt hôtes pour la nuit, tout en préservant un sentiment exceptionnel d'intimité et d'espace."
   },
   "home.refined.heading": {
     "en": "",
@@ -180,8 +180,8 @@
     "fr": "Un domaine privé conçu pour des moments précieux partagés."
   },
   "home.groups.events": {
-    "en": "Events welcome for up to 35 guests, for an additional fee.",
-    "fr": "Les événements sont les bienvenus jusqu'à 35 invités, moyennant un supplément."
+    "en": "Events welcome for up to 50 guests, including all lodging guests, for a €5,000 facility fee.",
+    "fr": "Les événements sont les bienvenus jusqu'à 50 invités, y compris tous les hôtes logés, moyennant des frais de 5 000 €."
   },
   "home.homes.eyebrow": {
     "en": "The Three Houses",
@@ -388,12 +388,12 @@
     "fr": "Découvrir Le Jardin"
   },
   "homes.rentall.heading": {
-    "en": "Reunions, Retreats and Relaxation for up to 10 guests.",
-    "fr": "Réunions, retraites et détente pour 10 invités."
+    "en": "Reunions, Retreats and Relaxation for up to 20 guests.",
+    "fr": "Réunions, retraites et détente pour 20 invités."
   },
   "homes.rentall.text": {
-    "en": "Reunions, Retreats and Relaxation for up to 10 guests.",
-    "fr": "Réservez le domaine entier pour jusqu'à 10 personnes. Réunions de famille, retraites, célébrations — le lieu, rien que pour vous."
+    "en": "Reunions, Retreats and Relaxation for up to 20 guests.",
+    "fr": "Réservez le domaine entier pour jusqu'à 20 personnes. Réunions de famille, retraites, célébrations — le lieu, rien que pour vous."
   },
   "homes.rentall.button": {
     "en": "Explore the Compound",
@@ -1516,8 +1516,8 @@
     "fr": "La restauration a commencé avec un principe simple : garder tout ce que le temps a rendu beau, réparer tout ce que le temps a abîmé, et n'ajouter que le nécessaire pour rendre les maisons confortables selon les usages d'aujourd'hui. Les épais murs de calcaire sont restés. Les poutres de chêne ont été nettoyées et traitées, mais pas remplacées. Les volets bleus — une tradition dans cette partie de la Seine-et-Marne — ont été reconstruits par un menuisier local avec les mêmes proportions que les originaux. Chauffage, plomberie, isolation et cuisines ont été mis aux normes actuelles, mais le caractère des bâtiments a été préservé."
   },
   "about.place.p4": {
-    "en": "Today, Moulin à Rêves is three houses: Le Moulin, the original mill; The Hollywood Hideaway, the star's retreat; and La Maison de la Rivière, the riverside cottage. Together they welcome up to ten guests. They share a garden, a millstream, a petanque court, and the kind of unhurried atmosphere that the French countryside has been offering to anyone willing to slow down for two hundred years.",
-    "fr": "Aujourd'hui, Moulin à Rêves, ce sont trois maisons : Le Moulin, le moulin d'origine ; The Hollywood Hideaway, la retraite des stars ; et La Maison de la Rivière, le cottage au bord de l'eau. Ensemble, elles accueillent jusqu'à dix personnes. Elles partagent un jardin, un bief, un terrain de pétanque et cette atmosphère sans hâte que la campagne française offre depuis deux cents ans à quiconque accepte de ralentir."
+    "en": "Today, Moulin à Rêves is three houses: Le Moulin, the original mill; The Hollywood Hideaway, the star's retreat; and La Maison de la Rivière, the riverside cottage. Together they welcome up to twenty guests. They share a garden, a millstream, a petanque court, and the kind of unhurried atmosphere that the French countryside has been offering to anyone willing to slow down for two hundred years.",
+    "fr": "Aujourd'hui, Moulin à Rêves, ce sont trois maisons : Le Moulin, le moulin d'origine ; The Hollywood Hideaway, la retraite des stars ; et La Maison de la Rivière, le cottage au bord de l'eau. Ensemble, elles accueillent jusqu'à vingt personnes. Elles partagent un jardin, un bief, un terrain de pétanque et cette atmosphère sans hâte que la campagne française offre depuis deux cents ans à quiconque accepte de ralentir."
   },
   "about.people.heading": {
     "en": "The People",
@@ -1674,6 +1674,18 @@
   "contact.getting.summary": {
     "en": "About 1 hour from Paris by car or train. <a href=\"/about/#getting-here\">See the full directions FAQ →</a> for airport transfers, train options, taxis, ride apps, and car rental.",
     "fr": "Environ 1 heure de Paris en voiture ou en train. <a href=\"/about/#getting-here\">Voir la FAQ complète sur l'accès →</a> avec transferts aéroport, trains, taxis, applis VTC et location de voiture."
+  },
+  "contact.pricing.heading": {
+    "en": "Pricing & Events",
+    "fr": "Tarifs et Événements"
+  },
+  "contact.pricing.rates": {
+    "en": "Nightly rate: €2,500 per house. To rent all three homes — the entire compound — €10,000 per night. Two-night minimum stay. A linens and housekeeping fee of €250 per home is additional.",
+    "fr": "Tarif par nuit : 2 500 € par maison. Pour louer les trois maisons — l'ensemble du domaine — 10 000 € par nuit. Séjour minimum de deux nuits. Des frais de linge et de ménage de 250 € par maison s'ajoutent."
+  },
+  "contact.pricing.events": {
+    "en": "Events with a maximum of 50 people, including all lodging guests, are welcome for a €5,000 facility fee. You are welcome to decorate La Grange for your event. Catering may be arranged directly through <a href=\"/catering/\">our recommended vendors</a>.",
+    "fr": "Les événements accueillant un maximum de 50 personnes, y compris tous les hôtes logés, sont les bienvenus moyennant des frais d'installation de 5 000 €. Vous êtes libre de décorer La Grange pour votre événement. Le traiteur peut être organisé directement via <a href=\"/catering/\">nos prestataires recommandés</a>."
   },
   "about.faq.heading": {
     "en": "Frequently Asked <span class=\"serif-italic\">Questions</span>",
@@ -2501,7 +2513,7 @@
     "en": "The single most important decision in planning a family reunion is accommodation, and the single most important quality of that accommodation is this: separate sleeping, shared living. Families need to be close enough to gather easily and far enough apart to retreat when they need to. A hotel scatters everyone along corridors. A single large house forces everyone into the same rhythm. A compound — three houses arranged around shared gardens — does something different. It gives each family unit a front door, a kitchen, a living room, and a bedtime that belongs to them, while the garden between the houses becomes the communal space where everything interesting happens."
   },
   "journal.family.p4": {
-    "en": "At Moulin à Rêves, the three houses — Le Moulin, The Hollywood Hideaway, and La Maison de la Rivière — together welcome up to ten guests. They are close enough that a child can run between them, and far enough apart that you cannot hear the baby crying in the next house. This turns out to be the exact right distance for a family reunion."
+    "en": "At Moulin à Rêves, the three houses — Le Moulin, The Hollywood Hideaway, and La Maison de la Rivière — together welcome up to twenty guests. They are close enough that a child can run between them, and far enough apart that you cannot hear the baby crying in the next house. This turns out to be the exact right distance for a family reunion."
   },
   "journal.family.h.feed": {
     "en": "Let Someone Else Feed You"
