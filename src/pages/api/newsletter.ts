@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+import { sendNotification, escapeHtml } from '../../lib/notify';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -32,6 +33,16 @@ export const POST: APIRoute = async ({ request }) => {
       const err = await res.json();
       return new Response(JSON.stringify({ error: err }), { status: 500 });
     }
+
+    const email = escapeHtml(data.email);
+    const source = escapeHtml(data.source || 'Footer');
+
+    await sendNotification({
+      subject: `New newsletter signup — ${data.email}`,
+      html: `<p>New newsletter subscriber:</p><p><strong>${email}</strong> (source: ${source})</p>`,
+      text: `New newsletter subscriber: ${data.email} (source: ${data.source || 'Footer'})`,
+      replyTo: data.email,
+    });
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (e) {

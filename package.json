@@ -19,7 +19,8 @@
     "@neondatabase/serverless": "^1.0.2",
     "@vercel/edge": "^1.2.2",
     "astro": "^6.1.2",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "resend": "^6.12.2"
   },
   "devDependencies": {
     "linkedom": "^0.18.12",
